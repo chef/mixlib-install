@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - mixlib-install.gemspec
+Style/AlignParameters:
+  EnforcedStyle: with_first_parameter
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+Metrics/LineLength:
+  Exclude:
+    - spec/**/*.rb
