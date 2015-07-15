@@ -50,8 +50,8 @@ describe Mixlib::Install do
 
   describe "#install" do
     describe "on windows" do
-      let(:installer) {Mixlib::Install.new("1.2.1", true, {base: "http://f/"})}
-      let(:target_url) {"http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1"}
+      let(:installer) { Mixlib::Install.new("1.2.1", true, base: "http://f/") }
+      let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1" }
 
       it "generates config vars" do
         expect(installer).to receive(:install_command_vars_for_powershell)
@@ -71,7 +71,7 @@ describe Mixlib::Install do
     end
 
     describe "on unix" do
-      let(:installer) {Mixlib::Install.new("1.2.1", false, {base: "http://f/", nightlies: true})}
+      let(:installer) { Mixlib::Install.new("1.2.1", false, base: "http://f/", nightlies: true) }
 
       it "generates config vars" do
         expect(installer).to receive(:install_command_vars_for_bourne)

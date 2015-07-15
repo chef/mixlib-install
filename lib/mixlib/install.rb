@@ -113,7 +113,7 @@ module Mixlib
       ].join("\n")
     end
 
-    # rubocop:disable Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     def parse_opts(opts)
       opts.each do |opt, setting|
         case opt.to_s
