@@ -171,7 +171,7 @@ module Mixlib
 
     def windows_metadata_url
       base = if base_url =~ %r{/install.sh$}
-        "#{File.dirname(base_url)}"
+        "#{File.dirname(base_url)}/"
       end
 
       url = "#{base}#{endpoint}"
