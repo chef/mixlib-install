@@ -28,6 +28,8 @@ module Mixlib
 
     attr_accessor :nightlies
 
+    attr_accessor :install_flags
+
     attr_accessor :endpoint
 
     attr_accessor :root
@@ -45,6 +47,7 @@ module Mixlib
       @powershell = powershell
       @http_proxy = nil
       @https_proxy = nil
+      @install_flags = nil
       @prerelease = false
       @nightly = false
       @endpoint = "metadata"
@@ -78,14 +81,15 @@ module Mixlib
     # @return [String] shell variable lines
     # @api private
     def install_command_vars_for_bourne
-      install_flags = %w[latest true].include?(version) ? "" : "-v #{version}"
-      install_flags << " " << "-n" if nightlies
-      install_flags << " " << "-p" if prerelease
+      flags = %w[latest true].include?(version) ? "" : "-v #{version}"
+      flags << " " << "-n" if nightlies
+      flags << " " << "-p" if prerelease
+      flags << " " << install_flags if install_flags
 
       [
         shell_var("chef_omnibus_root", root),
         shell_var("chef_omnibus_url", base_url),
-        shell_var("install_flags", install_flags.strip),
+        shell_var("install_flags", flags.strip),
         shell_var("pretty_version", Util.pretty_version(version)),
         shell_var("sudo_sh", sudo("sh")),
         shell_var("version", version)
@@ -117,6 +121,8 @@ module Mixlib
           self.http_proxy = setting
         when "https_proxy"
           self.https_proxy = setting
+        when "install_flags"
+          self.install_flags = setting
         when "prerelease"
           self.prerelease = setting
         when "endpoint"
