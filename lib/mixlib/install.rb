@@ -131,6 +131,8 @@ module Mixlib
           self.base_url = setting
         when "nightlies"
           self.nightlies = setting
+        when "sudo"
+          self.use_sudo = setting
         when "sudo_command"
           self.use_sudo = true
           self.sudo_command = setting
