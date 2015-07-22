@@ -17,6 +17,7 @@
 #
 
 require "mixlib/install/util"
+require "cgi"
 
 module Mixlib
   class Install
@@ -81,7 +82,7 @@ module Mixlib
     # @return [String] shell variable lines
     # @api private
     def install_command_vars_for_bourne
-      flags = %w[latest true].include?(version) ? "" : "-v #{version}"
+      flags = %w[latest true].include?(version) ? "" : "-v #{CGI.escape(version)}"
       flags << " " << "-n" if nightlies
       flags << " " << "-p" if prerelease
       flags << " " << install_flags if install_flags
@@ -176,7 +177,7 @@ module Mixlib
 
       url = "#{base}#{endpoint}"
       url << "?p=windows&m=x86_64&pv=2008r2" # same package for all versions
-      url << "&v=#{version.to_s.downcase}"
+      url << "&v=#{CGI.escape(version.to_s.downcase)}"
       url << "&prerelease=true" if prerelease
       url << "&nightlies=true" if nightlies
       url
