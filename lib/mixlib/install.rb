@@ -44,6 +44,17 @@ module Mixlib
     attr_accessor :base_url
     attr_accessor :install_msi_url
 
+    VALID_INSTALL_OPTS = %w(base
+                            endpoint
+                            http_proxy
+                            https_proxy
+                            install_flags
+                            install_msi_url
+                            nightlies
+                            prerelease
+                            sudo
+                            sudo_command)
+
     def initialize(version, powershell = false, opts = {})
       @version = version
       @powershell = powershell
@@ -120,31 +131,28 @@ module Mixlib
       }.join("\n")
     end
 
-    # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+    def validate_opts!(opt)
+      err_msg = ["#{opt} is not a valid option",
+                 "valid options are #{VALID_INSTALL_OPTS.join(' ')}"].join(',')
+      fail ArgumentError, err_msg unless VALID_INSTALL_OPTS.include?(opt.to_s)
+    end
+
+    # rubocop:disable Metrics/MethodLength
     def parse_opts(opts)
       opts.each do |opt, setting|
+        validate_opts!(opt)
         case opt.to_s
-        when "http_proxy"
-          self.http_proxy = setting
-        when "https_proxy"
-          self.https_proxy = setting
-        when "install_flags"
-          self.install_flags = setting
-        when "prerelease"
-          self.prerelease = setting
-        when "endpoint"
-          self.endpoint = metadata_endpoint_from_project(setting)
-        when "base"
+        when 'base'
           self.base_url = setting
-        when "nightlies"
-          self.nightlies = setting
-        when "sudo"
+        when 'endpoint'
+          self.endpoint = metadata_endpoint_from_project(setting)
+        when 'sudo'
           self.use_sudo = setting
-        when "sudo_command"
+        when 'sudo_command'
           self.use_sudo = true
           self.sudo_command = setting
-        when "install_msi_url"
-          self.install_msi_url = setting
+        else
+          send("#{opt.to_sym}=", setting)
         end
       end
     end
