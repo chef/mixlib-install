@@ -29,16 +29,15 @@ Function Get-MD5Sum($src) {
   } Finally { if (($c -ne $null) -and ($c.GetType().GetMethod("Dispose") -ne $null)) { $c.Dispose() }; if ($in -ne $null) { $in.Dispose() } }
 }
 
-Function Download-Chef($md_url, $dst) {
-  $url, $md5 = Get-ChefMetadata $md_url
-
+Function Download-Chef($url, $md5, $dst) {
   Try {
     Log "Downloading package from $url"
     ($c = Make-WebClient).DownloadFile($url, $dst)
     Log "Download complete."
   } Finally { if ($c -ne $null) { $c.Dispose() } }
 
-  if (($dmd5 = Get-MD5Sum $dst) -eq $md5) { Log "Successfully verified $dst" }
+  if ($md5 -eq $null) { Log "Skipping md5 verification" }
+  elseif (($dmd5 = Get-MD5Sum $dst) -eq $md5) { Log "Successfully verified $dst" }
   else { throw "MD5 for $dst $dmd5 does not match $md5" }
 }
 
@@ -72,7 +71,13 @@ $msi = Unresolve-Path $msi
 
 if (Check-UpdateChef $chef_omnibus_root $version) {
   Write-Host "-----> Installing Chef Omnibus ($pretty_version)`n"
-  Download-Chef "$chef_metadata_url" $msi
+  if ($chef_metadata_url -ne $null) {
+    $url, $md5 = Get-ChefMetadata "$chef_metadata_url"
+  } else {
+    $url = $chef_msi_url
+    $md5 = $null
+  }
+  Download-Chef "$url" $md5 $msi
   Install-Chef $msi
 } else {
   Write-Host "-----> Chef Omnibus installation detected ($pretty_version)`n"

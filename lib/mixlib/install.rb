@@ -42,6 +42,7 @@ module Mixlib
     attr_accessor :https_proxy
 
     attr_accessor :base_url
+    attr_accessor :install_msi_url
 
     def initialize(version, powershell = false, opts = {})
       @version = version
@@ -65,7 +66,7 @@ module Mixlib
       parse_opts(opts)
     end
 
-    def install
+    def install_command
       vars = if powershell
         install_command_vars_for_powershell
       else
@@ -106,12 +107,17 @@ module Mixlib
     # @api private
     def install_command_vars_for_powershell
       [
-        shell_var("chef_metadata_url", windows_metadata_url),
         shell_var("chef_omnibus_root", root),
         shell_var("msi", "$env:TEMP\\chef-#{version}.msi"),
-        shell_var("pretty_version", Util.pretty_version(version)),
-        shell_var("version", version)
-      ].join("\n")
+      ].tap { |vars|
+        if install_msi_url
+          vars << shell_var("chef_msi_url", install_msi_url)
+        else
+          vars << shell_var("chef_metadata_url", windows_metadata_url)
+          vars << shell_var("pretty_version", Util.pretty_version(version))
+          vars << shell_var("version", version)
+        end
+      }.join("\n")
     end
 
     # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
@@ -137,6 +143,8 @@ module Mixlib
         when "sudo_command"
           self.use_sudo = true
           self.sudo_command = setting
+        when "install_msi_url"
+          self.install_msi_url = setting
         end
       end
     end

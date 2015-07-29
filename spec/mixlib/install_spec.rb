@@ -50,23 +50,41 @@ describe Mixlib::Install do
 
   describe "#install" do
     describe "on windows" do
-      let(:installer) { Mixlib::Install.new("1.2.1", true, base: "http://f/") }
+      let(:installer) { Mixlib::Install.new("1.2.1", true, base: "http://f/install.sh") }
       let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1" }
 
       it "generates config vars" do
         expect(installer).to receive(:install_command_vars_for_powershell)
-        installer.install
+        installer.install_command
       end
 
       it "creates the target url" do
-        expect(installer).to receive(:windows_metadata_url).and_return(target_url)
-        installer.install
+        expect(installer).to receive(:windows_metadata_url).and_call_original
+        installer.install_command
       end
 
       it "builds the command string" do
         allow(installer).to receive(:install_command_vars_for_powershell).and_return("a test string")
         expect(installer).to receive(:shell_code_from_file).with("a test string")
-        installer.install
+        installer.install_command
+      end
+
+      it "creates the proper shell vars" do
+        expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
+      end
+
+      describe "with an MSI url" do
+        let(:installer) { Mixlib::Install.new("1.2.1", true, install_msi_url: "http://f/chef.msi") }
+
+        it "does not create the target url" do
+          expect(installer).to_not receive(:windows_metadata_url)
+          installer.install_command
+        end
+
+        it "creates the proper shell vars" do
+          expect(installer.install_command).to match(%r{chef_msi_url.*http://f/chef.msi})
+        end
+
       end
     end
 
@@ -75,11 +93,11 @@ describe Mixlib::Install do
 
       it "generates config vars" do
         expect(installer).to receive(:install_command_vars_for_bourne)
-        installer.install
+        installer.install_command
       end
 
       it "passes a flag to install a nightly" do
-        expect(installer.install).to include('install_flags="-v 1.2.1 -n"')
+        expect(installer.install_command).to include('install_flags="-v 1.2.1 -n"')
       end
 
     end
