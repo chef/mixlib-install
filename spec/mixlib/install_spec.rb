@@ -45,6 +45,17 @@ describe Mixlib::Install do
         install = Mixlib::Install.new("1.2.1", false, opts)
         expect(install.endpoint).to eq("metadata-chef-server")
       end
+
+      it 'sets the base URL' do
+        opts = { base: 'http://example.com/install.sh' }
+        install = Mixlib::Install.new('1.2.1', false, opts)
+        expect(install.base_url).to eq('http://example.com/install.sh')
+      end
+
+      it 'raises ArgumentError on invalid options' do
+        opts = { invalid_arg: true }
+        expect { Mixlib::Install.new("1.2.1", false, opts) }.to raise_error(ArgumentError)
+      end
     end
   end
 
