@@ -104,7 +104,7 @@ module Mixlib
     # @return [String] shell variable lines
     # @api private
     def install_command_vars_for_bourne
-      flags = %w[latest true].include?(version) ? "" : "-v #{CGI.escape(version)}"
+      flags = %w[latest true nightlies].include?(version) ? "" : "-v #{CGI.escape(version)}"
       flags << " " << "-n" if nightlies
       flags << " " << "-p" if prerelease
       flags << " " << install_flags if install_flags
