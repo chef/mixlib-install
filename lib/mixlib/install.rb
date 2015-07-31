@@ -36,7 +36,13 @@ module Mixlib
     attr_accessor :root
 
     attr_accessor :use_sudo
-    attr_accessor :sudo_command
+
+    attr_reader :sudo_command
+
+    def sudo_command=(cmd)
+      @use_sudo = true
+      @sudo_command = cmd
+    end
 
     attr_accessor :http_proxy
     attr_accessor :https_proxy
@@ -148,9 +154,6 @@ module Mixlib
           self.endpoint = metadata_endpoint_from_project(setting)
         when 'sudo'
           self.use_sudo = setting
-        when 'sudo_command'
-          self.use_sudo = true
-          self.sudo_command = setting
         else
           send("#{opt.to_sym}=", setting)
         end
