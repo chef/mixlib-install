@@ -58,6 +58,7 @@ module Mixlib
                             install_msi_url
                             nightlies
                             prerelease
+                            project
                             sudo
                             sudo_command)
 
@@ -148,7 +149,7 @@ module Mixlib
       opts.each do |opt, setting|
         validate_opts!(opt)
         case opt.to_s
-        when 'endpoint'
+        when 'project', 'endpoint'
           self.endpoint = metadata_endpoint_from_project(setting)
         when 'sudo'
           self.use_sudo = setting
