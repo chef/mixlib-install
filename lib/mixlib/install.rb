@@ -40,8 +40,11 @@ module Mixlib
     attr_reader :sudo_command
 
     def sudo_command=(cmd)
-      @use_sudo = true
-      @sudo_command = cmd
+      if cmd.nil?
+        @use_sudo = false
+      else
+        @sudo_command = cmd
+      end
     end
 
     attr_accessor :http_proxy
@@ -59,7 +62,7 @@ module Mixlib
                             nightlies
                             prerelease
                             project
-                            sudo
+                            use_sudo
                             sudo_command)
 
     def initialize(version, powershell = false, opts = {})
@@ -151,8 +154,6 @@ module Mixlib
         case opt.to_s
         when 'project', 'endpoint'
           self.endpoint = metadata_endpoint_from_project(setting)
-        when 'sudo'
-          self.use_sudo = setting
         else
           send("#{opt.to_sym}=", setting)
         end
