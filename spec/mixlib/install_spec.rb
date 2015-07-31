@@ -47,9 +47,9 @@ describe Mixlib::Install do
       end
 
       it 'sets the base URL' do
-        opts = { base: 'http://example.com/install.sh' }
+        opts = { omnibus_url: 'http://example.com/install.sh' }
         install = Mixlib::Install.new('1.2.1', false, opts)
-        expect(install.base_url).to eq('http://example.com/install.sh')
+        expect(install.omnibus_url).to eq('http://example.com/install.sh')
       end
 
       it 'raises ArgumentError on invalid options' do
@@ -61,7 +61,7 @@ describe Mixlib::Install do
 
   describe "#install" do
     describe "on windows" do
-      let(:installer) { Mixlib::Install.new("1.2.1", true, base: "http://f/install.sh") }
+      let(:installer) { Mixlib::Install.new("1.2.1", true, omnibus_url: "http://f/install.sh") }
       let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1" }
 
       it "generates config vars" do
@@ -100,7 +100,7 @@ describe Mixlib::Install do
     end
 
     describe "on unix" do
-      let(:installer) { Mixlib::Install.new("1.2.1", false, base: "http://f/", nightlies: true) }
+      let(:installer) { Mixlib::Install.new("1.2.1", false, omnibus_url: "http://f/", nightlies: true) }
 
       it "generates config vars" do
         expect(installer).to receive(:install_command_vars_for_bourne)

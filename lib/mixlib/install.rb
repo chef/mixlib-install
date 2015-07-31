@@ -47,10 +47,10 @@ module Mixlib
     attr_accessor :http_proxy
     attr_accessor :https_proxy
 
-    attr_accessor :base_url
+    attr_accessor :omnibus_url
     attr_accessor :install_msi_url
 
-    VALID_INSTALL_OPTS = %w(base
+    VALID_INSTALL_OPTS = %w(omnibus_url
                             endpoint
                             http_proxy
                             https_proxy
@@ -70,7 +70,7 @@ module Mixlib
       @prerelease = false
       @nightly = false
       @endpoint = "metadata"
-      @base_url = "https://www.chef.io/chef/install.sh"
+      @omnibus_url = "https://www.chef.io/chef/install.sh"
       @use_sudo = true
       @sudo_command = "sudo -E"
 
@@ -107,7 +107,7 @@ module Mixlib
 
       [
         shell_var("chef_omnibus_root", root),
-        shell_var("chef_omnibus_url", base_url),
+        shell_var("chef_omnibus_url", omnibus_url),
         shell_var("install_flags", flags.strip),
         shell_var("pretty_version", Util.pretty_version(version)),
         shell_var("sudo_sh", sudo("sh")),
@@ -148,8 +148,6 @@ module Mixlib
       opts.each do |opt, setting|
         validate_opts!(opt)
         case opt.to_s
-        when 'base'
-          self.base_url = setting
         when 'endpoint'
           self.endpoint = metadata_endpoint_from_project(setting)
         when 'sudo'
@@ -190,8 +188,8 @@ module Mixlib
     end
 
     def windows_metadata_url
-      base = if base_url =~ %r{/install.sh$}
-        "#{File.dirname(base_url)}/"
+      base = if omnibus_url =~ %r{/install.sh$}
+        "#{File.dirname(omnibus_url)}/"
       end
 
       url = "#{base}#{endpoint}"
