@@ -84,6 +84,15 @@ describe Mixlib::Install do
         expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
       end
 
+      describe "for a nightly" do
+        let(:installer) { Mixlib::Install.new("1.2.1", true, omnibus_url: "http://f/install.sh", nightlies: true) }
+        let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1&nightlies=true" }
+
+        it "creates the proper shell vars" do
+          expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
+        end
+      end
+
       describe "with an MSI url" do
         let(:installer) { Mixlib::Install.new("1.2.1", true, install_msi_url: "http://f/chef.msi") }
 

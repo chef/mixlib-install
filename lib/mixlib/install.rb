@@ -72,7 +72,7 @@ module Mixlib
       @https_proxy = nil
       @install_flags = nil
       @prerelease = false
-      @nightly = false
+      @nightlies = false
       @endpoint = "metadata"
       @omnibus_url = "https://www.chef.io/chef/install.sh"
       @use_sudo = true
