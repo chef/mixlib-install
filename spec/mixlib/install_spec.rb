@@ -26,6 +26,11 @@ describe Mixlib::Install do
       expect(install.version).to eq("1.2.1")
     end
 
+    it "has a default version" do
+      install = Mixlib::Install.new(nil)
+      expect(install.version).to eq("latest")
+    end
+
     it "sets that powershell is used" do
       install = Mixlib::Install.new("1.2.1", true)
       expect(install.powershell).to be true

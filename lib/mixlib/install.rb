@@ -66,7 +66,7 @@ module Mixlib
                             sudo_command)
 
     def initialize(version, powershell = false, opts = {})
-      @version = version
+      @version = version || "latest"
       @powershell = powershell
       @http_proxy = nil
       @https_proxy = nil
