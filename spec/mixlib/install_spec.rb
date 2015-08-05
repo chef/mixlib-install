@@ -125,6 +125,13 @@ describe Mixlib::Install do
         expect(installer.install_command).to include('install_flags="-v 1.2.1 -n"')
       end
 
+      it "will install a nightly, if necessary" do
+        installer = Mixlib::Install.new("12.5.0-current.0+20150721082808.git.14.c91b337-1", false)
+        out = installer.install_command
+        expect(out).to include(%{install_flags="-v 12.5.0-current.0%2B20150721082808.git.14.c91b337-1"})
+        expect(out).to include(%{version="12.5.0-current.0+20150721082808.git.14.c91b337-1"})
+      end
+
     end
   end
 end
