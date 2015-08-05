@@ -34,7 +34,23 @@ describe Mixlib::Install do
     it "sets that powershell is used" do
       install = Mixlib::Install.new("1.2.1", true)
       expect(install.powershell).to be true
-      expect(install.root).to eq("$env:systemdrive\\opscode\\chef")
+    end
+
+    describe "manages the install root" do
+      it "on windows" do
+        install = Mixlib::Install.new("1.2.1", true)
+        expect(install.root).to eq("$env:systemdrive\\opscode\\chef")
+      end
+
+      it "on unix" do
+        install = Mixlib::Install.new("1.2.1", false)
+        expect(install.root).to eq("/opt/chef")
+      end
+
+      it "is settable" do
+        install = Mixlib::Install.new("1.2.1", false, root: "/opt/test")
+        expect(install.root).to eq("/opt/test")
+      end
     end
 
     describe "parses the options hash" do

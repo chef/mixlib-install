@@ -62,6 +62,7 @@ module Mixlib
                             nightlies
                             prerelease
                             project
+                            root
                             use_sudo
                             sudo_command)
 
