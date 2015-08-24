@@ -13,11 +13,11 @@ fi
 
 # Install Ruby & Gems
 if [ ! -f /opt/local/bin/chef-client ]; then
-    /opt/local/bin/pkgin -y install gcc47 gcc47-runtime gmake ruby21-base ruby21-mime-types ruby21-yajl-ruby ruby21-nokogiri ruby21-readline coreutils pkg-config
+    /opt/local/bin/pkgin -y install gcc47 gcc47-runtime gmake ruby200-base ruby200-mime-types ruby200-yajl-ruby ruby200-nokogiri ruby200-readline ruby200-ohai ruby200-chef coreutils pkg-config
     echo "gemhome: /var/.gem" >> /root/.gemrc
     gem sources -r https://rubygems.org/
     gem sources -a http://ruby.taobao.org
-    gem install omnibus
+    #gem install omnibus
 fi
 
 # augment path in an attempt to find a download program
