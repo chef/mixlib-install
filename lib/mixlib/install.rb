@@ -99,6 +99,11 @@ module Mixlib
 
     private
 
+    def is_smartos 
+      platform = ENV['CHEF_CURRENT_PLATFORM']
+      !platform.nil? && platform.downcase == "smartos"
+    end
+
     # Generates the install command variables for Bourne shell-based
     # platforms.
     #
@@ -162,10 +167,11 @@ module Mixlib
     end
 
     def shell_code_from_file(vars)
+      inst_file = is_smartos? "install_smartos" : "install_command"
       fn = File.join(
         File.dirname(__FILE__),
         %w[.. .. support],
-        "install_command"
+        inst_file
       )
       Util.shell_code_from_file(vars, fn, powershell,
                                 http_proxy: http_proxy, https_proxy: https_proxy)
