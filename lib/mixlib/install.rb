@@ -167,7 +167,8 @@ module Mixlib
     end
 
     def shell_code_from_file(vars)
-      inst_file = is_smartos? "install_smartos" : "install_command"
+      smartos_yes = is_smartos
+      inst_file = smartos_yes?"install_smartos":"install_command"
       fn = File.join(
         File.dirname(__FILE__),
         %w[.. .. support],
