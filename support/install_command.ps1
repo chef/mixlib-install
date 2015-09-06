@@ -37,18 +37,18 @@ Function Download-Chef($url, $md5, $dst) {
   } Finally { if ($c -ne $null) { $c.Dispose() } }
 
   if ($md5 -eq $null) { Log "Skipping md5 verification" }
-  elseif (($dmd5 = Get-MD5Sum $dst) -eq $md5) { Log "Successfully verified $dst" }
-  else { throw "MD5 for $dst $dmd5 does not match $md5" }
+  elseif (($dmd5 = Get-MD5Sum $dst) -eq $md5) { Log "Verified $dst" }
+  else { throw "MD5 $dst $dmd5 != $md5" }
 }
 
 Function Install-Chef($msi) {
   Log "Installing Chef Omnibus package $msi"
   $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
 
-  if ($p.ExitCode -ne 0) { throw "msiexec was not successful. Received exit code $($p.ExitCode)" }
+  if ($p.ExitCode -ne 0) { throw "msiexec failed. exitcode $($p.ExitCode)" }
 
   Remove-Item $msi -Force
-  Log "Installation complete"
+  Log "Installed"
 }
 
 Function Log($m) { Write-Host "       $m`n" }
@@ -70,7 +70,7 @@ $chef_omnibus_root = Unresolve-Path $chef_omnibus_root
 $msi = Unresolve-Path $msi
 
 if (Check-UpdateChef $chef_omnibus_root $version) {
-  Write-Host "-----> Installing Chef Omnibus ($pretty_version)`n"
+  Write-Host "--> Installing Omnibus ($pretty_version)`n"
   if ($chef_metadata_url -ne $null) {
     $url, $md5 = Get-ChefMetadata "$chef_metadata_url"
   } else {
@@ -80,5 +80,5 @@ if (Check-UpdateChef $chef_omnibus_root $version) {
   Download-Chef "$url" $md5 $msi
   Install-Chef $msi
 } else {
-  Write-Host "-----> Chef Omnibus installation detected ($pretty_version)`n"
+  Write-Host "--> has Chef Omnibus ($pretty_version)`n"
 }
