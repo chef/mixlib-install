@@ -1,5 +1,4 @@
 #
-# Author:: Thom May (<thom@chef.io>)
 # Author:: Patrick Wright (<patrick@chef.io>)
 # Copyright:: Copyright (c) 2015 Chef, Inc.
 # License:: Apache License, Version 2.0
@@ -17,28 +16,23 @@
 # limitations under the License.
 #
 
-require 'mixlib/install/artifact_info'
-require 'mixlib/install/backend'
+require 'mixlib/install/backend/base'
+require 'mixlib/install/backend/omnitruck'
+require 'mixlib/install/backend/artifactory'
 
 module Mixlib
   class Install
-    attr_accessor :project_name
-    attr_accessor :version
-    attr_accessor :channel
+    class Backend
+      class UnsupportedChannel < ArgumentError; end
 
-    def initialize(options = {})
-      @project_name = options[:project_name]
-      @version = options[:version]
-      @channel = options[:channel]
-    end
+      SUPPORTED_CHANNELS = [:stable, :current]
 
-    #
-    # Fetch artifact metadata information
-    #
-    # @return [ArtifactInfo] fetched artifact
-    #
-    def info
-      Backend.info(channel)
+      def self.info(channel)
+        unless SUPPORTED_CHANNELS.include?(channel)
+          raise UnsupportedChannel, "Provided channel #{channel}. Must be one of: #{SUPPORTED_CHANNELS.join(', ')}"
+        end
+        ArtifactInfo.new
+      end
     end
   end
 end

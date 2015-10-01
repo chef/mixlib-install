@@ -1,5 +1,4 @@
 #
-# Author:: Thom May (<thom@chef.io>)
 # Author:: Patrick Wright (<patrick@chef.io>)
 # Copyright:: Copyright (c) 2015 Chef, Inc.
 # License:: Apache License, Version 2.0
@@ -17,28 +16,11 @@
 # limitations under the License.
 #
 
-require 'mixlib/install/artifact_info'
-require 'mixlib/install/backend'
-
 module Mixlib
   class Install
-    attr_accessor :project_name
-    attr_accessor :version
-    attr_accessor :channel
-
-    def initialize(options = {})
-      @project_name = options[:project_name]
-      @version = options[:version]
-      @channel = options[:channel]
-    end
-
-    #
-    # Fetch artifact metadata information
-    #
-    # @return [ArtifactInfo] fetched artifact
-    #
-    def info
-      Backend.info(channel)
+    class Backend
+      class Artifactory < Base
+      end
     end
   end
 end
