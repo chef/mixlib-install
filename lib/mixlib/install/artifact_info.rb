@@ -1,5 +1,4 @@
 #
-# Author:: Thom May (<thom@chef.io>)
 # Author:: Patrick Wright (<patrick@chef.io>)
 # Copyright:: Copyright (c) 2015 Chef, Inc.
 # License:: Apache License, Version 2.0
@@ -19,21 +18,7 @@
 
 module Mixlib
   class Install
-    def initialize(project_name, version, channel)
-      @project_name = project_name
-      @version = version
-      @channel = channel
-    end
-
-    #
-    # Fetch artifact metadata information
-    #
-    # @return [ArtifactInfo] fetched artifact
-    #
-    def info
-    end
-
-    def install_command
+    class ArtifactInfo
     end
   end
 end
