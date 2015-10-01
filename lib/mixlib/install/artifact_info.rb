@@ -1,5 +1,5 @@
 #
-# Author:: Thom May (<thom@chef.io>)
+# Author:: Patrick Wright (<patrick@chef.io>)
 # Copyright:: Copyright (c) 2015 Chef, Inc.
 # License:: Apache License, Version 2.0
 #
@@ -16,29 +16,11 @@
 # limitations under the License.
 #
 
-require 'spec_helper'
-require 'mixlib/install/version'
-
-describe Mixlib::Install do
-  let(:install) { described_class.new('mixlib-install', '0.1.0', :stable)}
-
-  describe '#initialize' do
-    it 'sets product_name' do
-      expect(install.project_name).to eq('mixlib-install')
-    end
-
-    it 'sets version' do
-      expect(install.version).to eq('0.1.0')
-    end
-
-    it "sets channel" do
-      expect(install.channel).to be :stable
-    end
-  end
-
-  describe '#info' do
-    it 'returns ArtifactInfo' do
-      expect(install.info).to be_a(Mixlib::Install::ArtifactInfo)
+module Mixlib
+  class Install
+    class ArtifactInfo
+      def initialize
+      end
     end
   end
 end
