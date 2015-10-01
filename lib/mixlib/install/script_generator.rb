@@ -90,6 +90,15 @@ module Mixlib
         parse_opts(opts)
       end
 
+      def install_command
+        vars = if powershell
+          install_command_vars_for_powershell
+        else
+          install_command_vars_for_bourne
+        end
+        shell_code_from_file(vars)
+      end
+
       private
 
       # Generates the install command variables for Bourne shell-based
@@ -157,7 +166,7 @@ module Mixlib
       def shell_code_from_file(vars)
         fn = File.join(
           File.dirname(__FILE__),
-          %w[.. .. support],
+          %w[.. .. .. support],
           "install_command"
         )
         Util.shell_code_from_file(vars, fn, powershell,

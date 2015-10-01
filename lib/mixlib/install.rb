@@ -17,8 +17,16 @@
 # limitations under the License.
 #
 
+require 'mixlib/install/artifact_info'
+
 module Mixlib
   class Install
+    attr_accessor :project_name
+
+    attr_accessor :version
+
+    attr_accessor :channel
+
     def initialize(project_name, version, channel)
       @project_name = project_name
       @version = version
@@ -31,6 +39,7 @@ module Mixlib
     # @return [ArtifactInfo] fetched artifact
     #
     def info
+      ArtifactInfo.new
     end
 
     def install_command

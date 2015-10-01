@@ -19,6 +19,8 @@
 module Mixlib
   class Install
     class ArtifactInfo
+      def initialize
+      end
     end
   end
 end
