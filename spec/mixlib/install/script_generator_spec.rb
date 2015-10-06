@@ -17,7 +17,8 @@
 # limitations under the License.
 #
 
-require "spec_helper"
+require 'spec_helper'
+require 'mixlib/install/script_generator'
 
 describe Mixlib::Install::ScriptGenerator do
   describe "#initialize" do

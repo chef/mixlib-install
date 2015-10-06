@@ -17,28 +17,25 @@
 # limitations under the License.
 #
 
-require 'mixlib/install/artifact_info'
 require 'mixlib/install/backend'
+require 'mixlib/install/options'
 
 module Mixlib
   class Install
-    attr_accessor :project_name
-    attr_accessor :version
-    attr_accessor :channel
+
+    attr_reader :options
 
     def initialize(options = {})
-      @project_name = options[:project_name]
-      @version = options[:version]
-      @channel = options[:channel]
+      @options = Options.new(options)
     end
 
     #
     # Fetch artifact metadata information
     #
-    # @return [ArtifactInfo] fetched artifact
+    # @return [ArtifactInfo] fetched artifact data
     #
-    def info
-      Backend.info(channel)
+    def artifact_info
+      Backend.info(options)
     end
   end
 end

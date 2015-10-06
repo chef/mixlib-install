@@ -16,22 +16,17 @@
 # limitations under the License.
 #
 
-require 'mixlib/install/backend/base'
 require 'mixlib/install/backend/omnitruck'
-require 'mixlib/install/backend/artifactory'
 
 module Mixlib
   class Install
     class Backend
-      class UnsupportedChannel < ArgumentError; end
-
-      SUPPORTED_CHANNELS = [:stable, :current]
-
-      def self.info(channel)
-        unless SUPPORTED_CHANNELS.include?(channel)
-          raise UnsupportedChannel, "Provided channel #{channel}. Must be one of: #{SUPPORTED_CHANNELS.join(', ')}"
+      def self.info(options)
+        backend = if ['current', 'stable'].include? options.channel.to_s
+          Backend::Omnitruck.new(options)
         end
-        ArtifactInfo.new
+
+        backend.info
       end
     end
   end

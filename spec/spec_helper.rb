@@ -1,5 +1,10 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'mixlib/install'
-require 'mixlib/install/version'
-require 'mixlib/install/script_generator'
-require 'mixlib/install/artifact_info'
+
+RSpec.configure do |conf|
+  conf.filter_run focus: true
+  conf.run_all_when_everything_filtered = true
+
+  conf.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end
