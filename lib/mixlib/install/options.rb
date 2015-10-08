@@ -24,8 +24,9 @@ module Mixlib
       attr_accessor :options
 
       SUPPORTED_CHANNELS = [:stable, :current]
-      SUPPORTED_PRODUCT_NAMES = %w{ chef chefdk }
-      SUPPORTED_OPTIONS = [:channel, :product_name, :product_version, :platform, :platform_version, :architecture]
+      SUPPORTED_PRODUCT_NAMES = %w[chef chefdk]
+      SUPPORTED_OPTIONS = [:channel, :product_name, :product_version,
+                           :platform, :platform_version, :architecture]
 
       def initialize(options)
         @options = options
@@ -35,11 +36,12 @@ module Mixlib
       def validate_options!
         errors = []
         unless SUPPORTED_PRODUCT_NAMES.include? product_name
-          errors << "Unknown product name #{product_name}. Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(', ')}"
+          errors << "Unknown product name #{product_name}. \
+Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}"
         end
 
         unless SUPPORTED_CHANNELS.include? channel
-          errors << "Unknown channel #{channel}. Must be one of: #{SUPPORTED_CHANNELS.join(', ')}"
+          errors << "Unknown channel #{channel}. Must be one of: #{SUPPORTED_CHANNELS.join(", ")}"
         end
 
         unless errors.empty?

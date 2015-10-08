@@ -16,9 +16,9 @@
 # limitations under the License.
 #
 
-require 'net/http'
-require 'json'
-require 'mixlib/install/artifact_info'
+require "net/http"
+require "json"
+require "mixlib/install/artifact_info"
 
 module Mixlib
   class Install
@@ -39,16 +39,16 @@ module Mixlib
             v: options.product_version
           }
 
-          endpoint = 'https://omnitruck.chef.io'
+          endpoint = "https://omnitruck.chef.io"
 
           uri = URI.parse(endpoint)
           http = Net::HTTP.new(uri.host, uri.port)
-          http.use_ssl = (uri.scheme == 'https')
+          http.use_ssl = (uri.scheme == "https")
 
           path = "/#{options.channel}/#{options.product_name}/metadata"
-          full_path = [path, URI.encode_www_form(parameters)].join('?')
+          full_path = [path, URI.encode_www_form(parameters)].join("?")
           request = Net::HTTP::Get.new(full_path)
-          request['Accept'] = 'application/json'
+          request["Accept"] = "application/json"
 
           res = http.request(request)
 

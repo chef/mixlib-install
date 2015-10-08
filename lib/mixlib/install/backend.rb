@@ -16,13 +16,13 @@
 # limitations under the License.
 #
 
-require 'mixlib/install/backend/omnitruck'
+require "mixlib/install/backend/omnitruck"
 
 module Mixlib
   class Install
     class Backend
       def self.info(options)
-        backend = if ['current', 'stable'].include? options.channel.to_s
+        backend = if %w[current stable].include? options.channel.to_s
           Backend::Omnitruck.new(options)
         end
 

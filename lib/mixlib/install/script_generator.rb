@@ -55,7 +55,7 @@ module Mixlib
       attr_accessor :omnibus_url
       attr_accessor :install_msi_url
 
-      VALID_INSTALL_OPTS = %w(omnibus_url
+      VALID_INSTALL_OPTS = %w[omnibus_url
                               endpoint
                               http_proxy
                               https_proxy
@@ -66,7 +66,7 @@ module Mixlib
                               project
                               root
                               use_sudo
-                              sudo_command)
+                              sudo_command]
 
       def initialize(version, powershell = false, opts = {})
         @version = version || "latest"
@@ -132,7 +132,7 @@ module Mixlib
       def install_command_vars_for_powershell
         [
           shell_var("chef_omnibus_root", root),
-          shell_var("msi", "$env:TEMP\\chef-#{version}.msi"),
+          shell_var("msi", "$env:TEMP\\chef-#{version}.msi")
         ].tap { |vars|
           if install_msi_url
             vars << shell_var("chef_msi_url", install_msi_url)
@@ -146,16 +146,15 @@ module Mixlib
 
       def validate_opts!(opt)
         err_msg = ["#{opt} is not a valid option",
-                   "valid options are #{VALID_INSTALL_OPTS.join(' ')}"].join(',')
+                   "valid options are #{VALID_INSTALL_OPTS.join(" ")}"].join(",")
         fail ArgumentError, err_msg unless VALID_INSTALL_OPTS.include?(opt.to_s)
       end
 
-      # rubocop:disable Metrics/MethodLength
       def parse_opts(opts)
         opts.each do |opt, setting|
           validate_opts!(opt)
           case opt.to_s
-          when 'project', 'endpoint'
+          when "project", "endpoint"
             self.endpoint = metadata_endpoint_from_project(setting)
           else
             send("#{opt.to_sym}=", setting)

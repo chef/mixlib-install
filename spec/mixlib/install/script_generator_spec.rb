@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-require 'spec_helper'
-require 'mixlib/install/script_generator'
+require "spec_helper"
+require "mixlib/install/script_generator"
 
 describe Mixlib::Install::ScriptGenerator do
   describe "#initialize" do
@@ -68,15 +68,15 @@ describe Mixlib::Install::ScriptGenerator do
         expect(install.endpoint).to eq("metadata-chef-server")
       end
 
-      it 'sets the base URL' do
-        opts = { omnibus_url: 'http://example.com/install.sh' }
-        install = described_class.new('1.2.1', false, opts)
-        expect(install.omnibus_url).to eq('http://example.com/install.sh')
+      it "sets the base URL" do
+        opts = { omnibus_url: "http://example.com/install.sh" }
+        install = described_class.new("1.2.1", false, opts)
+        expect(install.omnibus_url).to eq("http://example.com/install.sh")
       end
 
-      it 'raises ArgumentError on invalid options' do
+      it "raises ArgumentError on invalid options" do
         opts = { invalid_arg: true }
-        expect {described_class.new("1.2.1", false, opts) }.to raise_error(ArgumentError)
+        expect { described_class.new("1.2.1", false, opts) }.to raise_error(ArgumentError)
       end
     end
   end

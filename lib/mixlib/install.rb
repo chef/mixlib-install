@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-require 'mixlib/install/backend'
-require 'mixlib/install/options'
+require "mixlib/install/backend"
+require "mixlib/install/options"
 
 module Mixlib
   class Install
