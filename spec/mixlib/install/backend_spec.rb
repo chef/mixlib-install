@@ -299,8 +299,7 @@ context "Mixlib::Install::Backend" do
           let(:product_version) { "12.4.3+20151006083011" }
           let(:expected_version) { "12.4.3+20151006083011" }
 
-          # This test is currently disabled due to an omnitruck issue.
-          # it_behaves_like "the right artifact list info"
+          it_behaves_like "the right artifact list info"
         end
 
         context "with a major.minor.patch product version" do
