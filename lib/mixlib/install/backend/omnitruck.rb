@@ -54,12 +54,12 @@ module Mixlib
 
         private
 
-        def omnitruck_get(endpoint, parameters)
+        def omnitruck_get(resource, parameters)
           uri = URI.parse(OMNITRUCK_ENDPOINT)
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
 
-          path = "/#{options.channel}/#{options.product_name}/#{endpoint}"
+          path = "/#{options.channel}/#{options.product_name}/#{resource}"
           full_path = [path, URI.encode_www_form(parameters)].join("?")
           request = Net::HTTP::Get.new(full_path)
           request["Accept"] = "application/json"

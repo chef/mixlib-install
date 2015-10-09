@@ -326,7 +326,7 @@ context "Mixlib::Install::Backend" do
 
         context "with latest version keyword" do
           let(:product_version) { "latest" }
-          let(:expected_version) { /\d.\d.\d/ }
+          let(:expected_version) { /^\d\d.\d.\d\+[0-9]{14}$/ }
 
           it_behaves_like "the right artifact list info"
         end
