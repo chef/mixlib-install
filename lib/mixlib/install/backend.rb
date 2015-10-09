@@ -1,5 +1,4 @@
 #
-# Author:: Thom May (<thom@chef.io>)
 # Author:: Patrick Wright (<patrick@chef.io>)
 # Copyright:: Copyright (c) 2015 Chef, Inc.
 # License:: Apache License, Version 2.0
@@ -17,25 +16,18 @@
 # limitations under the License.
 #
 
-require "mixlib/install/backend"
-require "mixlib/install/options"
+require "mixlib/install/backend/omnitruck"
 
 module Mixlib
   class Install
+    class Backend
+      def self.info(options)
+        backend = if %w[current stable].include? options.channel.to_s
+          Backend::Omnitruck.new(options)
+        end
 
-    attr_reader :options
-
-    def initialize(options = {})
-      @options = Options.new(options)
-    end
-
-    #
-    # Fetch artifact metadata information
-    #
-    # @return [ArtifactInfo] fetched artifact data
-    #
-    def artifact_info
-      Backend.info(options)
+        backend.info
+      end
     end
   end
 end

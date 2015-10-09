@@ -6,8 +6,8 @@ require "mixlib/install/version"
 Gem::Specification.new do |spec|
   spec.name          = "mixlib-install"
   spec.version       = Mixlib::Install::VERSION
-  spec.authors       = ["Thom May"]
-  spec.email         = ["thom@chef.io"]
+  spec.authors       = ["Thom May", "Patrick Wright"]
+  spec.email         = ["thom@chef.io", "patrick@chef.io"]
   spec.license       = "Apache-2.0"
 
   spec.summary       = "A mixin to help with omnitruck installs"
@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.3"
+  spec.add_development_dependency "pry"
 end

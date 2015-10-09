@@ -22,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+Mixlib::Install::ScriptGenerator.new('latest').install_command
+```
 
 ## Development
 

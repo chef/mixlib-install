@@ -1,5 +1,4 @@
 #
-# Author:: Thom May (<thom@chef.io>)
 # Author:: Patrick Wright (<patrick@chef.io>)
 # Copyright:: Copyright (c) 2015 Chef, Inc.
 # License:: Apache License, Version 2.0
@@ -17,25 +16,33 @@
 # limitations under the License.
 #
 
-require "mixlib/install/backend"
-require "mixlib/install/options"
-
 module Mixlib
   class Install
+    class ArtifactInfo
+      attr_accessor :url
+      attr_accessor :md5
+      attr_accessor :sha256
+      attr_accessor :version
 
-    attr_reader :options
+      def initialize(data)
+        @url = data[:url]
+        @md5 = data[:md5]
+        @sha256 = data[:sha256]
+        @version = data[:version]
+      end
 
-    def initialize(options = {})
-      @options = Options.new(options)
-    end
+      def self.from_json(json)
+        ArtifactInfo.new(JSON.parse(json, symbolize_names: true))
+      end
 
-    #
-    # Fetch artifact metadata information
-    #
-    # @return [ArtifactInfo] fetched artifact data
-    #
-    def artifact_info
-      Backend.info(options)
+      def to_hash
+        {
+          url: url,
+          md5: md5,
+          sha256: sha256,
+          version: version
+        }
+      end
     end
   end
 end
