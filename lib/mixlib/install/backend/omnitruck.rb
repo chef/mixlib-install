@@ -24,6 +24,7 @@ module Mixlib
   class Install
     class Backend
       class Omnitruck
+        OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io"
 
         attr_accessor :options
 
@@ -32,20 +33,33 @@ module Mixlib
         end
 
         def info
-          parameters = {
-            p: options.platform,
-            pv: options.platform_version,
-            m: options.architecture,
-            v: options.product_version
-          }
+          # If we are querying a single platform we need to call metadata
+          # endpoint otherwise we need to call versions endpoint in omnitruck
+          if options.platform
+            build = omnitruck_get("metadata", p: options.platform,
+                                              pv: options.platform_version,
+                                              m: options.architecture,
+                                              v: options.product_version
+                                 )
+            ArtifactInfo.from_json(build,
+                                   platform: options.platform,
+                                   platform_version: options.platform_version,
+                                   architecture: options.architecture
+            )
+          else
+            builds = omnitruck_get("versions", v: options.product_version)
+            ArtifactInfo.from_metadata_map(builds)
+          end
+        end
 
-          endpoint = "https://omnitruck.chef.io"
+        private
 
-          uri = URI.parse(endpoint)
+        def omnitruck_get(resource, parameters)
+          uri = URI.parse(OMNITRUCK_ENDPOINT)
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
 
-          path = "/#{options.channel}/#{options.product_name}/metadata"
+          path = "/#{options.channel}/#{options.product_name}/#{resource}"
           full_path = [path, URI.encode_www_form(parameters)].join("?")
           request = Net::HTTP::Get.new(full_path)
           request["Accept"] = "application/json"
@@ -54,7 +68,7 @@ module Mixlib
 
           # Raise if response is not 2XX
           res.value
-          ArtifactInfo.from_json(res.body)
+          res.body
         end
       end
     end
