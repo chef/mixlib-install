@@ -38,11 +38,14 @@ module Mixlib
         def info
           params = {
             "repos" => "omnibus-current-local",
-            "omnibus.platform" => options.platform,
-            "omnibus.platform_version" => options.platform_version,
-            "omnibus.architecture" => options.architecture,
             "omnibus.version" => options.product_version
           }
+
+          if options.platform
+            params["omnibus.platform"] = options.platform
+            params["omnibus.platform_version"] = options.platform_version
+            params["omnibus.architecture"] = options.architecture
+          end
 
           headers = { "X-Result-Detail" => "properties" }
 
@@ -53,21 +56,26 @@ module Mixlib
 which is currently only accessible through Chef's internal network."
           end
 
-          ArtifactInfo.new(extract_data(artifact))
+          if options.platform
+            ArtifactInfo.new(extract_data(artifact["results"].first))
+          else
+            artifact["results"].collect do |artifact|
+              ArtifactInfo.new(extract_data(artifact))
+            end
+          end
         end
 
         private
 
         def extract_data(artifact)
-          results = artifact["results"].first
           {
-            md5:              results["properties"]["omnibus.md5"].first,
-            sha256:           results["properties"]["omnibus.sha256"].first,
-            version:          results["properties"]["omnibus.version"].first,
-            platform:         results["properties"]["omnibus.platform"].first,
-            platform_version: results["properties"]["omnibus.platform_version"].first,
-            architecture:     results["properties"]["omnibus.architecture"].first,
-            url:              results["uri"]
+            md5:              artifact["properties"]["omnibus.md5"].first,
+            sha256:           artifact["properties"]["omnibus.sha256"].first,
+            version:          artifact["properties"]["omnibus.version"].first,
+            platform:         artifact["properties"]["omnibus.platform"].first,
+            platform_version: artifact["properties"]["omnibus.platform_version"].first,
+            architecture:     artifact["properties"]["omnibus.architecture"].first,
+            url:              artifact["uri"]
           }
         end
       end

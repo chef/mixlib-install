@@ -319,6 +319,15 @@ context "Mixlib::Install::Backend" do
     context "for unstable", :unstable do
       let(:channel) { :unstable }
 
+      context "when p, pv and m are not present" do
+        context "with an integration product version" do
+          let(:product_version) { "12.4.3+20151006083011" }
+          let(:expected_version) { "12.4.3+20151006083011" }
+
+          it_behaves_like "the right artifact list info"
+        end
+      end
+
       context "when p, pv and m are present" do
         let(:platform) { "mac_os_x" }
         let(:platform_version) { "10.9" }
