@@ -17,13 +17,16 @@
 #
 
 require "mixlib/install/backend/omnitruck"
+require "mixlib/install/backend/artifactory"
 
 module Mixlib
   class Install
     class Backend
       def self.info(options)
-        backend = if %w[current stable].include? options.channel.to_s
+        backend = if Mixlib::Install::Options::OMNITRUCK_CHANNELS.include? options.channel
           Backend::Omnitruck.new(options)
+        elsif Mixlib::Install::Options::ARTIFACTORY_CHANNELS.include? options.channel
+          Backend::Artifactory.new(options)
         end
 
         backend.info

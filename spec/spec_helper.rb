@@ -2,6 +2,7 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
 RSpec.configure do |conf|
   conf.filter_run focus: true
+  conf.filter_run_excluding unstable: true
   conf.run_all_when_everything_filtered = true
 
   conf.expect_with :rspec do |c|

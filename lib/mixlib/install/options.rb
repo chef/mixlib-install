@@ -23,7 +23,9 @@ module Mixlib
 
       attr_accessor :options
 
-      SUPPORTED_CHANNELS = [:stable, :current]
+      OMNITRUCK_CHANNELS = [:stable, :current]
+      ARTIFACTORY_CHANNELS = [:unstable]
+      ALL_SUPPORTED_CHANNELS = OMNITRUCK_CHANNELS + ARTIFACTORY_CHANNELS
       SUPPORTED_PRODUCT_NAMES = %w[chef chefdk]
       SUPPORTED_OPTIONS = [:channel, :product_name, :product_version,
                            :platform, :platform_version, :architecture]
@@ -40,8 +42,15 @@ module Mixlib
 Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}"
         end
 
-        unless SUPPORTED_CHANNELS.include? channel
-          errors << "Unknown channel #{channel}. Must be one of: #{SUPPORTED_CHANNELS.join(", ")}"
+        unless ALL_SUPPORTED_CHANNELS.include? channel
+          errors << "Unknown channel #{channel}. \
+Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}"
+        end
+
+        if ARTIFACTORY_CHANNELS.include?(channel) &&
+            product_version !~ /^\d+.\d+.\d+\+[0-9]{14}$/
+          errors << "Version must match pattern '1.2.3+12345678901234' when \
+using channels #{ARTIFACTORY_CHANNELS.join(", ")}"
         end
 
         unless errors.empty?
