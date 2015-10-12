@@ -21,7 +21,8 @@ module Mixlib
     class Options
       class InvalidOptions < ArgumentError; end
 
-      attr_accessor :options
+      attr_reader :options
+      attr_reader :errors
 
       OMNITRUCK_CHANNELS = [:stable, :current]
       ARTIFACTORY_CHANNELS = [:unstable]
@@ -32,26 +33,15 @@ module Mixlib
 
       def initialize(options)
         @options = options
+        @errors = []
         validate_options!
       end
 
       def validate_options!
-        errors = []
-        unless SUPPORTED_PRODUCT_NAMES.include? product_name
-          errors << "Unknown product name #{product_name}. \
-Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}"
-        end
-
-        unless ALL_SUPPORTED_CHANNELS.include? channel
-          errors << "Unknown channel #{channel}. \
-Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}"
-        end
-
-        if ARTIFACTORY_CHANNELS.include?(channel) &&
-            product_version !~ /^\d+.\d+.\d+\+[0-9]{14}$/
-          errors << "Version must match pattern '1.2.3+12345678901234' when \
-using channels #{ARTIFACTORY_CHANNELS.join(", ")}"
-        end
+        validate_product_names
+        validate_channels
+        validate_unstable_version
+        validate_platform_info
 
         unless errors.empty?
           raise InvalidOptions, errors.join("\n")
@@ -61,6 +51,39 @@ using channels #{ARTIFACTORY_CHANNELS.join(", ")}"
       SUPPORTED_OPTIONS.each do |option|
         define_method option do
           options[option] || options[option.to_s]
+        end
+      end
+
+      private
+
+      def validate_product_names
+        unless SUPPORTED_PRODUCT_NAMES.include? product_name
+          errors << "Unknown product name #{product_name}. \
+Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}"
+        end
+      end
+
+      def validate_channels
+        unless ALL_SUPPORTED_CHANNELS.include? channel
+          errors << "Unknown channel #{channel}. \
+Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}"
+        end
+      end
+
+      def validate_unstable_version
+        if ARTIFACTORY_CHANNELS.include?(channel) &&
+            product_version !~ /^\d+.\d+.\d+\+[0-9]{14}$/
+          errors << "Version must match pattern '1.2.3+12345678901234' when \
+using channels #{ARTIFACTORY_CHANNELS.join(", ")}"
+        end
+      end
+
+      def validate_platform_info
+        platform_opts = [platform, platform_version, architecture]
+        if (platform_opts.any?(&:nil?)) &&
+            (platform_opts.any? { |opt| !opt.nil? })
+          errors << "platform, platform version, and architecture are all \
+required when specifying Platform options."
         end
       end
     end

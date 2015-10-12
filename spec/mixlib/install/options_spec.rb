@@ -23,6 +23,9 @@ context "Mixlib::Install::Options" do
   let(:channel) { nil }
   let(:product_name) { nil }
   let(:product_version) { nil }
+  let(:platform) { nil }
+  let(:platform_version) { nil }
+  let(:architecture) { nil }
 
   context "for invalid product name option" do
     let(:product_name) { "foo" }
@@ -46,6 +49,50 @@ context "Mixlib::Install::Options" do
 
     it "raises invalid version error" do
       expect { Mixlib::Install.new(channel: channel, product_version: product_version) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Version must match pattern/)
+    end
+  end
+
+  context "for platform options" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "1.2.3" }
+    let(:base_options) {
+      {
+        channel: channel,
+        product_name: product_name,
+        product_version: product_version
+      }
+    }
+    let(:options) {}
+
+    shared_examples_for "invalid platform options" do
+      it "raises InvalidOptions" do
+        expect { Mixlib::Install.new(options) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /platform, platform version, and architecture/)
+      end
+    end
+
+    context "without platform version" do
+      let(:options) { base_options.merge(platform: platform, architecture: "1") }
+
+      it_behaves_like "invalid platform options"
+    end
+
+    context "without architecture" do
+      let(:options) { base_options.merge(platform: platform, platform_version: "1") }
+
+      it_behaves_like "invalid platform options"
+    end
+
+    context "without platform" do
+      let(:options) { base_options.merge(architecture: "1", platform_version: "1") }
+
+      it_behaves_like "invalid platform options"
+    end
+
+    context "without any platform info" do
+      it "does not raise an error" do
+        expect { Mixlib::Install.new(base_options) }.to_not raise_error
+      end
     end
   end
 end

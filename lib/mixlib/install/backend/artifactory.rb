@@ -36,19 +36,6 @@ module Mixlib
         end
 
         def info
-          params = {
-            "repos" => "omnibus-current-local",
-            "omnibus.version" => options.product_version
-          }
-
-          if options.platform
-            params["omnibus.platform"] = options.platform
-            params["omnibus.platform_version"] = options.platform_version
-            params["omnibus.architecture"] = options.architecture
-          end
-
-          headers = { "X-Result-Detail" => "properties" }
-
           begin
             artifact = client.get("/api/search/prop", params, headers)
           rescue Errno::ETIMEDOUT => e
@@ -59,8 +46,8 @@ which is currently only accessible through Chef's internal network."
           if options.platform
             ArtifactInfo.new(extract_data(artifact["results"].first))
           else
-            artifact["results"].collect do |artifact|
-              ArtifactInfo.new(extract_data(artifact))
+            artifact["results"].collect do |result|
+              ArtifactInfo.new(extract_data(result))
             end
           end
         end
@@ -77,6 +64,25 @@ which is currently only accessible through Chef's internal network."
             architecture:     artifact["properties"]["omnibus.architecture"].first,
             url:              artifact["uri"]
           }
+        end
+
+        def params
+          params = {
+            "repos" => "omnibus-current-local",
+            "omnibus.version" => options.product_version
+          }
+
+          if options.platform
+            params["omnibus.platform"] = options.platform
+            params["omnibus.platform_version"] = options.platform_version
+            params["omnibus.architecture"] = options.architecture
+          end
+
+          params
+        end
+
+        def headers
+          { "X-Result-Detail" => "properties" }
         end
       end
     end
