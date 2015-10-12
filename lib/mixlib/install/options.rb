@@ -54,6 +54,14 @@ module Mixlib
         end
       end
 
+      def for_artifactory?
+        ARTIFACTORY_CHANNELS.include?(channel)
+      end
+
+      def for_omnitruck?
+        OMNITRUCK_CHANNELS.include?(channel)
+      end
+
       private
 
       def validate_product_names

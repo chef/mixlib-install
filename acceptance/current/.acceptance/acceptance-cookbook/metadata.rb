@@ -1,0 +1,7 @@
+name 'acceptance-cookbook'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'acceptance test for mixlib-install'
+long_description 'acceptance test for mixlib-install'
+version '0.1.0'

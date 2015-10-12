@@ -19,6 +19,7 @@
 
 require "mixlib/install/backend"
 require "mixlib/install/options"
+require "mixlib/install/generator"
 
 module Mixlib
   class Install
@@ -36,6 +37,27 @@ module Mixlib
     #
     def artifact_info
       Backend.info(options)
+    end
+
+    #
+    # Returns an install script for the given options
+    #
+    # @return [String] script for installing with given options
+    #
+    def install_command
+      Generator.install_command(options)
+    end
+
+    #
+    # Returns the base installation directory for the given options
+    #
+    # @return [String] the installation directory for the project
+    #
+    def root
+      # TODO: Support root as "$env:systemdrive\\opscode\\chef" when on windows.
+      # This only works for chef and chefdk but they are the only projects
+      # we are supporting as of now.
+      "/opt/#{options.product_name}"
     end
   end
 end

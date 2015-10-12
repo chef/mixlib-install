@@ -8,3 +8,6 @@
 /spec/reports/
 /tmp/
 tags
+.ruby-version
+.kitchen/
+.kitchen.local.yml
