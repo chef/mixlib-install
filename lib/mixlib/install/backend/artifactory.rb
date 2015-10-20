@@ -37,33 +37,33 @@ module Mixlib
 
         def info
           begin
-            artifact = client.get("/api/search/prop", params, headers)
+            results = client.get("/api/search/prop", params, headers)["results"]
           rescue Errno::ETIMEDOUT => e
             raise e, "unstable channel uses endpoint #{ARTIFACTORY_ENDPOINT} \
 which is currently only accessible through Chef's internal network."
           end
 
           if options.platform
-            ArtifactInfo.new(extract_data(artifact["results"].first))
+            artifact(results.first)
           else
-            artifact["results"].collect do |result|
-              ArtifactInfo.new(extract_data(result))
+            results.collect do |result|
+              artifact(result)
             end
           end
         end
 
         private
 
-        def extract_data(artifact)
-          {
-            md5:              artifact["properties"]["omnibus.md5"].first,
-            sha256:           artifact["properties"]["omnibus.sha256"].first,
-            version:          artifact["properties"]["omnibus.version"].first,
-            platform:         artifact["properties"]["omnibus.platform"].first,
-            platform_version: artifact["properties"]["omnibus.platform_version"].first,
-            architecture:     artifact["properties"]["omnibus.architecture"].first,
-            url:              artifact["uri"]
-          }
+        def artifact(result)
+          ArtifactInfo.new(
+            md5:              result["properties"]["omnibus.md5"].first,
+            sha256:           result["properties"]["omnibus.sha256"].first,
+            version:          result["properties"]["omnibus.version"].first,
+            platform:         result["properties"]["omnibus.platform"].first,
+            platform_version: result["properties"]["omnibus.platform_version"].first,
+            architecture:     result["properties"]["omnibus.architecture"].first,
+            url:              result["uri"]
+          )
         end
 
         def params
