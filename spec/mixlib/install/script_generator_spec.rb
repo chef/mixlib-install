@@ -21,10 +21,12 @@ require "spec_helper"
 require "mixlib/install/script_generator"
 
 describe Mixlib::Install::ScriptGenerator do
+  let(:version) { "1.2.1" }
+
   describe "#initialize" do
     it "sets a version" do
-      install = described_class.new("1.2.1")
-      expect(install.version).to eq("1.2.1")
+      install = described_class.new(version)
+      expect(install.version).to eq(version)
     end
 
     it "has a default version" do
@@ -33,23 +35,23 @@ describe Mixlib::Install::ScriptGenerator do
     end
 
     it "sets that powershell is used" do
-      install = described_class.new("1.2.1", true)
+      install = described_class.new(version, true)
       expect(install.powershell).to be true
     end
 
     describe "manages the install root" do
       it "on windows" do
-        install = described_class.new("1.2.1", true)
+        install = described_class.new(version, true)
         expect(install.root).to eq("$env:systemdrive\\opscode\\chef")
       end
 
       it "on unix" do
-        install = described_class.new("1.2.1", false)
+        install = described_class.new(version, false)
         expect(install.root).to eq("/opt/chef")
       end
 
       it "is settable" do
-        install = described_class.new("1.2.1", false, root: "/opt/test")
+        install = described_class.new(version, false, root: "/opt/test")
         expect(install.root).to eq("/opt/test")
       end
     end
@@ -57,33 +59,33 @@ describe Mixlib::Install::ScriptGenerator do
     describe "parses the options hash" do
       it "enables sudo" do
         opts = { sudo_command: "sudo -i -E" }
-        install = described_class.new("1.2.1", false, opts)
+        install = described_class.new(version, false, opts)
         expect(install.use_sudo).to be true
         expect(install.sudo_command).to eq("sudo -i -E")
       end
 
       it "sets the metadata endpoint" do
         opts = { endpoint: "chef-server" }
-        install = described_class.new("1.2.1", false, opts)
+        install = described_class.new(version, false, opts)
         expect(install.endpoint).to eq("metadata-chef-server")
       end
 
       it "sets the base URL" do
         opts = { omnibus_url: "http://example.com/install.sh" }
-        install = described_class.new("1.2.1", false, opts)
+        install = described_class.new(version, false, opts)
         expect(install.omnibus_url).to eq("http://example.com/install.sh")
       end
 
       it "raises ArgumentError on invalid options" do
         opts = { invalid_arg: true }
-        expect { described_class.new("1.2.1", false, opts) }.to raise_error(ArgumentError)
+        expect { described_class.new(version, false, opts) }.to raise_error(ArgumentError)
       end
     end
   end
 
   describe "#install" do
     describe "on windows" do
-      let(:installer) { described_class.new("1.2.1", true, omnibus_url: "http://f/install.sh") }
+      let(:installer) { described_class.new(version, true, omnibus_url: "http://f/install.sh") }
       let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1" }
 
       it "generates config vars" do
@@ -106,9 +108,29 @@ describe Mixlib::Install::ScriptGenerator do
         expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
       end
 
+      describe "wnen version is true" do
+        let(:version) { "true" }
+        let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2" }
+
+        it "does not include version in metadata url" do
+          expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
+          installer.install_command
+        end
+      end
+
       describe "for a nightly" do
-        let(:installer) { described_class.new("1.2.1", true, omnibus_url: "http://f/install.sh", nightlies: true) }
-        let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1&nightlies=true" }
+        let(:version) { "nightlies" }
+        let(:installer) { described_class.new(version, true, omnibus_url: "http://f/install.sh", nightlies: true) }
+        let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&nightlies=true" }
+
+        it "creates the proper shell vars" do
+          expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
+        end
+      end
+
+      describe "for latest" do
+        let(:version) { "latest" }
+        let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2" }
 
         it "creates the proper shell vars" do
           expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
@@ -116,7 +138,7 @@ describe Mixlib::Install::ScriptGenerator do
       end
 
       describe "with an MSI url" do
-        let(:installer) { described_class.new("1.2.1", true, install_msi_url: "http://f/chef.msi") }
+        let(:installer) { described_class.new(version, true, install_msi_url: "http://f/chef.msi") }
 
         it "does not create the target url" do
           expect(installer).to_not receive(:windows_metadata_url)
@@ -131,7 +153,7 @@ describe Mixlib::Install::ScriptGenerator do
     end
 
     describe "on unix" do
-      let(:installer) { described_class.new("1.2.1", false, omnibus_url: "http://f/", nightlies: true) }
+      let(:installer) { described_class.new(version, false, omnibus_url: "http://f/", nightlies: true) }
 
       it "generates config vars" do
         expect(installer).to receive(:install_command_vars_for_bourne)
