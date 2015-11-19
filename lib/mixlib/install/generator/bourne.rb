@@ -54,7 +54,7 @@ EOS
         end
 
         def get_script(name)
-          File.read(File.join(File.dirname(__FILE__), "bourne/#{name}.sh"))
+          File.read(File.join(File.dirname(__FILE__), "bourne/scripts/#{name}.sh"))
         end
       end
     end

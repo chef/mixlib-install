@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
 gem "mixlib-install", path: "../"
-gem "test-kitchen", path: "../../test-kitchen"
-gem "chef-acceptance", github: "chef/chef-acceptance", branch: "pw/commands"
+gem "test-kitchen", github: "sersut/test-kitchen"
+gem "chef-acceptance", github: "chef/chef-acceptance"
 gem "pry"
 
 group(:development) do

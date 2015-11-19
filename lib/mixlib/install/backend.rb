@@ -23,9 +23,9 @@ module Mixlib
   class Install
     class Backend
       def self.info(options)
-        backend = if Mixlib::Install::Options::OMNITRUCK_CHANNELS.include? options.channel
+        backend = if options.for_omnitruck?
           Backend::Omnitruck.new(options)
-        elsif Mixlib::Install::Options::ARTIFACTORY_CHANNELS.include? options.channel
+        elsif options.for_artifactory?
           Backend::Artifactory.new(options)
         end
 
