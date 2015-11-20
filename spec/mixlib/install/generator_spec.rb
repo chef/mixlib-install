@@ -32,6 +32,8 @@ context "Mixlib::Install::Generator" do
 
     it "outputs the install_command" do
       expect(install_script).to be_a(String)
+      expect(install_script).to start_with("#!/bin/sh")
+      expect(install_script).to include('install_file $filetype "$download_filename"')
     end
   end
 end

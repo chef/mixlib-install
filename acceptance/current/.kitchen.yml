@@ -14,15 +14,15 @@ provisioner:
 platforms:
   - name: centos-6.5
     run_list:
-  - name: debian-7.4
-    run_list:
-  - name: freebsd-10.0
-    run_list:
+  # - name: debian-7.4
+  #   run_list:
+  # - name: freebsd-10.0
+  #   run_list:
   - name: ubuntu-14.04
     run_list:
-  - name: macosx-10.10
-    driver:
-      box: chef/macosx-10.10 # private
+  # - name: macosx-10.10
+  #   driver:
+  #     box: chef/macosx-10.10 # private
   # - name: windows-7-professional
   #   provisioner:
   #     name: windows_chef_zero
@@ -32,9 +32,14 @@ platforms:
 
 suites:
   - name: mixlib-install-chef
-    run_list:
-  - name: mixlib-install-chefdk
     provisioner:
-      product_name: chefdk
+      product_name: chef
       product_version: latest
       channel: current
+    run_list:
+  # - name: mixlib-install-chefdk
+  #   provisioner:
+  #     product_name: chefdk
+  #     product_version: latest
+  #     channel: current
+  #   run_list:

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/chef/chef-acceptance.git
-  revision: 06dbe820926a5a1948dec112b6ef4d0f9912d0ee
+  revision: 2d1a192851a3731cb61f794d155ad2b156cdaec5
   specs:
     chef-acceptance (0.2.0)
       thor (~> 0.19)
