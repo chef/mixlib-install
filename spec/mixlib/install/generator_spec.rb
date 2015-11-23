@@ -1,5 +1,4 @@
 #
-# Author:: Patrick Wright (<patrick@chef.io>)
 # Copyright:: Copyright (c) 2015 Chef, Inc.
 # License:: Apache License, Version 2.0
 #
@@ -16,21 +15,25 @@
 # limitations under the License.
 #
 
-require "mixlib/install/backend/omnitruck"
-require "mixlib/install/backend/artifactory"
+require "spec_helper"
+require "mixlib/install"
 
-module Mixlib
-  class Install
-    class Backend
-      def self.info(options)
-        backend = if options.for_omnitruck?
-          Backend::Omnitruck.new(options)
-        elsif options.for_artifactory?
-          Backend::Artifactory.new(options)
-        end
+context "Mixlib::Install::Generator" do
+  let(:channel) { nil }
 
-        backend.info
-      end
+  let(:install_script) {
+    Mixlib::Install.new(product_name: "chef",
+                        channel: channel,
+                        product_version: "latest").install_command
+  }
+
+  context "for :stable channel" do
+    let(:channel) { :stable }
+
+    it "outputs the install_command" do
+      expect(install_script).to be_a(String)
+      expect(install_script).to start_with("#!/bin/sh")
+      expect(install_script).to include('install_file $filetype "$download_filename"')
     end
   end
 end

@@ -54,6 +54,14 @@ module Mixlib
         end
       end
 
+      def for_artifactory?
+        ARTIFACTORY_CHANNELS.include?(channel)
+      end
+
+      def for_omnitruck?
+        OMNITRUCK_CHANNELS.include?(channel)
+      end
+
       private
 
       def validate_product_names
@@ -71,8 +79,7 @@ Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}"
       end
 
       def validate_unstable_version
-        if ARTIFACTORY_CHANNELS.include?(channel) &&
-            product_version !~ /^\d+.\d+.\d+\+[0-9]{14}$/
+        if for_artifactory? && product_version !~ /^\d+.\d+.\d+\+[0-9]{14}$/
           errors << "Version must match pattern '1.2.3+12345678901234' when \
 using channels #{ARTIFACTORY_CHANNELS.join(", ")}"
         end

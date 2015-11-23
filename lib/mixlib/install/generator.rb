@@ -1,5 +1,4 @@
 #
-# Author:: Patrick Wright (<patrick@chef.io>)
 # Copyright:: Copyright (c) 2015 Chef, Inc.
 # License:: Apache License, Version 2.0
 #
@@ -16,20 +15,13 @@
 # limitations under the License.
 #
 
-require "mixlib/install/backend/omnitruck"
-require "mixlib/install/backend/artifactory"
+require "mixlib/install/generator/bourne"
 
 module Mixlib
   class Install
-    class Backend
-      def self.info(options)
-        backend = if options.for_omnitruck?
-          Backend::Omnitruck.new(options)
-        elsif options.for_artifactory?
-          Backend::Artifactory.new(options)
-        end
-
-        backend.info
+    class Generator
+      def self.install_command(options)
+        Bourne.new(options).install_command
       end
     end
   end
