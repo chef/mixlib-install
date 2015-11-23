@@ -1,0 +1,208 @@
+{
+  "manifest_format": 1,
+  "software": {
+    "preparation": {
+      "locked_version": "1.0.0",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "1.0.0"
+    },
+    "zlib": {
+      "locked_version": "1.2.8",
+      "locked_source": {
+        "md5": "44d667c142d7cda120332623eab69f40",
+        "url": "http://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "1.2.8"
+    },
+    "ncurses": {
+      "locked_version": "5.9",
+      "locked_source": {
+        "md5": "8cb9c412e5f2d96bc6f459aa8c6282a1",
+        "url": "http://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "5.9"
+    },
+    "libedit": {
+      "locked_version": "20120601-3.0",
+      "locked_source": {
+        "md5": "e50f6a7afb4de00c81650f7b1a0f5aea",
+        "url": "http://www.thrysoee.dk/editline/libedit-20120601-3.0.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "20120601-3.0"
+    },
+    "cacerts": {
+      "locked_version": "2015.09.02",
+      "locked_source": {
+        "md5": "3e0e6f302bd4f5b94040b8bcee0ffe15",
+        "url": "http://curl.haxx.se/ca/cacert.pem"
+      },
+      "source_type": "url",
+      "described_version": "2015.09.02"
+    },
+    "xproto": {
+      "locked_version": "7.0.25",
+      "locked_source": {
+        "url": "http://xorg.freedesktop.org/releases/individual/proto/xproto-7.0.25.tar.gz",
+        "md5": "a47db46cb117805bd6947aa5928a7436"
+      },
+      "source_type": "url",
+      "described_version": "7.0.25"
+    },
+    "util-macros": {
+      "locked_version": "1.18.0",
+      "locked_source": {
+        "url": "http://xorg.freedesktop.org/releases/individual/util/util-macros-1.18.0.tar.gz",
+        "md5": "fd0ba21b3179703c071bbb4c3e5fb0f4"
+      },
+      "source_type": "url",
+      "described_version": "1.18.0"
+    },
+    "libiconv": {
+      "locked_version": "1.14",
+      "locked_source": {
+        "url": "http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz",
+        "md5": "e34509b1623cec449dfeb73d7ce9c6c6"
+      },
+      "source_type": "url",
+      "described_version": "1.14"
+    },
+    "pkg-config": {
+      "locked_version": "0.28",
+      "locked_source": {
+        "md5": "aa3c86e67551adc3ac865160e34a2a0d",
+        "url": "http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "0.28"
+    },
+    "makedepend": {
+      "locked_version": "1.0.5",
+      "locked_source": {
+        "url": "http://xorg.freedesktop.org/releases/individual/util/makedepend-1.0.5.tar.gz",
+        "md5": "efb2d7c7e22840947863efaedc175747"
+      },
+      "source_type": "url",
+      "described_version": "1.0.5"
+    },
+    "openssl": {
+      "locked_version": "1.0.1p",
+      "locked_source": {
+        "url": "https://www.openssl.org/source/openssl-1.0.1p.tar.gz",
+        "md5": "7563e92327199e0067ccd0f79f436976"
+      },
+      "source_type": "url",
+      "described_version": "1.0.1p"
+    },
+    "libyaml": {
+      "locked_version": "0.1.6",
+      "locked_source": {
+        "url": "http://pyyaml.org/download/libyaml/yaml-0.1.6.tar.gz",
+        "md5": "5fe00cda18ca5daeb43762b80c38e06e"
+      },
+      "source_type": "url",
+      "described_version": "0.1.6"
+    },
+    "libtool": {
+      "locked_version": "2.4",
+      "locked_source": {
+        "md5": "b32b04148ecdd7344abc6fe8bd1bb021",
+        "url": "http://ftp.gnu.org/gnu/libtool/libtool-2.4.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "2.4"
+    },
+    "libffi": {
+      "locked_version": "3.2.1",
+      "locked_source": {
+        "md5": "83b89587607e3eb65c70d361f13bab43",
+        "url": "ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "3.2.1"
+    },
+    "gdbm": {
+      "locked_version": "1.9.1",
+      "locked_source": {
+        "md5": "59f6e4c4193cb875964ffbe8aa384b58",
+        "url": "http://ftp.gnu.org/gnu/gdbm/gdbm-1.9.1.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "1.9.1"
+    },
+    "ruby": {
+      "locked_version": "2.1.6",
+      "locked_source": {
+        "md5": "6e5564364be085c45576787b48eeb75f",
+        "url": "http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.6.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "2.1.6"
+    },
+    "rubygems": {
+      "locked_version": "2.4.8",
+      "locked_source": {
+        "git": "https://github.com/rubygems/rubygems.git",
+        "md5": "dc77b51449dffe5b31776bff826bf559",
+        "url": "http://production.cf.rubygems.org/rubygems/rubygems-2.4.8.tgz"
+      },
+      "source_type": "url",
+      "described_version": "2.4.8"
+    },
+    "bundler": {
+      "locked_version": "403902bed6f0638f4147e8bde0a6650116ea2327",
+      "locked_source": {
+        "git": "https://github.com/chef/bundler.git"
+      },
+      "source_type": "git",
+      "described_version": "1.10.7.depsolverfix.0"
+    },
+    "ohai": {
+      "locked_version": "51a4fd97d0f03a75ae219190b29128c79b6e6a58",
+      "locked_source": {
+        "git": "git://github.com/opscode/ohai"
+      },
+      "source_type": "git",
+      "described_version": "8.5.1"
+    },
+    "appbundler": {
+      "locked_version": "0.5.0",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "0.5.0"
+    },
+    "chef": {
+      "locked_version": "b306b12b7167f03257e179f714b9eecd0319828f",
+      "locked_source": {
+        "git": "git://github.com/chef/chef"
+      },
+      "source_type": "git",
+      "described_version": "stable"
+    },
+    "shebang-cleanup": {
+      "locked_version": "0.0.2",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "0.0.2"
+    },
+    "version-manifest": {
+      "locked_version": "0.0.1",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "0.0.1"
+    },
+    "openssl-customization": {
+      "locked_version": null,
+      "locked_source": {
+        "path": "/home/jenkins/workspace/chef-12-build/architecture/x86_64/platform/ubuntu-10.04/project/chef/role/builder/files/openssl-customization"
+      },
+      "source_type": "path",
+      "described_version": null
+    }
+  },
+  "build_version": "12.4.3",
+  "build_git_revision": "0f5884da97d87d4c1c73e70dbd7cf01e9e25b532"
+}
