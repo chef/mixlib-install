@@ -71,7 +71,7 @@ module Mixlib
       # chef & chefdk since version-manifest is created under the
       # install directory which can be different than the product name (e.g.
       # chef-server -> /opt/opscode). But this is OK for now since
-      # chef & chefdk are the only supported products for now.
+      # chef & chefdk are the only supported products.
       version_manifest_file = "/opt/#{options.product_name}/version-manifest.json"
       if File.exist? version_manifest_file
         JSON.parse(File.read(version_manifest_file))["build_version"]
@@ -82,7 +82,7 @@ module Mixlib
     # Returns true if an upgradable version is available, false otherwise.
     #
     def upgrade_available?
-      return false if current_version.nil?
+      return true if current_version.nil?
 
       available_ver = Mixlib::Versioning.parse(artifact_info.first.version)
       current_ver = Mixlib::Versioning.parse(current_version)

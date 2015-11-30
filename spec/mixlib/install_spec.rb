@@ -76,6 +76,17 @@ context "Mixlib::Install" do
       allow(installer).to receive(:current_version).and_return(current_version)
     end
 
+    context "with nil as current_version" do
+      let(:product_name) { "chefdk" }
+      let(:channel) { :stable }
+      let(:product_version) { :latest }
+      let(:current_version) { nil }
+
+      it "should report upgrade available" do
+        expect(installer.upgrade_available?).to eq(true)
+      end
+    end
+
     context "with :latest, upgrade exists, :stable channel" do
       let(:product_name) { "chefdk" }
       let(:channel) { :stable }
