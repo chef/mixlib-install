@@ -17,9 +17,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # spec.required_ruby_version = ">= 2.0.0"
-
   spec.add_dependency "artifactory", "~> 2.3.0"
+  spec.add_dependency "mixlib-versioning", "~> 1.1.0"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake", "~> 10.0"

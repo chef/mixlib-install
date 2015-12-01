@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+require "mixlib/versioning"
+
 require "mixlib/install/backend"
 require "mixlib/install/options"
 require "mixlib/install/generator"
@@ -58,6 +60,33 @@ module Mixlib
       # This only works for chef and chefdk but they are the only projects
       # we are supporting as of now.
       "/opt/#{options.product_name}"
+    end
+
+    #
+    # Returns the current version of the installed product.
+    # Returns nil if the product is not installed.
+    #
+    def current_version
+      # Note that this logic does not work for products other than
+      # chef & chefdk since version-manifest is created under the
+      # install directory which can be different than the product name (e.g.
+      # chef-server -> /opt/opscode). But this is OK for now since
+      # chef & chefdk are the only supported products.
+      version_manifest_file = "/opt/#{options.product_name}/version-manifest.json"
+      if File.exist? version_manifest_file
+        JSON.parse(File.read(version_manifest_file))["build_version"]
+      end
+    end
+
+    #
+    # Returns true if an upgradable version is available, false otherwise.
+    #
+    def upgrade_available?
+      return true if current_version.nil?
+
+      available_ver = Mixlib::Versioning.parse(artifact_info.first.version)
+      current_ver = Mixlib::Versioning.parse(current_version)
+      (available_ver > current_ver)
     end
   end
 end
