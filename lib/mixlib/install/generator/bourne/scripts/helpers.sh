@@ -274,8 +274,13 @@ install_file() {
   echo "Installing $project $version"
   case "$1" in
     "rpm")
-      echo "installing with rpm..."
-      rpm -Uvh --oldpackage --replacepkgs "$2"
+      if test "x$platform" = "xnexus" || test "x$platform" = "xios_xr"; then
+        echo "installing with yum..."
+        yum install -yv "$2"
+      else
+        echo "installing with rpm..."
+        rpm -Uvh --oldpackage --replacepkgs "$2"
+      fi
       ;;
     "deb")
       echo "installing with dpkg..."
