@@ -24,7 +24,12 @@ module Mixlib
         instance_eval(&block)
       end
 
-      DSL_PROPERTIES = [:product_name, :package_name, :ctl_command, :config_file]
+      DSL_PROPERTIES = [
+        :config_file,
+        :ctl_command,
+        :package_name,
+        :product_name
+      ]
 
       #
       # DSL methods can receive either a String or a Proc to calculate the
@@ -49,13 +54,13 @@ module Mixlib
               if value.is_a? String
                 value
               else
-                value.call(version)
+                value.call(version_for(version))
               end
             else
               instance_variable_set("@#{prop}".to_sym, prop_string)
             end
           else
-            raise "Not both at the same time." if !prop_string.nil?
+            raise "Can not use String and Proc at the same time for #{prop}." if !prop_string.nil?
             instance_variable_set("@#{prop}".to_sym, block)
           end
         end
@@ -136,14 +141,31 @@ end
 # to update PRODUCT_MATRIX.md.
 #
 PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
+  # Products in alphabetical order
+
+  product "analytics" do
+    product_name "Analytics Platform"
+    package_name "opscode-analytics"
+    ctl_command "opscode-analytics-ctl"
+    config_file "/etc/opscode-analytics/opscode-analytics.rb"
+  end
+
   product "chef" do
     product_name "Chef Client"
     package_name "chef"
   end
 
-  product "chefdk" do
-    product_name "Chef Development Kit"
-    package_name "chefdk"
+  product "chef-ha" do
+    product_name "Chef Server High Availability addon"
+    package_name "chef-ha"
+    config_file "/etc/opscode/chef-server.rb"
+  end
+
+  product "chef-marketplace" do
+    product_name "Chef Cloud Marketplace addon"
+    package_name "chef-marketplace"
+    ctl_command "chef-marketplace-ctl"
+    config_file "/etc/chef-marketplace/marketplace.rb"
   end
 
   product "chef-server" do
@@ -159,49 +181,23 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/opscode/chef-server.rb"
   end
 
-  product "manage" do
-    product_name "Management Console"
-    package_name do |v|
-      v < version_for("2.0.0") ? "opscode-manage" : "chef-manage"
-    end
-    ctl_command do |v|
-      v < version_for("2.0.0") ? "opscode-manage-ctl" : "chef-manage-ctl"
-    end
-    config_file "/etc/opscode-manage/manage.rb"
-  end
-
-  product "chef-ha" do
-    product_name "Chef Server High Availability addon"
-    package_name "chef-ha"
-    config_file "/etc/opscode/chef-server.rb"
-  end
-
-  product "reporting" do
-    product_name "Chef Server Reporting addon"
-    package_name "opscode-reporting"
-    ctl_command "opscode-reporting-ctl"
-    config_file "/etc/opscode-reporting/opscode-reporting.rb"
-  end
-
-  product "supermarket" do
-    product_name "Chef Cloud Marketplace addon"
-    package_name "supermarket"
-    ctl_command "supermarket-ctl"
-    config_file "/etc/supermarket/supermarket.json"
-  end
-
-  product "chef-marketplace" do
-    product_name "Chef Cloud Marketplace addon"
-    package_name "chef-marketplace"
-    ctl_command "chef-marketplace-ctl"
-    config_file "/etc/chef-marketplace/marketplace.rb"
-  end
-
   product "chef-sync" do
     product_name "Chef Server Replication addon"
     package_name "chef-sync"
     ctl_command "chef-sync-ctl"
     config_file "/etc/chef-sync/chef-sync.rb"
+  end
+
+  product "chefdk" do
+    product_name "Chef Development Kit"
+    package_name "chefdk"
+  end
+
+  product "compliance" do
+    product_name "Chef Compliance"
+    package_name "chef-compliance"
+    ctl_command "chef-compliance-ctl"
+    config_file "/etc/chef-compliance/chef-compliance.rb"
   end
 
   product "delivery" do
@@ -216,18 +212,29 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "delivery-cli"
   end
 
-  product "analytics" do
-    product_name "Analytics Platform"
-    package_name "opscode-analytics"
-    ctl_command "opscode-analytics-ctl"
-    config_file "/etc/opscode-analytics/opscode-analytics.rb"
+  product "manage" do
+    product_name "Management Console"
+    package_name do |v|
+      v < version_for("2.0.0") ? "opscode-manage" : "chef-manage"
+    end
+    ctl_command do |v|
+      v < version_for("2.0.0") ? "opscode-manage-ctl" : "chef-manage-ctl"
+    end
+    config_file "/etc/opscode-manage/manage.rb"
   end
 
-  product "compliance" do
-    product_name "Chef Compliance"
-    package_name "chef-compliance"
-    ctl_command "chef-compliance-ctl"
-    config_file "/etc/chef-compliance/chef-compliance.rb"
+  product "private-chef" do
+    product_name "Enterprise Chef (legacy)"
+    package_name "private-chef"
+    ctl_command "private-chef-ctl"
+    config_file "/etc/opscode/private-chef.rb"
+  end
+
+  product "push-client" do
+    product_name "Chef Push Server"
+    package_name do |v|
+      v < version_for("1.3.0") ? "opscode-push-jobs-client" : "push-jobs-client"
+    end
   end
 
   product "push-server" do
@@ -241,19 +248,17 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/opscode-push-jobs-server/opscode-push-jobs-server.rb"
   end
 
-  product "push-client" do
-    product_name "Chef Push Server"
-    package_name do |v|
-      v < version_for("1.3.0") ? "opscode-push-jobs-client" : "push-jobs-client"
-    end
+  product "reporting" do
+    product_name "Chef Server Reporting addon"
+    package_name "opscode-reporting"
+    ctl_command "opscode-reporting-ctl"
+    config_file "/etc/opscode-reporting/opscode-reporting.rb"
   end
 
-  # LEGACY
-
-  product "private-chef" do
-    product_name "Enterprise Chef (legacy)"
-    package_name "private-chef"
-    ctl_command "private-chef-ctl"
-    config_file "/etc/opscode/private-chef.rb"
+  product "supermarket" do
+    product_name "Supermarket"
+    package_name "supermarket"
+    ctl_command "supermarket-ctl"
+    config_file "/etc/supermarket/supermarket.json"
   end
 end

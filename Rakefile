@@ -26,11 +26,11 @@ task "matrix" do
   puts "Updating doc file at: #{doc_file}"
 
   File.open(doc_file, "w+") do |f|
-    f.puts("| Product | Product Key  | Package Name |")
-    f.puts("| ------- | ------------ | ------------ |")
-    PRODUCT_MATRIX.products.each do |p_key|
+    f.puts("| Product | Product Key  |")
+    f.puts("| ------- | ------------ |")
+    PRODUCT_MATRIX.products.sort.each do |p_key|
       product = PRODUCT_MATRIX.lookup(p_key)
-      f.puts("| #{product.product_name} | #{p_key} | #{product.package_name} |")
+      f.puts("| #{product.product_name} | #{p_key} |")
     end
     f.puts("")
     f.puts("Do not modify this file manually. It is automatically rendered via a rake task.")

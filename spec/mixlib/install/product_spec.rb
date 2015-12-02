@@ -53,8 +53,8 @@ context "Mixlib::Install::Product" do
     end
 
     it "accepts and returns the value correctly with a version" do
-      product.version("110")
-      expect(product.package_name).to eq("my-version-110")
+      product.version("11.0.0")
+      expect(product.package_name).to eq("my-version-11.0.0")
     end
 
     it "returns nil for unset properties" do
