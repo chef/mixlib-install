@@ -17,3 +17,22 @@ end
 
 desc "Run all tests"
 task test: [:rubocop, :spec]
+
+desc "Render product matrix documentation"
+task "matrix" do
+  require "mixlib/install/product"
+
+  doc_file = File.join(File.dirname(__FILE__), "PRODUCT_MATRIX.md")
+  puts "Updating doc file at: #{doc_file}"
+
+  File.open(doc_file, "w+") do |f|
+    f.puts("| Product | Product Key  | Package Name |")
+    f.puts("| ------- | ------------ | ------------ |")
+    PRODUCT_MATRIX.products.each do |p_key|
+      product = PRODUCT_MATRIX.lookup(p_key)
+      f.puts("| #{product.product_name} | #{p_key} | #{product.package_name} |")
+    end
+    f.puts("")
+    f.puts("Do not modify this file manually. It is automatically rendered via a rake task.")
+  end
+end
