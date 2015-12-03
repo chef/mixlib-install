@@ -26,6 +26,7 @@ context "Mixlib::Install::Options" do
   let(:platform) { nil }
   let(:platform_version) { nil }
   let(:architecture) { nil }
+  let(:shell_type) { nil }
 
   context "for invalid product name option" do
     let(:product_name) { "foo" }
@@ -93,6 +94,14 @@ context "Mixlib::Install::Options" do
       it "does not raise an error" do
         expect { Mixlib::Install.new(base_options) }.to_not raise_error
       end
+    end
+  end
+
+  context "for shell type options" do
+    let(:shell_type) { :foo }
+
+    it "raises invalid shell type error" do
+      expect { Mixlib::Install.new(shell_type: shell_type) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Unknown shell type/)
     end
   end
 end

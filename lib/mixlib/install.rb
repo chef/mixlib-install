@@ -56,10 +56,13 @@ module Mixlib
     # @return [String] the installation directory for the project
     #
     def root
-      # TODO: Support root as "$env:systemdrive\\opscode\\chef" when on windows.
       # This only works for chef and chefdk but they are the only projects
       # we are supporting as of now.
-      "/opt/#{options.product_name}"
+      if options.for_ps1?
+        "$env:systemdrive\\opscode\\#{options.product_name}"
+      else
+        "/opt/#{options.product_name}"
+      end
     end
 
     #
@@ -72,7 +75,12 @@ module Mixlib
       # install directory which can be different than the product name (e.g.
       # chef-server -> /opt/opscode). But this is OK for now since
       # chef & chefdk are the only supported products.
-      version_manifest_file = "/opt/#{options.product_name}/version-manifest.json"
+      version_manifest_file = if options.for_ps1?
+        "$env:systemdrive\\opscode\\#{options.product_name}\\version-manifest.json"
+      else
+        "/opt/#{options.product_name}/version-manifest.json"
+      end
+
       if File.exist? version_manifest_file
         JSON.parse(File.read(version_manifest_file))["build_version"]
       end

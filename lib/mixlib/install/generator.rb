@@ -16,12 +16,17 @@
 #
 
 require "mixlib/install/generator/bourne"
+require "mixlib/install/generator/powershell"
 
 module Mixlib
   class Install
     class Generator
       def self.install_command(options)
-        Bourne.new(options).install_command
+        if options.for_ps1?
+          PowerShell.new(options).install_command
+        else
+          Bourne.new(options).install_command
+        end
       end
     end
   end
