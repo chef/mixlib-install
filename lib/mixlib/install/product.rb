@@ -239,12 +239,8 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
 
   product "push-server" do
     product_name "Chef Push Server"
-    package_name do |v|
-      v < version_for("2.0.0") ? "opscode-push-jobs-server" : "push-jobs-server"
-    end
-    ctl_command do |v|
-      v < version_for("2.0.0") ? "opscode-push-jobs-server-ctl" : "push-jobs-server-ctl"
-    end
+    package_name "opscode-push-jobs-server"
+    ctl_command "opscode-push-jobs-server-ctl"
     config_file "/etc/opscode-push-jobs-server/opscode-push-jobs-server.rb"
   end
 

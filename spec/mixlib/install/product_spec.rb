@@ -187,27 +187,15 @@ context "PRODUCT_MATRIX" do
   context "for push-server" do
     let(:product_name) { "push-server" }
 
-    context "for version > 2.0.0" do
-      let(:version) { "2.0.5" }
-
-      it "should return correct package_name" do
-        expect(package_name).to eq("push-jobs-server")
-      end
-
-      it "should return correct ctl_command" do
-        expect(ctl_command).to eq("push-jobs-server-ctl")
-      end
-    end
-
     context "for latest" do
       let(:version) { :latest }
 
       it "should return correct package_name" do
-        expect(package_name).to eq("push-jobs-server")
+        expect(package_name).to eq("opscode-push-jobs-server")
       end
 
       it "should return correct ctl_command" do
-        expect(ctl_command).to eq("push-jobs-server-ctl")
+        expect(ctl_command).to eq("opscode-push-jobs-server-ctl")
       end
     end
 
