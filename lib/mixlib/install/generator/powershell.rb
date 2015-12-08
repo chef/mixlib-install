@@ -15,26 +15,37 @@
 # limitations under the License.
 #
 
+require "mixlib/install/generator/base"
+
 module Mixlib
   class Install
     class Generator
-      class PowerShell
-        attr_reader :options
+      class PowerShell < Base
+        def self.install_ps1(context)
+          install_project_module = []
+          install_project_module << get_script("helpers.ps1")
+          install_project_module << get_script("get_project_metadata.ps1", context)
+          install_project_module << get_script("install_project.ps1")
 
-        def initialize(options)
-          @options = options
+          install_command = []
+          install_command << ps1_modularize(install_project_module.join("\n"), "Omnitruck")
+          install_command.join("\n\n")
+        end
+
+        def self.script_base_path
+          File.join(File.dirname(__FILE__), "powershell/scripts")
         end
 
         def install_command
           install_project_module = []
-          install_project_module << get_script(:helpers)
+          install_project_module << get_script("helpers.ps1")
           if options.for_artifactory?
             raise "not implemented yet"
             # install_project_module << get_script(:get_project_metadata_for_artifactory)
           else
-            install_project_module << get_script(:get_project_metadata)
+            install_project_module << get_script("get_project_metadata.ps1")
           end
-          install_project_module << get_script(:install_project)
+          install_project_module << get_script("install_project.ps1")
 
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Omnitruck")
@@ -42,12 +53,16 @@ module Mixlib
           install_command.join("\n\n")
         end
 
-        def ps1_modularize(module_body, module_name)
+        def self.ps1_modularize(module_body, module_name)
           ps1_module = []
           ps1_module << "new-module -name #{module_name} -scriptblock {"
           ps1_module << module_body
           ps1_module << "}"
           ps1_module.join("\n")
+        end
+
+        def ps1_modularize(module_body, module_name)
+          self.class.ps1_modularize(module_body, module_name)
         end
 
         def render_command
@@ -56,10 +71,6 @@ install -project #{options.product_name} \
 -version #{options.product_version} \
 -channel #{options.channel}
 EOS
-        end
-
-        def get_script(name)
-          File.read(File.join(File.dirname(__FILE__), "powershell/scripts/#{name}.ps1"))
         end
       end
     end

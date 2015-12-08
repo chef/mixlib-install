@@ -147,4 +147,33 @@ context "Mixlib::Install" do
       expect(install_sh).to include("https://omnitruck.chef.io")
     end
   end
+
+  context "install_ps1" do
+    let(:base_url) { nil }
+
+    let(:install_ps1) do
+      options = {}.tap do |opt|
+        opt[:base_url] = base_url if base_url
+      end
+      Mixlib::Install.install_ps1(options)
+    end
+
+    it "should render a script with cli & backcompat parameters" do
+      expect(install_ps1).not_to include("install -project")
+      expect(install_ps1).to include("Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies")
+    end
+
+    context "with custom base_url" do
+      let(:base_url) { "https://my.omnitruck.com/" }
+
+      it "should render with the given base_url" do
+        expect(install_ps1).to include(base_url)
+      end
+    end
+
+    it "should render with default base_url if one is not given" do
+      expect(install_ps1).to include("https://omnitruck.chef.io")
+    end
+  end
+
 end

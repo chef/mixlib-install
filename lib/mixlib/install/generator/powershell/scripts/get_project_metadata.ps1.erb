@@ -16,7 +16,7 @@ function Get-ProjectMetadata {
   [cmdletbinding()]
   param (
     # Base url to retrieve metadata from.
-    [uri]$base_server_uri = 'http://omnitruck.chef.io/',
+    [uri]$base_server_uri = '<%= base_url %>',
     [string]
     # Project to install
     # chef - Chef Client
@@ -36,8 +36,17 @@ function Get-ProjectMetadata {
     # Release channel to install from
     [validateset('current', 'stable')]
     [string]
-    $channel = 'stable'
+    $channel = 'stable',
+    # The following legacy switches are just aliases for the current channel
+    [switch]
+    $prerelease,
+    [switch]
+    $nightlies
   )
+
+  # The following legacy switches are just aliases for the current channel
+  if (($prerelease -eq $true)) { $channel = 'current'}
+  if (($nightlies -eq $true)) { $channel = 'current'}
 
   # PowerShell is only on Windows ATM
   $platform = 'windows'
