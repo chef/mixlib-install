@@ -119,6 +119,32 @@ context "Mixlib::Install" do
         expect(installer.upgrade_available?).to eq(true)
       end
     end
+  end
 
+  context "install_sh" do
+    let(:base_url) { nil }
+
+    let(:install_sh) do
+      options = {}.tap do |opt|
+        opt[:base_url] = base_url if base_url
+      end
+      Mixlib::Install.install_sh(options)
+    end
+
+    it "should render a script with cli parameters" do
+      expect(install_sh).to include("while getopts pnv:c:f:P:d: opt")
+    end
+
+    context "with custom base_url" do
+      let(:base_url) { "https://my.omnitruck.com/" }
+
+      it "should render with the given base_url" do
+        expect(install_sh).to include(base_url)
+      end
+    end
+
+    it "should render with default base_url if one is not given" do
+      expect(install_sh).to include("https://omnitruck.chef.io")
+    end
   end
 end

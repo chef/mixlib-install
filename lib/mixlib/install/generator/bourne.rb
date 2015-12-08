@@ -15,6 +15,10 @@
 # limitations under the License.
 #
 
+require "erb"
+require "ostruct"
+require "mixlib/install/backend/omnitruck"
+
 module Mixlib
   class Install
     class Generator
@@ -23,6 +27,17 @@ module Mixlib
 
         def initialize(options)
           @options = options
+        end
+
+        def self.install_sh(context)
+          install_command = []
+          install_command << get_script(:helpers)
+          install_command << get_script(:script_cli_parameters)
+          install_command << get_script(:platform_detection)
+          install_command << get_script(:fetch_metadata, context)
+          install_command << get_script(:fetch_package)
+          install_command << get_script(:install_package)
+          install_command.join("\n\n")
         end
 
         def install_command
@@ -53,8 +68,27 @@ EOS
           raise "not implemented yet"
         end
 
+        #
+        # Gets the contents of the given script.
+        #
+        def self.get_script(name, context = {})
+          script_path = File.join(File.dirname(__FILE__), "bourne/scripts/#{name}.sh")
+
+          # If there is an erb template we render it, otherwise we just read
+          # and returnt the contents of the script
+          if File.exist? "#{script_path}.erb"
+            # Default values to use incase they are not set in the context
+            context[:base_url] ||= Mixlib::Install::Backend::Omnitruck::OMNITRUCK_ENDPOINT
+
+            context_object = OpenStruct.new(context).instance_eval { binding }
+            ERB.new(File.read("#{script_path}.erb")).result(context_object)
+          else
+            File.read(script_path)
+          end
+        end
+
         def get_script(name)
-          File.read(File.join(File.dirname(__FILE__), "bourne/scripts/#{name}.sh"))
+          self.class.get_script(name)
         end
       end
     end
