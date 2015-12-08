@@ -23,17 +23,29 @@ module Mixlib
 
       attr_reader :options
       attr_reader :errors
+      attr_reader :defaults
 
       OMNITRUCK_CHANNELS = [:stable, :current]
       ARTIFACTORY_CHANNELS = [:unstable]
       ALL_SUPPORTED_CHANNELS = OMNITRUCK_CHANNELS + ARTIFACTORY_CHANNELS
       SUPPORTED_PRODUCT_NAMES = %w[chef chefdk]
-      SUPPORTED_OPTIONS = [:channel, :product_name, :product_version,
-                           :platform, :platform_version, :architecture]
+      SUPPORTED_SHELL_TYPES = [:ps1, :sh]
+      SUPPORTED_OPTIONS = [
+        :architecture,
+        :channel,
+        :platform,
+        :platform_version,
+        :product_name,
+        :product_version,
+        :shell_type
+      ]
 
       def initialize(options)
         @options = options
         @errors = []
+        @defaults = {
+          shell_type: :sh
+        }
         validate_options!
       end
 
@@ -42,6 +54,7 @@ module Mixlib
         validate_channels
         validate_unstable_version
         validate_platform_info
+        validate_shell_type
 
         unless errors.empty?
           raise InvalidOptions, errors.join("\n")
@@ -50,7 +63,7 @@ module Mixlib
 
       SUPPORTED_OPTIONS.each do |option|
         define_method option do
-          options[option] || options[option.to_s]
+          options[option] || options[option.to_s] || defaults[option]
         end
       end
 
@@ -60,6 +73,10 @@ module Mixlib
 
       def for_omnitruck?
         OMNITRUCK_CHANNELS.include?(channel)
+      end
+
+      def for_ps1?
+        platform == "windows" || shell_type == :ps1
       end
 
       private
@@ -91,6 +108,13 @@ using channels #{ARTIFACTORY_CHANNELS.join(", ")}"
             (platform_opts.any? { |opt| !opt.nil? })
           errors << "platform, platform version, and architecture are all \
 required when specifying Platform options."
+        end
+      end
+
+      def validate_shell_type
+        unless SUPPORTED_SHELL_TYPES.include? shell_type
+          errors << "Unknown shell type. \
+Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}"
         end
       end
     end

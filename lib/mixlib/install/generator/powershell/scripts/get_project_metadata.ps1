@@ -1,0 +1,78 @@
+function Get-ProjectMetadata {
+  <#
+    .SYNOPSIS
+    Get metadata for a Chef Software, Inc. project
+    .DESCRIPTION
+    Get metadata for project
+    .EXAMPLE
+    iex (new-object net.webclient).downloadstring('https:/omnitruck.chef.io/install.ps1'); Get-ProjectMetadata -project chef -channel stable
+
+    Gets the download url, MD5 checksum, and SHA256 checksum for the latest stable release of Chef.
+    .EXAMPLE
+    iex (irm 'https://omnitruck.chef.io/install.ps1'); Get-ProjectMetadata -project chefdk -channel stable -version 0.8.0
+
+    Gets the download url, MD5 checksum, and SHA256 checksum for ChefDK 0.8.0.
+  #>
+  [cmdletbinding()]
+  param (
+    # Base url to retrieve metadata from.
+    [uri]$base_server_uri = 'http://omnitruck.chef.io/',
+    [string]
+    # Project to install
+    # chef - Chef Client
+    # chefdk - Chef Development Kit
+    # angrychef - AngryChef
+    # server and container are not valid windows targets
+    [validateset('chef', 'chefdk', 'angrychef')]
+    [string]
+    $project = 'chef',
+    # Version of the application to install
+    # This parameter is optional, if not supplied it will provide the latest version,
+    # and if an iteration number is not specified, it will grab the latest available iteration.
+    # Partial version numbers are also acceptable (using v=11
+    # will grab the latest 11.x client which matches the other flags).
+    [string]
+    $version,
+    # Release channel to install from
+    [validateset('current', 'stable')]
+    [string]
+    $channel = 'stable'
+  )
+
+  # PowerShell is only on Windows ATM
+  $platform = 'windows'
+  Write-Verbose "Platform: $platform"
+
+  # TODO: No Win10 build endpoint yet
+  switch -regex ((get-wmiobject win32_operatingsystem).version) {
+    '10\.0\.\d+' {$platform_version = '2012r2'}
+    '6\.3\.\d+'  {$platform_version = '2012r2'}
+    '6\.2\.\d+'  {$platform_version = '2012'}
+    '6\.1\.\d+'  {$platform_version = '2008r2'}
+    '6\.0\.\d+'  {$platform_version = '2008'}
+  }
+  Write-Verbose "Platform Version: $platform_version"
+
+  # TODO: When we ship a 64 bit ruby for Windows.
+  $machine = 'x86_64'
+  Write-Verbose "Machine: $machine"
+  Write-Verbose "Project: $project"
+
+  $metadata_base_url = "$($channel)/$($project)/metadata"
+  $metadata_array = ("?v=$($version)",
+    "p=$platform",
+    "pv=$platform_version",
+    "m=$machine")
+  $metadata_base_url += [string]::join('&', $metadata_array)
+  $metadata_url = new-uri $base_server_uri $metadata_base_url
+
+  Write-Verbose "Downloading $project details from $metadata_url"
+  $package_metadata = (Get-WebContent $metadata_url).trim() -split '\n' |
+    foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
+
+  Write-Verbose "Project details: "
+  foreach ($key in $package_metadata.keys) {
+    Write-Verbose "`t$key = $($package_metadata[$key])"
+  }
+  $package_metadata
+}
