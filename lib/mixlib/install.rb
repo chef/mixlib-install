@@ -23,6 +23,7 @@ require "mixlib/install/backend"
 require "mixlib/install/options"
 require "mixlib/install/generator"
 require "mixlib/install/generator/bourne"
+require "mixlib/install/generator/powershell"
 
 module Mixlib
   class Install
@@ -107,6 +108,17 @@ module Mixlib
     #
     def self.install_sh(context = {})
       Mixlib::Install::Generator::Bourne.install_sh(context)
+    end
+
+    #
+    # Returns the install.ps1 script
+    # Supported context parameters:
+    # ------------------
+    # base_url [String]
+    #   url pointing to the omnitruck to be queried by the script.
+    #
+    def self.install_ps1(context = {})
+      Mixlib::Install::Generator::PowerShell.install_ps1(context)
     end
   end
 end

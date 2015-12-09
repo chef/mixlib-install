@@ -39,10 +39,15 @@ function Install-Project {
     $filename,
     # Full path to the location to download the installer
     [string]
-    $download_directory = $env:temp
+    $download_directory = $env:temp,
+    # The following legacy switches are just aliases for the current channel
+    [switch]
+    $prerelease,
+    [switch]
+    $nightlies
   )
 
-  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version
+  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies
 
   if (-not [string]::IsNullOrEmpty($filename)) {
     $download_directory = split-path $filename
