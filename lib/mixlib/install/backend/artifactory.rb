@@ -62,13 +62,13 @@ which is currently only accessible through Chef's internal network."
             platform:         result["properties"]["omnibus.platform"].first,
             platform_version: result["properties"]["omnibus.platform_version"].first,
             architecture:     result["properties"]["omnibus.architecture"].first,
-            url:              result["uri"]
+            url:              result["downloadUri"]
           )
         end
 
         def params
           params = {
-            "repos" => "omnibus-current-local",
+            "repos" => "omnibus-unstable-local",
             "omnibus.version" => options.product_version
           }
 
@@ -82,7 +82,7 @@ which is currently only accessible through Chef's internal network."
         end
 
         def headers
-          { "X-Result-Detail" => "properties" }
+          { "X-Result-Detail" => "info, properties" }
         end
       end
     end

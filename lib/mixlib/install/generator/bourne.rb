@@ -16,6 +16,7 @@
 #
 
 require "mixlib/install/generator/base"
+require "mixlib/install/backend/artifactory"
 
 module Mixlib
   class Install
@@ -61,7 +62,8 @@ EOS
         end
 
         def artifactory_urls
-          raise "not implemented yet"
+          artifacts = Mixlib::Install::Backend::Artifactory.new(options).info
+          get_script("artifactory_urls.sh", artifacts: artifacts)
         end
       end
     end

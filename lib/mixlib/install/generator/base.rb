@@ -56,8 +56,8 @@ module Mixlib
           end
         end
 
-        def get_script(name)
-          self.class.get_script(name)
+        def get_script(name, context = {})
+          self.class.get_script(name, context)
         end
       end
     end
