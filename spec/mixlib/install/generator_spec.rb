@@ -20,31 +20,46 @@ require "mixlib/install"
 
 context "Mixlib::Install::Generator" do
   let(:channel) { nil }
+  let(:product_version) { "latest" }
+  let(:add_options) { {} }
 
   let(:options) {
     {
       product_name: "chef",
       channel: channel,
-      product_version: "latest"
+      product_version: product_version
     }
   }
 
   let(:install_script) {
+    options.merge!(add_options)
     Mixlib::Install.new(options).install_command
   }
 
-  context "for :stable channel" do
-    let(:channel) { :stable }
-    let(:add_options) { {} }
+  shared_examples_for "the correct sh script" do
+    it "generates an sh script" do
+      expect(install_script).to be_a(String)
+      expect(install_script).to start_with("#!/bin/sh")
+      expect(install_script).to include('install_file $filetype "$download_filename"')
+    end
+  end
 
-    shared_examples_for "the correct sh script" do
-      it "generates an sh script" do
-        options.merge!(add_options)
-        expect(install_script).to be_a(String)
-        expect(install_script).to start_with("#!/bin/sh")
-        expect(install_script).to include('install_file $filetype "$download_filename"')
+  context "for :unstable channel", :unstable do
+    let(:channel) { :unstable }
+    let(:product_version) { "12.5.1+20151210002019" }
+
+    context "default shell type" do
+      it_behaves_like "the correct sh script"
+
+      it "contains artifactory urls" do
+        expect(install_script).to include('artifact_info_for_platform="$tmp_dir/artifact_info/$platform/$platform_version/$machine/artifact_info"
+')
       end
     end
+  end
+
+  context "for :stable channel" do
+    let(:channel) { :stable }
 
     context "default shell type" do
       it_behaves_like "the correct sh script"
@@ -63,8 +78,6 @@ context "Mixlib::Install::Generator" do
     context "for windows" do
       shared_examples_for "the correct ps1 script" do
         it "generates a ps1 script" do
-          options.merge!(add_options)
-
           expect(install_script).to be_a(String)
           expect(install_script).to start_with("new-module -name Omnitruck -scriptblock")
           expect(install_script).to include("set-alias install -value Install-Project")

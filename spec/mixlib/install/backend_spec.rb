@@ -337,7 +337,7 @@ context "Mixlib::Install::Backend" do
           let(:product_version) { "12.5.1+20151210002019" }
           let(:expected_info) {
             {
-              url: "http://artifactory.chef.co/api/storage/omnibus-unstable-local/com/getchef/chef/12.5.1+20151210002019/mac_os_x/10.9/chef-12.5.1+20151210002019-1.dmg",
+              url: "http://artifactory.chef.co/omnibus-unstable-local/com/getchef/chef/12.5.1+20151210002019/mac_os_x/10.9/chef-12.5.1+20151210002019-1.dmg",
               sha256: "9791d09e2df02a3bb008f0e9efb52eb97e348193f45792ea4b367f156eac5a81",
               md5: "56fc059c547afe3eb511221a337e9fd9",
               version: "12.5.1+20151210002019"
@@ -345,6 +345,10 @@ context "Mixlib::Install::Backend" do
           }
 
           it_behaves_like "the right artifact info"
+
+          it "does not have storage/api in the url" do
+            expect(info.url).not_to include("storage/api")
+          end
         end
       end
     end

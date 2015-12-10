@@ -21,7 +21,7 @@
 echo "Getting information for $project $channel $version for $platform..."
 
 metadata_filename="$tmp_dir/metadata.txt"
-metadata_url="<%= base_url %>$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine"
+metadata_url="<%= base_url %>/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine"
 
 do_download "$metadata_url"  "$metadata_filename"
 
