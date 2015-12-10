@@ -96,6 +96,14 @@ elif test "x$os" = "xAIX"; then
   platform="aix"
   platform_version="`uname -v`.`uname -r`"
   machine="powerpc"
+elif test -f "/etc/os-release"; then
+  . /etc/os-release
+  if test "x$CISCO_RELEASE_INFO" != "x"; then
+    . $CISCO_RELEASE_INFO
+  fi
+
+  platform=$ID
+  platform_version=$VERSION
 fi
 
 if test "x$platform" = "x"; then
