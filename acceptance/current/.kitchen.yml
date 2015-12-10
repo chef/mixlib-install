@@ -33,10 +33,13 @@ suites:
       product_name: chef
       product_version: latest
       channel: current
-    run_list:
   # - name: mixlib-install-chefdk
   #   provisioner:
   #     product_name: chefdk
   #     product_version: latest
   #     channel: current
-  #   run_list:
+  - name: mixlib-install-unstable-chef
+    provisioner:
+      product_name: chef
+      product_version: 12.5.1+20151209033604
+      channel: unstable

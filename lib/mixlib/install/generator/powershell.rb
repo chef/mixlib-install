@@ -39,12 +39,11 @@ module Mixlib
         def install_command
           install_project_module = []
           install_project_module << get_script("helpers.ps1")
-          if options.for_artifactory?
-            raise "not implemented yet"
-            # install_project_module << get_script(:get_project_metadata_for_artifactory)
-          else
-            install_project_module << get_script("get_project_metadata.ps1")
-          end
+          install_project_module << if options.for_artifactory?
+                                      artifactory_urls
+                                    else
+                                      get_script("get_project_metadata.ps1")
+                                    end
           install_project_module << get_script("install_project.ps1")
 
           install_command = []
@@ -63,6 +62,11 @@ module Mixlib
 
         def ps1_modularize(module_body, module_name)
           self.class.ps1_modularize(module_body, module_name)
+        end
+
+        def artifactory_urls
+          artifacts = Mixlib::Install::Backend::Artifactory.new(options).info
+          get_script("get_project_metadata_for_artifactory.ps1", artifacts: artifacts)
         end
 
         def render_command
