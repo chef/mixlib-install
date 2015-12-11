@@ -35,9 +35,6 @@ function Get-ProjectMetadata {
     $version,
     # Release channel to install from
     $channel = 'unstable',
-    # Full path to the location to download the installer
-    [string]
-    $download_directory = $env:temp,
     # The following legacy switches are just aliases for the current channel
     [switch]
     $prerelease,
@@ -59,27 +56,23 @@ function Get-ProjectMetadata {
   Write-Verbose "Platform Version: $platform_version"
 
   # TODO: When we ship a 64 bit ruby for Windows.
-  $machine = 'x86_64'
+  $machine = 'i386'
   Write-Verbose "Machine: $machine"
   Write-Verbose "Project: $project"
 
   <% artifacts.each do |artifact| %>
-    $artifact_info_dir = "$($download_directory)/artifact_info/<%= File.join(artifact.platform, artifact.platform_version, artifact.architecture)%>"
-    New-Item -ItemType directory -Path $artifact_info_dir
-    New-Item -ItemType file "$($artifact_info_dir)/artifact_info"
-    Write-Verbose "url <%= artifact.url%>" | out-file "$artifact_info_dir/artifact_info"
-    Write-Verbose "md5 <%= artifact.md5%>" | out-file "$artifact_info_dir/artifact_info" -Append
-    Write-Verbose "sha256 <%= artifact.sha256%>" | out-file "$artifact_info_dir/artifact_info" -Append
-    Write-Verbose "version <%= artifact.version%>" | out-file "$artifact_info_dir/artifact_info" -Append
+    $artifact_info_dir = "$($env:temp)/artifact_info/<%= File.join(artifact.platform, artifact.platform_version, artifact.architecture)%>"
+    New-Item -ItemType directory -Path $artifact_info_dir -force
+    New-Item -ItemType file "$($artifact_info_dir)/artifact_info" -force
+    "url <%= artifact.url%>" | out-file "$artifact_info_dir/artifact_info"
+    "md5 <%= artifact.md5%>" | out-file "$artifact_info_dir/artifact_info" -Append
+    "sha256 <%= artifact.sha256%>" | out-file "$artifact_info_dir/artifact_info" -Append
+    "version <%= artifact.version%>" | out-file "$artifact_info_dir/artifact_info" -Append
   <% end %>
 
-  $artifact_info_for_platform = "$($download_directory)/artifact_info/$platform/$platform_version/$machine/artifact_info"
+  $artifact_info_for_platform = Get-Content "$($env:temp)/artifact_info/$($platform)/$($platform_version)/$($machine)/artifact_info"
 
-  $download_url = Get-Content $artifact_info_for_platform | ?{$_ -match 'url'} | %{($_ -split "\s+")[1]}
-  $metadata_url = new-uri $download_url
-
-  Write-Verbose "Downloading $project details from $metadata_url"
-  $package_metadata = (Get-WebContent $metadata_url).trim() -split '\n' |
+  $package_metadata = ($artifact_info_for_platform).trim() -split '\n' |
     foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
 
   Write-Verbose "Project details: "
