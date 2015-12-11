@@ -27,8 +27,6 @@ module Mixlib
       class Artifactory
         ARTIFACTORY_ENDPOINT = "http://artifactory.chef.co".freeze
 
-        ARTIFACTORY_REPOSITORY = "omnibus-unstable-local".freeze
-
         attr_reader :options
         attr_reader :client
 
@@ -41,8 +39,8 @@ module Mixlib
           begin
             results = client.get("/api/search/prop", params, headers)["results"]
           rescue Errno::ETIMEDOUT => e
-            raise e, "unstable channel uses endpoint #{ARTIFACTORY_ENDPOINT} \
-which is currently only accessible through Chef's internal network."
+            raise e, "Artifactory endpoint '#{ARTIFACTORY_ENDPOINT}' \
+is currently only accessible through Chef's internal network."
           end
 
           if options.platform
@@ -70,7 +68,7 @@ which is currently only accessible through Chef's internal network."
 
         def params
           params = {
-            "repos" => ARTIFACTORY_REPOSITORY,
+            "repos" => "omnibus-#{options.channel}-local",
             "omnibus.version" => options.product_version
           }
 
