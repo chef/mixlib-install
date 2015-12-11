@@ -52,6 +52,7 @@ function Get-ProjectMetadata {
     '6\.3\.\d+'  {$platform_version = '2012r2'}
     '6\.2\.\d+'  {$platform_version = '2012'}
     '6\.1\.\d+'  {$platform_version = '2008r2'}
+    '6\.0\.\d+'  {$platform_version = '2008'}
   }
   Write-Verbose "Platform Version: $platform_version"
 
@@ -67,7 +68,6 @@ function Get-ProjectMetadata {
     "url <%= artifact.url%>" | out-file "$artifact_info_dir/artifact_info"
     "md5 <%= artifact.md5%>" | out-file "$artifact_info_dir/artifact_info" -Append
     "sha256 <%= artifact.sha256%>" | out-file "$artifact_info_dir/artifact_info" -Append
-    "version <%= artifact.version%>" | out-file "$artifact_info_dir/artifact_info" -Append
   <% end %>
 
   $artifact_info_for_platform = Get-Content "$($env:temp)/artifact_info/$($platform)/$($platform_version)/$($machine)/artifact_info"
