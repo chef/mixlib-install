@@ -47,7 +47,7 @@ function Install-Project {
     $nightlies
   )
 
-  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies
+  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -download_directory $download_directory -prerelease:$prerelease -nightlies:$nightlies
 
   if (-not [string]::IsNullOrEmpty($filename)) {
     $download_directory = split-path $filename
