@@ -160,7 +160,7 @@ context "Mixlib::Install" do
 
     it "should render a script with cli & backcompat parameters" do
       expect(install_ps1).not_to include("install -project")
-      expect(install_ps1).to include("Get-ProjectMetadata -project $project -channel $channel -version $version -download_directory $download_directory -prerelease:$prerelease -nightlies:$nightlies")
+      expect(install_ps1).to include("Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies")
     end
 
     context "with custom base_url" do
