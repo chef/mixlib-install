@@ -22,7 +22,6 @@
   echo "url <%= artifact.url%>" >> "$artifact_info_dir/artifact_info"
   echo "md5 <%= artifact.md5%>" >> "$artifact_info_dir/artifact_info"
   echo "sha256 <%= artifact.sha256%>" >> "$artifact_info_dir/artifact_info"
-  echo "version <%= artifact.version%>" >> "$artifact_info_dir/artifact_info"
 <% end %>
 
 artifact_info_for_platform="$tmp_dir/artifact_info/$platform/$platform_version/$machine/artifact_info"

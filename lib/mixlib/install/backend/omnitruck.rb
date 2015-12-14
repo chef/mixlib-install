@@ -24,7 +24,7 @@ module Mixlib
   class Install
     class Backend
       class Omnitruck
-        OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io"
+        OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io/"
 
         attr_accessor :options
 
