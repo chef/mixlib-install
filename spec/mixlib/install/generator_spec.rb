@@ -81,7 +81,7 @@ context "Mixlib::Install::Generator" do
           expect(install_script).to be_a(String)
           expect(install_script).to start_with("new-module -name Omnitruck -scriptblock")
           expect(install_script).to include("set-alias install -value Install-Project")
-          expect(install_script).to end_with("install -project #{options[:product_name]} -version #{options[:product_version]} -channel #{options[:channel]}\n")
+          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
         end
       end
 

@@ -65,14 +65,26 @@ module Mixlib
         end
 
         def artifactory_urls
-          artifacts = Mixlib::Install::Backend::Artifactory.new(options).info
-          get_script("get_project_metadata_for_artifactory.ps1", artifacts: artifacts)
+          get_script("get_project_metadata_for_artifactory.ps1",
+                     artifacts: artifacts)
+        end
+
+        def artifacts
+          @artifacts ||= Mixlib::Install::Backend::Artifactory.new(options).info
+        end
+
+        def product_version
+          if options.for_artifactory?
+            options.resolved_version(artifacts)
+          else
+            options.product_version
+          end
         end
 
         def render_command
           <<EOS
 install -project #{options.product_name} \
--version #{options.product_version} \
+-version #{product_version} \
 -channel #{options.channel}
 EOS
         end

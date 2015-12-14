@@ -35,9 +35,16 @@ artifacts.first.url
 # => "http://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.5.1%2B20151009083009-1.dmg"
 ```
 
+## Unstable channel
+The `:unstable` channel is currently only available when connected to Chef's internal network.
+Configure Artifactory access by setting the following environment variables:
+```
+export ARTIFACTORY_USERNAME='username'
+export ARTIFACTORY_PASSWORD='password'
+```
 
-## Test
-Some tests are tagged `:unstable` and can only run when connected to Chef's internal network.  These are excluded by default.  To run the `:unstable` tests run: `bundle exec rspec --tag unstable`.
+### Unstable channel specs
+Some spec examples are tagged `:unstable` and can only run when connected to Chef's internal network.  These are excluded by default.  To run the `:unstable` tests run: `bundle exec rspec --tag unstable`.
 
 ## Contributing
 

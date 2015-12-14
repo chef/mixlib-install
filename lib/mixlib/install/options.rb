@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+require "mixlib/versioning"
+
 module Mixlib
   class Install
     class Options
@@ -52,7 +54,6 @@ module Mixlib
       def validate_options!
         validate_product_names
         validate_channels
-        validate_unstable_version
         validate_platform_info
         validate_shell_type
 
@@ -79,6 +80,27 @@ module Mixlib
         platform == "windows" || shell_type == :ps1
       end
 
+      def latest_version?
+        product_version.to_sym == :latest
+      end
+
+      def resolved_version(artifacts)
+        @resolved_version ||= begin
+          if latest_version?
+            all_versions = artifacts.collect(&:version)
+            # params: list of all versions, no version filtering, no pre-releases, use build version
+            Mixlib::Versioning.find_target_version(
+              all_versions,
+              nil,
+              false,
+              true
+            ).to_s
+          else
+            product_version
+          end
+        end
+      end
+
       private
 
       def validate_product_names
@@ -92,13 +114,6 @@ Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}"
         unless ALL_SUPPORTED_CHANNELS.include? channel
           errors << "Unknown channel #{channel}. \
 Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}"
-        end
-      end
-
-      def validate_unstable_version
-        if for_artifactory? && product_version !~ /^\d+.\d+.\d+\+[0-9]{14}$/
-          errors << "Version must match pattern '1.2.3+12345678901234' when \
-using channels #{ARTIFACTORY_CHANNELS.join(", ")}"
         end
       end
 

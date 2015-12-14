@@ -28,13 +28,13 @@ suites:
   - name: chef-unstable-install
     provisioner:
       product_name: chef
-      product_version: 12.5.1+20151210002019
+      product_version: latest
       channel: unstable
     run_list:
   - name: chefdk-unstable-install
     excludes: [ 'freebsd-10.0' ]
     provisioner:
       product_name: chefdk
-      product_version: 0.10.0+20151209030614
+      product_version: latest
       channel: unstable
     run_list:
