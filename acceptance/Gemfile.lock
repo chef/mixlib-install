@@ -20,7 +20,7 @@ GIT
 PATH
   remote: ../
   specs:
-    mixlib-install (0.8.0.alpha.1)
+    mixlib-install (0.8.0.alpha.2)
       artifactory (~> 2.3.0)
       mixlib-versioning (~> 1.1.0)
 

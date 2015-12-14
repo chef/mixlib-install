@@ -26,6 +26,7 @@ context "Mixlib::Install::Backend" do
   let(:platform) { nil }
   let(:platform_version) { nil }
   let(:architecture) { nil }
+  let(:shell_type) { :sh }
 
   let(:info) {
     Mixlib::Install.new(
@@ -34,7 +35,8 @@ context "Mixlib::Install::Backend" do
       product_version: product_version,
       platform: platform,
       platform_version: platform_version,
-      architecture: architecture
+      architecture: architecture,
+      shell_type: shell_type
     ).artifact_info
   }
 
@@ -321,30 +323,51 @@ context "Mixlib::Install::Backend" do
 
       context "when p, pv and m are not present" do
         context "with an integration product version" do
-          let(:product_version) { "12.4.3+20151006083011" }
-          let(:expected_version) { "12.4.3+20151006083011" }
+          let(:product_version) { "12.5.1+20151210002019" }
+          let(:expected_version) { "12.5.1+20151210002019" }
 
           it_behaves_like "the right artifact list info"
         end
       end
 
       context "when p, pv and m are present" do
-        let(:platform) { "mac_os_x" }
-        let(:platform_version) { "10.9" }
-        let(:architecture) { "x86_64" }
+        context "for mac" do
+          let(:platform) { "mac_os_x" }
+          let(:platform_version) { "10.9" }
+          let(:architecture) { "x86_64" }
 
-        context "with an integration product version" do
-          let(:product_version) { "12.4.3+20151006083011" }
+          context "with an integration product version" do
+            let(:product_version) { "12.5.1+20151210002019" }
+            let(:expected_info) {
+              {
+                url: "http://artifactory.chef.co/omnibus-unstable-local/com/getchef/chef/12.5.1+20151210002019/mac_os_x/10.9/chef-12.5.1+20151210002019-1.dmg",
+                sha256: "9791d09e2df02a3bb008f0e9efb52eb97e348193f45792ea4b367f156eac5a81",
+                md5: "56fc059c547afe3eb511221a337e9fd9"
+              }
+            }
+
+            it_behaves_like "the right artifact info"
+          end
+        end
+
+        context "for windows" do
+          let(:platform) { "windows" }
+          let(:platform_version) { "2012r2" }
+          let(:architecture) { "i386" }
+          let(:product_version) { "12.5.1+20151210002019" }
           let(:expected_info) {
             {
-              url: "http://artifactory.chef.co/api/storage/omnibus-current-local/com/getchef/chef/12.4.3+20151006083011/mac_os_x/10.9/chef-12.4.3+20151006083011-1.dmg",
-              sha256: "c74cac0ecdef969820770c6e21fcf249d623dba40ea9bacdb2de5cd3bfbeedaf",
-              md5: "103f98e4b72407245bdf44a0357fd8e4",
-              version: "12.4.3+20151006083011"
+              url: "http://artifactory.chef.co/omnibus-unstable-local/com/getchef/chef/12.5.1+20151210002019/windows/2012r2/chef-client-12.5.1+20151210002019-1-x86.msi",
+              sha256: "3bc8b4b2c80541b04060883ce131cdc7c83c5b275cf202f4199fa621568faaf6",
+              md5: "b23f4801a54ba3442e72192d390f37dc"
             }
           }
 
           it_behaves_like "the right artifact info"
+
+          it "does not have storage/api in the url" do
+            expect(info.url).not_to include("storage/api")
+          end
         end
       end
     end

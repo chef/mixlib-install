@@ -27,6 +27,8 @@ module Mixlib
       class Artifactory
         ARTIFACTORY_ENDPOINT = "http://artifactory.chef.co".freeze
 
+        ARTIFACTORY_REPOSITORY = "omnibus-unstable-local".freeze
+
         attr_reader :options
         attr_reader :client
 
@@ -62,13 +64,13 @@ which is currently only accessible through Chef's internal network."
             platform:         result["properties"]["omnibus.platform"].first,
             platform_version: result["properties"]["omnibus.platform_version"].first,
             architecture:     result["properties"]["omnibus.architecture"].first,
-            url:              result["uri"]
+            url:              result["downloadUri"]
           )
         end
 
         def params
           params = {
-            "repos" => "omnibus-current-local",
+            "repos" => ARTIFACTORY_REPOSITORY,
             "omnibus.version" => options.product_version
           }
 
@@ -82,7 +84,7 @@ which is currently only accessible through Chef's internal network."
         end
 
         def headers
-          { "X-Result-Detail" => "properties" }
+          { "X-Result-Detail" => "info, properties" }
         end
       end
     end

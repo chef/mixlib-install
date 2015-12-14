@@ -24,7 +24,7 @@ function Install-Project {
     [string]
     $project = 'chef',
     # Release channel to install from
-    [validateset('current', 'stable')]
+    [validateset('current', 'stable', 'unstable')]
     [string]
     $channel = 'stable',
     # Version of the application to install

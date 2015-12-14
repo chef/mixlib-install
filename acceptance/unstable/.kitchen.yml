@@ -25,16 +25,16 @@ platforms:
       box: chef/windows-server-2012r2-standard # private
 
 suites:
-  - name: chef-current-install
+  - name: chef-unstable-install
     provisioner:
       product_name: chef
-      product_version: latest
-      channel: current
+      product_version: 12.5.1+20151210002019
+      channel: unstable
     run_list:
-  - name: chefdk-current-install
+  - name: chefdk-unstable-install
     excludes: [ 'freebsd-10.0' ]
     provisioner:
       product_name: chefdk
-      product_version: latest
-      channel: current
+      product_version: 0.10.0+20151209030614
+      channel: unstable
     run_list:
