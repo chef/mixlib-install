@@ -25,66 +25,98 @@ module Mixlib
   class Install
     class Backend
       class Artifactory
-        ARTIFACTORY_ENDPOINT = "http://artifactory.chef.co".freeze
-
-        ARTIFACTORY_REPOSITORY = "omnibus-unstable-local".freeze
-
-        attr_reader :options
-        attr_reader :client
+        attr_accessor :options
 
         def initialize(options)
           @options = options
-          @client = ::Artifactory::Client.new(endpoint: ARTIFACTORY_ENDPOINT)
         end
 
+        # Create filtered list of artifacts
+        #
+        # @return [Array<ArtifactInfo>] list of artifacts for the configured
+        # channel, product name, and product version.
+        # @return [ArtifactInfo] arifact info for the configured
+        # channel, product name, product version and platform info
+        #
         def info
-          begin
-            results = client.get("/api/search/prop", params, headers)["results"]
-          rescue Errno::ETIMEDOUT => e
-            raise e, "unstable channel uses endpoint #{ARTIFACTORY_ENDPOINT} \
-which is currently only accessible through Chef's internal network."
+          artifacts = artifactory_info.collect { |a| create_artifact(a) }
+          artifacts_for_version = artifacts.find_all do |a|
+            a.version == options.resolved_version(artifacts)
           end
 
           if options.platform
-            artifact(results.first)
-          else
-            results.collect do |result|
-              artifact(result)
+            artifacts_for_version.find do |a|
+              a.platform == options.platform &&
+                a.platform_version == options.platform_version &&
+                a.architecture == options.architecture
             end
+          else
+            artifacts_for_version
           end
+        end
+
+        # Fetches all artifacts from the configured Artifactory repository using
+        # channel and product name as search criteria
+        #
+        # @return [Array<Hash>] list of artifactory hash data
+        #
+        # Hash data:
+        #   download_uri: The full url download path
+        #   <property_name>: The names of the properties associcated to the artifact
+        #
+        def artifactory_info
+          query = <<-QUERY
+items.find(
+  {"repo": "omnibus-#{options.channel}-local"},
+  {"@omnibus.project": "#{options.product_name}"}
+).include("repo", "path", "name", "property")
+          QUERY
+
+          # Creates a client based on ENVs:
+          #   ARTIFACTORY_ENDPOINT
+          #   ARTIFACTORY_USERNAME
+          #   ARTIFACTORY_PASSWORD
+          client = ::Artifactory::Client.new(
+            endpoint: ENV["ARTIFACTORY_ENDPOINT"] || "http://artifactory.chef.co"
+          )
+
+          results = client.post("/api/search/aql",
+                                query, "Content-Type" => "text/plain")
+
+          results["results"].collect do |result|
+            # Construct the downloadUri from artifact metadata
+            uri = []
+            uri << ::Artifactory.endpoint
+            uri << result["repo"]
+            uri << result["path"]
+            uri << result["name"]
+            # Merge artifactory properties and downloadUri to a flat Hash
+            { "downloadUri" => uri.join("/") }.merge(map_properties(result["properties"]))
+          end
+        end
+
+        def create_artifact(artifact_map)
+          ArtifactInfo.new(
+            md5:              artifact_map["omnibus.md5"],
+            sha256:           artifact_map["omnibus.sha256"],
+            version:          artifact_map["omnibus.version"],
+            platform:         artifact_map["omnibus.platform"],
+            platform_version: artifact_map["omnibus.platform_version"],
+            architecture:     artifact_map["omnibus.architecture"],
+            url:              artifact_map["downloadUri"]
+          )
         end
 
         private
 
-        def artifact(result)
-          ArtifactInfo.new(
-            md5:              result["properties"]["omnibus.md5"].first,
-            sha256:           result["properties"]["omnibus.sha256"].first,
-            version:          result["properties"]["omnibus.version"].first,
-            platform:         result["properties"]["omnibus.platform"].first,
-            platform_version: result["properties"]["omnibus.platform_version"].first,
-            architecture:     result["properties"]["omnibus.architecture"].first,
-            url:              result["downloadUri"]
-          )
-        end
-
-        def params
-          params = {
-            "repos" => ARTIFACTORY_REPOSITORY,
-            "omnibus.version" => options.product_version
-          }
-
-          if options.platform
-            params["omnibus.platform"] = options.platform
-            params["omnibus.platform_version"] = options.platform_version
-            params["omnibus.architecture"] = options.architecture
+        # Converts Array<Hash> where the Hash is a key pair and
+        # value pair to a simplifed key/pair Hash
+        #
+        def map_properties(properties)
+          return {} if properties.nil?
+          properties.each_with_object({}) do |prop, h|
+            h[prop["key"]] = prop["value"]
           end
-
-          params
-        end
-
-        def headers
-          { "X-Result-Detail" => "info, properties" }
         end
       end
     end

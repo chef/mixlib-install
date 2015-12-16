@@ -44,15 +44,6 @@ context "Mixlib::Install::Options" do
     end
   end
 
-  context "for invalid product_version for unstable channel option" do
-    let(:channel) { :unstable }
-    let(:product_version) { "1.2.3" }
-
-    it "raises invalid version error" do
-      expect { Mixlib::Install.new(channel: channel, product_version: product_version) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Version must match pattern/)
-    end
-  end
-
   context "for platform options" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }

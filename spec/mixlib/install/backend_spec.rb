@@ -40,10 +40,12 @@ context "Mixlib::Install::Backend" do
     ).artifact_info
   }
 
+  let(:expected_protocol) { "https://" }
+
   shared_examples_for "the right artifact info" do
     it "gives the right url artifact info" do
       if !expected_info.key?(:url)
-        expect(info.url).to match "https://"
+        expect(info.url).to match expected_protocol
       else
         expect(info.url).to match expected_info[:url]
       end
@@ -109,7 +111,7 @@ context "Mixlib::Install::Backend" do
 
     it "has correctly formed url" do
       info.each do |artifact_info|
-        expect(artifact_info.url).to match "http"
+        expect(artifact_info.url).to match expected_protocol
       end
     end
 
@@ -297,21 +299,21 @@ context "Mixlib::Install::Backend" do
 
         context "with a major.minor product version" do
           let(:product_version) { "12.4" }
-          let(:expected_version) { /^12.4.\d\+[0-9]{14}$/ }
+          let(:expected_version) { /^12.4.\d/ }
 
           it_behaves_like "the right artifact list info"
         end
 
         context "with a major product version" do
           let(:product_version) { "12" }
-          let(:expected_version) { /^12.\d.\d\+[0-9]{14}$/ }
+          let(:expected_version) { /^12.\d.\d/ }
 
           it_behaves_like "the right artifact list info"
         end
 
         context "with latest version keyword" do
           let(:product_version) { "latest" }
-          let(:expected_version) { /^\d\d.\d.\d\+[0-9]{14}$/ }
+          let(:expected_version) { /^\d\d.\d.\d/ }
 
           it_behaves_like "the right artifact list info"
         end
@@ -320,6 +322,7 @@ context "Mixlib::Install::Backend" do
 
     context "for unstable", :unstable do
       let(:channel) { :unstable }
+      let(:expected_protocol) { "http://" }
 
       context "when p, pv and m are not present" do
         context "with an integration product version" do
@@ -348,6 +351,14 @@ context "Mixlib::Install::Backend" do
 
             it_behaves_like "the right artifact info"
           end
+
+          context "with 'latest' product version" do
+            let(:product_version) { :latest }
+            let(:expected_info) { {} }
+            let(:expected_version) { /^\d\d.\d.\d\+[0-9]{14}$/ }
+
+            it_behaves_like "the right artifact info"
+          end
         end
 
         context "for windows" do
@@ -368,6 +379,14 @@ context "Mixlib::Install::Backend" do
           it "does not have storage/api in the url" do
             expect(info.url).not_to include("storage/api")
           end
+        end
+
+        context "for latest version"  do
+          let(:product_version) { :latest }
+          let(:expected_info) { {} }
+          let(:expected_version) { /^\d\d.\d.\d\+[0-9]{14}$/ }
+
+          it_behaves_like "the right artifact list info"
         end
       end
     end
