@@ -24,7 +24,7 @@ module Mixlib
   class Install
     class Backend
       class Omnitruck
-        OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io/"
+        ENDPOINT = "https://omnitruck.chef.io/".freeze
 
         attr_accessor :options
 
@@ -55,7 +55,7 @@ module Mixlib
         private
 
         def omnitruck_get(resource, parameters)
-          uri = URI.parse(OMNITRUCK_ENDPOINT)
+          uri = URI.parse(ENDPOINT)
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
 

@@ -18,6 +18,11 @@ end
 desc "Run all tests"
 task test: [:rubocop, :spec]
 
+desc "Run unstable channel tests"
+task "unstable" do
+  system("bundle exec rspec -t unstable")
+end
+
 desc "Render product matrix documentation"
 task "matrix" do
   require "mixlib/install/product"

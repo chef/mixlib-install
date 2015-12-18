@@ -22,9 +22,9 @@ module Mixlib
   class Install
     class Options
       class InvalidOptions < ArgumentError; end
+      class ArtifactoryCredentialsNotFound < StandardError; end
 
       attr_reader :options
-      attr_reader :errors
       attr_reader :defaults
 
       OMNITRUCK_CHANNELS = [:stable, :current]
@@ -44,20 +44,27 @@ module Mixlib
 
       def initialize(options)
         @options = options
-        @errors = []
         @defaults = {
           shell_type: :sh
         }
+
+        validate!
+      end
+
+      def validate!
         validate_options!
+        validate_unstable_channel! if for_artifactory?
       end
 
       def validate_options!
-        validate_product_names
-        validate_channels
-        validate_platform_info
-        validate_shell_type
+        errors = []
 
-        unless errors.empty?
+        errors << validate_product_names
+        errors << validate_channels
+        errors << validate_platform_info
+        errors << validate_shell_type
+
+        unless errors.compact.empty?
           raise InvalidOptions, errors.join("\n")
         end
       end
@@ -105,15 +112,19 @@ module Mixlib
 
       def validate_product_names
         unless SUPPORTED_PRODUCT_NAMES.include? product_name
-          errors << "Unknown product name #{product_name}. \
-Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}"
+          <<-EOS
+Unknown product name #{product_name}.
+Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}
+          EOS
         end
       end
 
       def validate_channels
         unless ALL_SUPPORTED_CHANNELS.include? channel
-          errors << "Unknown channel #{channel}. \
-Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}"
+          <<-EOS
+Unknown channel #{channel}.
+Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}
+          EOS
         end
       end
 
@@ -121,15 +132,28 @@ Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}"
         platform_opts = [platform, platform_version, architecture]
         if (platform_opts.any?(&:nil?)) &&
             (platform_opts.any? { |opt| !opt.nil? })
-          errors << "platform, platform version, and architecture are all \
-required when specifying Platform options."
+          <<-EOS
+platform, platform version, and architecture are all required when specifying Platform options.
+          EOS
         end
       end
 
       def validate_shell_type
         unless SUPPORTED_SHELL_TYPES.include? shell_type
-          errors << "Unknown shell type. \
-Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}"
+          <<-EOS
+Unknown shell type.
+Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
+          EOS
+        end
+      end
+
+      def validate_unstable_channel!
+        if ENV["ARTIFACTORY_USERNAME"].nil? || ENV["ARTIFACTORY_PASSWORD"].nil?
+          raise ArtifactoryCredentialsNotFound,
+                <<-EOS
+Must set ARTIFACTORY_USERNAME and ARTIFACTORY_PASSWORD environment variables
+when using the unstable channel.
+                EOS
         end
       end
     end

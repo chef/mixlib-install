@@ -47,7 +47,7 @@ module Mixlib
           # and returnt the contents of the script
           if File.exist? "#{script_path}.erb"
             # Default values to use incase they are not set in the context
-            context[:base_url] ||= Mixlib::Install::Backend::Omnitruck::OMNITRUCK_ENDPOINT
+            context[:base_url] ||= Mixlib::Install::Backend::Omnitruck::ENDPOINT
 
             context_object = OpenStruct.new(context).instance_eval { binding }
             ERB.new(File.read("#{script_path}.erb")).result(context_object)
