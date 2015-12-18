@@ -44,7 +44,7 @@ export ARTIFACTORY_PASSWORD='password'
 ```
 
 ### Unstable channel specs
-Some spec examples are tagged `:unstable` and can only run when connected to Chef's internal network.  These are excluded by default.  To run the `:unstable` tests run: `bundle exec rspec --tag unstable`.
+Some spec examples are tagged `:unstable` and can only run when connected to Chef's internal network.  These are excluded by default.  To run the `:unstable` tests run: `rake unstable`.
 
 ## Contributing
 

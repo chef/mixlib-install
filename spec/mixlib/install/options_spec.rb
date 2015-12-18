@@ -45,7 +45,6 @@ context "Mixlib::Install::Options" do
   end
 
   context "for platform options" do
-    let(:channel) { :stable }
     let(:product_name) { "chef" }
     let(:product_version) { "1.2.3" }
     let(:base_options) {
@@ -63,36 +62,50 @@ context "Mixlib::Install::Options" do
       end
     end
 
-    context "without platform version" do
-      let(:options) { base_options.merge(platform: platform, architecture: "1") }
+    context "for stable channel" do
+      let(:channel) { :stable }
 
-      it_behaves_like "invalid platform options"
-    end
+      context "without platform version" do
+        let(:options) { base_options.merge(platform: platform, architecture: "1") }
 
-    context "without architecture" do
-      let(:options) { base_options.merge(platform: platform, platform_version: "1") }
+        it_behaves_like "invalid platform options"
+      end
 
-      it_behaves_like "invalid platform options"
-    end
+      context "without architecture" do
+        let(:options) { base_options.merge(platform: platform, platform_version: "1") }
 
-    context "without platform" do
-      let(:options) { base_options.merge(architecture: "1", platform_version: "1") }
+        it_behaves_like "invalid platform options"
+      end
 
-      it_behaves_like "invalid platform options"
-    end
+      context "without platform" do
+        let(:options) { base_options.merge(architecture: "1", platform_version: "1") }
 
-    context "without any platform info" do
-      it "does not raise an error" do
-        expect { Mixlib::Install.new(base_options) }.to_not raise_error
+        it_behaves_like "invalid platform options"
+      end
+
+      context "without any platform info" do
+        it "does not raise an error" do
+          expect { Mixlib::Install.new(base_options) }.to_not raise_error
+        end
       end
     end
-  end
 
-  context "for shell type options" do
-    let(:shell_type) { :foo }
+    context "for unstable channel", :unstable do
+      let(:channel) { :unstable }
 
-    it "raises invalid shell type error" do
-      expect { Mixlib::Install.new(shell_type: shell_type) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Unknown shell type/)
+      it "raises invalid artifactory env vars error" do
+        wrap_env("ARTIFACTORY_USERNAME" => nil, "ARTIFACTORY_PASSWORD" => nil) do
+          expect { Mixlib::Install.new(base_options) }.to raise_error(Mixlib::Install::Options::ArtifactoryCredentialsNotFound)
+        end
+      end
+    end
+
+    context "for shell type options" do
+      let(:shell_type) { :foo }
+
+      it "raises invalid shell type error" do
+        expect { Mixlib::Install.new(shell_type: shell_type) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Unknown shell type/)
+      end
     end
   end
 end

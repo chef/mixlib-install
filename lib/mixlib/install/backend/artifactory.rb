@@ -25,6 +25,11 @@ module Mixlib
   class Install
     class Backend
       class Artifactory
+        class ConnectionError < StandardError; end
+        class AuthenticationError < StandardError; end
+
+        ENDPOINT = "http://artifactory.chef.co".freeze
+
         attr_accessor :options
 
         def initialize(options)
@@ -40,6 +45,7 @@ module Mixlib
         #
         def info
           artifacts = artifactory_info.collect { |a| create_artifact(a) }
+
           artifacts_for_version = artifacts.find_all do |a|
             a.version == options.resolved_version(artifacts)
           end
@@ -72,26 +78,15 @@ items.find(
 ).include("repo", "path", "name", "property")
           QUERY
 
-          # Creates a client based on ENVs:
-          #   ARTIFACTORY_ENDPOINT
-          #   ARTIFACTORY_USERNAME
-          #   ARTIFACTORY_PASSWORD
-          client = ::Artifactory::Client.new(
-            endpoint: ENV["ARTIFACTORY_ENDPOINT"] || "http://artifactory.chef.co"
-          )
+          results = artifactory_request do
+            client.post("/api/search/aql", query, "Content-Type" => "text/plain")
+          end
 
-          results = client.post("/api/search/aql",
-                                query, "Content-Type" => "text/plain")
-
+          # Merge artifactory properties and downloadUri to a flat Hash
           results["results"].collect do |result|
-            # Construct the downloadUri from artifact metadata
-            uri = []
-            uri << ::Artifactory.endpoint
-            uri << result["repo"]
-            uri << result["path"]
-            uri << result["name"]
-            # Merge artifactory properties and downloadUri to a flat Hash
-            { "downloadUri" => uri.join("/") }.merge(map_properties(result["properties"]))
+            { "downloadUri" => generate_download_uri(result) }.merge(
+              map_properties(result["properties"])
+            )
           end
         end
 
@@ -117,6 +112,51 @@ items.find(
           properties.each_with_object({}) do |prop, h|
             h[prop["key"]] = prop["value"]
           end
+        end
+
+        # Construct the downloadUri from raw artifactory data
+        #
+        def generate_download_uri(result)
+          uri = []
+          uri << endpoint.sub(/\/$/, "")
+          uri << result["repo"]
+          uri << result["path"]
+          uri << result["name"]
+          uri.join("/")
+        end
+
+        def client
+          @client ||= ::Artifactory::Client.new(
+            endpoint: endpoint,
+            username: ENV["ARTIFACTORY_USERNAME"],
+            password: ENV["ARTIFACTORY_PASSWORD"]
+          )
+        end
+
+        def endpoint
+          @endpoint ||= ENV.fetch("ARTIFACTORY_ENDPOINT", ENDPOINT)
+        end
+
+        def artifactory_request
+          begin
+            results = yield
+          rescue Errno::ETIMEDOUT, ::Artifactory::Error::ConnectionError
+            raise ConnectionError, <<-EOS
+Artifactory endpoint '#{::Artifactory.endpoint}' is unreachable. Check that
+the endpoint is correct and there is an open connection to Chef's private network.
+            EOS
+          rescue ::Artifactory::Error::HTTPError => e
+            if e.code == 401 && e.message =~ /Bad credentials/
+              raise AuthenticationError, <<-EOS
+Artifactory server denied credentials. Verify ARTIFACTORY_USERNAME and
+ARTIFACTORY_PASSWORD environment variables are configured properly.
+              EOS
+            else
+              raise e
+            end
+          end
+
+          results
         end
       end
     end
