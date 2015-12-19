@@ -20,6 +20,7 @@ task test: [:rubocop, :spec]
 
 desc "Run unstable channel tests"
 task "unstable" do
+  Rake::Task["rubocop"].invoke
   system("bundle exec rspec -t unstable")
 end
 

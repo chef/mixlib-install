@@ -45,9 +45,10 @@ module Mixlib
         #
         def info
           artifacts = artifactory_info.collect { |a| create_artifact(a) }
+          version = options.resolved_version(artifacts)
 
           artifacts_for_version = artifacts.find_all do |a|
-            a.version == options.resolved_version(artifacts)
+            a.version == version
           end
 
           if options.platform
