@@ -136,7 +136,7 @@ do_wget() {
 # do_curl URL FILENAME
 do_curl() {
   echo "trying curl..."
-  curl -sL -D $tmp_dir/stderr "$1" > "$2"
+  curl --retry 5 -sL -D $tmp_dir/stderr "$1" > "$2"
   rc=$?
   # check for 404
   grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null
