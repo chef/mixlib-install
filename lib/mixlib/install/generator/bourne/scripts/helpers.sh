@@ -296,7 +296,7 @@ install_file() {
       echo "action=nocheck" >> $tmp_dir/nocheck
       echo "mail=" >> $tmp_dir/nocheck
       pkgrm -a $tmp_dir/nocheck -n $project >/dev/null 2>&1 || true
-      pkgadd -n -d "$2" -a $tmp_dir/nocheck $project
+      pkgadd -G -n -d "$2" -a $tmp_dir/nocheck $project
       ;;
     "pkg")
       echo "installing with installer..."
