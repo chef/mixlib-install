@@ -5,7 +5,7 @@ function Get-ProjectMetadata {
     .DESCRIPTION
     Get metadata for project
     .EXAMPLE
-    iex (new-object net.webclient).downloadstring('https:/omnitruck.chef.io/install.ps1'); Get-ProjectMetadata -project chef -channel stable
+    iex (new-object net.webclient).downloadstring('https://omnitruck.chef.io/install.ps1'); Get-ProjectMetadata -project chef -channel stable
 
     Gets the download url, MD5 checksum, and SHA256 checksum for the latest stable release of Chef.
     .EXAMPLE

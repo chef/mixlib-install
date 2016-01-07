@@ -5,7 +5,7 @@ function Install-Project {
     .DESCRIPTION
     Install a Chef Software, Inc. product
     .EXAMPLE
-    iex (new-object net.webclient).downloadstring('https:/omnitruck.chef.io/install.ps1'); Install-Project -project chef -channel stable
+    iex (new-object net.webclient).downloadstring('https://omnitruck.chef.io/install.ps1'); Install-Project -project chef -channel stable
 
     Installs the latest stable version of Chef.
     .EXAMPLE
