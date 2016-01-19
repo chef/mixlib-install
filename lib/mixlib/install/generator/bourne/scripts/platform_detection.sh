@@ -25,7 +25,7 @@
 machine=`uname -m`
 os=`uname -s`
 
-if test -f "/etc/lsb-release" && grep -q DISTRIB_ID /etc/lsb-release; then
+if test -f "/etc/lsb-release" && grep -q DISTRIB_ID /etc/lsb-release && ! grep -q wrlinux /etc/lsb-release; then
   platform=`grep DISTRIB_ID /etc/lsb-release | cut -d "=" -f 2 | tr '[A-Z]' '[a-z]'`
   platform_version=`grep DISTRIB_RELEASE /etc/lsb-release | cut -d "=" -f 2`
 elif test -f "/etc/debian_version"; then
