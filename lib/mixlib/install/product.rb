@@ -220,7 +220,13 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     ctl_command do |v|
       v < version_for("2.0.0") ? "opscode-manage-ctl" : "chef-manage-ctl"
     end
-    config_file "/etc/opscode-manage/manage.rb"
+    config_file do |v|
+      if v < version_for("2.0.0")
+        "/etc/opscode-manage/manage.rb"
+      else
+        "/etc/chef-manage/manage.rb"
+      end
+    end
   end
 
   product "private-chef" do

@@ -101,6 +101,10 @@ context "PRODUCT_MATRIX" do
     PRODUCT_MATRIX.lookup(product_name, version).ctl_command
   end
 
+  let(:config_file) do
+    PRODUCT_MATRIX.lookup(product_name, version).config_file
+  end
+
   CHEF_PRODUCTS = ["chef", "chefdk", "chef-server", "manage", "chef-ha",
                    "reporting", "supermarket", "chef-marketplace", "chef-sync",
                    "delivery", "delivery-cli", "analytics", "compliance",
@@ -157,6 +161,10 @@ context "PRODUCT_MATRIX" do
       it "should return correct ctl_command" do
         expect(ctl_command).to eq("chef-manage-ctl")
       end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/chef-manage/manage.rb")
+      end
     end
 
     context "for latest" do
@@ -169,6 +177,10 @@ context "PRODUCT_MATRIX" do
       it "should return correct ctl_command" do
         expect(ctl_command).to eq("chef-manage-ctl")
       end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/chef-manage/manage.rb")
+      end
     end
 
     context "for < 2.0.0" do
@@ -180,6 +192,10 @@ context "PRODUCT_MATRIX" do
 
       it "should return correct ctl_command" do
         expect(ctl_command).to eq("opscode-manage-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/opscode-manage/manage.rb")
       end
     end
   end
