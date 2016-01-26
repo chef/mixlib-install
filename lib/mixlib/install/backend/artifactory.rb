@@ -27,6 +27,7 @@ module Mixlib
       class Artifactory
         class ConnectionError < StandardError; end
         class AuthenticationError < StandardError; end
+        class NoArtifactsError < StandardError; end
 
         ENDPOINT = "http://artifactory.chef.co".freeze
 
@@ -44,51 +45,99 @@ module Mixlib
         # channel, product name, product version and platform info
         #
         def info
-          artifacts = artifactory_info.collect { |a| create_artifact(a) }
-          version = options.resolved_version(artifacts)
-
-          artifacts_for_version = artifacts.find_all do |a|
-            a.version == version
+          artifacts = if options.latest_version?
+            artifactory_latest
+          else
+            artifactory_artifacts(options.product_version)
           end
 
           if options.platform
-            artifacts_for_version.find do |a|
+            artifacts.select! do |a|
               a.platform == options.platform &&
                 a.platform_version == options.platform_version &&
                 a.architecture == options.architecture
             end
-          else
-            artifacts_for_version
           end
+
+          artifacts.length == 1 ? artifacts.first : artifacts
         end
 
-        # Fetches all artifacts from the configured Artifactory repository using
-        # channel and product name as search criteria
         #
-        # @return [Array<Hash>] list of artifactory hash data
+        # Get artifacts for the latest version, channel and product_name
         #
-        # Hash data:
-        #   download_uri: The full url download path
-        #   <property_name>: The names of the properties associcated to the artifact
+        # @return [Array<ArtifactInfo>] Array of info about found artifacts
+        def artifactory_latest
+          # Get the list of builds from the REST api.
+          # We do this because a user in the readers group does not have
+          # permissions to run aql against builds.
+          builds = client.get("/api/build/#{options.product_name}")
+
+          if builds.nil?
+            raise NoArtifactsError, <<-MSG
+Can not find any builds for #{options.product_name} in #{::Artifactory.endpoint}.
+            MSG
+          end
+
+          # Output we get is something like:
+          # {
+          #   "buildsNumbers": [
+          #     {"uri"=>"/12.5.1+20151213083009", "started"=>"2015-12-13T08:40:19.238+0000"},
+          #     {"uri"=>"/12.6.0+20160111212038", "started"=>"2016-01-12T00:25:35.762+0000"},
+          #     ...
+          #   ]
+          # }
+          # First we sort based on started
+          builds["buildsNumbers"].sort_by! { |b| b["started"] }.reverse!
+
+          # Now check if the build is in the requested channel or not
+          # Note that if you do this for any channel other than :unstable
+          # it will run a high number of queries but it is fine because we
+          # are using artifactory only for :unstable channel
+          builds["buildsNumbers"].each do |build|
+            version = build["uri"].gsub("/", "")
+            artifacts = artifactory_artifacts(version)
+
+            return artifacts unless artifacts.empty?
+          end
+
+          # we could not find any matching artifacts
+          []
+        end
+
         #
-        def artifactory_info
-          query = <<-QUERY
+        # Get artifacts for a given version, channel and product_name
+        #
+        # @return [Array<ArtifactInfo>] Array of info about found artifacts
+        def artifactory_artifacts(version)
+          results = artifactory_query(<<-QUERY)
 items.find(
   {"repo": "omnibus-#{options.channel}-local"},
-  {"@omnibus.project": "#{options.product_name}"}
+  {"@omnibus.project": "#{options.product_name}"},
+  {"@omnibus.version": "#{version}"}
 ).include("repo", "path", "name", "property")
           QUERY
 
-          results = artifactory_request do
-            client.post("/api/search/aql", query, "Content-Type" => "text/plain")
-          end
-
           # Merge artifactory properties and downloadUri to a flat Hash
-          results["results"].collect do |result|
+          results.collect! do |result|
             { "downloadUri" => generate_download_uri(result) }.merge(
               map_properties(result["properties"])
             )
           end
+
+          # Convert results to build records
+          results.map { |a| create_artifact(a) }
+        end
+
+        #
+        # Run an artifactory query for the given query.
+        #
+        # @return [Array<Hash>] Array of results returned from artifactory
+        def artifactory_query(query)
+          results = artifactory_request do
+            client.post("/api/search/aql", query, "Content-Type" => "text/plain")
+          end
+
+          results["results"]
         end
 
         def create_artifact(artifact_map)

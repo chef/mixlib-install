@@ -75,7 +75,7 @@ module Mixlib
 
         def product_version
           if options.for_artifactory?
-            options.resolved_version(artifacts)
+            artifacts.first.version
           else
             options.product_version
           end

@@ -17,6 +17,9 @@
 
 require "spec_helper"
 
+require "mixlib/install/options"
+require "mixlib/install/backend/artifactory"
+
 context "Mixlib::Install::Backend::Artifactory", :unstable do
   let(:opts) {
     {
@@ -27,11 +30,12 @@ context "Mixlib::Install::Backend::Artifactory", :unstable do
   }
   let(:options) { Mixlib::Install::Options.new(opts) }
   let(:artifactory) { Mixlib::Install::Backend::Artifactory.new(options) }
+  let(:query) { "item.find({\"@omnibus.project\": \"chef\"})" }
 
   context "when setting invalid endpoint" do
     it "raises a ConnectionError" do
-      wrap_env("ARTIFACTORY_ENDPOINT" => "http://artifactory.example.com") do
-        expect { artifactory.artifactory_info }.to raise_error Mixlib::Install::Backend::Artifactory::ConnectionError
+      wrap_env("ARTIFACTORY_ENDPOINT" => "http://artifactory.example.com/") do
+        expect { artifactory.artifactory_query(query) }.to raise_error Mixlib::Install::Backend::Artifactory::ConnectionError
       end
     end
   end
@@ -39,7 +43,7 @@ context "Mixlib::Install::Backend::Artifactory", :unstable do
   context "when setting endpoint with trailing /" do
     it "it allows the training slash" do
       wrap_env("ARTIFACTORY_ENDPOINT" => "http://artifactory.chef.co/") do
-        artifactory.artifactory_info
+        artifactory.info
       end
     end
   end
@@ -47,7 +51,7 @@ context "Mixlib::Install::Backend::Artifactory", :unstable do
   context "when not setting endpoint" do
     it "it uses the default" do
       wrap_env("ARTIFACTORY_ENDPOINT" => nil) do
-        artifactory.artifactory_info
+        artifactory.info
       end
     end
   end
@@ -55,7 +59,7 @@ context "Mixlib::Install::Backend::Artifactory", :unstable do
   context "when using bad credentials" do
     it "raises an AuthenticationError" do
       wrap_env("ARTIFACTORY_USERNAME" => "nobodyherebythatname", "ARTIFACTORY_PASSWORD" => "secret") do
-        expect { artifactory.artifactory_info }.to raise_error Mixlib::Install::Backend::Artifactory::AuthenticationError
+        expect { artifactory.artifactory_query(query) }.to raise_error Mixlib::Install::Backend::Artifactory::AuthenticationError
       end
     end
   end
