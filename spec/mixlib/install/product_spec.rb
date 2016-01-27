@@ -108,7 +108,7 @@ context "PRODUCT_MATRIX" do
   CHEF_PRODUCTS = ["chef", "chefdk", "chef-server", "manage", "chef-ha",
                    "reporting", "supermarket", "chef-marketplace", "chef-sync",
                    "delivery", "delivery-cli", "analytics", "compliance",
-                   "push-server", "push-client", "private-chef"]
+                   "push-server", "push-client", "private-chef", "chef-backend"]
 
   it "has entries for all #{CHEF_PRODUCTS.length} products" do
     CHEF_PRODUCTS.each do |p|
