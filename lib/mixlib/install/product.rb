@@ -155,6 +155,13 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "chef"
   end
 
+  product "chef-backend" do
+    product_name "Chef Backend"
+    package_name "chef-backend"
+    ctl_command "chef-backend-ctl"
+    config_file "/etc/chef-backend/chef-backend.rb"
+  end
+
   product "chef-ha" do
     product_name "Chef Server High Availability addon"
     package_name "chef-ha"

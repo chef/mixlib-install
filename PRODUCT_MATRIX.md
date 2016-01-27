@@ -2,6 +2,7 @@
 | ------- | ------------ |
 | Analytics Platform | analytics |
 | Chef Client | chef |
+| Chef Backend | chef-backend |
 | Chef Server High Availability addon | chef-ha |
 | Chef Cloud Marketplace addon | chef-marketplace |
 | Chef Server | chef-server |
