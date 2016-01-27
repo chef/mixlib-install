@@ -91,21 +91,6 @@ module Mixlib
         product_version.to_sym == :latest
       end
 
-      def resolved_version(artifacts)
-        if latest_version?
-          all_versions = artifacts.collect(&:version)
-          # params: list of all versions, no version filtering, no pre-releases, use build version
-          Mixlib::Versioning.find_target_version(
-            all_versions,
-            nil,
-            false,
-            true
-          ).to_s
-        else
-          product_version
-        end
-      end
-
       private
 
       def validate_product_names
