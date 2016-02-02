@@ -1,6 +1,8 @@
 | Product | Product Key  |
 | ------- | ------------ |
 | Analytics Platform | analytics |
+| Angry Omnibus Toolchain | angry-omnibus-toolchain |
+| Angry Chef Client | angrychef |
 | Chef Client | chef |
 | Chef Backend | chef-backend |
 | Chef Server High Availability addon | chef-ha |

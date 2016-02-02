@@ -109,7 +109,7 @@ context "PRODUCT_MATRIX" do
                    "reporting", "supermarket", "chef-marketplace", "chef-sync",
                    "delivery", "delivery-cli", "analytics", "compliance",
                    "push-server", "push-client", "private-chef", "chef-backend",
-                   "omnibus-toolchain"]
+                   "omnibus-toolchain", "angrychef", "angry-omnibus-toolchain"]
 
   it "has entries for all #{CHEF_PRODUCTS.length} products" do
     CHEF_PRODUCTS.each do |p|
