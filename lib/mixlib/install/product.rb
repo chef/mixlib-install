@@ -236,6 +236,11 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     end
   end
 
+  product "omnibus-toolchain" do
+    product_name "Omnibus Toolchain"
+    package_name "omnibus-toolchain"
+  end
+
   product "private-chef" do
     product_name "Enterprise Chef (legacy)"
     package_name "private-chef"

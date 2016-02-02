@@ -12,6 +12,7 @@
 | Delivery | delivery |
 | Delivery CLI | delivery-cli |
 | Management Console | manage |
+| Omnibus Toolchain | omnibus-toolchain |
 | Enterprise Chef (legacy) | private-chef |
 | Chef Push Server | push-client |
 | Chef Push Server | push-server |
