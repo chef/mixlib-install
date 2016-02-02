@@ -150,6 +150,16 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/opscode-analytics/opscode-analytics.rb"
   end
 
+  product "angry-omnibus-toolchain" do
+    product_name "Angry Omnibus Toolchain"
+    package_name "angry-omnibus-toolchain"
+  end
+
+  product "angrychef" do
+    product_name "Angry Chef Client"
+    package_name "angrychef"
+  end
+
   product "chef" do
     product_name "Chef Client"
     package_name "chef"
