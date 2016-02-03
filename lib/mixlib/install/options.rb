@@ -30,7 +30,13 @@ module Mixlib
       OMNITRUCK_CHANNELS = [:stable, :current]
       ARTIFACTORY_CHANNELS = [:unstable]
       ALL_SUPPORTED_CHANNELS = OMNITRUCK_CHANNELS + ARTIFACTORY_CHANNELS
-      SUPPORTED_PRODUCT_NAMES = %w[chef chefdk]
+      SUPPORTED_PRODUCT_NAMES = %w[
+        angry-omnibus-toolchain
+        angrychef
+        chef
+        chefdk
+        omnibus-toolchain
+      ]
       SUPPORTED_SHELL_TYPES = [:ps1, :sh]
       SUPPORTED_OPTIONS = [
         :architecture,
