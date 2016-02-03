@@ -35,7 +35,9 @@ module Mixlib
         angrychef
         chef
         chefdk
+        delivery-cli
         omnibus-toolchain
+        push-jobs-client
       ]
       SUPPORTED_SHELL_TYPES = [:ps1, :sh]
       SUPPORTED_OPTIONS = [
