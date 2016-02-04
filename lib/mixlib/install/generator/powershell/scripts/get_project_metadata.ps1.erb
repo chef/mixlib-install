@@ -63,7 +63,12 @@ function Get-ProjectMetadata {
   Write-Verbose "Platform Version: $platform_version"
 
   # TODO: When we ship a 64 bit ruby for Windows.
-  $machine = 'x86_64'
+  if (!($env:ProgramW6432 -eq $null) -And ($channel -eq 'current')) {
+    $machine = 'x86_64'
+  } else {
+    $machine = 'i386'
+  }
+
   Write-Verbose "Machine: $machine"
   Write-Verbose "Project: $project"
 
