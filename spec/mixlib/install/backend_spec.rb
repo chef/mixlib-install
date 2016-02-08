@@ -224,44 +224,6 @@ context "Mixlib::Install::Backend" do
         let(:platform_version) { "10.9" }
         let(:architecture) { "x86_64" }
 
-        context "with an integration product version" do
-          let(:product_version) { "12.4.3+20151006083011" }
-          let(:expected_info) {
-            {
-              url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.4.3%2B20151006083011-1.dmg",
-              md5: "103f98e4b72407245bdf44a0357fd8e4",
-              sha256: "c74cac0ecdef969820770c6e21fcf249d623dba40ea9bacdb2de5cd3bfbeedaf",
-              version: "12.4.3+20151006083011"
-            }
-          }
-
-          it_behaves_like "the right artifact info"
-        end
-
-        context "with a major.minor.patch version" do
-          let(:product_version) { "12.4.3" }
-          let(:expected_info) {
-            {
-              url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.4.3%2B",
-              version: "12.4.3+"
-            }
-          }
-
-          it_behaves_like "the right artifact info"
-        end
-
-        context "with a major.minor product version" do
-          let(:product_version) { "12.4" }
-          let(:expected_info) {
-            {
-              url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.4",
-              version: "12.4"
-            }
-          }
-
-          it_behaves_like "the right artifact info"
-        end
-
         context "with a major product version" do
           let(:product_version) { "12" }
           let(:expected_info) {
@@ -283,30 +245,9 @@ context "Mixlib::Install::Backend" do
       end
 
       context "when p, pv and m are not present" do
-        context "with a full product version" do
-          let(:product_version) { "12.4.3+20151006083011" }
-          let(:expected_version) { "12.4.3+20151006083011" }
-
-          it_behaves_like "the right artifact list info"
-        end
-
-        context "with a major.minor.patch product version" do
-          let(:product_version) { "12.4.3" }
-          let(:expected_version) { /^12.4.3\+[0-9]{14}$/ }
-
-          it_behaves_like "the right artifact list info"
-        end
-
-        context "with a major.minor product version" do
-          let(:product_version) { "12.4" }
-          let(:expected_version) { /^12.4.\d/ }
-
-          it_behaves_like "the right artifact list info"
-        end
-
         context "with a major product version" do
           let(:product_version) { "12" }
-          let(:expected_version) { /^12.\d.\d/ }
+          let(:expected_version) { /^12.\d+.\d+/ }
 
           it_behaves_like "the right artifact list info"
         end
