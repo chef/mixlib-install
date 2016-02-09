@@ -44,10 +44,13 @@ function Install-Project {
     [switch]
     $prerelease,
     [switch]
-    $nightlies
+    $nightlies,
+    [validateset('auto', 'i386', 'x86_64')]
+    [string]
+    $architecture = 'auto'
   )
 
-  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies
+  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
 
   if (-not [string]::IsNullOrEmpty($filename)) {
     $download_directory = split-path $filename

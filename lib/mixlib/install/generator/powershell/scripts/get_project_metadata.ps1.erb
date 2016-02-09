@@ -41,7 +41,10 @@ function Get-ProjectMetadata {
     [switch]
     $prerelease,
     [switch]
-    $nightlies
+    $nightlies,
+    [validateset('auto', 'i386', 'x86_64')]
+    [string]
+    $architecture = 'auto'
   )
 
   # The following legacy switches are just aliases for the current channel
@@ -62,16 +65,22 @@ function Get-ProjectMetadata {
   }
   Write-Verbose "Platform Version: $platform_version"
 
-  # TODO: When we ship a 64 bit ruby for Windows.
-  $machine = 'x86_64'
-  Write-Verbose "Machine: $machine"
+  if ($architecture -eq 'auto') {
+    if (((get-wmiobject win32_operatingsystem).osarchitecture -like '64-bit') -and ($channel -like 'current')) {
+      $architecture = 'x86_64'
+    } else {
+      $architecture = 'i386'
+    }
+  }
+
+  Write-Verbose "Architecture: $architecture"
   Write-Verbose "Project: $project"
 
   $metadata_base_url = "$($channel)/$($project)/metadata"
   $metadata_array = ("?v=$($version)",
     "p=$platform",
     "pv=$platform_version",
-    "m=$machine")
+    "m=$architecture")
   $metadata_base_url += [string]::join('&', $metadata_array)
   $metadata_url = new-uri $base_server_uri $metadata_base_url
 
