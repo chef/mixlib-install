@@ -66,7 +66,7 @@ function Get-ProjectMetadata {
   Write-Verbose "Platform Version: $platform_version"
 
   if ($architecture -eq 'auto') {
-    if (!($env:ProgramW6432 -eq $null) -And ($channel -eq 'current')) {
+    if (((get-wmiobject win32_operatingsystem).osarchitecture -like '64-bit') -and ($channel -like 'current')) {
       $architecture = 'x86_64'
     } else {
       $architecture = 'i386'
