@@ -39,7 +39,10 @@ function Get-ProjectMetadata {
     [switch]
     $prerelease,
     [switch]
-    $nightlies
+    $nightlies,
+    [validateset('auto', 'i386', 'x86_64')]
+    [string]
+    $architecture = 'auto'
   )
 
   # PowerShell is only on Windows ATM
@@ -56,9 +59,15 @@ function Get-ProjectMetadata {
   }
   Write-Verbose "Platform Version: $platform_version"
 
-  # TODO: When we ship a 64 bit ruby for Windows.
-  $machine = 'i386'
-  Write-Verbose "Machine: $machine"
+  if ($architecture -eq 'auto') {
+    if (((get-wmiobject win32_operatingsystem).osarchitecture -like '64-bit')) {
+      $architecture = 'x86_64'
+    } else {
+      $architecture = 'i386'
+    }
+  }
+
+  Write-Verbose "Architecture: $architecture"
   Write-Verbose "Project: $project"
 
   <% artifacts.each do |artifact| %>
@@ -70,7 +79,7 @@ function Get-ProjectMetadata {
     "sha256 <%= artifact.sha256%>" | out-file "$artifact_info_dir/artifact_info" -Append
   <% end %>
 
-  $artifact_info_for_platform = Get-Content "$($env:temp)/artifact_info/$($platform)/$($platform_version)/$($machine)/artifact_info"
+  $artifact_info_for_platform = Get-Content "$($env:temp)/artifact_info/$($platform)/$($platform_version)/$($architecture)/artifact_info"
 
   $package_metadata = ($artifact_info_for_platform).trim() -split '\n' |
     foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
