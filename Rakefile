@@ -16,13 +16,22 @@ RuboCop::RakeTask.new do |task|
 end
 
 desc "Run all tests"
-task test: [:rubocop, :spec]
+task test: [:rubocop, :spec, :unstable]
 
 desc "Run unstable channel tests"
 task "unstable" do
+  if ENV["ARTIFACTORY_USERNAME"].nil? || ENV["ARTIFACTORY_PASSWORD"].nil?
+    abort <<-EOS.gsub(/^\s+/, "")
+      Must set ARTIFACTORY_USERNAME and ARTIFACTORY_PASSWORD environment
+      variables to run unstable tests
+    EOS
+  end
   Rake::Task["rubocop"].invoke
   system("bundle exec rspec -t unstable")
 end
+
+desc "Run tests for Travis CI"
+task ci: [:rubocop, :spec]
 
 desc "Render product matrix documentation"
 task "matrix" do
