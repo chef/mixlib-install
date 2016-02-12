@@ -107,7 +107,8 @@ module Mixlib
       # @return [String] shell variable lines
       # @api private
       def install_command_vars_for_bourne
-        flags = %w[latest true nightlies].include?(version) ? "" : "-v #{CGI.escape(version)}"
+        flags = ""
+        flags << "-v #{version_metadata_flag}" if version_metadata_flag
         flags << " " << "-n" if nightlies
         flags << " " << "-p" if prerelease
         flags << " " << install_flags if install_flags
@@ -120,6 +121,10 @@ module Mixlib
           shell_var("sudo_sh", sudo("sh")),
           shell_var("version", version)
         ].join("\n")
+      end
+
+      def version_metadata_flag
+        %w[latest true nightlies].include?(version) ? nil : CGI.escape(version)
       end
 
       # Generates the install command variables for PowerShell-based platforms.
@@ -198,7 +203,7 @@ module Mixlib
 
         url = "#{base}#{endpoint}"
         url << "?p=windows&m=x86_64&pv=2008r2" # same package for all versions
-        url << "&v=#{CGI.escape(version.to_s.downcase)}"
+        url << "&v=#{version_metadata_flag}" if version_metadata_flag
         url << "&prerelease=true" if prerelease
         url << "&nightlies=true" if nightlies
         url
