@@ -34,7 +34,6 @@ context "Mixlib::Install::Backend::Artifactory", :unstable do
 
   context "when setting invalid endpoint" do
     it "raises a ConnectionError" do
-      skip("Fails intermittently")
       wrap_env("ARTIFACTORY_ENDPOINT" => "http://artifactory.example.com/") do
         expect { artifactory.artifactory_query(query) }.to raise_error Mixlib::Install::Backend::Artifactory::ConnectionError
       end
