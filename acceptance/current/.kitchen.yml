@@ -1,9 +1,10 @@
 driver:
   name: vagrant
+  provider: vmware_fusion
   forward_agent: yes
   customize:
-    cpus: 2
-    memory: 1024
+    numvcpus: 2
+    memsize: 1048
 
 provisioner:
   name: chef_zero
