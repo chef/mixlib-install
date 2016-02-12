@@ -46,10 +46,10 @@ module Mixlib
         #
         def info
           artifacts = if options.latest_version?
-            artifactory_latest
-          else
-            artifactory_artifacts(options.product_version)
-          end
+                        artifactory_latest
+                      else
+                        artifactory_artifacts(options.product_version)
+                      end
 
           if options.platform
             artifacts.select! do |a|
@@ -148,7 +148,7 @@ items.find(
             platform:         artifact_map["omnibus.platform"],
             platform_version: artifact_map["omnibus.platform_version"],
             architecture:     artifact_map["omnibus.architecture"],
-            url:              artifact_map["downloadUri"]
+            url:              artifact_map["downloadUri"],
           )
         end
 
@@ -179,7 +179,7 @@ items.find(
           @client ||= ::Artifactory::Client.new(
             endpoint: endpoint,
             username: ENV["ARTIFACTORY_USERNAME"],
-            password: ENV["ARTIFACTORY_PASSWORD"]
+            password: ENV["ARTIFACTORY_PASSWORD"],
           )
         end
 

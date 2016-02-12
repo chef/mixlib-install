@@ -28,7 +28,7 @@ module Mixlib
         :config_file,
         :ctl_command,
         :package_name,
-        :product_name
+        :product_name,
       ]
 
       #

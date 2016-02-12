@@ -78,10 +78,10 @@ module Mixlib
       # chef-server -> /opt/opscode). But this is OK for now since
       # chef & chefdk are the only supported products.
       version_manifest_file = if options.for_ps1?
-        "$env:systemdrive\\opscode\\#{options.product_name}\\version-manifest.json"
-      else
-        "/opt/#{options.product_name}/version-manifest.json"
-      end
+                                "$env:systemdrive\\opscode\\#{options.product_name}\\version-manifest.json"
+                              else
+                                "/opt/#{options.product_name}/version-manifest.json"
+                              end
 
       if File.exist? version_manifest_file
         JSON.parse(File.read(version_manifest_file))["build_version"]

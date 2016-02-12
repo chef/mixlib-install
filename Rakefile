@@ -1,6 +1,4 @@
 require "bundler/gem_tasks"
-require "finstyle"
-require "rubocop/rake_task"
 require "rspec/core/rake_task"
 
 task default: :test
@@ -10,13 +8,18 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = "spec/**/*_spec.rb"
 end
 
-desc "Run rubocop"
-RuboCop::RakeTask.new do |task|
-  task.options << "--display-cop-names"
+begin
+  require "chefstyle"
+  require "rubocop/rake_task"
+  RuboCop::RakeTask.new(:style) do |task|
+    task.options += ["--display-cop-names", "--no-color"]
+  end
+rescue LoadError
+  puts "chefstyle/rubocop is not available.  gem install chefstyle to do style checking."
 end
 
 desc "Run all tests"
-task test: [:rubocop, :spec, :unstable]
+task test: [:style, :spec, :unstable]
 
 desc "Run unstable channel tests"
 task "unstable" do
@@ -26,12 +29,12 @@ task "unstable" do
       variables to run unstable tests
     EOS
   end
-  Rake::Task["rubocop"].invoke
+  Rake::Task["style"].invoke
   system("bundle exec rspec -t unstable")
 end
 
 desc "Run tests for Travis CI"
-task ci: [:rubocop, :spec]
+task ci: [:style, :spec]
 
 desc "Render product matrix documentation"
 task "matrix" do

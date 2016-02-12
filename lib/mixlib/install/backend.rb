@@ -24,10 +24,10 @@ module Mixlib
     class Backend
       def self.info(options)
         backend = if options.for_omnitruck?
-          Backend::Omnitruck.new(options)
-        elsif options.for_artifactory?
-          Backend::Artifactory.new(options)
-        end
+                    Backend::Omnitruck.new(options)
+                  elsif options.for_artifactory?
+                    Backend::Artifactory.new(options)
+                  end
 
         backend.info
       end

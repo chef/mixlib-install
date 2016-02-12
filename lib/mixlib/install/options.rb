@@ -30,7 +30,7 @@ module Mixlib
       OMNITRUCK_CHANNELS = [:stable, :current]
       ARTIFACTORY_CHANNELS = [:unstable]
       ALL_SUPPORTED_CHANNELS = OMNITRUCK_CHANNELS + ARTIFACTORY_CHANNELS
-      SUPPORTED_PRODUCT_NAMES = %w[
+      SUPPORTED_PRODUCT_NAMES = %w{
         angry-omnibus-toolchain
         angrychef
         chef
@@ -38,7 +38,7 @@ module Mixlib
         delivery-cli
         omnibus-toolchain
         push-jobs-client
-      ]
+      }
       SUPPORTED_SHELL_TYPES = [:ps1, :sh]
       SUPPORTED_OPTIONS = [
         :architecture,
@@ -47,7 +47,7 @@ module Mixlib
         :platform_version,
         :product_name,
         :product_version,
-        :shell_type
+        :shell_type,
       ]
 
       def initialize(options)
@@ -122,7 +122,7 @@ Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}
       def validate_platform_info
         platform_opts = [platform, platform_version, architecture]
         if (platform_opts.any?(&:nil?)) &&
-            (platform_opts.any? { |opt| !opt.nil? })
+           (platform_opts.any? { |opt| !opt.nil? })
           <<-EOS
 platform, platform version, and architecture are all required when specifying Platform options.
           EOS

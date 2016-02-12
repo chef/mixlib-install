@@ -51,7 +51,7 @@ module Mixlib
               artifacts << ArtifactInfo.new(metadata.merge(
                 platform: p,
                 platform_version: pv,
-                architecture: m
+                architecture: m,
               ))
             end
           end
@@ -68,7 +68,7 @@ module Mixlib
           version: version,
           platform: platform,
           platform_version: platform_version,
-          architecture: architecture
+          architecture: architecture,
         }
       end
     end
