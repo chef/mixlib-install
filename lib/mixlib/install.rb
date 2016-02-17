@@ -37,8 +37,10 @@ module Mixlib
     #
     # Fetch artifact metadata information
     #
-    # @return [ArtifactInfo] fetched artifact data
-    #
+    # @return [Array<ArtifactInfo>] list of fetched artifact data for the configured
+    # channel, product name, and product version.
+    # @return [ArtifactInfo] fetched artifact data for the configured
+    # channel, product name, product version and platform info
     def artifact_info
       Backend.info(options)
     end
@@ -94,7 +96,9 @@ module Mixlib
     def upgrade_available?
       return true if current_version.nil?
 
-      available_ver = Mixlib::Versioning.parse(artifact_info.first.version)
+      artifact = artifact_info
+      artifact = artifact.first if artifact.is_a? Array
+      available_ver = Mixlib::Versioning.parse(artifact.version)
       current_ver = Mixlib::Versioning.parse(current_version)
       (available_ver > current_ver)
     end

@@ -119,6 +119,26 @@ context "Mixlib::Install" do
         expect(installer.upgrade_available?).to eq(true)
       end
     end
+
+    context "with specific platform options" do
+      let(:product_name) { "chefdk" }
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "14.04" }
+      let(:architecture) { "x86_64" }
+      let(:current_version) { nil }
+
+      it "should report upgrade available" do
+        installer = Mixlib::Install.new(
+          product_name: product_name,
+          channel: channel,
+          product_version: product_version,
+          platform: platform,
+          platform_version: platform_version,
+          architecture: architecture
+        )
+        expect(installer.upgrade_available?).to eq(true)
+      end
+    end
   end
 
   context "install_sh" do
