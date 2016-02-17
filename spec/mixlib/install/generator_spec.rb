@@ -27,7 +27,7 @@ context "Mixlib::Install::Generator" do
     {
       product_name: "chef",
       channel: channel,
-      product_version: product_version
+      product_version: product_version,
     }
   }
 
@@ -90,7 +90,7 @@ context "Mixlib::Install::Generator" do
           {
             platform: "windows",
             platform_version: "2012r2",
-            architecture: "x86_64"
+            architecture: "x86_64",
           }
         }
 

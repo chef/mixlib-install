@@ -44,7 +44,7 @@ module Mixlib
             ArtifactInfo.from_json(build,
                                    platform: options.platform,
                                    platform_version: options.platform_version,
-                                   architecture: options.architecture
+                                   architecture: options.architecture,
             )
           else
             builds = omnitruck_get("versions", v: options.product_version)

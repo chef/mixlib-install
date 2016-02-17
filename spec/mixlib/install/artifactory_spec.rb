@@ -25,7 +25,7 @@ context "Mixlib::Install::Backend::Artifactory", :unstable do
     {
       channel: :unstable,
       product_name: "chef",
-      product_version: :latest
+      product_version: :latest,
     }
   }
   let(:options) { Mixlib::Install::Options.new(opts) }
@@ -34,7 +34,7 @@ context "Mixlib::Install::Backend::Artifactory", :unstable do
 
   context "when setting invalid endpoint" do
     it "raises a ConnectionError" do
-      wrap_env("ARTIFACTORY_ENDPOINT" => "http://artifactory.example.com/") do
+      wrap_env("ARTIFACTORY_ENDPOINT" => "http://artifactory.example.archinstall/") do
         expect { artifactory.artifactory_query(query) }.to raise_error Mixlib::Install::Backend::Artifactory::ConnectionError
       end
     end

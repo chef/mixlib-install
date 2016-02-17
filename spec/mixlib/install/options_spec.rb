@@ -51,7 +51,7 @@ context "Mixlib::Install::Options" do
       {
         channel: channel,
         product_name: product_name,
-        product_version: product_version
+        product_version: product_version,
       }
     }
     let(:options) {}

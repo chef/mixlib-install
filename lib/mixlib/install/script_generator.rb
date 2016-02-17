@@ -55,7 +55,7 @@ module Mixlib
       attr_accessor :omnibus_url
       attr_accessor :install_msi_url
 
-      VALID_INSTALL_OPTS = %w[omnibus_url
+      VALID_INSTALL_OPTS = %w{omnibus_url
                               endpoint
                               http_proxy
                               https_proxy
@@ -66,7 +66,7 @@ module Mixlib
                               project
                               root
                               use_sudo
-                              sudo_command]
+                              sudo_command}
 
       def initialize(version, powershell = false, opts = {})
         @version = version || "latest"
@@ -82,20 +82,20 @@ module Mixlib
         @sudo_command = "sudo -E"
 
         @root = if powershell
-          "$env:systemdrive\\opscode\\chef"
-        else
-          "/opt/chef"
-        end
+                  "$env:systemdrive\\opscode\\chef"
+                else
+                  "/opt/chef"
+                end
 
         parse_opts(opts)
       end
 
       def install_command
         vars = if powershell
-          install_command_vars_for_powershell
-        else
-          install_command_vars_for_bourne
-        end
+                 install_command_vars_for_powershell
+               else
+                 install_command_vars_for_bourne
+               end
         shell_code_from_file(vars)
       end
 
@@ -107,7 +107,7 @@ module Mixlib
       # @return [String] shell variable lines
       # @api private
       def install_command_vars_for_bourne
-        flags = %w[latest true nightlies].include?(version) ? "" : "-v #{CGI.escape(version)}"
+        flags = %w{latest true nightlies}.include?(version) ? "" : "-v #{CGI.escape(version)}"
         flags << " " << "-n" if nightlies
         flags << " " << "-p" if prerelease
         flags << " " << install_flags if install_flags
@@ -118,7 +118,7 @@ module Mixlib
           shell_var("install_flags", flags.strip),
           shell_var("pretty_version", Util.pretty_version(version)),
           shell_var("sudo_sh", sudo("sh")),
-          shell_var("version", version)
+          shell_var("version", version),
         ].join("\n")
       end
 
@@ -132,7 +132,7 @@ module Mixlib
       def install_command_vars_for_powershell
         [
           shell_var("chef_omnibus_root", root),
-          shell_var("msi", "$env:TEMP\\chef-#{version}.msi")
+          shell_var("msi", "$env:TEMP\\chef-#{version}.msi"),
         ].tap { |vars|
           if install_msi_url
             vars << shell_var("chef_msi_url", install_msi_url)
@@ -147,7 +147,7 @@ module Mixlib
       def validate_opts!(opt)
         err_msg = ["#{opt} is not a valid option",
                    "valid options are #{VALID_INSTALL_OPTS.join(" ")}"].join(",")
-        fail ArgumentError, err_msg unless VALID_INSTALL_OPTS.include?(opt.to_s)
+        raise ArgumentError, err_msg unless VALID_INSTALL_OPTS.include?(opt.to_s)
       end
 
       def parse_opts(opts)
@@ -165,8 +165,8 @@ module Mixlib
       def shell_code_from_file(vars)
         fn = File.join(
           File.dirname(__FILE__),
-          %w[.. .. .. support],
-          "install_command"
+          %w{.. .. .. support},
+          "install_command",
         )
         Util.shell_code_from_file(vars, fn, powershell,
                                   http_proxy: http_proxy, https_proxy: https_proxy)
@@ -193,8 +193,8 @@ module Mixlib
 
       def windows_metadata_url
         base = if omnibus_url =~ %r{/install.sh$}
-          "#{File.dirname(omnibus_url)}/"
-        end
+                 "#{File.dirname(omnibus_url)}/"
+               end
 
         url = "#{base}#{endpoint}"
         url << "?p=windows&m=x86_64&pv=2008r2" # same package for all versions

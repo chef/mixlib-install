@@ -36,7 +36,7 @@ context "Mixlib::Install::Backend" do
       platform: platform,
       platform_version: platform_version,
       architecture: architecture,
-      shell_type: shell_type
+      shell_type: shell_type,
     ).artifact_info
   }
 
@@ -50,7 +50,7 @@ context "Mixlib::Install::Backend" do
     Mixlib::Install.new(
       channel: channel,
       product_name: "chef",
-      product_version: :latest
+      product_version: :latest,
     ).artifact_info.first.version
   end
 
@@ -171,7 +171,7 @@ context "Mixlib::Install::Backend" do
               url: "https://opscode-omnibus-packages.s3.amazonaws.com/mac_os_x/10.7/x86_64/chef-12.2.1-1.dmg",
               md5: "d00335944b2999d0511e6db30d1e71dc",
               sha256: "53034d6e1eea0028666caee43b99f43d2ca9dd24b260bc53ae5fad1075e83923",
-              version: "12.2.1"
+              version: "12.2.1",
             }
           }
 
@@ -183,7 +183,7 @@ context "Mixlib::Install::Backend" do
           let(:expected_info) {
             {
               url: "https://opscode-omnibus-packages.s3.amazonaws.com/mac_os_x/10.7/x86_64/chef-12.2",
-              version: "12.2"
+              version: "12.2",
             }
           }
 
@@ -195,7 +195,7 @@ context "Mixlib::Install::Backend" do
           let(:expected_info) {
             {
               url: "https://opscode-omnibus-packages.s3.amazonaws.com/mac_os_x/10.7/x86_64/chef-12",
-              version: "12"
+              version: "12",
             }
           }
 
@@ -257,7 +257,7 @@ context "Mixlib::Install::Backend" do
           let(:expected_info) {
             {
               url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/",
-              version: product_version
+              version: product_version,
             }
           }
 
@@ -269,7 +269,7 @@ context "Mixlib::Install::Backend" do
           let(:expected_info) {
             {
               url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/",
-              version: product_version
+              version: product_version,
             }
           }
 
@@ -282,7 +282,7 @@ context "Mixlib::Install::Backend" do
           let(:expected_info) {
             {
               url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64",
-              version: product_version
+              version: product_version,
             }
           }
 
@@ -294,7 +294,7 @@ context "Mixlib::Install::Backend" do
           let(:expected_info) {
             {
               url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64",
-              version: product_version
+              version: product_version,
             }
           }
 
@@ -351,7 +351,7 @@ context "Mixlib::Install::Backend" do
       let(:channel) { :unstable }
       let(:expected_protocol) { "http://" }
 
-      let(:picked_unstable_version)  { pick_version_for(:unstable) }
+      let(:picked_unstable_version) { pick_version_for(:unstable) }
 
       context "when p, pv and m are not present" do
         context "with an integration product version" do
@@ -373,7 +373,7 @@ context "Mixlib::Install::Backend" do
             let(:expected_info) {
               {
                 url: "http://artifactory.chef.co/omnibus-unstable-local/com/getchef/chef/#{product_version}/mac_os_x/10.9/chef-#{product_version}-1.dmg",
-                version: product_version
+                version: product_version,
               }
             }
 
@@ -397,7 +397,7 @@ context "Mixlib::Install::Backend" do
           let(:expected_info) {
             {
               url: "http://artifactory.chef.co/omnibus-unstable-local/com/getchef/chef/#{product_version}/windows/2012r2/chef-client-#{product_version}-1-x86.msi",
-              version: product_version
+              version: product_version,
             }
           }
 
@@ -408,7 +408,7 @@ context "Mixlib::Install::Backend" do
           end
         end
 
-        context "for latest version"  do
+        context "for latest version" do
           let(:product_version) { :latest }
           let(:expected_info) { {} }
           let(:expected_version) { /^\d\d.\d.\d\+[0-9]{14}$/ }
