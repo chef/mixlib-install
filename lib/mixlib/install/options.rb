@@ -122,7 +122,7 @@ Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}
       def validate_platform_info
         platform_opts = [platform, platform_version, architecture]
         if (platform_opts.any?(&:nil?)) &&
-           (platform_opts.any? { |opt| !opt.nil? })
+            (platform_opts.any? { |opt| !opt.nil? })
           <<-EOS
 platform, platform version, and architecture are all required when specifying Platform options.
           EOS
