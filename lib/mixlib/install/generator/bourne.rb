@@ -33,6 +33,10 @@ module Mixlib
           install_command.join("\n\n")
         end
 
+        def self.detect_platform_sh
+          get_script("platform_detection.sh")
+        end
+
         def self.script_base_path
           File.join(File.dirname(__FILE__), "bourne/scripts")
         end

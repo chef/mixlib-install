@@ -176,4 +176,43 @@ context "Mixlib::Install" do
     end
   end
 
+  context "self.detect_platform" do
+    let(:product_name) { "chef" }
+    let(:platform_info) { Mixlib::Install.detect_platform }
+
+    it "should return platform info" do
+      expect(platform_info.size).to eq 3
+      expect(installer.options.platform).to be_nil
+      expect(installer.options.platform_version).to be_nil
+      expect(installer.options.architecture).to be_nil
+    end
+  end
+
+  context "detect_platform" do
+    let(:product_name) { "chef" }
+
+    it "should set options" do
+      installer.detect_platform
+      expect(installer.options.platform).not_to be_nil
+      expect(installer.options.platform_version).not_to be_nil
+      expect(installer.options.architecture).not_to be_nil
+    end
+  end
+
+  context "detect_platform_sh" do
+    let(:script) { Mixlib::Install.detect_platform_sh }
+
+    it "should return platform_detection.sh" do
+      expect(script).to include('echo "$platform $platform_version $machine"')
+    end
+  end
+
+  context "detect_platform_ps1" do
+    let(:script) { Mixlib::Install.detect_platform_ps1 }
+
+    it "should return platform_detection.ps1" do
+      expect(script).to include('Write-Host "windows $platform_version $architecture"')
+    end
+  end
+
 end

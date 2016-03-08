@@ -55,16 +55,10 @@ function Get-ProjectMetadata {
   $platform = 'windows'
   Write-Verbose "Platform: $platform"
 
-  # TODO: No Win10 build endpoint yet
-  switch -regex ((get-wmiobject win32_operatingsystem).version) {
-    '10\.0\.\d+' {$platform_version = '2012r2'}
-    '6\.3\.\d+'  {$platform_version = '2012r2'}
-    '6\.2\.\d+'  {$platform_version = '2012'}
-    '6\.1\.\d+'  {$platform_version = '2008r2'}
-    '6\.0\.\d+'  {$platform_version = '2008'}
-  }
+  $platform_version = Get-PlatformVersion
   Write-Verbose "Platform Version: $platform_version"
 
+  # Custom architecture detection based on channel
   if ($architecture -eq 'auto') {
     if (((get-wmiobject win32_operatingsystem).osarchitecture -like '64-bit') -and ($channel -like 'current')) {
       $architecture = 'x86_64'

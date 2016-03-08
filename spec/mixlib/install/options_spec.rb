@@ -65,6 +65,13 @@ context "Mixlib::Install::Options" do
     context "for stable channel" do
       let(:channel) { :stable }
 
+      context "for setting missing platform options" do
+        it "raises InvalidOptions" do
+          installer = Mixlib::Install.new(base_options)
+          expect { installer.options.set_platform_info({ platform: "foo" }) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /platform, platform version, and architecture/)
+        end
+      end
+
       context "without platform version" do
         let(:options) { base_options.merge(platform: platform, architecture: "1") }
 
