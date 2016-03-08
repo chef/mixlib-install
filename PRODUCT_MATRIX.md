@@ -8,6 +8,7 @@
 | Chef Server High Availability addon | chef-ha |
 | Chef Cloud Marketplace addon | chef-marketplace |
 | Chef Server | chef-server |
+| Chef Server HA Provisioning for AWS | chef-server-ha-provisioning |
 | Chef Server Replication addon | chef-sync |
 | Chef Development Kit | chefdk |
 | Chef Compliance | compliance |

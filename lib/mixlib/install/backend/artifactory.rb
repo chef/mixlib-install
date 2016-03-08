@@ -94,7 +94,7 @@ Can not find any builds for #{options.product_name} in #{::Artifactory.endpoint}
           # it will run a high number of queries but it is fine because we
           # are using artifactory only for :unstable channel
           builds["buildsNumbers"].each do |build|
-            version = build["uri"].gsub("/", "")
+            version = build["uri"].delete("/")
             artifacts = artifactory_artifacts(version)
 
             return artifacts unless artifacts.empty?
@@ -148,7 +148,7 @@ items.find(
             platform:         artifact_map["omnibus.platform"],
             platform_version: artifact_map["omnibus.platform_version"],
             architecture:     artifact_map["omnibus.architecture"],
-            url:              artifact_map["downloadUri"],
+            url:              artifact_map["downloadUri"]
           )
         end
 
@@ -179,7 +179,7 @@ items.find(
           @client ||= ::Artifactory::Client.new(
             endpoint: endpoint,
             username: ENV["ARTIFACTORY_USERNAME"],
-            password: ENV["ARTIFACTORY_PASSWORD"],
+            password: ENV["ARTIFACTORY_PASSWORD"]
           )
         end
 

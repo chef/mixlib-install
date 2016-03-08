@@ -36,7 +36,7 @@ context "Mixlib::Install::Backend" do
       platform: platform,
       platform_version: platform_version,
       architecture: architecture,
-      shell_type: shell_type,
+      shell_type: shell_type
     ).artifact_info
   }
 
@@ -50,7 +50,7 @@ context "Mixlib::Install::Backend" do
     Mixlib::Install.new(
       channel: channel,
       product_name: "chef",
-      product_version: :latest,
+      product_version: :latest
     ).artifact_info.first.version
   end
 
@@ -115,9 +115,9 @@ context "Mixlib::Install::Backend" do
 
   shared_examples_for "the right artifact list info" do
     it "has the correct number of platforms" do
-      # Currently we have 8 platforms in stable and 7 platforms in current.
+      # Currently we have 7 platforms in stable and 6 platforms in current.
       # We can add more in the future
-      expect(info.map(&:platform).uniq.length).to be >= 7
+      expect(info.map(&:platform).uniq.length).to be >= 6
 
       info.each do |artifact_info|
         expect(artifact_info).to be_a(Mixlib::Install::ArtifactInfo)

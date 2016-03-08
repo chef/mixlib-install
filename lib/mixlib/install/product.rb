@@ -198,6 +198,11 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/opscode/chef-server.rb"
   end
 
+  product "chef-server-ha-provisioning" do
+    product_name "Chef Server HA Provisioning for AWS"
+    package_name "chef-server-ha-provisioning"
+  end
+
   product "chef-sync" do
     product_name "Chef Server Replication addon"
     package_name "chef-sync"

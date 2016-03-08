@@ -166,7 +166,7 @@ module Mixlib
         fn = File.join(
           File.dirname(__FILE__),
           %w{.. .. .. support},
-          "install_command",
+          "install_command"
         )
         Util.shell_code_from_file(vars, fn, powershell,
                                   http_proxy: http_proxy, https_proxy: https_proxy)

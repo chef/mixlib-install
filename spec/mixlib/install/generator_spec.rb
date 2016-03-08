@@ -68,7 +68,7 @@ context "Mixlib::Install::Generator" do
     context "sh shell type" do
       let(:add_options) {
         {
-          shell_type: :sh
+          shell_type: :sh,
         }
       }
 
@@ -100,7 +100,7 @@ context "Mixlib::Install::Generator" do
       context "when shell_type is set" do
         let(:add_options) {
           {
-            shell_type: :ps1
+            shell_type: :ps1,
           }
         }
 
