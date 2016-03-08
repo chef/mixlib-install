@@ -53,7 +53,7 @@ module Mixlib
       def initialize(options)
         @options = options
         @defaults = {
-          shell_type: :sh
+          shell_type: :sh,
         }
 
         validate!

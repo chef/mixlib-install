@@ -23,7 +23,7 @@ context "Mixlib::Install" do
     Mixlib::Install.new(
       product_name: product_name,
       channel: channel,
-      product_version: product_version,
+      product_version: product_version
     )
   end
 

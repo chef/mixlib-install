@@ -36,7 +36,7 @@ context "Mixlib::Install::Backend" do
       platform: platform,
       platform_version: platform_version,
       architecture: architecture,
-      shell_type: shell_type,
+      shell_type: shell_type
     ).artifact_info
   }
 
@@ -50,7 +50,7 @@ context "Mixlib::Install::Backend" do
     Mixlib::Install.new(
       channel: channel,
       product_name: "chef",
-      product_version: :latest,
+      product_version: :latest
     ).artifact_info.first.version
   end
 
