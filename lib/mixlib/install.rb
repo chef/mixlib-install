@@ -111,9 +111,9 @@ module Mixlib
     #
     def self.detect_platform
       platform_info = if RbConfig::CONFIG["host_os"] =~ /mswin|mingw/
-                        `#{self.detect_platform_ps1}`
+                        `#{self.detect_platform_ps1}`.split
                       else
-                        `#{self.detect_platform_sh}`
+                        `#{self.detect_platform_sh}`.split
                       end
 
       {
