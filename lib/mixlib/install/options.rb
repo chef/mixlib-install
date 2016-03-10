@@ -35,6 +35,7 @@ module Mixlib
         angrychef
         chef
         chefdk
+        chef-server
         delivery-cli
         omnibus-toolchain
         push-jobs-client
