@@ -104,6 +104,7 @@ module Mixlib
     #
     def detect_platform
       options.set_platform_info(self.class.detect_platform)
+      self
     end
 
     #
