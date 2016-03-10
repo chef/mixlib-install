@@ -100,6 +100,44 @@ module Mixlib
     end
 
     #
+    # Automatically set the platform options
+    #
+    def detect_platform
+      options.set_platform_info(self.class.detect_platform)
+    end
+
+    #
+    # Returns a Hash containing the platform info options
+    #
+    def self.detect_platform
+      platform_info = if RbConfig::CONFIG["host_os"] =~ /mswin|mingw/
+                        `#{self.detect_platform_ps1}`
+                      else
+                        `#{self.detect_platform_sh}`
+                      end
+
+      {
+        platform: platform_info[0],
+        platform_version: platform_info[1],
+        architecture: platform_info[2],
+      }
+    end
+
+    #
+    # Returns the platform_detection.sh script
+    #
+    def self.detect_platform_sh
+      Mixlib::Install::Generator::Bourne.detect_platform_sh
+    end
+
+    #
+    # Returns the platform_detection.ps1 script
+    #
+    def self.detect_platform_ps1
+      Mixlib::Install::Generator::PowerShell.detect_platform_ps1
+    end
+
+    #
     # Returns the install.sh script
     # Supported context parameters:
     # ------------------

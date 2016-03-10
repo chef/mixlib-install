@@ -160,6 +160,8 @@ if test "x$platform" = "xsolaris2"; then
   export PATH
 fi
 
+echo "$platform $platform_version $machine"
+
 ############
 # end of platform_detection.sh
 ############

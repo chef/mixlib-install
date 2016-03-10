@@ -1,3 +1,23 @@
+function Get-PlatformVersion {
+  switch -regex ((get-wmiobject win32_operatingsystem).version) {
+    '10\.0\.\d+' {$platform_version = '2012r2'}
+    '6\.3\.\d+'  {$platform_version = '2012r2'}
+    '6\.2\.\d+'  {$platform_version = '2012'}
+    '6\.1\.\d+'  {$platform_version = '2008r2'}
+    '6\.0\.\d+'  {$platform_version = '2008'}
+  }
+  return $platform_version
+}
+
+function Get-PlatformArchitecture {
+  if ((get-wmiobject win32_operatingsystem).osarchitecture -like '64-bit') {
+    $architecture = 'x86_64'
+  } else {
+    $architecture = 'i386'
+  }
+  return $architecture
+}
+
 function New-Uri {
   param ($baseuri, $newuri)
 

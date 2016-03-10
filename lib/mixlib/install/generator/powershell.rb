@@ -32,6 +32,13 @@ module Mixlib
           install_command.join("\n\n")
         end
 
+        def self.detect_platform_ps1
+          detect_platform_command = []
+          detect_platform_command << get_script("helpers.ps1")
+          detect_platform_command << get_script("platform_detection.ps1")
+          detect_platform_command.join("\n\n")
+        end
+
         def self.script_base_path
           File.join(File.dirname(__FILE__), "powershell/scripts")
         end

@@ -99,6 +99,19 @@ module Mixlib
         product_version.to_sym == :latest
       end
 
+      #
+      # Set the platform info on the instance
+      # info [Hash]
+      #  Hash with keys :platform, :platform_version and :architecture
+      #
+      def set_platform_info(info)
+        options[:platform] = info[:platform]
+        options[:platform_version] = info[:platform_version]
+        options[:architecture] = info[:architecture]
+
+        validate_options!
+      end
+
       private
 
       def validate_product_names
