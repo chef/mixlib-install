@@ -19,17 +19,16 @@
 require "net/http"
 require "json"
 require "mixlib/install/artifact_info"
+require "mixlib/install/backend/base"
 
 module Mixlib
   class Install
     class Backend
-      class Omnitruck
+      class Omnitruck < Base
         ENDPOINT = "https://omnitruck.chef.io/".freeze
 
-        attr_accessor :options
-
-        def initialize(options)
-          @options = options
+        def endpoint
+          @endpoint ||= ENV.fetch("OMNITRUCK_ENDPOINT", ENDPOINT)
         end
 
         def info
@@ -55,7 +54,7 @@ module Mixlib
         private
 
         def omnitruck_get(resource, parameters)
-          uri = URI.parse(ENDPOINT)
+          uri = URI.parse(endpoint)
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
 

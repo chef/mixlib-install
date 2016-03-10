@@ -20,22 +20,17 @@ require "net/http"
 require "json"
 require "mixlib/install/artifact_info"
 require "artifactory"
+require "mixlib/install/backend/base"
 
 module Mixlib
   class Install
     class Backend
-      class Artifactory
+      class Artifactory < Base
         class ConnectionError < StandardError; end
         class AuthenticationError < StandardError; end
         class NoArtifactsError < StandardError; end
 
         ENDPOINT = "http://artifactory.chef.co".freeze
-
-        attr_accessor :options
-
-        def initialize(options)
-          @options = options
-        end
 
         # Create filtered list of artifacts
         #
@@ -109,13 +104,14 @@ Can not find any builds for #{options.product_name} in #{::Artifactory.endpoint}
         #
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         def artifactory_artifacts(version)
-          results = artifactory_query(<<-QUERY)
+          results = artifactory_query(<<-QUERY
 items.find(
   {"repo": "omnibus-#{options.channel}-local"},
   {"@omnibus.project": "#{options.product_name}"},
   {"@omnibus.version": "#{version}"}
 ).include("repo", "path", "name", "property")
           QUERY
+          )
 
           # Merge artifactory properties and downloadUri to a flat Hash
           results.collect! do |result|
@@ -191,16 +187,16 @@ items.find(
           begin
             results = yield
           rescue Errno::ETIMEDOUT, ::Artifactory::Error::ConnectionError
-            raise ConnectionError, <<-EOS
-Artifactory endpoint '#{::Artifactory.endpoint}' is unreachable. Check that
+            raise ConnectionError, <<-MSG
+Artifactory endpoint '#{endpoint}' is unreachable. Check that
 the endpoint is correct and there is an open connection to Chef's private network.
-            EOS
+            MSG
           rescue ::Artifactory::Error::HTTPError => e
             if e.code == 401 && e.message =~ /Bad credentials/
-              raise AuthenticationError, <<-EOS
+              raise AuthenticationError, <<-MSG
 Artifactory server denied credentials. Verify ARTIFACTORY_USERNAME and
 ARTIFACTORY_PASSWORD environment variables are configured properly.
-              EOS
+              MSG
             else
               raise e
             end

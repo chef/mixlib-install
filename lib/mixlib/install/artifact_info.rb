@@ -19,19 +19,21 @@
 module Mixlib
   class Install
     class ArtifactInfo
-      attr_accessor :url
-      attr_accessor :md5
-      attr_accessor :sha256
-      attr_accessor :version
+      attr_reader :url
+      attr_reader :md5
+      attr_reader :sha256
+      attr_reader :sha1
+      attr_reader :version
 
-      attr_accessor :platform
-      attr_accessor :platform_version
-      attr_accessor :architecture
+      attr_reader :platform
+      attr_reader :platform_version
+      attr_reader :architecture
 
       def initialize(data)
         @url = data[:url]
         @md5 = data[:md5]
         @sha256 = data[:sha256]
+        @sha1 = data[:sha1]
         @version = data[:version]
         @platform = data[:platform]
         @platform_version = data[:platform_version]
@@ -65,6 +67,7 @@ module Mixlib
           url: url,
           md5: md5,
           sha256: sha256,
+          sha1: sha1,
           version: version,
           platform: platform,
           platform_version: platform_version,
