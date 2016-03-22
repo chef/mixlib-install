@@ -66,7 +66,6 @@ module Mixlib
 
         errors << validate_product_names
         errors << validate_channels
-        errors << validate_platform_info
         errors << validate_shell_type
 
         unless errors.compact.empty?
@@ -135,16 +134,6 @@ Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}
           <<-EOS
 Unknown channel #{channel}.
 Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}
-          EOS
-        end
-      end
-
-      def validate_platform_info
-        platform_opts = [platform, platform_version, architecture]
-        if (platform_opts.any?(&:nil?)) &&
-            (platform_opts.any? { |opt| !opt.nil? })
-          <<-EOS
-platform, platform version, and architecture are all required when specifying Platform options.
           EOS
         end
       end
