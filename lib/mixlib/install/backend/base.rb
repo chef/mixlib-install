@@ -1,6 +1,6 @@
 #
 # Author:: Patrick Wright (<patrick@chef.io>)
-# Copyright:: Copyright (c) 2015 Chef, Inc.
+# Copyright:: Copyright (c) 2016 Chef, Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,20 +16,23 @@
 # limitations under the License.
 #
 
-require "mixlib/install/backend/omnitruck"
-require "mixlib/install/backend/artifactory"
-
 module Mixlib
   class Install
     class Backend
-      def self.info(options)
-        backend = if options.for_artifactory?
-                    Backend::Artifactory.new(options)
-                  else
-                    Backend::Omnitruck.new(options)
-                  end
+      class Base
+        attr_reader :options
 
-        backend.info
+        def initialize(options)
+          @options = options
+        end
+
+        def info
+          raise "Must implement info method that returns ArtifactInfo or Array<ArtifactInfo>"
+        end
+
+        def endpoint
+          raise "Must implement endpoint method that returns endpoint String"
+        end
       end
     end
   end

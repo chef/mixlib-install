@@ -25,7 +25,6 @@ module Mixlib
       class ArtifactoryCredentialsNotFound < StandardError; end
 
       attr_reader :options
-      attr_reader :defaults
 
       OMNITRUCK_CHANNELS = [:stable, :current]
       ARTIFACTORY_CHANNELS = [:unstable]
@@ -53,9 +52,6 @@ module Mixlib
 
       def initialize(options)
         @options = options
-        @defaults = {
-          shell_type: :sh,
-        }
 
         validate!
       end
@@ -80,12 +76,16 @@ module Mixlib
 
       SUPPORTED_OPTIONS.each do |option|
         define_method option do
-          options[option] || options[option.to_s] || defaults[option]
+          options[option] || options[option.to_s] || default_options[option]
         end
       end
 
       def for_artifactory?
         ARTIFACTORY_CHANNELS.include?(channel)
+      end
+
+      def for_bintray?
+        [:stable, :current].include?(channel)
       end
 
       def for_omnitruck?
@@ -114,6 +114,12 @@ module Mixlib
       end
 
       private
+
+      def default_options
+        {
+          shell_type: :sh,
+        }
+      end
 
       def validate_product_names
         unless SUPPORTED_PRODUCT_NAMES.include? product_name

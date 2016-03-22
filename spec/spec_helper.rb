@@ -1,13 +1,20 @@
+# load lib path
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
+# load version manifest support path
 VERSION_MANIFEST_DIR = File.expand_path("../support/version_manifests", __FILE__)
 
-RSpec.configure do |conf|
-  conf.filter_run focus: true
-  conf.filter_run_excluding unstable: true
-  conf.run_all_when_everything_filtered = true
+# load Bintray Sinatra server class
+require_relative "support/bintray_server"
+# Set local Bintray server endpoint
+ENV["BINTRAY_ENDPOINT"] = "http://0.0.0.0:4567/api/v1"
 
-  conf.expect_with :rspec do |c|
+RSpec.configure do |config|
+  config.filter_run focus: true
+  config.filter_run_excluding unstable: true
+  config.run_all_when_everything_filtered = true
+
+  config.expect_with :rspec do |c|
     c.syntax = :expect
   end
 end
