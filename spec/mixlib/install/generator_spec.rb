@@ -81,7 +81,6 @@ context "Mixlib::Install::Generator" do
           expect(install_script).to be_a(String)
           expect(install_script).to start_with("new-module -name Omnitruck -scriptblock")
           expect(install_script).to include("set-alias install -value Install-Project")
-          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
         end
       end
 
@@ -95,6 +94,11 @@ context "Mixlib::Install::Generator" do
         }
 
         it_behaves_like "the correct ps1 script"
+
+        it "adds an architecture param" do
+          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]} -architecture #{options[:architecture]}\n/)
+        end
+
       end
 
       context "when shell_type is set" do
@@ -105,6 +109,10 @@ context "Mixlib::Install::Generator" do
         }
 
         it_behaves_like "the correct ps1 script"
+
+        it "adds ommits the architecture param" do
+          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
+        end
       end
     end
   end

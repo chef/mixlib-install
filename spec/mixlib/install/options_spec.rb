@@ -54,48 +54,6 @@ context "Mixlib::Install::Options" do
         product_version: product_version,
       }
     }
-    let(:options) {}
-
-    shared_examples_for "invalid platform options" do
-      it "raises InvalidOptions" do
-        expect { Mixlib::Install.new(options) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /platform, platform version, and architecture/)
-      end
-    end
-
-    context "for stable channel" do
-      let(:channel) { :stable }
-
-      context "for setting missing platform options" do
-        it "raises InvalidOptions" do
-          installer = Mixlib::Install.new(base_options)
-          expect { installer.options.set_platform_info({ platform: "foo" }) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /platform, platform version, and architecture/)
-        end
-      end
-
-      context "without platform version" do
-        let(:options) { base_options.merge(platform: platform, architecture: "1") }
-
-        it_behaves_like "invalid platform options"
-      end
-
-      context "without architecture" do
-        let(:options) { base_options.merge(platform: platform, platform_version: "1") }
-
-        it_behaves_like "invalid platform options"
-      end
-
-      context "without platform" do
-        let(:options) { base_options.merge(architecture: "1", platform_version: "1") }
-
-        it_behaves_like "invalid platform options"
-      end
-
-      context "without any platform info" do
-        it "does not raise an error" do
-          expect { Mixlib::Install.new(base_options) }.to_not raise_error
-        end
-      end
-    end
 
     context "for unstable channel", :unstable do
       let(:channel) { :unstable }

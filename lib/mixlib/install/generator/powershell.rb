@@ -89,11 +89,11 @@ module Mixlib
         end
 
         def render_command
-          <<EOS
-install -project #{options.product_name} \
--version #{product_version} \
--channel #{options.channel}
-EOS
+          cmd = "install -project #{options.product_name}"
+          cmd << " -version #{product_version}"
+          cmd << " -channel #{options.channel}"
+          cmd << " -architecture #{options.architecture}" if options.architecture
+          cmd << "\n"
         end
       end
     end
