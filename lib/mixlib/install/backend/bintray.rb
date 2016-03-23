@@ -16,7 +16,9 @@
 # limitations under the License.
 #
 
+require "json"
 require "mixlib/install/backend/base"
+require "mixlib/install/artifact_info"
 
 #
 # Add method to Array class to support
@@ -71,6 +73,30 @@ module Mixlib
           artifacts.length == 1 ? artifacts.first : artifacts
         end
 
+        #
+        # Makes a GET request to bintray for the given path.
+        #
+        # @param [String] path
+        #   "/api/v1/packages/chef" is prepended to the given path.
+        #
+        # @return [String] JSON parsed string of the bintray response
+        #
+        def bintray_get(path)
+          uri = URI.parse(endpoint)
+          http = Net::HTTP.new(uri.host, uri.port)
+          http.use_ssl = (uri.scheme == "https")
+
+          full_path = File.join(uri.path, "packages/chef", path)
+          request = Net::HTTP::Get.new(full_path)
+          request.basic_auth(BINTRAY_USERNAME, BINTRAY_PASSWORD)
+
+          res = http.request(request)
+
+          # Raise if response is not 2XX
+          res.value
+          JSON.parse(res.body)
+        end
+
         private
 
         #
@@ -79,7 +105,7 @@ module Mixlib
         # @return [String] latest version value
         #
         def latest_version
-          result = bintray_get("versions/_latest")
+          result = bintray_get("#{options.channel}/#{options.product_name}/versions/_latest")
           result["name"]
         end
 
@@ -90,7 +116,7 @@ module Mixlib
         #
         def bintray_artifacts
           version = options.product_version == :latest ? latest_version : options.product_version
-          results = bintray_get("versions/#{version}/files")
+          results = bintray_get("#{options.channel}/#{options.product_name}/versions/#{version}/files")
 
           # Delete .asc files
           results.each { |r| results.delete(r) if r["name"].end_with?(".asc") }
@@ -152,14 +178,16 @@ module Mixlib
           filename = artifact_map["name"]
           architecture = if %w{ x86_64 amd64 x64 }.fuzzy_include?(filename)
                            "x86_64"
-                         elsif %w{ i386 x86 }.fuzzy_include?(filename)
+                         elsif %w{ i386 x86 i86pc i686 }.fuzzy_include?(filename)
                            "i386"
-                         elsif %w{ powerpc }.fuzzy_include?(filename)
+                         elsif %w{ powerpc sun4u solaris2.5.10 solaris2.5.9 }.fuzzy_include?(filename)
                            "powerpc"
-                         elsif %w{ sparc }.fuzzy_include?(filename)
+                         elsif %w{ sparc sun4v }.fuzzy_include?(filename)
                            "sparc"
                          elsif platform == "mac_os_x"
                            "x86_64"
+                         elsif %w{ msi }.fuzzy_include?(filename)
+                           "i386"
                          else
                            raise UnknownArchitecture,
                                  "architecture can not be determined for '#{filename}'"
@@ -172,21 +200,6 @@ module Mixlib
           }
         end
 
-        def bintray_get(resource)
-          uri = URI.parse(endpoint)
-          http = Net::HTTP.new(uri.host, uri.port)
-          http.use_ssl = (uri.scheme == "https")
-
-          path = "#{uri.path}/packages/chef/#{options.channel}/#{options.product_name}/#{resource}"
-          request = Net::HTTP::Get.new(path)
-          request.basic_auth(BINTRAY_USERNAME, BINTRAY_PASSWORD)
-
-          res = http.request(request)
-
-          # Raise if response is not 2XX
-          res.value
-          JSON.parse(res.body)
-        end
       end
     end
   end
