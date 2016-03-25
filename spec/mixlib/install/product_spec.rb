@@ -105,11 +105,29 @@ context "PRODUCT_MATRIX" do
     PRODUCT_MATRIX.lookup(product_name, version).config_file
   end
 
-  CHEF_PRODUCTS = ["chef", "chefdk", "chef-server", "manage", "chef-ha",
-                   "reporting", "supermarket", "chef-marketplace", "chef-sync",
-                   "delivery", "delivery-cli", "analytics", "compliance",
-                   "push-server", "push-client", "private-chef", "chef-backend",
-                   "omnibus-toolchain", "angrychef", "angry-omnibus-toolchain"]
+  CHEF_PRODUCTS = %w{
+    analytics
+    angry-omnibus-toolchain
+    angrychef
+    chef
+    chef-backend
+    chef-server
+    chef-server-ha-provisioning
+    chefdk
+    compliance
+    delivery
+    delivery-cli
+    ha
+    manage
+    marketplace
+    omnibus-toolchain
+    private-chef
+    push-jobs-client
+    push-jobs-server
+    reporting
+    supermarket
+    sync
+  }
 
   it "has entries for all #{CHEF_PRODUCTS.length} products" do
     CHEF_PRODUCTS.each do |p|
@@ -201,8 +219,8 @@ context "PRODUCT_MATRIX" do
     end
   end
 
-  context "for push-server" do
-    let(:product_name) { "push-server" }
+  context "for push-jobs-server" do
+    let(:product_name) { "push-jobs-server" }
 
     context "for latest" do
       let(:version) { :latest }
@@ -229,8 +247,8 @@ context "PRODUCT_MATRIX" do
     end
   end
 
-  context "for push-client" do
-    let(:product_name) { "push-client" }
+  context "for push-jobs-client" do
+    let(:product_name) { "push-jobs-client" }
 
     context "for version > 1.3.0" do
       let(:version) { "1.3.5" }
