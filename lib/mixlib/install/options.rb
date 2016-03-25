@@ -16,6 +16,7 @@
 # limitations under the License.
 #
 
+require "mixlib/install/product"
 require "mixlib/versioning"
 
 module Mixlib
@@ -29,16 +30,7 @@ module Mixlib
       OMNITRUCK_CHANNELS = [:stable, :current]
       ARTIFACTORY_CHANNELS = [:unstable]
       ALL_SUPPORTED_CHANNELS = OMNITRUCK_CHANNELS + ARTIFACTORY_CHANNELS
-      SUPPORTED_PRODUCT_NAMES = %w{
-        angry-omnibus-toolchain
-        angrychef
-        chef
-        chefdk
-        chef-server
-        delivery-cli
-        omnibus-toolchain
-        push-jobs-client
-      }
+      SUPPORTED_PRODUCT_NAMES = PRODUCT_MATRIX.products
       SUPPORTED_SHELL_TYPES = [:ps1, :sh]
       SUPPORTED_OPTIONS = [
         :architecture,
