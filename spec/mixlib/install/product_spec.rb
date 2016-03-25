@@ -107,7 +107,7 @@ context "PRODUCT_MATRIX" do
 
   CHEF_PRODUCTS = ["chef", "chefdk", "chef-server", "manage", "chef-ha",
                    "reporting", "supermarket", "chef-marketplace", "chef-sync",
-                   "delivery", "delivery-cli", "analytics", "compliance",
+                   "delivery", "delivery-cli", "analytics", "chef-compliance",
                    "push-server", "push-client", "private-chef", "chef-backend",
                    "omnibus-toolchain", "angrychef", "angry-omnibus-toolchain"]
 

@@ -215,7 +215,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "chefdk"
   end
 
-  product "compliance" do
+  product "chef-compliance" do
     product_name "Chef Compliance"
     package_name "chef-compliance"
     ctl_command "chef-compliance-ctl"

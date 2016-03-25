@@ -35,6 +35,7 @@ module Mixlib
         chef
         chefdk
         chef-server
+        chef-compliance
         delivery-cli
         omnibus-toolchain
         push-jobs-client
