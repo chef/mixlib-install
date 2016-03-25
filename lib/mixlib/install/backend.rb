@@ -18,6 +18,7 @@
 
 require "mixlib/install/backend/omnitruck"
 require "mixlib/install/backend/artifactory"
+require "mixlib/install/backend/bintray"
 
 module Mixlib
   class Install
