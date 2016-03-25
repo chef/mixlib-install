@@ -17,6 +17,7 @@
 #
 
 require "spec_helper"
+require "mixlib/install/options"
 require "mixlib/install/backend/bintray"
 
 context "Mixlib::Install::Backend::Bintray" do
@@ -105,4 +106,49 @@ context "Mixlib::Install::Backend::Bintray" do
       end
     end
   end
+
+  context "architecture extraction" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    it "extracts the architecture from file name correctly" do
+      {
+        "x86_64" => [
+          "chef_12.8.1-1_amd64.deb",
+          "chef_12.8.1-1_x64.deb",
+          "chef_12.8.1-1_x86_64.deb",
+          "chef_12.8.1-1.dmg",
+          "chef_12.8.1-1.sh",
+        ],
+        "i386" => [
+          "chef_12.8.1-1_i386.deb",
+          "chef_12.8.1-1_i686.deb",
+          "chef_12.8.1-1_x86.deb",
+          "chef_12.8.1-1_i86pc.deb",
+          "chef_12.8.1-1.msi",
+          "chef-11.8.2-1.solaris2.5.10.solaris",
+        ],
+        "powerpc" => [
+          "chef-12.8.1-1.powerpc.bff",
+        ],
+        "sparc" => [
+          "chef-12.8.1-1.sparc.solaris",
+          "chef-12.8.1-1.sun4u.solaris",
+          "chef-12.8.1-1.sun4v.solaris",
+          "chef-11.8.2-1.solaris2.5.9.solaris",
+        ],
+        "ppc64" => [
+          "chef-12.8.1-1.ppc64.bff",
+        ],
+        "ppc64le" => [
+          "chef-12.8.1-1.ppc64le.bff",
+        ],
+      }.each do |arch, filenames|
+        filenames.each do |filename|
+          expect(bintray.parse_architecture_from_file_name(filename)).to eq(arch)
+        end
+      end
+    end
+  end
+
 end
