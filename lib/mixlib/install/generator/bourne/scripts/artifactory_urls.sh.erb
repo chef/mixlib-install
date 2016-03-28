@@ -12,7 +12,6 @@
 # Outputs:
 # $download_url:
 # $sha256:
-# $md5:
 ############
 
 <% artifacts.each do |artifact| %>
@@ -20,7 +19,6 @@
   mkdir -p $artifact_info_dir
   touch "$artifact_info_dir/artifact_info"
   echo "url <%= artifact.url%>" >> "$artifact_info_dir/artifact_info"
-  echo "md5 <%= artifact.md5%>" >> "$artifact_info_dir/artifact_info"
   echo "sha256 <%= artifact.sha256%>" >> "$artifact_info_dir/artifact_info"
 <% end %>
 
@@ -28,4 +26,3 @@ artifact_info_for_platform="$tmp_dir/artifact_info/$platform/$platform_version/$
 
 download_url=`awk '$1 == "url" { print $2 }' "$artifact_info_for_platform"`
 sha256=`awk '$1 == "sha256" { print $2 }' "$artifact_info_for_platform"`
-md5=`awk '$1 == "md5" { print $2 }' "$artifact_info_for_platform"`
