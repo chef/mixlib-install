@@ -172,19 +172,6 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/chef-backend/chef-backend.rb"
   end
 
-  product "chef-ha" do
-    product_name "Chef Server High Availability addon"
-    package_name "chef-ha"
-    config_file "/etc/opscode/chef-server.rb"
-  end
-
-  product "chef-marketplace" do
-    product_name "Chef Cloud Marketplace addon"
-    package_name "chef-marketplace"
-    ctl_command "chef-marketplace-ctl"
-    config_file "/etc/chef-marketplace/marketplace.rb"
-  end
-
   product "chef-server" do
     product_name "Chef Server"
     package_name do |v|
@@ -201,13 +188,6 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   product "chef-server-ha-provisioning" do
     product_name "Chef Server HA Provisioning for AWS"
     package_name "chef-server-ha-provisioning"
-  end
-
-  product "chef-sync" do
-    product_name "Chef Server Replication addon"
-    package_name "chef-sync"
-    ctl_command "chef-sync-ctl"
-    config_file "/etc/chef-sync/chef-sync.rb"
   end
 
   product "chefdk" do
@@ -234,6 +214,12 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "delivery-cli"
   end
 
+  product "ha" do
+    product_name "Chef Server High Availability addon"
+    package_name "chef-ha"
+    config_file "/etc/opscode/chef-server.rb"
+  end
+
   product "manage" do
     product_name "Management Console"
     package_name do |v|
@@ -251,6 +237,13 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     end
   end
 
+  product "marketplace" do
+    product_name "Chef Cloud Marketplace addon"
+    package_name "chef-marketplace"
+    ctl_command "chef-marketplace-ctl"
+    config_file "/etc/chef-marketplace/marketplace.rb"
+  end
+
   product "omnibus-toolchain" do
     product_name "Omnibus Toolchain"
     package_name "omnibus-toolchain"
@@ -263,14 +256,14 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/opscode/private-chef.rb"
   end
 
-  product "push-client" do
+  product "push-jobs-client" do
     product_name "Chef Push Server"
     package_name do |v|
       v < version_for("1.3.0") ? "opscode-push-jobs-client" : "push-jobs-client"
     end
   end
 
-  product "push-server" do
+  product "push-jobs-server" do
     product_name "Chef Push Server"
     package_name "opscode-push-jobs-server"
     ctl_command "opscode-push-jobs-server-ctl"
@@ -289,5 +282,12 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "supermarket"
     ctl_command "supermarket-ctl"
     config_file "/etc/supermarket/supermarket.json"
+  end
+
+  product "sync" do
+    product_name "Chef Server Replication addon"
+    package_name "chef-sync"
+    ctl_command "chef-sync-ctl"
+    config_file "/etc/chef-sync/chef-sync.rb"
   end
 end
