@@ -10,7 +10,7 @@
     "zlib": {
       "locked_version": "1.2.8",
       "locked_source": {
-        "md5": "44d667c142d7cda120332623eab69f40",
+        "sha1": "44d667c142d7cda120332623eab69f40",
         "url": "http://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz"
       },
       "source_type": "url",
@@ -19,7 +19,7 @@
     "ncurses": {
       "locked_version": "5.9",
       "locked_source": {
-        "md5": "8cb9c412e5f2d96bc6f459aa8c6282a1",
+        "sha1": "8cb9c412e5f2d96bc6f459aa8c6282a1",
         "url": "http://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz"
       },
       "source_type": "url",
@@ -28,7 +28,7 @@
     "libedit": {
       "locked_version": "20120601-3.0",
       "locked_source": {
-        "md5": "e50f6a7afb4de00c81650f7b1a0f5aea",
+        "sha1": "e50f6a7afb4de00c81650f7b1a0f5aea",
         "url": "http://www.thrysoee.dk/editline/libedit-20120601-3.0.tar.gz"
       },
       "source_type": "url",
@@ -37,7 +37,7 @@
     "cacerts": {
       "locked_version": "2015.09.02",
       "locked_source": {
-        "md5": "3e0e6f302bd4f5b94040b8bcee0ffe15",
+        "sha1": "3e0e6f302bd4f5b94040b8bcee0ffe15",
         "url": "http://curl.haxx.se/ca/cacert.pem"
       },
       "source_type": "url",
@@ -47,7 +47,7 @@
       "locked_version": "7.0.25",
       "locked_source": {
         "url": "http://xorg.freedesktop.org/releases/individual/proto/xproto-7.0.25.tar.gz",
-        "md5": "a47db46cb117805bd6947aa5928a7436"
+        "sha1": "a47db46cb117805bd6947aa5928a7436"
       },
       "source_type": "url",
       "described_version": "7.0.25"
@@ -56,7 +56,7 @@
       "locked_version": "1.18.0",
       "locked_source": {
         "url": "http://xorg.freedesktop.org/releases/individual/util/util-macros-1.18.0.tar.gz",
-        "md5": "fd0ba21b3179703c071bbb4c3e5fb0f4"
+        "sha1": "fd0ba21b3179703c071bbb4c3e5fb0f4"
       },
       "source_type": "url",
       "described_version": "1.18.0"
@@ -65,7 +65,7 @@
       "locked_version": "1.14",
       "locked_source": {
         "url": "http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz",
-        "md5": "e34509b1623cec449dfeb73d7ce9c6c6"
+        "sha1": "e34509b1623cec449dfeb73d7ce9c6c6"
       },
       "source_type": "url",
       "described_version": "1.14"
@@ -73,7 +73,7 @@
     "pkg-config": {
       "locked_version": "0.28",
       "locked_source": {
-        "md5": "aa3c86e67551adc3ac865160e34a2a0d",
+        "sha1": "aa3c86e67551adc3ac865160e34a2a0d",
         "url": "http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz"
       },
       "source_type": "url",
@@ -83,7 +83,7 @@
       "locked_version": "1.0.5",
       "locked_source": {
         "url": "http://xorg.freedesktop.org/releases/individual/util/makedepend-1.0.5.tar.gz",
-        "md5": "efb2d7c7e22840947863efaedc175747"
+        "sha1": "efb2d7c7e22840947863efaedc175747"
       },
       "source_type": "url",
       "described_version": "1.0.5"
@@ -92,7 +92,7 @@
       "locked_version": "1.0.1p",
       "locked_source": {
         "url": "https://www.openssl.org/source/openssl-1.0.1p.tar.gz",
-        "md5": "7563e92327199e0067ccd0f79f436976"
+        "sha1": "7563e92327199e0067ccd0f79f436976"
       },
       "source_type": "url",
       "described_version": "1.0.1p"
@@ -101,7 +101,7 @@
       "locked_version": "0.1.6",
       "locked_source": {
         "url": "http://pyyaml.org/download/libyaml/yaml-0.1.6.tar.gz",
-        "md5": "5fe00cda18ca5daeb43762b80c38e06e"
+        "sha1": "5fe00cda18ca5daeb43762b80c38e06e"
       },
       "source_type": "url",
       "described_version": "0.1.6"
@@ -109,7 +109,7 @@
     "libtool": {
       "locked_version": "2.4",
       "locked_source": {
-        "md5": "b32b04148ecdd7344abc6fe8bd1bb021",
+        "sha1": "b32b04148ecdd7344abc6fe8bd1bb021",
         "url": "http://ftp.gnu.org/gnu/libtool/libtool-2.4.tar.gz"
       },
       "source_type": "url",
@@ -118,7 +118,7 @@
     "libffi": {
       "locked_version": "3.2.1",
       "locked_source": {
-        "md5": "83b89587607e3eb65c70d361f13bab43",
+        "sha1": "83b89587607e3eb65c70d361f13bab43",
         "url": "ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz"
       },
       "source_type": "url",
@@ -127,7 +127,7 @@
     "gdbm": {
       "locked_version": "1.9.1",
       "locked_source": {
-        "md5": "59f6e4c4193cb875964ffbe8aa384b58",
+        "sha1": "59f6e4c4193cb875964ffbe8aa384b58",
         "url": "http://ftp.gnu.org/gnu/gdbm/gdbm-1.9.1.tar.gz"
       },
       "source_type": "url",
@@ -136,7 +136,7 @@
     "ruby": {
       "locked_version": "2.1.6",
       "locked_source": {
-        "md5": "6e5564364be085c45576787b48eeb75f",
+        "sha1": "6e5564364be085c45576787b48eeb75f",
         "url": "http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.6.tar.gz"
       },
       "source_type": "url",
@@ -146,7 +146,7 @@
       "locked_version": "2.4.8",
       "locked_source": {
         "git": "https://github.com/rubygems/rubygems.git",
-        "md5": "dc77b51449dffe5b31776bff826bf559",
+        "sha1": "dc77b51449dffe5b31776bff826bf559",
         "url": "http://production.cf.rubygems.org/rubygems/rubygems-2.4.8.tgz"
       },
       "source_type": "url",

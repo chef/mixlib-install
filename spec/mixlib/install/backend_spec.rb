@@ -76,11 +76,11 @@ context "Mixlib::Install::Backend" do
       end
     end
 
-    it "gives the right md5 artifact info" do
-      if !expected_info.key?(:md5)
-        expect(info.md5).to match(/^[0-9a-f]{32}$/)
+    it "gives the right sha1 artifact info" do
+      if !expected_info.key?(:sha1)
+        expect(info.sha1).to match(/^[0-9a-f]{40}$/)
       else
-        expect(info.md5).to match expected_info[:md5] # match or eq
+        expect(info.sha1).to match expected_info[:sha1] # match or eq
       end
     end
 
@@ -146,9 +146,9 @@ context "Mixlib::Install::Backend" do
       end
     end
 
-    it "has correctly formed md5 for artifacts" do
+    it "has correctly formed sha1 for artifacts" do
       info.each do |artifact_info|
-        expect(artifact_info.md5).to match(/^[0-9a-f]{32}$/)
+        expect(artifact_info.sha1).to match(/^[0-9a-f]{40}$/)
       end
     end
   end
@@ -168,8 +168,8 @@ context "Mixlib::Install::Backend" do
           let(:product_version) { "12.2.1" }
           let(:expected_info) {
             {
-              url: "https://opscode-omnibus-packages.s3.amazonaws.com/mac_os_x/10.7/x86_64/chef-12.2.1-1.dmg",
-              md5: "d00335944b2999d0511e6db30d1e71dc",
+              url: "https://packages.chef.io/stable/mac_os_x/10.7/chef-12.2.1-1.dmg",
+              sha1: "57e1b5ef88d0faced5fa68f548d9d827297793d0",
               sha256: "53034d6e1eea0028666caee43b99f43d2ca9dd24b260bc53ae5fad1075e83923",
               version: "12.2.1",
             }
@@ -182,7 +182,7 @@ context "Mixlib::Install::Backend" do
           let(:product_version) { "12.2" }
           let(:expected_info) {
             {
-              url: "https://opscode-omnibus-packages.s3.amazonaws.com/mac_os_x/10.7/x86_64/chef-12.2",
+              url: "https://packages.chef.io/stable/mac_os_x/10.7/chef-12.2",
               version: "12.2",
             }
           }
@@ -194,7 +194,7 @@ context "Mixlib::Install::Backend" do
           let(:product_version) { "12" }
           let(:expected_info) {
             {
-              url: "https://opscode-omnibus-packages.s3.amazonaws.com/mac_os_x/10.7/x86_64/chef-12",
+              url: "https://packages.chef.io/stable/mac_os_x/10.7/chef-12",
               version: "12",
             }
           }
@@ -256,7 +256,7 @@ context "Mixlib::Install::Backend" do
           let(:product_version) { picked_current_version }
           let(:expected_info) {
             {
-              url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/",
+              url: "https://packages.chef.io/current/mac_os_x/10.9/",
               version: product_version,
             }
           }
@@ -268,7 +268,7 @@ context "Mixlib::Install::Backend" do
           let(:product_version) { major_minor_patch_from(picked_current_version) }
           let(:expected_info) {
             {
-              url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/",
+              url: "https://packages.chef.io/current/mac_os_x/10.9/",
               version: product_version,
             }
           }
@@ -281,7 +281,7 @@ context "Mixlib::Install::Backend" do
 
           let(:expected_info) {
             {
-              url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64",
+              url: "https://packages.chef.io/current/mac_os_x/10.9",
               version: product_version,
             }
           }
@@ -293,7 +293,7 @@ context "Mixlib::Install::Backend" do
           let(:product_version) { major_from(picked_current_version) }
           let(:expected_info) {
             {
-              url: "https://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64",
+              url: "https://packages.chef.io/current/mac_os_x/10.9",
               version: product_version,
             }
           }
