@@ -7,11 +7,11 @@ function Get-ProjectMetadata {
     .EXAMPLE
     iex (new-object net.webclient).downloadstring('https://omnitruck.chef.io/install.ps1'); Get-ProjectMetadata -project chef -channel stable
 
-    Gets the download url, MD5 checksum, and SHA256 checksum for the latest stable release of Chef.
+    Gets the download url and SHA256 checksum for the latest stable release of Chef.
     .EXAMPLE
     iex (irm 'https://omnitruck.chef.io/install.ps1'); Get-ProjectMetadata -project chefdk -channel stable -version 0.8.0
 
-    Gets the download url, MD5 checksum, and SHA256 checksum for ChefDK 0.8.0.
+    Gets the download url, and SHA256 checksum for ChefDK 0.8.0.
   #>
   [cmdletbinding()]
   param (
@@ -64,7 +64,6 @@ function Get-ProjectMetadata {
     New-Item -ItemType directory -Path $artifact_info_dir -force
     New-Item -ItemType file "$($artifact_info_dir)/artifact_info" -force
     "url <%= artifact.url%>" | out-file "$artifact_info_dir/artifact_info"
-    "md5 <%= artifact.md5%>" | out-file "$artifact_info_dir/artifact_info" -Append
     "sha256 <%= artifact.sha256%>" | out-file "$artifact_info_dir/artifact_info" -Append
   <% end %>
 

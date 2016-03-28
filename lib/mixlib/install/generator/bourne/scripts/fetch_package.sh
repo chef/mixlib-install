@@ -34,7 +34,7 @@ download_dir=`dirname $download_filename`
 cached_file_available="false"
 if test -f $download_filename; then
   echo "$download_filename already exists, verifiying checksum..."
-  if do_checksum "$download_filename" "$sha256" "$md5"; then
+  if do_checksum "$download_filename" "$sha256"; then
     echo "checksum compare succeeded, using existing file!"
     cached_file_available="true"
   else
@@ -45,7 +45,7 @@ fi
 # download if no local version of the file available
 if test "x$cached_file_available" != "xtrue"; then
   do_download "$download_url"  "$download_filename"
-  do_checksum "$download_filename" "$sha256" "$md5" || checksum_mismatch
+  do_checksum "$download_filename" "$sha256" || checksum_mismatch
 fi
 
 ############

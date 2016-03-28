@@ -214,17 +214,8 @@ do_checksum() {
     echo "Comparing checksum with shasum..."
     checksum=`shasum -a 256 $1 | awk '{ print $1 }'`
     return `test "x$checksum" = "x$2"`
-  elif exists md5sum; then
-    echo "Comparing checksum with md5sum..."
-    checksum=`md5sum $1 | awk '{ print $1 }'`
-    return `test "x$checksum" = "x$3"`
-  elif exists md5; then
-    echo "Comparing checksum with md5..."
-    # this is for md5 utility on MacOSX (OSX 10.6-10.10) and $4 is the correct field
-    checksum=`md5 $1 | awk '{ print $4 }'`
-    return `test "x$checksum" = "x$3"`
   else
-    echo "WARNING: could not find a valid checksum program, pre-install shasum, md5sum or md5 in your O/S image to get valdation..."
+    echo "WARNING: could not find a valid checksum program, pre-install shasum or sha256sum in your O/S image to get valdation..."
     return 0
   fi
 }

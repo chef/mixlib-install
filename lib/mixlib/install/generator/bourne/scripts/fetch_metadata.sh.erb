@@ -15,7 +15,6 @@
 # Outputs:
 # $download_url:
 # $sha256:
-# $md5:
 ############
 
 echo "Getting information for $project $channel $version for $platform..."
@@ -29,7 +28,7 @@ cat "$metadata_filename"
 
 echo ""
 # check that all the mandatory fields in the downloaded metadata are there
-if grep '^url' $metadata_filename > /dev/null && grep '^sha256' $metadata_filename > /dev/null && grep '^md5' $metadata_filename > /dev/null; then
+if grep '^url' $metadata_filename > /dev/null && grep '^sha256' $metadata_filename > /dev/null; then
   echo "downloaded metadata file looks valid..."
 else
   echo "downloaded metadata file is corrupted or an uncaught error was encountered in downloading the file..."
@@ -41,7 +40,6 @@ fi
 
 download_url=`awk '$1 == "url" { print $2 }' "$metadata_filename"`
 sha256=`awk '$1 == "sha256" { print $2 }' "$metadata_filename"`
-md5=`awk '$1 == "md5" { print $2 }' "$metadata_filename"`
 
 ############
 # end of fetch_metadata.sh
