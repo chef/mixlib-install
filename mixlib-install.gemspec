@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "artifactory", "~> 2.3.0"
   spec.add_dependency "mixlib-versioning", "~> 1.1.0"
+  spec.add_dependency "mixlib-shellout", "~> 2.2.6"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake", "~> 10.0"

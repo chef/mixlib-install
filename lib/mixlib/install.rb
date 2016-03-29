@@ -18,6 +18,7 @@
 #
 
 require "mixlib/versioning"
+require "mixlib/shellout"
 
 require "mixlib/install/backend"
 require "mixlib/install/options"
@@ -111,11 +112,14 @@ module Mixlib
     # Returns a Hash containing the platform info options
     #
     def self.detect_platform
-      platform_info = if RbConfig::CONFIG["host_os"] =~ /mswin|mingw/
-                        `#{self.detect_platform_ps1}`.split
-                      else
-                        `#{self.detect_platform_sh}`.split
-                      end
+      detect_command = if Gem.win_platform?
+                         Mixlib::ShellOut.new(self.detect_platform_ps1)
+                       else
+                         Mixlib::ShellOut.new(self.detect_platform_sh)
+                       end
+
+      detect_command.run_command
+      platform_info = detect_command.stdout.split
 
       {
         platform: platform_info[0],
