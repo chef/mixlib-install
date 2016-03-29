@@ -69,7 +69,7 @@ module Mixlib
                               sudo_command}
 
       def initialize(version, powershell = false, opts = {})
-        @version = version || "latest"
+        @version = (version || "latest").to_s.downcase
         @powershell = powershell
         @http_proxy = nil
         @https_proxy = nil
@@ -198,7 +198,7 @@ module Mixlib
 
         url = "#{base}#{endpoint}"
         url << "?p=windows&m=x86_64&pv=2008r2" # same package for all versions
-        url << "&v=#{CGI.escape(version.to_s.downcase)}"
+        url << "&v=#{CGI.escape(version)}" unless %w{latest true nightlies}.include?(version)
         url << "&prerelease=true" if prerelease
         url << "&nightlies=true" if nightlies
         url
