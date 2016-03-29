@@ -112,7 +112,7 @@ module Mixlib
     # Returns a Hash containing the platform info options
     #
     def self.detect_platform
-      detect_command = if RbConfig::CONFIG["host_os"] =~ /mswin|mingw/
+      detect_command = if Gem.win_platform?
                          Mixlib::ShellOut.new(self.detect_platform_ps1)
                        else
                          Mixlib::ShellOut.new(self.detect_platform_sh)
