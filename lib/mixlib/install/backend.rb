@@ -27,7 +27,7 @@ module Mixlib
         backend = if options.for_artifactory?
                     Backend::Artifactory.new(options)
                   else
-                    Backend::Omnitruck.new(options)
+                    Backend::Bintray.new(options)
                   end
 
         backend.info

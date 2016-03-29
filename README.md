@@ -35,6 +35,20 @@ artifacts.first.url
 # => "http://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.5.1%2B20151009083009-1.dmg"
 ```
 
+### Detect platform information
+```ruby
+options = {
+  channel: :current,
+  product_name: 'chef',
+  product_version: :latest
+}
+
+artifact = Mixlib::Install.new(options).detect_platform
+
+artifact.platform # => "mac_os_x"
+artifact.platform_version # => "10.10"
+```
+
 ## Unstable channel
 The `:unstable` channel is currently only available when connected to Chef's internal network.
 Configure Artifactory access by setting the following environment variables:

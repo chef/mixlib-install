@@ -26,7 +26,7 @@ context "Mixlib::Install::Backend" do
   let(:platform) { nil }
   let(:platform_version) { nil }
   let(:architecture) { nil }
-  let(:shell_type) { :sh }
+  let(:shell_type) { nil }
 
   let(:info) {
     Mixlib::Install.new(
@@ -73,14 +73,6 @@ context "Mixlib::Install::Backend" do
         expect(info.url).to match expected_protocol
       else
         expect(info.url).to match expected_info[:url]
-      end
-    end
-
-    it "gives the right sha1 artifact info" do
-      if !expected_info.key?(:sha1)
-        expect(info.sha1).to match(/^[0-9a-f]{40}$/)
-      else
-        expect(info.sha1).to match expected_info[:sha1] # match or eq
       end
     end
 
@@ -145,12 +137,6 @@ context "Mixlib::Install::Backend" do
         expect(artifact_info.sha256).to match(/^[0-9a-f]{64}$/)
       end
     end
-
-    it "has correctly formed sha1 for artifacts" do
-      info.each do |artifact_info|
-        expect(artifact_info.sha1).to match(/^[0-9a-f]{40}$/)
-      end
-    end
   end
 
   context "for chef" do
@@ -161,41 +147,17 @@ context "Mixlib::Install::Backend" do
 
       context "when p, pv and m are present" do
         let(:platform) { "mac_os_x" }
-        let(:platform_version) { "10.7" }
+        let(:platform_version) { "10.10" }
         let(:architecture) { "x86_64" }
 
         context "with a full product version" do
           let(:product_version) { "12.2.1" }
           let(:expected_info) {
             {
-              url: "https://packages.chef.io/stable/mac_os_x/10.7/chef-12.2.1-1.dmg",
+              url: "https://packages.chef.io/stable/mac_os_x/10.10/chef-12.2.1-1.dmg",
               sha1: "57e1b5ef88d0faced5fa68f548d9d827297793d0",
               sha256: "53034d6e1eea0028666caee43b99f43d2ca9dd24b260bc53ae5fad1075e83923",
               version: "12.2.1",
-            }
-          }
-
-          it_behaves_like "the right artifact info"
-        end
-
-        context "with a major.minor product version" do
-          let(:product_version) { "12.2" }
-          let(:expected_info) {
-            {
-              url: "https://packages.chef.io/stable/mac_os_x/10.7/chef-12.2",
-              version: "12.2",
-            }
-          }
-
-          it_behaves_like "the right artifact info"
-        end
-
-        context "with a major product version" do
-          let(:product_version) { "12" }
-          let(:expected_info) {
-            {
-              url: "https://packages.chef.io/stable/mac_os_x/10.7/chef-12",
-              version: "12",
             }
           }
 
@@ -214,20 +176,6 @@ context "Mixlib::Install::Backend" do
         context "with a full product version" do
           let(:product_version) { "12.4.3" }
           let(:expected_version) { "12.4.3" }
-
-          it_behaves_like "the right artifact list info"
-        end
-
-        context "with a major.minor product version" do
-          let(:product_version) { "12.1" }
-          let(:expected_version) { "12.1.2" }
-
-          it_behaves_like "the right artifact list info"
-        end
-
-        context "with a major product version" do
-          let(:product_version) { "12" }
-          let(:expected_version) { /^12.\d.\d/ }
 
           it_behaves_like "the right artifact list info"
         end
@@ -264,43 +212,6 @@ context "Mixlib::Install::Backend" do
           it_behaves_like "the right artifact info"
         end
 
-        context "with a major.minor.patch version" do
-          let(:product_version) { major_minor_patch_from(picked_current_version) }
-          let(:expected_info) {
-            {
-              url: "https://packages.chef.io/current/mac_os_x/10.9/",
-              version: product_version,
-            }
-          }
-
-          it_behaves_like "the right artifact info"
-        end
-
-        context "with a major.minor product version" do
-          let(:product_version) { major_minor_from(picked_current_version) }
-
-          let(:expected_info) {
-            {
-              url: "https://packages.chef.io/current/mac_os_x/10.9",
-              version: product_version,
-            }
-          }
-
-          it_behaves_like "the right artifact info"
-        end
-
-        context "with a major product version" do
-          let(:product_version) { major_from(picked_current_version) }
-          let(:expected_info) {
-            {
-              url: "https://packages.chef.io/current/mac_os_x/10.9",
-              version: product_version,
-            }
-          }
-
-          it_behaves_like "the right artifact info"
-        end
-
         context "with latest version keyword" do
           let(:product_version) { :latest }
           let(:expected_info) { {} }
@@ -313,27 +224,6 @@ context "Mixlib::Install::Backend" do
         context "with a full product version" do
           let(:product_version) { picked_current_version }
           let(:expected_version) { picked_current_version }
-
-          it_behaves_like "the right artifact list info"
-        end
-
-        context "with a major.minor.patch product version" do
-          let(:product_version) { major_minor_patch_from(picked_current_version) }
-          let(:expected_version) { /#{product_version}/ }
-
-          it_behaves_like "the right artifact list info"
-        end
-
-        context "with a major.minor product version" do
-          let(:product_version) { major_minor_from(picked_current_version) }
-          let(:expected_version) { /#{product_version}/ }
-
-          it_behaves_like "the right artifact list info"
-        end
-
-        context "with a major product version" do
-          let(:product_version) { major_from(picked_current_version) }
-          let(:expected_version) { /#{product_version}/ }
 
           it_behaves_like "the right artifact list info"
         end
@@ -383,7 +273,7 @@ context "Mixlib::Install::Backend" do
           context "with 'latest' product version" do
             let(:product_version) { :latest }
             let(:expected_info) { {} }
-            let(:expected_version) { /^\d\d.\d.\d\+[0-9]{14}$/ }
+            let(:expected_version) { /^\d\d.\d.\d+$/ }
 
             it_behaves_like "the right artifact info"
           end
@@ -411,7 +301,7 @@ context "Mixlib::Install::Backend" do
         context "for latest version" do
           let(:product_version) { :latest }
           let(:expected_info) { {} }
-          let(:expected_version) { /^\d\d.\d.\d\+[0-9]{14}$/ }
+          let(:expected_version) { /^\d\d.\d.\d+$/ }
 
           it_behaves_like "the right artifact list info"
         end
