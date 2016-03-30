@@ -21,23 +21,6 @@ require "mixlib/install/options"
 require "mixlib/install/backend/bintray"
 
 context "Mixlib::Install::Backend::Bintray" do
-  before(:all) do
-    @bintray_server = BintrayServer
-    @server_pid = Process.fork { @bintray_server.start! }
-    # TODO: need to hit localhost:4567 and loop to make sure it's ready
-    # running?() just checks the pid
-    sleep 2
-  end
-
-  after(:all) do
-    begin
-      @bintray_server.stop!
-    ensure
-      @bintray_server = nil
-      Process.kill 9, @server_pid
-    end
-  end
-
   let(:channel) { nil }
 
   let(:product_name) { nil }

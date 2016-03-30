@@ -113,7 +113,7 @@ module Mixlib
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         #
         def bintray_artifacts
-          version = options.product_version == :latest ? latest_version : options.product_version
+          version = options.latest_version? ? latest_version : options.product_version
           results = bintray_get("#{options.channel}/#{options.product_name}/versions/#{version}/files")
 
           #
