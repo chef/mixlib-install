@@ -60,18 +60,9 @@ function Test-ProjectPackage {
     function Get-FileHash ($Path, $Algorithm) {
       $Path = (resolve-path $path).providerpath
       $hash = @{Algorithm = $Algorithm; Path = $Path}
-      if ($Algorithm -like 'MD5') {
-        use ($c = New-Object -TypeName Security.Cryptography.MD5CryptoServiceProvider) {
-          use ($in = (gi $path).OpenRead()) {
-            $hash.Hash = ([BitConverter]::ToString($c.ComputeHash($in))).Replace("-", "").ToUpper()
-          }
-        }
-      }
-      elseif ($Algorithm -like 'SHA256') {
-        use ($c = New-Object -TypeName Security.Cryptography.SHA256CryptoServiceProvider) {
-          use ($in = (gi $path).OpenRead()) {
-            $hash.Hash = ([BitConverter]::ToString($c.ComputeHash($in))).Replace("-", "").ToUpper()
-          }
+      use ($c = New-Object -TypeName Security.Cryptography.SHA256CryptoServiceProvider) {
+        use ($in = (gi $path).OpenRead()) {
+          $hash.Hash = ([BitConverter]::ToString($c.ComputeHash($in))).Replace("-", "").ToUpper()
         }
       }
       new-object PSObject -Property $hash
