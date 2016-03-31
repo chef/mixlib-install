@@ -20,17 +20,12 @@ require "spec_helper"
 require "mixlib/install/options"
 require "mixlib/install/backend/bintray"
 
-context "Mixlib::Install::Backend::Bintray" do
+context "Mixlib::Install::Backend::Bintray", :vcr do
   let(:channel) { nil }
-
   let(:product_name) { nil }
-
   let(:product_version) { nil }
-
   let(:platform) { nil }
-
   let(:platform_version) { nil }
-
   let(:architecture) { nil }
 
   let(:options) do
@@ -47,45 +42,31 @@ context "Mixlib::Install::Backend::Bintray" do
   end
 
   let(:mixlib_options) { Mixlib::Install::Options.new(options) }
-
   let(:bintray) { Mixlib::Install::Backend::Bintray.new(mixlib_options) }
-
   let(:artifact_info) { bintray.info }
 
-  context "with stable channel" do
+  context "for chef/stable with :latest version" do
     let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { :latest }
 
-    context "with chef product" do
-      let(:product_name) { "chef" }
+    it "returns all artifacts" do
+      expect(artifact_info.size).to be > 1
+    end
 
-      context "with latest version" do
-        let(:product_version) { :latest }
+    context "with platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "14.04" }
+      let(:architecture) { "x86_64" }
 
-        it "returns all artifacts" do
-          expect(artifact_info.size).to be > 1
-        end
-
-        context "with ubuntu platform" do
-          let(:platform) { "ubuntu" }
-
-          context "with 14.04 platform version" do
-            let(:platform_version) { "14.04" }
-
-            context "with x86_64 architecture" do
-              let(:architecture) { "x86_64" }
-
-              it "returns a single artifact with correct info" do
-                expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
-                expect(artifact_info.version).to eq "12.8.1"
-                expect(artifact_info.platform).to eq "ubuntu"
-                expect(artifact_info.platform_version).to eq "14.04"
-                expect(artifact_info.architecture).to eq "x86_64"
-                expect(artifact_info.sha256).to eq "92b7f3eba0a62b20eced2eae03ec2a5e382da4b044c38c20d2902393683c77f7"
-                expect(artifact_info.url).to eq "https://packages.chef.io/stable/ubuntu/14.04/chef_12.8.1-1_amd64.deb"
-              end
-            end
-          end
-        end
+      it "returns a single artifact with correct info" do
+        expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+        expect(artifact_info.version).to eq "12.8.1"
+        expect(artifact_info.platform).to eq "ubuntu"
+        expect(artifact_info.platform_version).to eq "14.04"
+        expect(artifact_info.architecture).to eq "x86_64"
+        expect(artifact_info.sha256).to eq "92b7f3eba0a62b20eced2eae03ec2a5e382da4b044c38c20d2902393683c77f7"
+        expect(artifact_info.url).to eq "https://packages.chef.io/stable/ubuntu/14.04/chef_12.8.1-1_amd64.deb"
       end
     end
   end

@@ -71,7 +71,7 @@ context "Mixlib::Install" do
     end
   end
 
-  context "checking for upgrades" do
+  context "checking for upgrades", :vcr do
     before do
       allow(installer).to receive(:current_version).and_return(current_version)
     end

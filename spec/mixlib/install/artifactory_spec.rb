@@ -20,7 +20,7 @@ require "spec_helper"
 require "mixlib/install/options"
 require "mixlib/install/backend/artifactory"
 
-context "Mixlib::Install::Backend::Artifactory", :unstable do
+context "Mixlib::Install::Backend::Artifactory", :vcr do
   let(:opts) {
     {
       channel: :unstable,
@@ -56,11 +56,4 @@ context "Mixlib::Install::Backend::Artifactory", :unstable do
     end
   end
 
-  context "when using bad credentials" do
-    it "raises an AuthenticationError" do
-      wrap_env("ARTIFACTORY_USERNAME" => "nobodyherebythatname", "ARTIFACTORY_PASSWORD" => "secret") do
-        expect { artifactory.artifactory_query(query) }.to raise_error Mixlib::Install::Backend::Artifactory::AuthenticationError
-      end
-    end
-  end
 end

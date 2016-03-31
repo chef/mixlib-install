@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://mixlib-install:mixlib-install@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "chef"},
+          {"@omnibus.version": "12.5.1+20151210002019"}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Fri, 01 Apr 2016 19:23:01 GMT
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Content-Length:
+      - '80'
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - f08418f3826060e7:c8b4def:15360e140a3:-7fc8
+      Www-Authenticate:
+      - Basic realm="Artifactory Realm"
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 401,
+            "message" : "Bad credentials"
+          } ]
+        }
+    http_version: 
+  recorded_at: Fri, 01 Apr 2016 19:21:05 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "chef"},
+          {"@omnibus.version": "12.5.1+20151210002019"}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Fri, 01 Apr 2016 19:23:32 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - f08418f3826060e7:c8b4def:15360e140a3:-7fc8
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "results" : [ ],
+          "range" : {
+            "start_pos" : 0,
+            "end_pos" : 0,
+            "limit" : 1000
+          }
+        }
+    http_version: 
+  recorded_at: Fri, 01 Apr 2016 19:21:36 GMT
+recorded_with: VCR 3.0.1

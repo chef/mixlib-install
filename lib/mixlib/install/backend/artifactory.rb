@@ -32,6 +32,11 @@ module Mixlib
 
         ENDPOINT = "http://artifactory.chef.co".freeze
 
+        # These credentials are read-only credentials in Chef's artifactory
+        # server which is only available in Chef's internal network.
+        ARTIFACTORY_USERNAME = "mixlib-install".freeze
+        ARTIFACTORY_PASSWORD = "%mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd)TZAJsURs9w0HloWR$l6h".freeze
+
         # Create filtered list of artifacts
         #
         # @return [Array<ArtifactInfo>] list of artifacts for the configured
@@ -174,8 +179,8 @@ items.find(
         def client
           @client ||= ::Artifactory::Client.new(
             endpoint: endpoint,
-            username: ENV["ARTIFACTORY_USERNAME"],
-            password: ENV["ARTIFACTORY_PASSWORD"]
+            username: ARTIFACTORY_USERNAME,
+            password: ARTIFACTORY_PASSWORD
           )
         end
 
@@ -193,10 +198,7 @@ the endpoint is correct and there is an open connection to Chef's private networ
             MSG
           rescue ::Artifactory::Error::HTTPError => e
             if e.code == 401 && e.message =~ /Bad credentials/
-              raise AuthenticationError, <<-MSG
-Artifactory server denied credentials. Verify ARTIFACTORY_USERNAME and
-ARTIFACTORY_PASSWORD environment variables are configured properly.
-              MSG
+              raise AuthenticationError, "Artifactory server denied credentials."
             else
               raise e
             end
