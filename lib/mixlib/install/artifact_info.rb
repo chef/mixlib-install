@@ -74,6 +74,10 @@ module Mixlib
           architecture: architecture,
         }
       end
+
+      def clone_with(data)
+        ArtifactInfo.new(self.to_hash.merge(data))
+      end
     end
   end
 end
