@@ -18,27 +18,27 @@ Function Get-ChefMetadata($url) {
   Finally { if ($c -ne $null) { $c.Dispose() } }
 
   $md = ConvertFrom-StringData $response.Replace("`t", "=")
-  return @($md.url, $md.md5)
+  return @($md.url, $md.sha256)
 }
 
-Function Get-MD5Sum($src) {
+Function Get-SHA256($src) {
   Try {
-    $c = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
+    $c = New-Object -TypeName System.Security.Cryptography.SHA256CryptoServiceProvider
     $bytes = $c.ComputeHash(($in = (Get-Item $src).OpenRead()))
     return ([System.BitConverter]::ToString($bytes)).Replace("-", "").ToLower()
   } Finally { if (($c -ne $null) -and ($c.GetType().GetMethod("Dispose") -ne $null)) { $c.Dispose() }; if ($in -ne $null) { $in.Dispose() } }
 }
 
-Function Download-Chef($url, $md5, $dst) {
+Function Download-Chef($url, $sha256, $dst) {
   Try {
     Log "Downloading package from $url"
     ($c = Make-WebClient).DownloadFile($url, $dst)
     Log "Download complete."
   } Finally { if ($c -ne $null) { $c.Dispose() } }
 
-  if ($md5 -eq $null) { Log "Skipping md5 verification" }
-  elseif (($dmd5 = Get-MD5Sum $dst) -eq $md5) { Log "Successfully verified $dst" }
-  else { throw "MD5 for $dst $dmd5 does not match $md5" }
+  if ($sha256 -eq $null) { Log "Skipping sha256 verification" }
+  elseif (($dsha256 = Get-SHA256 $dst) -eq $sha256) { Log "Successfully verified $dst" }
+  else { throw "SHA256 for $dst $dsha256 does not match $sha256" }
 }
 
 Function Install-Chef($msi) {
@@ -72,12 +72,12 @@ $msi = Unresolve-Path $msi
 if (Check-UpdateChef $chef_omnibus_root $version) {
   Write-Host "-----> Installing Chef Omnibus ($pretty_version)`n"
   if ($chef_metadata_url -ne $null) {
-    $url, $md5 = Get-ChefMetadata "$chef_metadata_url"
+    $url, $sha256 = Get-ChefMetadata "$chef_metadata_url"
   } else {
     $url = $chef_msi_url
-    $md5 = $null
+    $sha256 = $null
   }
-  Download-Chef "$url" $md5 $msi
+  Download-Chef "$url" $sha256 $msi
   Install-Chef $msi
 } else {
   Write-Host "-----> Chef Omnibus installation detected ($pretty_version)`n"

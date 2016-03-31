@@ -210,10 +210,6 @@ do_checksum() {
     echo "Comparing checksum with sha256sum..."
     checksum=`sha256sum $1 | awk '{ print $1 }'`
     return `test "x$checksum" = "x$2"`
-  elif exists shasum; then
-    echo "Comparing checksum with shasum..."
-    checksum=`shasum -a 256 $1 | awk '{ print $1 }'`
-    return `test "x$checksum" = "x$2"`
   else
     echo "WARNING: could not find a valid checksum program, pre-install shasum or sha256sum in your O/S image to get valdation..."
     return 0
