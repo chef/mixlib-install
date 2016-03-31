@@ -3,7 +3,7 @@ Function Check-UpdateChef($root, $version) {
   elseif ("$version" -eq "true") { return $false }
   elseif ("$version" -eq "latest") { return $true }
 
-  Try { $chef_version = (Get-Content $root\version-manifest.txt | select-object -first 1) }
+  Try { $chef_version = (Get-Content $root\version-manifest.txt  -ErrorAction stop | select-object -first 1) }
   Catch {
     Try { $chef_version = (& $root\bin\chef-solo.bat -v) }
     Catch { $chef_version = " " }
