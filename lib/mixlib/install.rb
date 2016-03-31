@@ -116,14 +116,21 @@ module Mixlib
     # Returns a Hash containing the platform info options
     #
     def self.detect_platform
-      detect_command = if Gem.win_platform?
-                         Mixlib::ShellOut.new(self.detect_platform_ps1)
-                       else
-                         Mixlib::ShellOut.new(self.detect_platform_sh)
-                       end
+      output = if Gem.win_platform?
+                 # For Windows we write the detect platform script and execute the
+                 # powershell.exe program with Mixlib::ShellOut
+                 Dir.mktmpdir do |d|
+                   File.open(File.join(d, "detect_platform.ps1"), "w+") do |f|
+                     f.puts self.detect_platform_ps1
+                   end
 
-      detect_command.run_command
-      platform_info = detect_command.stdout.split
+                   Mixlib::ShellOut.new("powershell.exe -file #{File.join(d, "detect_platform.ps1")}").run_command
+                 end
+               else
+                 Mixlib::ShellOut.new(self.detect_platform_sh).run_command
+               end
+
+      platform_info = output.stdout.split
 
       {
         platform: platform_info[0],
