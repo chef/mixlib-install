@@ -86,6 +86,7 @@ function Install-Project {
     if (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $package_metadata.sha256) {
       Write-Host "Installing $project from $download_destination"
       $p = Start-Process -FilePath "msiexec" -ArgumentList "/qn /i $download_destination" -Passthru -Wait
+      $p.WaitForExit()
       if ($p.ExitCode -ne 0) {
         throw "msiexec was not successful. Received exit code $($p.ExitCode)"
       }

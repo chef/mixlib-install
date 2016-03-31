@@ -44,6 +44,7 @@ Function Download-Chef($url, $md5, $dst) {
 Function Install-Chef($msi) {
   Log "Installing Chef Omnibus package $msi"
   $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
+  $p.WaitForExit()
 
   if ($p.ExitCode -ne 0) { throw "msiexec was not successful. Received exit code $($p.ExitCode)" }
 
