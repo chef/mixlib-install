@@ -90,6 +90,34 @@ context "Mixlib::Install::Backend::Bintray" do
     end
   end
 
+  context "for a product without native 64-bit builds" do
+    let(:channel) { :stable }
+    let(:product_name) { "chefdk" }
+    let(:product_version) { :latest }
+    let(:platform) { "windows" }
+    let(:platform_version) { "2012r2" }
+    let(:architecture) { "x86_64" }
+
+    it "returns 32 bit package for 64 bit" do
+      expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+      expect(artifact_info.url).to match("x86")
+    end
+  end
+
+  context "for a product with native 64-bit builds" do
+    let(:channel) { :current }
+    let(:product_name) { "chef" }
+    let(:product_version) { :latest }
+    let(:platform) { "windows" }
+    let(:platform_version) { "2012r2" }
+    let(:architecture) { "x86_64" }
+
+    it "returns 64 bit package for 64 bit" do
+      expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+      expect(artifact_info.url).to match("x64")
+    end
+  end
+
   context "architecture extraction" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
@@ -133,5 +161,4 @@ context "Mixlib::Install::Backend::Bintray" do
       end
     end
   end
-
 end
