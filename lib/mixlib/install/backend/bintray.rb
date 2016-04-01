@@ -38,15 +38,13 @@ module Mixlib
     class Backend
       class Bintray < Base
         class UnknownArchitecture < StandardError; end
-
-        ENDPOINT = "https://bintray.com/api/v1/".freeze
-
         # Bintray credentials for api read access. These are here intentionally.
         BINTRAY_USERNAME = "mixlib-install@chef".freeze
-
         BINTRAY_PASSWORD = "a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d".freeze
 
+        ENDPOINT = "https://bintray.com/api/v1/".freeze
         DOWNLOAD_URL_ENDPOINT = "https://packages.chef.io".freeze
+        COMPAT_DOWNLOAD_URL_ENDPOINT = "http://chef.bintray.com".freeze
 
         def endpoint
           @endpoint ||= ENV.fetch("BINTRAY_ENDPOINT", ENDPOINT)
@@ -182,8 +180,6 @@ module Mixlib
         def create_artifact(artifact_map)
           platform_info = parse_platform_info(artifact_map)
 
-          url = "#{DOWNLOAD_URL_ENDPOINT}/#{options.channel}/#{artifact_map["path"]}"
-
           ArtifactInfo.new(
             sha1:             artifact_map["sha1"],
             sha256:           artifact_map["sha256"],
@@ -191,8 +187,34 @@ module Mixlib
             platform:         platform_info[:platform],
             platform_version: platform_info[:platform_version],
             architecture:     platform_info[:architecture],
-            url:              url
+            url:              url(artifact_map)
           )
+        end
+
+        #
+        # Creates the URL for the artifact.
+        #
+        # For some older platform & platform_version combinations we need to
+        # use COMPAT_DOWNLOAD_URL_ENDPOINT since these versions have an
+        # OpenSSL version that can not verify the DOWNLOAD_URL_ENDPOINT
+        # based urls
+        #
+        # @param artifact_map
+        #   see #create_artifact for details.
+        #
+        # @return [String] url for the artifact
+        #
+        def url(artifact_map)
+          platform_info = parse_platform_info(artifact_map)
+
+          base_url = case "#{platform_info[:platform]}-#{platform_info[:platform_version]}"
+                     when "freebsd-9"
+                       COMPAT_DOWNLOAD_URL_ENDPOINT
+                     else
+                       DOWNLOAD_URL_ENDPOINT
+                     end
+
+          "#{base_url}/#{options.channel}/#{artifact_map["path"]}"
         end
 
         #
