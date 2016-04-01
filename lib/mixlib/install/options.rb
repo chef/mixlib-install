@@ -23,7 +23,6 @@ module Mixlib
   class Install
     class Options
       class InvalidOptions < ArgumentError; end
-      class ArtifactoryCredentialsNotFound < StandardError; end
 
       attr_reader :options
 
@@ -50,7 +49,6 @@ module Mixlib
 
       def validate!
         validate_options!
-        validate_unstable_channel! if for_artifactory?
       end
 
       def validate_options!
@@ -139,15 +137,6 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
         end
       end
 
-      def validate_unstable_channel!
-        if ENV["ARTIFACTORY_USERNAME"].nil? || ENV["ARTIFACTORY_PASSWORD"].nil?
-          raise ArtifactoryCredentialsNotFound,
-                <<-EOS
-Must set ARTIFACTORY_USERNAME and ARTIFACTORY_PASSWORD environment variables
-when using the unstable channel.
-                EOS
-        end
-      end
     end
   end
 end

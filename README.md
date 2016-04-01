@@ -51,14 +51,11 @@ artifact.platform_version # => "10.10"
 
 ## Unstable channel
 The `:unstable` channel is currently only available when connected to Chef's internal network.
-Configure Artifactory access by setting the following environment variables:
-```
-export ARTIFACTORY_USERNAME='username'
-export ARTIFACTORY_PASSWORD='password'
-```
 
-### Unstable channel specs
-Some spec examples are tagged `:unstable` and can only run when connected to Chef's internal network.  These are excluded by default.  To run the `:unstable` tests run: `rake unstable`.
+## Development
+Since mixlib-install needs to interact with Bintray and Artifactory and since Artifactory instances are only available in Chef's network, this project uses [vcr](https://github.com/vcr/vcr).
+
+VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.
 
 ## Contributing
 

@@ -55,16 +55,6 @@ context "Mixlib::Install::Options" do
       }
     }
 
-    context "for unstable channel", :unstable do
-      let(:channel) { :unstable }
-
-      it "raises invalid artifactory env vars error" do
-        wrap_env("ARTIFACTORY_USERNAME" => nil, "ARTIFACTORY_PASSWORD" => nil) do
-          expect { Mixlib::Install.new(base_options) }.to raise_error(Mixlib::Install::Options::ArtifactoryCredentialsNotFound)
-        end
-      end
-    end
-
     context "for shell type options" do
       let(:shell_type) { :foo }
 

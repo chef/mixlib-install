@@ -44,7 +44,7 @@ context "Mixlib::Install::Generator" do
     end
   end
 
-  context "for :unstable channel", :unstable do
+  context "for :unstable channel", :vcr do
     let(:channel) { :unstable }
     let(:product_version) { "12.5.1+20151210002019" }
 

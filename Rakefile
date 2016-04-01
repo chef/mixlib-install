@@ -19,19 +19,7 @@ rescue LoadError
 end
 
 desc "Run all tests"
-task test: [:style, :spec, :unstable]
-
-desc "Run unstable channel tests"
-task "unstable" do
-  if ENV["ARTIFACTORY_USERNAME"].nil? || ENV["ARTIFACTORY_PASSWORD"].nil?
-    abort <<-EOS.gsub(/^\s+/, "")
-      Must set ARTIFACTORY_USERNAME and ARTIFACTORY_PASSWORD environment
-      variables to run unstable tests
-    EOS
-  end
-  Rake::Task["style"].invoke
-  system("bundle exec rspec -t unstable")
-end
+task test: [:style, :spec]
 
 desc "Run tests for Travis CI"
 task ci: [:style, :spec]
