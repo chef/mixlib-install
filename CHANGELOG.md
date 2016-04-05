@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.3]
+### Changed
+- Artifactory credentials are no longer required.  A designated account has been hard-coded as default.
+- Exception is raised if Bintray can not find the version for channel/product.
+
+### Fixed
+- freebsd 9 artifacts return chef.bintray.com based urls
+
 ## [1.0.2]
 ### Added
 - Use 32 bit windows artifacts for 64-bit, when there is no 64-bit native artifact.
