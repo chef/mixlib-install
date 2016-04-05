@@ -38,6 +38,7 @@ module Mixlib
     class Backend
       class Bintray < Base
         class UnknownArchitecture < StandardError; end
+        class VersionNotFound < StandardError; end
         # Bintray credentials for api read access. These are here intentionally.
         BINTRAY_USERNAME = "mixlib-install@chef".freeze
         BINTRAY_PASSWORD = "a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d".freeze
@@ -112,15 +113,25 @@ module Mixlib
         #
         def bintray_artifacts
           version = options.latest_version? ? latest_version : options.product_version
-          results = bintray_get("#{options.channel}/#{options.product_name}/versions/#{version}/files")
+          begin
+            results = bintray_get("#{options.channel}/#{options.product_name}/versions/#{version}/files")
+          rescue Net::HTTPServerException => e
+            if e.message =~ /404 "Not Found"/
+              raise VersionNotFound,
+                "Specified version (#{version}) not found for #{options.product_name} in #{options.channel} channel."
+            else
+              raise
+            end
+          end
 
           #
-          # Delete .asc files
-          # Also delete .pkg files which are uploaded along with dmg files for
+          # Delete files that we don't want as part of the artifact info array
+          # Windows: .asc files
+          # MAC OS _X: .pkg files which are uploaded along with dmg files for
           # some chef versions.
           #
-          results.reject! do |r|
-            r["name"].end_with?(".asc") || r["name"].end_with?(".pkg")
+          %w{ asc pkg }.each do |ext|
+            results.reject! { |r| r["name"].end_with?(".#{ext}") }
           end
 
           # Convert results to build records
