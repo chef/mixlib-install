@@ -142,4 +142,17 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
       end
     end
   end
+
+  context "for a missing version of a product" do
+    let(:channel) { :current }
+    let(:product_name) { "chef" }
+    let(:product_version) { "99.99.99" }
+    let(:platform) { "windows" }
+    let(:platform_version) { "2012r2" }
+    let(:architecture) { "x86_64" }
+
+    it "raises an error" do
+      expect { artifact_info }.to raise_error Mixlib::Install::Backend::Bintray::VersionNotFound
+    end
+  end
 end
