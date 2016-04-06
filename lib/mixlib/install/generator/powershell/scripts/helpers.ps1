@@ -60,7 +60,7 @@ function Test-ProjectPackage {
     function Get-FileHash ($Path, $Algorithm) {
       $Path = (resolve-path $path).providerpath
       $hash = @{Algorithm = $Algorithm; Path = $Path}
-      use ($c = New-Object -TypeName Security.Cryptography.SHA256CryptoServiceProvider) {
+      use ($c = New-Object -TypeName Security.Cryptography.SHA256Managed) {
         use ($in = (gi $path).OpenRead()) {
           $hash.Hash = ([BitConverter]::ToString($c.ComputeHash($in))).Replace("-", "").ToUpper()
         }

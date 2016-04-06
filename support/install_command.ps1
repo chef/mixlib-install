@@ -23,7 +23,7 @@ Function Get-ChefMetadata($url) {
 
 Function Get-SHA256($src) {
   Try {
-    $c = New-Object -TypeName System.Security.Cryptography.SHA256CryptoServiceProvider
+    $c = New-Object -TypeName System.Security.Cryptography.SHA256Managed
     $bytes = $c.ComputeHash(($in = (Get-Item $src).OpenRead()))
     return ([System.BitConverter]::ToString($bytes)).Replace("-", "").ToLower()
   } Finally { if (($c -ne $null) -and ($c.GetType().GetMethod("Dispose") -ne $null)) { $c.Dispose() }; if ($in -ne $null) { $in.Dispose() } }
