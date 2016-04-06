@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.4]
+### Fixed
+- use `SHA256Managed` instead of `SHA256CryptoServiceProvider` to be compatible with .Net 2.0 which is the default runtime on Windows 2008 R2
+
 ## [1.0.3]
 ### Changed
 - Artifactory credentials are no longer required.  A designated account has been hard-coded as default.
