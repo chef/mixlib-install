@@ -219,7 +219,7 @@ module Mixlib
           platform_info = parse_platform_info(artifact_map)
 
           base_url = case "#{platform_info[:platform]}-#{platform_info[:platform_version]}"
-                     when "freebsd-9"
+                     when "freebsd-9", "el-5"
                        COMPAT_DOWNLOAD_URL_ENDPOINT
                      else
                        DOWNLOAD_URL_ENDPOINT
