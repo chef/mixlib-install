@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.5]
+### Fixed
+- Return chef.bintray.com based urls for el5 artifacts.
+
 ## [1.0.4]
 ### Fixed
 - use `SHA256Managed` instead of `SHA256CryptoServiceProvider` to be compatible with .Net 2.0 which is the default runtime on Windows 2008 R2
