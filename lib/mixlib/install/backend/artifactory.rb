@@ -113,7 +113,8 @@ Can not find any builds for #{options.product_name} in #{::Artifactory.endpoint}
 items.find(
   {"repo": "omnibus-#{options.channel}-local"},
   {"@omnibus.project": "#{options.product_name}"},
-  {"@omnibus.version": "#{version}"}
+  {"@omnibus.version": "#{version}"},
+  {"name": {"$nmatch": "*.metadata.json" }}
 ).include("repo", "path", "name", "property")
           QUERY
           )

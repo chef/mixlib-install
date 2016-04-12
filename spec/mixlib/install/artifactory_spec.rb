@@ -26,6 +26,9 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
       channel: :unstable,
       product_name: "chef",
       product_version: :latest,
+      platform: "ubuntu",
+      platform_version: "14.04",
+      architecture: "x86_64",
     }
   }
   let(:options) { Mixlib::Install::Options.new(opts) }
@@ -56,4 +59,10 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
     end
   end
 
+  context "when an querying artifact" do
+    it "does not return metadata.json" do
+      expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+      expect(artifactory.info.url).not_to include("metadata.json")
+    end
+  end
 end

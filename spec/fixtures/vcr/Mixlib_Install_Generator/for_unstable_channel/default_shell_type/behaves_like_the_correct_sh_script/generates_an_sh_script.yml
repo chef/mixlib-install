@@ -64,7 +64,8 @@ http_interactions:
         items.find(
           {"repo": "omnibus-unstable-local"},
           {"@omnibus.project": "chef"},
-          {"@omnibus.version": "12.5.1+20151210002019"}
+          {"@omnibus.version": "12.5.1+20151210002019"},
+          {"name": {"$nmatch": "*.metadata.json" }}
         ).include("repo", "path", "name", "property")
     headers:
       Accept-Encoding:
@@ -88,7 +89,7 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Fri, 01 Apr 2016 19:23:32 GMT
+      - Tue, 12 Apr 2016 22:22:43 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -96,9 +97,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Artifactory-Id:
-      - f08418f3826060e7:c8b4def:15360e140a3:-7fc8
+      - de53e7c41030817d:7004465b:15407291b4b:-7f69
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |-
         {
           "results" : [ ],
@@ -109,5 +110,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Fri, 01 Apr 2016 19:21:36 GMT
+  recorded_at: Tue, 12 Apr 2016 22:20:42 GMT
 recorded_with: VCR 3.0.1
