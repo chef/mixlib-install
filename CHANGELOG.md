@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.6]
+### Changed
+- Exclude metadata.json files from Artifactory package queries
+
 ## [1.0.5]
 ### Fixed
 - Return chef.bintray.com based urls for el5 artifacts.
