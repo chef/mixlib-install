@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.7]
+### Changed
+- Relax all gemspec dependency versions
+
 ## [1.0.6]
 ### Changed
 - Exclude metadata.json files from Artifactory package queries
