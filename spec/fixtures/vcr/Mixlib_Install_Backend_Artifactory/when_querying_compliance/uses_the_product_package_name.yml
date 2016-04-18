@@ -1,0 +1,985 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/chef-compliance
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Mon, 18 Apr 2016 18:46:35 GMT
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - de53e7c41030817d:7004465b:15407291b4b:-7f69
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/0.16.9",
+            "started" : "2016-03-23T16:20:28.318+0000"
+          }, {
+            "uri" : "/0.9.10",
+            "started" : "2016-01-18T16:58:18.532+0000"
+          }, {
+            "uri" : "/0.16.30",
+            "started" : "2016-03-27T18:56:08.802+0000"
+          }, {
+            "uri" : "/0.17.3",
+            "started" : "2016-03-31T12:34:39.042+0000"
+          }, {
+            "uri" : "/0.9.7",
+            "started" : "2015-12-21T18:23:57.008+0000"
+          }, {
+            "uri" : "/0.16.19",
+            "started" : "2016-03-25T16:57:47.178+0000"
+          }, {
+            "uri" : "/1.0.10",
+            "started" : "2016-04-06T16:17:51.010+0000"
+          }, {
+            "uri" : "/1.0.18",
+            "started" : "2016-04-12T18:10:26.637+0000"
+          }, {
+            "uri" : "/0.15.13",
+            "started" : "2016-03-10T08:52:53.131+0000"
+          }, {
+            "uri" : "/0.15.18",
+            "started" : "2016-03-11T18:44:39.078+0000"
+          }, {
+            "uri" : "/0.16.49",
+            "started" : "2016-03-30T14:02:58.609+0000"
+          }, {
+            "uri" : "/0.16.46",
+            "started" : "2016-03-29T21:28:52.347+0000"
+          }, {
+            "uri" : "/0.9.9",
+            "started" : "2016-01-12T02:40:31.626+0000"
+          }, {
+            "uri" : "/1.0.8",
+            "started" : "2016-04-06T10:23:33.913+0000"
+          }, {
+            "uri" : "/0.16.34",
+            "started" : "2016-03-27T23:38:00.670+0000"
+          }, {
+            "uri" : "/1.0.20",
+            "started" : "2016-04-18T11:59:04.770+0000"
+          }, {
+            "uri" : "/1.1.2",
+            "started" : "2016-04-18T13:28:57.850+0000"
+          }, {
+            "uri" : "/0.9.11",
+            "started" : "2016-01-26T11:50:38.480+0000"
+          }, {
+            "uri" : "/0.16.42",
+            "started" : "2016-03-28T22:58:37.635+0000"
+          }, {
+            "uri" : "/0.16.36+git.2.78d4d03",
+            "started" : "2016-03-28T11:50:12.065+0000"
+          }, {
+            "uri" : "/0.9.5",
+            "started" : "2015-12-03T13:59:12.427+0000"
+          }, {
+            "uri" : "/0.16.35",
+            "started" : "2016-03-28T01:58:57.429+0000"
+          }, {
+            "uri" : "/1.0.9",
+            "started" : "2016-04-06T10:47:25.136+0000"
+          }, {
+            "uri" : "/0.16.43",
+            "started" : "2016-03-29T14:36:41.132+0000"
+          }, {
+            "uri" : "/0.16.45",
+            "started" : "2016-03-29T16:46:20.316+0000"
+          }, {
+            "uri" : "/0.11.1",
+            "started" : "2016-02-08T09:43:06.698+0000"
+          }, {
+            "uri" : "/0.9.1",
+            "started" : "2015-11-03T22:15:27.799+0000"
+          }, {
+            "uri" : "/1.0.2",
+            "started" : "2016-04-01T10:57:20.217+0000"
+          }, {
+            "uri" : "/1.0.11",
+            "started" : "2016-04-06T17:00:31.317+0000"
+          }, {
+            "uri" : "/0.9.6",
+            "started" : "2015-12-14T09:44:59.973+0000"
+          }, {
+            "uri" : "/0.16.31",
+            "started" : "2016-03-27T19:24:01.170+0000"
+          }, {
+            "uri" : "/0.16.33",
+            "started" : "2016-03-27T22:25:13.799+0000"
+          }, {
+            "uri" : "/0.14.5",
+            "started" : "2016-02-23T00:48:57.307+0000"
+          }, {
+            "uri" : "/0.18.2",
+            "started" : "2016-03-31T13:54:44.750+0000"
+          }, {
+            "uri" : "/0.17.1",
+            "started" : "2016-03-30T15:46:51.215+0000"
+          }, {
+            "uri" : "/0.16.32",
+            "started" : "2016-03-27T20:20:06.357+0000"
+          }, {
+            "uri" : "/0.14.1",
+            "started" : "2016-02-22T17:13:11.009+0000"
+          }, {
+            "uri" : "/0.16.48",
+            "started" : "2016-03-30T10:50:19.804+0000"
+          }, {
+            "uri" : "/0.10.4",
+            "started" : "2016-02-01T13:46:17.440+0000"
+          }, {
+            "uri" : "/1.0.4",
+            "started" : "2016-04-01T13:51:09.658+0000"
+          }, {
+            "uri" : "/0.9.0",
+            "started" : "2015-11-03T04:49:24.407+0000"
+          }, {
+            "uri" : "/0.16.23",
+            "started" : "2016-03-26T23:56:17.150+0000"
+          }, {
+            "uri" : "/0.16.44",
+            "started" : "2016-03-29T15:03:19.518+0000"
+          }, {
+            "uri" : "/1.1.1",
+            "started" : "2016-04-18T12:36:49.979+0000"
+          }, {
+            "uri" : "/0.16.24",
+            "started" : "2016-03-27T02:18:21.618+0000"
+          } ],
+          "uri" : "http://artifactory.chef.co/api/build/chef-compliance"
+        }
+    http_version: 
+  recorded_at: Mon, 18 Apr 2016 18:44:31 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "chef-compliance"},
+          {"@omnibus.version": "1.1.2"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Mon, 18 Apr 2016 18:46:35 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - de53e7c41030817d:7004465b:15407291b4b:-7f69
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "results" : [ ],
+          "range" : {
+            "start_pos" : 0,
+            "end_pos" : 0,
+            "limit" : 1000
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 18 Apr 2016 18:44:31 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "chef-compliance"},
+          {"@omnibus.version": "1.1.1"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Mon, 18 Apr 2016 18:46:36 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - de53e7c41030817d:7004465b:15407291b4b:-7f69
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "results" : [ {
+            "repo" : "omnibus-unstable-local",
+            "path" : "com/getchef/chef-compliance/1.1.1/el/6",
+            "name" : "chef-compliance-1.1.1-1.el6.x86_64.rpm",
+            "properties" : [ {
+              "key" : "omnibus.version",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.platform",
+              "value" : "el"
+            }, {
+              "key" : "omnibus.sha256",
+              "value" : "424fce3b50599f6592c95cccb923cca654a4f334cdcd17b2df3e65c8c7cab11d"
+            }, {
+              "key" : "omnibus.iteration",
+              "value" : "1"
+            }, {
+              "key" : "omnibus.sha512",
+              "value" : "57525df74c146fb59bf3f0bc52ab3df3a54aaef70dd82beb2cb6913da73f587737971cb7b28f319ad9eaf8e4d9b055af33446ed9a0e15de4ec2f8ebc99eb0930"
+            }, {
+              "key" : "omnibus.platform_version",
+              "value" : "6"
+            }, {
+              "key" : "omnibus.sha1",
+              "value" : "0dab17ca8376ff33a435900258cf6645c9a81242"
+            }, {
+              "key" : "omnibus.project",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "build.number",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.architecture",
+              "value" : "x86_64"
+            }, {
+              "key" : "delivery.sha",
+              "value" : "b4941f7b693a5d36ffc8e050c6c2f460de0eedff"
+            }, {
+              "key" : "delivery.change",
+              "value" : "2047a48a-78b7-4f0a-945e-cb7ef8e6e280"
+            }, {
+              "key" : "omnibus.md5",
+              "value" : "c6bc46da80645d7275e0f14a0215f87b"
+            }, {
+              "key" : "build.name",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.license",
+              "value" : "Chef MLSA"
+            } ]
+          }, {
+            "repo" : "omnibus-unstable-local",
+            "path" : "com/getchef/chef-compliance/1.1.1/ubuntu/14.04",
+            "name" : "chef-compliance_1.1.1-1_amd64.deb",
+            "properties" : [ {
+              "key" : "omnibus.sha1",
+              "value" : "99490f8ab5fc225bd99279d6a6c916c8f9ec9fa5"
+            }, {
+              "key" : "omnibus.iteration",
+              "value" : "1"
+            }, {
+              "key" : "omnibus.md5",
+              "value" : "1bcd0cb9a54d18fc511e13f6030f2f47"
+            }, {
+              "key" : "omnibus.sha256",
+              "value" : "2390f8b44c786f5483bf39280e2ca562ed802beae19a6168e29ee06bcec6a139"
+            }, {
+              "key" : "omnibus.version",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.platform",
+              "value" : "ubuntu"
+            }, {
+              "key" : "omnibus.project",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.architecture",
+              "value" : "x86_64"
+            }, {
+              "key" : "delivery.sha",
+              "value" : "b4941f7b693a5d36ffc8e050c6c2f460de0eedff"
+            }, {
+              "key" : "delivery.change",
+              "value" : "2047a48a-78b7-4f0a-945e-cb7ef8e6e280"
+            }, {
+              "key" : "build.name",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.license",
+              "value" : "Chef MLSA"
+            }, {
+              "key" : "omnibus.sha512",
+              "value" : "7df30647edd6dbbf3f018bde33d560a00c9cebfee7e583a377439fca65c7c24138ab25cb2775a49430e2ad5e7efd6299aaa23ede0d27d921b93336c84d3714d1"
+            }, {
+              "key" : "omnibus.platform_version",
+              "value" : "14.04"
+            }, {
+              "key" : "build.number",
+              "value" : "1.1.1"
+            } ]
+          }, {
+            "repo" : "omnibus-unstable-local",
+            "path" : "com/getchef/chef-compliance/1.1.1/ubuntu/12.04",
+            "name" : "chef-compliance_1.1.1-1_amd64.deb",
+            "properties" : [ {
+              "key" : "omnibus.sha512",
+              "value" : "7df30647edd6dbbf3f018bde33d560a00c9cebfee7e583a377439fca65c7c24138ab25cb2775a49430e2ad5e7efd6299aaa23ede0d27d921b93336c84d3714d1"
+            }, {
+              "key" : "omnibus.project",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "build.number",
+              "value" : "1.1.1"
+            }, {
+              "key" : "delivery.sha",
+              "value" : "b4941f7b693a5d36ffc8e050c6c2f460de0eedff"
+            }, {
+              "key" : "omnibus.architecture",
+              "value" : "x86_64"
+            }, {
+              "key" : "delivery.change",
+              "value" : "2047a48a-78b7-4f0a-945e-cb7ef8e6e280"
+            }, {
+              "key" : "omnibus.license",
+              "value" : "Chef MLSA"
+            }, {
+              "key" : "build.name",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.md5",
+              "value" : "1bcd0cb9a54d18fc511e13f6030f2f47"
+            }, {
+              "key" : "omnibus.platform",
+              "value" : "ubuntu"
+            }, {
+              "key" : "omnibus.version",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.platform_version",
+              "value" : "12.04"
+            }, {
+              "key" : "omnibus.sha1",
+              "value" : "99490f8ab5fc225bd99279d6a6c916c8f9ec9fa5"
+            }, {
+              "key" : "omnibus.iteration",
+              "value" : "1"
+            }, {
+              "key" : "omnibus.sha256",
+              "value" : "2390f8b44c786f5483bf39280e2ca562ed802beae19a6168e29ee06bcec6a139"
+            } ]
+          }, {
+            "repo" : "omnibus-unstable-local",
+            "path" : "com/getchef/chef-compliance/1.1.1/el/7",
+            "name" : "chef-compliance-1.1.1-1.el7.x86_64.rpm",
+            "properties" : [ {
+              "key" : "omnibus.platform",
+              "value" : "el"
+            }, {
+              "key" : "omnibus.version",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.platform_version",
+              "value" : "7"
+            }, {
+              "key" : "omnibus.sha256",
+              "value" : "5d8a89fa26926d407e854182729a1938241081c070d9705d213d55ddc438bfbb"
+            }, {
+              "key" : "omnibus.iteration",
+              "value" : "1"
+            }, {
+              "key" : "build.name",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.license",
+              "value" : "Chef MLSA"
+            }, {
+              "key" : "omnibus.md5",
+              "value" : "e468945044da19f789375f90706d85c7"
+            }, {
+              "key" : "omnibus.sha1",
+              "value" : "613e67e8be03ddfe75f459df03cd46c28ed88788"
+            }, {
+              "key" : "build.number",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.project",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "delivery.change",
+              "value" : "2047a48a-78b7-4f0a-945e-cb7ef8e6e280"
+            }, {
+              "key" : "omnibus.architecture",
+              "value" : "x86_64"
+            }, {
+              "key" : "delivery.sha",
+              "value" : "b4941f7b693a5d36ffc8e050c6c2f460de0eedff"
+            }, {
+              "key" : "omnibus.sha512",
+              "value" : "517e54ef0ab8f05647dfeef7dc532a113f98d82f88415768d16a12a3edb3f97419b417fb951796e9627aa54475f5f3dd894be903fb3aeade01c47607ac64e9ee"
+            } ]
+          } ],
+          "range" : {
+            "start_pos" : 0,
+            "end_pos" : 4,
+            "limit" : 1000
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 18 Apr 2016 18:44:31 GMT
+- request:
+    method: get
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/chef-compliance
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Mon, 18 Apr 2016 18:46:36 GMT
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - de53e7c41030817d:7004465b:15407291b4b:-7f69
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/0.16.9",
+            "started" : "2016-03-23T16:20:28.318+0000"
+          }, {
+            "uri" : "/0.9.10",
+            "started" : "2016-01-18T16:58:18.532+0000"
+          }, {
+            "uri" : "/0.16.30",
+            "started" : "2016-03-27T18:56:08.802+0000"
+          }, {
+            "uri" : "/0.17.3",
+            "started" : "2016-03-31T12:34:39.042+0000"
+          }, {
+            "uri" : "/0.9.7",
+            "started" : "2015-12-21T18:23:57.008+0000"
+          }, {
+            "uri" : "/0.16.19",
+            "started" : "2016-03-25T16:57:47.178+0000"
+          }, {
+            "uri" : "/1.0.10",
+            "started" : "2016-04-06T16:17:51.010+0000"
+          }, {
+            "uri" : "/1.0.18",
+            "started" : "2016-04-12T18:10:26.637+0000"
+          }, {
+            "uri" : "/0.15.13",
+            "started" : "2016-03-10T08:52:53.131+0000"
+          }, {
+            "uri" : "/0.15.18",
+            "started" : "2016-03-11T18:44:39.078+0000"
+          }, {
+            "uri" : "/0.16.49",
+            "started" : "2016-03-30T14:02:58.609+0000"
+          }, {
+            "uri" : "/0.16.46",
+            "started" : "2016-03-29T21:28:52.347+0000"
+          }, {
+            "uri" : "/0.9.9",
+            "started" : "2016-01-12T02:40:31.626+0000"
+          }, {
+            "uri" : "/1.0.8",
+            "started" : "2016-04-06T10:23:33.913+0000"
+          }, {
+            "uri" : "/0.16.34",
+            "started" : "2016-03-27T23:38:00.670+0000"
+          }, {
+            "uri" : "/1.0.20",
+            "started" : "2016-04-18T11:59:04.770+0000"
+          }, {
+            "uri" : "/1.1.2",
+            "started" : "2016-04-18T13:28:57.850+0000"
+          }, {
+            "uri" : "/0.9.11",
+            "started" : "2016-01-26T11:50:38.480+0000"
+          }, {
+            "uri" : "/0.16.42",
+            "started" : "2016-03-28T22:58:37.635+0000"
+          }, {
+            "uri" : "/0.16.36+git.2.78d4d03",
+            "started" : "2016-03-28T11:50:12.065+0000"
+          }, {
+            "uri" : "/0.9.5",
+            "started" : "2015-12-03T13:59:12.427+0000"
+          }, {
+            "uri" : "/0.16.35",
+            "started" : "2016-03-28T01:58:57.429+0000"
+          }, {
+            "uri" : "/1.0.9",
+            "started" : "2016-04-06T10:47:25.136+0000"
+          }, {
+            "uri" : "/0.16.43",
+            "started" : "2016-03-29T14:36:41.132+0000"
+          }, {
+            "uri" : "/0.16.45",
+            "started" : "2016-03-29T16:46:20.316+0000"
+          }, {
+            "uri" : "/0.11.1",
+            "started" : "2016-02-08T09:43:06.698+0000"
+          }, {
+            "uri" : "/0.9.1",
+            "started" : "2015-11-03T22:15:27.799+0000"
+          }, {
+            "uri" : "/1.0.2",
+            "started" : "2016-04-01T10:57:20.217+0000"
+          }, {
+            "uri" : "/1.0.11",
+            "started" : "2016-04-06T17:00:31.317+0000"
+          }, {
+            "uri" : "/0.9.6",
+            "started" : "2015-12-14T09:44:59.973+0000"
+          }, {
+            "uri" : "/0.16.31",
+            "started" : "2016-03-27T19:24:01.170+0000"
+          }, {
+            "uri" : "/0.16.33",
+            "started" : "2016-03-27T22:25:13.799+0000"
+          }, {
+            "uri" : "/0.14.5",
+            "started" : "2016-02-23T00:48:57.307+0000"
+          }, {
+            "uri" : "/0.18.2",
+            "started" : "2016-03-31T13:54:44.750+0000"
+          }, {
+            "uri" : "/0.17.1",
+            "started" : "2016-03-30T15:46:51.215+0000"
+          }, {
+            "uri" : "/0.16.32",
+            "started" : "2016-03-27T20:20:06.357+0000"
+          }, {
+            "uri" : "/0.14.1",
+            "started" : "2016-02-22T17:13:11.009+0000"
+          }, {
+            "uri" : "/0.16.48",
+            "started" : "2016-03-30T10:50:19.804+0000"
+          }, {
+            "uri" : "/0.10.4",
+            "started" : "2016-02-01T13:46:17.440+0000"
+          }, {
+            "uri" : "/1.0.4",
+            "started" : "2016-04-01T13:51:09.658+0000"
+          }, {
+            "uri" : "/0.9.0",
+            "started" : "2015-11-03T04:49:24.407+0000"
+          }, {
+            "uri" : "/0.16.23",
+            "started" : "2016-03-26T23:56:17.150+0000"
+          }, {
+            "uri" : "/0.16.44",
+            "started" : "2016-03-29T15:03:19.518+0000"
+          }, {
+            "uri" : "/1.1.1",
+            "started" : "2016-04-18T12:36:49.979+0000"
+          }, {
+            "uri" : "/0.16.24",
+            "started" : "2016-03-27T02:18:21.618+0000"
+          } ],
+          "uri" : "http://artifactory.chef.co/api/build/chef-compliance"
+        }
+    http_version: 
+  recorded_at: Mon, 18 Apr 2016 18:44:31 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "chef-compliance"},
+          {"@omnibus.version": "1.1.2"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Mon, 18 Apr 2016 18:46:36 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - de53e7c41030817d:7004465b:15407291b4b:-7f69
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "results" : [ ],
+          "range" : {
+            "start_pos" : 0,
+            "end_pos" : 0,
+            "limit" : 1000
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 18 Apr 2016 18:44:31 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "chef-compliance"},
+          {"@omnibus.version": "1.1.1"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Mon, 18 Apr 2016 18:46:36 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - de53e7c41030817d:7004465b:15407291b4b:-7f69
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "results" : [ {
+            "repo" : "omnibus-unstable-local",
+            "path" : "com/getchef/chef-compliance/1.1.1/el/6",
+            "name" : "chef-compliance-1.1.1-1.el6.x86_64.rpm",
+            "properties" : [ {
+              "key" : "omnibus.version",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.platform",
+              "value" : "el"
+            }, {
+              "key" : "omnibus.sha256",
+              "value" : "424fce3b50599f6592c95cccb923cca654a4f334cdcd17b2df3e65c8c7cab11d"
+            }, {
+              "key" : "omnibus.iteration",
+              "value" : "1"
+            }, {
+              "key" : "omnibus.sha512",
+              "value" : "57525df74c146fb59bf3f0bc52ab3df3a54aaef70dd82beb2cb6913da73f587737971cb7b28f319ad9eaf8e4d9b055af33446ed9a0e15de4ec2f8ebc99eb0930"
+            }, {
+              "key" : "omnibus.platform_version",
+              "value" : "6"
+            }, {
+              "key" : "omnibus.sha1",
+              "value" : "0dab17ca8376ff33a435900258cf6645c9a81242"
+            }, {
+              "key" : "omnibus.project",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "build.number",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.architecture",
+              "value" : "x86_64"
+            }, {
+              "key" : "delivery.sha",
+              "value" : "b4941f7b693a5d36ffc8e050c6c2f460de0eedff"
+            }, {
+              "key" : "delivery.change",
+              "value" : "2047a48a-78b7-4f0a-945e-cb7ef8e6e280"
+            }, {
+              "key" : "omnibus.md5",
+              "value" : "c6bc46da80645d7275e0f14a0215f87b"
+            }, {
+              "key" : "build.name",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.license",
+              "value" : "Chef MLSA"
+            } ]
+          }, {
+            "repo" : "omnibus-unstable-local",
+            "path" : "com/getchef/chef-compliance/1.1.1/ubuntu/14.04",
+            "name" : "chef-compliance_1.1.1-1_amd64.deb",
+            "properties" : [ {
+              "key" : "omnibus.sha1",
+              "value" : "99490f8ab5fc225bd99279d6a6c916c8f9ec9fa5"
+            }, {
+              "key" : "omnibus.iteration",
+              "value" : "1"
+            }, {
+              "key" : "omnibus.md5",
+              "value" : "1bcd0cb9a54d18fc511e13f6030f2f47"
+            }, {
+              "key" : "omnibus.sha256",
+              "value" : "2390f8b44c786f5483bf39280e2ca562ed802beae19a6168e29ee06bcec6a139"
+            }, {
+              "key" : "omnibus.version",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.platform",
+              "value" : "ubuntu"
+            }, {
+              "key" : "omnibus.project",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.architecture",
+              "value" : "x86_64"
+            }, {
+              "key" : "delivery.sha",
+              "value" : "b4941f7b693a5d36ffc8e050c6c2f460de0eedff"
+            }, {
+              "key" : "delivery.change",
+              "value" : "2047a48a-78b7-4f0a-945e-cb7ef8e6e280"
+            }, {
+              "key" : "build.name",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.license",
+              "value" : "Chef MLSA"
+            }, {
+              "key" : "omnibus.sha512",
+              "value" : "7df30647edd6dbbf3f018bde33d560a00c9cebfee7e583a377439fca65c7c24138ab25cb2775a49430e2ad5e7efd6299aaa23ede0d27d921b93336c84d3714d1"
+            }, {
+              "key" : "omnibus.platform_version",
+              "value" : "14.04"
+            }, {
+              "key" : "build.number",
+              "value" : "1.1.1"
+            } ]
+          }, {
+            "repo" : "omnibus-unstable-local",
+            "path" : "com/getchef/chef-compliance/1.1.1/ubuntu/12.04",
+            "name" : "chef-compliance_1.1.1-1_amd64.deb",
+            "properties" : [ {
+              "key" : "omnibus.sha512",
+              "value" : "7df30647edd6dbbf3f018bde33d560a00c9cebfee7e583a377439fca65c7c24138ab25cb2775a49430e2ad5e7efd6299aaa23ede0d27d921b93336c84d3714d1"
+            }, {
+              "key" : "omnibus.project",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "build.number",
+              "value" : "1.1.1"
+            }, {
+              "key" : "delivery.sha",
+              "value" : "b4941f7b693a5d36ffc8e050c6c2f460de0eedff"
+            }, {
+              "key" : "omnibus.architecture",
+              "value" : "x86_64"
+            }, {
+              "key" : "delivery.change",
+              "value" : "2047a48a-78b7-4f0a-945e-cb7ef8e6e280"
+            }, {
+              "key" : "omnibus.license",
+              "value" : "Chef MLSA"
+            }, {
+              "key" : "build.name",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.md5",
+              "value" : "1bcd0cb9a54d18fc511e13f6030f2f47"
+            }, {
+              "key" : "omnibus.platform",
+              "value" : "ubuntu"
+            }, {
+              "key" : "omnibus.version",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.platform_version",
+              "value" : "12.04"
+            }, {
+              "key" : "omnibus.sha1",
+              "value" : "99490f8ab5fc225bd99279d6a6c916c8f9ec9fa5"
+            }, {
+              "key" : "omnibus.iteration",
+              "value" : "1"
+            }, {
+              "key" : "omnibus.sha256",
+              "value" : "2390f8b44c786f5483bf39280e2ca562ed802beae19a6168e29ee06bcec6a139"
+            } ]
+          }, {
+            "repo" : "omnibus-unstable-local",
+            "path" : "com/getchef/chef-compliance/1.1.1/el/7",
+            "name" : "chef-compliance-1.1.1-1.el7.x86_64.rpm",
+            "properties" : [ {
+              "key" : "omnibus.platform",
+              "value" : "el"
+            }, {
+              "key" : "omnibus.version",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.platform_version",
+              "value" : "7"
+            }, {
+              "key" : "omnibus.sha256",
+              "value" : "5d8a89fa26926d407e854182729a1938241081c070d9705d213d55ddc438bfbb"
+            }, {
+              "key" : "omnibus.iteration",
+              "value" : "1"
+            }, {
+              "key" : "build.name",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "omnibus.license",
+              "value" : "Chef MLSA"
+            }, {
+              "key" : "omnibus.md5",
+              "value" : "e468945044da19f789375f90706d85c7"
+            }, {
+              "key" : "omnibus.sha1",
+              "value" : "613e67e8be03ddfe75f459df03cd46c28ed88788"
+            }, {
+              "key" : "build.number",
+              "value" : "1.1.1"
+            }, {
+              "key" : "omnibus.project",
+              "value" : "chef-compliance"
+            }, {
+              "key" : "delivery.change",
+              "value" : "2047a48a-78b7-4f0a-945e-cb7ef8e6e280"
+            }, {
+              "key" : "omnibus.architecture",
+              "value" : "x86_64"
+            }, {
+              "key" : "delivery.sha",
+              "value" : "b4941f7b693a5d36ffc8e050c6c2f460de0eedff"
+            }, {
+              "key" : "omnibus.sha512",
+              "value" : "517e54ef0ab8f05647dfeef7dc532a113f98d82f88415768d16a12a3edb3f97419b417fb951796e9627aa54475f5f3dd894be903fb3aeade01c47607ac64e9ee"
+            } ]
+          } ],
+          "range" : {
+            "start_pos" : 0,
+            "end_pos" : 4,
+            "limit" : 1000
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 18 Apr 2016 18:44:32 GMT
+recorded_with: VCR 3.0.1

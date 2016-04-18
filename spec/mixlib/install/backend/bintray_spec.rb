@@ -61,12 +61,12 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
 
       it "returns a single artifact with correct info" do
         expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
-        expect(artifact_info.version).to eq "12.8.1"
+        expect(artifact_info.version).to eq "12.9.38"
         expect(artifact_info.platform).to eq "ubuntu"
         expect(artifact_info.platform_version).to eq "14.04"
         expect(artifact_info.architecture).to eq "x86_64"
-        expect(artifact_info.sha256).to eq "92b7f3eba0a62b20eced2eae03ec2a5e382da4b044c38c20d2902393683c77f7"
-        expect(artifact_info.url).to eq "https://packages.chef.io/stable/ubuntu/14.04/chef_12.8.1-1_amd64.deb"
+        expect(artifact_info.sha256).to eq "255c065a9d23f3dd0df3090206fe4d48451c7d0af0035c237bd21a7d28133f2f"
+        expect(artifact_info.url).to eq "https://packages.chef.io/stable/ubuntu/14.04/chef_12.9.38-1_amd64.deb"
       end
     end
   end
@@ -102,6 +102,7 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
   context "architecture extraction" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
+    let(:product_version) { :latest }
 
     it "extracts the architecture from file name correctly" do
       {
@@ -153,6 +154,20 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
 
     it "raises an error" do
       expect { artifact_info }.to raise_error Mixlib::Install::Backend::Bintray::VersionNotFound
+    end
+  end
+
+  context "for compliance" do
+    let(:channel) { :stable }
+    let(:product_name) { "compliance" }
+    let(:product_version) { :latest }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "14.04" }
+    let(:architecture) { "x86_64" }
+
+    it "uses product package name" do
+      expect(bintray.info).to be_a Mixlib::Install::ArtifactInfo
+      expect(bintray.info.url).to match "chef-compliance"
     end
   end
 end
