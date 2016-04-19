@@ -130,12 +130,14 @@ case $platform in
     platform_version=$major_version
     ;;
   "debian")
-    # FIXME: remove client-side yolo here
-    case $major_version in
-      "5") platform_version="6";;  # FIXME: need to port this "reverse-yolo" into platform.rb
-      "6") platform_version="6";;
-      "7") platform_version="6";;
-    esac
+    if test "x$major_version" = "x5"; then
+      # This is here for potential back-compat.
+      # We do not have 5 in versions we publish for anymore but we
+      # might have it for earlier versions.
+      platform_version="6"
+    else
+      platform_version=$major_version
+    fi
     ;;
   "freebsd")
     platform_version=$major_version
