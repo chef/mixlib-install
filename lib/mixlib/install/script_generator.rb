@@ -184,7 +184,7 @@ module Mixlib
 
       # @return the correct Chef Omnitruck API metadata endpoint, based on project
       def metadata_endpoint_from_project(project = nil)
-        if project.nil? || project.downcase == "chef"
+        if project.nil? || project.casecmp("chef") == 0
           "metadata"
         else
           "metadata-#{project.downcase}"
