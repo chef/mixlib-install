@@ -65,4 +65,22 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
       expect(artifactory.info.url).not_to include("metadata.json")
     end
   end
+
+  context "when querying compliance" do
+    let(:opts) {
+      {
+        channel: :unstable,
+        product_name: "compliance",
+        product_version: :latest,
+        platform: "ubuntu",
+        platform_version: "14.04",
+        architecture: "x86_64",
+      }
+    }
+
+    it "uses the product package name" do
+      expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+      expect(artifactory.info.url).to match "chef-compliance"
+    end
+  end
 end
