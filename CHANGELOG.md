@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.8]
+### Fixed
+- Resolving artifacts from unstable channel properly map the product name to the relative package name when querying Artifactory.
+
 ## [1.0.7]
 ### Changed
 - Relax all gemspec dependency versions
