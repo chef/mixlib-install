@@ -219,7 +219,7 @@ module Mixlib
           platform_info = parse_platform_info(artifact_map)
 
           base_url = case "#{platform_info[:platform]}-#{platform_info[:platform_version]}"
-                     when "freebsd-9", "el-5"
+                     when "freebsd-9", "el-5", "solaris2-5.9", "solaris2-5.10"
                        COMPAT_DOWNLOAD_URL_ENDPOINT
                      else
                        DOWNLOAD_URL_ENDPOINT
@@ -260,7 +260,7 @@ module Mixlib
         end
 
         #
-        # Normalizes platform and platform_version information that we receieve
+        # Normalizes platform and platform_version information that we receive
         # from bintray. There are a few entries that we historically published
         # that we need to normalize. They are:
         #   * solaris -> solaris2 & 10 -> 5.10 for solaris.
