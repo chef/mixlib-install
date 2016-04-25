@@ -144,6 +144,23 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
     end
   end
 
+  context "for a version with unique solaris publishing values" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "12.4.1" }
+    let(:platform) { "solaris2" }
+    let(:platform_version) { "5.10" }
+    let(:architecture) { "sparc" }
+
+    it "finds an artifact" do
+      expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+      expect(artifact_info.version).to eq "12.4.1"
+      expect(artifact_info.platform).to eq "solaris2"
+      expect(artifact_info.platform_version).to eq "5.10"
+      expect(artifact_info.architecture).to eq "sparc"
+    end
+  end
+
   context "for a missing version of a product" do
     let(:channel) { :current }
     let(:product_name) { "chef" }
