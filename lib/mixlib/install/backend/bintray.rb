@@ -51,27 +51,6 @@ module Mixlib
           @endpoint ||= ENV.fetch("BINTRAY_ENDPOINT", ENDPOINT)
         end
 
-        # Create filtered list of artifacts
-        #
-        # @return [Array<ArtifactInfo>] list of artifacts for the configured
-        # channel, product name, and product version.
-        # @return [ArtifactInfo] arifact info for the configured
-        # channel, product name, product version and platform info
-        #
-        def info
-          artifacts = bintray_artifacts
-
-          if options.platform
-            artifacts.select! do |a|
-              a.platform == options.platform &&
-                a.platform_version == options.platform_version &&
-                a.architecture == options.architecture
-            end
-          end
-
-          artifacts.length == 1 ? artifacts.first : artifacts
-        end
-
         #
         # Makes a GET request to bintray for the given path.
         #
@@ -111,7 +90,7 @@ module Mixlib
         #
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         #
-        def bintray_artifacts
+        def available_artifacts
           version = options.latest_version? ? latest_version : options.product_version
           begin
             results = bintray_get("#{options.channel}/#{options.product_name}/versions/#{version}/files")

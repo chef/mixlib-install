@@ -49,6 +49,24 @@ artifact.platform # => "mac_os_x"
 artifact.platform_version # => "10.10"
 ```
 
+### Use an artifact released for an earlier version of the platform
+```ruby
+options = {
+  channel: :current,
+  product_name: 'chef',
+  product_version: :latest,
+  platform: 'ubuntu',
+  platform_version: '15.04',
+  architecture: 'x86_64',
+  platform_version_compatibility_mode: true
+}
+
+artifact = Mixlib::Install.new(options).artifact_info
+
+artifact.platform # => "ubuntu"
+artifact.platform_version # => "14.04"
+```
+
 ## Unstable channel
 The `:unstable` channel is currently only available when connected to Chef's internal network.
 

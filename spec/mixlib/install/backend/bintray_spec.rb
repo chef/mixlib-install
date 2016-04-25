@@ -27,12 +27,14 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
   let(:platform) { nil }
   let(:platform_version) { nil }
   let(:architecture) { nil }
+  let(:pv_compat) { nil }
 
   let(:options) do
     {}.tap do |opt|
       opt[:product_name] = product_name
       opt[:product_version] = product_version
       opt[:channel] = channel
+      opt[:platform_version_compatibility_mode] = pv_compat if pv_compat
       if platform
         opt[:platform] = platform
         opt[:platform_version] = platform_version
@@ -159,6 +161,54 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
       expect(artifact_info.platform).to eq "solaris2"
       expect(artifact_info.platform_version).to eq "5.10"
       expect(artifact_info.architecture).to eq "sparc"
+    end
+  end
+
+  context "for a version of ubuntu that is not added to our matrix" do
+    let(:channel) { :stable }
+    let(:product_name) { "delivery-cli" }
+    let(:product_version) { :latest }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "15.04" }
+    let(:architecture) { "x86_64" }
+
+    it "can not find an artifact" do
+      expect(artifact_info).to be_empty
+    end
+
+    context "when product_version compat mode is set" do
+      let(:pv_compat) { true }
+
+      it "finds an artifact" do
+        expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+        expect(artifact_info.platform).to eq "ubuntu"
+        expect(artifact_info.platform_version).to eq "14.04"
+        expect(artifact_info.architecture).to eq "x86_64"
+      end
+    end
+  end
+
+  context "for a version of el that is not added to our matrix" do
+    let(:channel) { :stable }
+    let(:product_name) { "delivery-cli" }
+    let(:product_version) { :latest }
+    let(:platform) { "el" }
+    let(:platform_version) { "8" }
+    let(:architecture) { "x86_64" }
+
+    it "can not find an artifact" do
+      expect(artifact_info).to be_empty
+    end
+
+    context "when product_version compat mode is set" do
+      let(:pv_compat) { true }
+
+      it "finds an artifact" do
+        expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+        expect(artifact_info.platform).to eq "el"
+        expect(artifact_info.platform_version).to eq "7"
+        expect(artifact_info.architecture).to eq "x86_64"
+      end
     end
   end
 

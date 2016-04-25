@@ -42,25 +42,12 @@ module Mixlib
         #
         # @return [Array<ArtifactInfo>] list of artifacts for the configured
         # channel, product name, and product version.
-        # @return [ArtifactInfo] arifact info for the configured
-        # channel, product name, product version and platform info
-        #
-        def info
-          artifacts = if options.latest_version?
-                        artifactory_latest
-                      else
-                        artifactory_artifacts(options.product_version)
-                      end
-
-          if options.platform
-            artifacts.select! do |a|
-              a.platform == options.platform &&
-                a.platform_version == options.platform_version &&
-                a.architecture == options.architecture
-            end
+        def available_artifacts
+          if options.latest_version?
+            artifactory_latest
+          else
+            artifactory_artifacts(options.product_version)
           end
-
-          artifacts.length == 1 ? artifacts.first : artifacts
         end
 
         #
