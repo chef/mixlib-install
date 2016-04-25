@@ -247,6 +247,7 @@ module Mixlib
           path = artifact_map["path"].split("/")
           platform = path[0]
           platform_version = path[1]
+          platform, platform_version = normalize_platform(platform, platform_version)
 
           filename = artifact_map["name"]
           architecture = parse_architecture_from_file_name(filename)
@@ -256,6 +257,29 @@ module Mixlib
             platform_version: platform_version,
             architecture: architecture,
           }
+        end
+
+        #
+        # Normalizes platform and platform_version information that we receieve
+        # from bintray. There are a few entries that we historically published
+        # that we need to normalize. They are:
+        #   * solaris -> solaris2 & 10 -> 5.10 for solaris.
+        #
+        # @param [String] platform
+        # @param [String] platform_version
+        #
+        # @return Array<String> [platform, platform_version]
+        def normalize_platform(platform, platform_version)
+          if platform == "solaris"
+            platform = "solaris2"
+
+            # Here platform_version is set to either 10 or 11 and we would like
+            # to normalize that to 5.10 and 5.11.
+
+            platform_version = "5.#{platform_version}"
+          end
+
+          [platform, platform_version]
         end
 
         #
