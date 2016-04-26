@@ -135,6 +135,7 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
         ],
         "ppc64le" => [
           "chef-12.8.1-1.ppc64le.bff",
+          "chef-12.8.1-1.ppc64el.bff",
         ],
       }.each do |arch, filenames|
         filenames.each do |filename|

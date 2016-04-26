@@ -312,8 +312,8 @@ module Mixlib
           elsif %w{ sparc sun4u sun4v }.fuzzy_include?(filename)
             "sparc"
           # Note that ppc64le should come before ppc64 otherwise our search
-          # will think ppc64le matches ppc64.
-          elsif %w{ ppc64le }.fuzzy_include?(filename)
+          # will think ppc64le matches ppc64. Ubuntu also calls it ppc64el.
+          elsif %w{ ppc64le ppc64el }.fuzzy_include?(filename)
             "ppc64le"
           elsif %w{ ppc64 }.fuzzy_include?(filename)
             "ppc64"
