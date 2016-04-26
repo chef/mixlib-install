@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.10]
+- Correctly parse architecture for ppc64el.
+- Return chef.bintray.com based urls for solaris9 and solaris10.
+- Handle historical artifacts published for solaris.
+
 ## [1.0.9]
 - Update platform detection scripts to recognize debian 8 correctly.
 
