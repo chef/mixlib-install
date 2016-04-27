@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.11]
+- Add `platform_version_compatibility_mode` option which makes mixlib-install select an artifact built for an earlier version of a platform when set.
+
 ## [1.0.10]
 - Correctly parse architecture for ppc64el.
 - Return chef.bintray.com based urls for solaris9 and solaris10.
