@@ -39,6 +39,7 @@ module Mixlib
         :product_name,
         :product_version,
         :shell_type,
+        :platform_version_compatibility_mode,
       ]
 
       def initialize(options)
@@ -107,6 +108,7 @@ module Mixlib
       def default_options
         {
           shell_type: :sh,
+          platform_version_compatibility_mode: false,
         }
       end
 

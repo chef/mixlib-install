@@ -23,12 +23,18 @@ context "Mixlib::Install" do
     Mixlib::Install.new(
       product_name: product_name,
       channel: channel,
-      product_version: product_version
+      product_version: product_version,
+      platform: platform,
+      platform_version: platform_version,
+      architecture: architecture
     )
   end
 
   let(:channel) { :stable }
   let(:product_version) { :latest }
+  let(:platform) { nil }
+  let(:platform_version) { nil }
+  let(:architecture) { nil }
 
   context "querying current version" do
     let(:version_manifest_file) { "/opt/#{product_name}/version-manifest.json" }
@@ -128,14 +134,6 @@ context "Mixlib::Install" do
       let(:current_version) { nil }
 
       it "should report upgrade available" do
-        installer = Mixlib::Install.new(
-          product_name: product_name,
-          channel: channel,
-          product_version: product_version,
-          platform: platform,
-          platform_version: platform_version,
-          architecture: architecture
-        )
         expect(installer.upgrade_available?).to eq(true)
       end
     end

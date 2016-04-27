@@ -31,7 +31,7 @@ module Mixlib
           @endpoint ||= ENV.fetch("OMNITRUCK_ENDPOINT", ENDPOINT)
         end
 
-        def info
+        def available_artifacts
           # If we are querying a single platform we need to call metadata
           # endpoint otherwise we need to call versions endpoint in omnitruck
           if options.platform
