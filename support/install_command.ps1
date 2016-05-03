@@ -44,7 +44,6 @@ Function Download-Chef($url, $sha256, $dst) {
 Function Install-Chef($msi) {
   Log "Installing Chef Omnibus package $msi"
   $installingChef = $True
-  $installAttempts = 0
   while ($installingChef) {
     $installAttempts++
     $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
