@@ -52,7 +52,7 @@ Function Install-Chef($msi) {
     $p.WaitForExit()
     if ($p.ExitCode -ne 0) {
       if ($installAttempts -gt $maxAttempts) {
-        throw "msiexec was not successful, exceeded retry limit (10).  Received exit code $($p.ExitCode)"
+        throw "msiexec was not successful, exceeded retry limit ($($maxAttempts)).  Received exit code $($p.ExitCode)"
       } elseif ($p.ExitCode -ne 1618) {
         throw "msiexec was not successful. Received exit code $($p.ExitCode)"
       } else {
