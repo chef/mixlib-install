@@ -43,11 +43,25 @@ Function Download-Chef($url, $sha256, $dst) {
 
 Function Install-Chef($msi) {
   Log "Installing Chef Omnibus package $msi"
-  $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
-  $p.WaitForExit()
-
-  if ($p.ExitCode -ne 0) { throw "msiexec was not successful. Received exit code $($p.ExitCode)" }
-
+  $installingChef = $True
+  $installAttempts = 0
+  $maxAttempts = 10
+  while ($installingChef) {
+    $installAttempts++;
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
+    $p.WaitForExit()
+    if ($p.ExitCode -ne 0) {
+      if ($installAttempts -gt $maxAttempts) {
+        throw "msiexec was not successful, exceeded retry limit (10).  Received exit code $($p.ExitCode)"
+      } elseif ($p.ExitCode -ne 1618) {
+        throw "msiexec was not successful. Received exit code $($p.ExitCode)"
+      } else {
+        Log "Another msi install is in progress (exit code 1618), retrying..."
+        continue
+      }
+    }
+    $installingChef = $False
+  }
   Remove-Item $msi -Force
   Log "Installation complete"
 }
