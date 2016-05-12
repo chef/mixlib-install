@@ -19,11 +19,6 @@ function Get-ProjectMetadata {
     [uri]$base_server_uri = '<%= base_url %>',
     [string]
     # Project to install
-    # chef - Chef Client
-    # chefdk - Chef Development Kit
-    # angrychef - AngryChef
-    # server and container are not valid windows targets
-    [validateset('chef', 'chefdk', 'angrychef')]
     [string]
     $project = 'chef',
     # Version of the application to install
