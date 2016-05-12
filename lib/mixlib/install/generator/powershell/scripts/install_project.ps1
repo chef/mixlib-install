@@ -16,11 +16,6 @@ function Install-Project {
   [cmdletbinding(SupportsShouldProcess=$true)]
   param (
     # Project to install
-    # chef - Chef Client
-    # chefdk - Chef Development Kit
-    # angrychef - AngryChef
-    # server and container are not valid windows targets
-    [validateset('chef', 'chefdk', 'angrychef')]
     [string]
     $project = 'chef',
     # Release channel to install from
