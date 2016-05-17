@@ -150,6 +150,19 @@ case $platform in
     ;;
 esac
 
+# normalize the architecture we detected
+case $machine in
+  "x86_64"|"amd64"|"x64")
+    machine="x86_64"
+    ;;
+  "i386"|"i86pc"|"x86"|"i686")
+    machine="i386"
+    ;;
+  "sparc"|"sun4u"|"sun4v")
+    machine="sparc"
+    ;;
+esac
+
 if test "x$platform_version" = "x"; then
   echo "Unable to determine platform version!"
   report_bug
