@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.12]
+- Normalize the architecture detection to return either x86_64, i386 or sparc.
+- Remove the powershell product_name validation to support delivery-cli and push-jobs-client in install.ps1.
+- Retry MSI installation when it fails with 1618 (another installation in progress).
+
 ## [1.0.11]
 - Add `platform_version_compatibility_mode` option which makes mixlib-install select an artifact built for an earlier version of a platform when set.
 
