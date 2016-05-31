@@ -80,10 +80,18 @@ function Install-Project {
   if ($pscmdlet.ShouldProcess("$download_destination", "Installing")){
     if (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $package_metadata.sha256) {
       Write-Host "Installing $project from $download_destination"
-      $p = Start-Process -FilePath "msiexec" -ArgumentList "/qn /i $download_destination" -Passthru -Wait
-      $p.WaitForExit()
-      if ($p.ExitCode -ne 0) {
-        throw "msiexec was not successful. Received exit code $($p.ExitCode)"
+      $installingProject = $True
+      $installAttempts = 0
+      while ($installingProject) {
+        $p = Start-Process -FilePath "msiexec" -ArgumentList "/qn /i $download_destination" -Passthru -Wait
+        $p.WaitForExit()
+        if ($p.ExitCode -eq 1618) {
+          Write-Host "Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
+          continue
+        } elseif ($p.ExitCode -ne 0) {
+          throw "msiexec was not successful. Received exit code $($p.ExitCode)"
+        }
+        $installingProject = $False
       }
     }
     else {
