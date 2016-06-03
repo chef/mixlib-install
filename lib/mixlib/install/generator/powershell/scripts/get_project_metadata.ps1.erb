@@ -53,13 +53,8 @@ function Get-ProjectMetadata {
   $platform_version = Get-PlatformVersion
   Write-Verbose "Platform Version: $platform_version"
 
-  # Custom architecture detection based on channel
   if ($architecture -eq 'auto') {
-    if (((get-wmiobject win32_operatingsystem).osarchitecture -like '64-bit') -and ($channel -like 'current')) {
-      $architecture = 'x86_64'
-    } else {
-      $architecture = 'i386'
-    }
+    $architecture = Get-PlatformArchitecture
   }
 
   Write-Verbose "Architecture: $architecture"
