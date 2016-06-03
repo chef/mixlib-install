@@ -21,7 +21,13 @@ function Get-PlatformArchitecture {
 function New-Uri {
   param ($baseuri, $newuri)
 
+  try {
   new-object System.Uri $baseuri, $newuri
+  }
+  catch [System.Management.Automation.MethodInvocationException]{
+    Write-Error "$($_.exception.message)"
+    throw $_.exception
+  }
 }
 
 function Get-WebContent {
