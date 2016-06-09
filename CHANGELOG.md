@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.13]
+- Fix Windows architecture detection for stable channel
+- Added support for retrying project msi installation for exit code 1618 (another installation is in progress)
+
 ## [1.0.12]
 - Normalize the architecture detection to return either x86_64, i386 or sparc.
 - Remove the powershell product_name validation to support delivery-cli and push-jobs-client in install.ps1.
