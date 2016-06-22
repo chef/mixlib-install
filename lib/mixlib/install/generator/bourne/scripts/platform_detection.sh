@@ -22,7 +22,14 @@
 # endpoint out there).
 #
 
-machine=`uname -m`
+case "$(getconf LONG_BIT)" in
+  "64")
+    machine=x86_64
+    ;;
+  "32")
+    machine=i386
+    ;;
+esac
 os=`uname -s`
 
 if test -f "/etc/lsb-release" && grep -q DISTRIB_ID /etc/lsb-release && ! grep -q wrlinux /etc/lsb-release; then
