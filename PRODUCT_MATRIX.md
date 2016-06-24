@@ -10,7 +10,6 @@
 | Chef Development Kit | chefdk |
 | Chef Compliance | compliance |
 | Delivery | delivery |
-| Delivery CLI | delivery-cli |
 | Chef Server High Availability addon | ha |
 | Management Console | manage |
 | Chef Cloud Marketplace addon | marketplace |

@@ -116,7 +116,6 @@ context "PRODUCT_MATRIX" do
     chefdk
     compliance
     delivery
-    delivery-cli
     ha
     manage
     marketplace
