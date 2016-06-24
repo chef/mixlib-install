@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.1.0]
+- Remove delivery-cli from Product Matrix since we are now shipping it within ChefDK
+
 ## [1.0.13]
 - Fix Windows architecture detection for stable channel
 - Added support for retrying project msi installation for exit code 1618 (another installation is in progress)
