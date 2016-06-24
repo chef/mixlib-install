@@ -209,11 +209,6 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/delivery/delivery.rb"
   end
 
-  product "delivery-cli" do
-    product_name "Delivery CLI"
-    package_name "delivery-cli"
-  end
-
   product "ha" do
     product_name "Chef Server High Availability addon"
     package_name "chef-ha"
