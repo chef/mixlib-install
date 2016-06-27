@@ -43,11 +43,13 @@ module Mixlib
         # @return [Array<ArtifactInfo>] list of artifacts for the configured
         # channel, product name, and product version.
         def available_artifacts
-          if options.latest_version?
-            artifactory_latest
-          else
-            artifactory_artifacts(options.product_version)
-          end
+          artifacts = if options.latest_version?
+                        artifactory_latest
+                      else
+                        artifactory_artifacts(options.product_version)
+                      end
+
+          windows_artifact_fixup!(artifacts)
         end
 
         #
@@ -131,13 +133,16 @@ items.find(
         end
 
         def create_artifact(artifact_map)
+          platform, platform_version = normalize_platform(artifact_map["omnibus.platform"],
+            artifact_map["omnibus.platform_version"])
+
           ArtifactInfo.new(
             md5:              artifact_map["omnibus.md5"],
             sha256:           artifact_map["omnibus.sha256"],
             version:          artifact_map["omnibus.version"],
-            platform:         artifact_map["omnibus.platform"],
-            platform_version: artifact_map["omnibus.platform_version"],
-            architecture:     artifact_map["omnibus.architecture"],
+            platform:         platform,
+            platform_version: platform_version,
+            architecture:     normalize_architecture(artifact_map["omnibus.architecture"]),
             url:              artifact_map["downloadUri"]
           )
         end
@@ -198,6 +203,20 @@ the endpoint is correct and there is an open connection to Chef's private networ
 
         def omnibus_project
           @omnibus_project ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).omnibus_project
+        end
+
+        #
+        # Normalizes architecture information that we receive.
+        #
+        # @param [String] architecture
+        #
+        # @return String [architecture]
+        def normalize_architecture(architecture)
+          if %w{ sun4u sun4v }.include?(architecture)
+            architecture = "sparc"
+          end
+
+          architecture
         end
       end
     end

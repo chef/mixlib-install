@@ -18,9 +18,9 @@
 
 require "spec_helper"
 require "mixlib/install/options"
-require "mixlib/install/backend/bintray"
+require "mixlib/install/backend/artifactory"
 
-context "Mixlib::Install::Backend::Bintray", :vcr do
+context "Mixlib::Install::Backend::Artifactory all channels", :vcr do
   let(:channel) { nil }
   let(:product_name) { nil }
   let(:product_version) { nil }
@@ -44,8 +44,8 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
   end
 
   let(:mixlib_options) { Mixlib::Install::Options.new(options) }
-  let(:bintray) { Mixlib::Install::Backend::Bintray.new(mixlib_options) }
-  let(:artifact_info) { bintray.info }
+  let(:artifactory) { Mixlib::Install::Backend::Artifactory.new(mixlib_options) }
+  let(:artifact_info) { artifactory.info }
 
   context "for chef/stable with :latest version" do
     let(:channel) { :stable }
@@ -63,12 +63,12 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
 
       it "returns a single artifact with correct info" do
         expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
-        expect(artifact_info.version).to eq "12.9.38"
+        expect(artifact_info.version).to eq "12.11.18"
         expect(artifact_info.platform).to eq "ubuntu"
         expect(artifact_info.platform_version).to eq "14.04"
         expect(artifact_info.architecture).to eq "x86_64"
-        expect(artifact_info.sha256).to eq "255c065a9d23f3dd0df3090206fe4d48451c7d0af0035c237bd21a7d28133f2f"
-        expect(artifact_info.url).to eq "https://packages.chef.io/stable/ubuntu/14.04/chef_12.9.38-1_amd64.deb"
+        expect(artifact_info.sha256).to eq "f1cf5d0f6dd12d2d2296ec6d8dbb16363f8541f5c15298cafa70e65ff2b5a22f"
+        expect(artifact_info.url).to eq "http://artifactory.chef.co/omnibus-stable-local/com/getchef/chef/12.11.18/ubuntu/14.04/chef_12.11.18-1_amd64.deb"
       end
     end
   end
@@ -98,52 +98,6 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
     it "returns 64 bit package for 64 bit" do
       expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
       expect(artifact_info.url).to match("x64")
-    end
-  end
-
-  context "architecture extraction" do
-    let(:channel) { :stable }
-    let(:product_name) { "chef" }
-    let(:product_version) { :latest }
-
-    it "extracts the architecture from file name correctly" do
-      {
-        "x86_64" => [
-          "chef_12.8.1-1_amd64.deb",
-          "chef_12.8.1-1_x64.deb",
-          "chef_12.8.1-1_x86_64.deb",
-          "chef_12.8.1-1.dmg",
-          "chef_12.8.1-1.sh",
-        ],
-        "i386" => [
-          "chef_12.8.1-1_i386.deb",
-          "chef_12.8.1-1_i686.deb",
-          "chef_12.8.1-1_x86.deb",
-          "chef_12.8.1-1_i86pc.deb",
-          "chef_12.8.1-1.msi",
-          "chef-11.8.2-1.solaris2.5.10.solaris",
-        ],
-        "powerpc" => [
-          "chef-12.8.1-1.powerpc.bff",
-        ],
-        "sparc" => [
-          "chef-12.8.1-1.sparc.solaris",
-          "chef-12.8.1-1.sun4u.solaris",
-          "chef-12.8.1-1.sun4v.solaris",
-          "chef-11.8.2-1.solaris2.5.9.solaris",
-        ],
-        "ppc64" => [
-          "chef-12.8.1-1.ppc64.bff",
-        ],
-        "ppc64le" => [
-          "chef-12.8.1-1.ppc64le.bff",
-          "chef-12.8.1-1.ppc64el.bff",
-        ],
-      }.each do |arch, filenames|
-        filenames.each do |filename|
-          expect(bintray.parse_architecture_from_file_name(filename)).to eq(arch)
-        end
-      end
     end
   end
 
@@ -212,19 +166,6 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
     end
   end
 
-  context "for a missing version of a product" do
-    let(:channel) { :current }
-    let(:product_name) { "chef" }
-    let(:product_version) { "99.99.99" }
-    let(:platform) { "windows" }
-    let(:platform_version) { "2012r2" }
-    let(:architecture) { "x86_64" }
-
-    it "raises an error" do
-      expect { artifact_info }.to raise_error Mixlib::Install::Backend::Bintray::VersionNotFound
-    end
-  end
-
   context "for compliance" do
     let(:channel) { :stable }
     let(:product_name) { "compliance" }
@@ -234,8 +175,8 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
     let(:architecture) { "x86_64" }
 
     it "uses product package name" do
-      expect(bintray.info).to be_a Mixlib::Install::ArtifactInfo
-      expect(bintray.info.url).to match "chef-compliance"
+      expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+      expect(artifactory.info.url).to match "chef-compliance"
     end
   end
 end

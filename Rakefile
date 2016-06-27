@@ -42,3 +42,11 @@ task "matrix" do
     f.puts("Do not modify this file manually. It is automatically rendered via a rake task.")
   end
 end
+
+task :console do
+  require "irb"
+  require "irb/completion"
+  require "mixlib/install"
+  ARGV.clear
+  IRB.start
+end

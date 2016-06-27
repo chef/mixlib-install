@@ -1,0 +1,1306 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/delivery
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:22 GMT
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/0.4.427",
+            "started" : "2016-06-10T19:42:18.799+0000"
+          }, {
+            "uri" : "/0.3.240",
+            "started" : "2015-08-26T20:11:27.272+0000"
+          }, {
+            "uri" : "/0.4.498",
+            "started" : "2016-06-22T19:13:24.832+0000"
+          }, {
+            "uri" : "/0.4.383",
+            "started" : "2016-06-02T20:56:09.776+0000"
+          }, {
+            "uri" : "/0.3.210",
+            "started" : "2015-08-14T02:40:35.926+0000"
+          }, {
+            "uri" : "/0.3.519",
+            "started" : "2016-01-12T19:10:54.992+0000"
+          }, {
+            "uri" : "/0.4.494",
+            "started" : "2016-06-22T03:25:35.645+0000"
+          }, {
+            "uri" : "/0.3.640",
+            "started" : "2016-02-19T22:38:12.027+0000"
+          }, {
+            "uri" : "/0.4.437",
+            "started" : "2016-06-13T22:21:47.845+0000"
+          }, {
+            "uri" : "/0.4.375",
+            "started" : "2016-06-01T21:13:48.735+0000"
+          }, {
+            "uri" : "/0.3.374",
+            "started" : "2015-10-31T16:26:45.269+0000"
+          }, {
+            "uri" : "/0.4.519",
+            "started" : "2016-06-24T21:00:38.501+0000"
+          }, {
+            "uri" : "/0.4.510",
+            "started" : "2016-06-23T20:17:17.144+0000"
+          }, {
+            "uri" : "/0.4.132",
+            "started" : "2016-03-29T18:52:29.116+0000"
+          }, {
+            "uri" : "/0.3.224",
+            "started" : "2015-08-19T17:31:49.030+0000"
+          }, {
+            "uri" : "/0.3.467",
+            "started" : "2015-12-04T00:57:05.440+0000"
+          }, {
+            "uri" : "/0.4.523",
+            "started" : "2016-06-25T02:27:27.512+0000"
+          }, {
+            "uri" : "/0.4.475",
+            "started" : "2016-06-17T21:38:14.208+0000"
+          }, {
+            "uri" : "/0.4.412",
+            "started" : "2016-06-08T15:06:18.212+0000"
+          }, {
+            "uri" : "/0.4.524",
+            "started" : "2016-06-27T09:41:27.171+0000"
+          }, {
+            "uri" : "/0.3.358",
+            "started" : "2015-10-28T00:03:31.211+0000"
+          }, {
+            "uri" : "/0.4.500",
+            "started" : "2016-06-22T22:25:56.444+0000"
+          }, {
+            "uri" : "/0.4.389",
+            "started" : "2016-06-03T18:46:55.720+0000"
+          }, {
+            "uri" : "/0.3.390",
+            "started" : "2015-11-04T18:37:07.283+0000"
+          }, {
+            "uri" : "/0.3.201",
+            "started" : "2015-08-12T16:39:31.151+0000"
+          }, {
+            "uri" : "/0.3.278",
+            "started" : "2015-09-14T23:45:00.258+0000"
+          }, {
+            "uri" : "/0.4.495",
+            "started" : "2016-06-22T06:25:47.026+0000"
+          }, {
+            "uri" : "/0.3.435",
+            "started" : "2015-11-19T20:49:15.340+0000"
+          }, {
+            "uri" : "/0.4.522",
+            "started" : "2016-06-24T23:36:08.024+0000"
+          }, {
+            "uri" : "/0.4.366",
+            "started" : "2016-05-31T20:40:44.672+0000"
+          }, {
+            "uri" : "/0.4.536",
+            "started" : "2016-06-28T10:42:17.781+0000"
+          }, {
+            "uri" : "/0.3.391",
+            "started" : "2015-11-04T23:42:42.046+0000"
+          }, {
+            "uri" : "/0.4.538",
+            "started" : "2016-06-28T15:19:28.652+0000"
+          }, {
+            "uri" : "/0.4.376",
+            "started" : "2016-06-01T21:46:30.674+0000"
+          }, {
+            "uri" : "/0.4.504",
+            "started" : "2016-06-23T04:04:00.070+0000"
+          }, {
+            "uri" : "/0.4.534",
+            "started" : "2016-06-27T23:28:10.587+0000"
+          }, {
+            "uri" : "/0.4.512",
+            "started" : "2016-06-24T13:47:08.191+0000"
+          }, {
+            "uri" : "/0.3.251",
+            "started" : "2015-09-01T23:54:53.311+0000"
+          }, {
+            "uri" : "/0.4.456",
+            "started" : "2016-06-16T02:17:22.187+0000"
+          }, {
+            "uri" : "/0.3.450",
+            "started" : "2015-11-30T21:42:21.804+0000"
+          }, {
+            "uri" : "/0.3.369",
+            "started" : "2015-10-29T20:50:08.966+0000"
+          }, {
+            "uri" : "/0.4.484",
+            "started" : "2016-06-21T17:41:31.425+0000"
+          }, {
+            "uri" : "/0.4.404",
+            "started" : "2016-06-07T16:58:37.897+0000"
+          }, {
+            "uri" : "/0.3.493",
+            "started" : "2015-12-11T22:16:40.585+0000"
+          }, {
+            "uri" : "/0.3.606",
+            "started" : "2016-02-05T16:51:57.455+0000"
+          }, {
+            "uri" : "/0.4.539",
+            "started" : "2016-06-28T16:26:48.008+0000"
+          }, {
+            "uri" : "/0.3.227",
+            "started" : "2015-08-20T00:14:47.865+0000"
+          }, {
+            "uri" : "/0.3.243",
+            "started" : "2015-08-28T23:08:25.281+0000"
+          }, {
+            "uri" : "/0.4.505",
+            "started" : "2016-06-23T08:39:36.158+0000"
+          }, {
+            "uri" : "/0.4.58",
+            "started" : "2016-03-09T18:08:31.560+0000"
+          }, {
+            "uri" : "/0.4.491",
+            "started" : "2016-06-22T00:45:38.293+0000"
+          }, {
+            "uri" : "/0.4.508",
+            "started" : "2016-06-23T18:04:11.378+0000"
+          }, {
+            "uri" : "/0.4.502",
+            "started" : "2016-06-22T23:54:55.836+0000"
+          }, {
+            "uri" : "/0.4.489",
+            "started" : "2016-06-21T22:29:22.581+0000"
+          }, {
+            "uri" : "/0.4.507",
+            "started" : "2016-06-23T16:00:23.556+0000"
+          }, {
+            "uri" : "/0.4.499",
+            "started" : "2016-06-22T20:13:29.086+0000"
+          }, {
+            "uri" : "/0.3.304",
+            "started" : "2015-09-24T17:47:24.318+0000"
+          }, {
+            "uri" : "/0.4.199",
+            "started" : "2016-04-14T19:41:18.173+0000"
+          }, {
+            "uri" : "/0.4.509",
+            "started" : "2016-06-23T19:11:53.594+0000"
+          }, {
+            "uri" : "/0.4.497",
+            "started" : "2016-06-22T16:44:28.496+0000"
+          }, {
+            "uri" : "/0.4.483",
+            "started" : "2016-06-21T15:26:07.140+0000"
+          }, {
+            "uri" : "/0.3.554",
+            "started" : "2016-01-21T23:23:34.748+0000"
+          }, {
+            "uri" : "/0.4.525",
+            "started" : "2016-06-27T13:16:42.646+0000"
+          }, {
+            "uri" : "/0.4.501",
+            "started" : "2016-06-22T22:51:15.753+0000"
+          }, {
+            "uri" : "/0.4.515",
+            "started" : "2016-06-24T16:52:32.595+0000"
+          }, {
+            "uri" : "/0.4.496",
+            "started" : "2016-06-22T10:42:26.853+0000"
+          }, {
+            "uri" : "/0.4.518",
+            "started" : "2016-06-24T19:18:28.385+0000"
+          }, {
+            "uri" : "/0.4.513",
+            "started" : "2016-06-24T14:40:07.781+0000"
+          }, {
+            "uri" : "/0.4.488",
+            "started" : "2016-06-21T21:41:13.084+0000"
+          }, {
+            "uri" : "/0.4.492",
+            "started" : "2016-06-22T01:13:38.606+0000"
+          }, {
+            "uri" : "/0.4.487",
+            "started" : "2016-06-21T20:49:30.247+0000"
+          }, {
+            "uri" : "/0.4.299",
+            "started" : "2016-05-17T08:57:27.324+0000"
+          }, {
+            "uri" : "/0.4.421",
+            "started" : "2016-06-09T21:44:25.268+0000"
+          }, {
+            "uri" : "/0.3.522",
+            "started" : "2016-01-13T22:06:14.725+0000"
+          }, {
+            "uri" : "/0.3.186",
+            "started" : "2015-08-04T22:47:17.711+0000"
+          }, {
+            "uri" : "/0.4.444",
+            "started" : "2016-06-14T17:44:45.400+0000"
+          }, {
+            "uri" : "/0.4.520",
+            "started" : "2016-06-24T22:00:00.620+0000"
+          }, {
+            "uri" : "/0.4.514",
+            "started" : "2016-06-24T15:46:42.287+0000"
+          }, {
+            "uri" : "/0.4.537",
+            "started" : "2016-06-28T14:07:05.560+0000"
+          }, {
+            "uri" : "/0.4.465",
+            "started" : "2016-06-16T21:43:56.695+0000"
+          }, {
+            "uri" : "/0.3.334",
+            "started" : "2015-10-14T01:11:38.441+0000"
+          }, {
+            "uri" : "/0.4.486",
+            "started" : "2016-06-21T19:49:47.911+0000"
+          }, {
+            "uri" : "/0.4.398",
+            "started" : "2016-06-06T21:05:30.629+0000"
+          }, {
+            "uri" : "/0.4.535",
+            "started" : "2016-06-28T09:33:03.529+0000"
+          }, {
+            "uri" : "/0.4.532",
+            "started" : "2016-06-27T21:03:10.184+0000"
+          }, {
+            "uri" : "/0.4.6",
+            "started" : "2016-02-23T02:48:15.187+0000"
+          }, {
+            "uri" : "/0.4.540",
+            "started" : "2016-06-28T17:08:23.105+0000"
+          }, {
+            "uri" : "/0.3.341",
+            "started" : "2015-10-21T15:53:09.136+0000"
+          }, {
+            "uri" : "/0.4.435",
+            "started" : "2016-06-13T20:55:42.485+0000"
+          }, {
+            "uri" : "/0.4.493",
+            "started" : "2016-06-22T02:19:20.560+0000"
+          }, {
+            "uri" : "/0.4.511",
+            "started" : "2016-06-23T21:05:14.827+0000"
+          }, {
+            "uri" : "/0.4.481",
+            "started" : "2016-06-20T21:38:01.247+0000"
+          }, {
+            "uri" : "/0.4.533",
+            "started" : "2016-06-27T22:21:48.842+0000"
+          }, {
+            "uri" : "/0.4.235",
+            "started" : "2016-04-27T17:16:26.827+0000"
+          }, {
+            "uri" : "/0.3.314",
+            "started" : "2015-10-01T00:37:24.203+0000"
+          }, {
+            "uri" : "/0.3.338",
+            "started" : "2015-10-17T00:05:49.294+0000"
+          }, {
+            "uri" : "/0.4.485",
+            "started" : "2016-06-21T18:50:32.154+0000"
+          }, {
+            "uri" : "/0.4.113",
+            "started" : "2016-03-22T20:53:50.699+0000"
+          }, {
+            "uri" : "/0.4.75",
+            "started" : "2016-03-12T01:06:18.939+0000"
+          }, {
+            "uri" : "/0.3.256",
+            "started" : "2015-09-03T16:00:58.046+0000"
+          }, {
+            "uri" : "/0.4.482",
+            "started" : "2016-06-21T14:28:56.622+0000"
+          }, {
+            "uri" : "/0.4.503",
+            "started" : "2016-06-23T00:33:04.294+0000"
+          }, {
+            "uri" : "/0.4.490",
+            "started" : "2016-06-21T23:28:40.418+0000"
+          }, {
+            "uri" : "/0.4.521",
+            "started" : "2016-06-24T23:05:42.887+0000"
+          }, {
+            "uri" : "/0.4.506",
+            "started" : "2016-06-23T14:46:05.622+0000"
+          }, {
+            "uri" : "/0.3.195",
+            "started" : "2015-08-11T03:38:50.450+0000"
+          } ],
+          "uri" : "http://artifactory.chef.co/api/build/delivery"
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:30 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.540"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:30 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.539"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:23 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:31 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.538"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:23 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:31 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.537"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:24 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:32 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.536"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:24 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:32 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.535"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:24 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:32 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.534"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:33 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.533"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:33 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.532"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:34 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.525"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:34 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:34 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:35 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.4.522"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.2
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 28 Jun 2016 17:49:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/delivery/0.4.522/ubuntu/12.04",
+          "name" : "delivery_0.4.522-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "delivery.change",
+            "value" : "ff7b526a-68c9-4b0e-b0ec-d38d68e1e9b2"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2d71bc4fa0682e67f98c838a4616d983da557585660d879a7f50f85141796381"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "72c5e3b70afa229978c04eb8886e584ad96440a4"
+          }, {
+            "key" : "build.number",
+            "value" : "0.4.522"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.4.522"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "47eccc10fc296f9b21615157c084bb22c108ce00a91e976d0611ea5081567caab834d1521ed841cedfa8bfb47938bec47cc3bb0db9decfc650b2e54f3f77845b"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "60cea0ee66d0dbba60bbed5fd72a89ac"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "5c3c2daa56d379f342157014818d59c40d0b77f1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/delivery/0.4.522/el/6",
+          "name" : "delivery-0.4.522-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "e3a6c6d15ead2c0e6b67d7d3139cdedec5b50d5e"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "76b3e72147dac885cf0236d76b4f13e7"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1ee62a551b922b56954f06a3225093f19748da471732b46e1c55b812367f7929045450298f3eb0013d69511dcddc674ab4dc91db3900d475fab25822eea2831c"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "5c3c2daa56d379f342157014818d59c40d0b77f1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "c4e79d980861c6b08f8f393eeb3ad6037d1050bc2741d5f808a33798b0abce49"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.4.522"
+          }, {
+            "key" : "build.number",
+            "value" : "0.4.522"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "delivery.change",
+            "value" : "ff7b526a-68c9-4b0e-b0ec-d38d68e1e9b2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/delivery/0.4.522/ubuntu/14.04",
+          "name" : "delivery_0.4.522-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "60cea0ee66d0dbba60bbed5fd72a89ac"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.4.522"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "72c5e3b70afa229978c04eb8886e584ad96440a4"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2d71bc4fa0682e67f98c838a4616d983da557585660d879a7f50f85141796381"
+          }, {
+            "key" : "build.number",
+            "value" : "0.4.522"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "5c3c2daa56d379f342157014818d59c40d0b77f1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "47eccc10fc296f9b21615157c084bb22c108ce00a91e976d0611ea5081567caab834d1521ed841cedfa8bfb47938bec47cc3bb0db9decfc650b2e54f3f77845b"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "ff7b526a-68c9-4b0e-b0ec-d38d68e1e9b2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/delivery/0.4.522/el/7",
+          "name" : "delivery-0.4.522-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "0e8c53915716d0caad9970f95770a1bf"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "91cef9ce01d9c5c567cd654d33bc872dc7426de4"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "delivery.change",
+            "value" : "ff7b526a-68c9-4b0e-b0ec-d38d68e1e9b2"
+          }, {
+            "key" : "build.number",
+            "value" : "0.4.522"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "6e05edda122ace1f16ec49a56f5b5163fa3fbb4873d6837fad0b9ccf3c0bf0a5"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f9caab8f63266732452b6d8337104086989e7b07acd0f00700cee35f63df9fd590894a7a15b433a6f9881838a888d8b40b3dfb6062b73461578995ff188806cc"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.4.522"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "5c3c2daa56d379f342157014818d59c40d0b77f1"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 4,
+          "total" : 4
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 28 Jun 2016 17:48:35 GMT
+recorded_with: VCR 3.0.3
