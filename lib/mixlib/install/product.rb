@@ -67,6 +67,18 @@ module Mixlib
       end
 
       #
+      # Set omnibus_project when configured, otherwise fall back to
+      # package_name
+      #
+      def omnibus_project(value = nil)
+        if value.nil?
+          @omnibus_project || @package_name
+        else
+          @omnibus_project = value
+        end
+      end
+
+      #
       # Sets or retrieves the version for the product. This is used later
       # when we are reading the value of a property if a Proc is specified
       #
@@ -181,6 +193,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
         "chef-server-core"
       end
     end
+    omnibus_project "chef-server"
     ctl_command "chef-server-ctl"
     config_file "/etc/opscode/chef-server.rb"
   end

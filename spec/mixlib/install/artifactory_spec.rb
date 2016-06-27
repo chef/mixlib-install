@@ -69,7 +69,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
   context "when querying compliance" do
     let(:opts) {
       {
-        channel: :unstable,
+        channel: :current,
         product_name: "compliance",
         product_version: :latest,
         platform: "ubuntu",
@@ -78,9 +78,27 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
       }
     }
 
-    it "uses the product package name" do
+    it "uses the omnibus project name" do
       expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
       expect(artifactory.info.url).to match "chef-compliance"
+    end
+  end
+
+  context "when querying chef-server" do
+    let(:opts) {
+      {
+        channel: :unstable,
+        product_name: "chef-server",
+        product_version: :latest,
+        platform: "ubuntu",
+        platform_version: "14.04",
+        architecture: "x86_64",
+      }
+    }
+
+    it "uses the omnibus project name" do
+      expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+      expect(artifactory.info.url).to match "chef-server-core"
     end
   end
 end
