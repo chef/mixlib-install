@@ -58,7 +58,7 @@ module Mixlib
           # Get the list of builds from the REST api.
           # We do this because a user in the readers group does not have
           # permissions to run aql against builds.
-          builds = client.get("/api/build/#{package_name}")
+          builds = client.get("/api/build/#{omnibus_project}")
 
           if builds.nil?
             raise NoArtifactsError, <<-MSG
@@ -100,7 +100,7 @@ Can not find any builds for #{options.product_name} in #{::Artifactory.endpoint}
           results = artifactory_query(<<-QUERY
 items.find(
   {"repo": "omnibus-#{options.channel}-local"},
-  {"@omnibus.project": "#{package_name}"},
+  {"@omnibus.project": "#{omnibus_project}"},
   {"@omnibus.version": "#{version}"},
   {"name": {"$nmatch": "*.metadata.json" }}
 ).include("repo", "path", "name", "property")
@@ -196,8 +196,8 @@ the endpoint is correct and there is an open connection to Chef's private networ
           results
         end
 
-        def package_name
-          @package_name ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).package_name
+        def omnibus_project
+          @omnibus_project ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).omnibus_project
         end
       end
     end
