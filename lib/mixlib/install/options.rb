@@ -71,7 +71,9 @@ module Mixlib
       end
 
       def for_artifactory?
-        ARTIFACTORY_CHANNELS.include?(channel)
+        # ENV var check is a quick hack to force using Artifactory backend for all channels
+        # The OR condition will be removed once the changes have been finalized
+        ARTIFACTORY_CHANNELS.include?(channel) || ENV["MIXLIB_INSTALL_BACKEND"] == "artifactory"
       end
 
       def for_bintray?

@@ -106,6 +106,61 @@ module Mixlib
           return []
         end
 
+        # On windows, if we do not have a native 64-bit package available
+        # in the discovered artifacts, we will make 32-bit artifacts available
+        # for 64-bit architecture.
+        def windows_artifact_fixup!(artifacts)
+          new_artifacts = [ ]
+          native_artifacts = [ ]
+
+          artifacts.each do |r|
+            next if r.platform != "windows"
+
+            # Store all native 64-bit artifacts and clone 32-bit artifacts to
+            # be used as 64-bit.
+            case r.architecture
+            when "i386"
+              new_artifacts << r.clone_with(architecture: "x86_64")
+            when "x86_64"
+              native_artifacts << r.clone
+            else
+              puts "Unknown architecture '#{r.architecture}' for windows."
+            end
+          end
+
+          # Now discard the cloned artifacts if we find an equivalent native
+          # artifact
+          native_artifacts.each do |r|
+            new_artifacts.delete_if do |x|
+              x.platform_version == r.platform_version
+            end
+          end
+
+          # add the remaining cloned artifacts to the original set
+          artifacts += new_artifacts
+        end
+
+        #
+        # Normalizes platform and platform_version information that we receive.
+        # There are a few entries that we historically published
+        # that we need to normalize. They are:
+        #   * solaris -> solaris2 & 10 -> 5.10 for solaris.
+        #
+        # @param [String] platform
+        # @param [String] platform_version
+        #
+        # @return Array<String> [platform, platform_version]
+        def normalize_platform(platform, platform_version)
+          if platform == "solaris"
+            platform = "solaris2"
+
+            # Here platform_version is set to either 10 or 11 and we would like
+            # to normalize that to 5.10 and 5.11.
+            platform_version = "5.#{platform_version}"
+          end
+
+          [platform, platform_version]
+        end
       end
     end
   end

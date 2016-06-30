@@ -3,6 +3,5 @@ sudo: false
 rvm:
   - 2.2
   - 2.1
-  - 1.9.3
 
 script: bundle exec rake ci
