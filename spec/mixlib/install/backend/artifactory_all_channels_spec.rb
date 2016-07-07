@@ -179,4 +179,58 @@ context "Mixlib::Install::Backend::Artifactory all channels", :vcr do
       expect(artifactory.info.url).to match "chef-compliance"
     end
   end
+
+  context "for push jobs client" do
+    let(:channel) { :stable }
+    let(:product_name) { "push-jobs-client" }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "12.04" }
+    let(:architecture) { "x86_64" }
+
+    context "for version 1.1.5" do
+      let(:product_version) { "1.1.5" }
+
+      it "uses omnibus project name" do
+        expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+        expect(artifactory.info.url).to match "opscode-push-jobs-client"
+      end
+    end
+
+    context "for latest version" do
+      let(:product_version) { :latest }
+
+      it "uses omnibus project name" do
+        expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+        expect(artifactory.info.url).to match "push-jobs-client"
+        expect(artifactory.info.url).not_to match "opscode-push-jobs-client"
+      end
+    end
+  end
+
+  context "for manage" do
+    let(:channel) { :stable }
+    let(:product_name) { "manage" }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "14.04" }
+    let(:architecture) { "x86_64" }
+
+    context "for version 1.21.0" do
+      let(:product_version) { "1.21.0" }
+
+      it "uses omnibus project name" do
+        expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+        expect(artifactory.info.url).to match "opscode-manage"
+      end
+    end
+
+    context "for latest version" do
+      let(:product_version) { :latest }
+
+      it "uses omnibus project name" do
+        expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+        expect(artifactory.info.url).to match "chef-manage"
+      end
+    end
+  end
+
 end

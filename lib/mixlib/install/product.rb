@@ -72,7 +72,7 @@ module Mixlib
       #
       def omnibus_project(value = nil)
         if value.nil?
-          @omnibus_project || @package_name
+          @omnibus_project || package_name
         else
           @omnibus_project = value
         end
@@ -265,7 +265,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "push-jobs-client" do
-    product_name "Chef Push Server"
+    product_name "Chef Push Client"
     package_name do |v|
       v < version_for("1.3.0") ? "opscode-push-jobs-client" : "push-jobs-client"
     end
