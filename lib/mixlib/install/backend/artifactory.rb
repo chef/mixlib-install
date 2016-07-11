@@ -132,6 +132,17 @@ items.find(
           results["results"]
         end
 
+        #
+        # Artifactory GET request
+        #
+        def get(url)
+          results = artifactory_request do
+            client.get(url)
+          end
+
+          results["results"]
+        end
+
         def create_artifact(artifact_map)
           platform, platform_version = normalize_platform(artifact_map["omnibus.platform"],
             artifact_map["omnibus.platform_version"])
