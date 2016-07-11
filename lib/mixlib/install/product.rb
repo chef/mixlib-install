@@ -72,10 +72,25 @@ module Mixlib
       #
       def omnibus_project(value = nil)
         if value.nil?
-          @omnibus_project || @package_name
+          @omnibus_project || package_name
         else
           @omnibus_project = value
         end
+      end
+
+      #
+      # Return all known omnibus project names for a product
+      #
+      def known_omnibus_projects
+        # iterate through min/max versions for all product names
+        # and collect the name for both versions
+        projects = %w{ 0.0.0 1000.1000.1000 }.collect do |v|
+          @version = v
+          omnibus_project
+        end
+        # remove duplicates and return multiple known names or return the single
+        # project name
+        projects.uniq || projects
       end
 
       #
