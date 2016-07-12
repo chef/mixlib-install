@@ -150,6 +150,7 @@ items.find(
           ArtifactInfo.new(
             md5:              artifact_map["omnibus.md5"],
             sha256:           artifact_map["omnibus.sha256"],
+            sha1:             artifact_map["omnibus.sha1"],
             version:          artifact_map["omnibus.version"],
             platform:         platform,
             platform_version: platform_version,
