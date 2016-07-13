@@ -79,6 +79,21 @@ module Mixlib
       end
 
       #
+      # Return all known omnibus project names for a product
+      #
+      def known_omnibus_projects
+        # iterate through min/max versions for all product names
+        # and collect the name for both versions
+        projects = %w{ 0.0.0 1000.1000.1000 }.collect do |v|
+          @version = v
+          omnibus_project
+        end
+        # remove duplicates and return multiple known names or return the single
+        # project name
+        projects.uniq || projects
+      end
+
+      #
       # Sets or retrieves the version for the product. This is used later
       # when we are reading the value of a property if a Proc is specified
       #

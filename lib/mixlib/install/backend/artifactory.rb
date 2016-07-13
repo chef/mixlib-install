@@ -132,6 +132,17 @@ items.find(
           results["results"]
         end
 
+        #
+        # Artifactory GET request
+        #
+        def get(url)
+          results = artifactory_request do
+            client.get(url)
+          end
+
+          results["results"]
+        end
+
         def create_artifact(artifact_map)
           platform, platform_version = normalize_platform(artifact_map["omnibus.platform"],
             artifact_map["omnibus.platform_version"])
@@ -139,6 +150,7 @@ items.find(
           ArtifactInfo.new(
             md5:              artifact_map["omnibus.md5"],
             sha256:           artifact_map["omnibus.sha256"],
+            sha1:             artifact_map["omnibus.sha1"],
             version:          artifact_map["omnibus.version"],
             platform:         platform,
             platform_version: platform_version,

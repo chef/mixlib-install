@@ -141,6 +141,10 @@ context "PRODUCT_MATRIX" do
   context "for chef-server" do
     let(:product_name) { "chef-server" }
 
+    it "should return only one known omnibus project name" do
+      expect(PRODUCT_MATRIX.lookup("chef-server").known_omnibus_projects).to eq ["chef-server"]
+    end
+
     context "for version > 12.0.0" do
       let(:version) { "12.0.5" }
 
@@ -168,6 +172,10 @@ context "PRODUCT_MATRIX" do
 
   context "for manage" do
     let(:product_name) { "manage" }
+
+    it "should return both known omnibus project name" do
+      expect(PRODUCT_MATRIX.lookup("manage").known_omnibus_projects).to eq ["opscode-manage", "chef-manage"]
+    end
 
     context "for version > 2.0.0" do
       let(:version) { "2.0.5" }
@@ -221,6 +229,10 @@ context "PRODUCT_MATRIX" do
   context "for push-jobs-server" do
     let(:product_name) { "push-jobs-server" }
 
+    it "should return only one known omnibus project name" do
+      expect(PRODUCT_MATRIX.lookup("push-jobs-server").known_omnibus_projects).to eq ["opscode-push-jobs-server"]
+    end
+
     context "for latest" do
       let(:version) { :latest }
 
@@ -248,6 +260,10 @@ context "PRODUCT_MATRIX" do
 
   context "for push-jobs-client" do
     let(:product_name) { "push-jobs-client" }
+
+    it "should return both known omnibus project name" do
+      expect(PRODUCT_MATRIX.lookup("push-jobs-client").known_omnibus_projects).to eq ["opscode-push-jobs-client", "push-jobs-client"]
+    end
 
     context "for version > 1.3.0" do
       let(:version) { "1.3.5" }
