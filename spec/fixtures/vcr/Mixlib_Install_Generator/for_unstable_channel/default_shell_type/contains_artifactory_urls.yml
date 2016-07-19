@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://mixlib-install:mixlib-install@artifactory.chef.co/api/search/aql
+    uri: http://mixlib-install:mixlib-install@packages-acceptance.chef.io/api/search/aql
     body:
       encoding: UTF-8
       string: |
@@ -57,7 +57,7 @@ http_interactions:
   recorded_at: Fri, 01 Apr 2016 19:21:05 GMT
 - request:
     method: post
-    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
     body:
       encoding: UTF-8
       string: |

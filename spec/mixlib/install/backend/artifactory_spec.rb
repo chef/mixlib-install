@@ -45,7 +45,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
 
   context "when setting endpoint with trailing /" do
     it "it allows the training slash" do
-      wrap_env("ARTIFACTORY_ENDPOINT" => "http://artifactory.chef.co/") do
+      wrap_env("ARTIFACTORY_ENDPOINT" => "http://packages-acceptance.chef.io/") do
         artifactory.info
       end
     end

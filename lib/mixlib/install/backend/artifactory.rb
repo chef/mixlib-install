@@ -31,7 +31,7 @@ module Mixlib
         class AuthenticationError < StandardError; end
         class NoArtifactsError < StandardError; end
 
-        ENDPOINT = "http://artifactory.chef.co".freeze
+        ENDPOINT = "http://packages-acceptance.chef.io".freeze
 
         # These credentials are read-only credentials in Chef's artifactory
         # server which is only available in Chef's internal network.
@@ -109,9 +109,9 @@ items.find(
           QUERY
           )
 
-          # Merge artifactory properties and downloadUri to a flat Hash
+          # Merge artifactory properties to a flat Hash
           results.collect! do |result|
-            { "downloadUri" => generate_download_uri(result) }.merge(
+            { "filename" => result["name"] }.merge(
               map_properties(result["properties"])
             )
           end
@@ -155,7 +155,11 @@ items.find(
             platform:         platform,
             platform_version: platform_version,
             architecture:     normalize_architecture(artifact_map["omnibus.architecture"]),
-            url:              artifact_map["downloadUri"]
+            url:              generate_download_uri(options.channel,
+                                platform,
+                                platform_version,
+                                artifact_map["filename"]
+                              )
           )
         end
 
@@ -173,12 +177,13 @@ items.find(
 
         # Construct the downloadUri from raw artifactory data
         #
-        def generate_download_uri(result)
+        def generate_download_uri(channel, platform, platform_version, filename)
           uri = []
           uri << endpoint.sub(/\/$/, "")
-          uri << result["repo"]
-          uri << result["path"]
-          uri << result["name"]
+          uri << channel
+          uri << platform
+          uri << platform_version
+          uri << filename
           uri.join("/")
         end
 

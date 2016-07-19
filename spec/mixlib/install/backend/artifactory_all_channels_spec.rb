@@ -68,7 +68,7 @@ context "Mixlib::Install::Backend::Artifactory all channels", :vcr do
         expect(artifact_info.platform_version).to eq "14.04"
         expect(artifact_info.architecture).to eq "x86_64"
         expect(artifact_info.sha256).to eq "f1cf5d0f6dd12d2d2296ec6d8dbb16363f8541f5c15298cafa70e65ff2b5a22f"
-        expect(artifact_info.url).to eq "http://artifactory.chef.co/omnibus-stable-local/com/getchef/chef/12.11.18/ubuntu/14.04/chef_12.11.18-1_amd64.deb"
+        expect(artifact_info.url).to include "/stable/ubuntu/14.04/chef_12.11.18-1_amd64.deb"
       end
     end
   end

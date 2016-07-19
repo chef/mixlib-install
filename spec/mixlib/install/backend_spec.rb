@@ -46,7 +46,7 @@ context "Mixlib::Install::Backend", :vcr do
       expect(url).to match /#{expected_info[:url]}/
     else
       if channel == :unstable
-        expect(url).to include("http://artifactory.chef.co")
+        expect(url).to include("http://packages-acceptance.chef.io")
       elsif url.include?("freebsd/9") || url.include?("el/5") || url.include?("solaris2/5.10") || url.include?("solaris2/5.9")
         expect(url).to include("http://chef.bintray.com")
       else
