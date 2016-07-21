@@ -1,7 +1,7 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 
-task default: :test
+task default: :ci
 
 desc "Run specs"
 RSpec::Core::RakeTask.new(:spec) do |spec|
@@ -19,19 +19,20 @@ rescue LoadError
 end
 
 desc "Run specs against package router"
-task :package_router do
+task :full_artifactory do
   ENV["FULL_ARTIFACTORY"] = "true"
   ENV["ARTIFACTORY_ENDPOINT"] = "https://packages-acceptance.chef.io"
+  Rake::Task["spec"].reenable
   Rake::Task["spec"].invoke
-  ENV["FULL_ARTIFACTORY"] = nil
-  ENV["ARTIFACTORY_ENDPOINT"] = nil
+  ENV.delete "FULL_ARTIFACTORY"
+  ENV.delete "ARTIFACTORY_ENDPOINT"
 end
 
 desc "Run all tests"
-task test: [:style, :spec, :package_router]
+task test: [:style, :spec, :full_artifactory]
 
 desc "Run tests for Travis CI"
-task ci: [:style, :spec, :package_router]
+task ci: [:style, :spec, :full_artifactory]
 
 desc "Render product matrix documentation"
 task "matrix" do

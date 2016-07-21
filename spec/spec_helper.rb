@@ -32,10 +32,10 @@ end
 VCR.configure do |config|
   # We use different set of casettes depending on the FULL_ARTIFACTORY flag
   config.cassette_library_dir = if ENV["FULL_ARTIFACTORY"].nil?
-    File.join(File.dirname(__FILE__), "fixtures/vcr")
-  else
-    File.join(File.dirname(__FILE__), "fixtures/vcr_full_artifactory")
-  end
+                                  File.join(File.dirname(__FILE__), "fixtures/vcr")
+                                else
+                                  File.join(File.dirname(__FILE__), "fixtures/vcr_full_artifactory")
+                                end
 
   config.hook_into :webmock
   config.configure_rspec_metadata!

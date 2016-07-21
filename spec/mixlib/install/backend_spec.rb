@@ -52,12 +52,16 @@ context "Mixlib::Install::Backend", :vcr do
     if expected_info && !expected_info.key?(:url)
       expect(url).to match /#{expected_info[:url]}/
     else
-      if channel == :unstable
-        expect(url).to include("http://artifactory.chef.co")
-      elsif url.include?("freebsd/9") || url.include?("el/5") || url.include?("solaris2/5.10") || url.include?("solaris2/5.9")
-        expect(url).to include("http://chef.bintray.com")
+      if ENV["FULL_ARTIFACTORY"].nil?
+        if channel == :unstable
+          expect(url).to include("http://artifactory.chef.co")
+        elsif url.include?("freebsd/9") || url.include?("el/5") || url.include?("solaris2/5.10") || url.include?("solaris2/5.9")
+          expect(url).to include("http://chef.bintray.com")
+        else
+          expect(url).to include("https://packages.chef.io")
+        end
       else
-        expect(url).to include("https://packages.chef.io")
+        expect(url).to include("https://packages-acceptance.chef.io")
       end
     end
   end
@@ -185,19 +189,22 @@ context "Mixlib::Install::Backend", :vcr do
       end
     end
 
-    context "with :stable channel" do
-      let(:channel) { :stable }
+    # These tests are only valid when FULL_ARTIFACTORY flag is disabled
+    if ENV["FULL_ARTIFACTORY"].nil?
+      context "with :stable channel" do
+        let(:channel) { :stable }
 
-      it "raises error" do
-        expect { available_versions }.to raise_error(StandardError)
+        it "raises error" do
+          expect { available_versions }.to raise_error(StandardError)
+        end
       end
-    end
 
-    context "with :current channel" do
-      let(:channel) { :current }
+      context "with :current channel" do
+        let(:channel) { :current }
 
-      it "raises error" do
-        expect { available_versions }.to raise_error(StandardError)
+        it "raises error" do
+          expect { available_versions }.to raise_error(StandardError)
+        end
       end
     end
 

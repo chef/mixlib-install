@@ -41,13 +41,13 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Thu, 21 Jul 2016 19:50:01 GMT
+      - Thu, 21 Jul 2016 20:05:43 GMT
       Via:
       - 1.1 varnish
       Connection:
       - keep-alive
       X-Served-By:
-      - cache-fra1226-FRA
+      - cache-fra1230-FRA
       X-Cache:
       - MISS
       X-Cache-Hits:
@@ -45300,5 +45300,5 @@ http_interactions:
         }
         }
     http_version: 
-  recorded_at: Thu, 21 Jul 2016 19:50:07 GMT
+  recorded_at: Thu, 21 Jul 2016 20:05:46 GMT
 recorded_with: VCR 3.0.3

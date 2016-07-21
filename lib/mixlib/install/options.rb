@@ -74,8 +74,8 @@ module Mixlib
         !ENV["FULL_ARTIFACTORY"].nil? || ARTIFACTORY_CHANNELS.include?(channel)
       end
 
-      def for_bintray?
-        [:stable, :current].include?(channel)
+      def for_unstable?
+        channel == :unstable
       end
 
       def for_omnitruck?

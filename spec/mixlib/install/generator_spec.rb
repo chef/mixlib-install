@@ -18,7 +18,7 @@
 require "spec_helper"
 require "mixlib/install"
 
-context "Mixlib::Install::Generator" do
+context "Mixlib::Install::Generator", :vcr do
   let(:channel) { nil }
   let(:product_version) { "latest" }
   let(:add_options) { {} }
@@ -44,7 +44,7 @@ context "Mixlib::Install::Generator" do
     end
   end
 
-  context "for :unstable channel", :vcr do
+  context "for :unstable channel" do
     let(:channel) { :unstable }
     let(:product_version) { "12.5.1+20151210002019" }
 

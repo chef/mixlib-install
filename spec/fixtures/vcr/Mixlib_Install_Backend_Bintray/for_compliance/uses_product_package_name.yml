@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/chef-compliance/versions/_latest
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/compliance/versions/_latest
     body:
       encoding: US-ASCII
       string: ''
@@ -15,13 +15,13 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Server:
       - nginx
       Date:
-      - Mon, 18 Apr 2016 18:35:38 GMT
+      - Thu, 21 Jul 2016 20:38:47 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,10 +35,49 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=0
     body:
-      encoding: ASCII-8BIT
-      string: '{"message":"Package ''chef-compliance'' was not found"}'
+      encoding: UTF-8
+      string: '{"name":"1.3.1","desc":"","package":"compliance","repo":"stable","owner":"chef","labels":[],"attribute_names":["project","version","iteration"],"created":"2016-05-31T14:22:15.274Z","updated":"2016-05-31T14:24:09.579Z","released":"","ordinal":25.0}'
     http_version: 
-  recorded_at: Mon, 18 Apr 2016 18:35:38 GMT
+  recorded_at: Thu, 21 Jul 2016 20:38:47 GMT
+- request:
+    method: get
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/compliance/versions/1.3.1/files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 21 Jul 2016 20:38:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=0
+    body:
+      encoding: UTF-8
+      string: '[{"name":"chef-compliance-1.3.1-1.el6.x86_64.rpm","path":"el/6/chef-compliance-1.3.1-1.el6.x86_64.rpm","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:22:34.857Z","size":116943777,"sha1":"0835159bc557b39c13dcc86b4b065a200b953f2a","sha256":"a3efef917a15ca17680950ea7c39656fd43d248173e88af05bd7e1e33b8067a0"},{"name":"chef-compliance-1.3.1-1.el6.x86_64.rpm.asc","path":"el/6/chef-compliance-1.3.1-1.el6.x86_64.rpm.asc","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:08.250Z","size":183,"sha1":"dbdfac1a083357512542ea43437ba7fa71e3aa18","sha256":"9100d41af8b53982025619b7f97cd608c1a5d04aa9a75bea5eedadcb6d3cf0e6"},{"name":"chef-compliance-1.3.1-1.el7.x86_64.rpm","path":"el/7/chef-compliance-1.3.1-1.el7.x86_64.rpm","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:22:32.719Z","size":122220133,"sha1":"d821b39184c67f2aa08d47feee5c8231b0161a03","sha256":"8b29e35f8c6ebcefbe5b9686326e727dfeeb0a0311f4aaa1bc3b96946e628e75"},{"name":"chef-compliance-1.3.1-1.el7.x86_64.rpm.asc","path":"el/7/chef-compliance-1.3.1-1.el7.x86_64.rpm.asc","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:12.521Z","size":183,"sha1":"9a7e01580c5b7912f85b3473bba12ca74220381d","sha256":"eb3ba1383b8ceb776e2435c8702cd79942348bf65fbf3b41c947d88589156784"},{"name":"chef-compliance_1.3.1-1_amd64.deb","path":"ubuntu/12.04/chef-compliance_1.3.1-1_amd64.deb","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:06.044Z","size":115177240,"sha1":"5ed4fc0daa7ad10f7f6f72ddf8307a19e1f4e762","sha256":"5e7c26916f565bd70884ac1b4702343bd480fb548eba34477f81f2a6783a465a"},{"name":"chef-compliance_1.3.1-1_amd64.deb.asc","path":"ubuntu/12.04/chef-compliance_1.3.1-1_amd64.deb.asc","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:58.009Z","size":183,"sha1":"0893ab00bd36b477cb7adb7a7342875b376159a4","sha256":"b4eb017db23efe9e719b82eb4e79a7d9ccf80c44da0d16dc8bedbefdca910797"},{"name":"chef-compliance_1.3.1-1_amd64.deb","path":"ubuntu/14.04/chef-compliance_1.3.1-1_amd64.deb","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:22:38.584Z","size":115177240,"sha1":"5ed4fc0daa7ad10f7f6f72ddf8307a19e1f4e762","sha256":"5e7c26916f565bd70884ac1b4702343bd480fb548eba34477f81f2a6783a465a"},{"name":"chef-compliance_1.3.1-1_amd64.deb.asc","path":"ubuntu/14.04/chef-compliance_1.3.1-1_amd64.deb.asc","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:14.016Z","size":183,"sha1":"86b6500e969f3a15e0c3f9c251be2ef0560f53ff","sha256":"61b345ed913006e588d34048431610380e429702f647193203d1c0f32a083adc"}]'
+    http_version: 
+  recorded_at: Thu, 21 Jul 2016 20:38:49 GMT
 - request:
     method: get
     uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/compliance/versions/_latest
@@ -60,7 +99,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 18 Apr 2016 18:44:36 GMT
+      - Thu, 21 Jul 2016 20:38:50 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -74,13 +113,13 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=0
     body:
-      encoding: ASCII-8BIT
-      string: '{"name":"1.1.2","desc":"","package":"compliance","repo":"stable","owner":"chef","labels":[],"attribute_names":["project","version","iteration"],"created":"2016-04-18T16:01:34.916Z","updated":"2016-04-18T16:02:44.101Z","released":"","ordinal":20.0}'
+      encoding: UTF-8
+      string: '{"name":"1.3.1","desc":"","package":"compliance","repo":"stable","owner":"chef","labels":[],"attribute_names":["project","version","iteration"],"created":"2016-05-31T14:22:15.274Z","updated":"2016-05-31T14:24:09.579Z","released":"","ordinal":25.0}'
     http_version: 
-  recorded_at: Mon, 18 Apr 2016 18:44:36 GMT
+  recorded_at: Thu, 21 Jul 2016 20:38:50 GMT
 - request:
     method: get
-    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/compliance/versions/1.1.2/files
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/compliance/versions/1.3.1/files
     body:
       encoding: US-ASCII
       string: ''
@@ -99,7 +138,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 18 Apr 2016 18:44:36 GMT
+      - Thu, 21 Jul 2016 20:38:51 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -113,86 +152,8 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=0
     body:
-      encoding: ASCII-8BIT
-      string: '[{"name":"chef-compliance-1.1.2-1.el6.x86_64.rpm","path":"el/6/chef-compliance-1.1.2-1.el6.x86_64.rpm","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:05.691Z","size":116325087,"sha1":"44b21a77f0eb47b11cdd2729b92becb4c7342e1f","sha256":"0c889c35466ef1d884f5866fafa8198250f12a489257d7fe2669c16b9e6162c4"},{"name":"chef-compliance-1.1.2-1.el6.x86_64.rpm.asc","path":"el/6/chef-compliance-1.1.2-1.el6.x86_64.rpm.asc","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:24.862Z","size":183,"sha1":"1bdde5ce4a4f70cbea6848cdc53d46a3e406a9eb","sha256":"11cad15dc4b5f7e49e70511c02a94cdc7602fc48f8b2de274c590b3203d4e0e4"},{"name":"chef-compliance-1.1.2-1.el7.x86_64.rpm","path":"el/7/chef-compliance-1.1.2-1.el7.x86_64.rpm","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:01.687Z","size":121587193,"sha1":"735ae549eb5983d61123630310bc02a31db7ed6f","sha256":"6f59c088485dfe841a7e520594bc1e8a25c13b783de59103aecea0c0a06dedd7"},{"name":"chef-compliance-1.1.2-1.el7.x86_64.rpm.asc","path":"el/7/chef-compliance-1.1.2-1.el7.x86_64.rpm.asc","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:20.035Z","size":183,"sha1":"e08cd55c0effa0ee73015a41f0746ed1e09b8f96","sha256":"c43a46336eed7c8839f6e5f020e06007e33e2661db953a4363a5cda56e1e888b"},{"name":"chef-compliance_1.1.2-1_amd64.deb","path":"ubuntu/12.04/chef-compliance_1.1.2-1_amd64.deb","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:01.122Z","size":114579072,"sha1":"16a2af683a7daa1f4fdcb009d86cfc2110da7302","sha256":"006dcd39d46a6bc84dbc33006466d04a1a647969a8f399ed0cf6914b909f36fb"},{"name":"chef-compliance_1.1.2-1_amd64.deb.asc","path":"ubuntu/12.04/chef-compliance_1.1.2-1_amd64.deb.asc","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:19.029Z","size":183,"sha1":"e91ca8d1cea5d11d14cdf327a7836bd253c23dbb","sha256":"512d12ef7875e3c769d90e9b948c1803c05c0f76f950300439c0ebf65dfb9831"},{"name":"chef-compliance_1.1.2-1_amd64.deb","path":"ubuntu/14.04/chef-compliance_1.1.2-1_amd64.deb","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:01.123Z","size":114579072,"sha1":"16a2af683a7daa1f4fdcb009d86cfc2110da7302","sha256":"006dcd39d46a6bc84dbc33006466d04a1a647969a8f399ed0cf6914b909f36fb"},{"name":"chef-compliance_1.1.2-1_amd64.deb.asc","path":"ubuntu/14.04/chef-compliance_1.1.2-1_amd64.deb.asc","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:33.111Z","size":183,"sha1":"d182e8e285b25c3554577690e84df2e48e17dfdc","sha256":"46742871aa6d07c99107714a1542643258c707c46b0ba0f7e8a7c74736574cd1"}]'
+      encoding: UTF-8
+      string: '[{"name":"chef-compliance-1.3.1-1.el6.x86_64.rpm","path":"el/6/chef-compliance-1.3.1-1.el6.x86_64.rpm","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:22:34.857Z","size":116943777,"sha1":"0835159bc557b39c13dcc86b4b065a200b953f2a","sha256":"a3efef917a15ca17680950ea7c39656fd43d248173e88af05bd7e1e33b8067a0"},{"name":"chef-compliance-1.3.1-1.el6.x86_64.rpm.asc","path":"el/6/chef-compliance-1.3.1-1.el6.x86_64.rpm.asc","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:08.250Z","size":183,"sha1":"dbdfac1a083357512542ea43437ba7fa71e3aa18","sha256":"9100d41af8b53982025619b7f97cd608c1a5d04aa9a75bea5eedadcb6d3cf0e6"},{"name":"chef-compliance-1.3.1-1.el7.x86_64.rpm","path":"el/7/chef-compliance-1.3.1-1.el7.x86_64.rpm","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:22:32.719Z","size":122220133,"sha1":"d821b39184c67f2aa08d47feee5c8231b0161a03","sha256":"8b29e35f8c6ebcefbe5b9686326e727dfeeb0a0311f4aaa1bc3b96946e628e75"},{"name":"chef-compliance-1.3.1-1.el7.x86_64.rpm.asc","path":"el/7/chef-compliance-1.3.1-1.el7.x86_64.rpm.asc","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:12.521Z","size":183,"sha1":"9a7e01580c5b7912f85b3473bba12ca74220381d","sha256":"eb3ba1383b8ceb776e2435c8702cd79942348bf65fbf3b41c947d88589156784"},{"name":"chef-compliance_1.3.1-1_amd64.deb","path":"ubuntu/12.04/chef-compliance_1.3.1-1_amd64.deb","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:06.044Z","size":115177240,"sha1":"5ed4fc0daa7ad10f7f6f72ddf8307a19e1f4e762","sha256":"5e7c26916f565bd70884ac1b4702343bd480fb548eba34477f81f2a6783a465a"},{"name":"chef-compliance_1.3.1-1_amd64.deb.asc","path":"ubuntu/12.04/chef-compliance_1.3.1-1_amd64.deb.asc","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:58.009Z","size":183,"sha1":"0893ab00bd36b477cb7adb7a7342875b376159a4","sha256":"b4eb017db23efe9e719b82eb4e79a7d9ccf80c44da0d16dc8bedbefdca910797"},{"name":"chef-compliance_1.3.1-1_amd64.deb","path":"ubuntu/14.04/chef-compliance_1.3.1-1_amd64.deb","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:22:38.584Z","size":115177240,"sha1":"5ed4fc0daa7ad10f7f6f72ddf8307a19e1f4e762","sha256":"5e7c26916f565bd70884ac1b4702343bd480fb548eba34477f81f2a6783a465a"},{"name":"chef-compliance_1.3.1-1_amd64.deb.asc","path":"ubuntu/14.04/chef-compliance_1.3.1-1_amd64.deb.asc","repo":"stable","package":"compliance","version":"1.3.1","owner":"chef","created":"2016-05-31T14:23:14.016Z","size":183,"sha1":"86b6500e969f3a15e0c3f9c251be2ef0560f53ff","sha256":"61b345ed913006e588d34048431610380e429702f647193203d1c0f32a083adc"}]'
     http_version: 
-  recorded_at: Mon, 18 Apr 2016 18:44:36 GMT
-- request:
-    method: get
-    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/compliance/versions/_latest
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Mon, 18 Apr 2016 18:44:37 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      X-Ratelimit-Limit:
-      - '0'
-      X-Ratelimit-Remaining:
-      - '0'
-      Strict-Transport-Security:
-      - max-age=0
-    body:
-      encoding: ASCII-8BIT
-      string: '{"name":"1.1.2","desc":"","package":"compliance","repo":"stable","owner":"chef","labels":[],"attribute_names":["project","version","iteration"],"created":"2016-04-18T16:01:34.916Z","updated":"2016-04-18T16:02:44.101Z","released":"","ordinal":20.0}'
-    http_version: 
-  recorded_at: Mon, 18 Apr 2016 18:44:37 GMT
-- request:
-    method: get
-    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/compliance/versions/1.1.2/files
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Mon, 18 Apr 2016 18:44:37 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      X-Ratelimit-Limit:
-      - '0'
-      X-Ratelimit-Remaining:
-      - '0'
-      Strict-Transport-Security:
-      - max-age=0
-    body:
-      encoding: ASCII-8BIT
-      string: '[{"name":"chef-compliance-1.1.2-1.el6.x86_64.rpm","path":"el/6/chef-compliance-1.1.2-1.el6.x86_64.rpm","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:05.691Z","size":116325087,"sha1":"44b21a77f0eb47b11cdd2729b92becb4c7342e1f","sha256":"0c889c35466ef1d884f5866fafa8198250f12a489257d7fe2669c16b9e6162c4"},{"name":"chef-compliance-1.1.2-1.el6.x86_64.rpm.asc","path":"el/6/chef-compliance-1.1.2-1.el6.x86_64.rpm.asc","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:24.862Z","size":183,"sha1":"1bdde5ce4a4f70cbea6848cdc53d46a3e406a9eb","sha256":"11cad15dc4b5f7e49e70511c02a94cdc7602fc48f8b2de274c590b3203d4e0e4"},{"name":"chef-compliance-1.1.2-1.el7.x86_64.rpm","path":"el/7/chef-compliance-1.1.2-1.el7.x86_64.rpm","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:01.687Z","size":121587193,"sha1":"735ae549eb5983d61123630310bc02a31db7ed6f","sha256":"6f59c088485dfe841a7e520594bc1e8a25c13b783de59103aecea0c0a06dedd7"},{"name":"chef-compliance-1.1.2-1.el7.x86_64.rpm.asc","path":"el/7/chef-compliance-1.1.2-1.el7.x86_64.rpm.asc","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:20.035Z","size":183,"sha1":"e08cd55c0effa0ee73015a41f0746ed1e09b8f96","sha256":"c43a46336eed7c8839f6e5f020e06007e33e2661db953a4363a5cda56e1e888b"},{"name":"chef-compliance_1.1.2-1_amd64.deb","path":"ubuntu/12.04/chef-compliance_1.1.2-1_amd64.deb","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:01.122Z","size":114579072,"sha1":"16a2af683a7daa1f4fdcb009d86cfc2110da7302","sha256":"006dcd39d46a6bc84dbc33006466d04a1a647969a8f399ed0cf6914b909f36fb"},{"name":"chef-compliance_1.1.2-1_amd64.deb.asc","path":"ubuntu/12.04/chef-compliance_1.1.2-1_amd64.deb.asc","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:19.029Z","size":183,"sha1":"e91ca8d1cea5d11d14cdf327a7836bd253c23dbb","sha256":"512d12ef7875e3c769d90e9b948c1803c05c0f76f950300439c0ebf65dfb9831"},{"name":"chef-compliance_1.1.2-1_amd64.deb","path":"ubuntu/14.04/chef-compliance_1.1.2-1_amd64.deb","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:01.123Z","size":114579072,"sha1":"16a2af683a7daa1f4fdcb009d86cfc2110da7302","sha256":"006dcd39d46a6bc84dbc33006466d04a1a647969a8f399ed0cf6914b909f36fb"},{"name":"chef-compliance_1.1.2-1_amd64.deb.asc","path":"ubuntu/14.04/chef-compliance_1.1.2-1_amd64.deb.asc","repo":"stable","package":"compliance","version":"1.1.2","owner":"chef","created":"2016-04-18T16:02:33.111Z","size":183,"sha1":"d182e8e285b25c3554577690e84df2e48e17dfdc","sha256":"46742871aa6d07c99107714a1542643258c707c46b0ba0f7e8a7c74736574cd1"}]'
-    http_version: 
-  recorded_at: Mon, 18 Apr 2016 18:44:37 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Thu, 21 Jul 2016 20:38:52 GMT
+recorded_with: VCR 3.0.3

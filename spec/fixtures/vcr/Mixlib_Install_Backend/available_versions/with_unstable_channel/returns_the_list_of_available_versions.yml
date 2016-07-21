@@ -33,7 +33,7 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Thu, 21 Jul 2016 19:35:15 GMT
+      - Thu, 21 Jul 2016 20:40:52 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -11822,13 +11822,568 @@ http_interactions:
             "key" : "omnibus.version",
             "value" : "12.13.11+20160721165202"
           } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/ubuntu/14.04",
+          "name" : "chef_12.13.12-1_ppc64el.deb",
+          "type" : "file",
+          "size" : 55872914,
+          "created" : "2016-07-21T20:19:07.749Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:19:05.228Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:19:05.228Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/mac_os_x/10.9",
+          "name" : "chef-12.13.12-1.dmg",
+          "type" : "file",
+          "size" : 45846203,
+          "created" : "2016-07-21T20:19:13.286Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:19:08.856Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:19:08.856Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/mac_os_x/10.10",
+          "name" : "chef-12.13.12-1.dmg",
+          "type" : "file",
+          "size" : 45846203,
+          "created" : "2016-07-21T20:19:17.768Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:19:13.379Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:19:13.379Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/mac_os_x/10.11",
+          "name" : "chef-12.13.12-1.dmg",
+          "type" : "file",
+          "size" : 45846203,
+          "created" : "2016-07-21T20:19:22.948Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:19:17.859Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:19:17.859Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/ios_xr/6",
+          "name" : "chef-12.13.12-1.ios_xr6.x86_64.rpm",
+          "type" : "file",
+          "size" : 55386736,
+          "created" : "2016-07-21T20:20:47.477Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:20:44.872Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:20:44.872Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/nexus/7",
+          "name" : "chef-12.13.12-1.nexus7.x86_64.rpm",
+          "type" : "file",
+          "size" : 52893313,
+          "created" : "2016-07-21T20:21:21.328Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:21:19.319Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:21:19.319Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/freebsd/10",
+          "name" : "chef-12.13.12_1.i386.sh",
+          "type" : "file",
+          "size" : 42606839,
+          "created" : "2016-07-21T20:21:37.981Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:21:37.283Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:21:37.283Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/freebsd/9",
+          "name" : "chef-12.13.12_1.i386.sh",
+          "type" : "file",
+          "size" : 43533063,
+          "created" : "2016-07-21T20:21:50.835Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:21:50.251Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:21:50.251Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/ubuntu/12.04",
+          "name" : "chef_12.13.12-1_i386.deb",
+          "type" : "file",
+          "size" : 51415832,
+          "created" : "2016-07-21T20:22:01.022Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:22:00.116Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:22:00.116Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/ubuntu/14.04",
+          "name" : "chef_12.13.12-1_i386.deb",
+          "type" : "file",
+          "size" : 51415832,
+          "created" : "2016-07-21T20:22:01.975Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:22:01.073Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:22:01.073Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/solaris2/5.10",
+          "name" : "chef-12.13.12-1.i386.solaris",
+          "type" : "file",
+          "size" : 125467648,
+          "created" : "2016-07-21T20:22:07.540Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:21:54.538Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:21:54.538Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/el/5",
+          "name" : "chef-12.13.12-1.el5.i386.rpm",
+          "type" : "file",
+          "size" : 51410799,
+          "created" : "2016-07-21T20:22:11.379Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:22:10.715Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:22:10.715Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/solaris2/5.11",
+          "name" : "chef-12.13.12-1.i386.solaris",
+          "type" : "file",
+          "size" : 125467648,
+          "created" : "2016-07-21T20:22:20.664Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:22:07.648Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:22:07.648Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/el/7",
+          "name" : "chef-12.13.12-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 56119267,
+          "created" : "2016-07-21T20:22:28.638Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:22:27.358Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:22:27.358Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/el/6",
+          "name" : "chef-12.13.12-1.el6.i386.rpm",
+          "type" : "file",
+          "size" : 51515895,
+          "created" : "2016-07-21T20:22:49.216Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:22:48.386Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:22:48.386Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/ubuntu/12.04",
+          "name" : "chef_12.13.12-1_amd64.deb",
+          "type" : "file",
+          "size" : 52331314,
+          "created" : "2016-07-21T20:23:00.272Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:22:59.570Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:22:59.570Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/ubuntu/14.04",
+          "name" : "chef_12.13.12-1_amd64.deb",
+          "type" : "file",
+          "size" : 52331314,
+          "created" : "2016-07-21T20:23:01.032Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:23:00.321Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:23:00.321Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/el/7",
+          "name" : "chef-12.13.12-1.el7.ppc64.rpm",
+          "type" : "file",
+          "size" : 58074690,
+          "created" : "2016-07-21T20:23:17.750Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:23:15.388Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:23:15.388Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/debian/6",
+          "name" : "chef_12.13.12-1_i386.deb",
+          "type" : "file",
+          "size" : 50027028,
+          "created" : "2016-07-21T20:23:22.808Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:23:22.002Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:23:22.002Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/debian/7",
+          "name" : "chef_12.13.12-1_i386.deb",
+          "type" : "file",
+          "size" : 50027028,
+          "created" : "2016-07-21T20:23:23.654Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:23:22.852Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:23:22.852Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/debian/8",
+          "name" : "chef_12.13.12-1_i386.deb",
+          "type" : "file",
+          "size" : 50027028,
+          "created" : "2016-07-21T20:23:24.505Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:23:23.686Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:23:23.686Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/el/7",
+          "name" : "chef-12.13.12-1.el7.ppc64le.rpm",
+          "type" : "file",
+          "size" : 57094295,
+          "created" : "2016-07-21T20:23:27.892Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:23:25.504Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:23:25.504Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/windows/2008r2",
+          "name" : "chef-client-12.13.12-1-x86.msi",
+          "type" : "file",
+          "size" : 116580352,
+          "created" : "2016-07-21T20:23:38.877Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:23:02.004Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:23:02.004Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/windows/2012",
+          "name" : "chef-client-12.13.12-1-x86.msi",
+          "type" : "file",
+          "size" : 116580352,
+          "created" : "2016-07-21T20:24:13.302Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:23:38.991Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:23:38.991Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/el/5",
+          "name" : "chef-12.13.12-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 52471637,
+          "created" : "2016-07-21T20:24:23.919Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:24:23.282Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:24:23.282Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/windows/2012r2",
+          "name" : "chef-client-12.13.12-1-x86.msi",
+          "type" : "file",
+          "size" : 116580352,
+          "created" : "2016-07-21T20:24:49.210Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:24:13.407Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:24:13.407Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/el/6",
+          "name" : "chef-12.13.12-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 52282814,
+          "created" : "2016-07-21T20:25:10.555Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:25:09.927Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:25:09.927Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/freebsd/10",
+          "name" : "chef-12.13.12_1.amd64.sh",
+          "type" : "file",
+          "size" : 43268368,
+          "created" : "2016-07-21T20:25:13.432Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:25:10.956Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:25:10.956Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/freebsd/9",
+          "name" : "chef-12.13.12_1.amd64.sh",
+          "type" : "file",
+          "size" : 43076887,
+          "created" : "2016-07-21T20:25:20.619Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:25:19.825Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:25:19.825Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/windows/2008r2",
+          "name" : "chef-client-12.13.12-1-x64.msi",
+          "type" : "file",
+          "size" : 201695232,
+          "created" : "2016-07-21T20:26:01.461Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:24:58.682Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:24:58.682Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/windows/2012",
+          "name" : "chef-client-12.13.12-1-x64.msi",
+          "type" : "file",
+          "size" : 201695232,
+          "created" : "2016-07-21T20:27:04.711Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:26:01.585Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:26:01.585Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/windows/2012r2",
+          "name" : "chef-client-12.13.12-1-x64.msi",
+          "type" : "file",
+          "size" : 201695232,
+          "created" : "2016-07-21T20:28:03.901Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:27:04.810Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:27:04.810Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/aix/6.1",
+          "name" : "chef-12.13.12-1.powerpc.bff",
+          "type" : "file",
+          "size" : 91954688,
+          "created" : "2016-07-21T20:30:15.181Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:27:38.180Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:27:38.180Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/aix/7.1",
+          "name" : "chef-12.13.12-1.powerpc.bff",
+          "type" : "file",
+          "size" : 91954688,
+          "created" : "2016-07-21T20:32:52.974Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:30:15.337Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:30:15.337Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/debian/6",
+          "name" : "chef_12.13.12-1_amd64.deb",
+          "type" : "file",
+          "size" : 50418498,
+          "created" : "2016-07-21T20:36:44.242Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:36:43.591Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:36:43.591Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/debian/7",
+          "name" : "chef_12.13.12-1_amd64.deb",
+          "type" : "file",
+          "size" : 50418498,
+          "created" : "2016-07-21T20:36:44.970Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:36:44.285Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:36:44.285Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.13.12/debian/8",
+          "name" : "chef_12.13.12-1_amd64.deb",
+          "type" : "file",
+          "size" : 50418498,
+          "created" : "2016-07-21T20:36:45.688Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-21T20:36:45.001Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-21T20:36:45.001Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.13.12"
+          } ]
         } ],
         "range" : {
           "start_pos" : 0,
-          "end_pos" : 681,
-          "total" : 681
+          "end_pos" : 718,
+          "total" : 718
         }
         }
     http_version: 
-  recorded_at: Thu, 21 Jul 2016 19:33:50 GMT
+  recorded_at: Thu, 21 Jul 2016 20:39:28 GMT
 recorded_with: VCR 3.0.3

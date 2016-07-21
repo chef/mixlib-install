@@ -63,12 +63,12 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
 
       it "returns a single artifact with correct info" do
         expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
-        expect(artifact_info.version).to eq "12.9.38"
+        require "pry"; expect(artifact_info.version).to eq "12.12.15"
         expect(artifact_info.platform).to eq "ubuntu"
         expect(artifact_info.platform_version).to eq "14.04"
         expect(artifact_info.architecture).to eq "x86_64"
-        expect(artifact_info.sha256).to eq "255c065a9d23f3dd0df3090206fe4d48451c7d0af0035c237bd21a7d28133f2f"
-        expect(artifact_info.url).to eq "https://packages.chef.io/stable/ubuntu/14.04/chef_12.9.38-1_amd64.deb"
+        expect(artifact_info.sha256).to eq "d64a029bc5402e2c2e2e1ad479e8b49b3dc7599a9d50ea3cefe4149b070582be"
+        expect(artifact_info.url).to eq "https://packages.chef.io/stable/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
       end
     end
   end
