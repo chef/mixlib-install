@@ -111,6 +111,7 @@ module Mixlib
         {
           shell_type: :sh,
           platform_version_compatibility_mode: false,
+          product_version: :latest,
         }
       end
 

@@ -47,6 +47,15 @@ module Mixlib
     end
 
     #
+    # List available versions
+    #
+    # @return [Array<String>] list of available versions for the given
+    # product_name and channel.
+    def available_versions
+      Backend.available_versions(options)
+    end
+
+    #
     # Returns an install script for the given options
     #
     # @return [String] script for installing with given options

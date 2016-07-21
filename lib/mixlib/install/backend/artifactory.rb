@@ -31,7 +31,7 @@ module Mixlib
         class AuthenticationError < StandardError; end
         class NoArtifactsError < StandardError; end
 
-        ENDPOINT = "http://packages-acceptance.chef.io".freeze
+        ENDPOINT = "http://artifactory.chef.co".freeze
 
         # These credentials are read-only credentials in Chef's artifactory
         # server which is only available in Chef's internal network.
@@ -50,6 +50,38 @@ module Mixlib
                       end
 
           windows_artifact_fixup!(artifacts)
+        end
+
+        #
+        # Gets available versions from Artifactory via AQL.
+        #
+        # @return [Array<String>] Array of available versions
+        def available_versions
+          query = <<-QUERY
+items.find(
+  {"repo": "omnibus-#{options.channel}-local"},
+  {"@omnibus.project": "#{omnibus_project}"},
+  {"name": {"$nmatch": "*.metadata.json" }}
+).include("@omnibus.version", "artifact.module.build")
+QUERY
+          items = artifactory_query(query)
+
+          # Filter out the partial builds if we are in :unstable channel
+          # In other channels we do not need to do this since all builds are
+          # always complete. Infact we should not do this since for some arcane
+          # builds like Chef Client 10.X we do not have build record created in
+          # artifactory.
+          if options.channel == :unstable
+            # We check if "artifacts" field contains something since it is only
+            # populated with the build record if "artifact.module.build" exists.
+            items.reject! { |i| i["artifacts"].nil? }
+          end
+
+          # We are only including a single property, version and that exists
+          # under the properties in the following structure:
+          # "properties" => [ {"key"=>"omnibus.version", "value"=>"12.13.3"} ]
+          items.map! { |i| i["properties"].first["value"] }
+          items.uniq
         end
 
         #
