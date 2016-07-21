@@ -18,11 +18,20 @@ rescue LoadError
   puts "chefstyle/rubocop is not available.  gem install chefstyle to do style checking."
 end
 
+desc "Run specs against package router"
+task :package_router do
+  ENV["FULL_ARTIFACTORY"] = "true"
+  ENV["ARTIFACTORY_ENDPOINT"] = "https://packages-acceptance.chef.io"
+  Rake::Task["spec"].invoke
+  ENV["FULL_ARTIFACTORY"] = nil
+  ENV["ARTIFACTORY_ENDPOINT"] = nil
+end
+
 desc "Run all tests"
-task test: [:style, :spec]
+task test: [:style, :spec, :package_router]
 
 desc "Run tests for Travis CI"
-task ci: [:style, :spec]
+task ci: [:style, :spec, :package_router]
 
 desc "Render product matrix documentation"
 task "matrix" do
