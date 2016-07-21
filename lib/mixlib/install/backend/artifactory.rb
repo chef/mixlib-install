@@ -143,7 +143,10 @@ items.find(
 
           # Merge artifactory properties to a flat Hash
           results.collect! do |result|
-            { "filename" => result["name"] }.merge(
+            {
+              "artifactory_standard_path" => generate_artifactory_standard_path(result),
+              "filename" => result["name"],
+            }.merge(
               map_properties(result["properties"])
             )
           end
@@ -179,6 +182,12 @@ items.find(
           platform, platform_version = normalize_platform(artifact_map["omnibus.platform"],
             artifact_map["omnibus.platform_version"])
 
+          chef_standard_path = generate_chef_standard_path(options.channel,
+            platform,
+            platform_version,
+            artifact_map["filename"]
+          )
+
           ArtifactInfo.new(
             md5:              artifact_map["omnibus.md5"],
             sha256:           artifact_map["omnibus.sha256"],
@@ -187,11 +196,13 @@ items.find(
             platform:         platform,
             platform_version: platform_version,
             architecture:     normalize_architecture(artifact_map["omnibus.architecture"]),
-            url:              generate_download_uri(options.channel,
-                                platform,
-                                platform_version,
-                                artifact_map["filename"]
-                              )
+            # Select what type of url we are going to display based on the enabled
+            # feature flags.
+            url:              if ENV["FULL_ARTIFACTORY"].nil?
+                                artifact_map["artifactory_standard_path"]
+                              else
+                                chef_standard_path
+                              end
           )
         end
 
@@ -207,15 +218,25 @@ items.find(
           end
         end
 
-        # Construct the downloadUri from raw artifactory data
-        #
-        def generate_download_uri(channel, platform, platform_version, filename)
+        # Generates a chef standard download uri in the form of
+        # http://endpoint/channel/platform/platform_version/filename
+        def generate_chef_standard_path(channel, platform, platform_version, filename)
           uri = []
           uri << endpoint.sub(/\/$/, "")
           uri << channel
           uri << platform
           uri << platform_version
           uri << filename
+          uri.join("/")
+        end
+
+        # Generates an artifactory standard download uri
+        def generate_artifactory_standard_path(result)
+          uri = []
+          uri << endpoint.sub(/\/$/, "")
+          uri << result["repo"]
+          uri << result["path"]
+          uri << result["name"]
           uri.join("/")
         end
 
