@@ -67,16 +67,32 @@ artifact.platform # => "ubuntu"
 artifact.platform_version # => "14.04"
 ```
 
+### List the available versions for a product and channel
+```ruby
+# Note that this feature currently only works for :unstable channel
+options = {
+  channel: :unstable,
+  product_name: 'chef',
+}
+
+Mixlib::Install.new(options).available_versions
+
+# => ["12.13.3", "12.13.7", "12.13.8+20160721014124", "12.13.11+20160721165202"]
+```
+
 ## Unstable channel
 The `:unstable` channel is currently only available when connected to Chef's internal network.
+
+## Feature Flags
+
+Below are the environment variables you can set to tune certain aspects of mixlib-install. They enable some features that are currently under development. You should use these features with care.
+
+`MIXLIB_INSTALL_UNIFIED_BACKEND` => Enables unified backend feature which uses Artifactory backend for all available channels.
 
 ## Development
 Since mixlib-install needs to interact with Bintray and Artifactory and since Artifactory instances are only available in Chef's network, this project uses [vcr](https://github.com/vcr/vcr).
 
 VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.
-
-### Force Artifactory as backend for all channels
-Set environment variable `MIXLIB_INSTALL_BACKEND=artifactory`. This setting is currently only available when connected to Chef's internal network.
 
 ## Contributing
 

@@ -46,7 +46,9 @@ module Mixlib
           install_command << get_script("helpers.sh")
           install_command << render_variables
           install_command << get_script("platform_detection.sh")
-          if options.for_artifactory?
+          # Since omnitruck can not resolve unstable we need to inject direct
+          # urls for the packages here.
+          if options.for_unstable?
             install_command << artifactory_urls
           else
             install_command << get_script("fetch_metadata.sh")

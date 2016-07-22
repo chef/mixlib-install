@@ -39,6 +39,20 @@ module Mixlib
         end
 
         #
+        # Returns the list of available versions for a given product_name
+        # and channel.
+        #
+        # @abstract Subclasses should define this method.
+        #           Currently this method is only available in the Artifactory
+        #           subclass.
+        #
+        # @return Array<String>
+        #   List of available versions as strings.
+        def available_versions
+          raise "available_versions API is only available for Artifactory backend."
+        end
+
+        #
         # See #filter_artifacts
         def info
           filter_artifacts(available_artifacts)

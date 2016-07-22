@@ -1,7 +1,7 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 
-task default: :test
+task default: :ci
 
 desc "Run specs"
 RSpec::Core::RakeTask.new(:spec) do |spec|
@@ -18,11 +18,21 @@ rescue LoadError
   puts "chefstyle/rubocop is not available.  gem install chefstyle to do style checking."
 end
 
+desc "Run specs for unified_backend (artifactory)"
+task :unified_backend do
+  ENV["MIXLIB_INSTALL_UNIFIED_BACKEND"] = "true"
+  ENV["ARTIFACTORY_ENDPOINT"] = "https://packages-acceptance.chef.io"
+  Rake::Task["spec"].reenable
+  Rake::Task["spec"].invoke
+  ENV.delete "MIXLIB_INSTALL_UNIFIED_BACKEND"
+  ENV.delete "ARTIFACTORY_ENDPOINT"
+end
+
 desc "Run all tests"
-task test: [:style, :spec]
+task test: [:style, :spec, :unified_backend]
 
 desc "Run tests for Travis CI"
-task ci: [:style, :spec]
+task ci: [:style, :spec, :unified_backend]
 
 desc "Render product matrix documentation"
 task "matrix" do

@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Artifactory Ruby Gem 2.3.2
+      - Artifactory Ruby Gem 2.3.3
       - Ruby
       Connection:
       - keep-alive
@@ -26,7 +26,7 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Tue, 28 Jun 2016 20:16:23 GMT
+      - Thu, 21 Jul 2016 20:39:41 GMT
       Content-Type:
       - application/vnd.org.jfrog.build.BuildsByName+json
       Transfer-Encoding:
@@ -91,9 +91,6 @@ http_interactions:
             "uri" : "/1.1.2",
             "started" : "2016-04-18T13:28:57.850+0000"
           }, {
-            "uri" : "/1.3.3",
-            "started" : "2016-06-02T14:58:45.717+0000"
-          }, {
             "uri" : "/1.2.4",
             "started" : "2016-05-18T10:55:00.608+0000"
           }, {
@@ -105,9 +102,6 @@ http_interactions:
           }, {
             "uri" : "/0.9.7",
             "started" : "2015-12-21T18:23:57.008+0000"
-          }, {
-            "uri" : "/1.3.5",
-            "started" : "2016-06-20T20:33:26.569+0000"
           }, {
             "uri" : "/0.9.11",
             "started" : "2016-01-26T11:50:38.480+0000"
@@ -127,7 +121,7 @@ http_interactions:
           "uri" : "http://artifactory.chef.co/api/build/chef-compliance"
         }
     http_version: 
-  recorded_at: Tue, 28 Jun 2016 20:15:31 GMT
+  recorded_at: Thu, 21 Jul 2016 20:38:16 GMT
 - request:
     method: post
     uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
@@ -146,7 +140,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Artifactory Ruby Gem 2.3.2
+      - Artifactory Ruby Gem 2.3.3
       - Ruby
       Connection:
       - keep-alive
@@ -162,7 +156,7 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Tue, 28 Jun 2016 20:16:23 GMT
+      - Thu, 21 Jul 2016 20:39:42 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -384,7 +378,7 @@ http_interactions:
         }
         }
     http_version: 
-  recorded_at: Tue, 28 Jun 2016 20:15:31 GMT
+  recorded_at: Thu, 21 Jul 2016 20:38:17 GMT
 - request:
     method: get
     uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/chef-compliance
@@ -397,7 +391,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Artifactory Ruby Gem 2.3.2
+      - Artifactory Ruby Gem 2.3.3
       - Ruby
       Connection:
       - keep-alive
@@ -411,7 +405,7 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Tue, 28 Jun 2016 20:16:23 GMT
+      - Thu, 21 Jul 2016 20:39:43 GMT
       Content-Type:
       - application/vnd.org.jfrog.build.BuildsByName+json
       Transfer-Encoding:
@@ -476,9 +470,6 @@ http_interactions:
             "uri" : "/1.1.2",
             "started" : "2016-04-18T13:28:57.850+0000"
           }, {
-            "uri" : "/1.3.3",
-            "started" : "2016-06-02T14:58:45.717+0000"
-          }, {
             "uri" : "/1.2.4",
             "started" : "2016-05-18T10:55:00.608+0000"
           }, {
@@ -490,9 +481,6 @@ http_interactions:
           }, {
             "uri" : "/0.9.7",
             "started" : "2015-12-21T18:23:57.008+0000"
-          }, {
-            "uri" : "/1.3.5",
-            "started" : "2016-06-20T20:33:26.569+0000"
           }, {
             "uri" : "/0.9.11",
             "started" : "2016-01-26T11:50:38.480+0000"
@@ -512,7 +500,7 @@ http_interactions:
           "uri" : "http://artifactory.chef.co/api/build/chef-compliance"
         }
     http_version: 
-  recorded_at: Tue, 28 Jun 2016 20:15:31 GMT
+  recorded_at: Thu, 21 Jul 2016 20:38:18 GMT
 - request:
     method: post
     uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
@@ -531,7 +519,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Artifactory Ruby Gem 2.3.2
+      - Artifactory Ruby Gem 2.3.3
       - Ruby
       Connection:
       - keep-alive
@@ -547,7 +535,7 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Tue, 28 Jun 2016 20:16:24 GMT
+      - Thu, 21 Jul 2016 20:39:44 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -769,5 +757,5 @@ http_interactions:
         }
         }
     http_version: 
-  recorded_at: Tue, 28 Jun 2016 20:15:32 GMT
+  recorded_at: Thu, 21 Jul 2016 20:38:19 GMT
 recorded_with: VCR 3.0.3

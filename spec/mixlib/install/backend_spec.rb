@@ -41,16 +41,27 @@ context "Mixlib::Install::Backend", :vcr do
     ).artifact_info
   }
 
+  let(:available_versions) {
+    Mixlib::Install.new(
+      channel: channel,
+      product_name: product_name
+    ).available_versions
+  }
+
   def check_url(url)
     if expected_info && !expected_info.key?(:url)
       expect(url).to match /#{expected_info[:url]}/
     else
-      if channel == :unstable
-        expect(url).to include("http://artifactory.chef.co")
-      elsif url.include?("freebsd/9") || url.include?("el/5") || url.include?("solaris2/5.10") || url.include?("solaris2/5.9")
-        expect(url).to include("http://chef.bintray.com")
+      if Mixlib::Install.unified_backend?
+        expect(url).to include("https://packages-acceptance.chef.io")
       else
-        expect(url).to include("https://packages.chef.io")
+        if channel == :unstable
+          expect(url).to include("http://artifactory.chef.co")
+        elsif url.include?("freebsd/9") || url.include?("el/5") || url.include?("solaris2/5.10") || url.include?("solaris2/5.9")
+          expect(url).to include("http://chef.bintray.com")
+        else
+          expect(url).to include("https://packages.chef.io")
+        end
       end
     end
   end
@@ -163,5 +174,39 @@ context "Mixlib::Install::Backend", :vcr do
         it_behaves_like "the right artifact info"
       end
     end
+  end
+
+  context "available_versions" do
+    let(:product_name) { "chef" }
+
+    context "with :unstable channel" do
+      let(:channel) { :unstable }
+
+      it "returns the list of available versions" do
+        ["12.13.3", "12.13.7", "12.13.8+20160721014124", "12.13.11+20160721165202"].each do |v|
+          expect(available_versions).to include(v)
+        end
+      end
+    end
+
+    # These tests are only valid when unified_backend is not enabled
+    unless Mixlib::Install.unified_backend?
+      context "with :stable channel" do
+        let(:channel) { :stable }
+
+        it "raises error" do
+          expect { available_versions }.to raise_error(StandardError)
+        end
+      end
+
+      context "with :current channel" do
+        let(:channel) { :current }
+
+        it "raises error" do
+          expect { available_versions }.to raise_error(StandardError)
+        end
+      end
+    end
+
   end
 end

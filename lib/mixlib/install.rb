@@ -47,6 +47,15 @@ module Mixlib
     end
 
     #
+    # List available versions
+    #
+    # @return [Array<String>] list of available versions for the given
+    # product_name and channel.
+    def available_versions
+      Backend.available_versions(options)
+    end
+
+    #
     # Returns an install script for the given options
     #
     # @return [String] script for installing with given options
@@ -173,6 +182,14 @@ module Mixlib
     #
     def self.install_ps1(context = {})
       Mixlib::Install::Generator::PowerShell.install_ps1(context)
+    end
+
+    #
+    # Returns if unified_backend feature flag for mixlib-install is enabled
+    #
+    # @return [Boolean] true if feature is enabled, false otherwise.
+    def self.unified_backend?
+      !ENV["MIXLIB_INSTALL_UNIFIED_BACKEND"].nil?
     end
   end
 end

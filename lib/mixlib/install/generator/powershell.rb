@@ -46,7 +46,9 @@ module Mixlib
         def install_command
           install_project_module = []
           install_project_module << get_script("helpers.ps1")
-          install_project_module << if options.for_artifactory?
+          # Since omnitruck can not resolve unstable we need to inject direct
+          # urls for the packages here.
+          install_project_module << if options.for_unstable?
                                       artifactory_urls
                                     else
                                       get_script("get_project_metadata.ps1")
@@ -73,7 +75,7 @@ module Mixlib
 
         def artifactory_urls
           get_script("get_project_metadata_for_artifactory.ps1",
-                     artifacts: artifacts)
+                     artifacts: Array(artifacts))
         end
 
         def artifacts
@@ -81,7 +83,7 @@ module Mixlib
         end
 
         def product_version
-          if options.for_artifactory?
+          if options.for_unstable?
             artifacts.first.version
           else
             options.product_version

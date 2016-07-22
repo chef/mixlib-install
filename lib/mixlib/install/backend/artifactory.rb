@@ -53,6 +53,38 @@ module Mixlib
         end
 
         #
+        # Gets available versions from Artifactory via AQL.
+        #
+        # @return [Array<String>] Array of available versions
+        def available_versions
+          query = <<-QUERY
+items.find(
+  {"repo": "omnibus-#{options.channel}-local"},
+  {"@omnibus.project": "#{omnibus_project}"},
+  {"name": {"$nmatch": "*.metadata.json" }}
+).include("@omnibus.version", "artifact.module.build")
+QUERY
+          items = artifactory_query(query)
+
+          # Filter out the partial builds if we are in :unstable channel
+          # In other channels we do not need to do this since all builds are
+          # always complete. Infact we should not do this since for some arcane
+          # builds like Chef Client 10.X we do not have build record created in
+          # artifactory.
+          if options.channel == :unstable
+            # We check if "artifacts" field contains something since it is only
+            # populated with the build record if "artifact.module.build" exists.
+            items.reject! { |i| i["artifacts"].nil? }
+          end
+
+          # We are only including a single property, version and that exists
+          # under the properties in the following structure:
+          # "properties" => [ {"key"=>"omnibus.version", "value"=>"12.13.3"} ]
+          items.map! { |i| i["properties"].first["value"] }
+          items.uniq
+        end
+
+        #
         # Get artifacts for the latest version, channel and product_name
         #
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
@@ -109,9 +141,12 @@ items.find(
           QUERY
           )
 
-          # Merge artifactory properties and downloadUri to a flat Hash
+          # Merge artifactory properties to a flat Hash
           results.collect! do |result|
-            { "downloadUri" => generate_download_uri(result) }.merge(
+            {
+              "artifactory_standard_path" => generate_artifactory_standard_path(result),
+              "filename" => result["name"],
+            }.merge(
               map_properties(result["properties"])
             )
           end
@@ -147,6 +182,12 @@ items.find(
           platform, platform_version = normalize_platform(artifact_map["omnibus.platform"],
             artifact_map["omnibus.platform_version"])
 
+          chef_standard_path = generate_chef_standard_path(options.channel,
+            platform,
+            platform_version,
+            artifact_map["filename"]
+          )
+
           ArtifactInfo.new(
             md5:              artifact_map["omnibus.md5"],
             sha256:           artifact_map["omnibus.sha256"],
@@ -155,7 +196,13 @@ items.find(
             platform:         platform,
             platform_version: platform_version,
             architecture:     normalize_architecture(artifact_map["omnibus.architecture"]),
-            url:              artifact_map["downloadUri"]
+            # Select what type of url we are going to display based on the enabled
+            # feature flags.
+            url:              if Mixlib::Install.unified_backend?
+                                chef_standard_path
+                              else
+                                artifact_map["artifactory_standard_path"]
+                              end
           )
         end
 
@@ -171,9 +218,20 @@ items.find(
           end
         end
 
-        # Construct the downloadUri from raw artifactory data
-        #
-        def generate_download_uri(result)
+        # Generates a chef standard download uri in the form of
+        # http://endpoint/channel/platform/platform_version/filename
+        def generate_chef_standard_path(channel, platform, platform_version, filename)
+          uri = []
+          uri << endpoint.sub(/\/$/, "")
+          uri << channel
+          uri << platform
+          uri << platform_version
+          uri << filename
+          uri.join("/")
+        end
+
+        # Generates an artifactory standard download uri
+        def generate_artifactory_standard_path(result)
           uri = []
           uri << endpoint.sub(/\/$/, "")
           uri << result["repo"]

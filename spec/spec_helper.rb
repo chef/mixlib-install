@@ -3,6 +3,7 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
 require "webmock/rspec"
 require "vcr"
+require "mixlib/install"
 
 # load version manifest support path
 VERSION_MANIFEST_DIR = File.expand_path("../support/version_manifests", __FILE__)
@@ -30,7 +31,13 @@ end
 #       run tests.
 #
 VCR.configure do |config|
-  config.cassette_library_dir = File.join(File.dirname(__FILE__), "fixtures/vcr")
+  # We use different set of casettes depending on the unified_backend feature
+  config.cassette_library_dir = if Mixlib::Install.unified_backend?
+                                  File.join(File.dirname(__FILE__), "fixtures/vcr_full_artifactory")
+                                else
+                                  File.join(File.dirname(__FILE__), "fixtures/vcr")
+                                end
+
   config.hook_into :webmock
   config.configure_rspec_metadata!
   # Options to be used during development:

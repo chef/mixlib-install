@@ -63,12 +63,21 @@ context "Mixlib::Install::Backend::Artifactory all channels", :vcr do
 
       it "returns a single artifact with correct info" do
         expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
-        expect(artifact_info.version).to eq "12.11.18"
+        require "pry"; expect(artifact_info.version).to eq "12.12.15"
         expect(artifact_info.platform).to eq "ubuntu"
         expect(artifact_info.platform_version).to eq "14.04"
         expect(artifact_info.architecture).to eq "x86_64"
-        expect(artifact_info.sha256).to eq "f1cf5d0f6dd12d2d2296ec6d8dbb16363f8541f5c15298cafa70e65ff2b5a22f"
-        expect(artifact_info.url).to eq "http://artifactory.chef.co/omnibus-stable-local/com/getchef/chef/12.11.18/ubuntu/14.04/chef_12.11.18-1_amd64.deb"
+        expect(artifact_info.sha256).to eq "d64a029bc5402e2c2e2e1ad479e8b49b3dc7599a9d50ea3cefe4149b070582be"
+        # This is a critical test where we test for the difference in the url when
+        # unified_backend feature is enabled. If that is being used the url
+        # will point to packages-acceptance.chef.io and it should be a chef
+        # standard url. Otherwise it will point to artifactory.chef.co and it
+        # should be an artifactory url.
+        if Mixlib::Install.unified_backend?
+          expect(artifact_info.url).to include "/stable/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
+        else
+          expect(artifact_info.url).to eq "http://artifactory.chef.co/omnibus-stable-local/com/getchef/chef/12.12.15/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
+        end
       end
     end
   end
