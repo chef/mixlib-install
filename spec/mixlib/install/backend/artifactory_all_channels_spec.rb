@@ -69,14 +69,14 @@ context "Mixlib::Install::Backend::Artifactory all channels", :vcr do
         expect(artifact_info.architecture).to eq "x86_64"
         expect(artifact_info.sha256).to eq "d64a029bc5402e2c2e2e1ad479e8b49b3dc7599a9d50ea3cefe4149b070582be"
         # This is a critical test where we test for the difference in the url when
-        # we are using FULL_ARTIFACTORY feature flag. If that is being used the url
+        # unified_backend feature is enabled. If that is being used the url
         # will point to packages-acceptance.chef.io and it should be a chef
         # standard url. Otherwise it will point to artifactory.chef.co and it
         # should be an artifactory url.
-        if ENV["FULL_ARTIFACTORY"].nil?
-          expect(artifact_info.url).to eq "http://artifactory.chef.co/omnibus-stable-local/com/getchef/chef/12.12.15/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
-        else
+        if Mixlib::Install.unified_backend?
           expect(artifact_info.url).to include "/stable/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
+        else
+          expect(artifact_info.url).to eq "http://artifactory.chef.co/omnibus-stable-local/com/getchef/chef/12.12.15/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
         end
       end
     end

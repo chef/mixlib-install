@@ -198,10 +198,10 @@ items.find(
             architecture:     normalize_architecture(artifact_map["omnibus.architecture"]),
             # Select what type of url we are going to display based on the enabled
             # feature flags.
-            url:              if ENV["FULL_ARTIFACTORY"].nil?
-                                artifact_map["artifactory_standard_path"]
-                              else
+            url:              if Mixlib::Install.unified_backend?
                                 chef_standard_path
+                              else
+                                artifact_map["artifactory_standard_path"]
                               end
           )
         end

@@ -52,7 +52,9 @@ context "Mixlib::Install::Backend", :vcr do
     if expected_info && !expected_info.key?(:url)
       expect(url).to match /#{expected_info[:url]}/
     else
-      if ENV["FULL_ARTIFACTORY"].nil?
+      if Mixlib::Install.unified_backend?
+        expect(url).to include("https://packages-acceptance.chef.io")
+      else
         if channel == :unstable
           expect(url).to include("http://artifactory.chef.co")
         elsif url.include?("freebsd/9") || url.include?("el/5") || url.include?("solaris2/5.10") || url.include?("solaris2/5.9")
@@ -60,8 +62,6 @@ context "Mixlib::Install::Backend", :vcr do
         else
           expect(url).to include("https://packages.chef.io")
         end
-      else
-        expect(url).to include("https://packages-acceptance.chef.io")
       end
     end
   end
@@ -189,8 +189,8 @@ context "Mixlib::Install::Backend", :vcr do
       end
     end
 
-    # These tests are only valid when FULL_ARTIFACTORY flag is disabled
-    if ENV["FULL_ARTIFACTORY"].nil?
+    # These tests are only valid when unified_backend is not enabled
+    unless Mixlib::Install.unified_backend?
       context "with :stable channel" do
         let(:channel) { :stable }
 

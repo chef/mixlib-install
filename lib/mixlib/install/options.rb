@@ -71,7 +71,7 @@ module Mixlib
       end
 
       def for_artifactory?
-        !ENV["FULL_ARTIFACTORY"].nil? || ARTIFACTORY_CHANNELS.include?(channel)
+        Mixlib::Install.unified_backend? || ARTIFACTORY_CHANNELS.include?(channel)
       end
 
       def for_unstable?

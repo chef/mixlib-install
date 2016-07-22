@@ -68,13 +68,13 @@ context "Mixlib::Install::Options" do
     end
   end
 
-  context "when FULL_ARTIFACTORY is set to artifactory" do
+  context "when MIXLIB_INSTALL_UNIFIED_BACKEND is set" do
     let(:product_name) { "chef" }
     let(:product_version) { :latest }
     let(:channel) { :stable }
 
     it "forces Artifactory as the backend for all channels" do
-      wrap_env("FULL_ARTIFACTORY" => "true") do
+      wrap_env("MIXLIB_INSTALL_UNIFIED_BACKEND" => "true") do
         expect(options.for_artifactory?).to eq true
       end
     end

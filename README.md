@@ -87,7 +87,7 @@ The `:unstable` channel is currently only available when connected to Chef's int
 
 Below are the environment variables you can set to tune certain aspects of mixlib-install. They enable some features that are currently under development. You should use these features with care.
 
-`FULL_ARTIFACTORY` => Enables Artifactory backend for all available channels.
+`MIXLIB_INSTALL_UNIFIED_BACKEND` => Enables unified backend feature which uses Artifactory backend for all available channels.
 
 ## Development
 Since mixlib-install needs to interact with Bintray and Artifactory and since Artifactory instances are only available in Chef's network, this project uses [vcr](https://github.com/vcr/vcr).
