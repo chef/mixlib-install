@@ -1,0 +1,767 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "opscode-push-jobs-client"},
+          {"@omnibus.version": "1.1.5"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '9537'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:01 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2133-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/ubuntu/10.04",
+          "name" : "opscode-push-jobs-client_1.1.5-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0a8f5069b7281f5acb800290d2e18b766864d46597fc84548f14a17a5b437426"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "86bd4997cd666f73ad80c3927c750a8f4577e9e573cc5db645d9e1cba73cb35d2f57342711b3a829472eff5307c23b6a258bcec485c504c482f69174a5d94791"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "d319f63207ac51f78a58151e1c493ceb"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7801746fabcf838c0396496b4826edbc8ec5a6e5"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/ubuntu/10.04",
+          "name" : "opscode-push-jobs-client_1.1.5-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "3f1de1454eaef5a9877c94f33982b381"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1b1435aad98042d8b224181f45c2f5911aed8517f7a5b1429176c59bba807586"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "833c6201c3258e3fda27bf536a2f683c1d192ee0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f87b4626997cb47c2ba73748d0d34eaff58f6138022a066b5dd24c7cd58f49cc44b633aa0a7269aa1ae59d4d67ebdccdef26f53684ba0f2cff93b695f167f26b"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/ubuntu/12.04",
+          "name" : "opscode-push-jobs-client_1.1.5-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "cf74fd95955739cc9ff70eebcbe59809"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d7b40ebb18c7c7dbc32322c9bcd721279e707fd1bee3609a37055838afbf67ea"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "c38e3a3f78e9b374268ef2179c19eb5116b69928014b905ea973890fabc078ddfada30c2a75df8a98a9abf72c6466b9ebc74abbb04285116c6f07868833dda53"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d659c06c72397ed2bc6cd88488349857f1958538"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/ubuntu/12.04",
+          "name" : "opscode-push-jobs-client_1.1.5-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ae8904b0a58e05e6eb15f451211a9afff086fb008459d3abb5d6b6ac3a88617c56f0769d10179e662d2b25b17eb4f2c333a06121cbc36ef260b53be520410f63"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "07aed8fc0422b05be7f8362efde4716a70c0b312"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a5df71751991e9a03def52247d0ac050"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "f2ab544c23507e1bfd5374da14161014cb45fae4d3f1acfe0de5712b5d7472db"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/windows/2008r2",
+          "name" : "opscode-push-jobs-client-windows-1.1.5-1.windows.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "411520e6a2e3038cd018ffacee0e76e37e7badd1aa84de03f5469c19e8d6c576"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "daf4f5c35b9b86bd5aab5200bc0f22c0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "38b43b5895e44c4c64c5ae19337f7bc918ffdd2b"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f079b97aae0589ffda6c60a2f6d71a9a4cdc988380e5f0947bb390f87122923b57db4bb75c6422a7c3f772fce70487c013b408942890ac7648f4b9f39b12a0f2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/el/5",
+          "name" : "opscode-push-jobs-client-1.1.5-1.el5.i686.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "33e9dbcca06b3806ce99774644e78003"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2a6f46880229234776d94f926af241547817c5190cc7340f4b5fa3383a236af7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "8652cb8afc3670c96e94892bbd232dd6d8e302fe"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "018b49bf38fd43386c9d59bbf33ef1eff07d32133bf8d432af05a47031da456a1c0418a02d31581318a3fc1e86d8aac617b55f397660309add6bd66d25e76116"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/el/5",
+          "name" : "opscode-push-jobs-client-1.1.5-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "98b80e02a989d2a7dd7eda29a5954f319648c8a11576aec33012661d7c9455c3"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "e1f000edb1931b3d3af33c2ae04fb42a09d45d9ae0ada1f986dc8b8bf7d644067359b68d5f39b287cc0ff7e405f4667c2bec8d6e2f2ce1ba2adb963bae4ca24b"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "39979b86e082c5b410fedc122268da0231096552"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "683892485c00460b9dbd5dbc59846999"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/el/6",
+          "name" : "opscode-push-jobs-client-1.1.5-1.el6.i686.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "502e7dcfc6b7178bbbbdc32b8813958d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fb5c2ebca4e5e7090795fb61659873ce0fe4f80066797e4f5892389d0ac8836d2aed8cc96f88a30929a015ca8d167e86f7172b4316f7761b8b99074c6081c0df"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "6526ebdfc92abd3103db3a57467000a56fdf0ca9"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "7ef751d41d6bc41f6c4e7b223b97704272ae403da6aa0560cfb268e0421248e4"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/el/6",
+          "name" : "opscode-push-jobs-client-1.1.5-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "60109bf7d527dc59029813b8bdb7d06717b6966a"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d242de41b983428057dfaa0d6b42a8710d1e6992b0235ee22cbf75f44873d77f"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f078b34fbacb9fbc30cf6d810832f47de5d3f802806f6a357fe564a426cc62a74715a78ce1d61cb06f25086660bd5b56b96ed62ce14bd6eb38382d95bc50c0aa"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "5ea93f2ed28bc32357f3b73bba4b9728"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 9,
+          "total" : 9
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:01 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "opscode-push-jobs-client"},
+          {"@omnibus.version": "1.1.5"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '9537'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:01 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2634-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/ubuntu/10.04",
+          "name" : "opscode-push-jobs-client_1.1.5-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0a8f5069b7281f5acb800290d2e18b766864d46597fc84548f14a17a5b437426"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "86bd4997cd666f73ad80c3927c750a8f4577e9e573cc5db645d9e1cba73cb35d2f57342711b3a829472eff5307c23b6a258bcec485c504c482f69174a5d94791"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "d319f63207ac51f78a58151e1c493ceb"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7801746fabcf838c0396496b4826edbc8ec5a6e5"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/ubuntu/10.04",
+          "name" : "opscode-push-jobs-client_1.1.5-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "3f1de1454eaef5a9877c94f33982b381"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1b1435aad98042d8b224181f45c2f5911aed8517f7a5b1429176c59bba807586"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "833c6201c3258e3fda27bf536a2f683c1d192ee0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f87b4626997cb47c2ba73748d0d34eaff58f6138022a066b5dd24c7cd58f49cc44b633aa0a7269aa1ae59d4d67ebdccdef26f53684ba0f2cff93b695f167f26b"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/ubuntu/12.04",
+          "name" : "opscode-push-jobs-client_1.1.5-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "cf74fd95955739cc9ff70eebcbe59809"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d7b40ebb18c7c7dbc32322c9bcd721279e707fd1bee3609a37055838afbf67ea"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "c38e3a3f78e9b374268ef2179c19eb5116b69928014b905ea973890fabc078ddfada30c2a75df8a98a9abf72c6466b9ebc74abbb04285116c6f07868833dda53"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d659c06c72397ed2bc6cd88488349857f1958538"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/ubuntu/12.04",
+          "name" : "opscode-push-jobs-client_1.1.5-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ae8904b0a58e05e6eb15f451211a9afff086fb008459d3abb5d6b6ac3a88617c56f0769d10179e662d2b25b17eb4f2c333a06121cbc36ef260b53be520410f63"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "07aed8fc0422b05be7f8362efde4716a70c0b312"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a5df71751991e9a03def52247d0ac050"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "f2ab544c23507e1bfd5374da14161014cb45fae4d3f1acfe0de5712b5d7472db"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/windows/2008r2",
+          "name" : "opscode-push-jobs-client-windows-1.1.5-1.windows.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "411520e6a2e3038cd018ffacee0e76e37e7badd1aa84de03f5469c19e8d6c576"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "daf4f5c35b9b86bd5aab5200bc0f22c0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "38b43b5895e44c4c64c5ae19337f7bc918ffdd2b"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f079b97aae0589ffda6c60a2f6d71a9a4cdc988380e5f0947bb390f87122923b57db4bb75c6422a7c3f772fce70487c013b408942890ac7648f4b9f39b12a0f2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/el/5",
+          "name" : "opscode-push-jobs-client-1.1.5-1.el5.i686.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "33e9dbcca06b3806ce99774644e78003"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2a6f46880229234776d94f926af241547817c5190cc7340f4b5fa3383a236af7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "8652cb8afc3670c96e94892bbd232dd6d8e302fe"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "018b49bf38fd43386c9d59bbf33ef1eff07d32133bf8d432af05a47031da456a1c0418a02d31581318a3fc1e86d8aac617b55f397660309add6bd66d25e76116"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/el/5",
+          "name" : "opscode-push-jobs-client-1.1.5-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "98b80e02a989d2a7dd7eda29a5954f319648c8a11576aec33012661d7c9455c3"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "e1f000edb1931b3d3af33c2ae04fb42a09d45d9ae0ada1f986dc8b8bf7d644067359b68d5f39b287cc0ff7e405f4667c2bec8d6e2f2ce1ba2adb963bae4ca24b"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "39979b86e082c5b410fedc122268da0231096552"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "683892485c00460b9dbd5dbc59846999"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/el/6",
+          "name" : "opscode-push-jobs-client-1.1.5-1.el6.i686.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "502e7dcfc6b7178bbbbdc32b8813958d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fb5c2ebca4e5e7090795fb61659873ce0fe4f80066797e4f5892389d0ac8836d2aed8cc96f88a30929a015ca8d167e86f7172b4316f7761b8b99074c6081c0df"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "6526ebdfc92abd3103db3a57467000a56fdf0ca9"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "7ef751d41d6bc41f6c4e7b223b97704272ae403da6aa0560cfb268e0421248e4"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-push-jobs-client/1.1.5/el/6",
+          "name" : "opscode-push-jobs-client-1.1.5-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "60109bf7d527dc59029813b8bdb7d06717b6966a"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d242de41b983428057dfaa0d6b42a8710d1e6992b0235ee22cbf75f44873d77f"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f078b34fbacb9fbc30cf6d810832f47de5d3f802806f6a357fe564a426cc62a74715a78ce1d61cb06f25086660bd5b56b96ed62ce14bd6eb38382d95bc50c0aa"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "5ea93f2ed28bc32357f3b73bba4b9728"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.5"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 9,
+          "total" : 9
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:01 GMT
+recorded_with: VCR 3.0.3

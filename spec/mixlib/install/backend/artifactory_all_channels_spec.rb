@@ -175,6 +175,20 @@ context "Mixlib::Install::Backend::Artifactory all channels", :vcr do
     end
   end
 
+  context "for automate" do
+    let(:channel) { :stable }
+    let(:product_name) { "automate" }
+    let(:product_version) { :latest }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "14.04" }
+    let(:architecture) { "x86_64" }
+
+    it "uses product package name" do
+      expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
+      expect(artifactory.info.url).to match "delivery"
+    end
+  end
+
   context "for compliance" do
     let(:channel) { :stable }
     let(:product_name) { "compliance" }

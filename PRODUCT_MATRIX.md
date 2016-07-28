@@ -3,6 +3,7 @@
 | Analytics Platform | analytics |
 | Angry Omnibus Toolchain | angry-omnibus-toolchain |
 | Angry Chef Client | angrychef |
+| Chef Automate | automate |
 | Chef Client | chef |
 | Chef Backend | chef-backend |
 | Chef Server | chef-server |
@@ -15,7 +16,7 @@
 | Chef Cloud Marketplace addon | marketplace |
 | Omnibus Toolchain | omnibus-toolchain |
 | Enterprise Chef (legacy) | private-chef |
-| Chef Push Server | push-jobs-client |
+| Chef Push Client | push-jobs-client |
 | Chef Push Server | push-jobs-server |
 | Chef Server Reporting addon | reporting |
 | Supermarket | supermarket |
