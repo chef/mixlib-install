@@ -1,0 +1,629 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "opscode-manage"},
+          {"@omnibus.version": "1.21.0"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '6953'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:22 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2127-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/ubuntu/10.04",
+          "name" : "opscode-manage_1.21.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "84582862ce47d5f6db1e1ed89021c4b8efbda847"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4291b3760313922bc5a5116b81c2c72dd12e695e2bccec47a6eb758107664287271ca73fb1394851e731695e915a5180ec37aa769585e6ce6678a9ddd5c9fcc4"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0e78f58653b70a5f355e8bd0a5a763e52a32ce13d6a7b292b3c53537f7f336c5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "48e65752b37c1a8457ee76b79dd6db36"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/el/7",
+          "name" : "opscode-manage-1.21.0-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ff33f73d15e19f82533439b78ba6381cb290272cb485b905b42cab0b33465179c9deca16005c7f58096323526f045e31fa2c57e2107dac30c7aa98e5dd424c97"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "98bae9dabb346d8315e8e1d2a14bc44a165b566c7ee42b3c6de60901e097d23a"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1b12e6c3d52b5809fa9d1507a4b3f40a26c875dd"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "b05d3b2e8aba15868475b2282ce554ce"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/ubuntu/14.04",
+          "name" : "opscode-manage_1.21.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4291b3760313922bc5a5116b81c2c72dd12e695e2bccec47a6eb758107664287271ca73fb1394851e731695e915a5180ec37aa769585e6ce6678a9ddd5c9fcc4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0e78f58653b70a5f355e8bd0a5a763e52a32ce13d6a7b292b3c53537f7f336c5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "84582862ce47d5f6db1e1ed89021c4b8efbda847"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "48e65752b37c1a8457ee76b79dd6db36"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/ubuntu/12.04",
+          "name" : "opscode-manage_1.21.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "48e65752b37c1a8457ee76b79dd6db36"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "84582862ce47d5f6db1e1ed89021c4b8efbda847"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4291b3760313922bc5a5116b81c2c72dd12e695e2bccec47a6eb758107664287271ca73fb1394851e731695e915a5180ec37aa769585e6ce6678a9ddd5c9fcc4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0e78f58653b70a5f355e8bd0a5a763e52a32ce13d6a7b292b3c53537f7f336c5"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/el/6",
+          "name" : "opscode-manage-1.21.0-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "b77723eb39e775c4ee892d59b785a8ba"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "660a805c8633c601740371ddbc12ec4dc0c76f1777400e63ffe42afac25187a0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "2820a1d07e77dd7b945bd66d5f91910de10a5fc8"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4d4b2fe01ed82a7b2a221551a09e8101b44d892a6104bb9fd4c633cbbb87f7118d939fe83b023785ac1ce0128ede9cae9ac9373b76d2a78aba2102a4a5d93fc8"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/el/5",
+          "name" : "opscode-manage-1.21.0-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "06909f1cbb416268139cb3632b671e73cd3707f15714653944637aa5b27b43d60c3228373d16f3c82e6abedea636078568a2f4e6bb74e287329b9ca188b01e6e"
+          }, {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "ddbd250e7d10dc1ea97d65295be5a7a1146a83cae15cd76dece0a2a34dfc9915"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "6b667e40f025a510796421111760dfeb64b6698c"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "61ea1f942b8836ab3a57dc86dca241db"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 6,
+          "total" : 6
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:22 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "opscode-manage"},
+          {"@omnibus.version": "1.21.0"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '6953'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:23 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2636-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/ubuntu/10.04",
+          "name" : "opscode-manage_1.21.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "84582862ce47d5f6db1e1ed89021c4b8efbda847"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4291b3760313922bc5a5116b81c2c72dd12e695e2bccec47a6eb758107664287271ca73fb1394851e731695e915a5180ec37aa769585e6ce6678a9ddd5c9fcc4"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0e78f58653b70a5f355e8bd0a5a763e52a32ce13d6a7b292b3c53537f7f336c5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "48e65752b37c1a8457ee76b79dd6db36"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/el/7",
+          "name" : "opscode-manage-1.21.0-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ff33f73d15e19f82533439b78ba6381cb290272cb485b905b42cab0b33465179c9deca16005c7f58096323526f045e31fa2c57e2107dac30c7aa98e5dd424c97"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "98bae9dabb346d8315e8e1d2a14bc44a165b566c7ee42b3c6de60901e097d23a"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1b12e6c3d52b5809fa9d1507a4b3f40a26c875dd"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "b05d3b2e8aba15868475b2282ce554ce"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/ubuntu/14.04",
+          "name" : "opscode-manage_1.21.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4291b3760313922bc5a5116b81c2c72dd12e695e2bccec47a6eb758107664287271ca73fb1394851e731695e915a5180ec37aa769585e6ce6678a9ddd5c9fcc4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0e78f58653b70a5f355e8bd0a5a763e52a32ce13d6a7b292b3c53537f7f336c5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "84582862ce47d5f6db1e1ed89021c4b8efbda847"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "48e65752b37c1a8457ee76b79dd6db36"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/ubuntu/12.04",
+          "name" : "opscode-manage_1.21.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "48e65752b37c1a8457ee76b79dd6db36"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "84582862ce47d5f6db1e1ed89021c4b8efbda847"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4291b3760313922bc5a5116b81c2c72dd12e695e2bccec47a6eb758107664287271ca73fb1394851e731695e915a5180ec37aa769585e6ce6678a9ddd5c9fcc4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0e78f58653b70a5f355e8bd0a5a763e52a32ce13d6a7b292b3c53537f7f336c5"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/el/6",
+          "name" : "opscode-manage-1.21.0-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "b77723eb39e775c4ee892d59b785a8ba"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "660a805c8633c601740371ddbc12ec4dc0c76f1777400e63ffe42afac25187a0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "2820a1d07e77dd7b945bd66d5f91910de10a5fc8"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4d4b2fe01ed82a7b2a221551a09e8101b44d892a6104bb9fd4c633cbbb87f7118d939fe83b023785ac1ce0128ede9cae9ac9373b76d2a78aba2102a4a5d93fc8"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/opscode-manage/1.21.0/el/5",
+          "name" : "opscode-manage-1.21.0-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "06909f1cbb416268139cb3632b671e73cd3707f15714653944637aa5b27b43d60c3228373d16f3c82e6abedea636078568a2f4e6bb74e287329b9ca188b01e6e"
+          }, {
+            "key" : "build.number",
+            "value" : "1.21.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "ddbd250e7d10dc1ea97d65295be5a7a1146a83cae15cd76dece0a2a34dfc9915"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "opscode-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "6b667e40f025a510796421111760dfeb64b6698c"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "61ea1f942b8836ab3a57dc86dca241db"
+          }, {
+            "key" : "build.name",
+            "value" : "opscode-manage"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 6,
+          "total" : 6
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:23 GMT
+recorded_with: VCR 3.0.3

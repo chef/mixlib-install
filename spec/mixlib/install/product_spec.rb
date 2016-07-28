@@ -109,6 +109,7 @@ context "PRODUCT_MATRIX" do
     analytics
     angry-omnibus-toolchain
     angrychef
+    automate
     chef
     chef-backend
     chef-server
@@ -136,6 +137,14 @@ context "PRODUCT_MATRIX" do
 
   it "returns nil for unset parameters" do
     expect(PRODUCT_MATRIX.lookup("chef").ctl_command).to be_nil
+  end
+
+  context "for automate" do
+    let(:product_name) { "automate" }
+
+    it "should return an omnibus project name of delivery" do
+      expect(PRODUCT_MATRIX.lookup("automate").known_omnibus_projects).to eq ["delivery"]
+    end
   end
 
   context "for chef-server" do

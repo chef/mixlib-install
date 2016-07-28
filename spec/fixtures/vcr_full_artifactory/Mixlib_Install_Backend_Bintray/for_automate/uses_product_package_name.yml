@@ -1,0 +1,159 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/delivery/versions/_latest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 Jul 2016 16:04:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=0
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"0.5.1","desc":"","package":"delivery","repo":"stable","owner":"chef","labels":[],"attribute_names":["project","version","iteration"],"created":"2016-07-12T04:28:40.719Z","updated":"2016-07-12T04:31:28.512Z","released":"","ordinal":53.0}'
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 16:04:10 GMT
+- request:
+    method: get
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/delivery/versions/0.5.1/files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 Jul 2016 16:04:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=0
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"name":"delivery-0.5.1-1.el6.x86_64.rpm","path":"el/6/delivery-0.5.1-1.el6.x86_64.rpm","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:29:43.168Z","size":360987386,"sha1":"5d5316352b5f08b05e52766ab4e7cc64843942c6","sha256":"c7a4d082c3156df0341eb0cdea05e040e8c210ff660743cf33ba43808ebb6275"},{"name":"delivery-0.5.1-1.el6.x86_64.rpm.asc","path":"el/6/delivery-0.5.1-1.el6.x86_64.rpm.asc","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:31:18.240Z","size":183,"sha1":"6d8d2c411cb1d742389bcce79f95ff8de83a4ded","sha256":"e4c54a1d4a1f0efadeb6c43b49d16560672cf6afcce21b25933ecaaf6b7e092b"},{"name":"delivery-0.5.1-1.el7.x86_64.rpm","path":"el/7/delivery-0.5.1-1.el7.x86_64.rpm","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:29:34.450Z","size":361155404,"sha1":"f73b2a3afb56c87715a6a0a2e5e6f3bbe7ac090e","sha256":"9313285adf12c0e18cd70140425791741b0c4df753f1a37452aaee8ffc806469"},{"name":"delivery-0.5.1-1.el7.x86_64.rpm.asc","path":"el/7/delivery-0.5.1-1.el7.x86_64.rpm.asc","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:30:35.767Z","size":183,"sha1":"1a098b5353a19b879c3fa499e7a4fa97f3c6134b","sha256":"e69f9813c56e8d6f61d111f1b9ebeda0abf9fc24ac77766c4f3a01f8c147963b"},{"name":"delivery_0.5.1-1_amd64.deb","path":"ubuntu/12.04/delivery_0.5.1-1_amd64.deb","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:29:42.711Z","size":359787644,"sha1":"fc17b10b932f359cd5a254f952fcc5b2e4a2fa23","sha256":"dce808ca3e84ef3b7d0493be25cc97f8c96341b182cd641b2d47460afdc93e06"},{"name":"delivery_0.5.1-1_amd64.deb.asc","path":"ubuntu/12.04/delivery_0.5.1-1_amd64.deb.asc","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:30:48.940Z","size":183,"sha1":"2ad212fef8ef089c7d42fc90705bc92c0fc41e1f","sha256":"47f4ef4067538e1db1bff66c27e00bc7173fecdab392dc21cb8bc59708a7c5c1"},{"name":"delivery_0.5.1-1_amd64.deb","path":"ubuntu/14.04/delivery_0.5.1-1_amd64.deb","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:29:40.115Z","size":359787644,"sha1":"fc17b10b932f359cd5a254f952fcc5b2e4a2fa23","sha256":"dce808ca3e84ef3b7d0493be25cc97f8c96341b182cd641b2d47460afdc93e06"},{"name":"delivery_0.5.1-1_amd64.deb.asc","path":"ubuntu/14.04/delivery_0.5.1-1_amd64.deb.asc","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:30:54.169Z","size":183,"sha1":"13642ff9ca173816a189e91b85d1709f3228e492","sha256":"ac479ad3de9f63c358785bb705996e404a4b7cb0c6f17fa299993fc82ac2074b"}]'
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 16:04:10 GMT
+- request:
+    method: get
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/delivery/versions/_latest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 Jul 2016 16:04:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=0
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"0.5.1","desc":"","package":"delivery","repo":"stable","owner":"chef","labels":[],"attribute_names":["project","version","iteration"],"created":"2016-07-12T04:28:40.719Z","updated":"2016-07-12T04:31:28.512Z","released":"","ordinal":53.0}'
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 16:04:10 GMT
+- request:
+    method: get
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/delivery/versions/0.5.1/files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 27 Jul 2016 16:04:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=0
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"name":"delivery-0.5.1-1.el6.x86_64.rpm","path":"el/6/delivery-0.5.1-1.el6.x86_64.rpm","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:29:43.168Z","size":360987386,"sha1":"5d5316352b5f08b05e52766ab4e7cc64843942c6","sha256":"c7a4d082c3156df0341eb0cdea05e040e8c210ff660743cf33ba43808ebb6275"},{"name":"delivery-0.5.1-1.el6.x86_64.rpm.asc","path":"el/6/delivery-0.5.1-1.el6.x86_64.rpm.asc","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:31:18.240Z","size":183,"sha1":"6d8d2c411cb1d742389bcce79f95ff8de83a4ded","sha256":"e4c54a1d4a1f0efadeb6c43b49d16560672cf6afcce21b25933ecaaf6b7e092b"},{"name":"delivery-0.5.1-1.el7.x86_64.rpm","path":"el/7/delivery-0.5.1-1.el7.x86_64.rpm","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:29:34.450Z","size":361155404,"sha1":"f73b2a3afb56c87715a6a0a2e5e6f3bbe7ac090e","sha256":"9313285adf12c0e18cd70140425791741b0c4df753f1a37452aaee8ffc806469"},{"name":"delivery-0.5.1-1.el7.x86_64.rpm.asc","path":"el/7/delivery-0.5.1-1.el7.x86_64.rpm.asc","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:30:35.767Z","size":183,"sha1":"1a098b5353a19b879c3fa499e7a4fa97f3c6134b","sha256":"e69f9813c56e8d6f61d111f1b9ebeda0abf9fc24ac77766c4f3a01f8c147963b"},{"name":"delivery_0.5.1-1_amd64.deb","path":"ubuntu/12.04/delivery_0.5.1-1_amd64.deb","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:29:42.711Z","size":359787644,"sha1":"fc17b10b932f359cd5a254f952fcc5b2e4a2fa23","sha256":"dce808ca3e84ef3b7d0493be25cc97f8c96341b182cd641b2d47460afdc93e06"},{"name":"delivery_0.5.1-1_amd64.deb.asc","path":"ubuntu/12.04/delivery_0.5.1-1_amd64.deb.asc","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:30:48.940Z","size":183,"sha1":"2ad212fef8ef089c7d42fc90705bc92c0fc41e1f","sha256":"47f4ef4067538e1db1bff66c27e00bc7173fecdab392dc21cb8bc59708a7c5c1"},{"name":"delivery_0.5.1-1_amd64.deb","path":"ubuntu/14.04/delivery_0.5.1-1_amd64.deb","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:29:40.115Z","size":359787644,"sha1":"fc17b10b932f359cd5a254f952fcc5b2e4a2fa23","sha256":"dce808ca3e84ef3b7d0493be25cc97f8c96341b182cd641b2d47460afdc93e06"},{"name":"delivery_0.5.1-1_amd64.deb.asc","path":"ubuntu/14.04/delivery_0.5.1-1_amd64.deb.asc","repo":"stable","package":"delivery","version":"0.5.1","owner":"chef","created":"2016-07-12T04:30:54.169Z","size":183,"sha1":"13642ff9ca173816a189e91b85d1709f3228e492","sha256":"ac479ad3de9f63c358785bb705996e404a4b7cb0c6f17fa299993fc82ac2074b"}]'
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 16:04:10 GMT
+recorded_with: VCR 3.0.3

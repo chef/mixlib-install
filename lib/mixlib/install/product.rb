@@ -187,6 +187,13 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "angrychef"
   end
 
+  product "automate" do
+    product_name "Chef Automate"
+    package_name "delivery"
+    ctl_command "delivery-ctl"
+    config_file "/etc/delivery/delivery.rb"
+  end
+
   product "chef" do
     product_name "Chef Client"
     package_name "chef"

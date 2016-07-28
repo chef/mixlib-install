@@ -81,7 +81,7 @@ module Mixlib
         # @return [String] latest version value
         #
         def latest_version
-          result = bintray_get("#{options.channel}/#{options.product_name}/versions/_latest")
+          result = bintray_get("#{options.channel}/#{bintray_product_name}/versions/_latest")
           result["name"]
         end
 
@@ -93,11 +93,11 @@ module Mixlib
         def available_artifacts
           version = options.latest_version? ? latest_version : options.product_version
           begin
-            results = bintray_get("#{options.channel}/#{options.product_name}/versions/#{version}/files")
+            results = bintray_get("#{options.channel}/#{bintray_product_name}/versions/#{version}/files")
           rescue Net::HTTPServerException => e
             if e.message =~ /404 "Not Found"/
               raise VersionNotFound,
-                "Specified version (#{version}) not found for #{options.product_name} in #{options.channel} channel."
+                "Specified version (#{version}) not found for #{bintray_product_name} in #{options.channel} channel."
             else
               raise
             end
@@ -273,6 +273,21 @@ module Mixlib
           else
             raise UnknownArchitecture,
               "architecture can not be determined for '#{filename}'"
+          end
+        end
+
+        private
+
+        #
+        # This is a temporary workaround until we move to the unified backend
+        # for all channels. Some products are published to Bintray using their
+        # Omnibus project name as opposed to their mixlib-install product key.
+        #
+        def bintray_product_name
+          if %w{automate}.include?(options.product_name)
+            PRODUCT_MATRIX.lookup(options.product_name).omnibus_project
+          else
+            options.product_name
           end
         end
       end

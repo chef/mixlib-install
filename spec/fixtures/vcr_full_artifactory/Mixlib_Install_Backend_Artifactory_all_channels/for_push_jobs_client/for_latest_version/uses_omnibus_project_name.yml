@@ -1,0 +1,6021 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/build/push-jobs-client
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '1331'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:02 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2144-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/2.1.0+20160727021440",
+            "started" : "2016-07-27T02:22:35.182+0000"
+          }, {
+            "uri" : "/2.1.0+20160726080109",
+            "started" : "2016-07-26T09:06:51.304+0000"
+          }, {
+            "uri" : "/2.1.0+20160724080110",
+            "started" : "2016-07-24T08:36:18.786+0000"
+          }, {
+            "uri" : "/2.1.0+20160727080109",
+            "started" : "2016-07-27T08:36:41.699+0000"
+          }, {
+            "uri" : "/1.3.4",
+            "started" : "2015-11-04T03:14:39.286+0000"
+          }, {
+            "uri" : "/2.1.0+20160725080113",
+            "started" : "2016-07-25T08:56:28.961+0000"
+          }, {
+            "uri" : "/2.1.0+20160721080109",
+            "started" : "2016-07-21T08:36:21.899+0000"
+          }, {
+            "uri" : "/2.1.0+20160723080111",
+            "started" : "2016-07-23T09:05:40.338+0000"
+          }, {
+            "uri" : "/2.1.0",
+            "started" : "2016-05-17T19:09:27.709+0000"
+          }, {
+            "uri" : "/1.3.3",
+            "started" : "2015-09-18T00:58:22.412+0000"
+          }, {
+            "uri" : "/2.1.0+20160722080109",
+            "started" : "2016-07-22T08:36:56.480+0000"
+          }, {
+            "uri" : "/2.1.0+20160720080109",
+            "started" : "2016-07-20T08:36:55.027+0000"
+          }, {
+            "uri" : "/2.1.0+20160719080112",
+            "started" : "2016-07-19T08:54:49.843+0000"
+          }, {
+            "uri" : "/2.1.0+20160719183022",
+            "started" : "2016-07-19T18:38:14.737+0000"
+          } ],
+          "uri" : "https://packages-acceptance.chef.io/api/build/push-jobs-client"
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:02 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160727080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:02 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2125-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:02 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160727021440"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:03 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2140-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:03 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160726080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:03 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2143-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:03 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160725080113"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:04 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2627-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:04 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160724080110"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:04 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2621-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:05 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160723080111"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:05 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2644-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:05 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160722080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:06 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2647-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:06 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160721080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:06 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2137-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:06 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160720080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:07 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2620-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:07 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160719183022"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:07 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2143-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:07 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160719080112"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:07 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2140-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:07 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Transfer-Encoding:
+      - chunked
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:08 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2622-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/6",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/5",
+          "name" : "push-jobs-client-2.1.0-1.el5.i386.rpm",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7190c62f9f8a23fdd2094a9d594e7bd94df8802e"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "171abb92f4db585c08a823c3966dd2d6c681b3b50ae03832c9ccaa8bb3829bc207977230940c16cfda14ae9111612cc0f524fd908b8004ec98bd24c1f67025ab"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2d9d96c9001d6848cfd6e8b9e0f76e3df03008c4e74606a54346a3f2db2c80e0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "05df6f6ecff4af4e3a1890730b8e1a8b"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.9",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.9"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/8",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/6",
+          "name" : "push-jobs-client-2.1.0-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "abd157603b243b66ce23712ab66b3cf7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a3ac2f0033820310ff4f3fb3a287ad1afe1f57ae410cdc220aa89ed15a1c4a432d17a8bcc0b838c936ff6ffef62faed13e75522275144908272500918f2d67a4"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "913088585c9cf7319eaab4127d47cc173ebf4bf8"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1eb8688e906697f2ad78eec8ca6fe0bbf137477fa09f2f2c90f8498ed7a67979"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/7",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2012",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2008r2",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/8",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/10.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.11",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.11"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/6",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/10.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/7",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/5",
+          "name" : "push-jobs-client-2.1.0-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "19b6b9f136b74302677590b23af74903"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "e1b1d4125e67b7149e1458ff68af492975107779696b89d2f0462b5c9d88ff11"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f327b52b2430dadd0fb1a07fefdadfb52316c890"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b0ee9c61a77e82134d181a8f6b127214e588db98f25d44959a6c2464a73ac8c2b951e93f38349096dec72514343f93864231aa79c4f8394aeaae1cc681283b90"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.10",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.10"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/6",
+          "name" : "push-jobs-client-2.1.0-1.el6.i386.rpm",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b90b9122bc07d0af352c0feebb14f4fb10dda14123080887152b0bd6d18d3d78"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "d2b6b827db576bfc6b3bf2c08ab9966c"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "61d3465de234aa9a788e1cb8736e23190e873f1c"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "deb8de984e471dea7ac415af2df6758b89ad38112bd85d30575786c364e0b07219633298c6d56a1402bff62973261966a39b9af51bed74c34aff987122d419cb"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2012r2",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/7",
+          "name" : "push-jobs-client-2.1.0-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "11a6236da4b571f103d8aa4af1dda25c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3b06ab32342bee29868f5abf5951e59315256cd253b9659da74b9f5fb219f4312d71d4a1188378796a3c628a7398240fbf75704ac5cc7548dc2b3bcf1428b153"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "19ea3b78a9703c74592db84388b2b22786a41a17"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "eacf6ad2c318dcfee47a210087dbab908ab02b1ec6793506464f82d31895f2f8"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 23,
+          "total" : 23
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:08 GMT
+- request:
+    method: get
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/build/push-jobs-client
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '1331'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:08 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '7'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2121-IAD
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/2.1.0+20160727021440",
+            "started" : "2016-07-27T02:22:35.182+0000"
+          }, {
+            "uri" : "/2.1.0+20160726080109",
+            "started" : "2016-07-26T09:06:51.304+0000"
+          }, {
+            "uri" : "/2.1.0+20160724080110",
+            "started" : "2016-07-24T08:36:18.786+0000"
+          }, {
+            "uri" : "/2.1.0+20160727080109",
+            "started" : "2016-07-27T08:36:41.699+0000"
+          }, {
+            "uri" : "/1.3.4",
+            "started" : "2015-11-04T03:14:39.286+0000"
+          }, {
+            "uri" : "/2.1.0+20160725080113",
+            "started" : "2016-07-25T08:56:28.961+0000"
+          }, {
+            "uri" : "/2.1.0+20160721080109",
+            "started" : "2016-07-21T08:36:21.899+0000"
+          }, {
+            "uri" : "/2.1.0+20160723080111",
+            "started" : "2016-07-23T09:05:40.338+0000"
+          }, {
+            "uri" : "/2.1.0",
+            "started" : "2016-05-17T19:09:27.709+0000"
+          }, {
+            "uri" : "/1.3.3",
+            "started" : "2015-09-18T00:58:22.412+0000"
+          }, {
+            "uri" : "/2.1.0+20160722080109",
+            "started" : "2016-07-22T08:36:56.480+0000"
+          }, {
+            "uri" : "/2.1.0+20160720080109",
+            "started" : "2016-07-20T08:36:55.027+0000"
+          }, {
+            "uri" : "/2.1.0+20160719080112",
+            "started" : "2016-07-19T08:54:49.843+0000"
+          }, {
+            "uri" : "/2.1.0+20160719183022",
+            "started" : "2016-07-19T18:38:14.737+0000"
+          } ],
+          "uri" : "https://packages-acceptance.chef.io/api/build/push-jobs-client"
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:08 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160727080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:08 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2627-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:08 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160727021440"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:09 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2121-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:09 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160726080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:10 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2625-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:10 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160725080113"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:10 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2630-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:10 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160724080110"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:11 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2633-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:11 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160723080111"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:11 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2640-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:11 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160722080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:12 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2147-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:12 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160721080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:12 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2636-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:12 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160720080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:13 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2120-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:13 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160719183022"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:13 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2627-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:13 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160719080112"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:14 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2620-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:14 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Transfer-Encoding:
+      - chunked
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:15 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2646-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/6",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/5",
+          "name" : "push-jobs-client-2.1.0-1.el5.i386.rpm",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7190c62f9f8a23fdd2094a9d594e7bd94df8802e"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "171abb92f4db585c08a823c3966dd2d6c681b3b50ae03832c9ccaa8bb3829bc207977230940c16cfda14ae9111612cc0f524fd908b8004ec98bd24c1f67025ab"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2d9d96c9001d6848cfd6e8b9e0f76e3df03008c4e74606a54346a3f2db2c80e0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "05df6f6ecff4af4e3a1890730b8e1a8b"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.9",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.9"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/8",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/6",
+          "name" : "push-jobs-client-2.1.0-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "abd157603b243b66ce23712ab66b3cf7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a3ac2f0033820310ff4f3fb3a287ad1afe1f57ae410cdc220aa89ed15a1c4a432d17a8bcc0b838c936ff6ffef62faed13e75522275144908272500918f2d67a4"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "913088585c9cf7319eaab4127d47cc173ebf4bf8"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1eb8688e906697f2ad78eec8ca6fe0bbf137477fa09f2f2c90f8498ed7a67979"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/7",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2012",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2008r2",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/8",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/10.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.11",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.11"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/6",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/10.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/7",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/5",
+          "name" : "push-jobs-client-2.1.0-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "19b6b9f136b74302677590b23af74903"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "e1b1d4125e67b7149e1458ff68af492975107779696b89d2f0462b5c9d88ff11"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f327b52b2430dadd0fb1a07fefdadfb52316c890"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b0ee9c61a77e82134d181a8f6b127214e588db98f25d44959a6c2464a73ac8c2b951e93f38349096dec72514343f93864231aa79c4f8394aeaae1cc681283b90"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.10",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.10"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/6",
+          "name" : "push-jobs-client-2.1.0-1.el6.i386.rpm",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b90b9122bc07d0af352c0feebb14f4fb10dda14123080887152b0bd6d18d3d78"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "d2b6b827db576bfc6b3bf2c08ab9966c"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "61d3465de234aa9a788e1cb8736e23190e873f1c"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "deb8de984e471dea7ac415af2df6758b89ad38112bd85d30575786c364e0b07219633298c6d56a1402bff62973261966a39b9af51bed74c34aff987122d419cb"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2012r2",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/7",
+          "name" : "push-jobs-client-2.1.0-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "11a6236da4b571f103d8aa4af1dda25c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3b06ab32342bee29868f5abf5951e59315256cd253b9659da74b9f5fb219f4312d71d4a1188378796a3c628a7398240fbf75704ac5cc7548dc2b3bcf1428b153"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "19ea3b78a9703c74592db84388b2b22786a41a17"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "eacf6ad2c318dcfee47a210087dbab908ab02b1ec6793506464f82d31895f2f8"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 23,
+          "total" : 23
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:15 GMT
+- request:
+    method: get
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/build/push-jobs-client
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '1331'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:15 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '13'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2623-IAD
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/2.1.0+20160727021440",
+            "started" : "2016-07-27T02:22:35.182+0000"
+          }, {
+            "uri" : "/2.1.0+20160726080109",
+            "started" : "2016-07-26T09:06:51.304+0000"
+          }, {
+            "uri" : "/2.1.0+20160724080110",
+            "started" : "2016-07-24T08:36:18.786+0000"
+          }, {
+            "uri" : "/2.1.0+20160727080109",
+            "started" : "2016-07-27T08:36:41.699+0000"
+          }, {
+            "uri" : "/1.3.4",
+            "started" : "2015-11-04T03:14:39.286+0000"
+          }, {
+            "uri" : "/2.1.0+20160725080113",
+            "started" : "2016-07-25T08:56:28.961+0000"
+          }, {
+            "uri" : "/2.1.0+20160721080109",
+            "started" : "2016-07-21T08:36:21.899+0000"
+          }, {
+            "uri" : "/2.1.0+20160723080111",
+            "started" : "2016-07-23T09:05:40.338+0000"
+          }, {
+            "uri" : "/2.1.0",
+            "started" : "2016-05-17T19:09:27.709+0000"
+          }, {
+            "uri" : "/1.3.3",
+            "started" : "2015-09-18T00:58:22.412+0000"
+          }, {
+            "uri" : "/2.1.0+20160722080109",
+            "started" : "2016-07-22T08:36:56.480+0000"
+          }, {
+            "uri" : "/2.1.0+20160720080109",
+            "started" : "2016-07-20T08:36:55.027+0000"
+          }, {
+            "uri" : "/2.1.0+20160719080112",
+            "started" : "2016-07-19T08:54:49.843+0000"
+          }, {
+            "uri" : "/2.1.0+20160719183022",
+            "started" : "2016-07-19T18:38:14.737+0000"
+          } ],
+          "uri" : "https://packages-acceptance.chef.io/api/build/push-jobs-client"
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:15 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160727080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:15 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2122-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:16 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160727021440"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:16 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2628-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:16 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160726080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:17 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2130-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:17 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160725080113"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:17 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2120-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:17 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160724080110"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:17 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2138-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:17 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160723080111"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:18 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2645-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:18 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160722080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:19 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2121-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:19 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160721080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:19 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2126-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:19 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160720080109"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:20 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2633-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:20 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160719183022"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:20 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2623-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:20 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0+20160719080112"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:21 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2625-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:21 GMT
+- request:
+    method: post
+    uri: https://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@packages-acceptance.chef.io/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "push-jobs-client"},
+          {"@omnibus.version": "2.1.0"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 74eddb6840a6545e:747da0c7:1552b7fe973:-7fd8
+      Transfer-Encoding:
+      - chunked
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 27 Jul 2016 15:42:21 GMT
+      Via:
+      - 1.1 varnish
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-iad2621-IAD
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/6",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/5",
+          "name" : "push-jobs-client-2.1.0-1.el5.i386.rpm",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7190c62f9f8a23fdd2094a9d594e7bd94df8802e"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "171abb92f4db585c08a823c3966dd2d6c681b3b50ae03832c9ccaa8bb3829bc207977230940c16cfda14ae9111612cc0f524fd908b8004ec98bd24c1f67025ab"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2d9d96c9001d6848cfd6e8b9e0f76e3df03008c4e74606a54346a3f2db2c80e0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "05df6f6ecff4af4e3a1890730b8e1a8b"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.9",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.9"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/8",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/6",
+          "name" : "push-jobs-client-2.1.0-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "abd157603b243b66ce23712ab66b3cf7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a3ac2f0033820310ff4f3fb3a287ad1afe1f57ae410cdc220aa89ed15a1c4a432d17a8bcc0b838c936ff6ffef62faed13e75522275144908272500918f2d67a4"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "913088585c9cf7319eaab4127d47cc173ebf4bf8"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1eb8688e906697f2ad78eec8ca6fe0bbf137477fa09f2f2c90f8498ed7a67979"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/7",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2012",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2008r2",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/8",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "8948f700750729746d23692251e41d7694d6df379bafca324743d246cb7ed054"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d5affb4c8276fb435e901646dce62f40cc2c6efb"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "198c911b61253e5c93489bf1007ac2cb"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "facb8e7671e66c6b30c7c75e72fc7d4b6b35a8dd33eb589e8317759f7ead53d6b3fa2da14ea1d9bc09cd991f5e540bcd4cded285a012dbcdaca7edb3883a9748"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/10.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3240375c7b56cd3fa8d4755d644c456b61cd40a5fcf084494b04dc0555ffc88437ff566decfc3751b0e97e4176d1ef5e2a4aabded79268d834d3b351bc8d84f5"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eb6ddc33a20fe01a38f7f4003941866debb48e2e"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "47db96d66ed98be7db6fb97edd3552b4c436e01c27c34eaf26a8b87eaf548074"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "0f835a563b341d6a8340b1c8315a984a"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.11",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.11"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/6",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/10.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/7",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f61067ba5ac78bf2e8c002782767c42fb4fde317"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "349b704e7dbf7060e214d78f372346dc"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "dd1e338eb4ba9a4b84cb04e2b01c34f797bbc8eef88d9cd1c9bbe80dff501ba9"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fd4d5116263515ac6887cbd77ee731fa5e784d37bd511fece09716bbaefdf2ea83b88c2845eaa5ebbf79196820debc76a2316c460cf51e099e5773f1ce2f8817"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "c4105d75087f36c81826fd10e981eaee"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36b294b739cbc9f55387dd322281c41096ce9a72"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "385cbee101c04c612532d4cafea2e8c08b8ae98183e31080407077840f134fd6"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "89ed9c4d0ea8265f60cb94fd66c8fa5fb3f817f9c5884aa3180b56779aba71a303c2e7a2357f68f96369e3d00a990ad28ec01dc1df1124724837631d50331a9d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/5",
+          "name" : "push-jobs-client-2.1.0-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "19b6b9f136b74302677590b23af74903"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "e1b1d4125e67b7149e1458ff68af492975107779696b89d2f0462b5c9d88ff11"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f327b52b2430dadd0fb1a07fefdadfb52316c890"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b0ee9c61a77e82134d181a8f6b127214e588db98f25d44959a6c2464a73ac8c2b951e93f38349096dec72514343f93864231aa79c4f8394aeaae1cc681283b90"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.10",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "65896d961f4c170c99735286dcd44ec6"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "77fd61f945ce59aa869955a134fd80ddd7754cc1d5d9a15fc43ec15d163bf07d"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b69aa1342f5b8fd9887473a1cfb01130cd5dfabf08acb5a8dfb90ad0f9012905c59e3ce3ca32cc7fb6ca7f29c2b41a3d35c83072964330648cc793345e6f1c"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b3cf4f5d4626f879cd59b8c4a3a017ce017b07fc"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.10"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/6",
+          "name" : "push-jobs-client-2.1.0-1.el6.i386.rpm",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b90b9122bc07d0af352c0feebb14f4fb10dda14123080887152b0bd6d18d3d78"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "d2b6b827db576bfc6b3bf2c08ab9966c"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "61d3465de234aa9a788e1cb8736e23190e873f1c"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "deb8de984e471dea7ac415af2df6758b89ad38112bd85d30575786c364e0b07219633298c6d56a1402bff62973261966a39b9af51bed74c34aff987122d419cb"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2012r2",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21c8614579593dd57c820fc06ad7fa09"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a14a29b001c1e6d21c8d15192071f4854ce4184b"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b3c02a1b2a89d2a351b8608218cf13a2c9d59d4073ef2f35e13f6d815d65bd94e3ccbf3fbb18f504b6c56eb37402558e228da3f4e48d82d8a81c801b81c32699"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d86b37a67a12b0b91a1c25d4cdc0667721d80b74f5cd1891ff97597129b76b59"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/7",
+          "name" : "push-jobs-client-2.1.0-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "11a6236da4b571f103d8aa4af1dda25c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3b06ab32342bee29868f5abf5951e59315256cd253b9659da74b9f5fb219f4312d71d4a1188378796a3c628a7398240fbf75704ac5cc7548dc2b3bcf1428b153"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "19ea3b78a9703c74592db84388b2b22786a41a17"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.0"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "eacf6ad2c318dcfee47a210087dbab908ab02b1ec6793506464f82d31895f2f8"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 23,
+          "total" : 23
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 15:42:21 GMT
+recorded_with: VCR 3.0.3
