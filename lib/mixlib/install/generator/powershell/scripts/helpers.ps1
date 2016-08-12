@@ -60,7 +60,7 @@ function Test-ProjectPackage {
   [cmdletbinding()]
   param ($Path, $Algorithm = 'SHA256', $Hash)
 
-  if (-not (get-command get-filehash))   {
+  if (-not (get-command get-filehash -ErrorAction 'SilentlyContinue')) {
     function disposable($o){($o -is [IDisposable]) -and (($o | get-member | foreach-object {$_.name}) -contains 'Dispose')}
     function use($obj, [scriptblock]$sb){try {& $sb} catch [exception]{throw $_} finally {if (disposable $obj) {$obj.Dispose()}} }
     function Get-FileHash ($Path, $Algorithm) {
