@@ -20,6 +20,7 @@ require "spec_helper"
 require "mixlib/install/options"
 require "mixlib/install/backend/artifactory"
 
+
 context "Mixlib::Install::Backend::Artifactory all channels", :vcr do
   let(:channel) { nil }
   let(:product_name) { nil }
