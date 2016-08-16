@@ -183,6 +183,8 @@ items.find(
             artifact_map["omnibus.platform_version"])
 
           chef_standard_path = generate_chef_standard_path(options.channel,
+            artifact_map["omnibus.project"],
+            artifact_map["omnibus.version"],
             platform,
             platform_version,
             artifact_map["filename"]
@@ -219,11 +221,14 @@ items.find(
         end
 
         # Generates a chef standard download uri in the form of
-        # http://endpoint/channel/platform/platform_version/filename
-        def generate_chef_standard_path(channel, platform, platform_version, filename)
+        # http://endpoint/files/:channel/:project/:version/:platform/:platform_version/:file
+        def generate_chef_standard_path(channel, project, version, platform, platform_version, filename)
           uri = []
           uri << endpoint.sub(/\/$/, "")
+          uri << "files"
           uri << channel
+          uri << project
+          uri << version
           uri << platform
           uri << platform_version
           uri << filename

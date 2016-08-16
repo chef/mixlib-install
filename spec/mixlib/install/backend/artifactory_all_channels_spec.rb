@@ -75,7 +75,7 @@ context "Mixlib::Install::Backend::Artifactory all channels", :vcr do
         # standard url. Otherwise it will point to artifactory.chef.co and it
         # should be an artifactory url.
         if Mixlib::Install.unified_backend?
-          expect(artifact_info.url).to include "/stable/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
+          expect(artifact_info.url).to include "/files/stable/chef/12.12.15/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
         else
           expect(artifact_info.url).to eq "http://artifactory.chef.co/omnibus-stable-local/com/getchef/chef/12.12.15/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
         end
