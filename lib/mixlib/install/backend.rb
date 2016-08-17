@@ -16,6 +16,7 @@
 # limitations under the License.
 #
 
+require "mixlib/install/backend/artifactory"
 require "mixlib/install/backend/package_router"
 
 module Mixlib
