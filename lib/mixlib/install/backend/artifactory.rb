@@ -182,14 +182,6 @@ items.find(
           platform, platform_version = normalize_platform(artifact_map["omnibus.platform"],
             artifact_map["omnibus.platform_version"])
 
-          chef_standard_path = generate_chef_standard_path(options.channel,
-            artifact_map["omnibus.project"],
-            artifact_map["omnibus.version"],
-            platform,
-            platform_version,
-            artifact_map["filename"]
-          )
-
           ArtifactInfo.new(
             md5:              artifact_map["omnibus.md5"],
             sha256:           artifact_map["omnibus.sha256"],
@@ -200,11 +192,7 @@ items.find(
             architecture:     normalize_architecture(artifact_map["omnibus.architecture"]),
             # Select what type of url we are going to display based on the enabled
             # feature flags.
-            url:              if Mixlib::Install.unified_backend?
-                                chef_standard_path
-                              else
-                                artifact_map["artifactory_standard_path"]
-                              end
+            url:              artifact_map["artifactory_standard_path"]
           )
         end
 
@@ -218,21 +206,6 @@ items.find(
           properties.each_with_object({}) do |prop, h|
             h[prop["key"]] = prop["value"]
           end
-        end
-
-        # Generates a chef standard download uri in the form of
-        # http://endpoint/files/:channel/:project/:version/:platform/:platform_version/:file
-        def generate_chef_standard_path(channel, project, version, platform, platform_version, filename)
-          uri = []
-          uri << endpoint.sub(/\/$/, "")
-          uri << "files"
-          uri << channel
-          uri << project
-          uri << version
-          uri << platform
-          uri << platform_version
-          uri << filename
-          uri.join("/")
         end
 
         # Generates an artifactory standard download uri

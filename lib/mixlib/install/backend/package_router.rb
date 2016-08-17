@@ -28,7 +28,7 @@ module Mixlib
       class PackageRouter < Base
         class NoArtifactsError < StandardError; end
 
-        ENDPOINT = "https://packages.chef.io".freeze
+        ENDPOINT = "http://packages-acceptance.es.chef.io".freeze
 
         # Create filtered list of artifacts
         #
@@ -49,7 +49,7 @@ module Mixlib
         #
         # @return [Array<String>] Array of available versions
         def available_versions
-          items = get("api/#{options.channel}/#{omnibus_project}/versions")["results"]
+          items = get("/api/#{options.channel}/#{omnibus_project}/versions")["results"]
 
           # Filter out the partial builds if we are in :unstable channel
           # In other channels we do not need to do this since all builds are
@@ -79,12 +79,6 @@ module Mixlib
           # We do this because a user in the readers group does not have
           # permissions to run aql against builds.
           builds = get("/api/build/#{omnibus_project}")
-
-          if builds.nil?
-            raise NoArtifactsError, <<-MSG
-Can not find any builds for #{options.product_name} in #{::Packages.endpoint}.
-MSG
-          end
 
           # Output we get is something like:
           # {
@@ -132,7 +126,7 @@ MSG
         #
         # GET request
         #
-        def get(url) # TODO: and next!
+        def get(url)
           uri = URI.parse(endpoint)
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
@@ -142,9 +136,12 @@ MSG
 
           res = http.request(request)
 
-          # Raise if response is not 2XX
-          res.value
-          JSON.parse(res.body)
+          body = if res.code != "200"
+                   '{"results":[]}'
+                 else
+                   res.body
+                 end
+          JSON.parse(body)
         end
 
         def create_artifact(artifact_map)
@@ -152,6 +149,8 @@ MSG
             artifact_map["omnibus.platform_version"])
 
           chef_standard_path = generate_chef_standard_path(options.channel,
+            artifact_map["omnibus.project"],
+            artifact_map["omnibus.version"],
             platform,
             platform_version,
             artifact_map["filename"]
@@ -165,8 +164,6 @@ MSG
             platform:         platform,
             platform_version: platform_version,
             architecture:     normalize_architecture(artifact_map["omnibus.architecture"]),
-            # Select what type of url we are going to display based on the enabled
-            # feature flags.
             url:              chef_standard_path
           )
         end
@@ -184,11 +181,14 @@ MSG
         end
 
         # Generates a chef standard download uri in the form of
-        # http://endpoint/channel/platform/platform_version/filename
-        def generate_chef_standard_path(channel, platform, platform_version, filename)
+        # http://endpoint/files/:channel/:project/:version/:platform/:platform_version/:file
+        def generate_chef_standard_path(channel, project, version, platform, platform_version, filename)
           uri = []
           uri << endpoint.sub(/\/$/, "")
+          uri << "files"
           uri << channel
+          uri << project
+          uri << version
           uri << platform
           uri << platform_version
           uri << filename

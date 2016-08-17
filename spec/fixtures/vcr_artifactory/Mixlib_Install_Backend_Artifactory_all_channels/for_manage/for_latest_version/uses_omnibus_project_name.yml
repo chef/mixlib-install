@@ -1,0 +1,3379 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/chef-manage
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:26:58 GMT
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/2.4.1",
+            "started" : "2016-07-25T17:52:31.665+0000"
+          }, {
+            "uri" : "/2.4.1+20160801093524",
+            "started" : "2016-08-01T12:12:10.953+0000"
+          }, {
+            "uri" : "/2.2.1",
+            "started" : "2016-04-04T19:50:54.490+0000"
+          }, {
+            "uri" : "/2.4.1+20160731093526",
+            "started" : "2016-07-31T12:11:42.234+0000"
+          }, {
+            "uri" : "/2.4.1+20160725155039",
+            "started" : "2016-07-25T16:27:13.469+0000"
+          }, {
+            "uri" : "/2.2.0",
+            "started" : "2016-03-07T16:50:25.889+0000"
+          }, {
+            "uri" : "/2.4.1+20160813093522",
+            "started" : "2016-08-13T12:11:10.008+0000"
+          }, {
+            "uri" : "/2.4.0",
+            "started" : "2016-06-14T23:54:43.724+0000"
+          }, {
+            "uri" : "/2.4.1+20160814093528",
+            "started" : "2016-08-14T12:11:14.573+0000"
+          }, {
+            "uri" : "/2.4.1+20160805093522",
+            "started" : "2016-08-05T12:11:22.791+0000"
+          }, {
+            "uri" : "/2.3.0",
+            "started" : "2016-04-20T20:57:18.716+0000"
+          }, {
+            "uri" : "/2.4.1+20160727093523",
+            "started" : "2016-07-27T12:10:57.455+0000"
+          }, {
+            "uri" : "/2.4.1+20160810093521",
+            "started" : "2016-08-10T12:11:34.255+0000"
+          }, {
+            "uri" : "/2.1.0",
+            "started" : "2015-11-24T20:33:45.631+0000"
+          }, {
+            "uri" : "/2.4.1+20160807093523",
+            "started" : "2016-08-07T12:12:12.846+0000"
+          }, {
+            "uri" : "/2.4.0+20160718093523.git.8.9159db4",
+            "started" : "2016-07-18T12:11:29.544+0000"
+          }, {
+            "uri" : "/2.4.1+20160802093525",
+            "started" : "2016-08-02T12:12:26.085+0000"
+          }, {
+            "uri" : "/2.4.1+20160809093523",
+            "started" : "2016-08-09T12:11:35.636+0000"
+          }, {
+            "uri" : "/2.4.1+20160730093537",
+            "started" : "2016-07-30T12:11:49.778+0000"
+          }, {
+            "uri" : "/2.1.1",
+            "started" : "2015-12-01T02:29:48.359+0000"
+          }, {
+            "uri" : "/2.4.1+20160816093523",
+            "started" : "2016-08-16T12:13:41.071+0000"
+          }, {
+            "uri" : "/2.4.1+20160806093527",
+            "started" : "2016-08-06T12:11:30.734+0000"
+          }, {
+            "uri" : "/2.4.1+20160803093523",
+            "started" : "2016-08-03T12:11:29.199+0000"
+          }, {
+            "uri" : "/2.4.1+20160726093524",
+            "started" : "2016-07-26T12:11:15.781+0000"
+          }, {
+            "uri" : "/2.1.2",
+            "started" : "2016-01-26T19:08:13.949+0000"
+          }, {
+            "uri" : "/2.4.1+20160811093519",
+            "started" : "2016-08-11T12:11:18.478+0000"
+          }, {
+            "uri" : "/2.4.1+20160728093525",
+            "started" : "2016-07-28T12:12:36.434+0000"
+          }, {
+            "uri" : "/2.4.1+20160804093519",
+            "started" : "2016-08-04T12:11:01.898+0000"
+          }, {
+            "uri" : "/2.4.0+20160717093523.git.8.9159db4",
+            "started" : "2016-07-17T12:11:24.404+0000"
+          }, {
+            "uri" : "/2.4.1+20160808093524",
+            "started" : "2016-08-08T12:11:13.998+0000"
+          }, {
+            "uri" : "/2.4.0+20160724093527.git.13.e0fddd2",
+            "started" : "2016-07-24T12:13:06.918+0000"
+          }, {
+            "uri" : "/2.4.1+20160729093524",
+            "started" : "2016-07-29T12:11:13.754+0000"
+          }, {
+            "uri" : "/2.4.1+20160815093524",
+            "started" : "2016-08-15T12:12:26.399+0000"
+          }, {
+            "uri" : "/2.4.0+20160725093523.git.13.e0fddd2",
+            "started" : "2016-07-25T12:11:01.517+0000"
+          } ],
+          "uri" : "http://artifactory.chef.co/api/build/chef-manage"
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:56 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160816093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:26:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:57 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160815093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:26:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:57 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160814093528"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:26:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:57 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160813093522"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:58 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160811093519"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:58 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160810093521"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:58 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160809093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:58 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160808093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:59 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160807093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:59 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160806093527"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:02 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:24:59 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160805093522"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:02 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:00 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160804093519"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:02 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:00 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160803093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:00 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160802093525"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:01 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160801093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:01 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160731093526"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:01 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160730093537"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:02 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160729093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:02 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160728093525"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:02 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160727093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:03 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160726093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:03 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/16.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f95416f4eb355c476bb646495476699ec1d23a1ffab2a299ff5886bb3cb1a30fe01fbe7bc007583dbaa68ee5d493d8b2320f0b0d46cb776736bc5e612161da48"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9dafc26b5742c2c161b03681b54fb2a303e9c8ea"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cec87a9b1e537586de871708b3142070a5067b4fccc8b7a61052a6cc0961dc3c"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "2526a8db0bd5ed03033d251344b27ed3"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/12.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "2526a8db0bd5ed03033d251344b27ed3"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9dafc26b5742c2c161b03681b54fb2a303e9c8ea"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f95416f4eb355c476bb646495476699ec1d23a1ffab2a299ff5886bb3cb1a30fe01fbe7bc007583dbaa68ee5d493d8b2320f0b0d46cb776736bc5e612161da48"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cec87a9b1e537586de871708b3142070a5067b4fccc8b7a61052a6cc0961dc3c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/6",
+          "name" : "chef-manage-2.4.1-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "e41c98bc75a50b151e8b97f722c8ad65"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "0f3d77b394309f6ec8895b1472c2134f8b06ca8a"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "41225a88663938b2df32c5daa3edee51ba72da62b98522a5e32443c5505d44de"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a0a542d2030837f3014d2070caea792029e473b27dd11b2dd589821a8784e9b83aebb9f3f2da0f57eb089f949d0f383be61608119a6abf967d07789623d244db"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/14.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9dafc26b5742c2c161b03681b54fb2a303e9c8ea"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cec87a9b1e537586de871708b3142070a5067b4fccc8b7a61052a6cc0961dc3c"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "2526a8db0bd5ed03033d251344b27ed3"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f95416f4eb355c476bb646495476699ec1d23a1ffab2a299ff5886bb3cb1a30fe01fbe7bc007583dbaa68ee5d493d8b2320f0b0d46cb776736bc5e612161da48"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/7",
+          "name" : "chef-manage-2.4.1-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "bc077774d24bcdcf30e49ef2256ed25c81f44f0c16f810b338ea2726d632fc9d"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "9a0cdc03f6d747d8004cbe9737b724d8"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a91e03e3782388ca8afb5ea41593561145c63512"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5c8fb1ac7ce713702ee971d4a839409a06a0a9db3b08cb9b0a376e9744cfd6e243698792087067b2107a424c361a2320894e4a7d47db653ba7675b1a5436c653"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/5",
+          "name" : "chef-manage-2.4.1-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "d83618f7f2d299fffa03ab1c72484454"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b5ec267e4a3359f887feb7f1861b84d30f1c505e"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "7c7e8c443367159a4d2445696f42bbf9572283777f8e43b17bbd8310dec29893"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "9e51186617e15b2b2c9a28ecfb0b96d0eca7fc40976616d36694702508d8b3d9d29d647690fdcd7a4f887a4d41d4f900297b524370e0f17879aec1bbe04da37a"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 6,
+          "total" : 6
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:03 GMT
+- request:
+    method: get
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/chef-manage
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:06 GMT
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/2.4.1",
+            "started" : "2016-07-25T17:52:31.665+0000"
+          }, {
+            "uri" : "/2.4.1+20160801093524",
+            "started" : "2016-08-01T12:12:10.953+0000"
+          }, {
+            "uri" : "/2.2.1",
+            "started" : "2016-04-04T19:50:54.490+0000"
+          }, {
+            "uri" : "/2.4.1+20160731093526",
+            "started" : "2016-07-31T12:11:42.234+0000"
+          }, {
+            "uri" : "/2.4.1+20160725155039",
+            "started" : "2016-07-25T16:27:13.469+0000"
+          }, {
+            "uri" : "/2.2.0",
+            "started" : "2016-03-07T16:50:25.889+0000"
+          }, {
+            "uri" : "/2.4.1+20160813093522",
+            "started" : "2016-08-13T12:11:10.008+0000"
+          }, {
+            "uri" : "/2.4.0",
+            "started" : "2016-06-14T23:54:43.724+0000"
+          }, {
+            "uri" : "/2.4.1+20160814093528",
+            "started" : "2016-08-14T12:11:14.573+0000"
+          }, {
+            "uri" : "/2.4.1+20160805093522",
+            "started" : "2016-08-05T12:11:22.791+0000"
+          }, {
+            "uri" : "/2.3.0",
+            "started" : "2016-04-20T20:57:18.716+0000"
+          }, {
+            "uri" : "/2.4.1+20160727093523",
+            "started" : "2016-07-27T12:10:57.455+0000"
+          }, {
+            "uri" : "/2.4.1+20160810093521",
+            "started" : "2016-08-10T12:11:34.255+0000"
+          }, {
+            "uri" : "/2.1.0",
+            "started" : "2015-11-24T20:33:45.631+0000"
+          }, {
+            "uri" : "/2.4.1+20160807093523",
+            "started" : "2016-08-07T12:12:12.846+0000"
+          }, {
+            "uri" : "/2.4.0+20160718093523.git.8.9159db4",
+            "started" : "2016-07-18T12:11:29.544+0000"
+          }, {
+            "uri" : "/2.4.1+20160802093525",
+            "started" : "2016-08-02T12:12:26.085+0000"
+          }, {
+            "uri" : "/2.4.1+20160809093523",
+            "started" : "2016-08-09T12:11:35.636+0000"
+          }, {
+            "uri" : "/2.4.1+20160730093537",
+            "started" : "2016-07-30T12:11:49.778+0000"
+          }, {
+            "uri" : "/2.1.1",
+            "started" : "2015-12-01T02:29:48.359+0000"
+          }, {
+            "uri" : "/2.4.1+20160816093523",
+            "started" : "2016-08-16T12:13:41.071+0000"
+          }, {
+            "uri" : "/2.4.1+20160806093527",
+            "started" : "2016-08-06T12:11:30.734+0000"
+          }, {
+            "uri" : "/2.4.1+20160803093523",
+            "started" : "2016-08-03T12:11:29.199+0000"
+          }, {
+            "uri" : "/2.4.1+20160726093524",
+            "started" : "2016-07-26T12:11:15.781+0000"
+          }, {
+            "uri" : "/2.1.2",
+            "started" : "2016-01-26T19:08:13.949+0000"
+          }, {
+            "uri" : "/2.4.1+20160811093519",
+            "started" : "2016-08-11T12:11:18.478+0000"
+          }, {
+            "uri" : "/2.4.1+20160728093525",
+            "started" : "2016-07-28T12:12:36.434+0000"
+          }, {
+            "uri" : "/2.4.1+20160804093519",
+            "started" : "2016-08-04T12:11:01.898+0000"
+          }, {
+            "uri" : "/2.4.0+20160717093523.git.8.9159db4",
+            "started" : "2016-07-17T12:11:24.404+0000"
+          }, {
+            "uri" : "/2.4.1+20160808093524",
+            "started" : "2016-08-08T12:11:13.998+0000"
+          }, {
+            "uri" : "/2.4.0+20160724093527.git.13.e0fddd2",
+            "started" : "2016-07-24T12:13:06.918+0000"
+          }, {
+            "uri" : "/2.4.1+20160729093524",
+            "started" : "2016-07-29T12:11:13.754+0000"
+          }, {
+            "uri" : "/2.4.1+20160815093524",
+            "started" : "2016-08-15T12:12:26.399+0000"
+          }, {
+            "uri" : "/2.4.0+20160725093523.git.13.e0fddd2",
+            "started" : "2016-07-25T12:11:01.517+0000"
+          } ],
+          "uri" : "http://artifactory.chef.co/api/build/chef-manage"
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:04 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160816093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:04 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160815093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:07 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:05 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160814093528"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:07 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:05 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160813093522"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:07 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:05 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160811093519"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:06 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160810093521"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:06 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160809093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:06 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160808093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:07 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160807093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:07 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160806093527"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:07 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160805093522"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:07 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160804093519"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:08 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160803093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:08 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160802093525"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:08 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160801093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:09 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160731093526"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:09 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160730093537"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:09 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160729093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:10 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160728093525"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:10 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160727093523"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:10 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1+20160726093524"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:11 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-stable-local"},
+          {"@omnibus.project": "chef-manage"},
+          {"@omnibus.version": "2.4.1"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/16.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f95416f4eb355c476bb646495476699ec1d23a1ffab2a299ff5886bb3cb1a30fe01fbe7bc007583dbaa68ee5d493d8b2320f0b0d46cb776736bc5e612161da48"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9dafc26b5742c2c161b03681b54fb2a303e9c8ea"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cec87a9b1e537586de871708b3142070a5067b4fccc8b7a61052a6cc0961dc3c"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "2526a8db0bd5ed03033d251344b27ed3"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/12.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "2526a8db0bd5ed03033d251344b27ed3"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9dafc26b5742c2c161b03681b54fb2a303e9c8ea"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f95416f4eb355c476bb646495476699ec1d23a1ffab2a299ff5886bb3cb1a30fe01fbe7bc007583dbaa68ee5d493d8b2320f0b0d46cb776736bc5e612161da48"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cec87a9b1e537586de871708b3142070a5067b4fccc8b7a61052a6cc0961dc3c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/6",
+          "name" : "chef-manage-2.4.1-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "e41c98bc75a50b151e8b97f722c8ad65"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "0f3d77b394309f6ec8895b1472c2134f8b06ca8a"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "41225a88663938b2df32c5daa3edee51ba72da62b98522a5e32443c5505d44de"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a0a542d2030837f3014d2070caea792029e473b27dd11b2dd589821a8784e9b83aebb9f3f2da0f57eb089f949d0f383be61608119a6abf967d07789623d244db"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/14.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9dafc26b5742c2c161b03681b54fb2a303e9c8ea"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cec87a9b1e537586de871708b3142070a5067b4fccc8b7a61052a6cc0961dc3c"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "2526a8db0bd5ed03033d251344b27ed3"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f95416f4eb355c476bb646495476699ec1d23a1ffab2a299ff5886bb3cb1a30fe01fbe7bc007583dbaa68ee5d493d8b2320f0b0d46cb776736bc5e612161da48"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/7",
+          "name" : "chef-manage-2.4.1-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "bc077774d24bcdcf30e49ef2256ed25c81f44f0c16f810b338ea2726d632fc9d"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "9a0cdc03f6d747d8004cbe9737b724d8"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a91e03e3782388ca8afb5ea41593561145c63512"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5c8fb1ac7ce713702ee971d4a839409a06a0a9db3b08cb9b0a376e9744cfd6e243698792087067b2107a424c361a2320894e4a7d47db653ba7675b1a5436c653"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/5",
+          "name" : "chef-manage-2.4.1-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "d83618f7f2d299fffa03ab1c72484454"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b5ec267e4a3359f887feb7f1861b84d30f1c505e"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "7c7e8c443367159a4d2445696f42bbf9572283777f8e43b17bbd8310dec29893"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "9e51186617e15b2b2c9a28ecfb0b96d0eca7fc40976616d36694702508d8b3d9d29d647690fdcd7a4f887a4d41d4f900297b524370e0f17879aec1bbe04da37a"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 6,
+          "total" : 6
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:11 GMT
+recorded_with: VCR 3.0.3

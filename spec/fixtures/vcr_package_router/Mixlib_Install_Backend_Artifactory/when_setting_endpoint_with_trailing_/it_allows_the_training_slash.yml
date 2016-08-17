@@ -1,0 +1,2129 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/chef
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Wed, 17 Aug 2016 23:21:23 GMT
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/12.13.38",
+            "started" : "2016-08-13T05:13:05.382+0000"
+          }, {
+            "uri" : "/12.7.2",
+            "started" : "2016-02-11T17:48:20.541+0000"
+          }, {
+            "uri" : "/12.13.15",
+            "started" : "2016-07-29T04:35:56.667+0000"
+          }, {
+            "uri" : "/12.9.41",
+            "started" : "2016-04-13T18:23:34.557+0000"
+          }, {
+            "uri" : "/12.12.15",
+            "started" : "2016-07-09T18:22:29.311+0000"
+          }, {
+            "uri" : "/12.4.2",
+            "started" : "2015-09-19T21:46:54.315+0000"
+          }, {
+            "uri" : "/12.14.12",
+            "started" : "2016-08-17T22:05:13.494+0000"
+          }, {
+            "uri" : "/12.14.6",
+            "started" : "2016-08-17T16:24:24.057+0000"
+          }, {
+            "uri" : "/12.12.13",
+            "started" : "2016-07-01T20:43:29.050+0000"
+          }, {
+            "uri" : "/12.13.25",
+            "started" : "2016-08-04T19:12:52.944+0000"
+          }, {
+            "uri" : "/12.13.31",
+            "started" : "2016-08-09T20:58:13.378+0000"
+          }, {
+            "uri" : "/12.9.38",
+            "started" : "2016-04-11T18:30:30.773+0000"
+          }, {
+            "uri" : "/12.14.1",
+            "started" : "2016-08-16T18:21:25.054+0000"
+          }, {
+            "uri" : "/12.13.36",
+            "started" : "2016-08-11T20:32:32.171+0000"
+          }, {
+            "uri" : "/12.13.33+20160811154116",
+            "started" : "2016-08-11T16:18:11.707+0000"
+          }, {
+            "uri" : "/12.13.42",
+            "started" : "2016-08-16T16:10:13.814+0000"
+          }, {
+            "uri" : "/12.5.1",
+            "started" : "2015-10-08T05:13:40.316+0000"
+          }, {
+            "uri" : "/12.13.14",
+            "started" : "2016-07-26T19:26:29.475+0000"
+          }, {
+            "uri" : "/12.13.41+20160816160510",
+            "started" : "2016-08-16T16:57:03.022+0000"
+          }, {
+            "uri" : "/12.13.36+20160811220629",
+            "started" : "2016-08-11T22:43:24.918+0000"
+          }, {
+            "uri" : "/12.13.9",
+            "started" : "2016-07-20T02:31:53.961+0000"
+          }, {
+            "uri" : "/12.13.35",
+            "started" : "2016-08-11T19:09:43.722+0000"
+          }, {
+            "uri" : "/12.8.1",
+            "started" : "2016-03-08T05:35:52.043+0000"
+          }, {
+            "uri" : "/12.13.27",
+            "started" : "2016-08-05T17:54:09.763+0000"
+          }, {
+            "uri" : "/12.13.13",
+            "started" : "2016-07-26T00:00:56.727+0000"
+          }, {
+            "uri" : "/12.13.36+20160812051326",
+            "started" : "2016-08-12T05:48:41.844+0000"
+          }, {
+            "uri" : "/12.14.3",
+            "started" : "2016-08-16T19:13:23.084+0000"
+          }, {
+            "uri" : "/12.13.41",
+            "started" : "2016-08-15T21:45:30.909+0000"
+          }, {
+            "uri" : "/12.14.5",
+            "started" : "2016-08-17T05:29:28.477+0000"
+          }, {
+            "uri" : "/12.13.37",
+            "started" : "2016-08-12T22:40:36.119+0000"
+          }, {
+            "uri" : "/12.13.29",
+            "started" : "2016-08-08T20:40:13.496+0000"
+          }, {
+            "uri" : "/12.14.4+20160817004625",
+            "started" : "2016-08-17T02:53:50.949+0000"
+          }, {
+            "uri" : "/12.13.36+20160811223655",
+            "started" : "2016-08-11T23:12:11.772+0000"
+          }, {
+            "uri" : "/12.11.18",
+            "started" : "2016-06-02T20:33:44.198+0000"
+          }, {
+            "uri" : "/12.13.11",
+            "started" : "2016-07-21T09:16:13.384+0000"
+          }, {
+            "uri" : "/12.13.39+20160817001229",
+            "started" : "2016-08-17T02:53:47.002+0000"
+          }, {
+            "uri" : "/12.13.34",
+            "started" : "2016-08-11T08:59:43.832+0000"
+          }, {
+            "uri" : "/12.13.33+20160810230453",
+            "started" : "2016-08-11T03:20:59.353+0000"
+          }, {
+            "uri" : "/12.13.30",
+            "started" : "2016-08-08T22:36:27.154+0000"
+          }, {
+            "uri" : "/12.10.24",
+            "started" : "2016-04-27T19:46:21.357+0000"
+          }, {
+            "uri" : "/12.14.7",
+            "started" : "2016-08-17T17:10:59.053+0000"
+          }, {
+            "uri" : "/12.13.36+20160811235050",
+            "started" : "2016-08-12T00:27:01.811+0000"
+          }, {
+            "uri" : "/12.4.3",
+            "started" : "2015-09-23T21:23:29.994+0000"
+          }, {
+            "uri" : "/12.13.30+20160812195955",
+            "started" : "2016-08-12T22:40:32.123+0000"
+          }, {
+            "uri" : "/12.13.28",
+            "started" : "2016-08-06T01:14:10.619+0000"
+          }, {
+            "uri" : "/12.13.40",
+            "started" : "2016-08-15T19:14:20.798+0000"
+          }, {
+            "uri" : "/12.14.10",
+            "started" : "2016-08-17T21:32:03.219+0000"
+          }, {
+            "uri" : "/12.13.32",
+            "started" : "2016-08-10T00:24:05.798+0000"
+          }, {
+            "uri" : "/12.13.16",
+            "started" : "2016-07-29T05:45:28.247+0000"
+          }, {
+            "uri" : "/12.6.0",
+            "started" : "2015-12-18T21:09:09.584+0000"
+          }, {
+            "uri" : "/12.14.4",
+            "started" : "2016-08-16T22:51:19.251+0000"
+          } ],
+          "uri" : "http://artifactory.chef.co/api/build/chef"
+        }
+    http_version: 
+  recorded_at: Wed, 17 Aug 2016 23:19:20 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "chef"},
+          {"@omnibus.version": "12.14.12"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Wed, 17 Aug 2016 23:21:24 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: ASCII-8BIT
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/ubuntu/14.04",
+          "name" : "chef_12.14.12-1_ppc64el.deb",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "5d4fc789b85e141520c8feb1a73f00a3"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d1159795945d468a2653c60b95a0ecd957a88901"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "8766b0876f9f8a083b2a773e89d7fae7b51eea6cbbd03461fed8761ada86179c"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "ppc64le"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d86240764e4e8cb9ec1779b0f34d8430f9afecf0c49cb06be1922b0951610546dfd8fb2ca78113ff8036962ae4be9bd0ae965e46a0fef5c1f8c664119141f6e0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/mac_os_x/10.9",
+          "name" : "chef-12.14.12-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "a1b5c21b2d546b8434f46a904112a49a17797848"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "00e0a560d86aada613daed41a8211413"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.9"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b6dfe99b36fc48f237e79e0259d49d47cbf39d4a2cdc293fc9c70d2476c2d143"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a2356006d0b91af2b2428d9daa3a77cbbf1cf7085761918bdbf94532d8a9e38038669a4b79daeeed584c3fe2677ebb5ad3b91a07975ff74d62ae39fe946223c3"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/mac_os_x/10.10",
+          "name" : "chef-12.14.12-1.dmg",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "00e0a560d86aada613daed41a8211413"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.10"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a2356006d0b91af2b2428d9daa3a77cbbf1cf7085761918bdbf94532d8a9e38038669a4b79daeeed584c3fe2677ebb5ad3b91a07975ff74d62ae39fe946223c3"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b6dfe99b36fc48f237e79e0259d49d47cbf39d4a2cdc293fc9c70d2476c2d143"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a1b5c21b2d546b8434f46a904112a49a17797848"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/mac_os_x/10.11",
+          "name" : "chef-12.14.12-1.dmg",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a1b5c21b2d546b8434f46a904112a49a17797848"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a2356006d0b91af2b2428d9daa3a77cbbf1cf7085761918bdbf94532d8a9e38038669a4b79daeeed584c3fe2677ebb5ad3b91a07975ff74d62ae39fe946223c3"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b6dfe99b36fc48f237e79e0259d49d47cbf39d4a2cdc293fc9c70d2476c2d143"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "00e0a560d86aada613daed41a8211413"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.11"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/debian/6",
+          "name" : "chef_12.14.12-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1fba995ea2d92a264b26a28d1e78c3e9d4e78eabc7085cb97d73ba9c905870a9f97cf9cc69311b4fa3210d598f80952fad19c487a39b7ed3ef41b31e95144caf"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "598cd3a496de056e198c36768d72b862e14a9eb3f0e3617f4cb9c7e1b06c44a4"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "87f460cf73e781453ac55acbb6dd8e71"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "8fb0d89a3816c3711d21cda5a9c199baf8218f7d"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/debian/7",
+          "name" : "chef_12.14.12-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "8fb0d89a3816c3711d21cda5a9c199baf8218f7d"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1fba995ea2d92a264b26a28d1e78c3e9d4e78eabc7085cb97d73ba9c905870a9f97cf9cc69311b4fa3210d598f80952fad19c487a39b7ed3ef41b31e95144caf"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "598cd3a496de056e198c36768d72b862e14a9eb3f0e3617f4cb9c7e1b06c44a4"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "87f460cf73e781453ac55acbb6dd8e71"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/debian/8",
+          "name" : "chef_12.14.12-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "8fb0d89a3816c3711d21cda5a9c199baf8218f7d"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1fba995ea2d92a264b26a28d1e78c3e9d4e78eabc7085cb97d73ba9c905870a9f97cf9cc69311b4fa3210d598f80952fad19c487a39b7ed3ef41b31e95144caf"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "87f460cf73e781453ac55acbb6dd8e71"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "598cd3a496de056e198c36768d72b862e14a9eb3f0e3617f4cb9c7e1b06c44a4"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/ios_xr/6",
+          "name" : "chef-12.14.12-1.ios_xr6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ios_xr"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "aea4af55e1ad8938fafb1e1fe7ae3c33"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b9316b6014748a5a23574c73b4f5123fe7fa9da0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fc99466009ee48ce5350d59cc0b3dbe06b31a004d87f962a6c90f426f25a2a036400e1bbc0107352c2d53c0730fbb865353150ff7f01181e8676be402d73e953"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2c6123a68a3b4b618109cd11599897adc120955c7ad4939605abf5c776922dce"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/ubuntu/12.04",
+          "name" : "chef_12.14.12-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "a9b869889b3af926f22f78694659ec2fa6c7e71794fffb619b27b7b0c18c0e29"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a16b62ad7b9c5381a9247c9850e59bdec5263e70"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f2ec27d6a61aac92c409418e72b27fc9"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1b2ccc1c827b8c5ce46804a147c7e0ffce9de7aefc434b7c3e4569b16576421f0378f08c34ee94abe34f376446c267c13ead50075ece43e9dc22e92c9a288647"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/ubuntu/14.04",
+          "name" : "chef_12.14.12-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "a9b869889b3af926f22f78694659ec2fa6c7e71794fffb619b27b7b0c18c0e29"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f2ec27d6a61aac92c409418e72b27fc9"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1b2ccc1c827b8c5ce46804a147c7e0ffce9de7aefc434b7c3e4569b16576421f0378f08c34ee94abe34f376446c267c13ead50075ece43e9dc22e92c9a288647"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a16b62ad7b9c5381a9247c9850e59bdec5263e70"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/el/7",
+          "name" : "chef-12.14.12-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "e2e5e14bc44a3fa55c54973b1ff54ac0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "577d9ff3511732d3c3edf03739e05a66b4ef41a0"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cf0535ac77c7984b4d4ab94e9cf3175a8bb5e883c868a409b91e55a7f523259c"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "9ce4a8c580021bf870ea13ccbe4023bcf92e8478c97311648a7d1c7a1551325231ec9249fd8fcd08f674140dccbce13b31b0e2f42f0792b69b93a1964dd07061"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/el/5",
+          "name" : "chef-12.14.12-1.el5.i386.rpm",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "3632264c0cdc323732193cd23b99fd6984504182"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f3265a3b2172d5e278757ac1773c1709611379a88895433d9fbb0b088a2fc865af53370b64f680b5c45907144dcfca71d76bf24421df1e8706221e1400059236"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "eaeb6be0a84728b0e771b5fddad7fbc0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d37d44755efe787287520d13851705c1946a2744e5feab2666ed4c1283adc45b"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/el/6",
+          "name" : "chef-12.14.12-1.el6.i386.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "894db26d8045b1636634efabc555de3b3bbfc1dd"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "91cebde15af7bb6a5c1d4422152067a4"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "ce048fbcfe71b35a93e98a0fb78211d8768c95ece1197f21e8fef980a7705518"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "502b5b3583fcbeae2d854d1cfa7a0934d21ed189ba6e8b4886a093319dd6ec810b1c3660f1ed32fa0fbb6299018e4be4e3cc3914d9162f008a8dc12b5c1ed9a3"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/solaris2/5.10",
+          "name" : "chef-12.14.12-1.i386.solaris",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "fd5731a142079818b84a9ce17495336027b575974784a2cf2ef1787f9fba6177"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "be711c3ca180c5c90671892c39b299bd"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5.10"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9ed22b3adba59fb981464a0dbba6aa435022e6fa"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "solaris2"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5b035a70e51a155b394d46a3a1f1901e212460dca2eeea6d5920349f40f3ab212848dd9cff43db0a64b2340ba73986d5c9245ade3677aba5ba6f935e11b71690"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/ubuntu/12.04",
+          "name" : "chef_12.14.12-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5631960688858a7326d35ec3d3a5eebcdbd19ab7f59142e32b2b81957e3eaa7ecc6845fc5b6eb5d89e95efbfc20e82af181f5656d904a35803701831fe0f874b"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9384983355108fdd1f25c6cfdbbd111654fa856d7b3d5d90e76e3d6fc2630c13"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a3927c26e815345798b75f3cc03515d1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f38b1dcbee2c568ef33d55c000d2607771d8e518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/ubuntu/14.04",
+          "name" : "chef_12.14.12-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "5631960688858a7326d35ec3d3a5eebcdbd19ab7f59142e32b2b81957e3eaa7ecc6845fc5b6eb5d89e95efbfc20e82af181f5656d904a35803701831fe0f874b"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9384983355108fdd1f25c6cfdbbd111654fa856d7b3d5d90e76e3d6fc2630c13"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a3927c26e815345798b75f3cc03515d1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f38b1dcbee2c568ef33d55c000d2607771d8e518"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/solaris2/5.11",
+          "name" : "chef-12.14.12-1.i386.solaris",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "solaris2"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "be711c3ca180c5c90671892c39b299bd"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9ed22b3adba59fb981464a0dbba6aa435022e6fa"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5.11"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "fd5731a142079818b84a9ce17495336027b575974784a2cf2ef1787f9fba6177"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5b035a70e51a155b394d46a3a1f1901e212460dca2eeea6d5920349f40f3ab212848dd9cff43db0a64b2340ba73986d5c9245ade3677aba5ba6f935e11b71690"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/nexus/7",
+          "name" : "chef-12.14.12-1.nexus7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "7917faa022fa9ceaa0043eab07088eba"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "78e889f4e024f1be73c8372f509fb64b60b81ba8"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d338ba8029614015dda59ab3e74714cda1556ab926d3d9e2ea5c070c923b973fc0497ef45542476f3db0cc2d5f6837c366ae1a8d743469580038db817d36f620"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "nexus"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "459768b46cf5dc081c7e7a0ec3c7ed9f503bd611643990f4b0532d7a2f39cc8e"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/debian/6",
+          "name" : "chef_12.14.12-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "2779666c36fdacd940f8a9dca69a454ab3a463f301927d0a2e1e6e3a1b3a28332dc24b393ce511f9203d2275105517dd1d616d7e0faf56ed1f0c914bba2b0acf"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "02de1dde4c6ad3c27d1df48dbf21180b4d9ee7fd99948d458760e0ecce1073c6"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "e277052fbed5d3fe4bc4083050d8084747bb4c0d"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f197bc601bc7a277816ddcc309188d74"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/debian/7",
+          "name" : "chef_12.14.12-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "2779666c36fdacd940f8a9dca69a454ab3a463f301927d0a2e1e6e3a1b3a28332dc24b393ce511f9203d2275105517dd1d616d7e0faf56ed1f0c914bba2b0acf"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "02de1dde4c6ad3c27d1df48dbf21180b4d9ee7fd99948d458760e0ecce1073c6"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "e277052fbed5d3fe4bc4083050d8084747bb4c0d"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f197bc601bc7a277816ddcc309188d74"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/debian/8",
+          "name" : "chef_12.14.12-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "02de1dde4c6ad3c27d1df48dbf21180b4d9ee7fd99948d458760e0ecce1073c6"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "e277052fbed5d3fe4bc4083050d8084747bb4c0d"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "2779666c36fdacd940f8a9dca69a454ab3a463f301927d0a2e1e6e3a1b3a28332dc24b393ce511f9203d2275105517dd1d616d7e0faf56ed1f0c914bba2b0acf"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f197bc601bc7a277816ddcc309188d74"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/el/5",
+          "name" : "chef-12.14.12-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "c1594bf53161efd77ac3c0c6d17719fb7a779d7ed070bc9c169644c60f7dfc4bc4dcb6952ba6913b391b30cc21f868def3d0c6abbe1422bd7532a0280aacd7d7"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "8b8465ba668231d73af0c08ecc92cb081b9b8aa56587a47834588f5b6b9525bc"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "bfcf509b08d68bcc52a916c185741a80"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d0ba65b3231be3a123ca7d1de94c4b421a3abe57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/el/7",
+          "name" : "chef-12.14.12-1.el7.ppc64le.rpm",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "2151c064a411fe89b137655f91ae7b56c13efcc1909bdd85e8fb0c0a612d8ce55b8bd63eb217c2e298c6d53b1f02b837d37b44aa5b7c99a4abd2299a42e099b3"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "afc8134fedbf2908258df5bbb130503304297b1824b632e8ca471fc007d26a0c"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "4e190393fc8560226aea2f48cf226f46d905f4de"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "ppc64le"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "78668e1072b74fa5dec17d2a3ddc553e"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/freebsd/10",
+          "name" : "chef-12.14.12_1.amd64.sh",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "amd64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "4bb35df3d2225c9d69444d935b3e751c"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "freebsd"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b831f28ab74048db5bc845677d50385ab9521e858c0983d1a5ae32537e9f4966de0605533111c9f5cc85dea3fcd5a33b09ce4935cba3007d3591a4077330ed53"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "006627e2b4cffbc48615aab767bb94ee97857deb"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "842adced56a4e6f8ffee0889d2232efbb4214edb8cfbf36a6fce107482e2c47d"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/el/7",
+          "name" : "chef-12.14.12-1.el7.ppc64.rpm",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "19b9f22cc94ef77c25583de92c7221f8906b3fe2d7a23cfc0efd4ee4676f3a942dec86d969b70e8117a5eb317d9995b13106988776c12e5d88ff69a4c7411715"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cdf9fe143ac310ce87e710a2d3e58e1c0a88a1271ba812e6d226c056d33a6a78"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "ppc64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "ec2a46ba104b41c495d9901a45f3e60d951cfea5"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "9569ce9e7b1194b8bece860ddccbd3c5"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/freebsd/9",
+          "name" : "chef-12.14.12_1.i386.sh",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "9"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "45f2f4e4fa0c03b36d51fcf6a2c0348d"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ef15ddcb03e039b5903c9de9699da8d7d61b7299697e22152cfd6e1f0e8c328051c60321ce959850f063e9a01431d4f4ba1e01648c8a5e4d014034dcee6d8c66"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "bea525196e4820c9a9a70e5169bab82bae4bf7e14fcbf9a3cc1f15a8456b49de"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1411493dda2d97eea475881aef75154da7f54732"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "freebsd"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/el/6",
+          "name" : "chef-12.14.12-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "731212a2c684e1019a65be5ea9c3f5992c1ade82d868a9870c0e21581abb07bfa8bac719e59855950e54de4b5b4f2b4dc6f6d90ebd6e111981ec54d38a7ce902"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "cdb05d45f714f6727b4833d91a790a170f6570b4d4e53c37dae0a08335c6c112"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "03dc5f42369c56414f4cb950feb5bc35003cce5f"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "eaa3d899ef2157a90fd7d853c5aa8eb7"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/freebsd/10",
+          "name" : "chef-12.14.12_1.i386.sh",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "19ed68f9850ff718145f8539523f0136"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "80f222c814cfd7dcbfc1908fe03514e03a1e4453"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "81dd3dec33b68e1b47772b96b493338a83df535bd0dbb4afcc79404ad4cc3d68"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "db44e64bd3d8e1c63b5b43a77e1be27c5f6419965386799b36ed52ee3323ae61203d47236e4c8434c0f5cdfdaf8b64d9b2887bbf02ad0abe3fa8890307c2d985"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "freebsd"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/windows/2008r2",
+          "name" : "chef-client-12.14.12-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "acd42e203e5eae34a523352403c06c89"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9c2949fc3700d4c2ed950726d543e0177829e1a4f65065c6f049291fb97964e5"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eeae67826fac30cfe890e5bbabc677f85c6837f7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "742e3a46cd305d6788ebfe6ec4ab31e846534d01e63727f3bdd80fd84d0b84d20416bff7e131dfa8062d13b558c7c8816f6c3209b87034a20c52a4644ad09925"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/windows/2012",
+          "name" : "chef-client-12.14.12-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9c2949fc3700d4c2ed950726d543e0177829e1a4f65065c6f049291fb97964e5"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "742e3a46cd305d6788ebfe6ec4ab31e846534d01e63727f3bdd80fd84d0b84d20416bff7e131dfa8062d13b558c7c8816f6c3209b87034a20c52a4644ad09925"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eeae67826fac30cfe890e5bbabc677f85c6837f7"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "acd42e203e5eae34a523352403c06c89"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/windows/2012r2",
+          "name" : "chef-client-12.14.12-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9c2949fc3700d4c2ed950726d543e0177829e1a4f65065c6f049291fb97964e5"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "742e3a46cd305d6788ebfe6ec4ab31e846534d01e63727f3bdd80fd84d0b84d20416bff7e131dfa8062d13b558c7c8816f6c3209b87034a20c52a4644ad09925"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "eeae67826fac30cfe890e5bbabc677f85c6837f7"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "acd42e203e5eae34a523352403c06c89"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/freebsd/9",
+          "name" : "chef-12.14.12_1.amd64.sh",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "7e4c211188e2ca6f9f936f20e272486ba272a8143404d650ea51e14e33a16521daab2d908b1d3d584f94f2a9236a1718afc8163f003661e2a56a8a1376d459a4"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0bfc45ee9d7ab1c2014c6dc0558b1c0f430d37d91b8a932dd5a1fb8f04d5f795"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "amd64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "26409ea8f2727e9ce92366438e06ca96"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "e87a78a9bbc66a2225a2eaef891626f2ba31ed61"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "freebsd"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "9"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/aix/6.1",
+          "name" : "chef-12.14.12-1.powerpc.bff",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "db5a60fadb455f55736e37ef3c3e4c4118f01f8c"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "aix"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "03de3a2757ff46cfbea929316379cc10649fc90f9f2083709b93e4fea9717039"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6.1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "465fcebb26cc9d8bdbfc2779f5322ed7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5f7c43718c740a2e5d8dead9e7e687b77e1d748c00109ffcce7dda8c0c1137f31df8be419b268c92754446541cb2c590bf3ab764a992fa8376c37c6aa57f65a9"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "powerpc"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/aix/7.1",
+          "name" : "chef-12.14.12-1.powerpc.bff",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "powerpc"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "03de3a2757ff46cfbea929316379cc10649fc90f9f2083709b93e4fea9717039"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "aix"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7.1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "465fcebb26cc9d8bdbfc2779f5322ed7"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "db5a60fadb455f55736e37ef3c3e4c4118f01f8c"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5f7c43718c740a2e5d8dead9e7e687b77e1d748c00109ffcce7dda8c0c1137f31df8be419b268c92754446541cb2c590bf3ab764a992fa8376c37c6aa57f65a9"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/windows/2008r2",
+          "name" : "chef-client-12.14.12-1-x64.msi",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "e59793765cf24d0ad96d01003754ceaabb89568d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "487be13401dbce63c4b207a49567f7b85d2155aa865189b140f7f8f0004cebf2"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5f83be7af75d4710206b25f2a680f9fb5e469445721f70d718e62ef9e6f00dfcecb0121cadb2719eeec9a3b5eca2e01dfdbb15539c1d585137cec4ccad9f8d74"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "969b5df0aee8a564a4147fb23c3c69f1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/windows/2012",
+          "name" : "chef-client-12.14.12-1-x64.msi",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "969b5df0aee8a564a4147fb23c3c69f1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "e59793765cf24d0ad96d01003754ceaabb89568d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "487be13401dbce63c4b207a49567f7b85d2155aa865189b140f7f8f0004cebf2"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5f83be7af75d4710206b25f2a680f9fb5e469445721f70d718e62ef9e6f00dfcecb0121cadb2719eeec9a3b5eca2e01dfdbb15539c1d585137cec4ccad9f8d74"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/windows/2012r2",
+          "name" : "chef-client-12.14.12-1-x64.msi",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "e59793765cf24d0ad96d01003754ceaabb89568d"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "969b5df0aee8a564a4147fb23c3c69f1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5f83be7af75d4710206b25f2a680f9fb5e469445721f70d718e62ef9e6f00dfcecb0121cadb2719eeec9a3b5eca2e01dfdbb15539c1d585137cec4ccad9f8d74"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "487be13401dbce63c4b207a49567f7b85d2155aa865189b140f7f8f0004cebf2"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/solaris2/5.10",
+          "name" : "chef-12.14.12-1.sparc.solaris",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "ee387676de9b7d72e69ac4337a871672906e007d54cfbbb567da69cf1e65b4c1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5.10"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "c1f593a1113af08be2ce6f588ab744155b2e34e4e347e8dc141a5d8e48a06ccc01954da108cd5f5386add782972f8f2c00e13fb3c0704354ed644666746e000d"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "solaris2"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "sparc"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "42af9dd7ffb9711a2713b2efb680895e72454ffe"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "27e8470dc1a4c8861a44402b3ec38731"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/chef/12.14.12/solaris2/5.11",
+          "name" : "chef-12.14.12-1.sparc.solaris",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "solaris2"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5.11"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "ee387676de9b7d72e69ac4337a871672906e007d54cfbbb567da69cf1e65b4c1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "sparc"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "12.14.12"
+          }, {
+            "key" : "build.number",
+            "value" : "12.14.12"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "27e8470dc1a4c8861a44402b3ec38731"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "c1f593a1113af08be2ce6f588ab744155b2e34e4e347e8dc141a5d8e48a06ccc01954da108cd5f5386add782972f8f2c00e13fb3c0704354ed644666746e000d"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "42af9dd7ffb9711a2713b2efb680895e72454ffe"
+          }, {
+            "key" : "build.name",
+            "value" : "chef"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 39,
+          "total" : 39
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 17 Aug 2016 23:19:20 GMT
+recorded_with: VCR 3.0.3

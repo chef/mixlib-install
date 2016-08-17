@@ -29,6 +29,8 @@ function Get-ProjectMetadata {
     [string]
     $version,
     # Release channel to install from
+    [validateset('current', 'stable', 'unstable')]
+    [string]
     $channel = 'unstable',
     # The following legacy switches are just aliases for the current channel
     [switch]

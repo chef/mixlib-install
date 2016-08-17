@@ -30,7 +30,11 @@ module Mixlib
       end
 
       def self.backend(options)
-        Backend::PackageRouter.new(options)
+        if Mixlib::Install.artifactory_backend?
+          Backend::Artifactory.new(options)
+        else
+          Backend::PackageRouter.new(options)
+        end
       end
     end
   end

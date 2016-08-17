@@ -112,7 +112,7 @@ Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}
         unless SUPPORTED_CHANNELS.include? channel
           <<-EOS
 Unknown channel #{channel}.
-Must be one of: #{A.join(", ")}
+Must be one of: #{SUPPORTED_CHANNELS.join(", ")}
           EOS
         end
       end

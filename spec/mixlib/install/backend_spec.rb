@@ -28,7 +28,6 @@ context "Mixlib::Install::Backend", :vcr do
   let(:architecture) { nil }
 
   let(:expected_info) { nil }
-  let(:expected_protocol) { "https://" }
 
   let(:info) {
     Mixlib::Install.new(
@@ -52,16 +51,10 @@ context "Mixlib::Install::Backend", :vcr do
     if expected_info && !expected_info.key?(:url)
       expect(url).to match /#{expected_info[:url]}/
     else
-      if Mixlib::Install.unified_backend?
-        expect(url).to include("https://packages-acceptance.chef.io")
+      if Mixlib::Install.artifactory_backend?
+        expect(url).to include(ENV["ARTIFACTORY_ENDPOINT"] || Mixlib::Install::Backend::Artifactory::ENDPOINT)
       else
-        if channel == :unstable
-          expect(url).to include("http://artifactory.chef.co")
-        elsif url.include?("freebsd/9") || url.include?("el/5") || url.include?("solaris2/5.10") || url.include?("solaris2/5.9")
-          expect(url).to include("http://chef.bintray.com")
-        else
-          expect(url).to include("https://packages.chef.io")
-        end
+        expect(url).to include(ENV["PACKAGE_ROUTER_ENDPOINT"] || Mixlib::Install::Backend::PackageRouter::ENDPOINT)
       end
     end
   end
@@ -142,7 +135,7 @@ context "Mixlib::Install::Backend", :vcr do
 
       let(:expected_info) {
         {
-          url: "https://packages.chef.io/stable/mac_os_x/10.10/chef-12.2.1-1.dmg",
+          url: "/stable/mac_os_x/10.10/chef-12.2.1-1.dmg",
           sha256: "53034d6e1eea0028666caee43b99f43d2ca9dd24b260bc53ae5fad1075e83923",
           version: "12.2.1",
         }
@@ -152,27 +145,57 @@ context "Mixlib::Install::Backend", :vcr do
     end
   end
 
-  [:stable, :current, :unstable].each do |channel|
-    context "for #{channel} channel with :latest" do
-      let(:product_name) { "chef" }
-      let(:channel) { channel }
-      let(:product_version) { :latest }
+  context "for stable channel with :latest" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+    let(:product_version) { :latest }
 
-      if channel == :unstable
-        let(:expected_protocol) { "http://" }
-      end
+    context "without platform info" do
+      it_behaves_like "the right artifact list info"
+    end
 
-      context "without platform info" do
-        it_behaves_like "the right artifact list info"
-      end
+    context "with platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "14.04" }
+      let(:architecture) { "x86_64" }
 
-      context "with platform info" do
-        let(:platform) { "ubuntu" }
-        let(:platform_version) { "14.04" }
-        let(:architecture) { "x86_64" }
+      it_behaves_like "the right artifact info"
+    end
+  end
 
-        it_behaves_like "the right artifact info"
-      end
+  context "for current channel with :latest" do
+    let(:product_name) { "chef" }
+    let(:channel) { :current }
+    let(:product_version) { :latest }
+
+    context "without platform info" do
+      it_behaves_like "the right artifact list info"
+    end
+
+    context "with platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "14.04" }
+      let(:architecture) { "x86_64" }
+
+      it_behaves_like "the right artifact info"
+    end
+  end
+
+  context "for unstable channel with :latest" do
+    let(:product_name) { "chef" }
+    let(:channel) { :unstable }
+    let(:product_version) { :latest }
+
+    context "without platform info" do
+      it_behaves_like "the right artifact list info"
+    end
+
+    context "with platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "14.04" }
+      let(:architecture) { "x86_64" }
+
+      it_behaves_like "the right artifact info"
     end
   end
 
@@ -183,30 +206,10 @@ context "Mixlib::Install::Backend", :vcr do
       let(:channel) { :unstable }
 
       it "returns the list of available versions" do
-        ["12.13.3", "12.13.7", "12.13.8+20160721014124", "12.13.11+20160721165202"].each do |v|
+        ["12.13.30+20160809181757", "12.13.33+20160810230453", "12.13.33+20160811154116", "12.13.36+20160811220629", "12.13.36+20160811223655", "12.13.36+20160811235050", "12.13.36+20160812051326", "12.13.30+20160812195955", "12.13.40", "12.13.42", "12.13.41+20160816160510", "12.14.1"].each do |v|
           expect(available_versions).to include(v)
         end
       end
     end
-
-    # These tests are only valid when unified_backend is not enabled
-    unless Mixlib::Install.unified_backend?
-      context "with :stable channel" do
-        let(:channel) { :stable }
-
-        it "raises error" do
-          expect { available_versions }.to raise_error(StandardError)
-        end
-      end
-
-      context "with :current channel" do
-        let(:channel) { :current }
-
-        it "raises error" do
-          expect { available_versions }.to raise_error(StandardError)
-        end
-      end
-    end
-
   end
 end

@@ -1,0 +1,1317 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/delivery
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:17 GMT
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/0.5.14",
+            "started" : "2016-07-20T19:32:55.015+0000"
+          }, {
+            "uri" : "/0.5.52",
+            "started" : "2016-07-30T00:26:31.025+0000"
+          }, {
+            "uri" : "/0.3.240",
+            "started" : "2015-08-26T20:11:27.272+0000"
+          }, {
+            "uri" : "/0.5.105",
+            "started" : "2016-08-10T18:33:27.457+0000"
+          }, {
+            "uri" : "/0.5.130",
+            "started" : "2016-08-15T17:28:57.782+0000"
+          }, {
+            "uri" : "/0.5.124",
+            "started" : "2016-08-12T18:46:04.130+0000"
+          }, {
+            "uri" : "/0.5.57",
+            "started" : "2016-08-01T20:03:45.669+0000"
+          }, {
+            "uri" : "/0.3.210",
+            "started" : "2015-08-14T02:40:35.926+0000"
+          }, {
+            "uri" : "/0.3.519",
+            "started" : "2016-01-12T19:10:54.992+0000"
+          }, {
+            "uri" : "/0.5.135",
+            "started" : "2016-08-16T09:43:42.244+0000"
+          }, {
+            "uri" : "/0.5.5",
+            "started" : "2016-07-18T11:29:15.884+0000"
+          }, {
+            "uri" : "/0.3.640",
+            "started" : "2016-02-19T22:38:12.027+0000"
+          }, {
+            "uri" : "/0.5.107",
+            "started" : "2016-08-10T20:09:19.666+0000"
+          }, {
+            "uri" : "/0.4.437",
+            "started" : "2016-06-13T22:21:47.845+0000"
+          }, {
+            "uri" : "/0.3.374",
+            "started" : "2015-10-31T16:26:45.269+0000"
+          }, {
+            "uri" : "/0.4.132",
+            "started" : "2016-03-29T18:52:29.116+0000"
+          }, {
+            "uri" : "/0.3.224",
+            "started" : "2015-08-19T17:31:49.030+0000"
+          }, {
+            "uri" : "/0.5.122",
+            "started" : "2016-08-12T17:04:36.708+0000"
+          }, {
+            "uri" : "/0.5.115",
+            "started" : "2016-08-11T17:37:23.263+0000"
+          }, {
+            "uri" : "/0.3.467",
+            "started" : "2015-12-04T00:57:05.440+0000"
+          }, {
+            "uri" : "/0.5.101",
+            "started" : "2016-08-10T09:12:47.421+0000"
+          }, {
+            "uri" : "/0.5.94",
+            "started" : "2016-08-09T16:03:12.134+0000"
+          }, {
+            "uri" : "/0.3.358",
+            "started" : "2015-10-28T00:03:31.211+0000"
+          }, {
+            "uri" : "/0.5.77",
+            "started" : "2016-08-04T20:54:34.208+0000"
+          }, {
+            "uri" : "/0.5.83",
+            "started" : "2016-08-05T19:19:06.777+0000"
+          }, {
+            "uri" : "/0.3.390",
+            "started" : "2015-11-04T18:37:07.283+0000"
+          }, {
+            "uri" : "/0.3.201",
+            "started" : "2015-08-12T16:39:31.151+0000"
+          }, {
+            "uri" : "/0.5.127",
+            "started" : "2016-08-12T23:47:24.642+0000"
+          }, {
+            "uri" : "/0.5.27",
+            "started" : "2016-07-25T20:40:13.693+0000"
+          }, {
+            "uri" : "/0.3.278",
+            "started" : "2015-09-14T23:45:00.258+0000"
+          }, {
+            "uri" : "/0.3.435",
+            "started" : "2015-11-19T20:49:15.340+0000"
+          }, {
+            "uri" : "/0.4.522",
+            "started" : "2016-06-24T23:36:08.024+0000"
+          }, {
+            "uri" : "/0.3.391",
+            "started" : "2015-11-04T23:42:42.046+0000"
+          }, {
+            "uri" : "/0.5.134",
+            "started" : "2016-08-16T08:42:10.513+0000"
+          }, {
+            "uri" : "/0.5.129",
+            "started" : "2016-08-15T16:34:09.165+0000"
+          }, {
+            "uri" : "/0.5.139",
+            "started" : "2016-08-16T18:04:06.375+0000"
+          }, {
+            "uri" : "/0.5.113",
+            "started" : "2016-08-11T07:52:11.908+0000"
+          }, {
+            "uri" : "/0.5.100",
+            "started" : "2016-08-09T23:32:00.004+0000"
+          }, {
+            "uri" : "/0.5.138",
+            "started" : "2016-08-16T17:07:52.570+0000"
+          }, {
+            "uri" : "/0.5.132",
+            "started" : "2016-08-15T22:49:24.210+0000"
+          }, {
+            "uri" : "/0.3.251",
+            "started" : "2015-09-01T23:54:53.311+0000"
+          }, {
+            "uri" : "/0.3.450",
+            "started" : "2015-11-30T21:42:21.804+0000"
+          }, {
+            "uri" : "/0.3.369",
+            "started" : "2015-10-29T20:50:08.966+0000"
+          }, {
+            "uri" : "/0.4.404",
+            "started" : "2016-06-07T16:58:37.897+0000"
+          }, {
+            "uri" : "/0.5.111",
+            "started" : "2016-08-11T00:36:38.716+0000"
+          }, {
+            "uri" : "/0.3.493",
+            "started" : "2015-12-11T22:16:40.585+0000"
+          }, {
+            "uri" : "/0.3.606",
+            "started" : "2016-02-05T16:51:57.455+0000"
+          }, {
+            "uri" : "/0.3.227",
+            "started" : "2015-08-20T00:14:47.865+0000"
+          }, {
+            "uri" : "/0.3.243",
+            "started" : "2015-08-28T23:08:25.281+0000"
+          }, {
+            "uri" : "/0.5.110",
+            "started" : "2016-08-10T23:51:12.435+0000"
+          }, {
+            "uri" : "/0.5.96",
+            "started" : "2016-08-09T17:24:15.381+0000"
+          }, {
+            "uri" : "/0.4.58",
+            "started" : "2016-03-09T18:08:31.560+0000"
+          }, {
+            "uri" : "/0.5.36",
+            "started" : "2016-07-27T19:35:21.444+0000"
+          }, {
+            "uri" : "/0.5.103",
+            "started" : "2016-08-10T16:36:54.406+0000"
+          }, {
+            "uri" : "/0.5.31",
+            "started" : "2016-07-26T17:15:38.843+0000"
+          }, {
+            "uri" : "/0.5.102",
+            "started" : "2016-08-10T15:37:35.416+0000"
+          }, {
+            "uri" : "/0.5.1",
+            "started" : "2016-07-12T03:26:52.495+0000"
+          }, {
+            "uri" : "/0.5.118",
+            "started" : "2016-08-11T21:43:44.624+0000"
+          }, {
+            "uri" : "/0.3.304",
+            "started" : "2015-09-24T17:47:24.318+0000"
+          }, {
+            "uri" : "/0.4.199",
+            "started" : "2016-04-14T19:41:18.173+0000"
+          }, {
+            "uri" : "/0.5.137",
+            "started" : "2016-08-16T16:06:56.803+0000"
+          }, {
+            "uri" : "/0.5.25",
+            "started" : "2016-07-22T19:55:18.816+0000"
+          }, {
+            "uri" : "/0.5.112",
+            "started" : "2016-08-11T01:35:55.681+0000"
+          }, {
+            "uri" : "/0.5.19",
+            "started" : "2016-07-21T01:50:59.320+0000"
+          }, {
+            "uri" : "/0.3.554",
+            "started" : "2016-01-21T23:23:34.748+0000"
+          }, {
+            "uri" : "/0.5.89",
+            "started" : "2016-08-08T17:27:35.254+0000"
+          }, {
+            "uri" : "/0.5.61",
+            "started" : "2016-08-02T22:08:13.752+0000"
+          }, {
+            "uri" : "/0.4.299",
+            "started" : "2016-05-17T08:57:27.324+0000"
+          }, {
+            "uri" : "/0.5.108",
+            "started" : "2016-08-10T20:56:41.259+0000"
+          }, {
+            "uri" : "/0.5.116",
+            "started" : "2016-08-11T18:03:32.842+0000"
+          }, {
+            "uri" : "/0.3.522",
+            "started" : "2016-01-13T22:06:14.725+0000"
+          }, {
+            "uri" : "/0.3.186",
+            "started" : "2015-08-04T22:47:17.711+0000"
+          }, {
+            "uri" : "/0.5.44",
+            "started" : "2016-07-28T20:34:45.651+0000"
+          }, {
+            "uri" : "/0.5.98+git.3.5e3c38e",
+            "started" : "2016-08-09T21:32:21.715+0000"
+          }, {
+            "uri" : "/0.3.334",
+            "started" : "2015-10-14T01:11:38.441+0000"
+          }, {
+            "uri" : "/0.5.106",
+            "started" : "2016-08-10T19:22:44.722+0000"
+          }, {
+            "uri" : "/0.5.11",
+            "started" : "2016-07-20T01:11:40.777+0000"
+          }, {
+            "uri" : "/0.5.131",
+            "started" : "2016-08-15T18:30:32.331+0000"
+          }, {
+            "uri" : "/0.4.6",
+            "started" : "2016-02-23T02:48:15.187+0000"
+          }, {
+            "uri" : "/0.5.33",
+            "started" : "2016-07-26T23:26:40.327+0000"
+          }, {
+            "uri" : "/0.5.64",
+            "started" : "2016-08-03T16:30:50.775+0000"
+          }, {
+            "uri" : "/0.3.341",
+            "started" : "2015-10-21T15:53:09.136+0000"
+          }, {
+            "uri" : "/0.5.109",
+            "started" : "2016-08-10T21:49:43.130+0000"
+          }, {
+            "uri" : "/0.5.99",
+            "started" : "2016-08-09T22:41:23.103+0000"
+          }, {
+            "uri" : "/0.5.123",
+            "started" : "2016-08-12T17:47:58.053+0000"
+          }, {
+            "uri" : "/0.5.73",
+            "started" : "2016-08-04T17:03:26.483+0000"
+          }, {
+            "uri" : "/0.5.128",
+            "started" : "2016-08-15T08:39:04.033+0000"
+          }, {
+            "uri" : "/0.5.91",
+            "started" : "2016-08-08T21:44:12.172+0000"
+          }, {
+            "uri" : "/0.5.104",
+            "started" : "2016-08-10T17:32:25.674+0000"
+          }, {
+            "uri" : "/0.4.235",
+            "started" : "2016-04-27T17:16:26.827+0000"
+          }, {
+            "uri" : "/0.3.314",
+            "started" : "2015-10-01T00:37:24.203+0000"
+          }, {
+            "uri" : "/0.3.338",
+            "started" : "2015-10-17T00:05:49.294+0000"
+          }, {
+            "uri" : "/0.5.121",
+            "started" : "2016-08-12T15:26:54.182+0000"
+          }, {
+            "uri" : "/0.4.113",
+            "started" : "2016-03-22T20:53:50.699+0000"
+          }, {
+            "uri" : "/0.5.117",
+            "started" : "2016-08-11T20:16:11.532+0000"
+          }, {
+            "uri" : "/0.4.75",
+            "started" : "2016-03-12T01:06:18.939+0000"
+          }, {
+            "uri" : "/0.3.256",
+            "started" : "2015-09-03T16:00:58.046+0000"
+          }, {
+            "uri" : "/0.4.600",
+            "started" : "2016-07-08T02:46:42.970+0000"
+          }, {
+            "uri" : "/0.5.126",
+            "started" : "2016-08-12T22:36:33.274+0000"
+          }, {
+            "uri" : "/0.5.133",
+            "started" : "2016-08-16T00:15:32.855+0000"
+          }, {
+            "uri" : "/0.3.195",
+            "started" : "2015-08-11T03:38:50.450+0000"
+          }, {
+            "uri" : "/0.5.125",
+            "started" : "2016-08-12T19:41:22.741+0000"
+          } ],
+          "uri" : "http://artifactory.chef.co/api/build/delivery"
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:15 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.5.139"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:17 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/el/7",
+          "name" : "delivery-0.5.139-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36ecc5ce0dc4951645931d882e31834433b53f7b"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "21f881f52d5729c4506981364b7b83f4bc125db33c7159cc7f0a9286cc7968b99508fc9e51848879d9b00724604df92938723f5c737b9206757d071d46aca7fe"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1a37c5905426d3c06a2b1a75bc5291ea"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9270b6a5b8fb3dc1b261788e1bfe59b34d15b6711f909d9d094f7bea1066d9d3"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/ubuntu/12.04",
+          "name" : "delivery_0.5.139-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "6a422fae08ab21f53ff0f2210e30ac01eef69e374d2e5f62a3e2f6750f4e9eb3"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "0cf468c6b6dab8f4c4c320eec380ce6bc68a66fc42d4d6f2510eb818d51e30e80c01db343e3533cd0b9b48d4e93c4003fd198315c7033ebcc7dbed932f6ba5a3"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3a1af38f18c778b3c53d716a334b7b5b"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5481422d461373cc988e126ddf7242259cc80376"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/ubuntu/14.04",
+          "name" : "delivery_0.5.139-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "0cf468c6b6dab8f4c4c320eec380ce6bc68a66fc42d4d6f2510eb818d51e30e80c01db343e3533cd0b9b48d4e93c4003fd198315c7033ebcc7dbed932f6ba5a3"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "6a422fae08ab21f53ff0f2210e30ac01eef69e374d2e5f62a3e2f6750f4e9eb3"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5481422d461373cc988e126ddf7242259cc80376"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3a1af38f18c778b3c53d716a334b7b5b"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/ubuntu/16.04",
+          "name" : "delivery_0.5.139-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "0cf468c6b6dab8f4c4c320eec380ce6bc68a66fc42d4d6f2510eb818d51e30e80c01db343e3533cd0b9b48d4e93c4003fd198315c7033ebcc7dbed932f6ba5a3"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5481422d461373cc988e126ddf7242259cc80376"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3a1af38f18c778b3c53d716a334b7b5b"
+          }, {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "6a422fae08ab21f53ff0f2210e30ac01eef69e374d2e5f62a3e2f6750f4e9eb3"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/el/6",
+          "name" : "delivery-0.5.139-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b77ff0ba8b4ce63d8a71a76c01c28d61493a0856"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "e26ac842995174dba211847298c08670"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "86bf5fa8c6b9d74db3efaec12ce6eca63962300e43589726cba4a47ed066d9b0"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "9bbebdbaa67408132f23a75946f47ad52551e1a50028dd26e173557e6b56bc1e2edff8cc57bdfe5dfcef536145ceeb2617c1fe1f7aee620eef14d7464343b3f1"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 5,
+          "total" : 5
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:15 GMT
+- request:
+    method: get
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/build/delivery
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:18 GMT
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/0.5.14",
+            "started" : "2016-07-20T19:32:55.015+0000"
+          }, {
+            "uri" : "/0.5.52",
+            "started" : "2016-07-30T00:26:31.025+0000"
+          }, {
+            "uri" : "/0.3.240",
+            "started" : "2015-08-26T20:11:27.272+0000"
+          }, {
+            "uri" : "/0.5.105",
+            "started" : "2016-08-10T18:33:27.457+0000"
+          }, {
+            "uri" : "/0.5.130",
+            "started" : "2016-08-15T17:28:57.782+0000"
+          }, {
+            "uri" : "/0.5.124",
+            "started" : "2016-08-12T18:46:04.130+0000"
+          }, {
+            "uri" : "/0.5.57",
+            "started" : "2016-08-01T20:03:45.669+0000"
+          }, {
+            "uri" : "/0.3.210",
+            "started" : "2015-08-14T02:40:35.926+0000"
+          }, {
+            "uri" : "/0.3.519",
+            "started" : "2016-01-12T19:10:54.992+0000"
+          }, {
+            "uri" : "/0.5.135",
+            "started" : "2016-08-16T09:43:42.244+0000"
+          }, {
+            "uri" : "/0.5.5",
+            "started" : "2016-07-18T11:29:15.884+0000"
+          }, {
+            "uri" : "/0.3.640",
+            "started" : "2016-02-19T22:38:12.027+0000"
+          }, {
+            "uri" : "/0.5.107",
+            "started" : "2016-08-10T20:09:19.666+0000"
+          }, {
+            "uri" : "/0.4.437",
+            "started" : "2016-06-13T22:21:47.845+0000"
+          }, {
+            "uri" : "/0.3.374",
+            "started" : "2015-10-31T16:26:45.269+0000"
+          }, {
+            "uri" : "/0.4.132",
+            "started" : "2016-03-29T18:52:29.116+0000"
+          }, {
+            "uri" : "/0.3.224",
+            "started" : "2015-08-19T17:31:49.030+0000"
+          }, {
+            "uri" : "/0.5.122",
+            "started" : "2016-08-12T17:04:36.708+0000"
+          }, {
+            "uri" : "/0.5.115",
+            "started" : "2016-08-11T17:37:23.263+0000"
+          }, {
+            "uri" : "/0.3.467",
+            "started" : "2015-12-04T00:57:05.440+0000"
+          }, {
+            "uri" : "/0.5.101",
+            "started" : "2016-08-10T09:12:47.421+0000"
+          }, {
+            "uri" : "/0.5.94",
+            "started" : "2016-08-09T16:03:12.134+0000"
+          }, {
+            "uri" : "/0.3.358",
+            "started" : "2015-10-28T00:03:31.211+0000"
+          }, {
+            "uri" : "/0.5.77",
+            "started" : "2016-08-04T20:54:34.208+0000"
+          }, {
+            "uri" : "/0.5.83",
+            "started" : "2016-08-05T19:19:06.777+0000"
+          }, {
+            "uri" : "/0.3.390",
+            "started" : "2015-11-04T18:37:07.283+0000"
+          }, {
+            "uri" : "/0.3.201",
+            "started" : "2015-08-12T16:39:31.151+0000"
+          }, {
+            "uri" : "/0.5.127",
+            "started" : "2016-08-12T23:47:24.642+0000"
+          }, {
+            "uri" : "/0.5.27",
+            "started" : "2016-07-25T20:40:13.693+0000"
+          }, {
+            "uri" : "/0.3.278",
+            "started" : "2015-09-14T23:45:00.258+0000"
+          }, {
+            "uri" : "/0.3.435",
+            "started" : "2015-11-19T20:49:15.340+0000"
+          }, {
+            "uri" : "/0.4.522",
+            "started" : "2016-06-24T23:36:08.024+0000"
+          }, {
+            "uri" : "/0.3.391",
+            "started" : "2015-11-04T23:42:42.046+0000"
+          }, {
+            "uri" : "/0.5.134",
+            "started" : "2016-08-16T08:42:10.513+0000"
+          }, {
+            "uri" : "/0.5.129",
+            "started" : "2016-08-15T16:34:09.165+0000"
+          }, {
+            "uri" : "/0.5.139",
+            "started" : "2016-08-16T18:04:06.375+0000"
+          }, {
+            "uri" : "/0.5.113",
+            "started" : "2016-08-11T07:52:11.908+0000"
+          }, {
+            "uri" : "/0.5.100",
+            "started" : "2016-08-09T23:32:00.004+0000"
+          }, {
+            "uri" : "/0.5.138",
+            "started" : "2016-08-16T17:07:52.570+0000"
+          }, {
+            "uri" : "/0.5.132",
+            "started" : "2016-08-15T22:49:24.210+0000"
+          }, {
+            "uri" : "/0.3.251",
+            "started" : "2015-09-01T23:54:53.311+0000"
+          }, {
+            "uri" : "/0.3.450",
+            "started" : "2015-11-30T21:42:21.804+0000"
+          }, {
+            "uri" : "/0.3.369",
+            "started" : "2015-10-29T20:50:08.966+0000"
+          }, {
+            "uri" : "/0.4.404",
+            "started" : "2016-06-07T16:58:37.897+0000"
+          }, {
+            "uri" : "/0.5.111",
+            "started" : "2016-08-11T00:36:38.716+0000"
+          }, {
+            "uri" : "/0.3.493",
+            "started" : "2015-12-11T22:16:40.585+0000"
+          }, {
+            "uri" : "/0.3.606",
+            "started" : "2016-02-05T16:51:57.455+0000"
+          }, {
+            "uri" : "/0.3.227",
+            "started" : "2015-08-20T00:14:47.865+0000"
+          }, {
+            "uri" : "/0.3.243",
+            "started" : "2015-08-28T23:08:25.281+0000"
+          }, {
+            "uri" : "/0.5.110",
+            "started" : "2016-08-10T23:51:12.435+0000"
+          }, {
+            "uri" : "/0.5.96",
+            "started" : "2016-08-09T17:24:15.381+0000"
+          }, {
+            "uri" : "/0.4.58",
+            "started" : "2016-03-09T18:08:31.560+0000"
+          }, {
+            "uri" : "/0.5.36",
+            "started" : "2016-07-27T19:35:21.444+0000"
+          }, {
+            "uri" : "/0.5.103",
+            "started" : "2016-08-10T16:36:54.406+0000"
+          }, {
+            "uri" : "/0.5.31",
+            "started" : "2016-07-26T17:15:38.843+0000"
+          }, {
+            "uri" : "/0.5.102",
+            "started" : "2016-08-10T15:37:35.416+0000"
+          }, {
+            "uri" : "/0.5.1",
+            "started" : "2016-07-12T03:26:52.495+0000"
+          }, {
+            "uri" : "/0.5.118",
+            "started" : "2016-08-11T21:43:44.624+0000"
+          }, {
+            "uri" : "/0.3.304",
+            "started" : "2015-09-24T17:47:24.318+0000"
+          }, {
+            "uri" : "/0.4.199",
+            "started" : "2016-04-14T19:41:18.173+0000"
+          }, {
+            "uri" : "/0.5.137",
+            "started" : "2016-08-16T16:06:56.803+0000"
+          }, {
+            "uri" : "/0.5.25",
+            "started" : "2016-07-22T19:55:18.816+0000"
+          }, {
+            "uri" : "/0.5.112",
+            "started" : "2016-08-11T01:35:55.681+0000"
+          }, {
+            "uri" : "/0.5.19",
+            "started" : "2016-07-21T01:50:59.320+0000"
+          }, {
+            "uri" : "/0.3.554",
+            "started" : "2016-01-21T23:23:34.748+0000"
+          }, {
+            "uri" : "/0.5.89",
+            "started" : "2016-08-08T17:27:35.254+0000"
+          }, {
+            "uri" : "/0.5.61",
+            "started" : "2016-08-02T22:08:13.752+0000"
+          }, {
+            "uri" : "/0.4.299",
+            "started" : "2016-05-17T08:57:27.324+0000"
+          }, {
+            "uri" : "/0.5.108",
+            "started" : "2016-08-10T20:56:41.259+0000"
+          }, {
+            "uri" : "/0.5.116",
+            "started" : "2016-08-11T18:03:32.842+0000"
+          }, {
+            "uri" : "/0.3.522",
+            "started" : "2016-01-13T22:06:14.725+0000"
+          }, {
+            "uri" : "/0.3.186",
+            "started" : "2015-08-04T22:47:17.711+0000"
+          }, {
+            "uri" : "/0.5.44",
+            "started" : "2016-07-28T20:34:45.651+0000"
+          }, {
+            "uri" : "/0.5.98+git.3.5e3c38e",
+            "started" : "2016-08-09T21:32:21.715+0000"
+          }, {
+            "uri" : "/0.3.334",
+            "started" : "2015-10-14T01:11:38.441+0000"
+          }, {
+            "uri" : "/0.5.106",
+            "started" : "2016-08-10T19:22:44.722+0000"
+          }, {
+            "uri" : "/0.5.11",
+            "started" : "2016-07-20T01:11:40.777+0000"
+          }, {
+            "uri" : "/0.5.131",
+            "started" : "2016-08-15T18:30:32.331+0000"
+          }, {
+            "uri" : "/0.4.6",
+            "started" : "2016-02-23T02:48:15.187+0000"
+          }, {
+            "uri" : "/0.5.33",
+            "started" : "2016-07-26T23:26:40.327+0000"
+          }, {
+            "uri" : "/0.5.64",
+            "started" : "2016-08-03T16:30:50.775+0000"
+          }, {
+            "uri" : "/0.3.341",
+            "started" : "2015-10-21T15:53:09.136+0000"
+          }, {
+            "uri" : "/0.5.109",
+            "started" : "2016-08-10T21:49:43.130+0000"
+          }, {
+            "uri" : "/0.5.99",
+            "started" : "2016-08-09T22:41:23.103+0000"
+          }, {
+            "uri" : "/0.5.123",
+            "started" : "2016-08-12T17:47:58.053+0000"
+          }, {
+            "uri" : "/0.5.73",
+            "started" : "2016-08-04T17:03:26.483+0000"
+          }, {
+            "uri" : "/0.5.128",
+            "started" : "2016-08-15T08:39:04.033+0000"
+          }, {
+            "uri" : "/0.5.91",
+            "started" : "2016-08-08T21:44:12.172+0000"
+          }, {
+            "uri" : "/0.5.104",
+            "started" : "2016-08-10T17:32:25.674+0000"
+          }, {
+            "uri" : "/0.4.235",
+            "started" : "2016-04-27T17:16:26.827+0000"
+          }, {
+            "uri" : "/0.3.314",
+            "started" : "2015-10-01T00:37:24.203+0000"
+          }, {
+            "uri" : "/0.3.338",
+            "started" : "2015-10-17T00:05:49.294+0000"
+          }, {
+            "uri" : "/0.5.121",
+            "started" : "2016-08-12T15:26:54.182+0000"
+          }, {
+            "uri" : "/0.4.113",
+            "started" : "2016-03-22T20:53:50.699+0000"
+          }, {
+            "uri" : "/0.5.117",
+            "started" : "2016-08-11T20:16:11.532+0000"
+          }, {
+            "uri" : "/0.4.75",
+            "started" : "2016-03-12T01:06:18.939+0000"
+          }, {
+            "uri" : "/0.3.256",
+            "started" : "2015-09-03T16:00:58.046+0000"
+          }, {
+            "uri" : "/0.4.600",
+            "started" : "2016-07-08T02:46:42.970+0000"
+          }, {
+            "uri" : "/0.5.126",
+            "started" : "2016-08-12T22:36:33.274+0000"
+          }, {
+            "uri" : "/0.5.133",
+            "started" : "2016-08-16T00:15:32.855+0000"
+          }, {
+            "uri" : "/0.3.195",
+            "started" : "2015-08-11T03:38:50.450+0000"
+          }, {
+            "uri" : "/0.5.125",
+            "started" : "2016-08-12T19:41:22.741+0000"
+          } ],
+          "uri" : "http://artifactory.chef.co/api/build/delivery"
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:16 GMT
+- request:
+    method: post
+    uri: http://mixlib-install:%25mKPtzbT1JH1wm333kjkkjs39oeuFLgZ8vNoOdLBPd%29TZAJsURs9w0HloWR%24l6h@artifactory.chef.co/api/search/aql
+    body:
+      encoding: UTF-8
+      string: |
+        items.find(
+          {"repo": "omnibus-unstable-local"},
+          {"@omnibus.project": "delivery"},
+          {"@omnibus.version": "0.5.139"},
+          {"name": {"$nmatch": "*.metadata.json" }}
+        ).include("repo", "path", "name", "property")
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Artifactory Ruby Gem 2.3.3
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 16 Aug 2016 18:27:18 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Artifactory-Id:
+      - c1dcef39e6f995f9:-764e34f:1569312d758:-7f5d
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/el/7",
+          "name" : "delivery-0.5.139-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36ecc5ce0dc4951645931d882e31834433b53f7b"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "21f881f52d5729c4506981364b7b83f4bc125db33c7159cc7f0a9286cc7968b99508fc9e51848879d9b00724604df92938723f5c737b9206757d071d46aca7fe"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1a37c5905426d3c06a2b1a75bc5291ea"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9270b6a5b8fb3dc1b261788e1bfe59b34d15b6711f909d9d094f7bea1066d9d3"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/ubuntu/12.04",
+          "name" : "delivery_0.5.139-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "6a422fae08ab21f53ff0f2210e30ac01eef69e374d2e5f62a3e2f6750f4e9eb3"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "0cf468c6b6dab8f4c4c320eec380ce6bc68a66fc42d4d6f2510eb818d51e30e80c01db343e3533cd0b9b48d4e93c4003fd198315c7033ebcc7dbed932f6ba5a3"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3a1af38f18c778b3c53d716a334b7b5b"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5481422d461373cc988e126ddf7242259cc80376"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/ubuntu/14.04",
+          "name" : "delivery_0.5.139-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "0cf468c6b6dab8f4c4c320eec380ce6bc68a66fc42d4d6f2510eb818d51e30e80c01db343e3533cd0b9b48d4e93c4003fd198315c7033ebcc7dbed932f6ba5a3"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "6a422fae08ab21f53ff0f2210e30ac01eef69e374d2e5f62a3e2f6750f4e9eb3"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5481422d461373cc988e126ddf7242259cc80376"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3a1af38f18c778b3c53d716a334b7b5b"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/ubuntu/16.04",
+          "name" : "delivery_0.5.139-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "0cf468c6b6dab8f4c4c320eec380ce6bc68a66fc42d4d6f2510eb818d51e30e80c01db343e3533cd0b9b48d4e93c4003fd198315c7033ebcc7dbed932f6ba5a3"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5481422d461373cc988e126ddf7242259cc80376"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3a1af38f18c778b3c53d716a334b7b5b"
+          }, {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "6a422fae08ab21f53ff0f2210e30ac01eef69e374d2e5f62a3e2f6750f4e9eb3"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.139/el/6",
+          "name" : "delivery-0.5.139-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "0.5.139"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "83a5c603a8537a43cb129195f28ea6e09820e2ce"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "b77ff0ba8b4ce63d8a71a76c01c28d61493a0856"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.5.139"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "e26ac842995174dba211847298c08670"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "86bf5fa8c6b9d74db3efaec12ce6eca63962300e43589726cba4a47ed066d9b0"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef MLSA"
+          }, {
+            "key" : "delivery.change",
+            "value" : "c2ce9371-554b-42a5-b20a-07af03e8599f"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "9bbebdbaa67408132f23a75946f47ad52551e1a50028dd26e173557e6b56bc1e2edff8cc57bdfe5dfcef536145ceeb2617c1fe1f7aee620eef14d7464343b3f1"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 5,
+          "total" : 5
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:25:16 GMT
+recorded_with: VCR 3.0.3

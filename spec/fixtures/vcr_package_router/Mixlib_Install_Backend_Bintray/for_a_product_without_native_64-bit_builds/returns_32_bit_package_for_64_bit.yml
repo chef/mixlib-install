@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/chefdk/versions/0.16.28/files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 16 Aug 2016 18:35:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=0
+    body:
+      encoding: UTF-8
+      string: '[{"name":"chefdk_0.16.28-1_amd64.deb","path":"debian/6/chefdk_0.16.28-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:04.952Z","size":130386164,"sha1":"c76f491007ba41d2d7fc83f51fe545efc9d6cb6a","sha256":"35cd6bc37822576faea4fb81819ec59907d8abb02d623ef3a0141e845a3812c0"},{"name":"chefdk_0.16.28-1_amd64.deb.asc","path":"debian/6/chefdk_0.16.28-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:22.147Z","size":183,"sha1":"08ba663b5592880e367516839ff7e6c11c0cf9bb","sha256":"5abdd1a7b1ea90c8a92c4ed0446fda0eb13964b651d394b3d92bbab869faa13e"},{"name":"chefdk_0.16.28-1_amd64.deb","path":"debian/7/chefdk_0.16.28-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:03.281Z","size":130386164,"sha1":"c76f491007ba41d2d7fc83f51fe545efc9d6cb6a","sha256":"35cd6bc37822576faea4fb81819ec59907d8abb02d623ef3a0141e845a3812c0"},{"name":"chefdk_0.16.28-1_amd64.deb.asc","path":"debian/7/chefdk_0.16.28-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:34.230Z","size":183,"sha1":"98f1e0a1ccd13401372264872b91d8a37f7f4090","sha256":"a797435ea3c6100e6ed8432189cfd2f9293559a8962f7d510f792d2e553d07ee"},{"name":"chefdk_0.16.28-1_amd64.deb","path":"debian/8/chefdk_0.16.28-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:01:57.527Z","size":130386164,"sha1":"c76f491007ba41d2d7fc83f51fe545efc9d6cb6a","sha256":"35cd6bc37822576faea4fb81819ec59907d8abb02d623ef3a0141e845a3812c0"},{"name":"chefdk_0.16.28-1_amd64.deb.asc","path":"debian/8/chefdk_0.16.28-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:28.139Z","size":183,"sha1":"0f94653290919c16510b39acacfe169dcb621ac2","sha256":"056a8f7a0af5d55419af4922493d2bc7ed8b8280000c8c55fb74b7009c7b611e"},{"name":"chefdk-0.16.28-1.el6.x86_64.rpm","path":"el/6/chefdk-0.16.28-1.el6.x86_64.rpm","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:17.023Z","size":145036937,"sha1":"f027b517670765a19833e2fa6b0956ac2533ee23","sha256":"84d478336c915addab8e7484fa4b4090d72d9183944f2a3d6afd754cf0534a08"},{"name":"chefdk-0.16.28-1.el6.x86_64.rpm.asc","path":"el/6/chefdk-0.16.28-1.el6.x86_64.rpm.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:48.065Z","size":183,"sha1":"d0fdd50e28fa1287646c60d0012d944f0077a08d","sha256":"b5455929cdd8d361985796db5b2fb7ae6c0a755b1ef147cd48672001a6a2bb4b"},{"name":"chefdk-0.16.28-1.el7.x86_64.rpm","path":"el/7/chefdk-0.16.28-1.el7.x86_64.rpm","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:15.645Z","size":146388291,"sha1":"c56382743e76ec3e66455131c64e11578c53f4c4","sha256":"f445ab53ad7cd458f72b278f257016f1e0f201b89ff2a71d1cff2e6981912bf3"},{"name":"chefdk-0.16.28-1.el7.x86_64.rpm.asc","path":"el/7/chefdk-0.16.28-1.el7.x86_64.rpm.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:46.785Z","size":183,"sha1":"5cc0d1837212a6175c74d9e29504e429129862c9","sha256":"c52c3820058974d634075165c11ca1970a4f834c2768c315017bb59695de3b60"},{"name":"chefdk-0.16.28-1.dmg","path":"mac_os_x/10.10/chefdk-0.16.28-1.dmg","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:03.546Z","size":110718208,"sha1":"35d3b62358e463ff75a0d1f44dda9be7db8ac2ef","sha256":"d92b6a3b1f7d826a39044cb5827f362cae4d5a61c149c81f651e61fba33af323"},{"name":"chefdk-0.16.28-1.dmg.asc","path":"mac_os_x/10.10/chefdk-0.16.28-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:34.544Z","size":183,"sha1":"26c102e5e779c8cec5fcc9844251001a9d4a5d89","sha256":"ccd7dc90ff9c70096d2b72b538a58d4332314d7cfe975310add55eeaf8501a7f"},{"name":"chefdk-0.16.28-1.dmg","path":"mac_os_x/10.11/chefdk-0.16.28-1.dmg","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:01.057Z","size":110718208,"sha1":"35d3b62358e463ff75a0d1f44dda9be7db8ac2ef","sha256":"d92b6a3b1f7d826a39044cb5827f362cae4d5a61c149c81f651e61fba33af323"},{"name":"chefdk-0.16.28-1.dmg.asc","path":"mac_os_x/10.11/chefdk-0.16.28-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:33.302Z","size":183,"sha1":"57e871778e324abe1db8250c4c62ca43b2198d8c","sha256":"be2e0f67527822df7ecf411cf18328b9fe9a16915c08fd00e46826531589f9f7"},{"name":"chefdk-0.16.28-1.dmg","path":"mac_os_x/10.9/chefdk-0.16.28-1.dmg","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:01:57.263Z","size":110718208,"sha1":"35d3b62358e463ff75a0d1f44dda9be7db8ac2ef","sha256":"d92b6a3b1f7d826a39044cb5827f362cae4d5a61c149c81f651e61fba33af323"},{"name":"chefdk-0.16.28-1.dmg.asc","path":"mac_os_x/10.9/chefdk-0.16.28-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:28.117Z","size":183,"sha1":"b1083db74eeffa5d896ebe378906d3752056a4db","sha256":"470eae6c1aa802ec109124a4816c373de5f558d3b6d67559e9ea19bff2856ae9"},{"name":"chefdk_0.16.28-1_amd64.deb","path":"ubuntu/12.04/chefdk_0.16.28-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:14.516Z","size":141448156,"sha1":"13834e1b2dd014b897116759546746ddaa5c9499","sha256":"2126434d87149cc8373d882705b1f538706f2194ef62abed995ff4cc923bd886"},{"name":"chefdk_0.16.28-1_amd64.deb.asc","path":"ubuntu/12.04/chefdk_0.16.28-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:44.691Z","size":183,"sha1":"71d5dcdedaf3c6769cb59ac9fc9dcec3dd8b905e","sha256":"9686d48bf832d28812ff5cbc8c013ba6711b7f59b3b99b57a15721ed89c92974"},{"name":"chefdk_0.16.28-1_amd64.deb","path":"ubuntu/14.04/chefdk_0.16.28-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:37.136Z","size":141448156,"sha1":"13834e1b2dd014b897116759546746ddaa5c9499","sha256":"2126434d87149cc8373d882705b1f538706f2194ef62abed995ff4cc923bd886"},{"name":"chefdk_0.16.28-1_amd64.deb.asc","path":"ubuntu/14.04/chefdk_0.16.28-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:03:24.106Z","size":183,"sha1":"d075fb08db65eab19e6e5447dcff5e45c13246d9","sha256":"d968f6bccf50167a3179e1529c3b49acf4f56ffe836335370b144b8e4f4929bd"},{"name":"chefdk-0.16.28-1-x86.msi","path":"windows/2008r2/chefdk-0.16.28-1-x86.msi","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:41.057Z","size":341934080,"sha1":"2e2619f88c75b9328409dafd24d4876fb88abd0d","sha256":"9a72fb32859fad46b28603efb5ba8a6d4acef16ec055e136ccc36af13741635f"},{"name":"chefdk-0.16.28-1-x86.msi.asc","path":"windows/2008r2/chefdk-0.16.28-1-x86.msi.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:04:29.843Z","size":183,"sha1":"6c9e6660514af11d134a5bd4ce0e548b67900874","sha256":"bb2c26cf66001f7f3157862efc15f93bc84112e23c42c6edc5124b892157761f"},{"name":"chefdk-0.16.28-1-x86.msi","path":"windows/2012/chefdk-0.16.28-1-x86.msi","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:30.327Z","size":341934080,"sha1":"2e2619f88c75b9328409dafd24d4876fb88abd0d","sha256":"9a72fb32859fad46b28603efb5ba8a6d4acef16ec055e136ccc36af13741635f"},{"name":"chefdk-0.16.28-1-x86.msi.asc","path":"windows/2012/chefdk-0.16.28-1-x86.msi.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:03:36.092Z","size":183,"sha1":"bfb2580d102d440a0eb596823554285b71b26918","sha256":"3d640cf62657f313a34931668a1d7f4c4cc86e018caf2f3ead75c4a1ab59d614"},{"name":"chefdk-0.16.28-1-x86.msi","path":"windows/2012r2/chefdk-0.16.28-1-x86.msi","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:02:38.083Z","size":341934080,"sha1":"2e2619f88c75b9328409dafd24d4876fb88abd0d","sha256":"9a72fb32859fad46b28603efb5ba8a6d4acef16ec055e136ccc36af13741635f"},{"name":"chefdk-0.16.28-1-x86.msi.asc","path":"windows/2012r2/chefdk-0.16.28-1-x86.msi.asc","repo":"stable","package":"chefdk","version":"0.16.28","owner":"chef","created":"2016-07-20T19:04:16.607Z","size":183,"sha1":"2863ae79d25043d207bddc14c9b6249b9f469cf9","sha256":"4e3917f12b2b236463f00b30ab3b6e461c1160152715087825d973ba0f90b347"}]'
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 18:35:01 GMT
+- request:
+    method: get
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/chefdk/versions/_latest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 17 Aug 2016 23:19:29 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=0
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"0.17.17","desc":"","package":"chefdk","repo":"stable","owner":"chef","labels":[],"attribute_names":["project","version","iteration"],"created":"2016-08-17T18:23:55.443Z","updated":"2016-08-17T18:26:26.868Z","released":"","ordinal":26.0}'
+    http_version: 
+  recorded_at: Wed, 17 Aug 2016 23:19:29 GMT
+- request:
+    method: get
+    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/chefdk/versions/0.17.17/files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 17 Aug 2016 23:19:29 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit:
+      - '0'
+      X-Ratelimit-Remaining:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=0
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"name":"chefdk_0.17.17-1_amd64.deb","path":"debian/6/chefdk_0.17.17-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:35.289Z","size":129913334,"sha1":"73b2b40d820800b790441c9bccbc89d1cc102683","sha256":"c9bbfde6668389ba7f9231615f51099481d4bc12e46cdaecec639ba90894dde1"},{"name":"chefdk_0.17.17-1_amd64.deb.asc","path":"debian/6/chefdk_0.17.17-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:09.258Z","size":183,"sha1":"39b5e689759acf6aa5a536515587e7eed8e54581","sha256":"b039ca3396de166fd7611e716a9ad4ffa6e8fb16a4761c0dc2a6f15c4fb7bcb2"},{"name":"chefdk_0.17.17-1_amd64.deb","path":"debian/7/chefdk_0.17.17-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:32.721Z","size":129913334,"sha1":"73b2b40d820800b790441c9bccbc89d1cc102683","sha256":"c9bbfde6668389ba7f9231615f51099481d4bc12e46cdaecec639ba90894dde1"},{"name":"chefdk_0.17.17-1_amd64.deb.asc","path":"debian/7/chefdk_0.17.17-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:13.249Z","size":183,"sha1":"9802ad8ccb8407dca0ab5bb334ab970cd65a625e","sha256":"1ab90ec7051dd4a8821f9452dc391715cf0ae02812acde50edb130338cfed585"},{"name":"chefdk_0.17.17-1_amd64.deb","path":"debian/8/chefdk_0.17.17-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:33.966Z","size":129913334,"sha1":"73b2b40d820800b790441c9bccbc89d1cc102683","sha256":"c9bbfde6668389ba7f9231615f51099481d4bc12e46cdaecec639ba90894dde1"},{"name":"chefdk_0.17.17-1_amd64.deb.asc","path":"debian/8/chefdk_0.17.17-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:04.198Z","size":183,"sha1":"69760cac85d47d56d2681061f98e39ddafe46070","sha256":"eb2fd93257d580f89b6e0c1c87b8bf08e00505987bb8ae181f4dcf5adb16bdc0"},{"name":"chefdk-0.17.17-1.el6.x86_64.rpm","path":"el/6/chefdk-0.17.17-1.el6.x86_64.rpm","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:42.993Z","size":144628565,"sha1":"655403f5eba45560e34cd90003d615dda240f87b","sha256":"34a0c39ffce753b0277d2b32961d23b4c322b322b21a0ac66f71ba66bd5d3c16"},{"name":"chefdk-0.17.17-1.el6.x86_64.rpm.asc","path":"el/6/chefdk-0.17.17-1.el6.x86_64.rpm.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:06.480Z","size":183,"sha1":"8d4ec3a6b7b1b649f96b8191e3ef3e129b874b4f","sha256":"4e360cddd62fa851cf112ab953aca95f61ebcbd020fee02d9945003168b489c0"},{"name":"chefdk-0.17.17-1.el7.x86_64.rpm","path":"el/7/chefdk-0.17.17-1.el7.x86_64.rpm","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:38.694Z","size":146027966,"sha1":"d427fadb9f8f4b96d1b3919b1e8ca49d4ff30f1e","sha256":"6f2ae15e1e9ebbd9dfc29e3a6a8f1289e0519ed4911a149558351e96330d32dc"},{"name":"chefdk-0.17.17-1.el7.x86_64.rpm.asc","path":"el/7/chefdk-0.17.17-1.el7.x86_64.rpm.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:09.484Z","size":183,"sha1":"d5741c02077ff6516c70c6ee357a3eb238d3cd0e","sha256":"424ebd126a7ebb735bcc69f01d652aa6b9cfa819126297ef91703bcc791ade46"},{"name":"chefdk-0.17.17-1.dmg","path":"mac_os_x/10.10/chefdk-0.17.17-1.dmg","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:19.608Z","size":110351920,"sha1":"d84a9ed722bb1526937d94f811f406e74703ec81","sha256":"d38fddc706f202bb2871f931001ab12d4a8e0795c694adff9a3962a4aa7807e2"},{"name":"chefdk-0.17.17-1.dmg.asc","path":"mac_os_x/10.10/chefdk-0.17.17-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:50.171Z","size":183,"sha1":"7b3a6eee99012c80eb53e9e919c8dde97f8a0515","sha256":"583d2010b6bfebf7d32d161430fd47ec17a47b3f118af1b7e93adfabb4ebef00"},{"name":"chefdk-0.17.17-1.dmg","path":"mac_os_x/10.11/chefdk-0.17.17-1.dmg","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:31.332Z","size":110351920,"sha1":"d84a9ed722bb1526937d94f811f406e74703ec81","sha256":"d38fddc706f202bb2871f931001ab12d4a8e0795c694adff9a3962a4aa7807e2"},{"name":"chefdk-0.17.17-1.dmg.asc","path":"mac_os_x/10.11/chefdk-0.17.17-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:02.172Z","size":183,"sha1":"af96f7caaf7cc56e4174fa2e1b71cb571f2d8a96","sha256":"59cf12665c2d3541381ed3a156d41b9fa7f1daa9520b0743b9bf975da9107322"},{"name":"chefdk-0.17.17-1.dmg","path":"mac_os_x/10.9/chefdk-0.17.17-1.dmg","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:30.641Z","size":110351920,"sha1":"d84a9ed722bb1526937d94f811f406e74703ec81","sha256":"d38fddc706f202bb2871f931001ab12d4a8e0795c694adff9a3962a4aa7807e2"},{"name":"chefdk-0.17.17-1.dmg.asc","path":"mac_os_x/10.9/chefdk-0.17.17-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:18.306Z","size":183,"sha1":"cbcc52b6b8306f39c3465366abec178417a00d4e","sha256":"094a7e7b9627b7c7eac33edb2f605bc1b55e8bfa58a8535a3a035098b0f3ae17"},{"name":"chefdk_0.17.17-1_amd64.deb","path":"ubuntu/12.04/chefdk_0.17.17-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:29.962Z","size":140994748,"sha1":"fc37aadfbe5057b70783946852782afecb677e2d","sha256":"e247a5cf850f7c693a50b4a2cff07c3b4184c0ec0678493dfcd612e377bda6fd"},{"name":"chefdk_0.17.17-1_amd64.deb.asc","path":"ubuntu/12.04/chefdk_0.17.17-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:00.140Z","size":183,"sha1":"62b246d686ce0fa210dfabee682e612f5c9ef956","sha256":"ac364d1c24f9a424c1eac921a27ad2b9c9a6c3ba4a8f12fff9078c776dd4a670"},{"name":"chefdk_0.17.17-1_amd64.deb","path":"ubuntu/14.04/chefdk_0.17.17-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:10.093Z","size":140994748,"sha1":"fc37aadfbe5057b70783946852782afecb677e2d","sha256":"e247a5cf850f7c693a50b4a2cff07c3b4184c0ec0678493dfcd612e377bda6fd"},{"name":"chefdk_0.17.17-1_amd64.deb.asc","path":"ubuntu/14.04/chefdk_0.17.17-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:41.192Z","size":183,"sha1":"32bef35652a7853a483b9d3700242aec8a2186b6","sha256":"f34a81f2e9688437a0253ab16d7cb21008e928668708cc7095b9f420674b89b8"},{"name":"chefdk-0.17.17-1-x86.msi","path":"windows/2008r2/chefdk-0.17.17-1-x86.msi","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:54.848Z","size":373911552,"sha1":"c049dee6989da500cdaf7262dd8bdae2238891ab","sha256":"4c3d71085aace17112253a8e53a7f1a1064eec422878047a8607336e40a7b4f1"},{"name":"chefdk-0.17.17-1-x86.msi.asc","path":"windows/2008r2/chefdk-0.17.17-1-x86.msi.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:26:01.651Z","size":183,"sha1":"0ae90e29ae47dd99970685c92f3b17d5fedc9b27","sha256":"df169b0419b79944aedba9ab4b33d184d87611db8e2aefa5be5008020e4cabc1"},{"name":"chefdk-0.17.17-1-x86.msi","path":"windows/2012/chefdk-0.17.17-1-x86.msi","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:24:55.849Z","size":373911552,"sha1":"c049dee6989da500cdaf7262dd8bdae2238891ab","sha256":"4c3d71085aace17112253a8e53a7f1a1064eec422878047a8607336e40a7b4f1"},{"name":"chefdk-0.17.17-1-x86.msi.asc","path":"windows/2012/chefdk-0.17.17-1-x86.msi.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:26:16.571Z","size":183,"sha1":"df01f85dc3f1a08f2eb9139e32a0e00ab11335f7","sha256":"41f3bd7dad72ac27d0cbc277048d19c5cdc0ac3c36a5378c91044527b1d9f4a9"},{"name":"chefdk-0.17.17-1-x86.msi","path":"windows/2012r2/chefdk-0.17.17-1-x86.msi","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:25:00.470Z","size":373911552,"sha1":"c049dee6989da500cdaf7262dd8bdae2238891ab","sha256":"4c3d71085aace17112253a8e53a7f1a1064eec422878047a8607336e40a7b4f1"},{"name":"chefdk-0.17.17-1-x86.msi.asc","path":"windows/2012r2/chefdk-0.17.17-1-x86.msi.asc","repo":"stable","package":"chefdk","version":"0.17.17","owner":"chef","created":"2016-08-17T18:26:21.078Z","size":183,"sha1":"acb0f5b47ed04cd26c811fa11bc2d7a9ffc6fc32","sha256":"0ff2df16c2a205f09ee08b8a06e0fba808cf30632f92edda41c1664c76c7c8d9"}]'
+    http_version: 
+  recorded_at: Wed, 17 Aug 2016 23:19:29 GMT
+recorded_with: VCR 3.0.3

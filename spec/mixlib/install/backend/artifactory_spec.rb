@@ -45,11 +45,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
 
   context "when setting endpoint with trailing /" do
     it "it allows the training slash" do
-      custom_endpoint = if Mixlib::Install.unified_backend?
-                          "https://packages-acceptance.chef.io/"
-                        else
-                          "http://artifactory.chef.co/"
-                        end
+      custom_endpoint = "http://artifactory.chef.co/"
 
       wrap_env("ARTIFACTORY_ENDPOINT" => custom_endpoint) do
         artifactory.info
@@ -111,7 +107,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
   context "when querying chef-server" do
     let(:opts) {
       {
-        channel: :unstable,
+        channel: :current,
         product_name: "chef-server",
         product_version: :latest,
         platform: "ubuntu",
