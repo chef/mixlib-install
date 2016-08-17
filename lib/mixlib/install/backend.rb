@@ -17,7 +17,7 @@
 #
 
 require "mixlib/install/backend/artifactory"
-require "mixlib/install/backend/bintray"
+require "mixlib/install/backend/package_router"
 
 module Mixlib
   class Install
@@ -31,10 +31,10 @@ module Mixlib
       end
 
       def self.backend(options)
-        if options.for_artifactory?
+        if Mixlib::Install.artifactory_backend?
           Backend::Artifactory.new(options)
         else
-          Backend::Bintray.new(options)
+          Backend::PackageRouter.new(options)
         end
       end
     end

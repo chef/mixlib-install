@@ -17,7 +17,7 @@ artifact = Mixlib::Install.new(options).artifact_info
 # => ArtifactInfo
 
 artifact.url
-# => "http://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.5.1%2B20151009083009-1.dmg"
+# => "https://packages.chef.io/path/to/file.ext"
 ```
 
 ### Get list of artifacts for all platforms given a package version
@@ -32,7 +32,7 @@ artifacts = Mixlib::Install.new(options).artifact_info
 # => Array<ArtifactInfo>
 
 artifacts.first.url
-# => "http://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.5.1%2B20151009083009-1.dmg"
+# => "https://packages.chef.io/path/to/file.ext"
 ```
 
 ### Detect platform information
@@ -79,9 +79,6 @@ Mixlib::Install.new(options).available_versions
 
 # => ["12.13.3", "12.13.7", "12.13.8+20160721014124", "12.13.11+20160721165202"]
 ```
-
-## Unstable channel
-The `:unstable` channel is currently only available when connected to Chef's internal network.
 
 ## Feature Flags
 

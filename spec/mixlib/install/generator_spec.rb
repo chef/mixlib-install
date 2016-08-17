@@ -50,11 +50,6 @@ context "Mixlib::Install::Generator", :vcr do
 
     context "default shell type" do
       it_behaves_like "the correct sh script"
-
-      it "contains artifactory urls" do
-        expect(install_script).to include('artifact_info_for_platform="$tmp_dir/artifact_info/$platform/$platform_version/$machine/artifact_info"
-')
-      end
     end
   end
 

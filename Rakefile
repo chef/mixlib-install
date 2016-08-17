@@ -18,21 +18,19 @@ rescue LoadError
   puts "chefstyle/rubocop is not available.  gem install chefstyle to do style checking."
 end
 
-desc "Run specs for unified_backend (artifactory)"
-task :unified_backend do
-  ENV["MIXLIB_INSTALL_UNIFIED_BACKEND"] = "true"
-  ENV["ARTIFACTORY_ENDPOINT"] = "https://packages-acceptance.chef.io"
+desc "Run specs for artifactory_backend (artifactory)"
+task :artifactory_backend do
+  ENV["MIXLIB_INSTALL_ARTIFACTORY_BACKEND"] = "true"
   Rake::Task["spec"].reenable
   Rake::Task["spec"].invoke
-  ENV.delete "MIXLIB_INSTALL_UNIFIED_BACKEND"
-  ENV.delete "ARTIFACTORY_ENDPOINT"
+  ENV.delete "MIXLIB_INSTALL_ARTIFACTORY_BACKEND"
 end
 
 desc "Run all tests"
-task test: [:style, :spec, :unified_backend]
+task test: [:style, :spec, :artifactory_backend]
 
 desc "Run tests for Travis CI"
-task ci: [:style, :spec, :unified_backend]
+task ci: [:style, :spec, :artifactory_backend]
 
 desc "Render product matrix documentation"
 task "matrix" do
