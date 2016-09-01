@@ -17,7 +17,6 @@
 
 require "erb"
 require "ostruct"
-require "mixlib/install/backend/omnitruck"
 
 module Mixlib
   class Install
