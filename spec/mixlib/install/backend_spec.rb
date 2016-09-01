@@ -116,7 +116,11 @@ context "Mixlib::Install::Backend", :vcr do
     let(:product_version) { "12.2.1" }
 
     context "without platform info" do
-      let(:expected_info) { { version: "12.2.1" } }
+      let(:expected_info) do
+        {
+          version: "12.2.1",
+        }
+      end
 
       it_behaves_like "the right artifact list info"
     end

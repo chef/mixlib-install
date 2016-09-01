@@ -61,7 +61,11 @@ context "Mixlib::Install::Generator", :vcr do
     end
 
     context "sh shell type" do
-      let(:add_options) { { shell_type: :sh } }
+      let(:add_options) do
+        {
+          shell_type: :sh,
+        }
+      end
 
       it_behaves_like "the correct sh script"
     end
@@ -93,7 +97,11 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       context "when shell_type is set" do
-        let(:add_options) { { shell_type: :ps1 } }
+        let(:add_options) do
+          {
+            shell_type: :ps1,
+          }
+        end
 
         it_behaves_like "the correct ps1 script"
 
