@@ -28,10 +28,6 @@ context "Mixlib::Install::Options" do
   let(:architecture) { nil }
   let(:shell_type) { nil }
 
-  let(:options) do
-    Mixlib::Install::Options.new(channel: channel, product_name: product_name, product_version: product_version)
-  end
-
   context "for invalid product name option" do
     let(:product_name) { "foo" }
 
@@ -51,31 +47,12 @@ context "Mixlib::Install::Options" do
   context "for platform options" do
     let(:product_name) { "chef" }
     let(:product_version) { "1.2.3" }
-    let(:base_options) do
-      {
-        channel: channel,
-        product_name: product_name,
-        product_version: product_version,
-      }
-    end
 
     context "for shell type options" do
       let(:shell_type) { :foo }
 
       it "raises invalid shell type error" do
         expect { Mixlib::Install.new(shell_type: shell_type) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Unknown shell type/)
-      end
-    end
-  end
-
-  context "when MIXLIB_INSTALL_UNIFIED_BACKEND is set" do
-    let(:product_name) { "chef" }
-    let(:product_version) { :latest }
-    let(:channel) { :stable }
-
-    it "forces Artifactory as the backend for all channels" do
-      wrap_env("MIXLIB_INSTALL_UNIFIED_BACKEND" => "true") do
-        expect(options.for_artifactory?).to eq true
       end
     end
   end
