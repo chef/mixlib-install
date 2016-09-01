@@ -183,13 +183,5 @@ module Mixlib
     def self.install_ps1(context = {})
       Mixlib::Install::Generator::PowerShell.install_ps1(context)
     end
-
-    #
-    # Returns if unified_backend feature flag for mixlib-install is enabled
-    #
-    # @return [Boolean] true if feature is enabled, false otherwise.
-    def self.unified_backend?
-      !ENV["MIXLIB_INSTALL_UNIFIED_BACKEND"].nil?
-    end
   end
 end

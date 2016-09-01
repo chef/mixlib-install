@@ -26,9 +26,7 @@ module Mixlib
 
       attr_reader :options
 
-      OMNITRUCK_CHANNELS = [:stable, :current]
-      ARTIFACTORY_CHANNELS = [:unstable]
-      ALL_SUPPORTED_CHANNELS = OMNITRUCK_CHANNELS + ARTIFACTORY_CHANNELS
+      SUPPORTED_CHANNELS = [:stable, :current, :unstable]
       SUPPORTED_PRODUCT_NAMES = PRODUCT_MATRIX.products
       SUPPORTED_SHELL_TYPES = [:ps1, :sh]
       SUPPORTED_OPTIONS = [
@@ -68,18 +66,6 @@ module Mixlib
         define_method option do
           options[option] || options[option.to_s] || default_options[option]
         end
-      end
-
-      def for_artifactory?
-        Mixlib::Install.unified_backend? || ARTIFACTORY_CHANNELS.include?(channel)
-      end
-
-      def for_unstable?
-        channel == :unstable
-      end
-
-      def for_omnitruck?
-        OMNITRUCK_CHANNELS.include?(channel)
       end
 
       def for_ps1?
@@ -123,10 +109,10 @@ Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}
       end
 
       def validate_channels
-        unless ALL_SUPPORTED_CHANNELS.include? channel
+        unless SUPPORTED_CHANNELS.include? channel
           <<-EOS
 Unknown channel #{channel}.
-Must be one of: #{ALL_SUPPORTED_CHANNELS.join(", ")}
+Must be one of: #{SUPPORTED_CHANNELS.join(", ")}
           EOS
         end
       end

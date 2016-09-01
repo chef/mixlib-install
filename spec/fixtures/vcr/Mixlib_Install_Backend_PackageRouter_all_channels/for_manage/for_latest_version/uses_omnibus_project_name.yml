@@ -1,0 +1,1875 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/build/chef-manage
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - c1ec6ca2696a3944:3eed5ced:156c20cd259:-7f6b
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 3b198e22e0a31c3208306d85567e18a39b9a20d3246976957c634657623140df
+      Content-Length:
+      - '3695'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:32 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3151-SJC, cache-den6022-DEN
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1472760992.637416,VS0,VE103
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/2.4.1",
+            "started" : "2016-07-25T17:52:31.665+0000"
+          }, {
+            "uri" : "/2.2.1",
+            "started" : "2016-04-04T19:50:54.490+0000"
+          }, {
+            "uri" : "/2.4.3+20160901093525",
+            "started" : "2016-09-01T12:11:13.165+0000"
+          }, {
+            "uri" : "/2.4.3+20160827093520",
+            "started" : "2016-08-27T12:09:35.636+0000"
+          }, {
+            "uri" : "/2.2.0",
+            "started" : "2016-03-07T16:50:25.889+0000"
+          }, {
+            "uri" : "/2.4.2+20160824202228.git.3.e2c06de",
+            "started" : "2016-08-24T20:54:33.064+0000"
+          }, {
+            "uri" : "/2.4.1+20160813093522",
+            "started" : "2016-08-13T12:11:10.008+0000"
+          }, {
+            "uri" : "/2.4.0",
+            "started" : "2016-06-14T23:54:43.724+0000"
+          }, {
+            "uri" : "/2.4.2",
+            "started" : "2016-08-22T17:50:17.709+0000"
+          }, {
+            "uri" : "/2.4.1+20160820093521",
+            "started" : "2016-08-20T12:12:10.939+0000"
+          }, {
+            "uri" : "/2.4.1+20160814093528",
+            "started" : "2016-08-14T12:11:14.573+0000"
+          }, {
+            "uri" : "/2.4.1+20160805093522",
+            "started" : "2016-08-05T12:11:22.791+0000"
+          }, {
+            "uri" : "/2.3.0",
+            "started" : "2016-04-20T20:57:18.716+0000"
+          }, {
+            "uri" : "/2.4.1+20160810093521",
+            "started" : "2016-08-10T12:11:34.255+0000"
+          }, {
+            "uri" : "/2.4.3+20160830093528",
+            "started" : "2016-08-30T12:12:39.598+0000"
+          }, {
+            "uri" : "/2.4.3+20160828093522",
+            "started" : "2016-08-28T12:09:41.366+0000"
+          }, {
+            "uri" : "/2.1.0",
+            "started" : "2015-11-24T20:33:45.631+0000"
+          }, {
+            "uri" : "/2.4.1+20160819093519",
+            "started" : "2016-08-19T12:14:39.180+0000"
+          }, {
+            "uri" : "/2.4.1+20160807093523",
+            "started" : "2016-08-07T12:12:12.846+0000"
+          }, {
+            "uri" : "/2.4.1+20160802093525",
+            "started" : "2016-08-02T12:12:26.085+0000"
+          }, {
+            "uri" : "/2.4.1+20160809093523",
+            "started" : "2016-08-09T12:11:35.636+0000"
+          }, {
+            "uri" : "/2.4.2+20160823093522",
+            "started" : "2016-08-23T12:13:45.375+0000"
+          }, {
+            "uri" : "/2.1.1",
+            "started" : "2015-12-01T02:29:48.359+0000"
+          }, {
+            "uri" : "/2.4.1+20160816093523",
+            "started" : "2016-08-16T12:13:41.071+0000"
+          }, {
+            "uri" : "/2.4.1+20160806093527",
+            "started" : "2016-08-06T12:11:30.734+0000"
+          }, {
+            "uri" : "/2.4.1+20160822155432.git.2.f23d90d",
+            "started" : "2016-08-22T16:40:16.058+0000"
+          }, {
+            "uri" : "/2.4.3+20160831093523",
+            "started" : "2016-08-31T12:11:18.493+0000"
+          }, {
+            "uri" : "/2.4.1+20160822093522",
+            "started" : "2016-08-22T12:13:57.830+0000"
+          }, {
+            "uri" : "/2.4.3",
+            "started" : "2016-08-24T21:24:10.189+0000"
+          }, {
+            "uri" : "/2.4.3+20160829093522",
+            "started" : "2016-08-29T12:11:05.559+0000"
+          }, {
+            "uri" : "/2.4.1+20160803093523",
+            "started" : "2016-08-03T12:11:29.199+0000"
+          }, {
+            "uri" : "/2.4.3+20160825144831",
+            "started" : "2016-08-25T17:25:20.786+0000"
+          }, {
+            "uri" : "/2.4.1+20160821093524",
+            "started" : "2016-08-21T12:12:11.253+0000"
+          }, {
+            "uri" : "/2.1.2",
+            "started" : "2016-01-26T19:08:13.949+0000"
+          }, {
+            "uri" : "/2.4.1+20160811093519",
+            "started" : "2016-08-11T12:11:18.478+0000"
+          }, {
+            "uri" : "/2.4.3+20160826093521",
+            "started" : "2016-08-26T12:10:03.610+0000"
+          }, {
+            "uri" : "/2.4.1+20160804093519",
+            "started" : "2016-08-04T12:11:01.898+0000"
+          }, {
+            "uri" : "/2.4.1+20160808093524",
+            "started" : "2016-08-08T12:11:13.998+0000"
+          }, {
+            "uri" : "/2.4.2+20160824093522",
+            "started" : "2016-08-24T12:13:07.705+0000"
+          }, {
+            "uri" : "/2.4.1+20160818093525",
+            "started" : "2016-08-18T12:13:24.226+0000"
+          }, {
+            "uri" : "/2.4.1+20160815093524",
+            "started" : "2016-08-15T12:12:26.399+0000"
+          } ],
+          "uri" : "https://packages.chef.io/api/build/chef-manage"
+        }
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160901093525/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ec7c72de6a07411ecb298e44b1f2454d3ace38e1f3aea9142a2d584609d31309
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:32 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3140-SJC, cache-den6023-DEN
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1472760992.767820,VS0,VE50
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160831093523/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 9ec715cc90609c8f2016c8db0eddd82cd1f8f8c9e8b0c110a0de327a0061176b
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:32 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3121-SJC, cache-den6027-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760992.843800,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160830093528/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 47cc2c8093c72b665d642ac158bd8aa6558e06acba7b7672c564fa20edc50236
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:32 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3126-SJC, cache-den6023-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760992.871359,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160829093522/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - db673182c81556acf500bb3d80994a55104ed3c90ccc3c4031e6abda48b54b9f
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:32 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3126-SJC, cache-den6023-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760992.898975,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160828093522/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 3bd053a76a0688e6fc2194962410e05f6e2f536444e25690fc58a0815b4275a3
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:32 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3126-SJC, cache-den6021-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760992.923491,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160827093520/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 2873422e0145633bc623cd73addfa893caeee6e528974462f84df39cde79d25e
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:32 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3129-SJC, cache-den6026-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760992.948687,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160826093521/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 7b3bc029984387b5eb940f3850137a95866bf455b2627dc8426c099902cc1915
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:32 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3129-SJC, cache-den6024-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760992.975103,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160825144831/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - a5d8262342efbde1f54dbba20e5495ee6bf4abdbd072bdac89d65887942189ab
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3121-SJC, cache-den6024-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.000003,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - c1ec6ca2696a3944:3eed5ced:156c20cd259:-7f6b
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 1caef311f705b7d07af75552c6fb465f481f816c62385b68fa71b51df0b97a20
+      Content-Length:
+      - '7667'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3150-SJC, cache-den6022-DEN
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1472760993.024705,VS0,VE177
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/6",
+          "name" : "chef-manage-2.4.3-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "0f58439022f8c9c04abd26e7edfa0f2b4bf45df8"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "7d2ca7856e41fe4a3d24cd9ae9da24acfbc2ae8a5ef8582565cdda065e0049600cd464dd5ef1867a4a9712ca4cada2e5a36f78eb21a7461adfa1acf8c64c3501"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2095e2cce34ba1e469357b03f6e7757f17ccadffed28f0e0a447d3bcf2f1c965"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "cb0fd962a298a52b77739125dfde2edd"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/7",
+          "name" : "chef-manage-2.4.3-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "727f88ffed2052bc1a1e952fcbc55a111c2332ef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b00373d316b590224cff194321fd4b4b0f62e1e6fb5ea256b53c7d6452b76f4708c6554922b9d687c3d450a79029d42c602a5d4aa667d20f7397c50d250f8b"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "554327a23197cb0c95a255b41171085c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "94dab85670e2e40a20b6efc12a9fae30fd2c517331f839bc43307cdd680ad415"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/16.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e5dbd214b06a87d019b2131eaeaa635c4e7ed73fbb38c9dcb34b4625de017b9d527f0116747cc114ea9579ddf7e95bf2374a16ae963cce46b56ed8ae16afcf0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0af176eb721daf021559f7df9e72e99c2f5f55aa39a1b7358a643955fbe91349"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1e51e789dbdfa48584f9656976fd8cc5"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "35a113952bf8cd3408f3c5b8d7a1034c4039e767"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/14.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e5dbd214b06a87d019b2131eaeaa635c4e7ed73fbb38c9dcb34b4625de017b9d527f0116747cc114ea9579ddf7e95bf2374a16ae963cce46b56ed8ae16afcf0"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0af176eb721daf021559f7df9e72e99c2f5f55aa39a1b7358a643955fbe91349"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1e51e789dbdfa48584f9656976fd8cc5"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "35a113952bf8cd3408f3c5b8d7a1034c4039e767"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/12.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1e51e789dbdfa48584f9656976fd8cc5"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0af176eb721daf021559f7df9e72e99c2f5f55aa39a1b7358a643955fbe91349"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "35a113952bf8cd3408f3c5b8d7a1034c4039e767"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e5dbd214b06a87d019b2131eaeaa635c4e7ed73fbb38c9dcb34b4625de017b9d527f0116747cc114ea9579ddf7e95bf2374a16ae963cce46b56ed8ae16afcf0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/5",
+          "name" : "chef-manage-2.4.3-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "93cb65e43144f513c40a616b77cc755018a1bda478f06d016e29aa6ef1b7cc0d63ccae8766ca0e22eb3febddf14c84202fc63042b706afaf386a9b87983181d0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "0377ed1a828e6443bfe02027f7659e10f40376b4"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "d78d831c57c758403e9d6cf378e7fda7"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "46cea36ae7954d128e67a81f5da23de943c61c622629ff600942ae9de75849ec"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 6,
+          "total" : 6
+        }
+        }
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/build/chef-manage
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/vnd.org.jfrog.build.BuildsByName+json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - c1ec6ca2696a3944:3eed5ced:156c20cd259:-7f6b
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 3b198e22e0a31c3208306d85567e18a39b9a20d3246976957c634657623140df
+      Content-Length:
+      - '3695'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3151-SJC, cache-den6023-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.227415,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "buildsNumbers" : [ {
+            "uri" : "/2.4.1",
+            "started" : "2016-07-25T17:52:31.665+0000"
+          }, {
+            "uri" : "/2.2.1",
+            "started" : "2016-04-04T19:50:54.490+0000"
+          }, {
+            "uri" : "/2.4.3+20160901093525",
+            "started" : "2016-09-01T12:11:13.165+0000"
+          }, {
+            "uri" : "/2.4.3+20160827093520",
+            "started" : "2016-08-27T12:09:35.636+0000"
+          }, {
+            "uri" : "/2.2.0",
+            "started" : "2016-03-07T16:50:25.889+0000"
+          }, {
+            "uri" : "/2.4.2+20160824202228.git.3.e2c06de",
+            "started" : "2016-08-24T20:54:33.064+0000"
+          }, {
+            "uri" : "/2.4.1+20160813093522",
+            "started" : "2016-08-13T12:11:10.008+0000"
+          }, {
+            "uri" : "/2.4.0",
+            "started" : "2016-06-14T23:54:43.724+0000"
+          }, {
+            "uri" : "/2.4.2",
+            "started" : "2016-08-22T17:50:17.709+0000"
+          }, {
+            "uri" : "/2.4.1+20160820093521",
+            "started" : "2016-08-20T12:12:10.939+0000"
+          }, {
+            "uri" : "/2.4.1+20160814093528",
+            "started" : "2016-08-14T12:11:14.573+0000"
+          }, {
+            "uri" : "/2.4.1+20160805093522",
+            "started" : "2016-08-05T12:11:22.791+0000"
+          }, {
+            "uri" : "/2.3.0",
+            "started" : "2016-04-20T20:57:18.716+0000"
+          }, {
+            "uri" : "/2.4.1+20160810093521",
+            "started" : "2016-08-10T12:11:34.255+0000"
+          }, {
+            "uri" : "/2.4.3+20160830093528",
+            "started" : "2016-08-30T12:12:39.598+0000"
+          }, {
+            "uri" : "/2.4.3+20160828093522",
+            "started" : "2016-08-28T12:09:41.366+0000"
+          }, {
+            "uri" : "/2.1.0",
+            "started" : "2015-11-24T20:33:45.631+0000"
+          }, {
+            "uri" : "/2.4.1+20160819093519",
+            "started" : "2016-08-19T12:14:39.180+0000"
+          }, {
+            "uri" : "/2.4.1+20160807093523",
+            "started" : "2016-08-07T12:12:12.846+0000"
+          }, {
+            "uri" : "/2.4.1+20160802093525",
+            "started" : "2016-08-02T12:12:26.085+0000"
+          }, {
+            "uri" : "/2.4.1+20160809093523",
+            "started" : "2016-08-09T12:11:35.636+0000"
+          }, {
+            "uri" : "/2.4.2+20160823093522",
+            "started" : "2016-08-23T12:13:45.375+0000"
+          }, {
+            "uri" : "/2.1.1",
+            "started" : "2015-12-01T02:29:48.359+0000"
+          }, {
+            "uri" : "/2.4.1+20160816093523",
+            "started" : "2016-08-16T12:13:41.071+0000"
+          }, {
+            "uri" : "/2.4.1+20160806093527",
+            "started" : "2016-08-06T12:11:30.734+0000"
+          }, {
+            "uri" : "/2.4.1+20160822155432.git.2.f23d90d",
+            "started" : "2016-08-22T16:40:16.058+0000"
+          }, {
+            "uri" : "/2.4.3+20160831093523",
+            "started" : "2016-08-31T12:11:18.493+0000"
+          }, {
+            "uri" : "/2.4.1+20160822093522",
+            "started" : "2016-08-22T12:13:57.830+0000"
+          }, {
+            "uri" : "/2.4.3",
+            "started" : "2016-08-24T21:24:10.189+0000"
+          }, {
+            "uri" : "/2.4.3+20160829093522",
+            "started" : "2016-08-29T12:11:05.559+0000"
+          }, {
+            "uri" : "/2.4.1+20160803093523",
+            "started" : "2016-08-03T12:11:29.199+0000"
+          }, {
+            "uri" : "/2.4.3+20160825144831",
+            "started" : "2016-08-25T17:25:20.786+0000"
+          }, {
+            "uri" : "/2.4.1+20160821093524",
+            "started" : "2016-08-21T12:12:11.253+0000"
+          }, {
+            "uri" : "/2.1.2",
+            "started" : "2016-01-26T19:08:13.949+0000"
+          }, {
+            "uri" : "/2.4.1+20160811093519",
+            "started" : "2016-08-11T12:11:18.478+0000"
+          }, {
+            "uri" : "/2.4.3+20160826093521",
+            "started" : "2016-08-26T12:10:03.610+0000"
+          }, {
+            "uri" : "/2.4.1+20160804093519",
+            "started" : "2016-08-04T12:11:01.898+0000"
+          }, {
+            "uri" : "/2.4.1+20160808093524",
+            "started" : "2016-08-08T12:11:13.998+0000"
+          }, {
+            "uri" : "/2.4.2+20160824093522",
+            "started" : "2016-08-24T12:13:07.705+0000"
+          }, {
+            "uri" : "/2.4.1+20160818093525",
+            "started" : "2016-08-18T12:13:24.226+0000"
+          }, {
+            "uri" : "/2.4.1+20160815093524",
+            "started" : "2016-08-15T12:12:26.399+0000"
+          } ],
+          "uri" : "https://packages.chef.io/api/build/chef-manage"
+        }
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160901093525/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ec7c72de6a07411ecb298e44b1f2454d3ace38e1f3aea9142a2d584609d31309
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3140-SJC, cache-den6021-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.251295,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160831093523/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 9ec715cc90609c8f2016c8db0eddd82cd1f8f8c9e8b0c110a0de327a0061176b
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3121-SJC, cache-den6020-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.276158,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160830093528/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 47cc2c8093c72b665d642ac158bd8aa6558e06acba7b7672c564fa20edc50236
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3126-SJC, cache-den6026-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.301607,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160829093522/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - db673182c81556acf500bb3d80994a55104ed3c90ccc3c4031e6abda48b54b9f
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3126-SJC, cache-den6027-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 3
+      X-Timer:
+      - S1472760993.326925,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160828093522/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 3bd053a76a0688e6fc2194962410e05f6e2f536444e25690fc58a0815b4275a3
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3126-SJC, cache-den6023-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.354869,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160827093520/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 2873422e0145633bc623cd73addfa893caeee6e528974462f84df39cde79d25e
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3129-SJC, cache-den6027-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.379714,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160826093521/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 7b3bc029984387b5eb940f3850137a95866bf455b2627dc8426c099902cc1915
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3129-SJC, cache-den6020-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.403449,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3+20160825144831/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html
+      Server:
+      - nginx
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - a5d8262342efbde1f54dbba20e5495ee6bf4abdbd072bdac89d65887942189ab
+      Content-Length:
+      - '162'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '2196'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3121-SJC, cache-den6027-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 15
+      X-Timer:
+      - S1472760993.428367,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+        Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.3/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - c1ec6ca2696a3944:3eed5ced:156c20cd259:-7f6b
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 1caef311f705b7d07af75552c6fb465f481f816c62385b68fa71b51df0b97a20
+      Content-Length:
+      - '7667'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:33 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3150-SJC, cache-den6026-DEN
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1472760993.452754,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/6",
+          "name" : "chef-manage-2.4.3-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "0f58439022f8c9c04abd26e7edfa0f2b4bf45df8"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "7d2ca7856e41fe4a3d24cd9ae9da24acfbc2ae8a5ef8582565cdda065e0049600cd464dd5ef1867a4a9712ca4cada2e5a36f78eb21a7461adfa1acf8c64c3501"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "2095e2cce34ba1e469357b03f6e7757f17ccadffed28f0e0a447d3bcf2f1c965"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "cb0fd962a298a52b77739125dfde2edd"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/7",
+          "name" : "chef-manage-2.4.3-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "727f88ffed2052bc1a1e952fcbc55a111c2332ef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d2b00373d316b590224cff194321fd4b4b0f62e1e6fb5ea256b53c7d6452b76f4708c6554922b9d687c3d450a79029d42c602a5d4aa667d20f7397c50d250f8b"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "554327a23197cb0c95a255b41171085c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "94dab85670e2e40a20b6efc12a9fae30fd2c517331f839bc43307cdd680ad415"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/16.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e5dbd214b06a87d019b2131eaeaa635c4e7ed73fbb38c9dcb34b4625de017b9d527f0116747cc114ea9579ddf7e95bf2374a16ae963cce46b56ed8ae16afcf0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0af176eb721daf021559f7df9e72e99c2f5f55aa39a1b7358a643955fbe91349"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1e51e789dbdfa48584f9656976fd8cc5"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "35a113952bf8cd3408f3c5b8d7a1034c4039e767"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/14.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e5dbd214b06a87d019b2131eaeaa635c4e7ed73fbb38c9dcb34b4625de017b9d527f0116747cc114ea9579ddf7e95bf2374a16ae963cce46b56ed8ae16afcf0"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0af176eb721daf021559f7df9e72e99c2f5f55aa39a1b7358a643955fbe91349"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1e51e789dbdfa48584f9656976fd8cc5"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "35a113952bf8cd3408f3c5b8d7a1034c4039e767"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/12.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1e51e789dbdfa48584f9656976fd8cc5"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0af176eb721daf021559f7df9e72e99c2f5f55aa39a1b7358a643955fbe91349"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "35a113952bf8cd3408f3c5b8d7a1034c4039e767"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e5dbd214b06a87d019b2131eaeaa635c4e7ed73fbb38c9dcb34b4625de017b9d527f0116747cc114ea9579ddf7e95bf2374a16ae963cce46b56ed8ae16afcf0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/5",
+          "name" : "chef-manage-2.4.3-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "93cb65e43144f513c40a616b77cc755018a1bda478f06d016e29aa6ef1b7cc0d63ccae8766ca0e22eb3febddf14c84202fc63042b706afaf386a9b87983181d0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "0377ed1a828e6443bfe02027f7659e10f40376b4"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "d78d831c57c758403e9d6cf378e7fda7"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "46cea36ae7954d128e67a81f5da23de943c61c622629ff600942ae9de75849ec"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.3"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 6,
+          "total" : 6
+        }
+        }
+    http_version: 
+  recorded_at: Thu, 01 Sep 2016 20:16:37 GMT
+recorded_with: VCR 3.0.3

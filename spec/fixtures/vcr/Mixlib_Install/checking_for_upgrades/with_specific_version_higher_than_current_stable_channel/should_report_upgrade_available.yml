@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://mixlib-install%40chef:a83d3a2ffad50eb9a2230f281a2e19b70fe0db2d@bintray.com/api/v1/packages/chef/stable/chefdk/versions/0.7.0/files
+    uri: https://packages.chef.io/api/v1/stable/chefdk/0.7.0/artifacts
     body:
       encoding: US-ASCII
       string: ''
@@ -18,25 +18,539 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Server:
-      - nginx
-      Date:
-      - Thu, 21 Jul 2016 20:39:35 GMT
       Content-Type:
       - application/json
-      Transfer-Encoding:
-      - chunked
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - c1ec6ca2696a3944:3eed5ced:156c20cd259:-7f6b
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 9018165da1d9263b45abf0c068d6fdce20e29167313c77f207af0d845c903166
+      Content-Length:
+      - '13398'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 01 Sep 2016 20:16:44 GMT
+      Age:
+      - '0'
       Connection:
       - keep-alive
-      X-Ratelimit-Limit:
-      - '0'
-      X-Ratelimit-Remaining:
-      - '0'
-      Strict-Transport-Security:
-      - max-age=0
+      X-Served-By:
+      - cache-sjc3133-SJC, cache-den6027-DEN
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1472761004.852889,VS0,VE81
     body:
       encoding: UTF-8
-      string: '[{"name":"chefdk_0.7.0-1_amd64.deb","path":"debian/6/chefdk_0.7.0-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:03.698Z","size":131732954,"sha1":"bb41a8f5986dd0b8a6f959d0f39c8b9f3b1e9560","sha256":"9fa98dd60109528f015a9cc6bde93de88ad6763b8dc2396a7bedb6b33a7dcfa6"},{"name":"chefdk_0.7.0-1_amd64.deb.asc","path":"debian/6/chefdk_0.7.0-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:12:06.618Z","size":183,"sha1":"581fe6a73236c072b6ae5c97aab9c23a6994a151","sha256":"40b26c01ff17844646f4d83f59391d18ce5fc7e9cb156e4d947c008cc38bf442"},{"name":"chefdk_0.7.0-1_amd64.deb","path":"debian/7/chefdk_0.7.0-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:14.765Z","size":131732954,"sha1":"bb41a8f5986dd0b8a6f959d0f39c8b9f3b1e9560","sha256":"9fa98dd60109528f015a9cc6bde93de88ad6763b8dc2396a7bedb6b33a7dcfa6"},{"name":"chefdk_0.7.0-1_amd64.deb.asc","path":"debian/7/chefdk_0.7.0-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:55.835Z","size":183,"sha1":"0c5f3d0ea8403df5421d5037d56783b3f2055ce8","sha256":"ef250303bfc45f9445aa16461a216dce7fe7e5588288d95746bb31def900ec46"},{"name":"chefdk-0.7.0-1.el6.x86_64.rpm","path":"el/6/chefdk-0.7.0-1.el6.x86_64.rpm","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:23.589Z","size":146778860,"sha1":"1842f847bf0fa87d54126189962e779e1886d831","sha256":"e37a5ff699babc9a45eeb15a0e0d85d6798103dca27825007a18da342fed1943"},{"name":"chefdk-0.7.0-1.el6.x86_64.rpm.asc","path":"el/6/chefdk-0.7.0-1.el6.x86_64.rpm.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:12:01.297Z","size":183,"sha1":"1b25f3d579aac494c8680af2346e5a47756c57a3","sha256":"f6e58837d836bdf028b959320f25c3257051f6fb2cfb58f0e797dc8ac1b378d4"},{"name":"chefdk-0.7.0-1.el7.x86_64.rpm","path":"el/7/chefdk-0.7.0-1.el7.x86_64.rpm","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:22.173Z","size":148044883,"sha1":"05c5b4a36dcf17f8aa9e5fe0a00a07c2427b6282","sha256":"25fc5c738ddca41e86cfd4ee111257f2e86f47bd726991432c89384d451d6e5c"},{"name":"chefdk-0.7.0-1.el7.x86_64.rpm.asc","path":"el/7/chefdk-0.7.0-1.el7.x86_64.rpm.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:52.719Z","size":183,"sha1":"a31784cbb1a9004858493ee2adc13058f9c581a9","sha256":"2c95b880816b7eb49b704019d062241a18466aaa261184a95440e413b805c53b"},{"name":"chefdk-0.7.0-1.dmg","path":"mac_os_x/10.10/chefdk-0.7.0-1.dmg","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:08.655Z","size":105016945,"sha1":"d02224d1c458f6564fc9b818ab139380a5c65fec","sha256":"5732bb6048f980cce4786ab786275cc6fd19fa2ee02efa4191f86afc5a14becc"},{"name":"chefdk-0.7.0-1.dmg.asc","path":"mac_os_x/10.10/chefdk-0.7.0-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:39.279Z","size":183,"sha1":"e951fd49489545c0cca5bcb6d7bba8450a2ad0d0","sha256":"b239e5c1c751910ab162dd00a7d9ac565093eee645c33c25e57129ad7015532f"},{"name":"chefdk-0.7.0-1.dmg","path":"mac_os_x/10.8/chefdk-0.7.0-1.dmg","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:34.145Z","size":105016945,"sha1":"d02224d1c458f6564fc9b818ab139380a5c65fec","sha256":"5732bb6048f980cce4786ab786275cc6fd19fa2ee02efa4191f86afc5a14becc"},{"name":"chefdk-0.7.0-1.dmg.asc","path":"mac_os_x/10.8/chefdk-0.7.0-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:56.089Z","size":183,"sha1":"1ce58904b1c964b579dee070d96bf2ac8c225577","sha256":"a817751dafebccad38a11bea1ce050e98fa8b2295f736f0ba23ccf52431a9567"},{"name":"chefdk-0.7.0-1.dmg","path":"mac_os_x/10.9/chefdk-0.7.0-1.dmg","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:12.703Z","size":105016945,"sha1":"d02224d1c458f6564fc9b818ab139380a5c65fec","sha256":"5732bb6048f980cce4786ab786275cc6fd19fa2ee02efa4191f86afc5a14becc"},{"name":"chefdk-0.7.0-1.dmg.asc","path":"mac_os_x/10.9/chefdk-0.7.0-1.dmg.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:12:05.844Z","size":183,"sha1":"f252d17d321ed17b02bd08767f197aeef136ad1a","sha256":"2431e445b302c79c4341e0459624c25ddc51c1d53781677f3d3098bdce807271"},{"name":"chefdk_0.7.0-1_amd64.deb","path":"ubuntu/12.04/chefdk_0.7.0-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:12.139Z","size":142226684,"sha1":"d270fe4c800ceaef533d2bc2d0aed4177d0666ec","sha256":"58b2e95768427f479b2114e02c924af1c51ed6b98fce829b439cc90692c3ca64"},{"name":"chefdk_0.7.0-1_amd64.deb.asc","path":"ubuntu/12.04/chefdk_0.7.0-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:12:16.243Z","size":183,"sha1":"de2c45410619ed2197e858054c8a7ff7b2551895","sha256":"d5c9006a6396194cefa9bfa77e3bb82b60d46bab40b2248b8c4f457fe40fc6b2"},{"name":"chefdk_0.7.0-1_amd64.deb","path":"ubuntu/14.04/chefdk_0.7.0-1_amd64.deb","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:09.659Z","size":142226684,"sha1":"d270fe4c800ceaef533d2bc2d0aed4177d0666ec","sha256":"58b2e95768427f479b2114e02c924af1c51ed6b98fce829b439cc90692c3ca64"},{"name":"chefdk_0.7.0-1_amd64.deb.asc","path":"ubuntu/14.04/chefdk_0.7.0-1_amd64.deb.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:57.299Z","size":183,"sha1":"09f88b01879db9c1ea6f6ade68228fa15ccf88d6","sha256":"3551fe221a67816b961cacc8e8bde404e4ffaea14e8015b28b43c9af55c00c0b"},{"name":"chefdk-0.7.0-1.msi","path":"windows/2008r2/chefdk-0.7.0-1.msi","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:34.818Z","size":275972096,"sha1":"5d206cfeafdc900ad69abfc1af16a43dc7b46be8","sha256":"d7b349ac9873c623b0ec4ad9a1d96b5aabbbf4767949d76fa80162a6d1458c6d"},{"name":"chefdk-0.7.0-1.msi.asc","path":"windows/2008r2/chefdk-0.7.0-1.msi.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:12:43.323Z","size":183,"sha1":"66ee7665296e8a371d3a0cc1bf3b13bcaedaeb91","sha256":"e8b5c9e69a990b290b48d989057a526ebae8879429ab668b48503818271d18b4"},{"name":"chefdk-0.7.0-1.msi","path":"windows/2012/chefdk-0.7.0-1.msi","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:28.782Z","size":275972096,"sha1":"5d206cfeafdc900ad69abfc1af16a43dc7b46be8","sha256":"d7b349ac9873c623b0ec4ad9a1d96b5aabbbf4767949d76fa80162a6d1458c6d"},{"name":"chefdk-0.7.0-1.msi.asc","path":"windows/2012/chefdk-0.7.0-1.msi.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:12:30.431Z","size":183,"sha1":"0a94e85be8720640ce872acfbe8638d715989ce1","sha256":"43526b041262df42427d5efd1c415a7a49bee8d8b7615371dfac5ec96a8cdcf2"},{"name":"chefdk-0.7.0-1.msi","path":"windows/2012r2/chefdk-0.7.0-1.msi","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:11:29.920Z","size":275972096,"sha1":"5d206cfeafdc900ad69abfc1af16a43dc7b46be8","sha256":"d7b349ac9873c623b0ec4ad9a1d96b5aabbbf4767949d76fa80162a6d1458c6d"},{"name":"chefdk-0.7.0-1.msi.asc","path":"windows/2012r2/chefdk-0.7.0-1.msi.asc","repo":"stable","package":"chefdk","version":"0.7.0","owner":"chef","created":"2016-02-25T20:12:29.318Z","size":183,"sha1":"d2f00cdec678e3d4b7ac86e1d25bd8f9b3d86fd9","sha256":"075af1b1c6ee22a69bfc2f74411aff14b0086705b6cd0e9041937306d5e8eb14"}]'
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/mac_os_x/10.10",
+          "name" : "chefdk-0.7.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "e0bae9554fb42ee1315b94082a19677f"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.10"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d02224d1c458f6564fc9b818ab139380a5c65fec"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "5732bb6048f980cce4786ab786275cc6fd19fa2ee02efa4191f86afc5a14becc"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1a49d0a4b3c5e06d638f351e3f02ef4618ad70ac84bb7e8874d44fffed3a8cd3d6c24e9c7c77ceaca8f4b077ab5ac3e1fce052952057bc252db29ae1db054c0c"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/mac_os_x/10.9",
+          "name" : "chefdk-0.7.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "10.9"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d02224d1c458f6564fc9b818ab139380a5c65fec"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "5732bb6048f980cce4786ab786275cc6fd19fa2ee02efa4191f86afc5a14becc"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "e0bae9554fb42ee1315b94082a19677f"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1a49d0a4b3c5e06d638f351e3f02ef4618ad70ac84bb7e8874d44fffed3a8cd3d6c24e9c7c77ceaca8f4b077ab5ac3e1fce052952057bc252db29ae1db054c0c"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/windows/2012",
+          "name" : "chefdk-0.7.0-1.msi",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d7b349ac9873c623b0ec4ad9a1d96b5aabbbf4767949d76fa80162a6d1458c6d"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e0dbed3bd9e07ac5f9dd5f75abde957e013a996f3b6ca4ccf4a3fb39ada1651031dc2f15542792c04b4e6b42afae9868f0492263cca7b437fa69cdae4e9e390"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5d206cfeafdc900ad69abfc1af16a43dc7b46be8"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "52cee06412d7a93c53b1e19eaa483168"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/debian/6",
+          "name" : "chefdk_0.7.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "bb41a8f5986dd0b8a6f959d0f39c8b9f3b1e9560"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c1ee1f2e4f9c026f50c17c3766833955"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9fa98dd60109528f015a9cc6bde93de88ad6763b8dc2396a7bedb6b33a7dcfa6"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "80701142122d54a5381bffb77efc94b7ecc8b6d71bac5e5d291555a20080b44d78b5e7bc85ebbc6af53680fe13e1a41750ff7b544bec93a46bb0f14a736430ca"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/mac_os_x/10.8",
+          "name" : "chefdk-0.7.0-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "e0bae9554fb42ee1315b94082a19677f"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d02224d1c458f6564fc9b818ab139380a5c65fec"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.8"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1a49d0a4b3c5e06d638f351e3f02ef4618ad70ac84bb7e8874d44fffed3a8cd3d6c24e9c7c77ceaca8f4b077ab5ac3e1fce052952057bc252db29ae1db054c0c"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "5732bb6048f980cce4786ab786275cc6fd19fa2ee02efa4191f86afc5a14becc"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/debian/7",
+          "name" : "chefdk_0.7.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9fa98dd60109528f015a9cc6bde93de88ad6763b8dc2396a7bedb6b33a7dcfa6"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "80701142122d54a5381bffb77efc94b7ecc8b6d71bac5e5d291555a20080b44d78b5e7bc85ebbc6af53680fe13e1a41750ff7b544bec93a46bb0f14a736430ca"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c1ee1f2e4f9c026f50c17c3766833955"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "bb41a8f5986dd0b8a6f959d0f39c8b9f3b1e9560"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/windows/2012r2",
+          "name" : "chefdk-0.7.0-1.msi",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d7b349ac9873c623b0ec4ad9a1d96b5aabbbf4767949d76fa80162a6d1458c6d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "52cee06412d7a93c53b1e19eaa483168"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e0dbed3bd9e07ac5f9dd5f75abde957e013a996f3b6ca4ccf4a3fb39ada1651031dc2f15542792c04b4e6b42afae9868f0492263cca7b437fa69cdae4e9e390"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5d206cfeafdc900ad69abfc1af16a43dc7b46be8"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/el/7",
+          "name" : "chefdk-0.7.0-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "05c5b4a36dcf17f8aa9e5fe0a00a07c2427b6282"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "25fc5c738ddca41e86cfd4ee111257f2e86f47bd726991432c89384d451d6e5c"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5ea616ffdc776dbbeed35c0376ca4545021fd93eba8ed0b1d7e7cac62437b63947d1cca537b3fca8e498334cf78f28bd90c1309316fbf7059623066adcbde7c6"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "272698b3cc09bf679f20bdcf207796d2"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/el/6",
+          "name" : "chefdk-0.7.0-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a33f646f48051de17d1b9a6671f5b0b879ae27129ae69b4a4336efdc3817f58b3c412712adf82f72fd837a18d1092f905d77d6ee654b533cf1ef869063880b6d"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "e37a5ff699babc9a45eeb15a0e0d85d6798103dca27825007a18da342fed1943"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c483ab76efaf2b5cfcbe6d1a084ba100"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1842f847bf0fa87d54126189962e779e1886d831"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/ubuntu/14.04",
+          "name" : "chefdk_0.7.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "58b2e95768427f479b2114e02c924af1c51ed6b98fce829b439cc90692c3ca64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "b928eb09c145952664bc801cc77e8a0a"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d270fe4c800ceaef533d2bc2d0aed4177d0666ec"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "205bedfc08d47c1e0a98c2e052f17568b4be4c62d8343783959c4bbd61eaad457327da61dda100c78f28175b7744586a37a3f9d7ade559bc086850c3e6d460a6"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/windows/2008r2",
+          "name" : "chefdk-0.7.0-1.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5d206cfeafdc900ad69abfc1af16a43dc7b46be8"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "52cee06412d7a93c53b1e19eaa483168"
+          }, {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6e0dbed3bd9e07ac5f9dd5f75abde957e013a996f3b6ca4ccf4a3fb39ada1651031dc2f15542792c04b4e6b42afae9868f0492263cca7b437fa69cdae4e9e390"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d7b349ac9873c623b0ec4ad9a1d96b5aabbbf4767949d76fa80162a6d1458c6d"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chefdk/0.7.0/ubuntu/12.04",
+          "name" : "chefdk_0.7.0-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.7.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "58b2e95768427f479b2114e02c924af1c51ed6b98fce829b439cc90692c3ca64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "b928eb09c145952664bc801cc77e8a0a"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chefdk"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "d270fe4c800ceaef533d2bc2d0aed4177d0666ec"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "205bedfc08d47c1e0a98c2e052f17568b4be4c62d8343783959c4bbd61eaad457327da61dda100c78f28175b7744586a37a3f9d7ade559bc086850c3e6d460a6"
+          }, {
+            "key" : "build.number",
+            "value" : "0.7.0"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 12,
+          "total" : 12
+        }
+        }
     http_version: 
-  recorded_at: Thu, 21 Jul 2016 20:39:35 GMT
+  recorded_at: Thu, 01 Sep 2016 20:16:49 GMT
 recorded_with: VCR 3.0.3

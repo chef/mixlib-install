@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock", "~> 1.0"
   spec.add_development_dependency "chefstyle", "~> 0.3"
+  spec.add_development_dependency "simplecov"
 end
