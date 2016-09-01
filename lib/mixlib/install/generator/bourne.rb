@@ -16,7 +16,6 @@
 #
 
 require "mixlib/install/generator/base"
-require "mixlib/install/backend/artifactory"
 
 module Mixlib
   class Install
