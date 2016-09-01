@@ -46,13 +46,7 @@ module Mixlib
           install_command << get_script("helpers.sh")
           install_command << render_variables
           install_command << get_script("platform_detection.sh")
-          # Since omnitruck can not resolve unstable we need to inject direct
-          # urls for the packages here.
-          if options.for_unstable?
-            install_command << artifactory_urls
-          else
-            install_command << get_script("fetch_metadata.sh")
-          end
+          install_command << get_script("fetch_metadata.sh")
           install_command << get_script("fetch_package.sh")
           install_command << get_script("install_package.sh")
 
@@ -65,11 +59,6 @@ project=#{options.product_name}
 version=#{options.product_version}
 channel=#{options.channel}
 EOS
-        end
-
-        def artifactory_urls
-          artifacts = Mixlib::Install::Backend::Artifactory.new(options).info
-          get_script("artifactory_urls.sh", artifacts: artifacts)
         end
       end
     end

@@ -16,8 +16,7 @@
 # limitations under the License.
 #
 
-require "mixlib/install/backend/artifactory"
-require "mixlib/install/backend/bintray"
+require "mixlib/install/backend/package_router"
 
 module Mixlib
   class Install
@@ -31,11 +30,7 @@ module Mixlib
       end
 
       def self.backend(options)
-        if options.for_artifactory?
-          Backend::Artifactory.new(options)
-        else
-          Backend::Bintray.new(options)
-        end
+        Backend::PackageRouter.new(options)
       end
     end
   end
