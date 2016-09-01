@@ -81,7 +81,7 @@ module Mixlib
 
           if builds.nil?
             raise NoArtifactsError, <<-MSG
-Can not find any builds for #{options.product_name} in #{::PackageRouter.endpoint}.
+Can not find any builds for #{options.product_name} in #{endpoint}.
             MSG
           end
 
