@@ -30,6 +30,8 @@ module Mixlib
 
         ENDPOINT = "https://packages.chef.io".freeze
 
+        COMPAT_DOWNLOAD_URL_ENDPOINT = "http://packages.chef.io".freeze
+
         # Create filtered list of artifacts
         #
         # @return [Array<ArtifactInfo>] list of artifacts for the configured
@@ -195,8 +197,18 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
         # Generates a chef standard download uri in the form of
         # http://endpoint/files/:channel/:project/:version/:platform/:platform_version/:file
         def generate_chef_standard_path(channel, project, version, platform, platform_version, filename)
+          # For some older platform & platform_version combinations we need to
+          # use COMPAT_DOWNLOAD_URL_ENDPOINT since these versions have an
+          # OpenSSL version that can not verify the ENDPOINT based urls
+          base_url = case "#{platform}-#{platform_version}"
+                     when "freebsd-9", "el-5", "solaris2-5.9", "solaris2-5.10"
+                       COMPAT_DOWNLOAD_URL_ENDPOINT
+                     else
+                       endpoint
+                     end
+
           uri = []
-          uri << endpoint.sub(/\/$/, "")
+          uri << base_url.sub(/\/$/, "")
           uri << "files"
           uri << channel
           uri << project
