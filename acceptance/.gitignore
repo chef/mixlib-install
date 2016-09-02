@@ -1,2 +1,5 @@
 /Gemfile.lock
-/.acceptance_logs/
+/.acceptance_data/
+/.bundle
+/.shared
+/bin

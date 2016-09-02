@@ -1,0 +1,4 @@
+suites:
+  - name: default
+    includes: [ubuntu-14.04]
+    run_list:
