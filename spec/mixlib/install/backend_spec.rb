@@ -51,6 +51,11 @@ context "Mixlib::Install::Backend", :vcr do
   def check_url(url)
     if expected_info && !expected_info.key?(:url)
       expect(url).to match /#{expected_info[:url]}/
+    elsif url.include?("freebsd/9") ||
+        url.include?("el/5") ||
+        url.include?("solaris2/5.10") ||
+        url.include?("solaris2/5.9")
+      expect(url).to include(Mixlib::Install::Backend::PackageRouter::COMPAT_DOWNLOAD_URL_ENDPOINT)
     else
       expect(url).to include(Mixlib::Install::Backend::PackageRouter::ENDPOINT)
     end
