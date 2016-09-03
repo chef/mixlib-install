@@ -1,3 +1,6 @@
+verifier:
+  name: inspec
+
 suites:
   - name: default
     includes: [ubuntu-14.04]

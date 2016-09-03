@@ -8,5 +8,4 @@ gem "kitchen-vagrant"
 gem "windows_chef_zero"
 gem "kitchen-inspec"
 gem "test-kitchen"
-
 gem "berks-monolith"
