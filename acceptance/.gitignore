@@ -1,5 +1,7 @@
 /Gemfile.lock
 /.acceptance_data/
-/.bundle
-/.shared
-/bin
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+*_override.tf

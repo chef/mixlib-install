@@ -1,3 +1,0 @@
-source "https://supermarket.chef.io"
-
-cookbook "kitchen_acceptance", git: "git://github.com/chef/chef-acceptance.git"
