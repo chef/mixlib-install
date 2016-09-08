@@ -20,22 +20,14 @@ resource "aws_instance" "mixlib_install_sh" {
   }
 
   provisioner "file" {
-    source      = "${var.connection_private_key}"
-    destination = "/home/ubuntu/.ssh/id_rsa"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo chmod 0400 /home/ubuntu/.ssh/id_rsa"
-    ]
-  }
-
-  provisioner "file" {
     source      = "../../.acceptance_data/install.sh"
     destination = "/tmp/install.sh"
   }
 
   provisioner "remote-exec" {
-    script = "sudo bash /tmp/install.sh"
+    inline = [
+      "chmod +x /tmp/install.sh",
+      "sudo bash /tmp/install.sh"
+    ]
   }
 }
