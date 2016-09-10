@@ -1,7 +1,35 @@
+data "aws_ami" "windows_ami" {
+  most_recent = true
+  filter {
+    name = "owner-alias"
+    values = ["amazon"]
+  }
+  filter {
+    name = "name"
+    values = ["Windows_Server-2012-R2*-English-*-Base-*"]
+  }
+  filter {
+    name = "architecture"
+    values = ["x86_64"]
+  }
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+  filter {
+    name = "block-device-mapping.volume-type"
+    values = ["gp2"]
+  }
+  filter {
+    name = "image-type"
+    values = ["machine"]
+  }
+}
+
 resource "aws_instance" "mixlib_install_ps1" {
   count = 1
 
-  ami           = "${lookup(var.aws_ami, var.aws_region)}"
+  ami           = "${data.aws_ami.windows_ami.id}"
   instance_type = "${var.aws_instance_type}"
   key_name      = "es-infrastructure"
 
@@ -12,23 +40,10 @@ resource "aws_instance" "mixlib_install_ps1" {
     "sg-96274af3",
   ]
 
+  # TODO: What needs to happen here?
   connection {
     type         = "winrm"
-    host         = "${self.private_ip}"
-    private_key  = "${file("${var.connection_private_key}")}"
-    agent        = "${var.connection_agent}"
   }
-
-  # provisioner "file" {
-  #   source      = "${var.connection_private_key}"
-  #   destination = "/home/ubuntu/.ssh/id_rsa"
-  # }
-
-  # provisioner "remote-exec" {
-  #   inline = [
-  #     "sudo chmod 0400 /home/ubuntu/.ssh/id_rsa"
-  #   ]
-  # }
 
   provisioner "file" {
     source      = "../../.acceptance_data/install.ps1"
@@ -36,6 +51,8 @@ resource "aws_instance" "mixlib_install_ps1" {
   }
 
   provisioner "remote-exec" {
-    script = "powershell.exe -file /tmp/install.ps1"
+    inline = [
+      "powershell.exe -file /tmp/install.ps1"
+    ]
   }
 }

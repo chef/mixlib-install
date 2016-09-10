@@ -4,14 +4,6 @@ variable "aws_region" {
   default = "us-west-2"
 }
 
-variable "aws_ami" {
-  description = "Base AMI for all nodes"
-
-  default = {
-    us-west-2 = "ami-06b94666"
-  }
-}
-
 variable "aws_instance_type" {
   type    = "string"
   default = "t2.micro"

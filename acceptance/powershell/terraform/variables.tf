@@ -4,14 +4,6 @@ variable "aws_region" {
   default = "us-west-2"
 }
 
-variable "aws_ami" {
-  description = "Base AMI for all nodes"
-
-  default = {
-    us-west-2 = "ami-c513d9a5"
-  }
-}
-
 variable "aws_instance_type" {
   type    = "string"
   default = "t2.micro"
@@ -21,12 +13,6 @@ variable "aws_instance_type" {
 # This is mainly used for the `X-Production` AWS tag.
 variable "production" {
   default = "false"
-}
-
-# SSH Connection info used for remote provisioning instances
-variable "connection_agent" {
-  description = "Set to false to disable using ssh-agent to authenticate"
-  default     = false
 }
 
 variable "connection_private_key" {
