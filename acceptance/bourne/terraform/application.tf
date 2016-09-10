@@ -1,7 +1,35 @@
+data "aws_ami" "ubuntu_14_ami" {
+  most_recent = true
+  filter {
+    name = "owner-id"
+    values = ["099720109477"]
+  }
+  filter {
+    name = "name"
+    values = ["ubuntu/images/*/ubuntu-*-14.04-*-server-*"]
+  }
+  filter {
+    name = "architecture"
+    values = ["x86_64"]
+  }
+  filter {
+    name = "virtualization-type" 
+    values = ["hvm"]
+  }
+  filter {
+    name = "block-device-mapping.volume-type"
+    values = ["gp2"]
+  }
+  filter {
+    name = "image-type"
+    values = ["machine"]
+  }
+}
+
 resource "aws_instance" "mixlib_install_sh" {
   count = 1
 
-  ami           = "${lookup(var.aws_ami, var.aws_region)}"
+  ami           = "${data.aws_ami.ubuntu_14_ami.id}"
   instance_type = "${var.aws_instance_type}"
   key_name      = "es-infrastructure"
 
