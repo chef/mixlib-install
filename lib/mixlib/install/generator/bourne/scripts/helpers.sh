@@ -304,6 +304,10 @@ install_file() {
       echo "installing with sh..."
       sh "$2"
       ;;
+    "p5p" )
+      echo "installing p5p package..."
+      pkg install -g "$2" $project
+      ;;
     *)
       echo "Unknown filetype: $1"
       report_bug
