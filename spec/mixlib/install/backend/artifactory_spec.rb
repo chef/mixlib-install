@@ -21,7 +21,7 @@ require "mixlib/install/options"
 require "mixlib/install/backend/artifactory"
 
 context "Mixlib::Install::Backend::Artifactory", :vcr do
-  let(:opts) {
+  let(:opts) do
     {
       channel: :unstable,
       product_name: "chef",
@@ -30,7 +30,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
       platform_version: "14.04",
       architecture: "x86_64",
     }
-  }
+  end
   let(:options) { Mixlib::Install::Options.new(opts) }
   let(:artifactory) { Mixlib::Install::Backend::Artifactory.new(options) }
   let(:query) { "item.find({\"@omnibus.project\": \"chef\"})" }
@@ -73,7 +73,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
   end
 
   context "when querying automate" do
-    let(:opts) {
+    let(:opts) do
       {
         channel: :unstable,
         product_name: "automate",
@@ -82,7 +82,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
         platform_version: "14.04",
         architecture: "x86_64",
       }
-    }
+    end
 
     it "uses the omnibus project name" do
       expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
@@ -91,7 +91,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
   end
 
   context "when querying compliance" do
-    let(:opts) {
+    let(:opts) do
       {
         channel: :current,
         product_name: "compliance",
@@ -100,7 +100,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
         platform_version: "14.04",
         architecture: "x86_64",
       }
-    }
+    end
 
     it "uses the omnibus project name" do
       expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo
@@ -109,7 +109,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
   end
 
   context "when querying chef-server" do
-    let(:opts) {
+    let(:opts) do
       {
         channel: :unstable,
         product_name: "chef-server",
@@ -118,7 +118,7 @@ context "Mixlib::Install::Backend::Artifactory", :vcr do
         platform_version: "14.04",
         architecture: "x86_64",
       }
-    }
+    end
 
     it "uses the omnibus project name" do
       expect(artifactory.info).to be_a Mixlib::Install::ArtifactInfo

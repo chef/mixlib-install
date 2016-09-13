@@ -20,11 +20,11 @@ require "mixlib/install/product"
 
 context "Mixlib::Install::Product" do
   context "for product_name when using strings" do
-    let(:product) {
+    let(:product) do
       Mixlib::Install::Product.new do
         product_name "test-product"
       end
-    }
+    end
 
     it "accepts and returns the value correctly" do
       expect(product.product_name).to eq("test-product")
@@ -40,13 +40,13 @@ context "Mixlib::Install::Product" do
   end
 
   context "for package_name when using block" do
-    let(:product) {
+    let(:product) do
       Mixlib::Install::Product.new do
         package_name do |version|
           "my-version-#{version}"
         end
       end
-    }
+    end
 
     it "accepts and returns the value correctly without a version" do
       expect(product.package_name).to eq("my-version-")
@@ -67,13 +67,13 @@ context "Mixlib::Install::Product" do
   end
 
   context "for package_name when using block and string" do
-    let(:product) {
+    let(:product) do
       Mixlib::Install::Product.new do
         package_name "my-name" do |version|
           "my-version-#{version}"
         end
       end
-    }
+    end
 
     it "should error" do
       expect { product }.to raise_error(StandardError)

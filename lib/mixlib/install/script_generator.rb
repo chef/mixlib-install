@@ -133,7 +133,7 @@ module Mixlib
         [
           shell_var("chef_omnibus_root", root),
           shell_var("msi", "$env:TEMP\\chef-#{version}.msi"),
-        ].tap { |vars|
+        ].tap do |vars|
           if install_msi_url
             vars << shell_var("chef_msi_url", install_msi_url)
           else
@@ -141,7 +141,7 @@ module Mixlib
             vars << shell_var("pretty_version", Util.pretty_version(version))
             vars << shell_var("version", version)
           end
-        }.join("\n")
+        end.join("\n")
       end
 
       def validate_opts!(opt)
