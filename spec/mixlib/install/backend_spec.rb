@@ -30,7 +30,7 @@ context "Mixlib::Install::Backend", :vcr do
   let(:expected_info) { nil }
   let(:expected_protocol) { "https://" }
 
-  let(:info) {
+  let(:info) do
     Mixlib::Install.new(
       channel: channel,
       product_name: product_name,
@@ -39,18 +39,18 @@ context "Mixlib::Install::Backend", :vcr do
       platform_version: platform_version,
       architecture: architecture
     ).artifact_info
-  }
+  end
 
-  let(:available_versions) {
+  let(:available_versions) do
     Mixlib::Install.new(
       channel: channel,
       product_name: product_name
     ).available_versions
-  }
+  end
 
   def check_url(url)
     if expected_info && !expected_info.key?(:url)
-      expect(url).to match /#{expected_info[:url]}/
+      expect(url).to match(/#{expected_info[:url]}/)
     else
       if Mixlib::Install.unified_backend?
         expect(url).to include("https://packages-acceptance.chef.io")
@@ -126,11 +126,7 @@ context "Mixlib::Install::Backend", :vcr do
     let(:product_version) { "12.2.1" }
 
     context "without platform info" do
-      let(:expected_info) {
-        {
-          version: "12.2.1",
-        }
-      }
+      let(:expected_info) { { version: "12.2.1" } }
 
       it_behaves_like "the right artifact list info"
     end
@@ -140,13 +136,13 @@ context "Mixlib::Install::Backend", :vcr do
       let(:platform_version) { "10.10" }
       let(:architecture) { "x86_64" }
 
-      let(:expected_info) {
+      let(:expected_info) do
         {
           url: "https://packages.chef.io/stable/mac_os_x/10.10/chef-12.2.1-1.dmg",
           sha256: "53034d6e1eea0028666caee43b99f43d2ca9dd24b260bc53ae5fad1075e83923",
           version: "12.2.1",
         }
-      }
+      end
 
       it_behaves_like "the right artifact info"
     end

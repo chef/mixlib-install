@@ -23,18 +23,18 @@ context "Mixlib::Install::Generator", :vcr do
   let(:product_version) { "latest" }
   let(:add_options) { {} }
 
-  let(:options) {
+  let(:options) do
     {
       product_name: "chef",
       channel: channel,
       product_version: product_version,
     }
-  }
+  end
 
-  let(:install_script) {
+  let(:install_script) do
     options.merge!(add_options)
     Mixlib::Install.new(options).install_command
-  }
+  end
 
   shared_examples_for "the correct sh script" do
     it "generates an sh script" do
@@ -66,11 +66,7 @@ context "Mixlib::Install::Generator", :vcr do
     end
 
     context "sh shell type" do
-      let(:add_options) {
-        {
-          shell_type: :sh,
-        }
-      }
+      let(:add_options) { { shell_type: :sh } }
 
       it_behaves_like "the correct sh script"
     end
@@ -85,13 +81,13 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       context "when platform is set" do
-        let(:add_options) {
+        let(:add_options) do
           {
             platform: "windows",
             platform_version: "2012r2",
             architecture: "x86_64",
           }
-        }
+        end
 
         it_behaves_like "the correct ps1 script"
 
@@ -102,11 +98,7 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       context "when shell_type is set" do
-        let(:add_options) {
-          {
-            shell_type: :ps1,
-          }
-        }
+        let(:add_options) { { shell_type: :ps1 } }
 
         it_behaves_like "the correct ps1 script"
 

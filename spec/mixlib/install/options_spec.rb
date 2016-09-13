@@ -28,9 +28,9 @@ context "Mixlib::Install::Options" do
   let(:architecture) { nil }
   let(:shell_type) { nil }
 
-  let(:options) {
+  let(:options) do
     Mixlib::Install::Options.new(channel: channel, product_name: product_name, product_version: product_version)
-  }
+  end
 
   context "for invalid product name option" do
     let(:product_name) { "foo" }
@@ -51,13 +51,13 @@ context "Mixlib::Install::Options" do
   context "for platform options" do
     let(:product_name) { "chef" }
     let(:product_version) { "1.2.3" }
-    let(:base_options) {
+    let(:base_options) do
       {
         channel: channel,
         product_name: product_name,
         product_version: product_version,
       }
-    }
+    end
 
     context "for shell type options" do
       let(:shell_type) { :foo }
