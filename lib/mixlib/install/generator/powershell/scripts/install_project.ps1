@@ -83,14 +83,15 @@ function Install-Project {
       $installingProject = $True
       $installAttempts = 0
       while ($installingProject) {
-        $p = Start-Process -FilePath "msiexec" -ArgumentList "/qn /i $download_destination" -Passthru -Wait
-        $p.WaitForExit()
-        if ($p.ExitCode -eq 1618) {
-          Write-Host "Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
-          continue
-        } elseif ($p.ExitCode -ne 0) {
-          throw "msiexec was not successful. Received exit code $($p.ExitCode)"
+        $installAttempts++
+        $result = $false
+        if($download_destination.EndsWith(".appx")) {
+          $result = Install-ChefAppx $download_destination $project
         }
+        else {
+          $result = Install-ChefMsi $download_destination
+        }
+        if(!$result) { continue }
         $installingProject = $False
       }
     }
@@ -100,4 +101,39 @@ function Install-Project {
   }
 }
 set-alias install -value Install-Project
+
+Function Install-ChefMsi($msi) {
+  $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
+  $p.WaitForExit()
+  if ($p.ExitCode -eq 1618) {
+    Write-Host "Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
+    return $false
+  } elseif ($p.ExitCode -ne 0) {
+    throw "msiexec was not successful. Received exit code $($p.ExitCode)"
+  }
+  return $true
+}
+
+Function Install-ChefAppx($appx, $project) {
+  Add-AppxPackage -Path $appx -ErrorAction Stop
+  $package = (Get-AppxPackage -Name $project).InstallLocation
+  $installRoot = "$env:SystemDrive/opscode"
+  $link = Join-Path $installRoot $project
+
+  # Remove link from a previous install
+  # There is currently a bug in removing symbolic links from Powershell
+  # so we use the fisher-price cmd shell to do it
+  if(Test-Path $link) {
+    cmd /c rmdir $link
+  }
+
+  if(!(Test-Path $installRoot)) {
+    New-Item -ItemType Directory -Path $installRoot
+  }
+  push-Location $installRoot
+  New-Item -ItemType SymbolicLink -Name $project -Target $package
+  Pop-Location
+  return $true
+}
+
 export-modulemember -function 'Install-Project','Get-ProjectMetadata' -alias 'install'
