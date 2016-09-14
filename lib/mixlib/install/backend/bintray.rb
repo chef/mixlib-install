@@ -233,6 +233,8 @@ module Mixlib
             "powerpc"
           elsif %w{ sparc sun4u sun4v }.fuzzy_include?(filename)
             "sparc"
+          elsif %w{ s390x }.fuzzy_include?(filename)
+            "s390x"
           # Note that ppc64le should come before ppc64 otherwise our search
           # will think ppc64le matches ppc64. Ubuntu also calls it ppc64el.
           elsif %w{ ppc64le ppc64el }.fuzzy_include?(filename)

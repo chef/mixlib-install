@@ -132,6 +132,9 @@ context "Mixlib::Install::Backend::Bintray", :vcr do
           "chef-12.8.1-1.sun4v.solaris",
           "chef-11.8.2-1.solaris2.5.9.solaris",
         ],
+        "s390x" => [
+          "chef-12.8.1-1.s390x.rpm",
+        ],
         "ppc64" => [
           "chef-12.8.1-1.ppc64.bff",
         ],
