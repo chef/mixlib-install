@@ -1,5 +1,5 @@
 Function Check-UpdateChef($root, $version) {
-  if (-Not (Test-Path $root)) { return $true }
+  if (-Not (Test-Path "$root\embedded")) { return $true }
   elseif ("$version" -eq "true") { return $false }
   elseif ("$version" -eq "latest") { return $true }
 
@@ -14,8 +14,7 @@ Function Check-UpdateChef($root, $version) {
 }
 
 Function Get-ChefMetadata($url) {
-  Try { $response = ($c = Make-WebClient).DownloadString($url) }
-  Finally { if ($c -ne $null) { $c.Dispose() } }
+  $response = Get-WebContent $url
 
   $md = ConvertFrom-StringData $response.Replace("`t", "=")
   return @($md.url, $md.sha256)
@@ -23,52 +22,154 @@ Function Get-ChefMetadata($url) {
 
 Function Get-SHA256($src) {
   Try {
-    $c = New-Object -TypeName System.Security.Cryptography.SHA256Managed
+    $c = Get-SHA256Converter
     $bytes = $c.ComputeHash(($in = (Get-Item $src).OpenRead()))
     return ([System.BitConverter]::ToString($bytes)).Replace("-", "").ToLower()
   } Finally { if (($c -ne $null) -and ($c.GetType().GetMethod("Dispose") -ne $null)) { $c.Dispose() }; if ($in -ne $null) { $in.Dispose() } }
 }
 
+function Get-SHA256Converter {
+  if($PSVersionTable.PSEdition -eq 'Core') {
+    [System.Security.Cryptography.SHA256]::Create()
+  }
+  else {
+    New-Object -TypeName Security.Cryptography.SHA256Managed
+  }
+}
+
 Function Download-Chef($url, $sha256, $dst) {
-  Try {
-    Log "Downloading package from $url"
-    ($c = Make-WebClient).DownloadFile($url, $dst)
-    Log "Download complete."
-  } Finally { if ($c -ne $null) { $c.Dispose() } }
+  Log "Downloading package from $url"
+  Get-WebContent $url $dst
+  Log "Download complete."
 
   if ($sha256 -eq $null) { Log "Skipping sha256 verification" }
   elseif (($dsha256 = Get-SHA256 $dst) -eq $sha256) { Log "Successfully verified $dst" }
   else { throw "SHA256 for $dst $dsha256 does not match $sha256" }
 }
 
-Function Install-Chef($msi) {
+Function Install-Chef($msi, $chef_omnibus_root) {
   Log "Installing Chef Omnibus package $msi"
   $installingChef = $True
   $installAttempts = 0
   while ($installingChef) {
     $installAttempts++
-    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
-    $p.WaitForExit()
-    if ($p.ExitCode -eq 1618) {
-      Log "Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
-      continue
-    } elseif ($p.ExitCode -ne 0) {
-      throw "msiexec was not successful. Received exit code $($p.ExitCode)"
+    $result = $false
+    if($msi.EndsWith(".appx")) {
+      $result = Install-ChefAppx $msi $chef_omnibus_root
     }
+    else {
+      $result = Install-ChefMsi $msi
+    }
+    if(!$result) { continue }
     $installingChef = $False
   }
   Remove-Item $msi -Force
   Log "Installation complete"
 }
 
+Function Install-ChefMsi($msi) {
+  $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
+  $p.WaitForExit()
+  if ($p.ExitCode -eq 1618) {
+    Log "Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
+    return $false
+  } elseif ($p.ExitCode -ne 0) {
+    throw "msiexec was not successful. Received exit code $($p.ExitCode)"
+  }
+  return $true
+}
+
+Function Install-ChefAppx($appx, $chef_omnibus_root) {
+  Add-AppxPackage -Path $appx -ErrorAction Stop
+
+  $rootParent = Split-Path $chef_omnibus_root -Parent
+  $rootFolder = Split-Path $chef_omnibus_root -Leaf
+  $link = Join-Path $rootParent $rootFolder
+
+  # Remove link from a previous install
+  # There is currently a bug in removing symbolic links from Powershell
+  # so we use the fisher-price cmd shell to do it
+  if(Test-Path $link) {
+    cmd /c rmdir $link
+  }
+
+  $package = (Get-AppxPackage -Name chef).InstallLocation
+  if(!(Test-Path $rootParent)) {
+    New-Item -ItemType Directory -Path $rootParent
+  }
+  push-Location $rootParent
+  New-Item -ItemType SymbolicLink -Name $rootFolder -Target $package
+  Pop-Location
+
+  return $true
+}
+
 Function Log($m) { Write-Host "       $m`n" }
 
-Function Make-WebClient {
+function Get-WebContent {
+  param ($uri, $filepath)
+
+  try {
+    if($PSVersionTable.PSEdition -eq 'Core') {
+      Get-WebContentOnCore $uri $filepath
+    }
+    else {
+      Get-WebContentOnFullNet $uri $filepath
+    }
+  }
+  catch {
+    $exception = $_.Exception
+    Write-Host "There was an error: "
+    do {
+      Write-Host "`t$($exception.message)"
+      $exception = $exception.innerexception
+    } while ($exception)
+    throw "Failed to download from $uri."
+  }
+}
+
+function Get-WebContentOnFullNet {
+  param ($uri, $filepath)
+
   $proxy = New-Object -TypeName System.Net.WebProxy
+  $wc = new-object System.Net.WebClient
   $proxy.Address = $env:http_proxy
-  $client = New-Object -TypeName System.Net.WebClient
-  $client.Proxy = $proxy
-  return $client
+  $wc.Proxy = $proxy
+
+  if ([string]::IsNullOrEmpty($filepath)) {
+    $wc.downloadstring($uri)
+  }
+  else {
+    $wc.downloadfile($uri, $filepath)
+  }
+}
+
+function Get-WebContentOnCore {
+  param ($uri, $filepath)
+
+  $handler = New-Object System.Net.Http.HttpClientHandler
+  $client = New-Object System.Net.Http.HttpClient($handler)
+  $client.Timeout = New-Object System.TimeSpan(0, 30, 0)
+  $cancelTokenSource = [System.Threading.CancellationTokenSource]::new()
+  $responseMsg = $client.GetAsync([System.Uri]::new($uri), $cancelTokenSource.Token)
+  $responseMsg.Wait()
+  if (!$responseMsg.IsCanceled) {
+    $response = $responseMsg.Result
+    if ($response.IsSuccessStatusCode) {
+      if ([string]::IsNullOrEmpty($filepath)) {
+        $response.Content.ReadAsStringAsync().Result
+      }
+      else {
+        $downloadedFileStream = [System.IO.FileStream]::new($filepath, [System.IO.FileMode]::Create, [System.IO.FileAccess]::Write)
+        $copyStreamOp = $response.Content.CopyToAsync($downloadedFileStream)
+        $copyStreamOp.Wait()
+        $downloadedFileStream.Close()
+        if ($copyStreamOp.Exception -ne $null) {
+          throw $copyStreamOp.Exception
+        }
+      }
+    }
+  }
 }
 
 Function Unresolve-Path($p) {
@@ -77,7 +178,6 @@ Function Unresolve-Path($p) {
 }
 
 $chef_omnibus_root = Unresolve-Path $chef_omnibus_root
-$msi = Unresolve-Path $msi
 
 if (Check-UpdateChef $chef_omnibus_root $version) {
   Write-Host "-----> Installing Chef Omnibus ($pretty_version)`n"
@@ -87,8 +187,10 @@ if (Check-UpdateChef $chef_omnibus_root $version) {
     $url = $chef_msi_url
     $sha256 = $null
   }
+  $msi = Join-Path $env:temp "$url".Split("/")[-1]
+  $msi = Unresolve-Path $msi
   Download-Chef "$url" $sha256 $msi
-  Install-Chef $msi
+  Install-Chef $msi $chef_omnibus_root
 } else {
   Write-Host "-----> Chef Omnibus installation detected ($pretty_version)`n"
 }
