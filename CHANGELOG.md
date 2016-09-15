@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.2.0]
+- Fix omnibus project mappings
+- Add `available_versions` method to API
+- Add `chef-automate` product
+- Add install support for Arista EOS
+- Add p5p package support
+- Add s390x architecture support
+- Add Nano support
+
 ## [1.1.0]
 - Remove delivery-cli from Product Matrix since we are now shipping it within ChefDK
 
