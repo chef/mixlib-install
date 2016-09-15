@@ -1,27 +1,33 @@
 data "aws_ami" "ubuntu_14_ami" {
   most_recent = true
+
   filter {
-    name = "owner-id"
+    name   = "owner-id"
     values = ["099720109477"]
   }
+
   filter {
-    name = "name"
+    name   = "name"
     values = ["ubuntu/images/*/ubuntu-*-14.04-*-server-*"]
   }
+
   filter {
-    name = "architecture"
+    name   = "architecture"
     values = ["x86_64"]
   }
+
   filter {
-    name = "virtualization-type" 
+    name   = "virtualization-type"
     values = ["hvm"]
   }
+
   filter {
-    name = "block-device-mapping.volume-type"
+    name   = "block-device-mapping.volume-type"
     values = ["gp2"]
   }
+
   filter {
-    name = "image-type"
+    name   = "image-type"
     values = ["machine"]
   }
 }
@@ -41,10 +47,19 @@ resource "aws_instance" "mixlib_install_sh" {
   ]
 
   connection {
-    host         = "${self.private_ip}"
-    user         = "ubuntu"
-    private_key  = "${file("${var.connection_private_key}")}"
-    agent        = "${var.connection_agent}"
+    host        = "${self.private_ip}"
+    user        = "ubuntu"
+    private_key = "${file("${var.connection_private_key}")}"
+    agent       = "${var.connection_agent}"
+  }
+
+  tags {
+    # ChefOps's AWS standard tags:
+    X-Dept        = "EngServ"
+    X-Contact     = "pwright"
+    X-Production  = "false"
+    X-Environment = "development"
+    X-Application = "mixlib-install"
   }
 
   provisioner "file" {
@@ -55,7 +70,7 @@ resource "aws_instance" "mixlib_install_sh" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/install.sh",
-      "sudo bash /tmp/install.sh"
+      "sudo bash /tmp/install.sh",
     ]
   }
 }
