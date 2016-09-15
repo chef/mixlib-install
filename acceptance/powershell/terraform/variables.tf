@@ -9,13 +9,8 @@ variable "aws_instance_type" {
   default = "t2.micro"
 }
 
-# Used to indicidate whether the environment should be treated as "prod"
-# This is mainly used for the `X-Production` AWS tag.
-variable "production" {
-  default = "false"
-}
-
-variable "connection_private_key" {
-  description = "File path to AWS keypair private key to provision with"
-  default     = "~/.ssh/es-infrastructure.pem"
+variable "admin_password" {
+  description = "Set Windows Administrator password"
+  type        = "string"
+  default     = "Pas5w0rD"
 }
