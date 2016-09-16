@@ -1,3 +1,3 @@
-describe package('chef') do
+describe package("chef") do
   it { should be_installed }
 end
