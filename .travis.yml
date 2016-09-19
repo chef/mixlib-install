@@ -9,8 +9,7 @@ addons:
     sources:
       - chef-stable-precise
     packages:
-      - chef
-      - chef-config
+      - chedk
 
 env:
   global:
@@ -21,7 +20,7 @@ env:
 script: 
   - bundle exec rake
   # must override BUNDLE_GEMFILE set by travis to bundle exec chef-acceptance
-  - cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install && bundle exec chef-acceptance test
+  - unset GEM_PATH && cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install && bundle exec chef-acceptance test
 
 after_failure:
-  - cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install && bundle exec chef-acceptance destroy
+  - unset GEM_PATH && cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install && bundle exec chef-acceptance destroy
