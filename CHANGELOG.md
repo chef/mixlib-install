@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.2.1]
+- Fix nano appx installs replacing the symlink with a full copy
+
 ## [1.2.0]
 - Fix omnibus project mappings
 - Add `available_versions` method to API
