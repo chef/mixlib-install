@@ -20,7 +20,7 @@ env:
 script: 
   - bundle exec rake
   # must override BUNDLE_GEMFILE set by travis to bundle exec chef-acceptance
-  - cd acceptance && ./.ci/unset_vars.sh && bundle install && bundle exec chef-acceptance test
+  - cd acceptance && ./.ci/unset_vars.sh && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install && bundle exec chef-acceptance test
 
 after_failure:
-  - cd acceptance && ./.ci/unset_vars.sh && bundle install && bundle exec chef-acceptance destroy
+  - cd acceptance && ./.ci/unset_vars.sh && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install && bundle exec chef-acceptance destroy
