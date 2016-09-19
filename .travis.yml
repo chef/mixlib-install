@@ -10,6 +10,7 @@ addons:
       - chef-stable-precise
     packages:
       - chef
+      - chef-config
 
 env:
   global:
