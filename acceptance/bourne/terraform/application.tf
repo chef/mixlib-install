@@ -41,9 +41,7 @@ resource "aws_instance" "mixlib_install_sh" {
 
   associate_public_ip_address = true
 
-  # subnet_id         = "subnet-19ac017c" # Planet Releng Private Subnet
   subnet_id         = "subnet-11ac0174" # Planet Releng Public Subnet
-
   source_dest_check = false
 
   vpc_security_group_ids = [
