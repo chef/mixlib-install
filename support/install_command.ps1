@@ -83,23 +83,21 @@ Function Install-ChefAppx($appx, $chef_omnibus_root) {
   Add-AppxPackage -Path $appx -ErrorAction Stop
 
   $rootParent = Split-Path $chef_omnibus_root -Parent
-  $rootFolder = Split-Path $chef_omnibus_root -Leaf
-  $link = Join-Path $rootParent $rootFolder
 
-  # Remove link from a previous install
-  # There is currently a bug in removing symbolic links from Powershell
-  # so we use the fisher-price cmd shell to do it
-  if(Test-Path $link) {
-    cmd /c rmdir $link
-  }
-
-  $package = (Get-AppxPackage -Name chef).InstallLocation
   if(!(Test-Path $rootParent)) {
     New-Item -ItemType Directory -Path $rootParent
   }
-  push-Location $rootParent
-  New-Item -ItemType SymbolicLink -Name $rootFolder -Target $package
-  Pop-Location
+
+  # Remove old version of chef if it is here
+  if(Test-Path $chef_omnibus_root) {
+    Remove-Item -Path $chef_omnibus_root -Recurse -Force
+  }
+
+  # copy the appx install to the omnibus_root. There are serious
+  # ACL related issues with running chef from the appx InstallLocation
+  # Hoping this is temporary and we can eventually just symlink
+  $package = (Get-AppxPackage -Name chef).InstallLocation
+  Copy-Item $package $chef_omnibus_root -Recurse
 
   return $true
 }
