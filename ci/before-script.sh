@@ -19,10 +19,6 @@ do
   unset $ruby_env_var
 done
 
-
-# set chefdk as default environment
-eval "$(/opt/chefdk/bin/chef shell-init bash)"
-
 # download terraform
 wget "https://releases.hashicorp.com/terraform/0.7.4/terraform_0.7.4_linux_amd64.zip"
 
