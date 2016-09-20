@@ -16,17 +16,12 @@ before_script:
   - ci/unset.sh
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
   - wget "https://releases.hashicorp.com/terraform/0.7.4/terraform_0.7.4_linux_amd64.zip"
-  - unzip terraform_0.7.4_linux_amd64.zip
-  - export TERRAFORM=$PWD/terraform
-  - export PATH="$TERRAFORM:$PATH"
+  - unzip terraform_0.7.4_linux_amd64.zip -d bin
+  - export PATH="$PWD/bin:$PATH"
 
 script:
   - /opt/chefdk/embedded/bin/bundle install && /opt/chefdk/bin/chef exec rake
   - cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && /opt/chefdk/embedded/bin/bundle install && export APPBUNDLER_ALLOW_RVM=true && /opt/chefdk/embedded/bin/bundle exec chef-acceptance test bourne
-
-after_script:
-  - cat /home/travis/build/chef/mixlib-install/acceptance/.acceptance_data/chef/bourne/provision/dna.json
-  - cat /home/travis/build/chef/mixlib-install/acceptance/.acceptance_data/chef/bourne/provision/.chef/config.rb
 
 env:
   global:
