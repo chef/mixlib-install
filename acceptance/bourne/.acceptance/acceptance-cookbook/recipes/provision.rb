@@ -3,9 +3,9 @@ execute "bundle exec ruby -e \"require 'mixlib/install'; puts Mixlib::Install.in
 end
 
 execute "terraform plan" do
-  cwd File.join(node['chef-acceptance']['suite-dir'], "terraform")
+  cwd "#{node['chef-acceptance']['suite-dir']}/terraform"
 end
 
 execute "terraform apply" do
-  cwd File.join(node['chef-acceptance']['suite-dir'], "terraform")
+  cwd "#{node['chef-acceptance']['suite-dir']}/terraform"
 end
