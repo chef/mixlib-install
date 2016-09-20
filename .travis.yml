@@ -14,10 +14,9 @@ matrix:
           sources:
             - chef-stable-precise
           packages:
-            - chefdk
+            - chef
       gemfile: acceptance/Gemfile
       before_install: cd acceptance
-      before_script: export GEM_HOME="~/.chefdk/gem/ruby/2.2.0:$GEM_HOME"
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
       after_script: bundle env
