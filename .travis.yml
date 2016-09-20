@@ -1,7 +1,6 @@
 # run acceptance tests in a separate job
 matrix:
   include:
-    - language: ruby
       sudo: false
       addons:
         apt:
