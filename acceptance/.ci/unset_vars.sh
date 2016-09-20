@@ -13,5 +13,6 @@ for ruby_env_var in _ORIGINAL_GEM_PATH \
                     RUBY_VERSION
 
 do
-  unset $ruby_env_var
+  # unset $ruby_env_var
+  $ruby_env_var=
 done
