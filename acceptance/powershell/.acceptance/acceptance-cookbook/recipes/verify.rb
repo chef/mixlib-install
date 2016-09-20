@@ -8,5 +8,5 @@ end
 execute "run inspec" do
   command lazy { "inspec exec verify.rb -t winrm://Administrator@#{node['ip']} --password '#{ENV['TF_VAR_admin_password'] || 'Pas5w0rD'}'" }
   cwd "#{node['chef-acceptance']['suite-dir']}/inspec"
-  sensitive true
+  # sensitive true
 end
