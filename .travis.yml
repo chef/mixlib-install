@@ -16,7 +16,7 @@ matrix:
           packages:
             - chefdk
       gemfile: acceptance/Gemfile
-      before_install: cd acceptance
+      before_install: cd acceptance && unset GEM_HOME
       bundler_args: --path vendor/bundle
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
