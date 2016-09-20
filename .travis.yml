@@ -1,5 +1,4 @@
-language: ruby
-
+rvm: false
 sudo: false
 
 addons:
@@ -11,15 +10,13 @@ addons:
 
 install: echo "skip bundle install"
 
-before_script:
-  - eval "$(chef shell-init bash)"
+before_script: eval "$(chef shell-init bash)"
   
 script:
   - chef exec rake
   - cd acceptance && chef exec bundle install && chef exec bundle exec chef-acceptance test
 
-after_failure:
-  - chef exec bundle exec chef-acceptance destroy
+after_failure: chef exec bundle exec chef-acceptance destroy
 
 env:
   global:
