@@ -16,6 +16,7 @@ matrix:
             - chefdk
       gemfile: acceptance/Gemfile
       before_install: cd acceptance && export GEM_HOME=$PWD/vendor/bundle/ruby/2.2.0
+      bundler_args: --path vendor/bundle
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
       env:
