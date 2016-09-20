@@ -4,8 +4,6 @@ rvm:
   - 2.2
   - 2.1
 
-after_script: bundle env
-
 # run acceptance tests in a separate job
 matrix:
   include:
@@ -19,6 +17,7 @@ matrix:
             - chefdk
       gemfile: acceptance/Gemfile
       before_install: cd acceptance
+      bundler_args: --path vendor/bundle
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
       after_script: bundle env
