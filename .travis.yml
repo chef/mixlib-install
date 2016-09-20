@@ -9,7 +9,7 @@ addons:
     sources:
       - chef-stable-precise
     packages:
-      - chedk
+      - chef
 
 env:
   global:
