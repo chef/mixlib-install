@@ -1,21 +1,8 @@
-language: ruby
-sudo: false
-
-addons:
-  apt:
-    sources:
-      - chef-stable-precise
-    packages:
-      - chefdk
-
-install: eval "$(/opt/chefdk/bin/chef shell-init sh)"
-
-script: /opt/chefdk/bin/chef exec rake
-
 # run acceptance tests in a separate job
 matrix:
   include:
     - language: ruby
+      sudo: false
       addons:
         apt:
           sources:
@@ -42,3 +29,18 @@ matrix:
         - secure: "Ut5ARdSnWiFVAtRZ7U+CPgihi59J/KgsMFXunJjBCYyfwaDxrIsAbjddhP3lu2d/xLtvQ26SodhnMh6VMfgBFljY1s4lgjlZU2xU5RCpXFsEhUzHjryVTEgEWYgWkGrTfvalB9gnrsRxiyOh6ZvlW7QoPED+j75FSGwj6rjGCYf/7oUa3Qlt2Pymma5ijjvemgcIEKngO7Dnh3dpFR/J4S0AZdZG6HtJvYpQ2gdvH5faFjYlKHp8W/PMuOuxq2w8Pcjw009VgOjLoFAFYhFWX3hGd0b+N1xBHJDlqaBk2UCCqaKtYrhAsgQNkFiPMmNdDUtscjKx81A8fBUJOUhUxWBFhL3QM2ymuZziPQcnikpi6EPRHRyv3P6MOSyEB2DPpzFq/tEniTBW6o9QL6dHYOaPm/CBtUJ36gEvrSEJQZyhxUTQdamjWIMOTcq1/uwjp0T28rdth0o4BoGALkNQxjaV9iPHBCNtZgPdLoG9v/5CyGwlRQaY6JSVxBHdRcD9+BfwLT84K+68NPo7xXBBar0B1kBOLExI3EHLTxaspkicM2DINicUZk+SNFdInuiByv9NT7sWWbISnk6EagxPxu8D2p1zcMh6cJ8DfFz0rws+ndGiPwInjoslSV7N8Ndi4j9nTKtv9qAImJlthzPDbHY8ghz0TrXWdtwzPet7j2s="
         # windows admin password
         - secure: "lxe9NYpwV19g2mBa7aQoJX372hktSSn/g5oU1GDWYpi59YwpbYXP/Al/XXwq1ZfNzN+BlXw3tJPlVaEkfSQBi0AaWLJ6Kw5+a4tkIkwMyMPJQh+pKnADZK2pd+Hhrr7CRtnaT6w4V2sZCIfcdlLnKmez/BMNNdBn1+WAfE+aN224JK43rXxgLe4B9CcXCsUUORh6nJbB5f60D15qYokDu7ILi0RufyfyiJulqxIsXVNKtnUXOJRXZvDOPp9Y+2ur0HmVK7aiWr6JwXtODgrrDzZiWq99eR2ErDJB1AFUVMmudUykf5SWyivhvB4RStYDIIpG8EXrIhRKP+k9o4loqQBRcRBGvEMLdyupi7TzuryzK7j2XzhJFD9Eg+50Y5By87lRfvltuAJaDkRPfwIzSbWsh0Lb7YwUXI9a+bJebsteTPSFjb1YOYvkQCV2CB5pH68QInw8Hu9o2hmUkuoNWqqvVaxDI8z3peympfFlVtvTC9eOI60Tdv+pSCyQhBN0/II8FT/fylwQsOL+i8Hez9NIRdaRkx0JEpY56NloErd4An9zpY/xCAa/6JfzMWn7eD673MRVJW0u/j5IGuRAksuUlGZTQS+qudF4ZgVJaacm6qARULaesuCNbufZYtRB0Hg+GINQrUSfYKBw6BZUk2T9ZQ2zFsnF12k0yl9Qr7I="
+        - export APPBUNDLER_ALLOW_RVM=true
+  include:
+    - language: ruby
+      sudo: false
+
+      addons:
+        apt:
+          sources:
+            - chef-stable-precise
+          packages:
+            - chefdk
+
+      install: eval "$(/opt/chefdk/bin/chef shell-init sh)"
+
+      script: /opt/chefdk/bin/chef exec rake
