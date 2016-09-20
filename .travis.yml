@@ -11,11 +11,16 @@ install:
   - echo "skip bundle install"
 
 before_script:
+  - ci/unset.sh
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
 
 script:
   - /opt/chefdk/embedded/bin/bundle install && /opt/chefdk/bin/chef exec rake
-  - cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && /opt/chefdk/embedded/bin/bundle install && export APPBUNDLER_ALLOW_RVM=true && /opt/chefdk/embedded/bin/bundle exec chef-acceptance test
+  - cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && /opt/chefdk/embedded/bin/bundle install && export APPBUNDLER_ALLOW_RVM=true && /opt/chefdk/embedded/bin/bundle exec chef-acceptance test bourne
+
+after_script:
+  - cat /home/travis/build/chef/mixlib-install/acceptance/.acceptance_data/chef/bourne/provision/dna.json
+  - cat /home/travis/build/chef/mixlib-install/acceptance/.acceptance_data/chef/bourne/provision/.chef/config.rb
 
 env:
   global:
