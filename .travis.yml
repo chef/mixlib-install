@@ -31,16 +31,12 @@ env:
 matrix:
   include:
     - language: ruby
-      rvm: 2.2.5
-      gemfile: ./Gemfile
-      before_install: gem install bundler
-      # install: bundle install
-      script: bundle exec rake
-    - language: ruby
-      rvm: 2.2.5
-      gemfile: ./Gemfile
-      before_install: gem install bundler
-      # install: bundle install
+      rvm:
+        - 2.2
+        - 2.1
+      # gemfile: ./Gemfile
+      before_install: cd acceptance
+      install: bundle install
       before_script: cd acceptance
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
