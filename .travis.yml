@@ -16,8 +16,7 @@ matrix:
     - language: ruby
       rvm: 2.2
       gemfile: acceptance/Gemfile
-      before_install: cd acceptance
-      install: bundle install
+      before_install: cd acceptance && ./.ci/unset_vars.sh
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
       env:
