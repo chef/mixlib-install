@@ -17,8 +17,8 @@ matrix:
       gemfile: acceptance/Gemfile
       bundler_args: --binstubs
       before_install: GEM_PATH="$GEM_PATH:$PWD/vendor/bundle" && cd acceptance
-      script: bundle exec chef-acceptance test
-      after_failure: bundle exec chef-acceptance destroy
+      script: bin/chef-acceptance test
+      after_failure: bin/chef-acceptance destroy
       env:
         # access key id
         - secure: "b/O77C/ebnrXw/xSTRMcAuhmUz9QH//jfh3XSQrZF2lRJZJbAbfL3L3SPLqQmPkMDJWCAJrs82umQJkZ0RJtSqX5ZzPUqdf2v5O4CyrfMqhQbsEA9GGUlBNaQmSWUHvOCPQZzI5GWMxgQb9Bhl4+ZekUoTgNZBjvh9uAHWuT1c1fNt5pHDYMXg4wyEnyF8tzLRVD5eTJwkKd+BodM1BUvdOITYv2xl6hlg7ZoJbo+onIVc8sRTnEjGiuprhaVyMSeTNSzxa/3jDxeX+HnJ/2HwpenIBXoSskZZViZHMd1Vy2sDUfYPfDjqwr389b8SInCehe1cCD8ouAr/7614IXxwoWSMjrVgkboB+KteRZyz0qVoqCpdS6NX0YBmu5I8T6jHr3OXVwVbcK03FrFhnS2Hg+oLhKLPKMvIFQ5347DEZ1LBv0ol//ltjk/cZX11yLiF2TrrDzSca3jb7kN/LJZ2AbGQdLJnqEhBm4NznHlPYfibLum0QwNXR/lZ47OJjBQnKc9nlN+iEOKbhby6/SCnW30xWJoMfNIULmW79heaNip16wDV0DBu44mmbKcFA6KMrNFex2+QpZGmNwbWJrwnvaJqVc6FNpRtNdShQ/81vJpn5Z6KKz676EHsM6LcXha1WnNj3eLYipWIg+4OSSmHJgRiuNC4JsgsYCaBfrDw8="
