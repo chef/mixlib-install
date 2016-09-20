@@ -18,10 +18,11 @@ env:
     - secure: "lxe9NYpwV19g2mBa7aQoJX372hktSSn/g5oU1GDWYpi59YwpbYXP/Al/XXwq1ZfNzN+BlXw3tJPlVaEkfSQBi0AaWLJ6Kw5+a4tkIkwMyMPJQh+pKnADZK2pd+Hhrr7CRtnaT6w4V2sZCIfcdlLnKmez/BMNNdBn1+WAfE+aN224JK43rXxgLe4B9CcXCsUUORh6nJbB5f60D15qYokDu7ILi0RufyfyiJulqxIsXVNKtnUXOJRXZvDOPp9Y+2ur0HmVK7aiWr6JwXtODgrrDzZiWq99eR2ErDJB1AFUVMmudUykf5SWyivhvB4RStYDIIpG8EXrIhRKP+k9o4loqQBRcRBGvEMLdyupi7TzuryzK7j2XzhJFD9Eg+50Y5By87lRfvltuAJaDkRPfwIzSbWsh0Lb7YwUXI9a+bJebsteTPSFjb1YOYvkQCV2CB5pH68QInw8Hu9o2hmUkuoNWqqvVaxDI8z3peympfFlVtvTC9eOI60Tdv+pSCyQhBN0/II8FT/fylwQsOL+i8Hez9NIRdaRkx0JEpY56NloErd4An9zpY/xCAa/6JfzMWn7eD673MRVJW0u/j5IGuRAksuUlGZTQS+qudF4ZgVJaacm6qARULaesuCNbufZYtRB0Hg+GINQrUSfYKBw6BZUk2T9ZQ2zFsnF12k0yl9Qr7I="
     - APPBUNDLER_ALLOW_RVM=true
 
-script: 
+script:
+  - env
   - bundle exec rake
   # must override BUNDLE_GEMFILE set by travis to bundle exec chef-acceptance
-  - cd acceptance && ./.ci/unset_vars.sh && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install --binstubs && bin/chef-acceptance test
+  - cd acceptance && ./.ci/unset_vars.sh && export BUNDLE_GEMFILE=$PWD/Gemfile && env && bundle install --binstubs && bin/chef-acceptance test
 
 after_failure:
   - cd acceptance && ./.ci/unset_vars.sh && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install --binstubs && bin/chef-acceptance destroy
