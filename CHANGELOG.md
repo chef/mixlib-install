@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.2.2]
+- Add a .gitattributes file to ensure files are checked out with lf line endings
+
 ## [1.2.1]
 - Fix nano appx installs replacing the symlink with a full copy
 
