@@ -1,0 +1,12 @@
+# pack-refs with: peeled fully-peeled 
+724c3764211eda3a29b09c9f3e4418c8b6759f2b refs/heads/jk/chef-client-binary
+e92ddae46d2126864698b9c8e4fc4ec2dcc46c55 refs/heads/master
+0361dd9d686320afd16fd8c129c178bf3f225559 refs/heads/praj/FLOW-370/acceptance_logging
+d43259aa2baf91d771276de7a983ce9219dd1dbe refs/heads/pw/updates
+efac16dbfd514a30eda832cef840a98b3c03203d refs/heads/salam/cli-timeout
+2aeebbb12df76398b54297193a37bf9ec82785b8 refs/heads/sersut/log
+6279a41bfb03d908d85e9b73c4457d8b44f3ae38 refs/heads/sersut/tmp
+76d79bea5682835b65341ae20e696f201b2409b2 refs/tags/v0.1.0
+^67d104116f3459ad4c4c6610f8e477dade6507b2
+0d970080de059ca5398d32c09ce8321a26f1e0ac refs/tags/v0.2.0
+^06dbe820926a5a1948dec112b6ef4d0f9912d0ee
