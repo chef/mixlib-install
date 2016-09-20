@@ -2,7 +2,7 @@
 
 for ruby_env_var in _ORIGINAL_GEM_PATH \
                     BUNDLE_BIN_PATH \
-                    BUNDLE_GEMFILE \
+                    # BUNDLE_GEMFILE \
                     GEM_HOME \
                     GEM_PATH \
                     GEM_ROOT \
