@@ -4,17 +4,16 @@ rvm:
   - 2.2
   - 2.1
 
-addons:
-  apt:
-    sources:
-      - chef-stable-precise
-    packages:
-      - chefdk
-
 matrix:
   include:
     - language: ruby
       rvm: 2.2
+      addons:
+        apt:
+          sources:
+            - chef-stable-precise
+          packages:
+            - chefdk
       gemfile: acceptance/Gemfile
       before_install: cd acceptance
       script: bundle exec chef-acceptance test
