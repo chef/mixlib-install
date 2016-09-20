@@ -18,7 +18,7 @@ variable "production" {
 # SSH Connection info used for remote provisioning instances
 variable "connection_agent" {
   description = "Set to false to disable using ssh-agent to authenticate"
-  default     = true
+  default     = false
 }
 
 variable "connection_private_key" {

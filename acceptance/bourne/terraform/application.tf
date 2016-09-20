@@ -52,6 +52,7 @@ resource "aws_instance" "mixlib_install_sh" {
     user        = "ubuntu"
     private_key = "${file("${var.connection_private_key}")}"
     agent       = "${var.connection_agent}"
+    timeout  = "10m"
   }
 
   tags {

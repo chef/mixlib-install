@@ -52,6 +52,7 @@ resource "aws_instance" "mixlib_install_ps1" {
     type     = "winrm"
     user     = "Administrator"
     password = "${var.admin_password}"
+    timeout  = "10m"
   }
 
   user_data = <<EOF
