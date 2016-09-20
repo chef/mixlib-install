@@ -16,7 +16,7 @@ matrix:
           packages:
             - chefdk
       gemfile: acceptance/Gemfile
-      before_install: cd acceptance && export GEM_PATH="/home/travis/.chefdk/gem/ruby/2.2.0:/opt/chefdk/embedded/lib/ruby/gems/2.2.0:$GEM_PATH"
+      before_install: cd acceptance && eval "$(chef shell-init bash)"
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
       after_script: bundle env && gem env
