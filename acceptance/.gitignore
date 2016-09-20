@@ -6,6 +6,3 @@
 *.tfstate.backup
 *_override.tf
 
-# Bundler
-bin
-.bundle
