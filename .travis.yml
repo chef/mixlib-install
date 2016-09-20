@@ -4,12 +4,12 @@ rvm:
   - 2.2
   - 2.1
 
-addons:
-  apt:
-    sources:
-      - chef-stable-precise
-    packages:
-      - chef
+# addons:
+#   apt:
+#     sources:
+#       - chef-stable-precise
+#     packages:
+#       - chef
 
 env:
   global:
@@ -20,6 +20,7 @@ env:
 
 script:
   - bundle exec rake
+  - gem install chef
   # must override BUNDLE_GEMFILE set by travis to bundle exec chef-acceptance
   - cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && bundle install --binstubs && bin/chef-acceptance test
 
