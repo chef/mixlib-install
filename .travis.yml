@@ -16,7 +16,8 @@ matrix:
           packages:
             - chefdk
       gemfile: acceptance/Gemfile
-      before_install: cd acceptance && ./.ci/unset.sh && gem install bundler
+      before_install: cd acceptance
+      before_script: export GEM_HOME="~/.chefdk/gem/ruby/2.2.0:$GEM_HOME"
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
       after_script: bundle env
