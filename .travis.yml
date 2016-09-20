@@ -8,6 +8,7 @@ addons:
       - chefdk
       - wget
       - unzip
+      - sshd
 
 install: 
   - echo "skip bundle install"
@@ -19,15 +20,14 @@ before_script:
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
   # download terraform
   - wget "https://releases.hashicorp.com/terraform/0.7.4/terraform_0.7.4_linux_amd64.zip"
-  # infalte archive
+  # inflate archive
   - unzip terraform_0.7.4_linux_amd64.zip -d bin
   # put terraform on PATH
   - export PATH="$PWD/bin:$PATH"
-  # pem
+  # decrypt pem
   - openssl aes-256-cbc -K $encrypted_e2edbb28e76c_key -iv $encrypted_e2edbb28e76c_iv -in ci/es-infrastructure.pem.enc -out es-infrastructure.pem -d
   - mkdir -p ~/.ssh
   - mv es-infrastructure.pem ~/.ssh
-  - ssh-add -D ~/.ssh/es-infrastructure
 
 script:
   # run unit tests
