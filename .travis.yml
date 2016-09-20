@@ -15,7 +15,8 @@ matrix:
           packages:
             - chefdk
       gemfile: acceptance/Gemfile
-      before_install: cd acceptance
+      bundler_args: --binstubs
+      before_install: GEM_PATH="$GEM_PATH:$PWD/vendor/bundle" && cd acceptance
       script: bundle exec chef-acceptance test
       after_failure: bundle exec chef-acceptance destroy
       env:
