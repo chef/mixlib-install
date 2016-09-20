@@ -12,16 +12,14 @@ addons:
 install: echo "skip bundle install"
 
 before_script:
-  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+  - eval "$(chef shell-init bash)"
   
 script:
-  - /opt/chefdk/bin/chef exec rake
-  - cd acceptance
-  - /opt/chefdk/embedded/bin/chef exec bundle install
-  - /opt/chefdk/bin/chef exec bundle exec chef-acceptance test
+  - chef exec rake
+  - cd acceptance && chef exec bundle install && chef exec bundle exec chef-acceptance test
 
 after_failure:
-  - /opt/chefdk/bin/chef exec bundle exec chef-acceptance destroy
+  - chef exec bundle exec chef-acceptance destroy
 
 env:
   global:
