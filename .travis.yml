@@ -8,7 +8,7 @@ addons:
       - chefdk
       - wget
       - unzip
-      - sshd
+      - ssh
 
 install: 
   - echo "skip bundle install"
