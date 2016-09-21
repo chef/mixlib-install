@@ -25,9 +25,6 @@ wget "https://releases.hashicorp.com/terraform/0.7.4/terraform_0.7.4_linux_amd64
 # inflate archive
 unzip terraform_0.7.4_linux_amd64.zip -d bin
 
-# put terraform on PATH
-export PATH="$PWD/bin:$PATH"
-
 # decrypt pem
 openssl aes-256-cbc -K $encrypted_e2edbb28e76c_key -iv $encrypted_e2edbb28e76c_iv -in ci/es-infrastructure.pem.enc -out es-infrastructure.pem -d
 mkdir -p ~/.ssh

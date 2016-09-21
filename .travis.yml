@@ -17,6 +17,8 @@ before_script:
   - ci/before-script.sh
   # set chefdk as default environment
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+  # put terraform on PATH
+  - export PATH="$PWD/bin:$PATH"
 
 script:
   # run unit tests
