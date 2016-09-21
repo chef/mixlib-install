@@ -118,6 +118,7 @@ context "PRODUCT_MATRIX" do
     compliance
     delivery
     ha
+    inspec
     manage
     marketplace
     omnibus-toolchain
@@ -130,6 +131,10 @@ context "PRODUCT_MATRIX" do
   }
 
   it "has entries for all #{CHEF_PRODUCTS.length} products" do
+    expect(PRODUCT_MATRIX.products).to eq CHEF_PRODUCTS
+  end
+
+  it "can lookup entries for all #{CHEF_PRODUCTS.length} products" do
     CHEF_PRODUCTS.each do |p|
       expect(PRODUCT_MATRIX.lookup(p).product_name).to be_a(String)
     end
