@@ -250,6 +250,11 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/opscode/chef-server.rb"
   end
 
+  product "inspec" do
+    product_name "InSpec"
+    package_name "inspec"
+  end
+
   product "manage" do
     product_name "Management Console"
     package_name do |v|
