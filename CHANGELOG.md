@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.2.3]
+- Add inspec as a supported product
+
 ## [1.2.2]
 - Add a .gitattributes file to ensure files are checked out with lf line endings
 
