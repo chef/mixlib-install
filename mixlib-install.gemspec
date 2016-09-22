@@ -22,11 +22,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mixlib-shellout"
 
   spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.3"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rb-readline"
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock", "~> 1.0"
-  spec.add_development_dependency "chefstyle", "~> 0.3"
+  spec.add_development_dependency "chefstyle"
+  spec.add_development_dependency "simplecov"
 end

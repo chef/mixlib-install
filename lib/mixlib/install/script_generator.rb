@@ -132,6 +132,7 @@ module Mixlib
       def install_command_vars_for_powershell
         [
           shell_var("chef_omnibus_root", root),
+          shell_var("msi", "$env:TEMP\\chef-#{version}.msi"),
         ].tap do |vars|
           if install_msi_url
             vars << shell_var("chef_msi_url", install_msi_url)

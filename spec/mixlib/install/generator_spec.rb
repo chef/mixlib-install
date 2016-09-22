@@ -50,11 +50,6 @@ context "Mixlib::Install::Generator", :vcr do
 
     context "default shell type" do
       it_behaves_like "the correct sh script"
-
-      it "contains artifactory urls" do
-        expect(install_script).to include('artifact_info_for_platform="$tmp_dir/artifact_info/$platform/$platform_version/$machine/artifact_info"
-')
-      end
     end
   end
 
@@ -66,7 +61,11 @@ context "Mixlib::Install::Generator", :vcr do
     end
 
     context "sh shell type" do
-      let(:add_options) { { shell_type: :sh } }
+      let(:add_options) do
+        {
+          shell_type: :sh,
+        }
+      end
 
       it_behaves_like "the correct sh script"
     end
@@ -98,7 +97,11 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       context "when shell_type is set" do
-        let(:add_options) { { shell_type: :ps1 } }
+        let(:add_options) do
+          {
+            shell_type: :ps1,
+          }
+        end
 
         it_behaves_like "the correct ps1 script"
 

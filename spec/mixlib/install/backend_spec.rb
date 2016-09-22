@@ -50,19 +50,14 @@ context "Mixlib::Install::Backend", :vcr do
 
   def check_url(url)
     if expected_info && !expected_info.key?(:url)
-      expect(url).to match(/#{expected_info[:url]}/)
+      expect(url).to match /#{expected_info[:url]}/
+    elsif url.include?("freebsd/9") ||
+        url.include?("el/5") ||
+        url.include?("solaris2/5.10") ||
+        url.include?("solaris2/5.9")
+      expect(url).to include(Mixlib::Install::Backend::PackageRouter::COMPAT_DOWNLOAD_URL_ENDPOINT)
     else
-      if Mixlib::Install.unified_backend?
-        expect(url).to include("https://packages-acceptance.chef.io")
-      else
-        if channel == :unstable
-          expect(url).to include("http://artifactory.chef.co")
-        elsif url.include?("freebsd/9") || url.include?("el/5") || url.include?("solaris2/5.10") || url.include?("solaris2/5.9")
-          expect(url).to include("http://chef.bintray.com")
-        else
-          expect(url).to include("https://packages.chef.io")
-        end
-      end
+      expect(url).to include(Mixlib::Install::Backend::PackageRouter::ENDPOINT)
     end
   end
 
@@ -126,7 +121,11 @@ context "Mixlib::Install::Backend", :vcr do
     let(:product_version) { "12.2.1" }
 
     context "without platform info" do
-      let(:expected_info) { { version: "12.2.1" } }
+      let(:expected_info) do
+        {
+          version: "12.2.1",
+        }
+      end
 
       it_behaves_like "the right artifact list info"
     end
@@ -154,10 +153,6 @@ context "Mixlib::Install::Backend", :vcr do
       let(:channel) { channel }
       let(:product_version) { :latest }
 
-      if channel == :unstable
-        let(:expected_protocol) { "http://" }
-      end
-
       context "without platform info" do
         it_behaves_like "the right artifact list info"
       end
@@ -179,30 +174,8 @@ context "Mixlib::Install::Backend", :vcr do
       let(:channel) { :unstable }
 
       it "returns the list of available versions" do
-        ["12.13.3", "12.13.7", "12.13.8+20160721014124", "12.13.11+20160721165202"].each do |v|
-          expect(available_versions).to include(v)
-        end
+        expect(available_versions).to include("12.14.43+20160901173048")
       end
     end
-
-    # These tests are only valid when unified_backend is not enabled
-    unless Mixlib::Install.unified_backend?
-      context "with :stable channel" do
-        let(:channel) { :stable }
-
-        it "raises error" do
-          expect { available_versions }.to raise_error(StandardError)
-        end
-      end
-
-      context "with :current channel" do
-        let(:channel) { :current }
-
-        it "raises error" do
-          expect { available_versions }.to raise_error(StandardError)
-        end
-      end
-    end
-
   end
 end
