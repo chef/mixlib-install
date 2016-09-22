@@ -14,10 +14,10 @@ options = {
 }
 
 artifact = Mixlib::Install.new(options).artifact_info
-# => ArtifactInfo
+# => #<Mixlib::Install::ArtifactInfo>
 
 artifact.url
-# => "http://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.5.1%2B20151009083009-1.dmg"
+# => "https://packages.chef.io/files/current/chef/12.14.90/mac_os_x/10.9/chef-12.14.90-1.dmg"
 ```
 
 ### Get list of artifacts for all platforms given a package version
@@ -29,10 +29,10 @@ options = {
 }
 
 artifacts = Mixlib::Install.new(options).artifact_info
-# => Array<ArtifactInfo>
+# => [#<Mixlib::Install::ArtifactInfo>, ...]
 
 artifacts.first.url
-# => "http://opscode-omnibus-packages-current.s3.amazonaws.com/mac_os_x/10.9/x86_64/chef-12.5.1%2B20151009083009-1.dmg"
+# => => "https://packages.chef.io/files/current/chef/12.14.90/mac_os_x/10.11/chef-12.14.90-1.dmg"
 ```
 
 ### Detect platform information
@@ -80,18 +80,7 @@ Mixlib::Install.new(options).available_versions
 # => ["12.13.3", "12.13.7", "12.13.8+20160721014124", "12.13.11+20160721165202"]
 ```
 
-## Unstable channel
-The `:unstable` channel is currently only available when connected to Chef's internal network.
-
-## Feature Flags
-
-Below are the environment variables you can set to tune certain aspects of mixlib-install. They enable some features that are currently under development. You should use these features with care.
-
-`MIXLIB_INSTALL_UNIFIED_BACKEND` => Enables unified backend feature which uses Artifactory backend for all available channels.
-
 ## Development
-Since mixlib-install needs to interact with Bintray and Artifactory and since Artifactory instances are only available in Chef's network, this project uses [vcr](https://github.com/vcr/vcr).
-
 VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.
 
 ## Contributing
