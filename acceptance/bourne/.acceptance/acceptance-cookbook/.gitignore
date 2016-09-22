@@ -1,5 +1,5 @@
-/Gemfile.lock
-/.acceptance_data/
+nodes/
+tmp/
 
 # Terraform
 *.tfstate
