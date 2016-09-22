@@ -1,5 +1,12 @@
 # Change Log
 
+## [2.0.0]
+- Replaced all backends with PackageRouter
+- All channels are now available using the single backend
+- Enabled unstable channel for install.sh and install.ps1 scripts
+- Added chef-acceptance test suites and configured them to run in Travis
+- Relaxed several test dependency versions
+
 ## [1.2.3]
 - Add inspec as a supported product
 
