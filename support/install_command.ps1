@@ -102,7 +102,7 @@ Function Install-ChefAppx($appx, $chef_omnibus_root) {
   return $true
 }
 
-Function Log($m) { Write-Host "       $m`n" }
+Function Log($m) { Write-Host "       $m" }
 
 function Get-WebContent {
   param ($uri, $filepath)
@@ -178,7 +178,7 @@ Function Unresolve-Path($p) {
 $chef_omnibus_root = Unresolve-Path $chef_omnibus_root
 
 if (Check-UpdateChef $chef_omnibus_root $version) {
-  Write-Host "-----> Installing Chef Omnibus ($pretty_version)`n"
+  Write-Host "-----> Installing Chef Omnibus ($pretty_version)"
   if ($chef_metadata_url -ne $null) {
     $url, $sha256 = Get-ChefMetadata "$chef_metadata_url"
   } else {
@@ -190,5 +190,5 @@ if (Check-UpdateChef $chef_omnibus_root $version) {
   Download-Chef "$url" $sha256 $msi
   Install-Chef $msi $chef_omnibus_root
 } else {
-  Write-Host "-----> Chef Omnibus installation detected ($pretty_version)`n"
+  Write-Host "-----> Chef Omnibus installation detected ($pretty_version)"
 }
