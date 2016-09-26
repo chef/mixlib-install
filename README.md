@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chef/mixlib-install.svg?branch=master)](https://travis-ci.org/chef/mixlib-install)
+
 # Mixlib::Install
 
 ## Usage
