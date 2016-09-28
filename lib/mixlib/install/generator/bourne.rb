@@ -45,8 +45,14 @@ module Mixlib
           install_command << get_script("helpers.sh")
           install_command << render_variables
           install_command << get_script("platform_detection.sh")
-          install_command << get_script("fetch_metadata.sh")
-          install_command << get_script("fetch_package.sh")
+          # TODO: Remove this condition check once the PackageRouter changes for
+          #   omnitruck are delivered to production! For now, we will allow
+          #   unstable channel requests to omnitruck to use the acceptance environment.
+          if options.channel == :unstable
+            install_command << get_script("fetch_metadata.sh", base_url: "https://omnitruck-acceptance.chef.io/")
+          else
+            install_command << get_script("fetch_metadata.sh")
+          end
           install_command << get_script("install_package.sh")
 
           install_command.join("\n\n")
