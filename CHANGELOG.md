@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.0.1]
+- Fix install.sh and install.ps1 scripts to install unstable packages
+
 ## [2.0.0]
 - Replaced all backends with PackageRouter
 - All channels are now available using the single backend
