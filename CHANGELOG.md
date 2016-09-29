@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.0.2]
+- Fix install.sh to include fetch_package.sh
+
 ## [2.0.1]
 - Fix install.sh and install.ps1 scripts to install unstable packages
 
