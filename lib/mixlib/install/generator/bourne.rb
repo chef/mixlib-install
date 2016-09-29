@@ -53,6 +53,7 @@ module Mixlib
           else
             install_command << get_script("fetch_metadata.sh")
           end
+          install_command << get_script("fetch_package.sh")
           install_command << get_script("install_package.sh")
 
           install_command.join("\n\n")
