@@ -10,8 +10,9 @@ if [ "${TRAVIS_REPO_SLUG}" = "chef/mixlib-install" ]; then
   # setup acceptance tests
   cd acceptance && export BUNDLE_GEMFILE=$PWD/Gemfile && /opt/chefdk/embedded/bin/bundle install && export APPBUNDLER_ALLOW_RVM=true
   # run acceptances tests and force cleanup
-  # only testing bourne until issues with powershell suite resovled:
+  # only testing ubuntu until issues with powershell suite resovled:
   # 1) inspec not finding chef package once connected (not reproducible locally)
   # 2) currently no way to mask password (sensitive true) AND know what the error is if inspec fails
-  /opt/chefdk/embedded/bin/bundle exec chef-acceptance test bourne --force-destroy
+  /opt/chefdk/embedded/bin/bundle exec chef-acceptance test ubuntu_install_command --force-destroy
+  /opt/chefdk/embedded/bin/bundle exec chef-acceptance test ubuntu_install_sh --force-destroy
 fi
