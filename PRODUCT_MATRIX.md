@@ -12,6 +12,7 @@
 | Chef Compliance | compliance |
 | Delivery | delivery |
 | Chef Server High Availability addon | ha |
+| Harmony - Omnibus Integration Internal Test Project | harmony |
 | InSpec | inspec |
 | Management Console | manage |
 | Chef Cloud Marketplace addon | marketplace |
