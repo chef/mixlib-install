@@ -118,6 +118,7 @@ context "PRODUCT_MATRIX" do
     compliance
     delivery
     ha
+    harmony
     inspec
     manage
     marketplace

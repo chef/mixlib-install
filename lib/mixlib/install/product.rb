@@ -250,6 +250,11 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     config_file "/etc/opscode/chef-server.rb"
   end
 
+  product "harmony" do
+    product_name "Harmony - Omnibus Integration Internal Test Project"
+    package_name "harmony"
+  end
+
   product "inspec" do
     product_name "InSpec"
     package_name "inspec"
