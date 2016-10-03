@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.0.3]
+- Add harmony as a supported product
+
 ## [2.0.2]
 - Fix install.sh to include fetch_package.sh
 
