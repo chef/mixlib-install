@@ -1566,4 +1566,2498 @@ http_interactions:
         }
     http_version: 
   recorded_at: Thu, 01 Sep 2016 20:16:40 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/debian/6/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 62e2b836e9c32bdf0c51ea4be55ac3d300a072f1345d6c7c21422aa5a6ef5499
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:26:31 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3133-SJC, cache-lax8628-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475598391.839115,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:26:32 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/debian/6/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - a8634b4526664809db4802a6b3a01005070aa383a12812de308c6eebf3f49ef3
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:36 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3137-SJC, cache-lax8638-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600496.588987,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:36 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/debian/7/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 0a6538746c8fd8a3ba8aa365ba146fea82a0927e21b52f82b9aff811a3cbdc09
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:36 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3145-SJC, cache-lax8621-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600496.786770,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:36 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/debian/7/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 75b1a01899149da4695c32e1b8b0ef983b9efd9a7f43f4d7888f84815a406ab9
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:36 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3137-SJC, cache-lax8637-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600496.901082,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:36 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/el/5/chef-12.2.1-1.el5.i686.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 2fa98449f6d43930b7e010a79460da180b1708911babf39475496feca0035318
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3141-SJC, cache-lax8623-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.016185,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:36 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/el/5/chef-12.2.1-1.el5.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - cdb5e8c162dbf46a2eadfdd9665e95d2f391cf01d361cb9bb8c9ee874676aa51
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3138-SJC, cache-lax8624-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.138926,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/el/6/chef-12.2.1-1.el6.i686.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - d5bfcc46d4f7a2c6ff008a85ea64c56e37bf075dabe881cda3dde41282e93cc7
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3123-SJC, cache-lax8626-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.261060,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/el/6/chef-12.2.1-1.el6.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 6fe5b9de719ab4f6abf66470ede25dc2a8b176920ba1cb7bfc608f09ca226c4e
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3151-SJC, cache-lax8645-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.379164,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/el/7/chef-12.2.1-1.el6.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - e3dad63701133ff2d5f9373374cbe2a45b2fa1199f655ff358140747fedb939f
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3131-SJC, cache-lax8636-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.487175,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/freebsd/9/chef-12.2.1_1.amd64.sh.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ecbbda082e4e3ab35f04cd7935b78e1717be08f76cba5a224040ea05159969e4
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3139-SJC, cache-lax8647-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.607195,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/freebsd/9/chef-12.2.1_1.i386.sh.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 1cbbfbca55c2cbb83cbb49ffe9b10b3e8f7e7a33176ec195725fa5677e30045c
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3121-SJC, cache-lax8636-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.745617,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/mac_os_x/10.10/chef-12.2.1-1.dmg.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - b435db08c289319f0cb6e17f1a05e94959e074ce94ae99476c109afbc028bbb9
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3135-SJC, cache-lax8646-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.864523,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/mac_os_x/10.6/chef-12.2.1-1.dmg.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 34609a4ebe6173a7e8a17e704b944fab3c8fef62fb3452413f8759f78427dc80
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:37 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3127-SJC, cache-lax8647-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600497.981100,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:37 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/mac_os_x/10.7/chef-12.2.1-1.dmg.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 0fabab7f483bfe525bf5246d58f14bb2f4e2fba5476747afec337c521ab49c46
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:38 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3124-SJC, cache-lax8634-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600498.097065,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:38 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/mac_os_x/10.8/chef-12.2.1-1.dmg.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - d61eb1d86d29bde7ebedd6830ce24935cc4df073d4f82c267a70d0820f68e3e5
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:38 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3145-SJC, cache-lax8630-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600498.216023,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:38 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/mac_os_x/10.9/chef-12.2.1-1.dmg.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - afc1cda37960cda0b01badc6dbac29a47580d0822a7d57c17717859ffb06c21e
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:38 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3132-SJC, cache-lax8635-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600498.349088,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:38 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/solaris2/5.10/chef-12.2.1-1.i86pc.solaris.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - fb0a9a0e0c4838f26f14a8b573b0f9cbf6ebab26e72bc8d629c8e4a6e65f7d80
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:38 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3122-SJC, cache-lax8637-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600498.466622,VS0,VE8
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:38 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/solaris2/5.10/chef-12.2.1-1.sun4u.solaris.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - da953515ea3ba6ba7c6d7b4965a21d6843c1b54baf89c922d47454fcaa919a37
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:38 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3125-SJC, cache-lax8635-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600498.614666,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:38 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/solaris2/5.11/chef-12.2.1-1.i86pc.solaris.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - e10f95d7e8b3057078c3015351b82194add7f0a3b66d9cb174f15640ce398ce7
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:38 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3129-SJC, cache-lax8625-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600498.744639,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:38 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/solaris2/5.11/chef-12.2.1-1.sun4u.solaris.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 6be95999f2c9e1ebc807a258ddc214b1a62c205a0ec96c918e5dd0ea09959a5e
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:38 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3150-SJC, cache-lax8637-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600498.859124,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:38 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/solaris2/5.9/chef-12.2.1-1.sun4u.solaris.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 8dc98151bcf45f1c6f4c24a4531b7c42f1fd7f1ee95cf52d22d9e433cb2d15b6
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:38 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3151-SJC, cache-lax8624-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600498.979257,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:38 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/10.04/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 85513b26d6c9be98948afcea0a82006e5f178bbe6afa0ffb90e3e759010f9fdf
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:39 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3133-SJC, cache-lax8631-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600499.103643,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:39 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/10.04/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 56d9bf9509fc823abc3ad4080456a1ddff3c452abc2597c21b4ed6047f23287e
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:39 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3146-SJC, cache-lax8640-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600499.234943,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:39 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/10.10/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 92093a51821361939237d9901f13bb0aea8096180f6a292e6760f788c6299b83
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:39 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3135-SJC, cache-lax8636-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600499.401526,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:39 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/10.10/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 735a4752c2a750b0f2e9016c286690a59a13432bb7e7fe62472ccf1aa7ef4676
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:39 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3139-SJC, cache-lax8626-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600499.527143,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:39 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/12.04/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - db6096c4d7c2420eab4433ed956a7e6a35564f0a12c6720ce28089e832511657
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:39 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3141-SJC, cache-lax8643-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600499.675661,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:39 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/12.04/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 80655d19a2aaa7e65277d1f3601b8f86840652c777e7b6af67ad4368eda17b6f
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:39 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3125-SJC, cache-lax8621-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600499.822747,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:39 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/12.10/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 4925f3507a65e39e53297fba250e77e8425f0dad9f2b16fc23ac31b095b2bc23
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:39 GMT
+      Age:
+      - '136'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3130-SJC, cache-lax8639-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600499.935329,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:39 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/12.10/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 59d5cef03fccd9cf50a858b5209e137d365f276f6df55c95e5ba9949eb99a956
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:40 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3130-SJC, cache-lax8627-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600500.069222,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:40 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/13.04/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - acda6f4c2cb315567197465aa68d20489b4404eb026c7dbcf1bc46982daf8aa6
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:40 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3122-SJC, cache-lax8627-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600500.239260,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:40 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/13.04/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 3b4fccf986b8b2694691b27f2c828cd5f91e798b1b5d1b7754e3352665a60f79
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:40 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3144-SJC, cache-lax8636-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600500.391411,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:40 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/13.10/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 184e5a1e9b761beccb850f6db7bd40c85c29306ef9d55067759d5650ca1095cb
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:40 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3121-SJC, cache-lax8645-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600500.568815,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:40 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/13.10/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 04c3b3b71a0bf6681f5897f5c4d1c8441f78d4490839d4aafe78acebe92216d5
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:40 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3129-SJC, cache-lax8630-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600500.733005,VS0,VE131
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:40 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/14.04/chef_12.2.1-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - a7cca6dc189096350ffc7b79e697d4c7325121e1dc31a4c4b2145213899e0265
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:41 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3123-SJC, cache-lax8632-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600501.049909,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:41 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/ubuntu/14.04/chef_12.2.1-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 48694d8b6544b14a32c79cae1f4c1e5b7c56e98e33fabc0bd2a133c87f25d95c
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:41 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3141-SJC, cache-lax8634-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600501.205118,VS0,VE34
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:41 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/windows/2003r2/chef-client-12.2.1-1.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 08b4b52f44b1a7c5c783db797da3a72a96819027b4f360848c64ff75dfa25260
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:41 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3123-SJC, cache-lax8623-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600501.367541,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:41 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/windows/2008/chef-client-12.2.1-1.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 269b9ba5f23d436604713d1b5c54004669e44605b170a778fa54e7f01aef5d6b
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:41 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3150-SJC, cache-lax8646-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600501.529555,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:41 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/windows/2008r2/chef-client-12.2.1-1.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 735d67a0ee2dcb4cd09af4f6ea778b71248ed376de17c1ceebf3131d0cc40d41
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:41 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3120-SJC, cache-lax8634-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600501.701742,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:41 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/windows/2012/chef-client-12.2.1-1.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ee242904f6e9f16fb35e05aeeb24e3b8e7def8943389a4f72ef5faf714c434b6
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:41 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3124-SJC, cache-lax8625-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600501.859973,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:41 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/windows/2012r2/chef-client-12.2.1-1.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 7bb95fe6a4f1a1464b6571bba2fe2e13c097bb3353fce5865b0d119adbbcfa71
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:42 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3129-SJC, cache-lax8623-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600502.049733,VS0,VE34
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:42 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/windows/7/chef-client-12.2.1-1.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 0dbe02c8c3db3b4e46d1c8186cefd8f0cb3b497c36c31ee24562da3282175c86
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:42 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3131-SJC, cache-lax8646-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600502.219674,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:42 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/windows/8/chef-client-12.2.1-1.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ea79279090be4a051adc10addf582189315433a08dfc4b50bd4e5763baa71428
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:42 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3133-SJC, cache-lax8626-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600502.393872,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:42 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.2.1/aix/6.1/chef-12.2.1-1.powerpc.bff.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 0e25bac723e623d6d23b781dad400cdcc53f8f0d95dcdd213d84a86605b468b5
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:42 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3146-SJC, cache-lax8631-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600502.556400,VS0,VE38
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:42 GMT
 recorded_with: VCR 3.0.3

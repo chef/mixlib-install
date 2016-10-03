@@ -61,14 +61,51 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       let(:platform_version) { "14.04" }
       let(:architecture) { "x86_64" }
 
-      it "returns a single artifact with correct info" do
-        expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
-        require "pry"; expect(artifact_info.version).to eq "12.12.15"
-        expect(artifact_info.platform).to eq "ubuntu"
-        expect(artifact_info.platform_version).to eq "14.04"
-        expect(artifact_info.architecture).to eq "x86_64"
-        expect(artifact_info.sha256).to eq "d64a029bc5402e2c2e2e1ad479e8b49b3dc7599a9d50ea3cefe4149b070582be"
-        expect(artifact_info.url).to include "files/stable/chef/12.12.15/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
+      context "returns a single artifact with correct info" do
+
+        it "is an ArtifactInfo instance" do
+          expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+        end
+
+        it "has the right platform" do
+          expect(artifact_info.platform).to eq "ubuntu"
+        end
+
+        it "has the right platfom version" do
+          expect(artifact_info.platform_version).to eq "14.04"
+        end
+
+        it "has the right architecture" do
+          expect(artifact_info.architecture).to eq "x86_64"
+        end
+
+        it "has the right sha256" do
+          expect(artifact_info.sha256).to eq "d64a029bc5402e2c2e2e1ad479e8b49b3dc7599a9d50ea3cefe4149b070582be"
+        end
+
+        it "has the right license" do
+          expect(artifact_info.license).to eq "Apache-2.0"
+        end
+
+        it "has the right product name" do
+          expect(artifact_info.product_name).to eq "chef"
+        end
+
+        it "has the right product description" do
+          expect(artifact_info.product_description).to eq "Chef Client"
+        end
+
+        it "has the right url" do
+          expect(artifact_info.url).to include "files/stable/chef/12.12.15/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
+        end
+
+        it "has the right license content" do
+          expect(artifact_info.license_content).to include "http://www.apache.org/licenses/\n\nTERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION"
+        end
+
+        it "has the right software dependencies" do
+          expect(artifact_info.software_dependencies).to include "preparation"
+        end
       end
 
       context "when an querying artifact" do

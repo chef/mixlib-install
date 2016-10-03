@@ -19,25 +19,31 @@
 module Mixlib
   class Install
     class ArtifactInfo
-      attr_reader :url
-      attr_reader :md5
-      attr_reader :sha256
-      attr_reader :sha1
-      attr_reader :version
 
-      attr_reader :platform
-      attr_reader :platform_version
-      attr_reader :architecture
+      ATTRIBUTES = %w{
+        architecture
+        license
+        license_content
+        md5
+        platform
+        platform_version
+        product_description
+        product_name
+        sha1
+        sha256
+        software_dependencies
+        url
+        version
+      }.freeze
+
+      # Dynamically create readers
+      ATTRIBUTES.each { |attribute| attr_reader attribute.to_sym }
 
       def initialize(data)
-        @url = data[:url]
-        @md5 = data[:md5]
-        @sha256 = data[:sha256]
-        @sha1 = data[:sha1]
-        @version = data[:version]
-        @platform = data[:platform]
-        @platform_version = data[:platform_version]
-        @architecture = data[:architecture]
+        # Create an instance variable for each attribute
+        ATTRIBUTES.each do |attribute|
+          instance_variable_set("@#{attribute}", data[attribute.to_sym])
+        end
       end
 
       def self.from_json(json, platform_info)
@@ -63,16 +69,8 @@ module Mixlib
       end
 
       def to_hash
-        {
-          url: url,
-          md5: md5,
-          sha256: sha256,
-          sha1: sha1,
-          version: version,
-          platform: platform,
-          platform_version: platform_version,
-          architecture: architecture,
-        }
+        # Create a Hash of the instance data
+        Hash[ATTRIBUTES.map { |attribute| [attribute.to_sym, eval(attribute)] }]
       end
 
       def clone_with(data)
