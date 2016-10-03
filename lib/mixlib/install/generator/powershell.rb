@@ -46,14 +46,7 @@ module Mixlib
         def install_command
           install_project_module = []
           install_project_module << get_script("helpers.ps1")
-          # TODO: Remove this condition check once the PackageRouter changes for
-          #   omnitruck are delivered to production! For now, we will allow
-          #   unstable channel requests to omnitruck to use the acceptance environment.
-          if options.channel == :unstable
-            install_project_module << get_script("get_project_metadata.ps1", base_url: "https://omnitruck-acceptance.chef.io/")
-          else
-            install_project_module << get_script("get_project_metadata.ps1")
-          end
+          install_project_module << get_script("get_project_metadata.ps1")
           install_project_module << get_script("install_project.ps1")
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Omnitruck")

@@ -111,27 +111,4 @@ context "Mixlib::Install::Generator", :vcr do
       end
     end
   end
-
-  # TODO: These tests will need to be removed once the package router changes for omnitruck land in prod
-  context "for unstable channel" do
-    let(:channel) { :unstable }
-
-    context "for bourne" do
-      it "uses the acceptance environment" do
-        expect(install_script).to include("metadata_url=\"https://omnitruck-acceptance.chef.io/")
-      end
-    end
-
-    context "for powershell" do
-      let(:add_options) do
-        {
-          shell_type: :ps1,
-        }
-      end
-
-      it "uses the acceptance environment" do
-        expect(install_script).to include("[uri]$base_server_uri = 'https://omnitruck-acceptance.chef.io/'")
-      end
-    end
-  end
 end
