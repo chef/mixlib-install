@@ -158,7 +158,7 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
         end
 
         def create_artifact(artifact_map)
-          # set normalize platform and platform version
+          # set normalized platform and platform version
           platform, platform_version = normalize_platform(
             artifact_map["omnibus.platform"],
             artifact_map["omnibus.platform_version"]
@@ -175,7 +175,6 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
           )
 
           # retrieve the metadata using the standardized path
-          # return {} if file not found
           begin
             metadata = get("#{chef_standard_path}.metadata.json")
             license_content = metadata["license_content"]
