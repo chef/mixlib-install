@@ -186,7 +186,7 @@ module Mixlib
           case architecture
           when "amd64"
             "x86_64"
-          when "x86", "i86pc", "i686"
+          when "i86pc", "i686"
             "i386"
           when "sun4u", "sun4v"
             "sparc"

@@ -307,7 +307,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       end
     end
 
-    %w{x86 i86pc i686}.each do |a|
+    %w{i86pc i686}.each do |a|
       context "when #{a}" do
         it "returns i386" do
           expect(package_router.normalize_architecture(a)).to eq "i386"
