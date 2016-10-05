@@ -77,7 +77,7 @@ EOF
   }
 
   provisioner "file" {
-    source      = "../../.acceptance_data/install.ps1"
+    source      = "../../.acceptance_data/powershell_install.ps1"
     destination = "/tmp/install.ps1"
   }
 

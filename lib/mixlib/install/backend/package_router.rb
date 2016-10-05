@@ -158,10 +158,15 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
         end
 
         def create_artifact(artifact_map)
-          platform, platform_version = normalize_platform(artifact_map["omnibus.platform"],
-            artifact_map["omnibus.platform_version"])
+          # set normalized platform and platform version
+          platform, platform_version = normalize_platform(
+            artifact_map["omnibus.platform"],
+            artifact_map["omnibus.platform_version"]
+          )
 
-          chef_standard_path = generate_chef_standard_path(options.channel,
+          # create the standardized file path
+          chef_standard_path = generate_chef_standard_path(
+            options.channel,
             artifact_map["omnibus.project"],
             artifact_map["omnibus.version"],
             platform,
@@ -169,16 +174,57 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
             artifact_map["filename"]
           )
 
+          # retrieve the metadata using the standardized path
+          begin
+            metadata = get("#{chef_standard_path}.metadata.json")
+            license_content = metadata["license_content"]
+            software_dependencies = metadata["version_manifest"]["software"]
+          rescue Net::HTTPServerException => e
+            if e.message =~ /404/
+              license_content, software_dependencies = nil
+            else
+              raise e
+            end
+          end
+
+          # create the download path with the correct endpoint
+          base_url = if use_compat_download_url_endpoint?(platform, platform_version)
+                       COMPAT_DOWNLOAD_URL_ENDPOINT
+                     else
+                       endpoint
+                     end
+
           ArtifactInfo.new(
-            md5:              artifact_map["omnibus.md5"],
-            sha256:           artifact_map["omnibus.sha256"],
-            sha1:             artifact_map["omnibus.sha1"],
-            version:          artifact_map["omnibus.version"],
-            platform:         platform,
-            platform_version: platform_version,
-            architecture:     normalize_architecture(artifact_map["omnibus.architecture"]),
-            url:              chef_standard_path
+            architecture:          normalize_architecture(artifact_map["omnibus.architecture"]),
+            license:               artifact_map["omnibus.license"],
+            license_content:       license_content,
+            md5:                   artifact_map["omnibus.md5"],
+            platform:              platform,
+            platform_version:      platform_version,
+            product_description:   product_description,
+            product_name:          options.product_name,
+            sha1:                  artifact_map["omnibus.sha1"],
+            sha256:                artifact_map["omnibus.sha256"],
+            software_dependencies: software_dependencies,
+            url:                   "#{base_url}/#{chef_standard_path}",
+            version:               artifact_map["omnibus.version"]
           )
+        end
+
+        #
+        # For some older platform & platform_version combinations we need to
+        # use COMPAT_DOWNLOAD_URL_ENDPOINT since these versions have an
+        # OpenSSL version that can not verify the ENDPOINT based urls
+        #
+        # @return [boolean] use compat download url endpoint
+        #
+        def use_compat_download_url_endpoint?(platform, platform_version)
+          case "#{platform}-#{platform_version}"
+          when "freebsd-9", "el-5", "solaris2-5.9", "solaris2-5.10"
+            true
+          else
+            false
+          end
         end
 
         private
@@ -194,28 +240,17 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
         end
 
         # Generates a chef standard download uri in the form of
-        # http://endpoint/files/:channel/:project/:version/:platform/:platform_version/:file
+        # /files/:channel/:project/:version/:platform/:platform_version/:file
         def generate_chef_standard_path(channel, project, version, platform, platform_version, filename)
-          # For some older platform & platform_version combinations we need to
-          # use COMPAT_DOWNLOAD_URL_ENDPOINT since these versions have an
-          # OpenSSL version that can not verify the ENDPOINT based urls
-          base_url = case "#{platform}-#{platform_version}"
-                     when "freebsd-9", "el-5", "solaris2-5.9", "solaris2-5.10"
-                       COMPAT_DOWNLOAD_URL_ENDPOINT
-                     else
-                       endpoint
-                     end
-
-          uri = []
-          uri << base_url.sub(/\/$/, "")
-          uri << "files"
-          uri << channel
-          uri << project
-          uri << version
-          uri << platform
-          uri << platform_version
-          uri << filename
-          uri.join("/")
+          path = []
+          path << "files"
+          path << channel
+          path << project
+          path << version
+          path << platform
+          path << platform_version
+          path << filename
+          path.join("/")
         end
 
         def endpoint
@@ -224,6 +259,10 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
 
         def omnibus_project
           @omnibus_project ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).omnibus_project
+        end
+
+        def product_description
+          PRODUCT_MATRIX.lookup(options.product_name, options.product_version).product_name
         end
       end
     end

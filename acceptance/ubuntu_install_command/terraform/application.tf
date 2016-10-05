@@ -65,7 +65,7 @@ resource "aws_instance" "mixlib_install_sh" {
   }
 
   provisioner "file" {
-    source      = "../../.acceptance_data/install.sh"
+    source      = "../../.acceptance_data/ubuntu_install_command.sh"
     destination = "/tmp/install.sh"
   }
 

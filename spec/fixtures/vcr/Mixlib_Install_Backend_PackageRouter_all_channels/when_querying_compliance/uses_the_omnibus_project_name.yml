@@ -1134,4 +1134,584 @@ http_interactions:
         }
     http_version: 
   recorded_at: Thu, 01 Sep 2016 21:18:49 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/ubuntu/16.04/chef-compliance_1.3.20-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 5daca2d06dd3ef2552b0bd377b86cedcef6b1dc5a7eb006342ff7c6afc40b3ad
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:26:31 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3136-SJC, cache-lax8642-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475598391.202316,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:26:31 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/ubuntu/14.04/chef-compliance_1.3.20-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ff88c4e893544b6f432737e610ff98580758034e9e82ec984bb416046efe807c
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:18 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3149-SJC, cache-lax8630-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600358.646655,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:18 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/el/7/chef-compliance-1.3.20-1.el7.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 07ae10801dc4a8a801b511d4cdf0af7f06e2ef27ad886f437a39a5775d11ed30
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:18 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3120-SJC, cache-lax8643-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600358.809231,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:18 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/ubuntu/12.04/chef-compliance_1.3.20-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 65cb835115729bb2951c98893fc2b3309bffbc076a7d6f4daeda7fb823ce08ca
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:18 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3124-SJC, cache-lax8648-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600358.954482,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:18 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/el/6/chef-compliance-1.3.20-1.el6.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 5fb2536e7d41499df2427ec3d6315ff0f9529ed9fe1a843466fa5f2535e7cacd
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:19 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3151-SJC, cache-lax8645-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600359.108631,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:19 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/ubuntu/16.04/chef-compliance_1.3.20-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 5daca2d06dd3ef2552b0bd377b86cedcef6b1dc5a7eb006342ff7c6afc40b3ad
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:35 GMT
+      Age:
+      - '2105'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3136-SJC, cache-lax8645-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600495.826653,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:35 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/ubuntu/14.04/chef-compliance_1.3.20-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ff88c4e893544b6f432737e610ff98580758034e9e82ec984bb416046efe807c
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:35 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3149-SJC, cache-lax8631-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600495.952988,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:35 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/el/7/chef-compliance-1.3.20-1.el7.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 07ae10801dc4a8a801b511d4cdf0af7f06e2ef27ad886f437a39a5775d11ed30
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:36 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3120-SJC, cache-lax8624-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600496.069617,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:36 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/ubuntu/12.04/chef-compliance_1.3.20-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 65cb835115729bb2951c98893fc2b3309bffbc076a7d6f4daeda7fb823ce08ca
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:36 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3124-SJC, cache-lax8643-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600496.183364,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:36 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/current/chef-compliance/1.3.20/el/6/chef-compliance-1.3.20-1.el6.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 5fb2536e7d41499df2427ec3d6315ff0f9529ed9fe1a843466fa5f2535e7cacd
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:36 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3151-SJC, cache-lax8637-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600496.298364,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:36 GMT
 recorded_with: VCR 3.0.3

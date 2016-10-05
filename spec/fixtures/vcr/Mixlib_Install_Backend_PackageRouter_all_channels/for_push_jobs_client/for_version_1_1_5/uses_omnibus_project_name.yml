@@ -752,4 +752,1048 @@ http_interactions:
         }
     http_version: 
   recorded_at: Thu, 01 Sep 2016 20:16:34 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/ubuntu/10.04/opscode-push-jobs-client_1.1.5-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - f82a5bdb2bdf966da9964ace77a4c807f70d136ae680e563bd3c9e7fde68d877
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:26:29 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3140-SJC, cache-lax8633-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475598389.866372,VS0,VE34
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:26:29 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/ubuntu/10.04/opscode-push-jobs-client_1.1.5-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 54d8e4ab3e1f0999811825b2018674bb19b4551c1ed0673df953c29863618a9d
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:14 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3139-SJC, cache-lax8639-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600354.864119,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:14 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/ubuntu/12.04/opscode-push-jobs-client_1.1.5-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 2b82f2c094e375a3323f535240333b4e8bd85b2f77a2c1c36965509b9f09ca69
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:15 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3122-SJC, cache-lax8620-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600355.016264,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:15 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/ubuntu/12.04/opscode-push-jobs-client_1.1.5-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 4c17846046fec0aa6f8a05a8266afe5515b909237135c2056905ae7b1bee2598
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:15 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3134-SJC, cache-lax8620-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600355.221910,VS0,VE33
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:15 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/windows/2008r2/opscode-push-jobs-client-windows-1.1.5-1.windows.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 476cfdae2be5f98d80b6aad5a58b1713346f6284f13fe3c06ca0b6ee28ec54b6
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:15 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3125-SJC, cache-lax8632-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600355.394329,VS0,VE32
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:15 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/el/5/opscode-push-jobs-client-1.1.5-1.el5.i686.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 8633fd0c8b38ab8945d10a3a39bf14a783cd2887c21d7903909a82add26b7c4d
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:15 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3150-SJC, cache-lax8631-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600355.560523,VS0,VE34
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:15 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/el/5/opscode-push-jobs-client-1.1.5-1.el5.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - af9234e05de05591029a945665bfb34616626e2695194e30d77f99ca697ebe8b
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:15 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3137-SJC, cache-lax8630-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600355.714213,VS0,VE31
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:15 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/el/6/opscode-push-jobs-client-1.1.5-1.el6.i686.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - e0bf0f698bb0ba325eae1550af91b38eb7583b682f9a10d55b40503120c43203
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:16 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3150-SJC, cache-lax8629-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600356.030108,VS0,VE34
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:16 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/el/6/opscode-push-jobs-client-1.1.5-1.el6.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - bcf93adb7aa3139ebc924a2a014188eebd61d95181327c31ba94cd4742194967
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 16:59:16 GMT
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3136-SJC, cache-lax8626-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1475600356.190064,VS0,VE34
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 16:59:16 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/ubuntu/10.04/opscode-push-jobs-client_1.1.5-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - f82a5bdb2bdf966da9964ace77a4c807f70d136ae680e563bd3c9e7fde68d877
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:32 GMT
+      Age:
+      - '2102'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3140-SJC, cache-lax8627-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600492.345886,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:32 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/ubuntu/10.04/opscode-push-jobs-client_1.1.5-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 54d8e4ab3e1f0999811825b2018674bb19b4551c1ed0673df953c29863618a9d
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:32 GMT
+      Age:
+      - '138'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3139-SJC, cache-lax8637-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600492.461962,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:32 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/ubuntu/12.04/opscode-push-jobs-client_1.1.5-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 2b82f2c094e375a3323f535240333b4e8bd85b2f77a2c1c36965509b9f09ca69
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:32 GMT
+      Age:
+      - '138'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3122-SJC, cache-lax8632-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600492.592282,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:32 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/ubuntu/12.04/opscode-push-jobs-client_1.1.5-1_i386.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 4c17846046fec0aa6f8a05a8266afe5515b909237135c2056905ae7b1bee2598
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:32 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3134-SJC, cache-lax8635-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600492.710142,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:32 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/windows/2008r2/opscode-push-jobs-client-windows-1.1.5-1.windows.msi.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 476cfdae2be5f98d80b6aad5a58b1713346f6284f13fe3c06ca0b6ee28ec54b6
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:32 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3125-SJC, cache-lax8622-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600492.883980,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:32 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/el/5/opscode-push-jobs-client-1.1.5-1.el5.i686.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 8633fd0c8b38ab8945d10a3a39bf14a783cd2887c21d7903909a82add26b7c4d
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:32 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3150-SJC, cache-lax8630-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600492.996389,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:32 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/el/5/opscode-push-jobs-client-1.1.5-1.el5.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - af9234e05de05591029a945665bfb34616626e2695194e30d77f99ca697ebe8b
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:33 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3137-SJC, cache-lax8647-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600493.112652,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:33 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/el/6/opscode-push-jobs-client-1.1.5-1.el6.i686.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - e0bf0f698bb0ba325eae1550af91b38eb7583b682f9a10d55b40503120c43203
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:33 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3150-SJC, cache-lax8638-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600493.234449,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:33 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/opscode-push-jobs-client/1.1.5/el/6/opscode-push-jobs-client-1.1.5-1.el6.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 0feedc922c1ccc1d:739f2b45:157585d3cb1:-7f42
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - bcf93adb7aa3139ebc924a2a014188eebd61d95181327c31ba94cd4742194967
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 04 Oct 2016 17:01:33 GMT
+      Age:
+      - '137'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3136-SJC, cache-lax8640-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1475600493.346273,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 04 Oct 2016 17:01:33 GMT
 recorded_with: VCR 3.0.3
