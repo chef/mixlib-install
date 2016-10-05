@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.0.4]
+- Normalize auto detect platform architectures
+
 ## [2.0.3]
 - Add harmony as a supported product
 
