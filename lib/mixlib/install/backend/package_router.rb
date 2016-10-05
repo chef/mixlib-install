@@ -42,7 +42,6 @@ module Mixlib
                       else
                         artifacts_for_version(options.product_version)
                       end
-
           windows_artifact_fixup!(artifacts)
         end
 
@@ -225,20 +224,6 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
 
         def omnibus_project
           @omnibus_project ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).omnibus_project
-        end
-
-        #
-        # Normalizes architecture information that we receive.
-        #
-        # @param [String] architecture
-        #
-        # @return String [architecture]
-        def normalize_architecture(architecture)
-          if %w{ sun4u sun4v }.include?(architecture)
-            architecture = "sparc"
-          end
-
-          architecture
         end
       end
     end

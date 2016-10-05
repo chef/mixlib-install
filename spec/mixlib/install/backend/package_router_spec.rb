@@ -295,4 +295,32 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       expect(package_router.info.url).to match "chef-server-core"
     end
   end
+
+  context "architecture normalization" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { :latest }
+
+    context "when amd64" do
+      it "returns x86_84" do
+        expect(package_router.normalize_architecture("amd64")).to eq "x86_64"
+      end
+    end
+
+    %w{x86 i86pc i686}.each do |a|
+      context "when #{a}" do
+        it "returns i386" do
+          expect(package_router.normalize_architecture(a)).to eq "i386"
+        end
+      end
+    end
+
+    %w{sun4u sun4v}.each do |a|
+      context "when #{a}" do
+        it "returns sparc" do
+          expect(package_router.normalize_architecture(a)).to eq "sparc"
+        end
+      end
+    end
+  end
 end
