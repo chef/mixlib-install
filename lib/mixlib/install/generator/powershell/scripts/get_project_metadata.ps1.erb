@@ -60,7 +60,7 @@ function Get-ProjectMetadata {
   Write-Verbose "Architecture: $architecture"
   Write-Verbose "Project: $project"
 
-  $metadata_base_url = "$($channel)/$($project)/metadata"
+  $metadata_base_url = "/$($channel)/$($project)/metadata"
   $metadata_array = ("?v=$($version)",
     "p=$platform",
     "pv=$platform_version",
