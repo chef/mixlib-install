@@ -1,5 +1,12 @@
 # Change Log
 
+## [2.1.0]
+- Added new attributes to ArtifactInfo
+ - product_name, product_description, license, license_content, software_dependencies
+- Added static `#available_versions` method to API
+- Architecture normalization cleanup
+- Fixed race condition in acceptance suites
+
 ## [2.0.4]
 - Normalize auto detect platform architectures
 

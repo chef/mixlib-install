@@ -26,9 +26,9 @@ artifact.url
 ```ruby
 options = {
   channel: :current,
-  product_name: 'chef',
-  product_version: :latest
+  product_name: 'chef'
 }
+# product_version: :latest is the default
 
 artifacts = Mixlib::Install.new(options).artifact_info
 # => [#<Mixlib::Install::ArtifactInfo>, ...]
@@ -70,16 +70,23 @@ artifact.platform_version # => "14.04"
 ```
 
 ### List the available versions for a product and channel
+#### Instance method
 ```ruby
-# Note that this feature currently only works for :unstable channel
 options = {
-  channel: :unstable,
+  channel: :stable,
   product_name: 'chef',
 }
 
 Mixlib::Install.new(options).available_versions
 
-# => ["12.13.3", "12.13.7", "12.13.8+20160721014124", "12.13.11+20160721165202"]
+# => ["12.13.3", "12.13.7"]
+```
+
+#### Static method
+```ruby
+Mixlib::Install.available_versions("chef", "stable")
+
+# => ["12.13.3", "12.13.7"]
 ```
 
 ## Development
