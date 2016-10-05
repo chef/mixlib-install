@@ -233,4 +233,30 @@ context "Mixlib::Install" do
     end
   end
 
+  context "available_versions", :vcr do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+
+    shared_examples_for "the correct available_versions" do
+      it "is an Array" do
+        expect(versions).to be_a Array
+      end
+
+      it "has expected version" do
+        expect(versions).to include "12.0.3"
+      end
+    end
+
+    context "when called as instance method" do
+      let(:versions) { installer.available_versions }
+
+      it_behaves_like "the correct available_versions"
+    end
+
+    context "when called static" do
+      let(:versions) { Mixlib::Install.available_versions(product_name, channel.to_s) }
+
+      it_behaves_like "the correct available_versions"
+    end
+  end
 end

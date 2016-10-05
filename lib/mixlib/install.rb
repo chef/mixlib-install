@@ -52,7 +52,25 @@ module Mixlib
     # @return [Array<String>] list of available versions for the given
     # product_name and channel.
     def available_versions
-      Backend.available_versions(options)
+      self.class.available_versions(options.product_name, options.channel)
+    end
+
+    #
+    # List available versions
+    #
+    # @param [String] product name
+    #
+    # @param [String, Symbol] channel
+    #
+    # @return [Array<String>] list of available versions for the given
+    # product_name and channel.
+    def self.available_versions(product_name, channel)
+      Backend.available_versions(
+        Mixlib::Install::Options.new(
+          product_name: product_name,
+          channel: channel.to_sym
+        )
+      )
     end
 
     #
