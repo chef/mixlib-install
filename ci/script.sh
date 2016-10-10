@@ -3,7 +3,7 @@
 set -evx
 
 # run unit tests
-/opt/chefdk/embedded/bin/bundle install && /opt/chefdk/bin/chef exec rake
+/opt/chefdk/embedded/bin/bundle install && /opt/chefdk/bin/chef exec rake ci
 
 # Don't run acceptance tests on forks. The decryption keys are not available.
 if [ "${TRAVIS_REPO_SLUG}" = "chef/mixlib-install" ]; then

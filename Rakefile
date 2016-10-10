@@ -1,7 +1,7 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 
-task default: :ci
+task default: :test
 
 desc "Run specs"
 RSpec::Core::RakeTask.new(:spec) do |spec|
@@ -22,7 +22,12 @@ desc "Run all tests"
 task test: [:style, :spec]
 
 desc "Run tests for Travis CI"
-task ci: [:style, :spec]
+task ci: [:style, :spec, :functional]
+
+desc "Run functional"
+task "functional" do
+  system("bundle exec rspec functional")
+end
 
 desc "Render product matrix documentation"
 task "matrix" do
