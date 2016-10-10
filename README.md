@@ -2,10 +2,24 @@
 
 # Mixlib::Install
 
-## Usage
+## Command Line Usage
+```
+$ gem install mixlib-install
+```
+
+```
+# Download latest stable chef for current platform
+$ mixlib-install download chef
+```
+
+Run `$ mixlib-install help` for additional commands and options.
+
+## API Usage
 
 ### Get URL for specific platform and package version
 ```ruby
+require 'mixlib/install'
+
 options = {
   channel: :current,
   product_name: 'chef',

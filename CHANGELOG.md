@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.1.1]
+- Add `mixlib-install` command line utility
+
 ## [2.1.0]
 - Added new attributes to ArtifactInfo
  - product_name, product_description, license, license_content, software_dependencies
