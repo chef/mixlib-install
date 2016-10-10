@@ -6,7 +6,9 @@ ruby_block "get ip" do
 end
 
 execute "run inspec" do
-  command lazy { "inspec exec verify.rb -t winrm://Administrator@#{node['ip']} --password '#{ENV['TF_VAR_admin_password'] || 'Pas5w0rD'}'" }
+  command lazy { "inspec exec verify.rb -t winrm://Administrator@#{node['ip']} --password $WINDOWS_PASSWORD" }
   cwd "#{node['chef-acceptance']['suite-dir']}/inspec"
-  # sensitive true
+  environment(
+    "WINDOWS_PASSWORD" => ENV["TF_VAR_admin_password"] || "Pas5w0rD"
+  )
 end
