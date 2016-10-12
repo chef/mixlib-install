@@ -31,6 +31,11 @@ if test -f "/etc/lsb-release" && grep -q DISTRIB_ID /etc/lsb-release && ! grep -
 elif test -f "/etc/debian_version"; then
   platform="debian"
   platform_version=`cat /etc/debian_version`
+elif test -f "/etc/Eos-release"; then
+  # EOS may also contain /etc/redhat-release so this check must come first.
+  platform=arista_eos
+  platform_version=`awk '{print $4}' /etc/Eos-release`
+  machine="i386"
 elif test -f "/etc/redhat-release"; then
   platform=`sed 's/^\(.\+\) release.*/\1/' /etc/redhat-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release`
@@ -96,10 +101,6 @@ elif test "x$os" = "xAIX"; then
   platform="aix"
   platform_version="`uname -v`.`uname -r`"
   machine="powerpc"
-elif test -f "/etc/Eos-release"; then
-  platform=arista_eos
-  platform_version=`awk '{print $4}' /etc/Eos-release`
-  machine="i386"
 elif test -f "/etc/os-release"; then
   . /etc/os-release
   if test "x$CISCO_RELEASE_INFO" != "x"; then
