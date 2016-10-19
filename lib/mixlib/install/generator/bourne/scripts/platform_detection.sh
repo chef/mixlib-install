@@ -28,6 +28,13 @@ os=`uname -s`
 if test -f "/etc/lsb-release" && grep -q DISTRIB_ID /etc/lsb-release && ! grep -q wrlinux /etc/lsb-release; then
   platform=`grep DISTRIB_ID /etc/lsb-release | cut -d "=" -f 2 | tr '[A-Z]' '[a-z]'`
   platform_version=`grep DISTRIB_RELEASE /etc/lsb-release | cut -d "=" -f 2`
+
+  if test "$platform" = "cumulus linux"; then
+    platform="cumulus_linux"
+  elif test "$platform" = "cumulus networks"; then
+    platform="cumulus_networks"
+  fi
+
 elif test -f "/etc/debian_version"; then
   platform="debian"
   platform_version=`cat /etc/debian_version`
