@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.1.3]
+- Collection of software dependencies and license content is now configurable. Disabled by default.
+
 ## [2.1.2]
 - Add Cumulus Linux and Cumulus Networks platform support
 - Fix Arista EOS platform detection ordering
