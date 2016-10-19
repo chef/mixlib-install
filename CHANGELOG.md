@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.1.2]
+- Add Cumulus Linux and Cumulus Networks platform support
+- Fix Arista EOS platform detection ordering
+
 ## [2.1.1]
 - Add `mixlib-install` command line utility
 
