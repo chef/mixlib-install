@@ -28,6 +28,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:platform_version) { nil }
   let(:architecture) { nil }
   let(:pv_compat) { nil }
+  let(:include_metadata) { nil }
 
   let(:options) do
     {}.tap do |opt|
@@ -35,6 +36,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       opt[:product_version] = product_version
       opt[:channel] = channel
       opt[:platform_version_compatibility_mode] = pv_compat if pv_compat
+      opt[:include_metadata] = include_metadata if include_metadata
       if platform
         opt[:platform] = platform
         opt[:platform_version] = platform_version
@@ -61,8 +63,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       let(:platform_version) { "14.04" }
       let(:architecture) { "x86_64" }
 
-      context "returns a single artifact with correct info" do
-
+      shared_examples_for "artifact with core attributes" do
         it "is an ArtifactInfo instance" do
           expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
         end
@@ -98,6 +99,24 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
         it "has the right url" do
           expect(artifact_info.url).to include "files/stable/chef/12.12.15/ubuntu/14.04/chef_12.12.15-1_amd64.deb"
         end
+      end
+
+      context "without metadata (default)" do
+        it_behaves_like "artifact with core attributes"
+
+        it "does not have license content" do
+          expect(artifact_info.license_content).to be_nil
+        end
+
+        it "does not have software dependencies" do
+          expect(artifact_info.software_dependencies).to be_nil
+        end
+      end
+
+      context "with metadata" do
+        let(:include_metadata) { true }
+
+        it_behaves_like "artifact with core attributes"
 
         it "has the right license content" do
           expect(artifact_info.license_content).to include "http://www.apache.org/licenses/\n\nTERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION"
