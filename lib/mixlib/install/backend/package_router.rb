@@ -174,17 +174,21 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
             artifact_map["filename"]
           )
 
-          # retrieve the metadata using the standardized path
-          begin
-            metadata = get("#{chef_standard_path}.metadata.json")
-            license_content = metadata["license_content"]
-            software_dependencies = metadata["version_manifest"]["software"]
-          rescue Net::HTTPServerException => e
-            if e.message =~ /404/
-              license_content, software_dependencies = nil
-            else
-              raise e
+          if options.include_metadata?
+            # retrieve the metadata using the standardized path
+            begin
+              metadata = get("#{chef_standard_path}.metadata.json")
+              license_content = metadata["license_content"]
+              software_dependencies = metadata["version_manifest"]["software"]
+            rescue Net::HTTPServerException => e
+              if e.message =~ /404/
+                license_content, software_dependencies = nil
+              else
+                raise e
+              end
             end
+          else
+            license_content, software_dependencies = nil
           end
 
           # create the download path with the correct endpoint

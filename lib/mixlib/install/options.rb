@@ -38,6 +38,7 @@ module Mixlib
         :product_version,
         :shell_type,
         :platform_version_compatibility_mode,
+        :include_metadata,
       ]
 
       def initialize(options)
@@ -76,6 +77,10 @@ module Mixlib
         product_version.to_sym == :latest
       end
 
+      def include_metadata?
+        include_metadata.to_s == "true"
+      end
+
       #
       # Set the platform info on the instance
       # info [Hash]
@@ -96,6 +101,7 @@ module Mixlib
           shell_type: :sh,
           platform_version_compatibility_mode: false,
           product_version: :latest,
+          include_metadata: false,
         }
       end
 

@@ -103,6 +103,33 @@ Mixlib::Install.available_versions("chef", "stable")
 # => ["12.13.3", "12.13.7"]
 ```
 
+### Collecting Software Dependencies and License Content
+Collecting software dependencies and license content for ArtifactInfo instances
+requires additional requests to the repository server. By default, collection is disabled.
+To return that data for instances methods `software_dependencies` and `license_content`, the `include_metadata` option must be enabled.
+
+```
+options = {
+  channel: :current,
+  product_name: 'chef',
+  product_version: :latest,
+  platform: 'mac_os_x',
+  platform_version: '10.9',
+  architecture: 'x86_64',
+  include_metadata: true,
+}
+
+artifact = Mixlib::Install.new(options).artifact_info
+
+artifact.license_content.class
+# => String
+artifact.software_dependencies.class
+# => Hash
+
+# By default, the instance methods return nil
+
+```
+
 ## Development
 VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.
 
