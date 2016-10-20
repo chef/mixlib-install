@@ -96,7 +96,7 @@ Mixlib::Install.new(options).available_versions
 # => ["12.13.3", "12.13.7"]
 ```
 
-#### Static method
+#### Class method
 ```ruby
 Mixlib::Install.available_versions("chef", "stable")
 
@@ -106,7 +106,7 @@ Mixlib::Install.available_versions("chef", "stable")
 ### Collecting Software Dependencies and License Content
 Collecting software dependencies and license content for ArtifactInfo instances
 requires additional requests to the repository server. By default, collection is disabled.
-To return that data for instances methods `software_dependencies` and `license_content`, the `include_metadata` option must be enabled.
+To return data for instance methods `software_dependencies` and `license_content`, the `include_metadata` option must be enabled.
 
 ```
 options = {

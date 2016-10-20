@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.1.4]
+- Fix Cumulus Linux and Cumulus Networks platform detection
+
 ## [2.1.3]
 - Collection of software dependencies and license content is now configurable. Disabled by default.
 
