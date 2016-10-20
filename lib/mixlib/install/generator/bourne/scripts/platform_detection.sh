@@ -29,9 +29,9 @@ if test -f "/etc/lsb-release" && grep -q DISTRIB_ID /etc/lsb-release && ! grep -
   platform=`grep DISTRIB_ID /etc/lsb-release | cut -d "=" -f 2 | tr '[A-Z]' '[a-z]'`
   platform_version=`grep DISTRIB_RELEASE /etc/lsb-release | cut -d "=" -f 2`
 
-  if test "$platform" = "cumulus linux"; then
+  if test "$platform" = "\"cumulus linux\""; then
     platform="cumulus_linux"
-  elif test "$platform" = "cumulus networks"; then
+  elif test "$platform" = "\"cumulus networks\""; then
     platform="cumulus_networks"
   fi
 
