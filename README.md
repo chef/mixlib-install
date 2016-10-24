@@ -103,11 +103,22 @@ Mixlib::Install.available_versions("chef", "stable")
 # => ["12.13.3", "12.13.7"]
 ```
 
+### User-Agent Request Headers
+By default, all requests made by `mixlib-install` will include a `User-Agent` request header as `mixlib-install/<version>`.
+Additional `User-Agent` request headers can be added by setting the `user_agent_headers` option.
+When you want to identify a product using mixlib-install as a dependency we recommend the format `product/version`.
+```ruby
+options = {
+  channel: :stable,
+  product_name: 'chef',
+  user_agent_headers: ["my_product/1.2.3", "somethingelse"],
+}
+```
+
 ### Collecting Software Dependencies and License Content
 Collecting software dependencies and license content for ArtifactInfo instances
 requires additional requests to the repository server. By default, collection is disabled.
 To return data for instance methods `software_dependencies` and `license_content`, the `include_metadata` option must be enabled.
-
 ```
 options = {
   channel: :current,

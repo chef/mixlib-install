@@ -147,14 +147,30 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
           uri = URI.parse(endpoint)
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
-
           full_path = File.join(uri.path, url)
-          request = Net::HTTP::Get.new(full_path)
 
-          res = http.request(request)
+          res = http.request(create_http_request(full_path))
 
           res.value
           JSON.parse(res.body)
+        end
+
+        def create_http_request(full_path)
+          require "mixlib/install/version"
+
+          request = Net::HTTP::Get.new(full_path)
+
+          user_agents = ["mixlib-install/#{Mixlib::Install::VERSION}"]
+
+          if options.user_agent_headers
+            options.user_agent_headers.each do |header|
+              user_agents << header
+            end
+          end
+
+          request.add_field("User-Agent", user_agents.join(" "))
+
+          request
         end
 
         def create_artifact(artifact_map)

@@ -27,6 +27,7 @@ context "Mixlib::Install::Options" do
   let(:platform_version) { nil }
   let(:architecture) { nil }
   let(:shell_type) { nil }
+  let(:user_agent_headers) { nil }
 
   context "for invalid product name option" do
     let(:product_name) { "foo" }
@@ -45,14 +46,29 @@ context "Mixlib::Install::Options" do
   end
 
   context "for platform options" do
-    let(:product_name) { "chef" }
-    let(:product_version) { "1.2.3" }
-
     context "for shell type options" do
       let(:shell_type) { :foo }
 
       it "raises invalid shell type error" do
         expect { Mixlib::Install.new(shell_type: shell_type) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Unknown shell type/)
+      end
+    end
+  end
+
+  context "for user_agents option" do
+    context "passed as a string" do
+      let(:user_agent_headers) { "myString" }
+
+      it "raises an error" do
+        expect { Mixlib::Install.new(product_name: "chef", channel: :stable, user_agent_headers: user_agent_headers) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /user_agent_headers must be an Array/)
+      end
+    end
+
+    context "headers passed with spaces" do
+      let(:user_agent_headers) { ["a", "b c"] }
+
+      it "raises an error" do
+        expect { Mixlib::Install.new(product_name: "chef", channel: :stable, user_agent_headers: user_agent_headers) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /user agent headers can not have spaces/)
       end
     end
   end

@@ -19,6 +19,7 @@
 require "spec_helper"
 require "mixlib/install/options"
 require "mixlib/install/backend/package_router"
+require "mixlib/install/version"
 
 context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:channel) { nil }
@@ -27,6 +28,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:platform) { nil }
   let(:platform_version) { nil }
   let(:architecture) { nil }
+  let(:user_agent_headers) { nil }
   let(:pv_compat) { nil }
   let(:include_metadata) { nil }
 
@@ -37,6 +39,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       opt[:channel] = channel
       opt[:platform_version_compatibility_mode] = pv_compat if pv_compat
       opt[:include_metadata] = include_metadata if include_metadata
+      opt[:user_agent_headers] = user_agent_headers if user_agent_headers
       if platform
         opt[:platform] = platform
         opt[:platform_version] = platform_version
@@ -376,6 +379,23 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
         it "returns sparc" do
           expect(package_router.normalize_architecture(a)).to eq "sparc"
         end
+      end
+    end
+  end
+
+  context "user agents" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    it "always includes default header" do
+      expect(package_router.create_http_request("/").get_fields("user-agent")).to include "mixlib-install/#{Mixlib::Install::VERSION}"
+    end
+
+    context "with custom agents" do
+      let(:user_agent_headers) { ["foo/bar", "someheader"] }
+
+      it "sets custom header" do
+        expect(package_router.create_http_request("/").get_fields("user-agent")).to include /foo\/bar someheader/
       end
     end
   end
