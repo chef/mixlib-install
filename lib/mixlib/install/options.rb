@@ -39,6 +39,7 @@ module Mixlib
         :shell_type,
         :platform_version_compatibility_mode,
         :include_metadata,
+        :user_agent_headers,
       ]
 
       def initialize(options)
@@ -57,6 +58,7 @@ module Mixlib
         errors << validate_product_names
         errors << validate_channels
         errors << validate_shell_type
+        errors << validate_user_agent_headers
 
         unless errors.compact.empty?
           raise InvalidOptions, errors.join("\n")
@@ -132,6 +134,20 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
         end
       end
 
+      def validate_user_agent_headers
+        error = nil
+        if user_agent_headers
+          if user_agent_headers.is_a? Array
+            user_agent_headers.each do |header|
+              error = "user agent headers can not have spaces." if header.include?(" ")
+            end
+          else
+            error = "user_agent_headers must be an Array."
+          end
+        end
+
+        error
+      end
     end
   end
 end

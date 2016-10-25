@@ -51,7 +51,7 @@ VCR.configure do |config|
   # config.default_cassette_options = { :record => :all }
   #
   # Records new http calls without changing existing fixtures
-  # config.default_cassette_options = { :record => :new_episodes }
+  config.default_cassette_options = { :record => :new_episodes }
 end
 
 # Copied directly from
