@@ -29,6 +29,8 @@ module Mixlib
         :ctl_command,
         :package_name,
         :product_name,
+        :install_path,
+        :omnibus_project,
       ]
 
       #
@@ -49,7 +51,7 @@ module Mixlib
           if block.nil?
             if prop_string.nil?
               value = instance_variable_get("@#{prop}".to_sym)
-              return nil if value.nil?
+              return default_value_for(prop) if value.nil?
 
               if value.is_a? String
                 value
@@ -67,14 +69,16 @@ module Mixlib
       end
 
       #
-      # Set omnibus_project when configured, otherwise fall back to
-      # package_name
+      # Return the default values for DSL properties
       #
-      def omnibus_project(value = nil)
-        if value.nil?
-          @omnibus_project || package_name
+      def default_value_for(prop)
+        case prop
+        when :install_path
+          "/opt/#{package_name}"
+        when :omnibus_project
+          package_name
         else
-          @omnibus_project = value
+          nil
         end
       end
 
@@ -217,7 +221,20 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     end
     omnibus_project "chef-server"
     ctl_command "chef-server-ctl"
-    config_file "/etc/opscode/chef-server.rb"
+    config_file do |v|
+      if (v < version_for("12.0.0")) && (v > version_for("11.0.0"))
+        "/etc/chef-server/chef-server.rb"
+      else
+        "/etc/opscode/chef-server.rb"
+      end
+    end
+    install_path do |v|
+      if (v < version_for("12.0.0")) && (v > version_for("11.0.0"))
+        "/opt/chef-server"
+      else
+        "/opt/opscode"
+      end
+    end
   end
 
   product "chef-server-ha-provisioning" do
@@ -294,6 +311,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "private-chef"
     ctl_command "private-chef-ctl"
     config_file "/etc/opscode/private-chef.rb"
+    install_path "/opt/opscode"
   end
 
   product "push-jobs-client" do

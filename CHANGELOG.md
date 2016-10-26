@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.1.5]
+- Add `install_path` properties to the products inside PRODUCT_MATRIX.
+
 ## [2.1.4]
 - Fix Cumulus Linux and Cumulus Networks platform detection
 
