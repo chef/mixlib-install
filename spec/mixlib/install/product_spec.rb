@@ -89,6 +89,8 @@ context "Mixlib::Install::Product" do
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:package_name)
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:ctl_command)
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:config_file)
+    expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:install_path)
+    expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:omnibus_project)
   end
 end
 
@@ -103,6 +105,10 @@ context "PRODUCT_MATRIX" do
 
   let(:config_file) do
     PRODUCT_MATRIX.lookup(product_name, version).config_file
+  end
+
+  let(:install_path) do
+    PRODUCT_MATRIX.lookup(product_name, version).install_path
   end
 
   CHEF_PRODUCTS = %w{
@@ -166,6 +172,10 @@ context "PRODUCT_MATRIX" do
       it "should return correct package_name" do
         expect(package_name).to eq("chef-server-core")
       end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/opscode")
+      end
     end
 
     context "for latest" do
@@ -174,6 +184,10 @@ context "PRODUCT_MATRIX" do
       it "should return correct package_name" do
         expect(package_name).to eq("chef-server-core")
       end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/opscode")
+      end
     end
 
     context "for < 12.0.0, > 11.0.0" do
@@ -181,6 +195,10 @@ context "PRODUCT_MATRIX" do
 
       it "should return correct package_name" do
         expect(package_name).to eq("chef-server")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/chef-server")
       end
     end
   end
@@ -206,6 +224,10 @@ context "PRODUCT_MATRIX" do
       it "should return correct config_file" do
         expect(config_file).to eq("/etc/chef-manage/manage.rb")
       end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/chef-manage")
+      end
     end
 
     context "for latest" do
@@ -222,6 +244,10 @@ context "PRODUCT_MATRIX" do
       it "should return correct config_file" do
         expect(config_file).to eq("/etc/chef-manage/manage.rb")
       end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/chef-manage")
+      end
     end
 
     context "for < 2.0.0" do
@@ -237,6 +263,10 @@ context "PRODUCT_MATRIX" do
 
       it "should return correct config_file" do
         expect(config_file).to eq("/etc/opscode-manage/manage.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/opscode-manage")
       end
     end
   end
