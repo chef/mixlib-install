@@ -17,6 +17,7 @@
 
 require "spec_helper"
 require "mixlib/install"
+require "mixlib/install/version"
 
 context "Mixlib::Install::Generator", :vcr do
   let(:channel) { nil }
@@ -107,6 +108,60 @@ context "Mixlib::Install::Generator", :vcr do
 
         it "adds ommits the architecture param" do
           expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
+        end
+      end
+    end
+  end
+
+  context "for user agent headers" do
+    let(:context) { {} }
+
+    context "when using class method" do
+      let(:install_script) { Mixlib::Install.install_sh(context) }
+
+      context "without user_agent_headers" do
+        it "sets the default agent header" do
+          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION}"/)
+        end
+      end
+
+      context "when it excludes mixlib-install agent header" do
+        let(:context) do
+          { user_agent_headers: %w{testheader/1.2.3} }
+        end
+
+        it "sets adds the default headers" do
+          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION} testheader\/1.2.3"/)
+        end
+      end
+
+      context "when it includes mixlib-install agent header" do
+        let(:context) do
+          { user_agent_headers: %W{mixlib-install/#{Mixlib::Install::VERSION} testheader/4.5.6} }
+        end
+
+        it "doesn't duplicate the default header" do
+          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION} testheader\/4.5.6"/)
+        end
+      end
+    end
+
+    context "when using instance method" do
+      let(:channel) { :stable }
+
+      context "without user_agent_headers set" do
+        it "sets the default agent header" do
+          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION}"/)
+        end
+      end
+
+      context "with user_agent_headers set" do
+        let(:add_options) do
+          { user_agent_headers: ["testheader/11.22.33"] }
+        end
+
+        it "sets adds the additional headers" do
+          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION} testheader\/11.22.33"/)
         end
       end
     end

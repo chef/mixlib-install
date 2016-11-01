@@ -23,7 +23,7 @@ module Mixlib
       class PowerShell < Base
         def self.install_ps1(context)
           install_project_module = []
-          install_project_module << get_script("helpers.ps1")
+          install_project_module << get_script("helpers.ps1", context)
           install_project_module << get_script("get_project_metadata.ps1", context)
           install_project_module << get_script("install_project.ps1")
 
@@ -45,7 +45,7 @@ module Mixlib
 
         def install_command
           install_project_module = []
-          install_project_module << get_script("helpers.ps1")
+          install_project_module << get_script("helpers.ps1", user_agent_headers: options.user_agent_headers)
           install_project_module << get_script("get_project_metadata.ps1")
           install_project_module << get_script("install_project.ps1")
           install_command = []

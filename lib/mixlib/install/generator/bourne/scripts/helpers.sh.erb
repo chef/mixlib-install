@@ -115,7 +115,7 @@ capture_tmp_stderr() {
 # do_wget URL FILENAME
 do_wget() {
   echo "trying wget..."
-  wget -O "$2" "$1" 2>$tmp_dir/stderr
+  wget --user-agent="User-Agent: <%= user_agent_string %>" -O "$2" "$1" 2>$tmp_dir/stderr
   rc=$?
   # check for 404
   grep "ERROR 404" $tmp_dir/stderr 2>&1 >/dev/null
@@ -136,7 +136,7 @@ do_wget() {
 # do_curl URL FILENAME
 do_curl() {
   echo "trying curl..."
-  curl --retry 5 -sL -D $tmp_dir/stderr "$1" > "$2"
+  curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL -D $tmp_dir/stderr "$1" > "$2"
   rc=$?
   # check for 404
   grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null
@@ -157,7 +157,7 @@ do_curl() {
 # do_fetch URL FILENAME
 do_fetch() {
   echo "trying fetch..."
-  fetch -o "$2" "$1" 2>$tmp_dir/stderr
+  fetch --user-agent="User-Agent: <%= user_agent_string %>" -o "$2" "$1" 2>$tmp_dir/stderr
   # check for bad return status
   test $? -ne 0 && return 1
   return 0
@@ -187,7 +187,7 @@ do_perl() {
 # do_python URL FILENAME
 do_python() {
   echo "trying python..."
-  python -c "import sys,urllib2 ; sys.stdout.write(urllib2.urlopen(sys.argv[1]).read())" "$1" > "$2" 2>$tmp_dir/stderr
+  python -c "import sys,urllib2; sys.stdout.write(urllib2.urlopen(urllib2.Request(sys.argv[1], headers={ 'User-Agent': '<%= user_agent_string %>' })).read())" "$1" > "$2" 2>$tmp_dir/stderr
   rc=$?
   # check for 404
   grep "HTTP Error 404" $tmp_dir/stderr 2>&1 >/dev/null

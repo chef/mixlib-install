@@ -20,6 +20,7 @@ require "json"
 require "mixlib/install/artifact_info"
 require "mixlib/install/backend/base"
 require "mixlib/install/product"
+require "mixlib/install/util"
 require "net/http"
 
 module Mixlib
@@ -156,19 +157,9 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
         end
 
         def create_http_request(full_path)
-          require "mixlib/install/version"
-
           request = Net::HTTP::Get.new(full_path)
 
-          user_agents = ["mixlib-install/#{Mixlib::Install::VERSION}"]
-
-          if options.user_agent_headers
-            options.user_agent_headers.each do |header|
-              user_agents << header
-            end
-          end
-
-          request.add_field("User-Agent", user_agents.join(" "))
+          request.add_field("User-Agent", Util.user_agent_string(options.user_agent_headers))
 
           request
         end
