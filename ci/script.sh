@@ -2,7 +2,7 @@
 
 set -evx
 
-# run unit tests
+# run unit and functional tests
 /opt/chefdk/embedded/bin/bundle install && /opt/chefdk/bin/chef exec rake ci
 
 # Don't run acceptance tests on forks. The decryption keys are not available.

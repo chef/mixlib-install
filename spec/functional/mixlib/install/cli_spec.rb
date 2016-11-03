@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-require_relative "./spec_helper"
+require "spec_helper"
 require "mixlib/install/cli"
 
 describe "mixlib-install executable", :type => :aruba do
