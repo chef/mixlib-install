@@ -20,7 +20,8 @@ module Mixlib
       desc "download PRODUCT_NAME", "download an artifact"
       option :channel,
         default: :stable,
-        aliases: ["-c"]
+        aliases: ["-c"],
+        enum: Mixlib::Install::Options::SUPPORTED_CHANNELS.map(&:to_s)
       option :version,
         default: :latest,
         aliases: ["-v"]
@@ -32,7 +33,9 @@ module Mixlib
       option :platform_version,
         aliases: ["-l"]
       option :architecture,
-        aliases: ["-a"]
+        default: "x86_64",
+        aliases: ["-a"],
+        enum: %w{i386 s390x sparc x86_64}
       option :url,
         desc: "Print download URL without downloading the file",
         type: :boolean
@@ -96,13 +99,11 @@ module Mixlib
         desc: "Write script to file",
         aliases: ["-o"]
       option :type,
-        desc: "Install script type: #{Mixlib::Install::Options::SUPPORTED_SHELL_TYPES.join(", ")}",
+        desc: "Install script type",
         aliases: ["-t"],
-        default: "sh"
+        default: "sh",
+        enum: Mixlib::Install::Options::SUPPORTED_SHELL_TYPES.map(&:to_s)
       def install_script
-        if !Mixlib::Install::Options::SUPPORTED_SHELL_TYPES.include? options[:type].to_sym
-          abort "type must be one of: #{Mixlib::Install::Options::SUPPORTED_SHELL_TYPES.join(", ")}"
-        end
         context = {}
         context[:base_url] = options[:endpoint] if options[:endpoint]
         script = eval("Mixlib::Install.install_#{options[:type]}(context)")
