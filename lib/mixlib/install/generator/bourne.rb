@@ -23,7 +23,7 @@ module Mixlib
       class Bourne < Base
         def self.install_sh(context)
           install_command = []
-          install_command << get_script("helpers.sh")
+          install_command << get_script("helpers.sh", context)
           install_command << get_script("script_cli_parameters.sh")
           install_command << get_script("platform_detection.sh")
           install_command << get_script("fetch_metadata.sh", context)
@@ -42,7 +42,7 @@ module Mixlib
 
         def install_command
           install_command = []
-          install_command << get_script("helpers.sh")
+          install_command << get_script("helpers.sh", user_agent_headers: options.user_agent_headers)
           install_command << render_variables
           install_command << get_script("platform_detection.sh")
           install_command << get_script("fetch_metadata.sh")

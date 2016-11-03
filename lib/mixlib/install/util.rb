@@ -118,6 +118,17 @@ module Mixlib
           "sh -c '\n#{cmd}\n'"
         end
 
+        # Build the user-agent string
+        #
+        # @param name [Array] headers
+        # @return [String] generated user-agent string
+        def user_agent_string(headers)
+          require "mixlib/install/version"
+          user_agents = %W{mixlib-install/#{Mixlib::Install::VERSION}}
+          user_agents << headers
+          # Ensure that if the default user agent is aleady set it doesn't get duplicated
+          user_agents.flatten.compact.uniq.join(" ")
+        end
       end
     end
   end

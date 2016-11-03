@@ -64,6 +64,7 @@ function Get-WebContentOnFullNet {
 
   $proxy = New-Object -TypeName System.Net.WebProxy
   $wc = new-object System.Net.WebClient
+  $wc.Headers.Add("user-agent", "<%= user_agent_string %>")
   $proxy.Address = $env:http_proxy
   $wc.Proxy = $proxy
 
@@ -80,6 +81,7 @@ function Get-WebContentOnCore {
 
   $handler = New-Object System.Net.Http.HttpClientHandler
   $client = New-Object System.Net.Http.HttpClient($handler)
+  $client.DefaultRequestHeaders.UserAgent.ParseAdd("<%= user_agent_string %>")
   $client.Timeout = New-Object System.TimeSpan(0, 30, 0)
   $cancelTokenSource = [System.Threading.CancellationTokenSource]::new()
   $responseMsg = $client.GetAsync([System.Uri]::new($uri), $cancelTokenSource.Token)
