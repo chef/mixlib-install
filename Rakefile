@@ -1,8 +1,6 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 
-task default: :test
-
 [:unit, :functional].each do |type|
   RSpec::Core::RakeTask.new(type) do |t|
     t.pattern = "spec/#{type}/**/*_spec.rb"
@@ -15,15 +13,14 @@ end
 
 require "chefstyle"
 require "rubocop/rake_task"
-RuboCop::RakeTask.new(:style) do |task|
+RuboCop::RakeTask.new(:chefstyle) do |task|
   task.options << "--display-cop-names"
 end
 
-desc "Run all tests"
-task test: [:unit, :functional]
-
-desc "Run tests for Travis CI"
-task ci: [:style, :test]
+namespace :travis do
+  desc "Run tests on Travis CI"
+  task ci: %w{chefstyle unit functional}
+end
 
 desc "Render product matrix documentation"
 task "matrix" do
@@ -51,3 +48,5 @@ task :console do
   ARGV.clear
   IRB.start
 end
+
+task default: %w{travis:ci}
