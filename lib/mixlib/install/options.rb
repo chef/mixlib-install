@@ -26,9 +26,25 @@ module Mixlib
 
       attr_reader :options
 
-      SUPPORTED_CHANNELS = [:stable, :current, :unstable]
+      SUPPORTED_ARCHITECTURES = %w{
+        i386
+        powerpc
+        ppc64
+        ppc64le
+        s390x
+        sparc
+        x86_64
+      }
+      SUPPORTED_CHANNELS = [
+        :stable,
+        :current,
+        :unstable,
+      ]
       SUPPORTED_PRODUCT_NAMES = PRODUCT_MATRIX.products
-      SUPPORTED_SHELL_TYPES = [:ps1, :sh]
+      SUPPORTED_SHELL_TYPES = [
+        :ps1,
+        :sh,
+      ]
       SUPPORTED_OPTIONS = [
         :architecture,
         :channel,
@@ -55,6 +71,7 @@ module Mixlib
       def validate_options!
         errors = []
 
+        errors << validate_architecture
         errors << validate_product_names
         errors << validate_channels
         errors << validate_shell_type
@@ -105,6 +122,15 @@ module Mixlib
           product_version: :latest,
           include_metadata: false,
         }
+      end
+
+      def validate_architecture
+        unless architecture.nil? || SUPPORTED_ARCHITECTURES.include?(architecture)
+          <<-EOS
+Unknown architecture #{architecture}.
+Must be one of: #{SUPPORTED_ARCHITECTURES.join(", ")}
+          EOS
+        end
       end
 
       def validate_product_names

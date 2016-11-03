@@ -35,7 +35,7 @@ module Mixlib
       option :architecture,
         default: "x86_64",
         aliases: ["-a"],
-        enum: %w{i386 s390x sparc x86_64}
+        enum: Mixlib::Install::Options::SUPPORTED_ARCHITECTURES.map(&:to_s)
       option :url,
         desc: "Print download URL without downloading the file",
         type: :boolean
