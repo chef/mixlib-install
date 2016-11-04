@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.1.6]
+- Add `User-Agent` headers to all download requests
+- CLI UX improvements
+- Add basic architecture validation
+
 ## [2.1.5]
 - Add `install_path` properties to the products inside PRODUCT_MATRIX.
 
