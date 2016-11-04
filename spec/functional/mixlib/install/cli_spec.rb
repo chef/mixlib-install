@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-require_relative "./spec_helper"
+require "spec_helper"
 require "mixlib/install/cli"
 
 describe "mixlib-install executable", :type => :aruba do
@@ -83,7 +83,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:args) { "-t foo" }
 
       it "errors an error" do
-        expect(last_command_started).to have_output /type must be one of/
+        expect(last_command_started).to have_output "Expected '--type' to be one of ps1, sh; got foo"
       end
     end
 
@@ -106,15 +106,35 @@ describe "mixlib-install executable", :type => :aruba do
 
   describe "download command" do
     let(:command) { "download" }
+    let(:additional_args) { nil }
+    let(:args) do
+      a = ""
+      a << product unless product.nil?
+      a << " -p #{platform}" unless platform.nil?
+      a << " -l #{platform_version}" unless platform_version.nil?
+      a << " -a #{architecture}" unless architecture.nil?
+      a << " #{additional_args}" unless additional_args.nil?
+      a
+    end
+
+    let(:product) { "chef" }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "14.04" }
+    let(:architecture) { "x86_64" }
 
     context "without args" do
+      let(:product) { nil }
+      let(:platform) { nil }
+      let(:platform_version) { nil }
+      let(:architecture) { nil }
+
       it "exits with required args error" do
         expect(last_command_started).to have_output /"mixlib-install #{command}" was called with no arguments/
       end
     end
 
     context "with chef product" do
-      let(:args) { "chef" }
+      let(:product) { "chef" }
 
       it "downloads a chef artifact" do
         expect(last_command_started).to have_output /Download saved to/
@@ -122,7 +142,7 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with url flag" do
-      let(:args) { "chef --url" }
+      let(:additional_args) { "--url" }
 
       it "outputs the url" do
         expect(last_command_started).to have_output /https:\/\/packages.chef.io\/files\/stable\/chef/
@@ -130,7 +150,7 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with attributes arg" do
-      let(:args) { "chef --url --attributes" }
+      let(:additional_args) { "--url --attributes" }
 
       it "outputs the attributes" do
         expect(last_command_started).to have_output /"license": "Apache-2.0"/
@@ -138,7 +158,9 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with platform arg" do
-      let(:args) { "chef -p ubuntu" }
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { nil }
+      let(:architecture) { nil }
 
       it "fails with missing args error" do
         expect(last_command_started).to have_output /Must provide platform version and architecture when specifying a platform/
@@ -146,9 +168,13 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with valid platform version and architecture" do
-      let(:args) { "chef -p ubuntu -l 14.04 -a x86_64 --attributes" }
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "14.04" }
+      let(:architecture) { "i386" }
+      let(:additional_args) { "--attributes" }
+
       let(:latest_version) { Mixlib::Install.available_versions("chef", "stable").last }
-      let(:filename) { "chef_#{latest_version}-1_amd64.deb" }
+      let(:filename) { "chef_#{latest_version}-1_i386.deb" }
 
       it "has the correct artifact" do
         require "digest"
@@ -158,7 +184,8 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with invalid platform version and architecture" do
-      let(:args) { "chef -p ubuntu -l 99.99 -a x86_64" }
+      let(:platform_version) { "99.99" }
+      let(:architecture) { "x86_64" }
 
       it "returns no results" do
         expect(last_command_started).to have_output /No results found./
@@ -166,7 +193,7 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with specified version" do
-      let(:args) { "chef -v 12.0.3 " }
+      let(:additional_args) { "-v 12.0.3" }
 
       it "returns the correct artifact" do
         expect(last_command_started).to have_output /chef[-_]12.0.3-1/
@@ -174,7 +201,7 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with specified channel" do
-      let(:args) { "chef -c current " }
+      let(:additional_args) { "-c current" }
 
       it "returns the correct artifact" do
         expect(last_command_started).to have_output /files\/current\/chef/
@@ -182,7 +209,7 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with specified directory" do
-      let(:args) { "chef -d mydir " }
+      let(:additional_args) { "-d mydir" }
 
       it "downloads to dir" do
         expect(last_command_started).to have_output /Download saved to .*mydir\/chef/

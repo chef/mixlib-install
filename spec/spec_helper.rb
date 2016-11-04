@@ -1,12 +1,17 @@
 # load lib path
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
-require "webmock/rspec"
-require "vcr"
+require "aruba/rspec"
 require "mixlib/install"
 require "simplecov"
+require "vcr"
+require "webmock/rspec"
 
-SimpleCov.start
+Aruba.configure do |config|
+  config.exit_timeout                          = 120
+  config.io_wait_timeout                       = 2
+  config.activate_announcer_on_command_failure = [:stderr, :stdout, :command]
+end
 
 # load version manifest support path
 VERSION_MANIFEST_DIR = File.expand_path("../support/version_manifests", __FILE__)
@@ -18,7 +23,19 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  # Ensure VCR/WebMock are disabled for functional tests
+  config.around(:each) do |ex|
+    if ex.metadata.key?(:vcr)
+      ex.run
+    else
+      WebMock.allow_net_connect!
+      VCR.turned_off { ex.run }
+    end
+  end
 end
+
+SimpleCov.start
 
 #
 # vcr configuration

@@ -29,6 +29,14 @@ context "Mixlib::Install::Options" do
   let(:shell_type) { nil }
   let(:user_agent_headers) { nil }
 
+  context "for invalid architecture option" do
+    let(:architecture) { "foo" }
+
+    it "raises unknown architecture error" do
+      expect { Mixlib::Install.new(architecture: architecture) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Unknown architecture foo/)
+    end
+  end
+
   context "for invalid product name option" do
     let(:product_name) { "foo" }
 
