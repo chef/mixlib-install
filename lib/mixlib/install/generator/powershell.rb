@@ -71,6 +71,7 @@ module Mixlib
           cmd << " -version #{options.product_version}"
           cmd << " -channel #{options.channel}"
           cmd << " -architecture #{options.architecture}" if options.architecture
+          cmd << " -deamon #{options.deamon}" if options.deamon
           cmd << "\n"
         end
       end

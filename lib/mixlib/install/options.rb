@@ -45,6 +45,11 @@ module Mixlib
         :ps1,
         :sh,
       ]
+      SUPPORTED_DEAMON = [
+        :service,
+        :task,
+        :none
+      ]
       SUPPORTED_OPTIONS = [
         :architecture,
         :channel,
@@ -56,6 +61,7 @@ module Mixlib
         :platform_version_compatibility_mode,
         :include_metadata,
         :user_agent_headers,
+        :deamon
       ]
 
       def initialize(options)
@@ -76,6 +82,7 @@ module Mixlib
         errors << validate_channels
         errors << validate_shell_type
         errors << validate_user_agent_headers
+        errors << validate_deamon
 
         unless errors.compact.empty?
           raise InvalidOptions, errors.join("\n")
@@ -173,6 +180,15 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
         end
 
         error
+      end
+
+      def validate_deamon
+        unless SUPPORTED_DEAMON.include? deamon
+          <<-EOS
+Unknown deamon #{deamon}.
+Must be one of: #{SUPPORTED_DEAMON.join(", ")}
+          EOS
+        end
       end
     end
   end
