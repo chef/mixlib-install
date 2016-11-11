@@ -105,11 +105,17 @@ function Install-Project {
 set-alias install -value Install-Project
 
 Function Install-ChefMsi($msi, $addlocal) {
-  if ($deamon -eq "service") {
-    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL='ChefServiceFeature'" -Passthru -Wait
+  if ($addlocal -eq "service") {
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefServiceFeature`"" -Passthru -Wait
   }
-  ElseIf ($deamon -eq "none") {
+  ElseIf ($addlocal -eq "task") {
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefSchTaskFeature`"" -Passthru -Wait
+  }
+  ElseIf ($addlocal -eq "none") {
     $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
+  }
+  Else {
+    throw "Invalid value $addlocal passed for -deamon option. Valid values are task, service and none."
   }
   $p.WaitForExit()
   if ($p.ExitCode -eq 1618) {

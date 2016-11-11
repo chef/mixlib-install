@@ -103,9 +103,6 @@ module Mixlib
         aliases: ["-t"],
         default: "sh",
         enum: Mixlib::Install::Options::SUPPORTED_SHELL_TYPES.map(&:to_s)
-      option :deamon,
-        desc: "run chef-client as a service or a scheduled task",
-        default: "none"
       def install_script
         context = {}
         context[:base_url] = options[:endpoint] if options[:endpoint]
