@@ -44,7 +44,7 @@ function Install-Project {
     [string]
     $architecture = 'auto',
     [string]
-    $deamon = 'none'
+    $daemon = 'none'
   )
 
   $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
@@ -91,7 +91,7 @@ function Install-Project {
           $result = Install-ChefAppx $download_destination $project
         }
         else {
-          $result = Install-ChefMsi $download_destination $deamon
+          $result = Install-ChefMsi $download_destination $daemon
         }
         if(!$result) { continue }
         $installingProject = $False
@@ -115,7 +115,7 @@ Function Install-ChefMsi($msi, $addlocal) {
     $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
   }
   Else {
-    throw "Invalid value $addlocal passed for -deamon option. Valid values are task, service and none."
+    throw "Invalid value $addlocal passed for -daemon option. Valid values are task, service and none."
   }
   $p.WaitForExit()
   if ($p.ExitCode -eq 1618) {
