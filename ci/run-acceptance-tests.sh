@@ -3,7 +3,7 @@
 set -evx
 
 # Don't run acceptance tests on forks. The decryption keys are not available.
-if [ "${CHEF_ACCEPTANCE}" = "true" ] && [ "${TRAVIS_REPO_SLUG}" = "chef/mixlib-install" ]; then
+if [ "${CHEF_ACCEPTANCE}" = "true" ] && [[ $encrypted_e2edbb28e76c_key ]]; then
   # setup acceptance tests
   cd acceptance
   export BUNDLE_GEMFILE=$PWD/Gemfile
