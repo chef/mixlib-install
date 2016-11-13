@@ -3,7 +3,7 @@
 set -evx
 
 # Don't run acceptance tests on forks. The decryption keys are not available.
-if [ "${TRAVIS_REPO_SLUG}" = "chef/mixlib-install" ]; then
+if [ "${CHEF_ACCEPTANCE}" = "true" ] && [[ $encrypted_e2edbb28e76c_key ]]; then
 
   # download terraform
   wget "https://releases.hashicorp.com/terraform/0.7.4/terraform_0.7.4_linux_amd64.zip"
