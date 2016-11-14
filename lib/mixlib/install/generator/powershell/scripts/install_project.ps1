@@ -43,8 +43,9 @@ function Install-Project {
     [validateset('auto', 'i386', 'x86_64')]
     [string]
     $architecture = 'auto',
+    [validateset('auto', 'service', 'task')]
     [string]
-    $daemon = 'none'
+    $daemon = 'auto'
   )
 
   $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
@@ -111,12 +112,10 @@ Function Install-ChefMsi($msi, $addlocal) {
   ElseIf ($addlocal -eq "task") {
     $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefSchTaskFeature`"" -Passthru -Wait
   }
-  ElseIf ($addlocal -eq "none") {
+  ElseIf ($addlocal -eq "auto") {
     $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
   }
-  Else {
-    throw "Invalid value $addlocal passed for -daemon option. Valid values are task, service and none."
-  }
+
   $p.WaitForExit()
   if ($p.ExitCode -eq 1618) {
     Write-Host "Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."

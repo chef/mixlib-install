@@ -55,7 +55,7 @@ module Mixlib
         :shell_type,
         :platform_version_compatibility_mode,
         :include_metadata,
-        :user_agent_headers
+        :user_agent_headers,
       ]
 
       def initialize(options)
