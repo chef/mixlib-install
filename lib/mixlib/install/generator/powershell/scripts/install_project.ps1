@@ -42,7 +42,10 @@ function Install-Project {
     $nightlies,
     [validateset('auto', 'i386', 'x86_64')]
     [string]
-    $architecture = 'auto'
+    $architecture = 'auto',
+    [validateset('auto', 'service', 'task')]
+    [string]
+    $daemon = 'auto'
   )
 
   $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
@@ -89,7 +92,7 @@ function Install-Project {
           $result = Install-ChefAppx $download_destination $project
         }
         else {
-          $result = Install-ChefMsi $download_destination
+          $result = Install-ChefMsi $download_destination $daemon
         }
         if(!$result) { continue }
         $installingProject = $False
@@ -102,8 +105,17 @@ function Install-Project {
 }
 set-alias install -value Install-Project
 
-Function Install-ChefMsi($msi) {
-  $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
+Function Install-ChefMsi($msi, $addlocal) {
+  if ($addlocal -eq "service") {
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefServiceFeature`"" -Passthru -Wait
+  }
+  ElseIf ($addlocal -eq "task") {
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefSchTaskFeature`"" -Passthru -Wait
+  }
+  ElseIf ($addlocal -eq "auto") {
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
+  }
+
   $p.WaitForExit()
   if ($p.ExitCode -eq 1618) {
     Write-Host "Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
