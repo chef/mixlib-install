@@ -36,6 +36,12 @@ module Mixlib
         default: "x86_64",
         aliases: ["-a"],
         enum: Mixlib::Install::Options::SUPPORTED_ARCHITECTURES.map(&:to_s)
+      option :platform_version_compat,
+        desc: "Enable or disable platform version compatibility mode.
+This will match the closest earlier version if the passed version is unavailable.
+If no earlier version is found the earliest version available will be set.",
+        type: :boolean,
+        default: true
       option :url,
         desc: "Print download URL without downloading the file",
         type: :boolean
@@ -48,6 +54,7 @@ module Mixlib
           channel: options[:channel].to_sym,
           product_name: product_name,
           product_version: options[:version],
+          platform_version_compatibility_mode: options[:platform_version_compat],
         }
 
         # Set platform info or auto detect platform
@@ -59,6 +66,7 @@ module Mixlib
           mixlib_install_options[:platform_version] = options[:platform_version]
           mixlib_install_options[:architecture] = options[:architecture]
         else
+
           mixlib_install_options.merge!(Mixlib::Install.detect_platform)
         end
 

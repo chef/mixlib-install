@@ -94,18 +94,19 @@ module Mixlib
           artifacts.each do |a|
             return a if a.platform_version == options.platform_version
 
-            # We skip the artifacts produced for windows since their platform
-            # version is always set to 2008r2 which breaks our `to_f` comparison.
-            next if a.platform == "windows"
-
             # Calculate the closest compatible version.
             # For an artifact to be compatible it needs to be smaller than the
             # platform_version specified in options.
             # To find the closest compatible one we keep a max of the compatible
             # artifacts.
+
+            # Remove "r2" from artifacts produced for windows since platform
+            # versions with that ending break `to_f` comparisons.
+            current_platform_version = a.platform_version.chomp("r2").to_f
+
             if closest_compatible_artifact.nil? ||
-                (a.platform_version.to_f > closest_compatible_artifact.platform_version.to_f &&
-                  a.platform_version.to_f < options.platform_version.to_f )
+                (current_platform_version > closest_compatible_artifact.platform_version.to_f &&
+                  current_platform_version < options.platform_version.to_f )
               closest_compatible_artifact = a
             end
           end

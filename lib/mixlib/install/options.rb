@@ -61,6 +61,8 @@ module Mixlib
       def initialize(options)
         @options = options
 
+        map_windows_desktop_versions! if for_windows?
+
         validate!
       end
 
@@ -91,6 +93,7 @@ module Mixlib
       def for_ps1?
         platform == "windows" || shell_type == :ps1
       end
+      alias_method :for_windows?, :for_ps1?
 
       def latest_version?
         product_version.to_sym == :latest
@@ -173,6 +176,25 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
         end
 
         error
+      end
+
+      def map_windows_desktop_versions!
+        # This logic does not try to compare and determine proper versions based on conditions or ranges.
+        # These are here to improve UX for older desktop versions.
+        options[:platform_version] = case platform_version
+                                     when /^10/
+                                       "2016"
+                                     when /^6.3/, /^8.1/
+                                       "2012r2"
+                                     when /^6.2/, /^8/
+                                       "2012"
+                                     when /^6.1/, /^7/
+                                       "2008r2"
+                                     when /^6/
+                                       "2008"
+                                     else
+                                       platform_version
+                                     end
       end
     end
   end
