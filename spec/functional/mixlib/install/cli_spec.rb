@@ -183,9 +183,25 @@ describe "mixlib-install executable", :type => :aruba do
       end
     end
 
+    context "with future platform version" do
+      let(:platform) { "windows" }
+      let(:platform_version) { "2016" }
+      let(:additional_args) { "--attributes" }
+
+      let(:latest_version) { Mixlib::Install.available_versions("chefdk", "stable").last }
+      let(:filename) { "chefdk-#{latest_version}-x86.msi" }
+
+      it "has the correct artifact" do
+        require "digest"
+        sha256 = Digest::SHA256.hexdigest("./tmp/aruba/#{filename}")
+        expect(last_command_started).to have_output /sha256/
+      end
+    end
+
     context "with invalid platform version and architecture" do
       let(:platform_version) { "99.99" }
       let(:architecture) { "x86_64" }
+      let(:additional_args) { "--no-platform-version-compat" }
 
       it "returns no results" do
         expect(last_command_started).to have_output /No results found./

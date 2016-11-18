@@ -232,6 +232,52 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
+  context "for a version of windows that is not added to our matrix" do
+    let(:channel) { :stable }
+    let(:product_name) { "chefdk" }
+    let(:product_version) { :latest }
+    let(:platform) { "windows" }
+    let(:platform_version) { "2016" }
+    let(:architecture) { "x86_64" }
+
+    it "can not find an artifact" do
+      expect(artifact_info).to be_empty
+    end
+
+    context "when product_version compat mode is set" do
+      let(:pv_compat) { true }
+
+      it "finds an artifact" do
+        expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+        expect(artifact_info.platform).to eq "windows"
+        expect(artifact_info.platform_version).to eq "2012r2"
+        expect(artifact_info.architecture).to eq "x86_64"
+      end
+
+      context "when a desktop version is set" do
+        let(:platform_version) { "10" }
+
+        it "finds an artifact" do
+          expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+          expect(artifact_info.platform).to eq "windows"
+          expect(artifact_info.platform_version).to eq "2012r2"
+          expect(artifact_info.architecture).to eq "x86_64"
+        end
+      end
+
+      context "when version ends with r2" do
+        let(:platform_version) { "2012r2" }
+
+        it "finds an artifact" do
+          expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+          expect(artifact_info.platform).to eq "windows"
+          expect(artifact_info.platform_version).to eq "2012r2"
+          expect(artifact_info.architecture).to eq "x86_64"
+        end
+      end
+    end
+  end
+
   context "for automate" do
     let(:channel) { :stable }
     let(:product_name) { "automate" }
