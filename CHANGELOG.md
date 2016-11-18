@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.1.7]
+- Add support for passing arguments to the MSI in install scripts
+- Add platform version compatibility support for Windows (including desktop versions)
+- Enable platform version compatibility option by default for the cli
+
 ## [2.1.6]
 - Add `User-Agent` headers to all download requests
 - CLI UX improvements
