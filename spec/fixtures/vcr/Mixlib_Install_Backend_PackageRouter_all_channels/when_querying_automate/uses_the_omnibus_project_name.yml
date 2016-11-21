@@ -1974,4 +1974,3302 @@ http_interactions:
         }
     http_version: 
   recorded_at: Tue, 04 Oct 2016 17:01:35 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/unstable/delivery/versions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/2.1.7
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 3c031508623683e4:-49c0c854:15826b5bd31:-7f69
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - eab246980aa48de038db75422c20ca8c4cd0468872391c20f3479ff69670b9ee
+      Content-Length:
+      - '34624'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 22 Nov 2016 10:57:22 GMT
+      Age:
+      - '433'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3127-SJC, cache-lcy1135-LCY
+      X-Cache:
+      - HIT, MISS
+      X-Cache-Hits:
+      - 1, 0
+      X-Timer:
+      - S1479812242.103512,VS0,VE148
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/ubuntu/12.04",
+          "name" : "delivery_0.5.512-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561320,
+          "created" : "2016-11-15T08:38:22.236Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T08:38:11.688Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T08:38:11.688Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/ubuntu/14.04",
+          "name" : "delivery_0.5.512-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561320,
+          "created" : "2016-11-15T08:38:35.737Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T08:38:22.287Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T08:38:22.287Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/ubuntu/16.04",
+          "name" : "delivery_0.5.512-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561320,
+          "created" : "2016-11-15T08:38:49.175Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T08:38:35.781Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T08:38:35.781Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/el/7",
+          "name" : "delivery-0.5.512-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494638359,
+          "created" : "2016-11-15T08:48:58.950Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T08:48:48.467Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T08:48:48.467Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/el/6",
+          "name" : "delivery-0.5.512-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493908225,
+          "created" : "2016-11-15T09:17:36.533Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T09:17:25.877Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T09:17:25.877Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/ubuntu/12.04",
+          "name" : "delivery_0.5.513-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561570,
+          "created" : "2016-11-15T10:59:16.383Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T10:59:05.816Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T10:59:05.816Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/ubuntu/14.04",
+          "name" : "delivery_0.5.513-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561570,
+          "created" : "2016-11-15T10:59:29.891Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T10:59:16.460Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T10:59:16.460Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/ubuntu/16.04",
+          "name" : "delivery_0.5.513-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561570,
+          "created" : "2016-11-15T10:59:43.325Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T10:59:29.936Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T10:59:29.936Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/el/7",
+          "name" : "delivery-0.5.513-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494641683,
+          "created" : "2016-11-15T11:04:08.137Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T11:03:57.668Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T11:03:57.668Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/el/6",
+          "name" : "delivery-0.5.513-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493912350,
+          "created" : "2016-11-15T11:17:11.035Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T11:17:00.534Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T11:17:00.534Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/ubuntu/12.04",
+          "name" : "delivery_0.5.513+git.9.3368aaa-1_amd64.deb",
+          "type" : "file",
+          "size" : 495558956,
+          "created" : "2016-11-15T12:19:50.383Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:19:39.855Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:19:39.855Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/ubuntu/14.04",
+          "name" : "delivery_0.5.513+git.9.3368aaa-1_amd64.deb",
+          "type" : "file",
+          "size" : 495558956,
+          "created" : "2016-11-15T12:20:03.934Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:19:50.433Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:19:50.433Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/ubuntu/16.04",
+          "name" : "delivery_0.5.513+git.9.3368aaa-1_amd64.deb",
+          "type" : "file",
+          "size" : 495558956,
+          "created" : "2016-11-15T12:20:17.343Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:20:03.976Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:20:03.976Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/el/7",
+          "name" : "delivery-0.5.513+git.9.3368aaa-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494640097,
+          "created" : "2016-11-15T12:21:46.403Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:21:35.870Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:21:35.870Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/el/6",
+          "name" : "delivery-0.5.513+git.9.3368aaa-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493923843,
+          "created" : "2016-11-15T12:32:44.024Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:32:33.504Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:32:33.504Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/ubuntu/12.04",
+          "name" : "delivery_0.5.514-1_amd64.deb",
+          "type" : "file",
+          "size" : 495564686,
+          "created" : "2016-11-15T15:31:50.992Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:31:40.463Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:31:40.463Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/ubuntu/14.04",
+          "name" : "delivery_0.5.514-1_amd64.deb",
+          "type" : "file",
+          "size" : 495564686,
+          "created" : "2016-11-15T15:32:04.542Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:31:51.080Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:31:51.080Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/ubuntu/16.04",
+          "name" : "delivery_0.5.514-1_amd64.deb",
+          "type" : "file",
+          "size" : 495564686,
+          "created" : "2016-11-15T15:32:17.960Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:32:04.594Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:32:04.594Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/el/7",
+          "name" : "delivery-0.5.514-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494643491,
+          "created" : "2016-11-15T15:41:30.832Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:41:14.290Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:41:14.290Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/el/6",
+          "name" : "delivery-0.5.514-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493914994,
+          "created" : "2016-11-15T15:48:39.993Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:48:29.531Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:48:29.531Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/ubuntu/12.04",
+          "name" : "delivery_0.5.516-1_amd64.deb",
+          "type" : "file",
+          "size" : 495608882,
+          "created" : "2016-11-15T23:11:01.732Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:10:51.197Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:10:51.197Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/ubuntu/14.04",
+          "name" : "delivery_0.5.516-1_amd64.deb",
+          "type" : "file",
+          "size" : 495608882,
+          "created" : "2016-11-15T23:11:15.504Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:11:01.802Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:11:01.802Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/ubuntu/16.04",
+          "name" : "delivery_0.5.516-1_amd64.deb",
+          "type" : "file",
+          "size" : 495608882,
+          "created" : "2016-11-15T23:11:28.941Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:11:15.572Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:11:15.572Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/el/7",
+          "name" : "delivery-0.5.516-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494702077,
+          "created" : "2016-11-15T23:12:18.747Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:12:08.263Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:12:08.263Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/el/6",
+          "name" : "delivery-0.5.516-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493955559,
+          "created" : "2016-11-15T23:33:02.599Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:32:52.119Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:32:52.119Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/ubuntu/12.04",
+          "name" : "delivery_0.5.517-1_amd64.deb",
+          "type" : "file",
+          "size" : 495597714,
+          "created" : "2016-11-16T01:03:49.442Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:03:38.799Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:03:38.799Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/ubuntu/14.04",
+          "name" : "delivery_0.5.517-1_amd64.deb",
+          "type" : "file",
+          "size" : 495597714,
+          "created" : "2016-11-16T01:04:02.956Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:03:49.501Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:03:49.501Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/ubuntu/16.04",
+          "name" : "delivery_0.5.517-1_amd64.deb",
+          "type" : "file",
+          "size" : 495597714,
+          "created" : "2016-11-16T01:04:16.391Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:04:02.997Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:04:02.997Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/el/7",
+          "name" : "delivery-0.5.517-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494694373,
+          "created" : "2016-11-16T01:07:25.992Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:07:15.447Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:07:15.447Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/el/6",
+          "name" : "delivery-0.5.517-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493952879,
+          "created" : "2016-11-16T01:15:04.588Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:14:54.068Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:14:54.068Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.518/ubuntu/12.04",
+          "name" : "delivery_0.5.518-1_amd64.deb",
+          "type" : "file",
+          "size" : 495605192,
+          "created" : "2016-11-16T02:57:07.393Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T02:56:56.828Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T02:56:56.828Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.518/ubuntu/14.04",
+          "name" : "delivery_0.5.518-1_amd64.deb",
+          "type" : "file",
+          "size" : 495605192,
+          "created" : "2016-11-16T02:57:20.894Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T02:57:07.446Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T02:57:07.446Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.518/ubuntu/16.04",
+          "name" : "delivery_0.5.518-1_amd64.deb",
+          "type" : "file",
+          "size" : 495605192,
+          "created" : "2016-11-16T02:57:34.315Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T02:57:20.942Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T02:57:20.942Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.518/el/6",
+          "name" : "delivery-0.5.518-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493954148,
+          "created" : "2016-11-16T03:05:01.420Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T03:04:50.762Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T03:04:50.762Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/ubuntu/12.04",
+          "name" : "delivery_0.5.515+git.2.e6a51e2-1_amd64.deb",
+          "type" : "file",
+          "size" : 495569262,
+          "created" : "2016-11-16T20:37:19.356Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:37:08.776Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:37:08.776Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/ubuntu/14.04",
+          "name" : "delivery_0.5.515+git.2.e6a51e2-1_amd64.deb",
+          "type" : "file",
+          "size" : 495569262,
+          "created" : "2016-11-16T20:37:32.857Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:37:19.402Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:37:19.402Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/ubuntu/16.04",
+          "name" : "delivery_0.5.515+git.2.e6a51e2-1_amd64.deb",
+          "type" : "file",
+          "size" : 495569262,
+          "created" : "2016-11-16T20:37:46.277Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:37:32.901Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:37:32.901Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/el/7",
+          "name" : "delivery-0.5.515+git.2.e6a51e2-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494646323,
+          "created" : "2016-11-16T20:38:08.326Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:37:52.167Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:37:52.167Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/el/6",
+          "name" : "delivery-0.5.515+git.2.e6a51e2-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493919513,
+          "created" : "2016-11-16T20:46:55.587Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:46:45.093Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:46:45.093Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/ubuntu/12.04",
+          "name" : "delivery_0.6.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 495599920,
+          "created" : "2016-11-16T21:39:23.600Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T21:39:13.070Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T21:39:13.070Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/ubuntu/14.04",
+          "name" : "delivery_0.6.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 495599920,
+          "created" : "2016-11-16T21:39:37.111Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T21:39:23.654Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T21:39:23.654Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/ubuntu/16.04",
+          "name" : "delivery_0.6.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 495599920,
+          "created" : "2016-11-16T21:39:50.555Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T21:39:37.154Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T21:39:37.154Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/el/7",
+          "name" : "delivery-0.6.0-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494706084,
+          "created" : "2016-11-16T21:40:30.416Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T21:40:19.901Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T21:40:19.901Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/el/6",
+          "name" : "delivery-0.6.0-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493953578,
+          "created" : "2016-11-16T22:02:52.791Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T22:02:42.301Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T22:02:42.301Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/12.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 495600676,
+          "created" : "2016-11-16T23:42:01.117Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:41:50.536Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:41:50.536Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/14.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 495600676,
+          "created" : "2016-11-16T23:42:14.635Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:42:01.169Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:42:01.169Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/16.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 495600676,
+          "created" : "2016-11-16T23:42:28.056Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:42:14.679Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:42:14.679Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/el/7",
+          "name" : "delivery-0.6.1-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494701502,
+          "created" : "2016-11-16T23:49:54.828Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:49:44.340Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:49:44.340Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/el/6",
+          "name" : "delivery-0.6.1-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493955205,
+          "created" : "2016-11-16T23:54:42.222Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:54:31.659Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:54:31.659Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.6+git.1.c3e74a4/el/7",
+          "name" : "delivery-0.6.6+git.1.c3e74a4-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494158758,
+          "created" : "2016-11-21T10:39:53.134Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-21T10:39:42.678Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-21T10:39:42.678Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.6+git.1.c3e74a4"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.6+git.1.c3e74a4/el/6",
+          "name" : "delivery-0.6.6+git.1.c3e74a4-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493440388,
+          "created" : "2016-11-21T10:39:53.988Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-21T10:39:43.388Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-21T10:39:43.388Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.6+git.1.c3e74a4"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 51,
+          "total" : 51
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 10:57:22 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/unstable/delivery/0.6.1/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/2.1.7
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 3c031508623683e4:-49c0c854:15826b5bd31:-7f69
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 2ad727e2bf7ad9f51ffc945534b92871bee8c89f114f70d5e19b71f0e3f7feaa
+      Content-Length:
+      - '9134'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 22 Nov 2016 10:57:22 GMT
+      Age:
+      - '432'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3149-SJC, cache-lcy1139-LCY
+      X-Cache:
+      - HIT, MISS
+      X-Cache-Hits:
+      - 1, 0
+      X-Timer:
+      - S1479812242.412582,VS0,VE142
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/12.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/14.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/16.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/el/7",
+          "name" : "delivery-0.6.1-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "c555f304946ecba1b41eb53230e5a0b4"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "ed1bb5b105a72d636743c53a9fd36f9f7a43d0e7"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b12960d76cf8dfa655841c01243039c1869e20589b58ba9b6488a885e99039bc"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "sha512",
+            "value" : "27e45cc2ce621be2bb6f4a3ab4ed2953fb629b3682ed2b70348c2a8692ebd139b76d30c511f603a022fa1a0352b958785e969a9ea3d8f20f436feafa583611e8"
+          }, {
+            "key" : "sha256",
+            "value" : "b12960d76cf8dfa655841c01243039c1869e20589b58ba9b6488a885e99039bc"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "sha1",
+            "value" : "ed1bb5b105a72d636743c53a9fd36f9f7a43d0e7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "27e45cc2ce621be2bb6f4a3ab4ed2953fb629b3682ed2b70348c2a8692ebd139b76d30c511f603a022fa1a0352b958785e969a9ea3d8f20f436feafa583611e8"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          }, {
+            "key" : "md5",
+            "value" : "c555f304946ecba1b41eb53230e5a0b4"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/el/6",
+          "name" : "delivery-0.6.1-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "5109a529af44407d79c97d34aba77843e2c42b9252c7932a4a397c8a07eaa800"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "10ec3bb96b36d69efa9796a665aa51cf"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "sha256",
+            "value" : "5109a529af44407d79c97d34aba77843e2c42b9252c7932a4a397c8a07eaa800"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "md5",
+            "value" : "10ec3bb96b36d69efa9796a665aa51cf"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "282970569eee856076b4d2c56c21c8ebbe866640"
+          }, {
+            "key" : "sha1",
+            "value" : "282970569eee856076b4d2c56c21c8ebbe866640"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "sha512",
+            "value" : "df6722b203180f2162463232c203a472cea38e7f18a7136dcdb6147c89e12198c20c3694cb26da614073e855287b004451c0482f3c50307806cf167e4b141333"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "df6722b203180f2162463232c203a472cea38e7f18a7136dcdb6147c89e12198c20c3694cb26da614073e855287b004451c0482f3c50307806cf167e4b141333"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 5,
+          "total" : 5
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 10:57:22 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/unstable/delivery/versions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/2.1.7
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 3c031508623683e4:-49c0c854:15826b5bd31:-7f69
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - eab246980aa48de038db75422c20ca8c4cd0468872391c20f3479ff69670b9ee
+      Content-Length:
+      - '34624'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 22 Nov 2016 10:57:22 GMT
+      Age:
+      - '433'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3127-SJC, cache-lcy1140-LCY
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 1, 1
+      X-Timer:
+      - S1479812242.629297,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/ubuntu/12.04",
+          "name" : "delivery_0.5.512-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561320,
+          "created" : "2016-11-15T08:38:22.236Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T08:38:11.688Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T08:38:11.688Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/ubuntu/14.04",
+          "name" : "delivery_0.5.512-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561320,
+          "created" : "2016-11-15T08:38:35.737Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T08:38:22.287Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T08:38:22.287Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/ubuntu/16.04",
+          "name" : "delivery_0.5.512-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561320,
+          "created" : "2016-11-15T08:38:49.175Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T08:38:35.781Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T08:38:35.781Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/el/7",
+          "name" : "delivery-0.5.512-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494638359,
+          "created" : "2016-11-15T08:48:58.950Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T08:48:48.467Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T08:48:48.467Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.512/el/6",
+          "name" : "delivery-0.5.512-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493908225,
+          "created" : "2016-11-15T09:17:36.533Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T09:17:25.877Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T09:17:25.877Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T09:17:38.570Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.512"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.512"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/ubuntu/12.04",
+          "name" : "delivery_0.5.513-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561570,
+          "created" : "2016-11-15T10:59:16.383Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T10:59:05.816Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T10:59:05.816Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/ubuntu/14.04",
+          "name" : "delivery_0.5.513-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561570,
+          "created" : "2016-11-15T10:59:29.891Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T10:59:16.460Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T10:59:16.460Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/ubuntu/16.04",
+          "name" : "delivery_0.5.513-1_amd64.deb",
+          "type" : "file",
+          "size" : 495561570,
+          "created" : "2016-11-15T10:59:43.325Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T10:59:29.936Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T10:59:29.936Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/el/7",
+          "name" : "delivery-0.5.513-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494641683,
+          "created" : "2016-11-15T11:04:08.137Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T11:03:57.668Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T11:03:57.668Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513/el/6",
+          "name" : "delivery-0.5.513-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493912350,
+          "created" : "2016-11-15T11:17:11.035Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T11:17:00.534Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T11:17:00.534Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T11:17:13.084Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/ubuntu/12.04",
+          "name" : "delivery_0.5.513+git.9.3368aaa-1_amd64.deb",
+          "type" : "file",
+          "size" : 495558956,
+          "created" : "2016-11-15T12:19:50.383Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:19:39.855Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:19:39.855Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/ubuntu/14.04",
+          "name" : "delivery_0.5.513+git.9.3368aaa-1_amd64.deb",
+          "type" : "file",
+          "size" : 495558956,
+          "created" : "2016-11-15T12:20:03.934Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:19:50.433Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:19:50.433Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/ubuntu/16.04",
+          "name" : "delivery_0.5.513+git.9.3368aaa-1_amd64.deb",
+          "type" : "file",
+          "size" : 495558956,
+          "created" : "2016-11-15T12:20:17.343Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:20:03.976Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:20:03.976Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/el/7",
+          "name" : "delivery-0.5.513+git.9.3368aaa-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494640097,
+          "created" : "2016-11-15T12:21:46.403Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:21:35.870Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:21:35.870Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.513+git.9.3368aaa/el/6",
+          "name" : "delivery-0.5.513+git.9.3368aaa-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493923843,
+          "created" : "2016-11-15T12:32:44.024Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T12:32:33.504Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T12:32:33.504Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T12:32:45.887Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.513+git.9.3368aaa"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.513+git.9.3368aaa"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/ubuntu/12.04",
+          "name" : "delivery_0.5.514-1_amd64.deb",
+          "type" : "file",
+          "size" : 495564686,
+          "created" : "2016-11-15T15:31:50.992Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:31:40.463Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:31:40.463Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/ubuntu/14.04",
+          "name" : "delivery_0.5.514-1_amd64.deb",
+          "type" : "file",
+          "size" : 495564686,
+          "created" : "2016-11-15T15:32:04.542Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:31:51.080Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:31:51.080Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/ubuntu/16.04",
+          "name" : "delivery_0.5.514-1_amd64.deb",
+          "type" : "file",
+          "size" : 495564686,
+          "created" : "2016-11-15T15:32:17.960Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:32:04.594Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:32:04.594Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/el/7",
+          "name" : "delivery-0.5.514-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494643491,
+          "created" : "2016-11-15T15:41:30.832Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:41:14.290Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:41:14.290Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.514/el/6",
+          "name" : "delivery-0.5.514-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493914994,
+          "created" : "2016-11-15T15:48:39.993Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T15:48:29.531Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T15:48:29.531Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T15:48:41.646Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.514"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.514"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/ubuntu/12.04",
+          "name" : "delivery_0.5.516-1_amd64.deb",
+          "type" : "file",
+          "size" : 495608882,
+          "created" : "2016-11-15T23:11:01.732Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:10:51.197Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:10:51.197Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/ubuntu/14.04",
+          "name" : "delivery_0.5.516-1_amd64.deb",
+          "type" : "file",
+          "size" : 495608882,
+          "created" : "2016-11-15T23:11:15.504Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:11:01.802Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:11:01.802Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/ubuntu/16.04",
+          "name" : "delivery_0.5.516-1_amd64.deb",
+          "type" : "file",
+          "size" : 495608882,
+          "created" : "2016-11-15T23:11:28.941Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:11:15.572Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:11:15.572Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/el/7",
+          "name" : "delivery-0.5.516-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494702077,
+          "created" : "2016-11-15T23:12:18.747Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:12:08.263Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:12:08.263Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.516/el/6",
+          "name" : "delivery-0.5.516-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493955559,
+          "created" : "2016-11-15T23:33:02.599Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-15T23:32:52.119Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-15T23:32:52.119Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-15T23:33:05.105Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.516"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.516"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/ubuntu/12.04",
+          "name" : "delivery_0.5.517-1_amd64.deb",
+          "type" : "file",
+          "size" : 495597714,
+          "created" : "2016-11-16T01:03:49.442Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:03:38.799Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:03:38.799Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/ubuntu/14.04",
+          "name" : "delivery_0.5.517-1_amd64.deb",
+          "type" : "file",
+          "size" : 495597714,
+          "created" : "2016-11-16T01:04:02.956Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:03:49.501Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:03:49.501Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/ubuntu/16.04",
+          "name" : "delivery_0.5.517-1_amd64.deb",
+          "type" : "file",
+          "size" : 495597714,
+          "created" : "2016-11-16T01:04:16.391Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:04:02.997Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:04:02.997Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/el/7",
+          "name" : "delivery-0.5.517-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494694373,
+          "created" : "2016-11-16T01:07:25.992Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:07:15.447Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:07:15.447Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.517/el/6",
+          "name" : "delivery-0.5.517-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493952879,
+          "created" : "2016-11-16T01:15:04.588Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T01:14:54.068Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T01:14:54.068Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T01:15:06.190Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.517"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.517"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.518/ubuntu/12.04",
+          "name" : "delivery_0.5.518-1_amd64.deb",
+          "type" : "file",
+          "size" : 495605192,
+          "created" : "2016-11-16T02:57:07.393Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T02:56:56.828Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T02:56:56.828Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.518/ubuntu/14.04",
+          "name" : "delivery_0.5.518-1_amd64.deb",
+          "type" : "file",
+          "size" : 495605192,
+          "created" : "2016-11-16T02:57:20.894Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T02:57:07.446Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T02:57:07.446Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.518/ubuntu/16.04",
+          "name" : "delivery_0.5.518-1_amd64.deb",
+          "type" : "file",
+          "size" : 495605192,
+          "created" : "2016-11-16T02:57:34.315Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T02:57:20.942Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T02:57:20.942Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.518/el/6",
+          "name" : "delivery-0.5.518-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493954148,
+          "created" : "2016-11-16T03:05:01.420Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T03:04:50.762Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T03:04:50.762Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.518"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/ubuntu/12.04",
+          "name" : "delivery_0.5.515+git.2.e6a51e2-1_amd64.deb",
+          "type" : "file",
+          "size" : 495569262,
+          "created" : "2016-11-16T20:37:19.356Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:37:08.776Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:37:08.776Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/ubuntu/14.04",
+          "name" : "delivery_0.5.515+git.2.e6a51e2-1_amd64.deb",
+          "type" : "file",
+          "size" : 495569262,
+          "created" : "2016-11-16T20:37:32.857Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:37:19.402Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:37:19.402Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/ubuntu/16.04",
+          "name" : "delivery_0.5.515+git.2.e6a51e2-1_amd64.deb",
+          "type" : "file",
+          "size" : 495569262,
+          "created" : "2016-11-16T20:37:46.277Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:37:32.901Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:37:32.901Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/el/7",
+          "name" : "delivery-0.5.515+git.2.e6a51e2-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494646323,
+          "created" : "2016-11-16T20:38:08.326Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:37:52.167Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:37:52.167Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.5.515+git.2.e6a51e2/el/6",
+          "name" : "delivery-0.5.515+git.2.e6a51e2-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493919513,
+          "created" : "2016-11-16T20:46:55.587Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T20:46:45.093Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T20:46:45.093Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T20:46:57.465Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.5.515+git.2.e6a51e2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.5.515+git.2.e6a51e2"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/ubuntu/12.04",
+          "name" : "delivery_0.6.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 495599920,
+          "created" : "2016-11-16T21:39:23.600Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T21:39:13.070Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T21:39:13.070Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/ubuntu/14.04",
+          "name" : "delivery_0.6.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 495599920,
+          "created" : "2016-11-16T21:39:37.111Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T21:39:23.654Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T21:39:23.654Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/ubuntu/16.04",
+          "name" : "delivery_0.6.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 495599920,
+          "created" : "2016-11-16T21:39:50.555Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T21:39:37.154Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T21:39:37.154Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/el/7",
+          "name" : "delivery-0.6.0-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494706084,
+          "created" : "2016-11-16T21:40:30.416Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T21:40:19.901Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T21:40:19.901Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.0/el/6",
+          "name" : "delivery-0.6.0-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493953578,
+          "created" : "2016-11-16T22:02:52.791Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T22:02:42.301Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T22:02:42.301Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T22:02:54.477Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.0"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/12.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 495600676,
+          "created" : "2016-11-16T23:42:01.117Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:41:50.536Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:41:50.536Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/14.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 495600676,
+          "created" : "2016-11-16T23:42:14.635Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:42:01.169Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:42:01.169Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/16.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 495600676,
+          "created" : "2016-11-16T23:42:28.056Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:42:14.679Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:42:14.679Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/el/7",
+          "name" : "delivery-0.6.1-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494701502,
+          "created" : "2016-11-16T23:49:54.828Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:49:44.340Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:49:44.340Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/el/6",
+          "name" : "delivery-0.6.1-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493955205,
+          "created" : "2016-11-16T23:54:42.222Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-16T23:54:31.659Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-16T23:54:31.659Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-16T23:54:44.365Z",
+                "build.created_by" : "jenkins",
+                "build.name" : "delivery",
+                "build.number" : "0.6.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.6+git.1.c3e74a4/el/7",
+          "name" : "delivery-0.6.6+git.1.c3e74a4-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 494158758,
+          "created" : "2016-11-21T10:39:53.134Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-21T10:39:42.678Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-21T10:39:42.678Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.6+git.1.c3e74a4"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.6+git.1.c3e74a4/el/6",
+          "name" : "delivery-0.6.6+git.1.c3e74a4-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 493440388,
+          "created" : "2016-11-21T10:39:53.988Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-21T10:39:43.388Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-21T10:39:43.388Z",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "0.6.6+git.1.c3e74a4"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 51,
+          "total" : 51
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 10:57:22 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/unstable/delivery/0.6.1/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/2.1.7
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 3c031508623683e4:-49c0c854:15826b5bd31:-7f69
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 2ad727e2bf7ad9f51ffc945534b92871bee8c89f114f70d5e19b71f0e3f7feaa
+      Content-Length:
+      - '9134'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 22 Nov 2016 10:57:22 GMT
+      Age:
+      - '432'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3149-SJC, cache-lcy1147-LCY
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 1, 1
+      X-Timer:
+      - S1479812242.716585,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/12.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/14.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/ubuntu/16.04",
+          "name" : "delivery_0.6.1-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "sha512",
+            "value" : "e7ecc4fbb535697393610038b5009ef38958f050c1f9fc21aae85a07ff608e05d2aafd8ed77549e1419c055dbf6167bcc409e47f99df55908751861c709fc4c2"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7ddd0371598586bc8d4a688afe076230f2b9f046"
+          }, {
+            "key" : "md5",
+            "value" : "f22309feb44ed4ed172c8260ea0ecfef"
+          }, {
+            "key" : "sha256",
+            "value" : "3a7c9cb37f2960ce7e473152399779098f15ad94caa4be22ecf34f08ef70b284"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/el/7",
+          "name" : "delivery-0.6.1-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "c555f304946ecba1b41eb53230e5a0b4"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "ed1bb5b105a72d636743c53a9fd36f9f7a43d0e7"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b12960d76cf8dfa655841c01243039c1869e20589b58ba9b6488a885e99039bc"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "sha512",
+            "value" : "27e45cc2ce621be2bb6f4a3ab4ed2953fb629b3682ed2b70348c2a8692ebd139b76d30c511f603a022fa1a0352b958785e969a9ea3d8f20f436feafa583611e8"
+          }, {
+            "key" : "sha256",
+            "value" : "b12960d76cf8dfa655841c01243039c1869e20589b58ba9b6488a885e99039bc"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "sha1",
+            "value" : "ed1bb5b105a72d636743c53a9fd36f9f7a43d0e7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "27e45cc2ce621be2bb6f4a3ab4ed2953fb629b3682ed2b70348c2a8692ebd139b76d30c511f603a022fa1a0352b958785e969a9ea3d8f20f436feafa583611e8"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          }, {
+            "key" : "md5",
+            "value" : "c555f304946ecba1b41eb53230e5a0b4"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          } ]
+        },{
+          "repo" : "omnibus-unstable-local",
+          "path" : "com/getchef/delivery/0.6.1/el/6",
+          "name" : "delivery-0.6.1-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "5109a529af44407d79c97d34aba77843e2c42b9252c7932a4a397c8a07eaa800"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "0.6.1"
+          }, {
+            "key" : "build.number",
+            "value" : "0.6.1"
+          }, {
+            "key" : "delivery.change",
+            "value" : "0ca18734-082a-45f8-bb64-bf346b887a96"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "10ec3bb96b36d69efa9796a665aa51cf"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "sha256",
+            "value" : "5109a529af44407d79c97d34aba77843e2c42b9252c7932a4a397c8a07eaa800"
+          }, {
+            "key" : "delivery.sha",
+            "value" : "bc82442dccfe887166eb7c330d9bb9c9689f3d6c"
+          }, {
+            "key" : "md5",
+            "value" : "10ec3bb96b36d69efa9796a665aa51cf"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "282970569eee856076b4d2c56c21c8ebbe866640"
+          }, {
+            "key" : "sha1",
+            "value" : "282970569eee856076b4d2c56c21c8ebbe866640"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "sha512",
+            "value" : "df6722b203180f2162463232c203a472cea38e7f18a7136dcdb6147c89e12198c20c3694cb26da614073e855287b004451c0482f3c50307806cf167e4b141333"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "delivery"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "df6722b203180f2162463232c203a472cea38e7f18a7136dcdb6147c89e12198c20c3694cb26da614073e855287b004451c0482f3c50307806cf167e4b141333"
+          }, {
+            "key" : "build.name",
+            "value" : "delivery"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 5,
+          "total" : 5
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 22 Nov 2016 10:57:22 GMT
 recorded_with: VCR 3.0.3
