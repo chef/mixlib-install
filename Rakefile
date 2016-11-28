@@ -1,3 +1,5 @@
+raise "mixlib-install v1 has been deprecated, please update to v2+. See https://discourse.chef.io/t/end-of-life-announcement-for-chef-software-inc-s-bintray-account/9807/1 for more information."
+
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 
