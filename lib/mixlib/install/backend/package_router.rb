@@ -47,10 +47,23 @@ module Mixlib
         end
 
         #
-        # Gets available versions from Artifactory via AQL.
+        # Gets available versions from Artifactory via AQL. Returning
+        # simply the list of versions.
         #
         # @return [Array<String>] Array of available versions
         def available_versions
+          # We are only including a single property, version and that exists
+          # under the properties in the following structure:
+          # "properties" => [ {"key"=>"omnibus.version", "value"=>"12.13.3"} ]
+          ver_list = versions.map { |i| extract_version_from_response(i) }
+          ver_list.uniq
+        end
+
+        #
+        # Get available versions from Artifactory via AQL. Returning the full API response
+        #
+        # @return [Array<Array<Hash>] Build records for available versions
+        def versions
           items = get("/api/v1/#{options.channel}/#{omnibus_project}/versions")["results"]
 
           # Filter out the partial builds if we are in :unstable channel
@@ -63,12 +76,7 @@ module Mixlib
             # populated with the build record if "artifact.module.build" exists.
             items.reject! { |i| i["artifacts"].nil? }
           end
-
-          # We are only including a single property, version and that exists
-          # under the properties in the following structure:
-          # "properties" => [ {"key"=>"omnibus.version", "value"=>"12.13.3"} ]
-          items.map! { |i| i["properties"].first["value"] }
-          items.uniq
+          items
         end
 
         #
@@ -79,7 +87,7 @@ module Mixlib
           # Get the list of builds from the REST api.
           # We do this because a user in the readers group does not have
           # permissions to run aql against builds.
-          builds = get("/api/v1/build/#{omnibus_project}")
+          builds = versions
 
           if builds.nil?
             raise NoArtifactsError, <<-MSG
@@ -87,30 +95,15 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
             MSG
           end
 
-          # Output we get is something like:
-          # {
-          #   "buildsNumbers": [
-          #     {"uri"=>"/12.5.1+20151213083009", "started"=>"2015-12-13T08:40:19.238+0000"},
-          #     {"uri"=>"/12.6.0+20160111212038", "started"=>"2016-01-12T00:25:35.762+0000"},
-          #     ...
-          #   ]
-          # }
-          # First we sort based on started
-          builds["buildsNumbers"].sort_by! { |b| b["started"] }.reverse!
+          # Sort by created data
+          # TODO: Shouldn't we sort by version?
+          builds.sort_by! { |b| b["created"] }.reverse!
+          version = extract_version_from_response(builds.first)
+          artifacts_for_version(version)
+        end
 
-          # Now check if the build is in the requested channel or not
-          # Note that if you do this for any channel other than :unstable
-          # it will run a high number of queries but it is fine because we
-          # are using artifactory only for :unstable channel
-          builds["buildsNumbers"].each do |build|
-            version = build["uri"].delete("/")
-            artifacts = artifacts_for_version(version)
-
-            return artifacts unless artifacts.empty?
-          end
-
-          # we could not find any matching artifacts
-          []
+        def extract_version_from_response(response)
+          response["properties"].find { |item| item["key"] == "omnibus.version" }["value"]
         end
 
         #
@@ -149,9 +142,7 @@ Can not find any builds for #{options.product_name} in #{endpoint}.
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
           full_path = File.join(uri.path, url)
-
           res = http.request(create_http_request(full_path))
-
           res.value
           JSON.parse(res.body)
         end
