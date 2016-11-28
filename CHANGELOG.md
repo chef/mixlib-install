@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.2.4]
+- Major version 1 deprecated. Update to major version 2.
+
 ## [1.2.3]
 - Add inspec as a supported product
 
