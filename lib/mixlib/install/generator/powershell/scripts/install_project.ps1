@@ -107,10 +107,10 @@ set-alias install -value Install-Project
 
 Function Install-ChefMsi($msi, $addlocal) {
   if ($addlocal -eq "service") {
-    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefServiceFeature`"" -Passthru -Wait
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefClientFeature,ChefServiceFeature`"" -Passthru -Wait
   }
   ElseIf ($addlocal -eq "task") {
-    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefSchTaskFeature`"" -Passthru -Wait
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefClientFeature,ChefSchTaskFeature`"" -Passthru -Wait
   }
   ElseIf ($addlocal -eq "auto") {
     $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait
