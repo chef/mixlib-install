@@ -1,8 +1,11 @@
 # Change Log
 
+## [2.1.9]
+- Add `download_directory` option to powershell install script
+
 ## [2.1.8]
 - Query performance optimizations
-- Add ChefClientFeature support to the MSI install script
+- Add ChefClientFeature support to the powershell install script
 
 ## [2.1.7]
 - Add support for passing arguments to the MSI in install scripts
