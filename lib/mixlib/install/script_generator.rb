@@ -130,9 +130,12 @@ module Mixlib
       # @return [String] shell variable lines
       # @api private
       def install_command_vars_for_powershell
+        d_flag = install_flags.nil? ? nil : install_flags.match(/-download_directory (\S+)/)
+        download_directory = d_flag.nil? ? "$env:TEMP" : d_flag[1]
         [
           shell_var("chef_omnibus_root", root),
-          shell_var("msi", "$env:TEMP\\chef-#{version}.msi"),
+          shell_var("msi", "#{download_directory}\\chef-#{version}.msi"),
+          shell_var("download_directory", download_directory),
         ].tap do |vars|
           if install_msi_url
             vars << shell_var("chef_msi_url", install_msi_url)

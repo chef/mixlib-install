@@ -43,8 +43,14 @@ Function Download-Chef($url, $sha256, $dst) {
   Log "Download complete."
 
   if ($sha256 -eq $null) { Log "Skipping sha256 verification" }
-  elseif (($dsha256 = Get-SHA256 $dst) -eq $sha256) { Log "Successfully verified $dst" }
-  else { throw "SHA256 for $dst $dsha256 does not match $sha256" }
+  elseif (Verify-SHA256 $dst $sha256) { Log "Successfully verified $dst" }
+  else { throw "SHA256 for $dst does not match $sha256" }
+}
+
+Function Verify-SHA256($path, $sha256) {
+  if ($sha256 -eq $null) { return $false }
+  elseif (($dsha256 = Get-SHA256 $path) -eq $sha256) { return $true }
+  else { return $false }
 }
 
 Function Install-Chef($msi, $chef_omnibus_root) {
@@ -63,7 +69,6 @@ Function Install-Chef($msi, $chef_omnibus_root) {
     if(!$result) { continue }
     $installingChef = $False
   }
-  Remove-Item $msi -Force
   Log "Installation complete"
 }
 
@@ -185,9 +190,13 @@ if (Check-UpdateChef $chef_omnibus_root $version) {
     $url = $chef_msi_url
     $sha256 = $null
   }
-  $msi = Join-Path $env:temp "$url".Split("/")[-1]
+  $msi = Join-Path $download_directory "$url".Split("/")[-1]
   $msi = Unresolve-Path $msi
-  Download-Chef "$url" $sha256 $msi
+  if (Verify-SHA256 $msi $sha256) {
+    Log "Skipping package download; found a matching package at $msi"
+  } else {
+    Download-Chef "$url" $sha256 $msi
+  }
   Install-Chef $msi $chef_omnibus_root
 } else {
   Write-Host "-----> Chef Omnibus installation detected ($pretty_version)"
