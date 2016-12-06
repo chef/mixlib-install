@@ -106,6 +106,21 @@ describe Mixlib::Install::ScriptGenerator do
         expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
       end
 
+      it "sets the default download_directory" do
+        expect(installer.install_command).to match(%r{\$download_directory = "\$env:TEMP"})
+      end
+
+      describe "customizing -download_directory through install_flags" do
+        let(:download_directory) { "C:\\bubulubu" }
+        let(:install_flags) { "-download_directory #{download_directory}" }
+
+        before { installer.install_flags = install_flags }
+
+        it "sets the custom download_directory variable" do
+          expect(installer.install_command).to match(%r{\$download_directory = "#{Regexp.escape(download_directory)}"})
+        end
+      end
+
       describe "for a nightly" do
         let(:installer) { described_class.new("1.2.1", true, omnibus_url: "http://f/install.sh", nightlies: true) }
         let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1&nightlies=true" }
