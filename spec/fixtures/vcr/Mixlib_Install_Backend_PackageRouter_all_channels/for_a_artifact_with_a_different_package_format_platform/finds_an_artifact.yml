@@ -1,0 +1,2112 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/versions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/2.1.7
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - d8e3fed9bad07afd:4e33889:158b21ce9a7:-7f45
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ebf77379d5e6af2b406af2d3cd053100d59e12db3d141dc6fe578127628e57ed
+      Content-Length:
+      - '45034'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 30 Nov 2016 15:10:05 GMT
+      Age:
+      - '236'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3146-SJC, cache-lax8620-LAX
+      X-Cache:
+      - HIT, MISS
+      X-Cache-Hits:
+      - 1, 0
+      X-Timer:
+      - S1480518605.858478,VS0,VE13
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.1/el/7",
+          "name" : "chef-manage-2.1.1-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 253530864,
+          "created" : "2015-12-01T02:30:41.710Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-12-01T02:30:37.345Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-12-01T02:30:37.345Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:16:12.645Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.1/ubuntu/14.04",
+          "name" : "chef-manage_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 238307920,
+          "created" : "2015-12-01T02:30:30.738Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-12-01T02:30:27.595Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-12-01T02:30:27.595Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:16:12.645Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.1/ubuntu/12.04",
+          "name" : "chef-manage_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 238307920,
+          "created" : "2015-12-01T02:30:27.572Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-12-01T02:30:24.504Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-12-01T02:30:24.504Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:16:12.645Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.1/el/5",
+          "name" : "chef-manage-2.1.1-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 251072611,
+          "created" : "2015-12-01T02:30:34.028Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-12-01T02:30:30.760Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-12-01T02:30:30.760Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:16:12.645Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.1/el/6",
+          "name" : "chef-manage-2.1.1-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 251740033,
+          "created" : "2015-12-01T02:30:37.318Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-12-01T02:30:34.056Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-12-01T02:30:34.056Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:16:12.645Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.1/ubuntu/10.04",
+          "name" : "chef-manage_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 238307920,
+          "created" : "2015-12-01T02:30:24.465Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-12-01T02:30:20.579Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-12-01T02:30:20.579Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:16:12.645Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.0/ubuntu/14.04",
+          "name" : "chef-manage_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 238260926,
+          "created" : "2015-11-24T20:34:24.148Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-24T20:34:20.748Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-24T20:34:20.748Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:26:07.965Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.0/ubuntu/10.04",
+          "name" : "chef-manage_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 238260926,
+          "created" : "2015-11-24T20:34:16.349Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-24T20:34:13.287Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-24T20:34:13.287Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:26:07.965Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.0/el/5",
+          "name" : "chef-manage-2.1.0-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 251026832,
+          "created" : "2015-11-24T20:34:27.451Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-24T20:34:24.174Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-24T20:34:24.174Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:26:07.965Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.0/el/7",
+          "name" : "chef-manage-2.1.0-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 253503904,
+          "created" : "2015-11-24T20:34:35.647Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-24T20:34:31.327Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-24T20:34:31.327Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:26:07.965Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.0/el/6",
+          "name" : "chef-manage-2.1.0-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 251649801,
+          "created" : "2015-11-24T20:34:31.300Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-24T20:34:27.476Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-24T20:34:27.476Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:26:07.965Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.0/ubuntu/12.04",
+          "name" : "chef-manage_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 238260926,
+          "created" : "2015-11-24T20:34:20.721Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-24T20:34:16.380Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-24T20:34:16.380Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-12-01T16:26:07.965Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.2/ubuntu/14.04",
+          "name" : "chef-manage_2.1.2-1_amd64.deb",
+          "type" : "file",
+          "size" : 240971570,
+          "created" : "2016-01-26T18:51:33.230Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-01-26T18:51:26.292Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-01-26T18:51:26.292Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-01-26T19:47:03.809Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.2/el/5",
+          "name" : "chef-manage-2.1.2-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 253674222,
+          "created" : "2016-01-26T19:08:12.655Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-01-26T19:08:08.716Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-01-26T19:08:08.716Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-01-26T19:47:03.809Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.2/ubuntu/10.04",
+          "name" : "chef-manage_2.1.2-1_amd64.deb",
+          "type" : "file",
+          "size" : 240971570,
+          "created" : "2016-01-26T18:51:19.631Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-01-26T18:51:15.968Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-01-26T18:51:15.968Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-01-26T19:47:03.809Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.2/ubuntu/12.04",
+          "name" : "chef-manage_2.1.2-1_amd64.deb",
+          "type" : "file",
+          "size" : 240971570,
+          "created" : "2016-01-26T18:51:26.278Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-01-26T18:51:19.653Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-01-26T18:51:19.653Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-01-26T19:47:03.809Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.2/el/7",
+          "name" : "chef-manage-2.1.2-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 256155266,
+          "created" : "2016-01-26T18:49:25.795Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-01-26T18:49:21.761Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-01-26T18:49:21.761Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-01-26T19:47:03.809Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.1.2/el/6",
+          "name" : "chef-manage-2.1.2-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 254357193,
+          "created" : "2016-01-26T19:04:11.245Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-01-26T19:04:07.273Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-01-26T19:04:07.273Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-01-26T19:47:03.809Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.1.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.0/ubuntu/14.04",
+          "name" : "chef-manage_2.2.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 269496216,
+          "created" : "2016-03-07T16:32:45.916Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-03-07T16:32:38.647Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-03-07T16:32:38.647Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-03-08T20:58:46.843Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.0/el/7",
+          "name" : "chef-manage-2.2.0-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 293589002,
+          "created" : "2016-03-07T16:36:19.156Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-03-07T16:36:14.114Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-03-07T16:36:14.114Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-03-08T20:58:46.843Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.0/el/6",
+          "name" : "chef-manage-2.2.0-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 294135118,
+          "created" : "2016-03-07T16:41:38.501Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-03-07T16:41:33.450Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-03-07T16:41:33.450Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-03-08T20:58:46.843Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.0/el/5",
+          "name" : "chef-manage-2.2.0-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 293987080,
+          "created" : "2016-03-07T16:50:24.475Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-03-07T16:50:19.436Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-03-07T16:50:19.436Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-03-08T20:58:46.843Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.0/ubuntu/10.04",
+          "name" : "chef-manage_2.2.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 269496216,
+          "created" : "2016-03-07T16:32:31.298Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-03-07T16:32:26.886Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-03-07T16:32:26.886Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-03-08T20:58:46.843Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.0/ubuntu/12.04",
+          "name" : "chef-manage_2.2.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 269496216,
+          "created" : "2016-03-07T16:32:38.631Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-03-07T16:32:31.330Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-03-07T16:32:31.330Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-03-08T20:58:46.843Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.1/ubuntu/12.04",
+          "name" : "chef-manage_2.2.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 269806294,
+          "created" : "2016-04-04T19:15:27.824Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-04T19:15:19.964Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-04T19:15:19.964Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-04T21:04:22.294Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.1/el/6",
+          "name" : "chef-manage-2.2.1-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 294348815,
+          "created" : "2016-04-04T19:36:24.800Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-04T19:36:19.732Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-04T19:36:19.732Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-04T21:04:22.294Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.1/ubuntu/10.04",
+          "name" : "chef-manage_2.2.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 269806294,
+          "created" : "2016-04-04T19:15:19.939Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-04T19:15:15.518Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-04T19:15:15.518Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-04T21:04:22.294Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.1/el/7",
+          "name" : "chef-manage-2.2.1-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 294013206,
+          "created" : "2016-04-04T19:26:52.564Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-04T19:26:47.510Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-04T19:26:47.510Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-04T21:04:22.294Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.1/el/5",
+          "name" : "chef-manage-2.2.1-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 294336256,
+          "created" : "2016-04-04T19:50:52.886Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-04T19:50:47.833Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-04T19:50:47.833Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-04T21:04:22.294Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.2.1/ubuntu/14.04",
+          "name" : "chef-manage_2.2.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 269806294,
+          "created" : "2016-04-04T19:15:35.120Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-04T19:15:27.840Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-04T19:15:27.840Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-04T21:04:22.294Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.2.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.2.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.3.0/ubuntu/12.04",
+          "name" : "chef-manage_2.3.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 269837596,
+          "created" : "2016-04-20T20:37:01.305Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-20T20:36:54.030Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-20T20:36:54.030Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-28T19:05:45.243Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.3.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.3.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.3.0/ubuntu/10.04",
+          "name" : "chef-manage_2.3.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 269837596,
+          "created" : "2016-04-20T20:36:53.991Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-20T20:36:49.504Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-20T20:36:49.504Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-28T19:05:45.243Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.3.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.3.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.3.0/ubuntu/14.04",
+          "name" : "chef-manage_2.3.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 269837596,
+          "created" : "2016-04-20T20:37:08.603Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-20T20:37:01.335Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-20T20:37:01.335Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-28T19:05:45.243Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.3.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.3.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.3.0/el/6",
+          "name" : "chef-manage-2.3.0-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 294513337,
+          "created" : "2016-04-20T20:50:37.404Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-20T20:50:32.308Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-20T20:50:32.308Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-28T19:05:45.243Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.3.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.3.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.3.0/el/7",
+          "name" : "chef-manage-2.3.0-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 294028611,
+          "created" : "2016-04-20T20:34:19.823Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-20T20:34:14.738Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-20T20:34:14.738Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-28T19:05:45.243Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.3.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.3.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.3.0/el/5",
+          "name" : "chef-manage-2.3.0-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 294340413,
+          "created" : "2016-04-20T20:57:17.165Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-04-20T20:57:12.130Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-04-20T20:57:12.130Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-04-28T19:05:45.243Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.3.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.3.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.0/ubuntu/12.04",
+          "name" : "chef-manage_2.4.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 304936538,
+          "created" : "2016-06-14T23:37:53.022Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-06-14T23:37:47.116Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-06-14T23:37:47.116Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-06-15T16:52:57.020Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.0/el/7",
+          "name" : "chef-manage-2.4.0-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 308315216,
+          "created" : "2016-06-14T23:34:12.689Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-06-14T23:34:07.233Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-06-14T23:34:07.233Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-06-15T16:52:57.020Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.0/ubuntu/14.04",
+          "name" : "chef-manage_2.4.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 304936538,
+          "created" : "2016-06-14T23:38:01.350Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-06-14T23:37:53.076Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-06-14T23:37:53.076Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-06-15T16:52:57.020Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.0/el/5",
+          "name" : "chef-manage-2.4.0-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 308299985,
+          "created" : "2016-06-14T23:54:41.746Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-06-14T23:54:36.334Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-06-14T23:54:36.334Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-06-15T16:52:57.020Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.0/el/6",
+          "name" : "chef-manage-2.4.0-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 308595168,
+          "created" : "2016-06-14T23:50:41.177Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-06-14T23:50:35.726Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-06-14T23:50:35.726Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-06-15T16:52:57.020Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/16.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 305349236,
+          "created" : "2016-07-25T17:30:29.513Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-25T17:30:21.269Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-25T17:30:21.269Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-07-25T19:44:56.010Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/12.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 305349236,
+          "created" : "2016-07-25T17:30:12.801Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-25T17:30:06.952Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-25T17:30:06.952Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-07-25T19:44:56.010Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/6",
+          "name" : "chef-manage-2.4.1-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 308956635,
+          "created" : "2016-07-25T17:34:55.003Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-25T17:34:49.524Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-25T17:34:49.524Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-07-25T19:44:56.010Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/ubuntu/14.04",
+          "name" : "chef-manage_2.4.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 305349236,
+          "created" : "2016-07-25T17:30:21.239Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-25T17:30:13.057Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-25T17:30:13.057Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-07-25T19:44:56.010Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/7",
+          "name" : "chef-manage-2.4.1-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 308615206,
+          "created" : "2016-07-25T17:29:58.738Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-25T17:29:53.307Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-25T17:29:53.307Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-07-25T19:44:56.010Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.1/el/5",
+          "name" : "chef-manage-2.4.1-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 308687600,
+          "created" : "2016-07-25T17:52:30.358Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-07-25T17:52:24.932Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-07-25T17:52:24.932Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-07-25T19:44:56.010Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.2/el/7",
+          "name" : "chef-manage-2.4.2-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 308685982,
+          "created" : "2016-08-22T17:20:47.661Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-22T17:40:44.153Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-22T17:40:44.153Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-22T19:16:20.201Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.2/ubuntu/16.04",
+          "name" : "chef-manage_2.4.2-1_amd64.deb",
+          "type" : "file",
+          "size" : 305305320,
+          "created" : "2016-08-22T17:21:44.719Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-22T17:41:16.114Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-22T17:41:16.114Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-22T19:16:20.201Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.2/el/6",
+          "name" : "chef-manage-2.4.2-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 308906704,
+          "created" : "2016-08-22T17:46:19.496Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-22T17:46:14.033Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-22T17:46:14.033Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-22T19:16:20.201Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.2/ubuntu/14.04",
+          "name" : "chef-manage_2.4.2-1_amd64.deb",
+          "type" : "file",
+          "size" : 305305320,
+          "created" : "2016-08-22T17:21:36.411Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-22T17:41:07.280Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-22T17:41:07.280Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-22T19:16:20.201Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.2/ubuntu/12.04",
+          "name" : "chef-manage_2.4.2-1_amd64.deb",
+          "type" : "file",
+          "size" : 305305320,
+          "created" : "2016-08-22T17:21:27.727Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-22T17:41:01.865Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-22T17:41:01.865Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-22T19:16:20.201Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.2/el/5",
+          "name" : "chef-manage-2.4.2-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 308679617,
+          "created" : "2016-08-22T17:50:15.751Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-22T17:50:10.325Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-22T17:50:10.325Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-22T19:16:20.201Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.2"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/6",
+          "name" : "chef-manage-2.4.3-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 308961673,
+          "created" : "2016-08-24T21:15:13.681Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-24T21:15:08.236Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-24T21:15:08.236Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-25T16:51:49.239Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/7",
+          "name" : "chef-manage-2.4.3-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 308616448,
+          "created" : "2016-08-24T21:09:30.882Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-24T21:09:25.435Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-24T21:09:25.435Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-25T16:51:49.239Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/16.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 305302764,
+          "created" : "2016-08-24T21:09:46.731Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-24T21:09:38.422Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-24T21:09:38.422Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-25T16:51:49.239Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/14.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 305302764,
+          "created" : "2016-08-24T21:09:38.391Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-24T21:09:30.123Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-24T21:09:30.123Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-25T16:51:49.239Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/ubuntu/12.04",
+          "name" : "chef-manage_2.4.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 305302764,
+          "created" : "2016-08-24T21:09:30.057Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-24T21:09:24.665Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-24T21:09:24.665Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-25T16:51:49.239Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.3/el/5",
+          "name" : "chef-manage-2.4.3-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 308680954,
+          "created" : "2016-08-24T21:24:08.721Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-24T21:24:03.280Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-24T21:24:03.280Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-25T16:51:49.239Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/el/6",
+          "name" : "chef-manage-2.4.4-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 309589202,
+          "created" : "2016-10-26T18:03:22.926Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-10-26T18:03:17.462Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-10-26T18:03:17.462Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-10-26T19:13:33.398Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/el/7",
+          "name" : "chef-manage-2.4.4-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 309357724,
+          "created" : "2016-10-26T17:50:59.883Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-10-26T17:50:54.403Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-10-26T17:50:54.403Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-10-26T19:13:33.398Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/ubuntu/12.04",
+          "name" : "chef-manage_2.4.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 306033866,
+          "created" : "2016-10-26T17:54:05.542Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-10-26T17:54:00.166Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-10-26T17:54:00.166Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-10-26T19:13:33.398Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/el/5",
+          "name" : "chef-manage-2.4.4-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 309340940,
+          "created" : "2016-10-26T18:16:25.716Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-10-26T18:16:20.250Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-10-26T18:16:20.250Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-10-26T19:13:33.398Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/ubuntu/14.04",
+          "name" : "chef-manage_2.4.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 306033866,
+          "created" : "2016-10-26T17:54:14.387Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-10-26T17:54:05.586Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-10-26T17:54:05.586Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-10-26T19:13:33.398Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/ubuntu/16.04",
+          "name" : "chef-manage_2.4.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 306033866,
+          "created" : "2016-10-26T17:54:22.682Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-10-26T17:54:14.440Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-10-26T17:54:14.440Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-10-26T19:13:33.398Z",
+                "build.created_by" : "lita",
+                "build.name" : "chef-manage",
+                "build.number" : "2.4.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 65,
+          "total" : 65
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 15:10:05 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef-manage/2.4.4/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/2.1.7
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - d8e3fed9bad07afd:4e33889:158b21ce9a7:-7f45
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - b2d5245feb01e9a61ca712e1c4e2974b02d3b348e94cfb52f8e38bacee94469e
+      Content-Length:
+      - '10325'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 30 Nov 2016 15:10:06 GMT
+      Age:
+      - '244'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3129-SJC, cache-lax8628-LAX
+      X-Cache:
+      - HIT, MISS
+      X-Cache-Hits:
+      - 1, 0
+      X-Timer:
+      - S1480518605.992886,VS0,VE9
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/el/6",
+          "name" : "chef-manage-2.4.4-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "sha1",
+            "value" : "367704b48ce9160c0b1a7c471ff6160b8b2ace49"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "5a489e919d7b655bfba09807131c500c6e3e661d9583ea19bfefef47ef4d2445"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          }, {
+            "key" : "sha256",
+            "value" : "5a489e919d7b655bfba09807131c500c6e3e661d9583ea19bfefef47ef4d2445"
+          }, {
+            "key" : "md5",
+            "value" : "a75440f5629dbeb9be0d6b7a2c609d8e"
+          }, {
+            "key" : "sha512",
+            "value" : "43a58ccfacc84bfab36ffbd19439a4a98ba04c0cfbb0f987dd2bb6a46c528f314fddf296d344ff80a73e0ead5554aec0c09f7799e3bd9398bffb89afba5a16fd"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "367704b48ce9160c0b1a7c471ff6160b8b2ace49"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a75440f5629dbeb9be0d6b7a2c609d8e"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "43a58ccfacc84bfab36ffbd19439a4a98ba04c0cfbb0f987dd2bb6a46c528f314fddf296d344ff80a73e0ead5554aec0c09f7799e3bd9398bffb89afba5a16fd"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/el/7",
+          "name" : "chef-manage-2.4.4-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "sha1",
+            "value" : "59e092826584639c59fc9abcdcec3f81feacec81"
+          }, {
+            "key" : "md5",
+            "value" : "96948d9b0adb2133ef058ef30fa6b2e4"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "270ccab7ad13e1cb5edb85a6e9d65c4de5b6f642bb3345484cd14064cb6df4cd"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6150826acf49cb9ed48126179918ab3fa05f57b83fd0e5790873d59ab4949c2aa11b889868617a5d48cbba354870efdc752314947fbe85a1e284d8b333971e6d"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "59e092826584639c59fc9abcdcec3f81feacec81"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "96948d9b0adb2133ef058ef30fa6b2e4"
+          }, {
+            "key" : "sha512",
+            "value" : "6150826acf49cb9ed48126179918ab3fa05f57b83fd0e5790873d59ab4949c2aa11b889868617a5d48cbba354870efdc752314947fbe85a1e284d8b333971e6d"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "sha256",
+            "value" : "270ccab7ad13e1cb5edb85a6e9d65c4de5b6f642bb3345484cd14064cb6df4cd"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/ubuntu/12.04",
+          "name" : "chef-manage_2.4.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "sha1",
+            "value" : "70284cdb8803dad2d84e7f31d404c47fd35bbf76"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "75f21dc531dbb8c5f791106b23df14173c3ad18da83afa802aeeea8deb93e5b7a87d49d9c5bf48375d1fafd426594e0ea4ff778511a8e2d86a4400d8bc63719d"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "f8d3b1537f0d3b33bb99220ecb66a6128699f1df135d88154e8f39c5d6ab9727"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "05bd5827a89d7490ff784ee540ca7b04"
+          }, {
+            "key" : "sha256",
+            "value" : "f8d3b1537f0d3b33bb99220ecb66a6128699f1df135d88154e8f39c5d6ab9727"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.4"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "sha512",
+            "value" : "75f21dc531dbb8c5f791106b23df14173c3ad18da83afa802aeeea8deb93e5b7a87d49d9c5bf48375d1fafd426594e0ea4ff778511a8e2d86a4400d8bc63719d"
+          }, {
+            "key" : "md5",
+            "value" : "05bd5827a89d7490ff784ee540ca7b04"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "70284cdb8803dad2d84e7f31d404c47fd35bbf76"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/el/5",
+          "name" : "chef-manage-2.4.4-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "e09ea997abe88895c06b6c6eb986f762408cffa3"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "md5",
+            "value" : "caf1755f6642b0bec9adad9cae5ba40c"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.4"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1fb80b75681b32befdfc25d107b38da9550624c49aea18a8e9eefce52a692423"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "caf1755f6642b0bec9adad9cae5ba40c"
+          }, {
+            "key" : "sha256",
+            "value" : "1fb80b75681b32befdfc25d107b38da9550624c49aea18a8e9eefce52a692423"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "730ec5a7b558959befb7f986995c8b88d42fdadc710b86d02c686c341d1000333ce152952342563e3235f4f76412f7b1de7d0dfa91d7fb6c8a060b383795c879"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          }, {
+            "key" : "sha1",
+            "value" : "e09ea997abe88895c06b6c6eb986f762408cffa3"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha512",
+            "value" : "730ec5a7b558959befb7f986995c8b88d42fdadc710b86d02c686c341d1000333ce152952342563e3235f4f76412f7b1de7d0dfa91d7fb6c8a060b383795c879"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/ubuntu/14.04",
+          "name" : "chef-manage_2.4.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "md5",
+            "value" : "05bd5827a89d7490ff784ee540ca7b04"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "sha512",
+            "value" : "75f21dc531dbb8c5f791106b23df14173c3ad18da83afa802aeeea8deb93e5b7a87d49d9c5bf48375d1fafd426594e0ea4ff778511a8e2d86a4400d8bc63719d"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          }, {
+            "key" : "sha256",
+            "value" : "f8d3b1537f0d3b33bb99220ecb66a6128699f1df135d88154e8f39c5d6ab9727"
+          }, {
+            "key" : "sha1",
+            "value" : "70284cdb8803dad2d84e7f31d404c47fd35bbf76"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "f8d3b1537f0d3b33bb99220ecb66a6128699f1df135d88154e8f39c5d6ab9727"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "70284cdb8803dad2d84e7f31d404c47fd35bbf76"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.4"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "75f21dc531dbb8c5f791106b23df14173c3ad18da83afa802aeeea8deb93e5b7a87d49d9c5bf48375d1fafd426594e0ea4ff778511a8e2d86a4400d8bc63719d"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "05bd5827a89d7490ff784ee540ca7b04"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/chef-manage/2.4.4/ubuntu/16.04",
+          "name" : "chef-manage_2.4.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "md5",
+            "value" : "05bd5827a89d7490ff784ee540ca7b04"
+          }, {
+            "key" : "sha256",
+            "value" : "f8d3b1537f0d3b33bb99220ecb66a6128699f1df135d88154e8f39c5d6ab9727"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha1",
+            "value" : "70284cdb8803dad2d84e7f31d404c47fd35bbf76"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.4.4"
+          }, {
+            "key" : "sha512",
+            "value" : "75f21dc531dbb8c5f791106b23df14173c3ad18da83afa802aeeea8deb93e5b7a87d49d9c5bf48375d1fafd426594e0ea4ff778511a8e2d86a4400d8bc63719d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "70284cdb8803dad2d84e7f31d404c47fd35bbf76"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "75f21dc531dbb8c5f791106b23df14173c3ad18da83afa802aeeea8deb93e5b7a87d49d9c5bf48375d1fafd426594e0ea4ff778511a8e2d86a4400d8bc63719d"
+          }, {
+            "key" : "build.number",
+            "value" : "2.4.4"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "f8d3b1537f0d3b33bb99220ecb66a6128699f1df135d88154e8f39c5d6ab9727"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Chef-MLSA"
+          }, {
+            "key" : "build.name",
+            "value" : "chef-manage"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "05bd5827a89d7490ff784ee540ca7b04"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 6,
+          "total" : 6
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 15:10:06 GMT
+recorded_with: VCR 3.0.3

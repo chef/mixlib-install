@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.1.8]
+- Query performance optimizations
+- Add ChefClientFeature support to the MSI install script
+
 ## [2.1.7]
 - Add support for passing arguments to the MSI in install scripts
 - Add platform version compatibility support for Windows (including desktop versions)
