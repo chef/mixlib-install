@@ -193,9 +193,33 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
 
   product "automate" do
     product_name "Chef Automate"
-    package_name "delivery"
-    ctl_command "delivery-ctl"
-    config_file "/etc/delivery/delivery.rb"
+    package_name do |v|
+    #TODO: Change the version to the promoted release version of automate package
+      v < version_for("8.0.0") ? "delivery" : "automate"
+    end
+    ctl_command do |v|
+    #TODO: Find the version of Chef Automate when the delivery-ctl
+    #      command was aliased to automate-ctl
+      v < version_for("4.4.4") ? "delivery-ctl" : "automate-ctl"
+    end
+    config_file do |v|
+      if v < version_for("9.0.0")
+      #TODO: Once we change the paths of the config files for automate,
+      #      update the following path to /etc/automate/automate.rb
+        "/etc/delivery/delivery.rb"
+      else
+        "/etc/delivery/delivery.rb"
+      end
+    end
+    install_path do |v|
+      if v < version_for("9.0.0")
+      #TODO: Once we change the paths of the config files for automate,
+      #      update the following path to /opt/automate
+        "/opt/delivery"
+      else
+        "/opt/delivery"
+      end
+    end
   end
 
   product "chef" do
@@ -255,10 +279,34 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "delivery" do
-    product_name "Delivery"
-    package_name "delivery"
-    ctl_command "delivery-ctl"
-    config_file "/etc/delivery/delivery.rb"
+    product_name "Chef Automate"
+    package_name do |v|
+    #TODO: Change the version to the promoted release version of automate package
+      v < version_for("8.0.0") ? "delivery" : "automate"
+    end
+    ctl_command do |v|
+    #TODO: Find the version of Chef Automate when the delivery-ctl
+    #      command was aliased to automate-ctl
+      v < version_for("4.4.4") ? "delivery-ctl" : "automate-ctl"
+    end
+    config_file do |v|
+      if v < version_for("9.0.0")
+      #TODO: Once we change the paths of the config files for automate,
+      #      update the following path to /etc/automate/automate.rb
+        "/etc/delivery/delivery.rb"
+      else
+        "/etc/delivery/delivery.rb"
+      end
+    end
+    install_path do |v|
+      if v < version_for("9.0.0")
+      #TODO: Once we change the paths of the config files for automate,
+      #      update the following path to /opt/automate
+        "/opt/delivery"
+      else
+        "/opt/delivery"
+      end
+    end
   end
 
   product "ha" do

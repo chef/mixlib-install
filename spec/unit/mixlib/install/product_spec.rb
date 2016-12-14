@@ -138,6 +138,7 @@ context "PRODUCT_MATRIX" do
   }
 
   it "has entries for all #{CHEF_PRODUCTS.length} products" do
+    puts PRODUCT_MATRIX.products
     expect(PRODUCT_MATRIX.products).to eq CHEF_PRODUCTS
   end
 
@@ -154,8 +155,256 @@ context "PRODUCT_MATRIX" do
   context "for automate" do
     let(:product_name) { "automate" }
 
-    it "should return an omnibus project name of delivery" do
-      expect(PRODUCT_MATRIX.lookup("automate").known_omnibus_projects).to eq ["delivery"]
+    it "should return an omnibus project name of automate" do
+      expect(PRODUCT_MATRIX.lookup("automate").known_omnibus_projects).to eq ["delivery", "automate"]
+    end
+
+    context "for latest" do
+      let(:version) { :latest }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("automate")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version > x.y.z" do
+      let(:version) { "9.9.9" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("automate")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version == x.y.z" do
+      let(:version) { "9.9.9" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("automate")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version < x.y.z && version > a.b.c" do
+      let(:version) { "5.5.5" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("delivery")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version == a.b.c" do
+      let(:version) { "4.4.4" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("delivery")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version < a.b.c" do
+      let(:version) { "0.0.1" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("delivery")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("delivery-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+  end
+
+  context "for delivery" do
+    let(:product_name) { "delivery" }
+
+    it "should return an omnibus project name of automate" do
+      expect(PRODUCT_MATRIX.lookup("delivery").known_omnibus_projects).to eq ["delivery", "automate"]
+    end
+
+    context "for latest" do
+      let(:version) { :latest }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("automate")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version > x.y.z" do
+      let(:version) { "9.9.9" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("automate")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version == x.y.z" do
+      let(:version) { "9.9.9" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("automate")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version < x.y.z && version > a.b.c" do
+      let(:version) { "5.5.5" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("delivery")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version == a.b.c" do
+      let(:version) { "4.4.4" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("delivery")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
+    end
+
+    context "for version < a.b.c" do
+      let(:version) { "0.0.1" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("delivery")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("delivery-ctl")
+      end
+
+      it "should return correct config_file" do
+        expect(config_file).to eq("/etc/delivery/delivery.rb")
+      end
+
+      it "should return correct install_path" do
+        expect(install_path).to eq("/opt/delivery")
+      end
     end
   end
 

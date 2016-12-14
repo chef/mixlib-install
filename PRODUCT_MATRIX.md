@@ -10,7 +10,7 @@
 | Chef Server HA Provisioning for AWS | chef-server-ha-provisioning |
 | Chef Development Kit | chefdk |
 | Chef Compliance | compliance |
-| Delivery | delivery |
+| Chef Automate | delivery |
 | Chef Server High Availability addon | ha |
 | Harmony - Omnibus Integration Internal Test Project | harmony |
 | InSpec | inspec |
