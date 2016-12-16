@@ -1,5 +1,6 @@
 language: ruby
 sudo: false
+dist: trusty # https://github.com/travis-ci/travis-ci/issues/7131
 
 addons:
   apt:

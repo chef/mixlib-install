@@ -99,6 +99,10 @@ context "PRODUCT_MATRIX" do
     PRODUCT_MATRIX.lookup(product_name, version).package_name
   end
 
+  let(:omnibus_project) do
+    PRODUCT_MATRIX.lookup(product_name, version).omnibus_project
+  end
+
   let(:ctl_command) do
     PRODUCT_MATRIX.lookup(product_name, version).ctl_command
   end
@@ -149,14 +153,6 @@ context "PRODUCT_MATRIX" do
 
   it "returns nil for unset parameters" do
     expect(PRODUCT_MATRIX.lookup("chef").ctl_command).to be_nil
-  end
-
-  context "for automate" do
-    let(:product_name) { "automate" }
-
-    it "should return an omnibus project name of delivery" do
-      expect(PRODUCT_MATRIX.lookup("automate").known_omnibus_projects).to eq ["delivery"]
-    end
   end
 
   context "for chef-server" do
@@ -333,5 +329,71 @@ context "PRODUCT_MATRIX" do
         expect(package_name).to eq("opscode-push-jobs-client")
       end
     end
+  end
+
+  shared_examples_for "automate and delivery products" do
+    it "should return known omnibus project names" do
+      expect(PRODUCT_MATRIX.lookup(product_name).known_omnibus_projects).to eq %w{delivery automate}
+    end
+
+    context "for version < 0.7.0" do
+      let(:version) { "0.6.0" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("delivery")
+      end
+
+      it "should return correct omnibus_project" do
+        expect(omnibus_project).to eq("delivery")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("delivery-ctl")
+      end
+    end
+
+    context "for 0.7" do
+      let(:version) { "0.7.0" }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("automate")
+      end
+
+      it "should return correct omnibus_project" do
+        expect(omnibus_project).to eq("automate")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+    end
+
+    context "for latest" do
+      let(:version) { :latest }
+
+      it "should return correct package_name" do
+        expect(package_name).to eq("automate")
+      end
+
+      it "should return correct omnibus_project" do
+        expect(omnibus_project).to eq("automate")
+      end
+
+      it "should return correct ctl_command" do
+        expect(ctl_command).to eq("automate-ctl")
+      end
+    end
+  end
+
+  context "for automate" do
+    let(:product_name) { "automate" }
+
+    it_behaves_like "automate and delivery products"
+  end
+
+  context "for delivery" do
+    let(:product_name) { "delivery" }
+
+    it_behaves_like "automate and delivery products"
   end
 end
