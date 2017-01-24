@@ -193,8 +193,13 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
 
   product "automate" do
     product_name "Chef Automate"
-    package_name "delivery"
-    ctl_command "delivery-ctl"
+    # Delivery backward compatibility
+    package_name do |v|
+      v < version_for("0.7.0") ? "delivery" : "automate"
+    end
+    ctl_command do |v|
+      v < version_for("0.7.0") ? "delivery-ctl" : "automate-ctl"
+    end
     config_file "/etc/delivery/delivery.rb"
   end
 
@@ -256,8 +261,13 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
 
   product "delivery" do
     product_name "Delivery"
-    package_name "delivery"
-    ctl_command "delivery-ctl"
+    # Chef Automate forward compatibility
+    package_name do |v|
+      v < version_for("0.7.0") ? "delivery" : "automate"
+    end
+    ctl_command do |v|
+      v < version_for("0.7.0") ? "delivery-ctl" : "automate-ctl"
+    end
     config_file "/etc/delivery/delivery.rb"
   end
 

@@ -49,6 +49,7 @@ If no earlier version is found the earliest version available will be set.",
         desc: "Print artifact attributes",
         type: :boolean
       def download(product_name)
+        say_status("Warn", "Product key `delivery` will be deprecated in a future release. Please use `automate`") if product_name == "delivery"
         # Set mininum options
         mixlib_install_options = {
           channel: options[:channel].to_sym,
