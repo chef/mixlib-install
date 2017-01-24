@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.1.10]
+- Backward and forward compatibility support for `automate` and `delivery` product versions.
+
 ## [2.1.9]
 - Add `download_directory` option to powershell install script
 
