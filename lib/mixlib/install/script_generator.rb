@@ -18,6 +18,7 @@
 #
 
 require "mixlib/install/util"
+require "mixlib/install/generator/powershell"
 require "cgi"
 
 module Mixlib
@@ -171,8 +172,23 @@ module Mixlib
           %w{.. .. .. support},
           "install_command"
         )
-        Util.shell_code_from_file(vars, fn, powershell,
-                                  http_proxy: http_proxy, https_proxy: https_proxy)
+        code = Util.shell_code_from_file(
+          vars, fn, powershell,
+          http_proxy: http_proxy, https_proxy: https_proxy
+        )
+        powershell ? powershell_prefix.concat(code) : code
+      end
+
+      # Prefixes the PowerShell install script with helpers and shell vars
+      # to detect the platform version and architecture.
+      #
+      # @return [String] PowerShell helpers and shell vars for platform info
+      def powershell_prefix
+        [
+          Mixlib::Install::Generator::PowerShell.get_script("helpers.ps1"),
+          "$platform_architecture = Get-PlatformArchitecture",
+          "$platform_version = Get-PlatformVersion",
+        ].join("\n")
       end
 
       # Builds a shell variable assignment string for the required shell type.
@@ -200,7 +216,7 @@ module Mixlib
                end
 
         url = "#{base}#{endpoint}"
-        url << "?p=windows&m=x86_64&pv=2008r2" # same package for all versions
+        url << "?p=windows&m=$platform_architecture&pv=$platform_version"
         url << "&v=#{CGI.escape(version)}" unless %w{latest true nightlies}.include?(version)
         url << "&prerelease=true" if prerelease
         url << "&nightlies=true" if nightlies
