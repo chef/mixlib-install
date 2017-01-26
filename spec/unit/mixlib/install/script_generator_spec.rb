@@ -84,7 +84,8 @@ describe Mixlib::Install::ScriptGenerator do
   describe "#install" do
     describe "on windows" do
       let(:installer) { described_class.new("1.2.1", true, omnibus_url: "http://f/install.sh") }
-      let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1" }
+      let(:target_url) { "http://f/metadata?p=windows&m=$platform_architecture&pv=$platform_version&v=1.2.1" }
+      let(:powershell_prefix) { "powershell helpers" }
 
       it "generates config vars" do
         expect(installer).to receive(:install_command_vars_for_powershell)
@@ -110,6 +111,11 @@ describe Mixlib::Install::ScriptGenerator do
         expect(installer.install_command).to match(%r{\$download_directory = "\$env:TEMP"})
       end
 
+      it "includes powershell helpers for platform version and arch detection" do
+        expect(installer).to receive(:powershell_prefix).and_return(powershell_prefix)
+        expect(installer.install_command).to include(powershell_prefix)
+      end
+
       describe "customizing -download_directory through install_flags" do
         let(:download_directory) { "C:\\bubulubu" }
         let(:install_flags) { "-download_directory #{download_directory}" }
@@ -123,7 +129,7 @@ describe Mixlib::Install::ScriptGenerator do
 
       describe "for a nightly" do
         let(:installer) { described_class.new("1.2.1", true, omnibus_url: "http://f/install.sh", nightlies: true) }
-        let(:target_url) { "http://f/metadata?p=windows&m=x86_64&pv=2008r2&v=1.2.1&nightlies=true" }
+        let(:target_url) { "http://f/metadata?p=windows&m=$platform_architecture&pv=$platform_version&v=1.2.1&nightlies=true" }
 
         it "creates the proper shell vars" do
           expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
