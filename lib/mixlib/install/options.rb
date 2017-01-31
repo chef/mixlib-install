@@ -17,6 +17,7 @@
 #
 
 require "mixlib/install/product"
+require "mixlib/install/util"
 require "mixlib/versioning"
 
 module Mixlib
@@ -179,22 +180,7 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
       end
 
       def map_windows_desktop_versions!
-        # This logic does not try to compare and determine proper versions based on conditions or ranges.
-        # These are here to improve UX for older desktop versions.
-        options[:platform_version] = case platform_version
-                                     when /^10/
-                                       "2016"
-                                     when /^6.3/, /^8.1/
-                                       "2012r2"
-                                     when /^6.2/, /^8/
-                                       "2012"
-                                     when /^6.1/, /^7/
-                                       "2008r2"
-                                     when /^6/
-                                       "2008"
-                                     else
-                                       platform_version
-                                     end
+        options[:platform_version] = Util.map_windows_desktop_version(platform_version)
       end
     end
   end
