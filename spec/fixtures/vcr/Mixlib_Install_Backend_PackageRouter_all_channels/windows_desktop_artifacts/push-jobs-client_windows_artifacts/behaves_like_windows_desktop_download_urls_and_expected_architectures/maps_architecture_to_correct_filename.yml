@@ -1,0 +1,4817 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/push-jobs-client/versions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/2.1.10
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - e2689ca89754cabcbdc8876f5adabb5e1abd565d29d63a08c4b0505981f313af
+      Content-Length:
+      - '91634'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 31 Jan 2017 17:27:08 GMT
+      Age:
+      - '1262'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3128-SJC, cache-lax8626-LAX
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 1, 1
+      X-Timer:
+      - S1485883628.993660,VS0,VE1
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/debian/6",
+          "name" : "push-jobs-client_1.3.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 57921652,
+          "created" : "2015-09-18T00:58:16.282Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:15.289Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:15.289Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/el/5",
+          "name" : "push-jobs-client-1.3.3-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 59499499,
+          "created" : "2015-09-18T00:58:19.459Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:18.677Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:18.677Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/ubuntu/14.04",
+          "name" : "push-jobs-client_1.3.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 57923426,
+          "created" : "2015-09-18T00:58:27.736Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:26.977Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:26.977Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/ubuntu/10.04",
+          "name" : "push-jobs-client_1.3.3-1_i386.deb",
+          "type" : "file",
+          "size" : 57362232,
+          "created" : "2015-09-18T00:58:23.480Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:22.680Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:22.680Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/windows/2008r2",
+          "name" : "push-jobs-client-1.3.3-1.msi",
+          "type" : "file",
+          "size" : 160144404,
+          "created" : "2015-09-18T00:58:29.835Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:27.761Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:27.761Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/el/6",
+          "name" : "push-jobs-client-1.3.3-1.el6.i386.rpm",
+          "type" : "file",
+          "size" : 58177496,
+          "created" : "2015-09-18T00:58:20.270Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:19.487Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:19.487Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/windows/2012",
+          "name" : "push-jobs-client-1.3.3-1.msi",
+          "type" : "file",
+          "size" : 160144404,
+          "created" : "2015-09-18T00:58:36.328Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:29.854Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:29.854Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/el/7",
+          "name" : "push-jobs-client-1.3.3-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 62701681,
+          "created" : "2015-09-18T00:58:22.653Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:21.623Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:21.623Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/ubuntu/12.04",
+          "name" : "push-jobs-client_1.3.3-1_i386.deb",
+          "type" : "file",
+          "size" : 57362232,
+          "created" : "2015-09-18T00:58:25.262Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:24.283Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:24.283Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/ubuntu/14.04",
+          "name" : "push-jobs-client_1.3.3-1_i386.deb",
+          "type" : "file",
+          "size" : 57362232,
+          "created" : "2015-09-18T00:58:26.952Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:26.079Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:26.079Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/debian/7",
+          "name" : "push-jobs-client_1.3.3-1_i386.deb",
+          "type" : "file",
+          "size" : 57326646,
+          "created" : "2015-09-18T00:58:17.069Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:16.311Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:16.311Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/ubuntu/10.04",
+          "name" : "push-jobs-client_1.3.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 57923426,
+          "created" : "2015-09-18T00:58:24.254Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:23.507Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:23.507Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/el/5",
+          "name" : "push-jobs-client-1.3.3-1.el5.i386.rpm",
+          "type" : "file",
+          "size" : 58333539,
+          "created" : "2015-09-18T00:58:18.649Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:17.879Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:17.879Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/debian/7",
+          "name" : "push-jobs-client_1.3.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 57921652,
+          "created" : "2015-09-18T00:58:17.853Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:17.097Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:17.097Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/ubuntu/12.04",
+          "name" : "push-jobs-client_1.3.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 57923426,
+          "created" : "2015-09-18T00:58:26.054Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:25.291Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:25.291Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/windows/2012r2",
+          "name" : "push-jobs-client-1.3.3-1.msi",
+          "type" : "file",
+          "size" : 160144404,
+          "created" : "2015-09-18T00:58:38.828Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:36.343Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:36.343Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/debian/6",
+          "name" : "push-jobs-client_1.3.3-1_i386.deb",
+          "type" : "file",
+          "size" : 57326646,
+          "created" : "2015-09-18T00:58:15.250Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:14.492Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:14.492Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.3/el/6",
+          "name" : "push-jobs-client-1.3.3-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 59099146,
+          "created" : "2015-09-18T00:58:21.595Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-09-18T00:58:20.299Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-09-18T00:58:20.299Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-10-13T22:25:57.969Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/el/5",
+          "name" : "push-jobs-client-1.3.4-1.el5.i386.rpm",
+          "type" : "file",
+          "size" : 56111685,
+          "created" : "2015-11-04T03:15:03.278Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:02.405Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:02.405Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/debian/6",
+          "name" : "push-jobs-client_1.3.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 55796020,
+          "created" : "2015-11-04T03:15:00.445Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:14:59.532Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:14:59.532Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/debian/6",
+          "name" : "push-jobs-client_1.3.4-1_i386.deb",
+          "type" : "file",
+          "size" : 55195652,
+          "created" : "2015-11-04T03:14:59.498Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:14:58.765Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:14:58.765Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/ubuntu/12.04",
+          "name" : "push-jobs-client_1.3.4-1_i386.deb",
+          "type" : "file",
+          "size" : 55250120,
+          "created" : "2015-11-04T03:15:09.340Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:08.304Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:08.304Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/el/7",
+          "name" : "push-jobs-client-1.3.4-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 60585913,
+          "created" : "2015-11-04T03:15:06.615Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:05.825Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:05.825Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/el/5",
+          "name" : "push-jobs-client-1.3.4-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 57294551,
+          "created" : "2015-11-04T03:15:04.048Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:03.309Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:03.309Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/ubuntu/14.04",
+          "name" : "push-jobs-client_1.3.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 55798308,
+          "created" : "2015-11-04T03:15:12.059Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:11.330Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:11.330Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/ubuntu/12.04",
+          "name" : "push-jobs-client_1.3.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 55798308,
+          "created" : "2015-11-04T03:15:10.331Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:09.365Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:09.365Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/windows/2008r2",
+          "name" : "push-jobs-client-1.3.4-1.msi",
+          "type" : "file",
+          "size" : 156156536,
+          "created" : "2015-11-04T03:15:14.103Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:12.082Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:12.082Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/ubuntu/10.04",
+          "name" : "push-jobs-client_1.3.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 55798308,
+          "created" : "2015-11-04T03:15:08.276Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:07.411Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:07.411Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/debian/7",
+          "name" : "push-jobs-client_1.3.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 55796020,
+          "created" : "2015-11-04T03:15:02.381Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:01.433Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:01.433Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/ubuntu/14.04",
+          "name" : "push-jobs-client_1.3.4-1_i386.deb",
+          "type" : "file",
+          "size" : 55250120,
+          "created" : "2015-11-04T03:15:11.306Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:10.355Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:10.355Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/debian/7",
+          "name" : "push-jobs-client_1.3.4-1_i386.deb",
+          "type" : "file",
+          "size" : 55195652,
+          "created" : "2015-11-04T03:15:01.407Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:00.471Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:00.471Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/el/6",
+          "name" : "push-jobs-client-1.3.4-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 56933832,
+          "created" : "2015-11-04T03:15:05.800Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:04.829Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:04.829Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/ubuntu/10.04",
+          "name" : "push-jobs-client_1.3.4-1_i386.deb",
+          "type" : "file",
+          "size" : 55250120,
+          "created" : "2015-11-04T03:15:07.379Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:06.642Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:06.642Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/el/6",
+          "name" : "push-jobs-client-1.3.4-1.el6.i386.rpm",
+          "type" : "file",
+          "size" : 55999421,
+          "created" : "2015-11-04T03:15:04.803Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:04.074Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:04.074Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/windows/2012r2",
+          "name" : "push-jobs-client-1.3.4-1.msi",
+          "type" : "file",
+          "size" : 156156536,
+          "created" : "2015-11-04T03:15:18.906Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:16.255Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:16.255Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/1.3.4/windows/2012",
+          "name" : "push-jobs-client-1.3.4-1.msi",
+          "type" : "file",
+          "size" : 156156536,
+          "created" : "2015-11-04T03:15:16.241Z",
+          "created_by" : "jenkins",
+          "modified" : "2015-11-04T03:15:14.120Z",
+          "modified_by" : "jenkins",
+          "updated" : "2015-11-04T03:15:14.120Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2015-11-04T07:51:55.774Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "1.3.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.3.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/6",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 52600400,
+          "created" : "2016-05-17T19:07:58.467Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:57.819Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:57.819Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/5",
+          "name" : "push-jobs-client-2.1.0-1.el5.i386.rpm",
+          "type" : "file",
+          "size" : 53220120,
+          "created" : "2016-05-17T19:07:10.046Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:09.356Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:09.356Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 52643504,
+          "created" : "2016-05-17T19:07:57.390Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:56.667Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:56.667Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.9",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "type" : "file",
+          "size" : 47072917,
+          "created" : "2016-05-17T19:05:14.174Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:05:07.918Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:05:07.918Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "type" : "file",
+          "size" : 52355416,
+          "created" : "2016-05-17T19:06:17.776Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:06:17.081Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:06:17.081Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/8",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "type" : "file",
+          "size" : 52295502,
+          "created" : "2016-05-17T19:06:16.674Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:06:15.986Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:06:15.986Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/6",
+          "name" : "push-jobs-client-2.1.0-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 53747244,
+          "created" : "2016-05-17T19:08:56.754Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:08:56.006Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:08:56.006Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/7",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 52600400,
+          "created" : "2016-05-17T19:07:59.245Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:58.523Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:58.523Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "type" : "file",
+          "size" : 52355416,
+          "created" : "2016-05-17T19:06:18.512Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:06:17.815Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:06:17.815Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2012",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "type" : "file",
+          "size" : 74752000,
+          "created" : "2016-05-17T19:09:04.043Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:08:42.742Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:08:42.742Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2008r2",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "type" : "file",
+          "size" : 74752000,
+          "created" : "2016-05-17T19:08:42.648Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:08:22.925Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:08:22.925Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/8",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 52600400,
+          "created" : "2016-05-17T19:07:59.988Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:59.272Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:59.272Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/10.04",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "type" : "file",
+          "size" : 52355416,
+          "created" : "2016-05-17T19:06:17.032Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:06:15.800Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:06:15.800Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.11",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "type" : "file",
+          "size" : 47072917,
+          "created" : "2016-05-17T19:05:26.238Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:05:20.365Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:05:20.365Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/6",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "type" : "file",
+          "size" : 52295502,
+          "created" : "2016-05-17T19:06:15.225Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:06:14.207Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:06:14.207Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/10.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 52643504,
+          "created" : "2016-05-17T19:07:56.628Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:55.980Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:55.980Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/debian/7",
+          "name" : "push-jobs-client_2.1.0-1_i386.deb",
+          "type" : "file",
+          "size" : 52295502,
+          "created" : "2016-05-17T19:06:15.955Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:06:15.265Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:06:15.265Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.0-1_amd64.deb",
+          "type" : "file",
+          "size" : 52643504,
+          "created" : "2016-05-17T19:07:58.177Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:57.417Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:57.417Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/5",
+          "name" : "push-jobs-client-2.1.0-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 54140017,
+          "created" : "2016-05-17T19:08:47.804Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:08:47.109Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:08:47.109Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/mac_os_x/10.10",
+          "name" : "push-jobs-client-2.1.0-1.dmg",
+          "type" : "file",
+          "size" : 47072917,
+          "created" : "2016-05-17T19:05:20.274Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:05:14.268Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:05:14.268Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/6",
+          "name" : "push-jobs-client-2.1.0-1.el6.i386.rpm",
+          "type" : "file",
+          "size" : 53122376,
+          "created" : "2016-05-17T19:07:25.673Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:24.822Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:24.822Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/windows/2012r2",
+          "name" : "push-jobs-client-2.1.0-1-x86.msi",
+          "type" : "file",
+          "size" : 74752000,
+          "created" : "2016-05-17T19:09:25.503Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:09:04.147Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:09:04.147Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.0/el/7",
+          "name" : "push-jobs-client-2.1.0-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 57418572,
+          "created" : "2016-05-17T19:07:39.922Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-05-17T19:07:39.014Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-05-17T19:07:39.014Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-05-17T19:52:47.881Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.0"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/ubuntu/16.04",
+          "name" : "push-jobs-client_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 55075424,
+          "created" : "2016-08-10T20:19:13.277Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:47:10.531Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:47:10.531Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 55075424,
+          "created" : "2016-08-10T20:19:11.767Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:47:09.046Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:47:09.046Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 55075424,
+          "created" : "2016-08-10T20:19:12.521Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:47:09.776Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:47:09.776Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/mac_os_x/10.11",
+          "name" : "push-jobs-client-2.1.1-1.dmg",
+          "type" : "file",
+          "size" : 47695301,
+          "created" : "2016-08-10T19:57:57.212Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:44:43.229Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:44:43.229Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/windows/2012r2",
+          "name" : "push-jobs-client-2.1.1-1-x86.msi",
+          "type" : "file",
+          "size" : 77512704,
+          "created" : "2016-08-10T21:04:25.455Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T21:04:02.338Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T21:04:02.338Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/el/6",
+          "name" : "push-jobs-client-2.1.1-1.el6.i386.rpm",
+          "type" : "file",
+          "size" : 53933064,
+          "created" : "2016-08-10T20:07:55.111Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:46:30.524Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:46:30.524Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/mac_os_x/10.9",
+          "name" : "push-jobs-client-2.1.1-1.dmg",
+          "type" : "file",
+          "size" : 47695301,
+          "created" : "2016-08-10T19:57:47.953Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:44:34.484Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:44:34.484Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/el/6",
+          "name" : "push-jobs-client-2.1.1-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 54570911,
+          "created" : "2016-08-10T20:20:08.254Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:48:07.465Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:48:07.465Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/windows/2012",
+          "name" : "push-jobs-client-2.1.1-1-x86.msi",
+          "type" : "file",
+          "size" : 77512704,
+          "created" : "2016-08-10T21:04:02.239Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T21:03:38.891Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T21:03:38.891Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/debian/8",
+          "name" : "push-jobs-client_2.1.1-1_i386.deb",
+          "type" : "file",
+          "size" : 53002994,
+          "created" : "2016-08-10T20:03:42.738Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:45:32.682Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:45:32.682Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/el/7",
+          "name" : "push-jobs-client-2.1.1-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 58299073,
+          "created" : "2016-08-10T20:05:33.833Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:46:30.351Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:46:30.351Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/ubuntu/16.04",
+          "name" : "push-jobs-client_2.1.1-1_i386.deb",
+          "type" : "file",
+          "size" : 54216682,
+          "created" : "2016-08-10T20:12:54.265Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:45:57.633Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:45:57.633Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/debian/8",
+          "name" : "push-jobs-client_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 53334204,
+          "created" : "2016-08-10T20:15:25.509Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:47:26.921Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:47:26.921Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/debian/6",
+          "name" : "push-jobs-client_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 53334204,
+          "created" : "2016-08-10T20:15:24.051Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:47:25.468Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:47:25.468Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.1-1_i386.deb",
+          "type" : "file",
+          "size" : 54216682,
+          "created" : "2016-08-10T20:12:52.468Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:45:55.807Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:45:55.807Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/debian/6",
+          "name" : "push-jobs-client_2.1.1-1_i386.deb",
+          "type" : "file",
+          "size" : 53002994,
+          "created" : "2016-08-10T20:03:40.197Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:45:30.929Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:45:30.929Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/el/5",
+          "name" : "push-jobs-client-2.1.1-1.el5.i386.rpm",
+          "type" : "file",
+          "size" : 53997214,
+          "created" : "2016-08-10T20:04:18.112Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:46:42.262Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:46:42.262Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/mac_os_x/10.10",
+          "name" : "push-jobs-client-2.1.1-1.dmg",
+          "type" : "file",
+          "size" : 47695301,
+          "created" : "2016-08-10T19:57:52.510Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:44:38.811Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:44:38.811Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/debian/7",
+          "name" : "push-jobs-client_2.1.1-1_i386.deb",
+          "type" : "file",
+          "size" : 53002994,
+          "created" : "2016-08-10T20:03:41.345Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:45:31.813Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:45:31.813Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/debian/7",
+          "name" : "push-jobs-client_2.1.1-1_amd64.deb",
+          "type" : "file",
+          "size" : 53334204,
+          "created" : "2016-08-10T20:15:24.784Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:47:26.192Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:47:26.192Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/windows/2008r2",
+          "name" : "push-jobs-client-2.1.1-1-x86.msi",
+          "type" : "file",
+          "size" : 77512704,
+          "created" : "2016-08-10T21:03:38.790Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T21:03:17.454Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T21:03:17.454Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/el/5",
+          "name" : "push-jobs-client-2.1.1-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 54951790,
+          "created" : "2016-08-10T20:14:10.170Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:47:58.586Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:47:58.586Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.1/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.1-1_i386.deb",
+          "type" : "file",
+          "size" : 54216682,
+          "created" : "2016-08-10T20:12:53.368Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-08-10T20:45:56.729Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-08-10T20:45:56.729Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-08-10T21:44:29.280Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.1"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/windows/2008r2",
+          "name" : "push-jobs-client-2.1.3-1-x86.msi",
+          "type" : "file",
+          "size" : 59232256,
+          "created" : "2016-11-02T21:55:46.291Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:55:28.749Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:55:28.749Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/windows/2012",
+          "name" : "push-jobs-client-2.1.3-1-x86.msi",
+          "type" : "file",
+          "size" : 59232256,
+          "created" : "2016-11-02T21:56:04.532Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:55:46.403Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:55:46.403Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/mac_os_x/10.11",
+          "name" : "push-jobs-client-2.1.3-1.dmg",
+          "type" : "file",
+          "size" : 42049295,
+          "created" : "2016-11-02T21:39:24.057Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:39:20.258Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:39:20.258Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/el/6",
+          "name" : "push-jobs-client-2.1.3-1.el6.i386.rpm",
+          "type" : "file",
+          "size" : 46721013,
+          "created" : "2016-11-02T21:46:48.837Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:46:48.076Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:46:48.076Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/mac_os_x/10.10",
+          "name" : "push-jobs-client-2.1.3-1.dmg",
+          "type" : "file",
+          "size" : 42049295,
+          "created" : "2016-11-02T21:39:20.167Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:39:16.346Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:39:16.346Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/debian/6",
+          "name" : "push-jobs-client_2.1.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 46683402,
+          "created" : "2016-11-02T21:54:35.097Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:54:34.474Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:54:34.474Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.3-1_i386.deb",
+          "type" : "file",
+          "size" : 47336314,
+          "created" : "2016-11-02T21:53:17.418Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:53:16.612Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:53:16.612Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 48532424,
+          "created" : "2016-11-02T22:08:59.532Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T22:08:58.944Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T22:08:58.944Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/windows/2012r2",
+          "name" : "push-jobs-client-2.1.3-1-x86.msi",
+          "type" : "file",
+          "size" : 59232256,
+          "created" : "2016-11-02T21:56:22.313Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:56:04.657Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:56:04.657Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/debian/6",
+          "name" : "push-jobs-client_2.1.3-1_i386.deb",
+          "type" : "file",
+          "size" : 46050712,
+          "created" : "2016-11-02T21:44:13.358Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:44:12.635Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:44:12.635Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/debian/7",
+          "name" : "push-jobs-client_2.1.3-1_i386.deb",
+          "type" : "file",
+          "size" : 46050712,
+          "created" : "2016-11-02T21:44:14.173Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:44:13.417Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:44:13.417Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/debian/7",
+          "name" : "push-jobs-client_2.1.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 46683402,
+          "created" : "2016-11-02T21:54:35.765Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:54:35.139Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:54:35.139Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.3-1_i386.deb",
+          "type" : "file",
+          "size" : 47336314,
+          "created" : "2016-11-02T21:53:16.561Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:53:15.955Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:53:15.955Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/mac_os_x/10.12",
+          "name" : "push-jobs-client-2.1.3-1.dmg",
+          "type" : "file",
+          "size" : 42049295,
+          "created" : "2016-11-02T21:39:28.037Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:39:24.151Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:39:24.151Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/el/6",
+          "name" : "push-jobs-client-2.1.3-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 47650327,
+          "created" : "2016-11-02T22:40:37.166Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T22:40:36.588Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T22:40:36.588Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/ubuntu/16.04",
+          "name" : "push-jobs-client_2.1.3-1_i386.deb",
+          "type" : "file",
+          "size" : 47336314,
+          "created" : "2016-11-02T21:53:18.218Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:53:17.457Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:53:17.457Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/el/7",
+          "name" : "push-jobs-client-2.1.3-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 51382776,
+          "created" : "2016-11-02T21:49:59.045Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:49:58.417Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:49:58.417Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/debian/8",
+          "name" : "push-jobs-client_2.1.3-1_i386.deb",
+          "type" : "file",
+          "size" : 46050712,
+          "created" : "2016-11-02T21:44:14.962Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:44:14.212Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:44:14.212Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/ubuntu/16.04",
+          "name" : "push-jobs-client_2.1.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 48532424,
+          "created" : "2016-11-02T22:09:00.961Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T22:09:00.308Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T22:09:00.308Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/el/5",
+          "name" : "push-jobs-client-2.1.3-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 47846336,
+          "created" : "2016-11-02T22:40:49.457Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T22:40:48.878Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T22:40:48.878Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/el/5",
+          "name" : "push-jobs-client-2.1.3-1.el5.i386.rpm",
+          "type" : "file",
+          "size" : 46598710,
+          "created" : "2016-11-02T21:45:32.703Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:45:31.920Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:45:31.920Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 48532424,
+          "created" : "2016-11-02T22:09:00.263Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T22:08:59.616Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T22:08:59.616Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/debian/8",
+          "name" : "push-jobs-client_2.1.3-1_amd64.deb",
+          "type" : "file",
+          "size" : 46683402,
+          "created" : "2016-11-02T21:54:36.377Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:54:35.799Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:54:35.799Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.3/mac_os_x/10.9",
+          "name" : "push-jobs-client-2.1.3-1.dmg",
+          "type" : "file",
+          "size" : 42049295,
+          "created" : "2016-11-02T21:39:16.247Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-02T21:39:12.357Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-02T21:39:12.357Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-03T20:04:29.829Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.3"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.3"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "type" : "file",
+          "size" : 46014798,
+          "created" : "2016-11-30T20:38:48.814Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:38:48.052Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:38:48.052Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 47203952,
+          "created" : "2016-11-30T20:46:38.498Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:46:37.900Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:46:37.900Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/6",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 45379532,
+          "created" : "2016-11-30T20:38:39.483Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:38:38.931Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:38:38.931Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/mac_os_x/10.9",
+          "name" : "push-jobs-client-2.1.4-1.dmg",
+          "type" : "file",
+          "size" : 40899200,
+          "created" : "2016-11-30T20:24:53.258Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:24:49.629Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:24:49.629Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/6",
+          "name" : "push-jobs-client-2.1.4-1.el6.i386.rpm",
+          "type" : "file",
+          "size" : 45410161,
+          "created" : "2016-11-30T20:31:31.472Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:31:30.889Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:31:30.889Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/7",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "type" : "file",
+          "size" : 44766748,
+          "created" : "2016-11-30T20:29:49.639Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:29:48.885Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:29:48.885Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/6",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "type" : "file",
+          "size" : 44766748,
+          "created" : "2016-11-30T20:29:48.836Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:29:48.261Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:29:48.261Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/5",
+          "name" : "push-jobs-client-2.1.4-1.el5.i386.rpm",
+          "type" : "file",
+          "size" : 45306208,
+          "created" : "2016-11-30T20:30:21.540Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:30:20.816Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:30:20.816Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/16.04",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 47203952,
+          "created" : "2016-11-30T20:46:39.844Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:46:39.198Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:46:39.198Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/mac_os_x/10.12",
+          "name" : "push-jobs-client-2.1.4-1.dmg",
+          "type" : "file",
+          "size" : 40899200,
+          "created" : "2016-11-30T20:25:04.598Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:25:00.935Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:25:00.935Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/8",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "type" : "file",
+          "size" : 44766748,
+          "created" : "2016-11-30T20:29:50.395Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:29:49.676Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:29:49.676Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/windows/2012r2",
+          "name" : "push-jobs-client-2.1.4-1-x86.msi",
+          "type" : "file",
+          "size" : 58507264,
+          "created" : "2016-11-30T20:52:44.619Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:52:28.649Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:52:28.649Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/6",
+          "name" : "push-jobs-client-2.1.4-1.el6.x86_64.rpm",
+          "type" : "file",
+          "size" : 46321993,
+          "created" : "2016-11-30T20:42:23.495Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:42:22.931Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:42:22.931Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/windows/2012",
+          "name" : "push-jobs-client-2.1.4-1-x86.msi",
+          "type" : "file",
+          "size" : 58507264,
+          "created" : "2016-11-30T20:52:28.554Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:52:12.565Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:52:12.565Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/5",
+          "name" : "push-jobs-client-2.1.4-1.el5.x86_64.rpm",
+          "type" : "file",
+          "size" : 46533952,
+          "created" : "2016-11-30T20:38:22.956Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:38:22.393Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:38:22.393Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/mac_os_x/10.11",
+          "name" : "push-jobs-client-2.1.4-1.dmg",
+          "type" : "file",
+          "size" : 40899200,
+          "created" : "2016-11-30T20:25:00.837Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:24:57.128Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:24:57.128Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/16.04",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "type" : "file",
+          "size" : 46014798,
+          "created" : "2016-11-30T20:38:49.606Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:38:48.853Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:38:48.853Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/7",
+          "name" : "push-jobs-client-2.1.4-1.el7.x86_64.rpm",
+          "type" : "file",
+          "size" : 49993073,
+          "created" : "2016-11-30T20:31:18.606Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:31:18.000Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:31:18.000Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/windows/2008r2",
+          "name" : "push-jobs-client-2.1.4-1-x86.msi",
+          "type" : "file",
+          "size" : 58507264,
+          "created" : "2016-11-30T20:52:12.448Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:51:56.799Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:51:56.799Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/mac_os_x/10.10",
+          "name" : "push-jobs-client-2.1.4-1.dmg",
+          "type" : "file",
+          "size" : 40899200,
+          "created" : "2016-11-30T20:24:57.045Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:24:53.359Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:24:53.359Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/7",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 45379532,
+          "created" : "2016-11-30T20:38:40.135Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:38:39.520Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:38:39.520Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "type" : "file",
+          "size" : 46014798,
+          "created" : "2016-11-30T20:38:48.003Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:38:47.127Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:38:47.127Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 47203952,
+          "created" : "2016-11-30T20:46:39.163Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:46:38.541Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:46:38.541Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/8",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "type" : "file",
+          "size" : 45379532,
+          "created" : "2016-11-30T20:38:40.790Z",
+          "created_by" : "jenkins",
+          "modified" : "2016-11-30T20:38:40.169Z",
+          "modified_by" : "jenkins",
+          "updated" : "2016-11-30T20:38:40.169Z",
+          "artifacts" : [ {
+            "modules" : [ {
+              "builds" : [ {
+                "build.created" : "2016-11-30T21:21:55.005Z",
+                "build.created_by" : "lita",
+                "build.name" : "push-jobs-client",
+                "build.number" : "2.1.4"
+              } ]
+            } ]
+          } ],
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 130,
+          "total" : 130
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 17:27:09 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/push-jobs-client/2.1.4/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/2.1.10
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 34a3f1f5e28c92b3e9cfbc49c8ef3ef9beb1fc191ef6444e929cac026530436d
+      Content-Length:
+      - '41537'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 31 Jan 2017 17:27:09 GMT
+      Age:
+      - '1074'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3134-SJC, cache-lax8648-LAX
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 1, 2
+      X-Timer:
+      - S1485883629.136204,VS0,VE0
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0dda8ddd5ca34a55be4520cf270745fc1069f0b5d334dc6f4a9a751fde6746e9"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "sha512",
+            "value" : "12f0b6f13d2483f330cfadc93fee08656235457d849adbe18c8e5ea37143da74d3434a19e7995c23bc86fbc5fcf242eff20408a8f2be1a28c3c98361d599beea"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "sha1",
+            "value" : "5ef5ba1240c38b6d659496a386e1362184ceb843"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha256",
+            "value" : "0dda8ddd5ca34a55be4520cf270745fc1069f0b5d334dc6f4a9a751fde6746e9"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "42fa786dcc8fe976d8eea6a51fd83821"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5ef5ba1240c38b6d659496a386e1362184ceb843"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "12f0b6f13d2483f330cfadc93fee08656235457d849adbe18c8e5ea37143da74d3434a19e7995c23bc86fbc5fcf242eff20408a8f2be1a28c3c98361d599beea"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "md5",
+            "value" : "42fa786dcc8fe976d8eea6a51fd83821"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "sha512",
+            "value" : "061dc16e46c5ccb3709203bdef51d04f295c7f7fc47c42df526be07bcbfab2defa153d40b9875cf29243a5941d89953e42d4f19887d908774ea39e571fcbe901"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "ea8e967a723bf051d0856d7097edb714e15c4f4f6889e32ab86aec5f7b94fd1d"
+          }, {
+            "key" : "sha256",
+            "value" : "ea8e967a723bf051d0856d7097edb714e15c4f4f6889e32ab86aec5f7b94fd1d"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "061dc16e46c5ccb3709203bdef51d04f295c7f7fc47c42df526be07bcbfab2defa153d40b9875cf29243a5941d89953e42d4f19887d908774ea39e571fcbe901"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1c220a0e6b5f3c4abaa5ab09570215fce4be8984"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "280da0afee6ca991d72c80fb0c91f743"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "md5",
+            "value" : "280da0afee6ca991d72c80fb0c91f743"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "sha1",
+            "value" : "1c220a0e6b5f3c4abaa5ab09570215fce4be8984"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/6",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha1",
+            "value" : "13f9dead5fb7f5ec3c11215763041cb14e591876"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4fc5f6f16f72114f7738c850b0f647e4635be2c0ff8590293ff6696e53c5ff5a07c3f1a158e28c1afb4589dfbfd1830988d38eb23658d4342782867a5341dcd6"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha512",
+            "value" : "4fc5f6f16f72114f7738c850b0f647e4635be2c0ff8590293ff6696e53c5ff5a07c3f1a158e28c1afb4589dfbfd1830988d38eb23658d4342782867a5341dcd6"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "sha256",
+            "value" : "51b54452f7073ccad437ead99a99243b921dbe26310aa6e23e7e189f12ef0b24"
+          }, {
+            "key" : "md5",
+            "value" : "6d3fb92cdfb846d67da01be57df42ec0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "13f9dead5fb7f5ec3c11215763041cb14e591876"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "51b54452f7073ccad437ead99a99243b921dbe26310aa6e23e7e189f12ef0b24"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "6d3fb92cdfb846d67da01be57df42ec0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/mac_os_x/10.9",
+          "name" : "push-jobs-client-2.1.4-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha512",
+            "value" : "b6368c6d2a5d6981830e00f177ca1d971a179f17350788a3019ef592847e25279dbc2311f2498bc665d336ec8b1ccf874c35969ffaea5ca24cf6fc1275c7fa65"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "25bf4f6ebd323e88aec805194e33c7a8dc2652df843bfb284c6b4f9f79589e30"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.9"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b6368c6d2a5d6981830e00f177ca1d971a179f17350788a3019ef592847e25279dbc2311f2498bc665d336ec8b1ccf874c35969ffaea5ca24cf6fc1275c7fa65"
+          }, {
+            "key" : "sha256",
+            "value" : "25bf4f6ebd323e88aec805194e33c7a8dc2652df843bfb284c6b4f9f79589e30"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "de41d148ec05d6759d07300b4cc4ae09"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "83b7c2f343e20ecbb2d45d78f971832b980a1aeb"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "md5",
+            "value" : "de41d148ec05d6759d07300b4cc4ae09"
+          }, {
+            "key" : "sha1",
+            "value" : "83b7c2f343e20ecbb2d45d78f971832b980a1aeb"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/6",
+          "name" : "push-jobs-client-2.1.4-1.el6.i386.rpm",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "sha256",
+            "value" : "14024eff8949eff332952e85d10bcb69374ba8bc55414bb53bbcc7455fbe01a3"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "14024eff8949eff332952e85d10bcb69374ba8bc55414bb53bbcc7455fbe01a3"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "feb3e3cbd593cbf345cc2473365d97dc"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "8cb340770c5f824143d0292da3569c2c9768dd54"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "05474d48515aa4f073a192ba60bffb22fbfa7524987f8757aa4dba956432da20aef3b947e9b1bc6e1d267acbda16f896eef8230cb3d233d2fcac8bcdbfbed078"
+          }, {
+            "key" : "sha512",
+            "value" : "05474d48515aa4f073a192ba60bffb22fbfa7524987f8757aa4dba956432da20aef3b947e9b1bc6e1d267acbda16f896eef8230cb3d233d2fcac8bcdbfbed078"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha1",
+            "value" : "8cb340770c5f824143d0292da3569c2c9768dd54"
+          }, {
+            "key" : "md5",
+            "value" : "feb3e3cbd593cbf345cc2473365d97dc"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/7",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "properties" : [ {
+            "key" : "sha256",
+            "value" : "d354d0b2ec1abdc2c15a8ce82efa1bfe60b36afe5aa26c9702e853f6c40ef017"
+          }, {
+            "key" : "md5",
+            "value" : "8ec8392ea371ab278ee107274b283c64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha512",
+            "value" : "8c594dac15884680cd5e0fe14177624f494347ffe0e073b2f428188ba6dee2c39f8b8aaaabb3e00db25fa7ceaf0dc6ea83c15eae3258aecf64b773f11b5ee3e4"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d354d0b2ec1abdc2c15a8ce82efa1bfe60b36afe5aa26c9702e853f6c40ef017"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "8ec8392ea371ab278ee107274b283c64"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "be6cccca150cbaf52c206619aba86b4cddbde4ee"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "8c594dac15884680cd5e0fe14177624f494347ffe0e073b2f428188ba6dee2c39f8b8aaaabb3e00db25fa7ceaf0dc6ea83c15eae3258aecf64b773f11b5ee3e4"
+          }, {
+            "key" : "sha1",
+            "value" : "be6cccca150cbaf52c206619aba86b4cddbde4ee"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/6",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "be6cccca150cbaf52c206619aba86b4cddbde4ee"
+          }, {
+            "key" : "sha1",
+            "value" : "be6cccca150cbaf52c206619aba86b4cddbde4ee"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "8c594dac15884680cd5e0fe14177624f494347ffe0e073b2f428188ba6dee2c39f8b8aaaabb3e00db25fa7ceaf0dc6ea83c15eae3258aecf64b773f11b5ee3e4"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha256",
+            "value" : "d354d0b2ec1abdc2c15a8ce82efa1bfe60b36afe5aa26c9702e853f6c40ef017"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "8ec8392ea371ab278ee107274b283c64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "d354d0b2ec1abdc2c15a8ce82efa1bfe60b36afe5aa26c9702e853f6c40ef017"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "md5",
+            "value" : "8ec8392ea371ab278ee107274b283c64"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "sha512",
+            "value" : "8c594dac15884680cd5e0fe14177624f494347ffe0e073b2f428188ba6dee2c39f8b8aaaabb3e00db25fa7ceaf0dc6ea83c15eae3258aecf64b773f11b5ee3e4"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/5",
+          "name" : "push-jobs-client-2.1.4-1.el5.i386.rpm",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "82ab85295382ef064f1b9f25831a318c417f4c10"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "bf104df06b0e0a312e13d1fb3c2eabcf236316c2766818993a847ba52742b651"
+          }, {
+            "key" : "sha512",
+            "value" : "150cf45c74e49f75c08b6f66cfe5577065db94dcde5212c54c5cf673d56422eaff2b84fc7a3eb47d6a59d17d409f7afb169d92cffc3784cd044b124dc58f59c6"
+          }, {
+            "key" : "sha1",
+            "value" : "82ab85295382ef064f1b9f25831a318c417f4c10"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "md5",
+            "value" : "e9e2118690016c70806841218ef7b7b8"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "150cf45c74e49f75c08b6f66cfe5577065db94dcde5212c54c5cf673d56422eaff2b84fc7a3eb47d6a59d17d409f7afb169d92cffc3784cd044b124dc58f59c6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha256",
+            "value" : "bf104df06b0e0a312e13d1fb3c2eabcf236316c2766818993a847ba52742b651"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "e9e2118690016c70806841218ef7b7b8"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/16.04",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "sha1",
+            "value" : "1c220a0e6b5f3c4abaa5ab09570215fce4be8984"
+          }, {
+            "key" : "md5",
+            "value" : "280da0afee6ca991d72c80fb0c91f743"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1c220a0e6b5f3c4abaa5ab09570215fce4be8984"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "061dc16e46c5ccb3709203bdef51d04f295c7f7fc47c42df526be07bcbfab2defa153d40b9875cf29243a5941d89953e42d4f19887d908774ea39e571fcbe901"
+          }, {
+            "key" : "sha256",
+            "value" : "ea8e967a723bf051d0856d7097edb714e15c4f4f6889e32ab86aec5f7b94fd1d"
+          }, {
+            "key" : "sha512",
+            "value" : "061dc16e46c5ccb3709203bdef51d04f295c7f7fc47c42df526be07bcbfab2defa153d40b9875cf29243a5941d89953e42d4f19887d908774ea39e571fcbe901"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "ea8e967a723bf051d0856d7097edb714e15c4f4f6889e32ab86aec5f7b94fd1d"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "280da0afee6ca991d72c80fb0c91f743"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/mac_os_x/10.12",
+          "name" : "push-jobs-client-2.1.4-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha1",
+            "value" : "83b7c2f343e20ecbb2d45d78f971832b980a1aeb"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "83b7c2f343e20ecbb2d45d78f971832b980a1aeb"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b6368c6d2a5d6981830e00f177ca1d971a179f17350788a3019ef592847e25279dbc2311f2498bc665d336ec8b1ccf874c35969ffaea5ca24cf6fc1275c7fa65"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha256",
+            "value" : "25bf4f6ebd323e88aec805194e33c7a8dc2652df843bfb284c6b4f9f79589e30"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "de41d148ec05d6759d07300b4cc4ae09"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "25bf4f6ebd323e88aec805194e33c7a8dc2652df843bfb284c6b4f9f79589e30"
+          }, {
+            "key" : "md5",
+            "value" : "de41d148ec05d6759d07300b4cc4ae09"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.12"
+          }, {
+            "key" : "sha512",
+            "value" : "b6368c6d2a5d6981830e00f177ca1d971a179f17350788a3019ef592847e25279dbc2311f2498bc665d336ec8b1ccf874c35969ffaea5ca24cf6fc1275c7fa65"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/8",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "d354d0b2ec1abdc2c15a8ce82efa1bfe60b36afe5aa26c9702e853f6c40ef017"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "8ec8392ea371ab278ee107274b283c64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha512",
+            "value" : "8c594dac15884680cd5e0fe14177624f494347ffe0e073b2f428188ba6dee2c39f8b8aaaabb3e00db25fa7ceaf0dc6ea83c15eae3258aecf64b773f11b5ee3e4"
+          }, {
+            "key" : "md5",
+            "value" : "8ec8392ea371ab278ee107274b283c64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "8c594dac15884680cd5e0fe14177624f494347ffe0e073b2f428188ba6dee2c39f8b8aaaabb3e00db25fa7ceaf0dc6ea83c15eae3258aecf64b773f11b5ee3e4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "sha1",
+            "value" : "be6cccca150cbaf52c206619aba86b4cddbde4ee"
+          }, {
+            "key" : "sha256",
+            "value" : "d354d0b2ec1abdc2c15a8ce82efa1bfe60b36afe5aa26c9702e853f6c40ef017"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "be6cccca150cbaf52c206619aba86b4cddbde4ee"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/windows/2012r2",
+          "name" : "push-jobs-client-2.1.4-1-x86.msi",
+          "properties" : [ {
+            "key" : "md5",
+            "value" : "aa8cda163ed4d768954e264c419008b7"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha512",
+            "value" : "bb65edd64ddce28dd5c11589534821ad6ef10f975425f9495c0c5bf31080c0e7643603175dd1e6baeb50df4e327820ef499dd5a4ef5c292209db62abe2939e98"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5d94d17c873ffa0b6c613b125b0433c6ab8ab8e9"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "sha1",
+            "value" : "5d94d17c873ffa0b6c613b125b0433c6ab8ab8e9"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "bb65edd64ddce28dd5c11589534821ad6ef10f975425f9495c0c5bf31080c0e7643603175dd1e6baeb50df4e327820ef499dd5a4ef5c292209db62abe2939e98"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "aa8cda163ed4d768954e264c419008b7"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3b979f8d362738c8ac126ace0e80122a4cbc53425d5f8cf9653cdd79eca16d62"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "sha256",
+            "value" : "3b979f8d362738c8ac126ace0e80122a4cbc53425d5f8cf9653cdd79eca16d62"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/6",
+          "name" : "push-jobs-client-2.1.4-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "sha1",
+            "value" : "593407cd298a597d9fd2ef76c4ecd17ca9a4f778"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha512",
+            "value" : "0dd32ee745145c946474c467e8e6dbeab8dfd789da9d788852c5d9cdf19a134aedda86b9f07bfb7dd146a4e846576333c71fca34f167da4852f79d3e9a48d5c9"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha256",
+            "value" : "e74fddb332e2aa8db0658a6e5ca3b412fcd28bf84de3c3a4d6e9832e89c59b6f"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "22f0616d8f9840157e0c43ddaba30720"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "593407cd298a597d9fd2ef76c4ecd17ca9a4f778"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "0dd32ee745145c946474c467e8e6dbeab8dfd789da9d788852c5d9cdf19a134aedda86b9f07bfb7dd146a4e846576333c71fca34f167da4852f79d3e9a48d5c9"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "md5",
+            "value" : "22f0616d8f9840157e0c43ddaba30720"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "e74fddb332e2aa8db0658a6e5ca3b412fcd28bf84de3c3a4d6e9832e89c59b6f"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/windows/2012",
+          "name" : "push-jobs-client-2.1.4-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha1",
+            "value" : "5d94d17c873ffa0b6c613b125b0433c6ab8ab8e9"
+          }, {
+            "key" : "sha256",
+            "value" : "3b979f8d362738c8ac126ace0e80122a4cbc53425d5f8cf9653cdd79eca16d62"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3b979f8d362738c8ac126ace0e80122a4cbc53425d5f8cf9653cdd79eca16d62"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "md5",
+            "value" : "aa8cda163ed4d768954e264c419008b7"
+          }, {
+            "key" : "sha512",
+            "value" : "bb65edd64ddce28dd5c11589534821ad6ef10f975425f9495c0c5bf31080c0e7643603175dd1e6baeb50df4e327820ef499dd5a4ef5c292209db62abe2939e98"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "aa8cda163ed4d768954e264c419008b7"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "bb65edd64ddce28dd5c11589534821ad6ef10f975425f9495c0c5bf31080c0e7643603175dd1e6baeb50df4e327820ef499dd5a4ef5c292209db62abe2939e98"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5d94d17c873ffa0b6c613b125b0433c6ab8ab8e9"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/5",
+          "name" : "push-jobs-client-2.1.4-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "md5",
+            "value" : "29deed8fd636cd519c0123cb59f7b4eb"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha256",
+            "value" : "c4fc7bf44dcffdc82ed72dd8d01a7b3db6f681827cd77a94c23ae9139e0df72a"
+          }, {
+            "key" : "sha1",
+            "value" : "f9363e1fffeb57c8086e1ee72319fd07ed152921"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "29deed8fd636cd519c0123cb59f7b4eb"
+          }, {
+            "key" : "sha512",
+            "value" : "f8f9a02dc67dc7d8bb53ffb36210581f6b4e1dd9adb255199236cec68e84fcbb036b2e5c49d4a986d1b49fd9edd7f0d4c638c0537b5133c40edff57e3efb405f"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f9363e1fffeb57c8086e1ee72319fd07ed152921"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f8f9a02dc67dc7d8bb53ffb36210581f6b4e1dd9adb255199236cec68e84fcbb036b2e5c49d4a986d1b49fd9edd7f0d4c638c0537b5133c40edff57e3efb405f"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "c4fc7bf44dcffdc82ed72dd8d01a7b3db6f681827cd77a94c23ae9139e0df72a"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/mac_os_x/10.11",
+          "name" : "push-jobs-client-2.1.4-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "10.11"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "83b7c2f343e20ecbb2d45d78f971832b980a1aeb"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "de41d148ec05d6759d07300b4cc4ae09"
+          }, {
+            "key" : "sha1",
+            "value" : "83b7c2f343e20ecbb2d45d78f971832b980a1aeb"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "md5",
+            "value" : "de41d148ec05d6759d07300b4cc4ae09"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b6368c6d2a5d6981830e00f177ca1d971a179f17350788a3019ef592847e25279dbc2311f2498bc665d336ec8b1ccf874c35969ffaea5ca24cf6fc1275c7fa65"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha256",
+            "value" : "25bf4f6ebd323e88aec805194e33c7a8dc2652df843bfb284c6b4f9f79589e30"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha512",
+            "value" : "b6368c6d2a5d6981830e00f177ca1d971a179f17350788a3019ef592847e25279dbc2311f2498bc665d336ec8b1ccf874c35969ffaea5ca24cf6fc1275c7fa65"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "25bf4f6ebd323e88aec805194e33c7a8dc2652df843bfb284c6b4f9f79589e30"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/16.04",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "12f0b6f13d2483f330cfadc93fee08656235457d849adbe18c8e5ea37143da74d3434a19e7995c23bc86fbc5fcf242eff20408a8f2be1a28c3c98361d599beea"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5ef5ba1240c38b6d659496a386e1362184ceb843"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "42fa786dcc8fe976d8eea6a51fd83821"
+          }, {
+            "key" : "sha1",
+            "value" : "5ef5ba1240c38b6d659496a386e1362184ceb843"
+          }, {
+            "key" : "sha512",
+            "value" : "12f0b6f13d2483f330cfadc93fee08656235457d849adbe18c8e5ea37143da74d3434a19e7995c23bc86fbc5fcf242eff20408a8f2be1a28c3c98361d599beea"
+          }, {
+            "key" : "sha256",
+            "value" : "0dda8ddd5ca34a55be4520cf270745fc1069f0b5d334dc6f4a9a751fde6746e9"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0dda8ddd5ca34a55be4520cf270745fc1069f0b5d334dc6f4a9a751fde6746e9"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "md5",
+            "value" : "42fa786dcc8fe976d8eea6a51fd83821"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/el/7",
+          "name" : "push-jobs-client-2.1.4-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha512",
+            "value" : "6fe5c9d4146461b3209a7c773c4bfa6928e902fb5ad12051dfb3de27e2d1bade8c8b82b7c646f91d29f697db7161ab5330a6e318b2b96d2630514dc5a9f042e6"
+          }, {
+            "key" : "md5",
+            "value" : "6aecd49fa3ba0d48e913190740c1c54b"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "6aecd49fa3ba0d48e913190740c1c54b"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6fe5c9d4146461b3209a7c773c4bfa6928e902fb5ad12051dfb3de27e2d1bade8c8b82b7c646f91d29f697db7161ab5330a6e318b2b96d2630514dc5a9f042e6"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "09a4cdf1ec01536e6ecc3bedb018f9677889171ff8853106e4ff47374e6ce951"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "666bd0d1b5a2c859c1f81342ce1bb21425ba0de1"
+          }, {
+            "key" : "sha256",
+            "value" : "09a4cdf1ec01536e6ecc3bedb018f9677889171ff8853106e4ff47374e6ce951"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "sha1",
+            "value" : "666bd0d1b5a2c859c1f81342ce1bb21425ba0de1"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/windows/2008r2",
+          "name" : "push-jobs-client-2.1.4-1-x86.msi",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "bb65edd64ddce28dd5c11589534821ad6ef10f975425f9495c0c5bf31080c0e7643603175dd1e6baeb50df4e327820ef499dd5a4ef5c292209db62abe2939e98"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5d94d17c873ffa0b6c613b125b0433c6ab8ab8e9"
+          }, {
+            "key" : "sha512",
+            "value" : "bb65edd64ddce28dd5c11589534821ad6ef10f975425f9495c0c5bf31080c0e7643603175dd1e6baeb50df4e327820ef499dd5a4ef5c292209db62abe2939e98"
+          }, {
+            "key" : "md5",
+            "value" : "aa8cda163ed4d768954e264c419008b7"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha1",
+            "value" : "5d94d17c873ffa0b6c613b125b0433c6ab8ab8e9"
+          }, {
+            "key" : "sha256",
+            "value" : "3b979f8d362738c8ac126ace0e80122a4cbc53425d5f8cf9653cdd79eca16d62"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "aa8cda163ed4d768954e264c419008b7"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3b979f8d362738c8ac126ace0e80122a4cbc53425d5f8cf9653cdd79eca16d62"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/mac_os_x/10.10",
+          "name" : "push-jobs-client-2.1.4-1.dmg",
+          "properties" : [ {
+            "key" : "sha256",
+            "value" : "25bf4f6ebd323e88aec805194e33c7a8dc2652df843bfb284c6b4f9f79589e30"
+          }, {
+            "key" : "sha512",
+            "value" : "b6368c6d2a5d6981830e00f177ca1d971a179f17350788a3019ef592847e25279dbc2311f2498bc665d336ec8b1ccf874c35969ffaea5ca24cf6fc1275c7fa65"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "md5",
+            "value" : "de41d148ec05d6759d07300b4cc4ae09"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "25bf4f6ebd323e88aec805194e33c7a8dc2652df843bfb284c6b4f9f79589e30"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "b6368c6d2a5d6981830e00f177ca1d971a179f17350788a3019ef592847e25279dbc2311f2498bc665d336ec8b1ccf874c35969ffaea5ca24cf6fc1275c7fa65"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "de41d148ec05d6759d07300b4cc4ae09"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.10"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "83b7c2f343e20ecbb2d45d78f971832b980a1aeb"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha1",
+            "value" : "83b7c2f343e20ecbb2d45d78f971832b980a1aeb"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/7",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha1",
+            "value" : "13f9dead5fb7f5ec3c11215763041cb14e591876"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "13f9dead5fb7f5ec3c11215763041cb14e591876"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha256",
+            "value" : "51b54452f7073ccad437ead99a99243b921dbe26310aa6e23e7e189f12ef0b24"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "6d3fb92cdfb846d67da01be57df42ec0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4fc5f6f16f72114f7738c850b0f647e4635be2c0ff8590293ff6696e53c5ff5a07c3f1a158e28c1afb4589dfbfd1830988d38eb23658d4342782867a5341dcd6"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "51b54452f7073ccad437ead99a99243b921dbe26310aa6e23e7e189f12ef0b24"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "md5",
+            "value" : "6d3fb92cdfb846d67da01be57df42ec0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha512",
+            "value" : "4fc5f6f16f72114f7738c850b0f647e4635be2c0ff8590293ff6696e53c5ff5a07c3f1a158e28c1afb4589dfbfd1830988d38eb23658d4342782867a5341dcd6"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/12.04",
+          "name" : "push-jobs-client_2.1.4-1_i386.deb",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "md5",
+            "value" : "42fa786dcc8fe976d8eea6a51fd83821"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "sha1",
+            "value" : "5ef5ba1240c38b6d659496a386e1362184ceb843"
+          }, {
+            "key" : "sha256",
+            "value" : "0dda8ddd5ca34a55be4520cf270745fc1069f0b5d334dc6f4a9a751fde6746e9"
+          }, {
+            "key" : "sha512",
+            "value" : "12f0b6f13d2483f330cfadc93fee08656235457d849adbe18c8e5ea37143da74d3434a19e7995c23bc86fbc5fcf242eff20408a8f2be1a28c3c98361d599beea"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "12f0b6f13d2483f330cfadc93fee08656235457d849adbe18c8e5ea37143da74d3434a19e7995c23bc86fbc5fcf242eff20408a8f2be1a28c3c98361d599beea"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "42fa786dcc8fe976d8eea6a51fd83821"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "5ef5ba1240c38b6d659496a386e1362184ceb843"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "0dda8ddd5ca34a55be4520cf270745fc1069f0b5d334dc6f4a9a751fde6746e9"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/ubuntu/14.04",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "061dc16e46c5ccb3709203bdef51d04f295c7f7fc47c42df526be07bcbfab2defa153d40b9875cf29243a5941d89953e42d4f19887d908774ea39e571fcbe901"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha256",
+            "value" : "ea8e967a723bf051d0856d7097edb714e15c4f4f6889e32ab86aec5f7b94fd1d"
+          }, {
+            "key" : "sha512",
+            "value" : "061dc16e46c5ccb3709203bdef51d04f295c7f7fc47c42df526be07bcbfab2defa153d40b9875cf29243a5941d89953e42d4f19887d908774ea39e571fcbe901"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "280da0afee6ca991d72c80fb0c91f743"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "ea8e967a723bf051d0856d7097edb714e15c4f4f6889e32ab86aec5f7b94fd1d"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "md5",
+            "value" : "280da0afee6ca991d72c80fb0c91f743"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "sha1",
+            "value" : "1c220a0e6b5f3c4abaa5ab09570215fce4be8984"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1c220a0e6b5f3c4abaa5ab09570215fce4be8984"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/push-jobs-client/2.1.4/debian/8",
+          "name" : "push-jobs-client_2.1.4-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha256",
+            "value" : "51b54452f7073ccad437ead99a99243b921dbe26310aa6e23e7e189f12ef0b24"
+          }, {
+            "key" : "build.number",
+            "value" : "2.1.4"
+          }, {
+            "key" : "sha256",
+            "value" : "51b54452f7073ccad437ead99a99243b921dbe26310aa6e23e7e189f12ef0b24"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "13f9dead5fb7f5ec3c11215763041cb14e591876"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "sha1",
+            "value" : "13f9dead5fb7f5ec3c11215763041cb14e591876"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha512",
+            "value" : "4fc5f6f16f72114f7738c850b0f647e4635be2c0ff8590293ff6696e53c5ff5a07c3f1a158e28c1afb4589dfbfd1830988d38eb23658d4342782867a5341dcd6"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4fc5f6f16f72114f7738c850b0f647e4635be2c0ff8590293ff6696e53c5ff5a07c3f1a158e28c1afb4589dfbfd1830988d38eb23658d4342782867a5341dcd6"
+          }, {
+            "key" : "md5",
+            "value" : "6d3fb92cdfb846d67da01be57df42ec0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.1.4"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "build.name",
+            "value" : "push-jobs-client"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "6d3fb92cdfb846d67da01be57df42ec0"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 24,
+          "total" : 24
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 31 Jan 2017 17:27:09 GMT
+recorded_with: VCR 3.0.3

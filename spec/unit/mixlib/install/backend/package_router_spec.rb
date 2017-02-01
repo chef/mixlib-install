@@ -445,4 +445,46 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       end
     end
   end
+
+  context "windows desktop artifacts" do
+    let(:channel) { :stable }
+    let(:windows_artifacts) do
+      artifact_info.find_all { |a| a.platform == "windows" }
+    end
+
+    shared_examples_for "windows desktop download urls and expected architectures" do
+      it "returns server download url for associated desktop versions" do
+        expect(windows_artifacts.find { |a| a.platform_version == "7" }.url).to include "2008r2"
+        expect(windows_artifacts.find { |a| a.platform_version == "8" }.url).to include "2012"
+        expect(windows_artifacts.find { |a| a.platform_version == "8.1" }.url).to include "2012r2"
+        expect(windows_artifacts.find { |a| a.platform_version == "10" }.url).to include "2012r2"
+      end
+
+      it "maps architecture to correct filename" do
+        expect(windows_artifacts.find { |a| a.platform_version == "7" && a.architecture == "i386" }.url).to include "-x86"
+        expect(windows_artifacts.find { |a| a.platform_version == "7" && a.architecture == "x86_64" }.url).to include expected_64_bit_msi
+      end
+    end
+
+    context "chef windows artifacts" do
+      let(:product_name) { "chef" }
+      let(:expected_64_bit_msi) { "-x64" }
+
+      it_behaves_like "windows desktop download urls and expected architectures"
+    end
+
+    context "chefdk windows artifacts" do
+      let(:product_name) { "chefdk" }
+      let(:expected_64_bit_msi) { "-x86" }
+
+      it_behaves_like "windows desktop download urls and expected architectures"
+    end
+
+    context "push-jobs-client windows artifacts" do
+      let(:product_name) { "push-jobs-client" }
+      let(:expected_64_bit_msi) { "-x86" }
+
+      it_behaves_like "windows desktop download urls and expected architectures"
+    end
+  end
 end

@@ -16,11 +16,17 @@
 # limitations under the License.
 #
 
+require "mixlib/install/util"
+
 module Mixlib
   class Install
     class Backend
       class Base
+        class UnsupportedVersion < ArgumentError; end
+
         attr_reader :options
+
+        SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
 
         def initialize(options)
           @options = options
@@ -124,6 +130,9 @@ module Mixlib
         # On windows, if we do not have a native 64-bit package available
         # in the discovered artifacts, we will make 32-bit artifacts available
         # for 64-bit architecture.
+        #
+        # We also create new artifacts for windows 7, 8, 8.1 and 10
+        #
         def windows_artifact_fixup!(artifacts)
           new_artifacts = [ ]
           native_artifacts = [ ]
@@ -140,6 +149,26 @@ module Mixlib
               native_artifacts << r.clone
             else
               puts "Unknown architecture '#{r.architecture}' for windows."
+            end
+          end
+
+          # Grab windows artifact for each architecture so we don't have to manipulate
+          # the architecture extension in the filename of the url which changes based on product.
+          # Don't want to deal with that!
+          artifact_64 = artifacts.find { |a| a.platform == "windows" && a.architecture == "x86_64" }
+          artifact_32 = artifacts.find { |a| a.platform == "windows" && a.architecture == "i386" }
+
+          # Attempt to clone windows artifacts only when a Windows 32 bit artifact exists
+          if artifact_32
+            new_artifacts.concat(clone_windows_desktop_artifacts(artifact_32))
+
+            # Clone an existing 64 bit artifact
+            if artifact_64
+              new_artifacts.concat(clone_windows_desktop_artifacts(artifact_64))
+
+            # Clone the 32 bit artifact when 64 bit doesn't exist
+            else
+              new_artifacts.concat(clone_windows_desktop_artifacts(artifact_32, architecture: "x86_64"))
             end
           end
 
@@ -193,6 +222,39 @@ module Mixlib
             "sparc"
           else
             architecture
+          end
+        end
+
+        private
+
+        #
+        # Custom map Chef's supported windows desktop versions to the server versions we currently build
+        # See https://docs.chef.io/platforms.html
+        #
+        def map_custom_windows_desktop_versions(desktop_version)
+          unless SUPPORTED_WINDOWS_DESKTOP_VERSIONS.include?(desktop_version)
+            raise UnsupportedVersion, "Unsupported Windows desktop version `#{desktop_version}`. Supported versions: #{SUPPORTED_WINDOWS_DESKTOP_VERSIONS.join(", ")}."
+          end
+
+          server_version = Util.map_windows_desktop_version(desktop_version)
+
+          # Windows desktop 10 officially maps to server 2016.
+          # However, we don't test on server 2016 at this time, so we default to 2012r2
+          server_version = "2012r2" if server_version == "2016"
+
+          server_version
+        end
+
+        #
+        # Clone all supported Windows desktop artifacts from a base artifact
+        # options hash allows overriding any valid attribute
+        #
+        def clone_windows_desktop_artifacts(base_artifact, options = {})
+          SUPPORTED_WINDOWS_DESKTOP_VERSIONS.collect do |dv|
+            options[:platform_version] = dv
+            options[:url] = base_artifact.url.gsub("\/#{base_artifact.platform_version}\/", "\/#{map_custom_windows_desktop_versions(dv)}\/")
+
+            base_artifact.clone_with(options)
           end
         end
       end

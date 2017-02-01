@@ -129,6 +129,25 @@ module Mixlib
           # Ensure that if the default user agent is aleady set it doesn't get duplicated
           user_agents.flatten.compact.uniq.join(" ")
         end
+
+        def map_windows_desktop_version(version)
+          # This logic does not try to compare and determine proper versions based on conditions or ranges.
+          # These are here to improve UX for desktop versions.
+          case version
+          when /^10/
+            "2016"
+          when /^6.3/, /^8.1/
+            "2012r2"
+          when /^6.2/, /^8/
+            "2012"
+          when /^6.1/, /^7/
+            "2008r2"
+          when /^6/
+            "2008"
+          else
+            version
+          end
+        end
       end
     end
   end
