@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.1.11]
+- Fix ScriptGenerator install script to use proper platform detection for Windows artifacts
+- Artifact metadata now includes supported Windows Desktop versions
+
 ## [2.1.10]
 - Backward and forward compatibility support for `automate` and `delivery` product versions.
 
