@@ -49,25 +49,20 @@ If no earlier version is found the earliest version available will be set.",
         desc: "Print artifact attributes",
         type: :boolean
       def download(product_name)
-        say_status("Warn", "Product key `delivery` will be deprecated in a future release. Please use `automate`") if product_name == "delivery"
         # Set mininum options
         mixlib_install_options = {
           channel: options[:channel].to_sym,
           product_name: product_name,
           product_version: options[:version],
           platform_version_compatibility_mode: options[:platform_version_compat],
-        }
+          architecture: options[:architecture],
+        }.tap do |opt|
+          opt[:platform] = options[:platform] if options[:platform]
+          opt[:platform_version] = options[:platform_version] if options[:platform_version]
+        end
 
-        # Set platform info or auto detect platform
-        if options[:platform]
-          if options[:platform_version].nil? || options[:architecture].nil?
-            abort "Must provide platform version and architecture when specifying a platform"
-          end
-          mixlib_install_options[:platform] = options[:platform]
-          mixlib_install_options[:platform_version] = options[:platform_version]
-          mixlib_install_options[:architecture] = options[:architecture]
-        else
-
+        # auto detect platform options if not configured
+        if options[:platform].nil? && options[:platform_version].nil?
           mixlib_install_options.merge!(Mixlib::Install.detect_platform)
         end
 

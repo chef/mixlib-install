@@ -25,7 +25,7 @@ module Mixlib
     class Options
       class InvalidOptions < ArgumentError; end
 
-      attr_reader :options
+      attr_reader :options, :errors
 
       SUPPORTED_ARCHITECTURES = %w{
         i386
@@ -36,12 +36,15 @@ module Mixlib
         sparc
         x86_64
       }
+
       SUPPORTED_CHANNELS = [
         :stable,
         :current,
         :unstable,
       ]
+
       SUPPORTED_PRODUCT_NAMES = PRODUCT_MATRIX.products
+
       SUPPORTED_SHELL_TYPES = [
         :ps1,
         :sh,
@@ -61,6 +64,7 @@ module Mixlib
 
       def initialize(options)
         @options = options
+        @errors = []
 
         map_windows_desktop_versions! if for_windows?
 
@@ -72,17 +76,14 @@ module Mixlib
       end
 
       def validate_options!
-        errors = []
+        validate_architecture
+        validate_product_names
+        validate_channels
+        validate_shell_type
+        validate_user_agent_headers
+        validate_platform_options
 
-        errors << validate_architecture
-        errors << validate_product_names
-        errors << validate_channels
-        errors << validate_shell_type
-        errors << validate_user_agent_headers
-
-        unless errors.compact.empty?
-          raise InvalidOptions, errors.join("\n")
-        end
+        raise InvalidOptions, errors.join("\n") unless errors.empty?
       end
 
       SUPPORTED_OPTIONS.each do |option|
@@ -130,7 +131,7 @@ module Mixlib
 
       def validate_architecture
         unless architecture.nil? || SUPPORTED_ARCHITECTURES.include?(architecture)
-          <<-EOS
+          errors << <<-EOS
 Unknown architecture #{architecture}.
 Must be one of: #{SUPPORTED_ARCHITECTURES.join(", ")}
           EOS
@@ -139,7 +140,7 @@ Must be one of: #{SUPPORTED_ARCHITECTURES.join(", ")}
 
       def validate_product_names
         unless SUPPORTED_PRODUCT_NAMES.include? product_name
-          <<-EOS
+          errors << <<-EOS
 Unknown product name #{product_name}.
 Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}
           EOS
@@ -148,7 +149,7 @@ Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}
 
       def validate_channels
         unless SUPPORTED_CHANNELS.include? channel
-          <<-EOS
+          errors << <<-EOS
 Unknown channel #{channel}.
 Must be one of: #{SUPPORTED_CHANNELS.join(", ")}
           EOS
@@ -157,7 +158,7 @@ Must be one of: #{SUPPORTED_CHANNELS.join(", ")}
 
       def validate_shell_type
         unless SUPPORTED_SHELL_TYPES.include? shell_type
-          <<-EOS
+          errors << <<-EOS
 Unknown shell type.
 Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
           EOS
@@ -176,11 +177,23 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
           end
         end
 
-        error
+        errors << error if error
+      end
+
+      def validate_platform_options
+        unless all_or_nothing?([platform, platform_version, architecture])
+          errors << <<-EOS
+Must provide platform, platform version and architecture when specifying any platform details
+          EOS
+        end
       end
 
       def map_windows_desktop_versions!
         options[:platform_version] = Util.map_windows_desktop_version(platform_version)
+      end
+
+      def all_or_nothing?(items)
+        items.all? || items.compact.empty?
       end
     end
   end

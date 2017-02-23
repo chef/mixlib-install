@@ -54,12 +54,39 @@ context "Mixlib::Install::Options" do
   end
 
   context "for platform options" do
-    context "for shell type options" do
-      let(:shell_type) { :foo }
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
 
-      it "raises invalid shell type error" do
-        expect { Mixlib::Install.new(shell_type: shell_type) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Unknown shell type/)
+    context "with platform" do
+      let(:platform) { "ubuntu" }
+
+      it "raises platform options error" do
+        expect { Mixlib::Install.new(product_name: product_name, channel: channel, platform: platform) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform, platform version and architecture/)
       end
+
+      context "and with platform version" do
+        let(:platform_version) { "14.04" }
+
+        it "raises platform options error" do
+          expect { Mixlib::Install.new(product_name: product_name, channel: channel, platform: platform, platform_version: platform_version) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform, platform version and architecture/)
+        end
+      end
+    end
+
+    context "with architecture" do
+      let(:architecture) { "i386" }
+
+      it "raises platform options error" do
+        expect { Mixlib::Install.new(product_name: product_name, channel: channel, architecture: architecture) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform, platform version and architecture/)
+      end
+    end
+  end
+
+  context "for shell type options" do
+    let(:shell_type) { :foo }
+
+    it "raises invalid shell type error" do
+      expect { Mixlib::Install.new(shell_type: shell_type) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Unknown shell type/)
     end
   end
 
