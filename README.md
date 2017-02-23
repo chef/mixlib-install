@@ -83,6 +83,8 @@ artifact.platform # => "ubuntu"
 artifact.platform_version # => "14.04"
 ```
 
+`platform_version_compatibility_mode` will automatically be enabled if platform options are not specified.
+
 ### List the available versions for a product and channel
 #### Instance method
 ```ruby

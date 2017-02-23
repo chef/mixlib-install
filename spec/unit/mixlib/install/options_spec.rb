@@ -29,6 +29,36 @@ context "Mixlib::Install::Options" do
   let(:shell_type) { nil }
   let(:user_agent_headers) { nil }
 
+  context "for platform_version_compatibility_mode option" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+
+    context "when not setting platform info" do
+      it "is set to true" do
+        mi = Mixlib::Install.new(product_name: product_name, channel: channel)
+        expect(mi.options.platform_version_compatibility_mode).to be true
+      end
+    end
+
+    context "when setting platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "13.04" }
+      let(:architecture) { "x86_64" }
+
+      it "is set to false" do
+        mi = Mixlib::Install.new(product_name: product_name, channel: channel, platform: platform, platform_version: platform_version, architecture: architecture)
+        expect(mi.options.platform_version_compatibility_mode).to be false
+      end
+
+      context "when setting platform_version_compatibility_mode true" do
+        it "is set to true" do
+          mi = Mixlib::Install.new(product_name: product_name, channel: channel, platform: platform, platform_version: platform_version, architecture: architecture, platform_version_compatibility_mode: true)
+          expect(mi.options.platform_version_compatibility_mode).to be true
+        end
+      end
+    end
+  end
+
   context "for invalid architecture option" do
     let(:architecture) { "foo" }
 
