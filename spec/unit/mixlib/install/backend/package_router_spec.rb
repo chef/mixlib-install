@@ -40,11 +40,9 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       opt[:platform_version_compatibility_mode] = pv_compat if pv_compat
       opt[:include_metadata] = include_metadata if include_metadata
       opt[:user_agent_headers] = user_agent_headers if user_agent_headers
-      if platform
-        opt[:platform] = platform
-        opt[:platform_version] = platform_version
-        opt[:architecture] = architecture
-      end
+      opt[:platform] = platform if platform
+      opt[:platform_version] = platform_version if platform_version
+      opt[:architecture] = architecture if architecture
     end
   end
 

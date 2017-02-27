@@ -163,7 +163,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:architecture) { nil }
 
       it "fails with missing args error" do
-        expect(last_command_started).to have_output /Must provide platform version and architecture when specifying a platform/
+        expect(last_command_started).to have_output /Must provide platform, platform version and architecture when specifying any platform details/
       end
     end
 
@@ -199,6 +199,7 @@ describe "mixlib-install executable", :type => :aruba do
     end
 
     context "with invalid platform version and architecture" do
+      let(:platform) { "foo" }
       let(:platform_version) { "99.99" }
       let(:architecture) { "x86_64" }
       let(:additional_args) { "--no-platform-version-compat" }
