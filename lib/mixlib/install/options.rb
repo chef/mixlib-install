@@ -66,9 +66,17 @@ module Mixlib
         @options = options
         @errors = []
 
+        resolve_platform_version_compatibility_mode!
+
         map_windows_desktop_versions! if for_windows?
 
         validate!
+      end
+
+      SUPPORTED_OPTIONS.each do |option|
+        define_method option do
+          options[option] || options[option.to_s] || default_options[option]
+        end
       end
 
       def validate!
@@ -84,12 +92,6 @@ module Mixlib
         validate_platform_options
 
         raise InvalidOptions, errors.join("\n") unless errors.empty?
-      end
-
-      SUPPORTED_OPTIONS.each do |option|
-        define_method option do
-          options[option] || options[option.to_s] || default_options[option]
-        end
       end
 
       def for_ps1?
@@ -116,6 +118,29 @@ module Mixlib
         options[:architecture] = info[:architecture]
 
         validate_options!
+      end
+
+      def platform_info
+        {
+          platform: options[:platform],
+          platform_version: options[:platform_version],
+          architecture: options[:architecture],
+        }
+      end
+
+      #
+      # Calling this method will give queries more of an opportunity to collect
+      # compatible artifacts where there may not always be an exact match.
+      #
+      # This option is set to false by default.
+      # - In cases where no platform options are configured it will set this option to true.
+      # - In cases where all platform options are configured it will remain false UNLESS the option
+      #   has been configured to be true.
+      #
+      def resolve_platform_version_compatibility_mode!
+        unless options[:platform_version_compatibility_mode]
+          options[:platform_version_compatibility_mode] = true if platform_info.values.none?
+        end
       end
 
       private
@@ -181,7 +206,7 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
       end
 
       def validate_platform_options
-        unless all_or_nothing?([platform, platform_version, architecture])
+        unless all_or_none?(platform_info.values)
           errors << <<-EOS
 Must provide platform, platform version and architecture when specifying any platform details
           EOS
@@ -192,7 +217,7 @@ Must provide platform, platform version and architecture when specifying any pla
         options[:platform_version] = Util.map_windows_desktop_version(platform_version)
       end
 
-      def all_or_nothing?(items)
+      def all_or_none?(items)
         items.all? || items.compact.empty?
       end
     end
