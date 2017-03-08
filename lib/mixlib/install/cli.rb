@@ -66,10 +66,10 @@ If no earlier version is found the earliest version available will be set.",
           mixlib_install_options.merge!(Mixlib::Install.detect_platform)
         end
 
-        say "Querying for artifact with options:\n#{JSON.pretty_generate(mixlib_install_options)}"
-        artifact = Mixlib::Install.new(mixlib_install_options).artifact_info
-        if artifact.nil? || artifact.is_a?(Array)
-          abort "No results found."
+        begin
+          artifact = Mixlib::Install.new(mixlib_install_options).artifact_info
+        rescue Mixlib::Install::Backend::ArtifactsNotFound => e
+          abort e.message
         end
 
         if options[:url]

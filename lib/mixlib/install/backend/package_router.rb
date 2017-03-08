@@ -27,8 +27,6 @@ module Mixlib
   class Install
     class Backend
       class PackageRouter < Base
-        class NoArtifactsError < StandardError; end
-
         ENDPOINT = "https://packages.chef.io".freeze
 
         COMPAT_DOWNLOAD_URL_ENDPOINT = "http://packages.chef.io".freeze
@@ -66,6 +64,15 @@ module Mixlib
         def versions
           items = get("/api/v1/#{options.channel}/#{omnibus_project}/versions")["results"]
 
+          # Circumvent early when there are no product artifacts in a specific channel
+          if items.empty?
+            raise ArtifactsNotFound, <<-EOF
+No artifacts found matching criteria.
+  product name: #{options.product_name}
+  channel: #{options.channel}
+EOF
+          end
+
           # Filter out the partial builds if we are in :unstable channel
           # In other channels we do not need to do this since all builds are
           # always complete. Infact we should not do this since for some arcane
@@ -76,6 +83,7 @@ module Mixlib
             # populated with the build record if "artifact.module.build" exists.
             items.reject! { |i| i["artifacts"].nil? }
           end
+
           items
         end
 
@@ -84,21 +92,9 @@ module Mixlib
         #
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         def latest_version
-          # Get the list of builds from the REST api.
-          # We do this because a user in the readers group does not have
-          # permissions to run aql against builds.
-          builds = versions
-
-          if builds.nil?
-            raise NoArtifactsError, <<-MSG
-Can not find any builds for #{options.product_name} in #{endpoint}.
-            MSG
-          end
-
           # Sort by created data
-          # TODO: Shouldn't we sort by version?
-          builds.sort_by! { |b| b["created"] }.reverse!
-          version = extract_version_from_response(builds.first)
+          sorted_versions = versions.sort_by! { |b| b["created"] }.reverse!
+          version = extract_version_from_response(sorted_versions.first)
           artifacts_for_version(version)
         end
 
