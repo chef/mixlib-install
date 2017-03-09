@@ -85,6 +85,19 @@ artifact.platform_version # => "14.04"
 
 `platform_version_compatibility_mode` will automatically be enabled if platform options are not specified.
 
+If running on Ubuntu 15.04...
+```ruby
+options = {
+  channel: :current,
+  product_name: 'chef',
+}
+
+artifact = Mixlib::Install.new(options).artifact_info
+
+artifact.platform # => "ubuntu"
+artifact.platform_version # => "14.04"
+```
+
 ### List the available versions for a product and channel
 #### Instance method
 ```ruby

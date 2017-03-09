@@ -1,8 +1,14 @@
 # Change Log
 
+## [3.0.0]
+- [Breaking API Change] `Options` validation added to ensure that when any platform option is set they are all provided (platform, platform_version, architecture)
+- [Breaking API Change] The `platform_version_compatibility_mode` option will automatically be set to `true` when no platform options are provided
+- [Breaking API Change] Queries for aritfacts that yield no results will raise an exception (`Mixlib::Install::Backend::ArtifactsNotFound`) versus returning an empty array
+- New properties added to `Products`: `github_repo` and `downloads_product_page_url`
+- New method for retrieving products that are available on downloads.chef.io: `PRODUCT_MATRIX.products_available_on_downloads_site`
+
 ## [2.1.12]
 - Force powershell scripts to ASCII encode variables
-
 
 ## [2.1.11]
 - Fix ScriptGenerator install script to use proper platform detection for Windows artifacts
