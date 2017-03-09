@@ -21,9 +21,9 @@ require "mixlib/install/util"
 module Mixlib
   class Install
     class Backend
-      class Base
-        class UnsupportedVersion < ArgumentError; end
+      class ArtifactsNotFound < StandardError; end
 
+      class Base
         attr_reader :options
 
         SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
@@ -79,10 +79,10 @@ module Mixlib
         # Filters and returns the available artifacts based on the configured
         # platform filtering options.
         #
-        # @return ArtifactInfo, Array<ArtifactInfo>, []
+        # @return ArtifactInfo, Array<ArtifactInfo>, ArtifactsNotFound
         #   If the result is a single artifact, this returns ArtifactInfo.
         #   If the result is a list of artifacts, this returns Array<ArtifactInfo>.
-        #   If no suitable artifact is found, this returns [].
+        #   If no suitable artifact is found, this returns ArtifactsNotFound exception.
         def filter_artifacts(artifacts)
           return artifacts unless platform_filters_available?
 
@@ -123,8 +123,17 @@ module Mixlib
             return closest_compatible_artifact
           end
 
-           # Otherwise, we return an empty array indicating we do not have any matching artifacts
-          return []
+           # Return an exception if we get to the end of the method
+          raise ArtifactsNotFound, <<-EOF
+No artifacts found matching criteria.
+  product name: #{options.product_name}
+  channel: #{options.channel}
+  version: #{options.product_version}
+  platform: #{options.platform}
+  platform version: #{options.platform_version}
+  architecture: #{options.architecture}
+  compatibility mode: #{options.platform_version_compatibility_mode}
+EOF
         end
 
         # On windows, if we do not have a native 64-bit package available
@@ -232,10 +241,6 @@ module Mixlib
         # See https://docs.chef.io/platforms.html
         #
         def map_custom_windows_desktop_versions(desktop_version)
-          unless SUPPORTED_WINDOWS_DESKTOP_VERSIONS.include?(desktop_version)
-            raise UnsupportedVersion, "Unsupported Windows desktop version `#{desktop_version}`. Supported versions: #{SUPPORTED_WINDOWS_DESKTOP_VERSIONS.join(", ")}."
-          end
-
           server_version = Util.map_windows_desktop_version(desktop_version)
 
           # Windows desktop 10 officially maps to server 2016.

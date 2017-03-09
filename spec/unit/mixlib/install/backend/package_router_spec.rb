@@ -137,6 +137,15 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
+  context "for a product that does not exist in a specific channel" do
+    let(:channel) { :unstable }
+    let(:product_name) { "ha" }
+
+    it "raises an exception" do
+      expect { artifact_info }.to raise_error Mixlib::Install::Backend::ArtifactsNotFound
+    end
+  end
+
   context "for a product without native 64-bit builds" do
     let(:channel) { :stable }
     let(:product_name) { "chefdk" }
@@ -191,7 +200,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     let(:architecture) { "x86_64" }
 
     it "can not find an artifact" do
-      expect(artifact_info).to be_empty
+      expect { artifact_info }.to raise_error Mixlib::Install::Backend::ArtifactsNotFound
     end
 
     context "when product_version compat mode is set" do
@@ -215,7 +224,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     let(:architecture) { "x86_64" }
 
     it "can not find an artifact" do
-      expect(artifact_info).to be_empty
+      expect { artifact_info }.to raise_error Mixlib::Install::Backend::ArtifactsNotFound
     end
 
     context "when product_version compat mode is set" do
@@ -239,7 +248,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     let(:architecture) { "x86_64" }
 
     it "can not find an artifact" do
-      expect(artifact_info).to be_empty
+      expect { artifact_info }.to raise_error Mixlib::Install::Backend::ArtifactsNotFound
     end
 
     context "when product_version compat mode is set" do

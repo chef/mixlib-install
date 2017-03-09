@@ -205,7 +205,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:additional_args) { "--no-platform-version-compat" }
 
       it "returns no results" do
-        expect(last_command_started).to have_output /No results found./
+        expect(last_command_started).to have_output /No artifacts found matching criteria./
       end
     end
 
