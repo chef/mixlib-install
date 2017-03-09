@@ -21,12 +21,13 @@ require "mixlib/install/product"
 context "Mixlib::Install::Product" do
   context "for product_name when using strings" do
     let(:product) do
-      Mixlib::Install::Product.new do
+      Mixlib::Install::Product.new("product") do
         product_name "test-product"
       end
     end
 
     it "accepts and returns the value correctly" do
+      expect(product.product_key).to eq("product")
       expect(product.product_name).to eq("test-product")
     end
 
@@ -41,7 +42,7 @@ context "Mixlib::Install::Product" do
 
   context "for package_name when using block" do
     let(:product) do
-      Mixlib::Install::Product.new do
+      Mixlib::Install::Product.new("product") do
         package_name do |version|
           "my-version-#{version}"
         end
@@ -68,7 +69,7 @@ context "Mixlib::Install::Product" do
 
   context "for package_name when using block and string" do
     let(:product) do
-      Mixlib::Install::Product.new do
+      Mixlib::Install::Product.new("product") do
         package_name "my-name" do |version|
           "my-version-#{version}"
         end
@@ -81,20 +82,27 @@ context "Mixlib::Install::Product" do
   end
 
   it "has version_for defined" do
-    expect(Mixlib::Install::Product.new {}).to respond_to(:version_for)
+    expect(Mixlib::Install::Product.new("product") {}).to respond_to(:version_for)
   end
 
   it "has the DSL methods for all required properties" do
+    expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:product_key)
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:product_name)
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:package_name)
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:ctl_command)
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:config_file)
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:install_path)
     expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:omnibus_project)
+    expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:github_repo)
+    expect(Mixlib::Install::Product::DSL_PROPERTIES).to include(:downloads_product_page_url)
   end
 end
 
 context "PRODUCT_MATRIX" do
+  let(:product_key) do
+    PRODUCT_MATRIX.lookup(product_name, version).product_key
+  end
+
   let(:package_name) do
     PRODUCT_MATRIX.lookup(product_name, version).package_name
   end
@@ -113,6 +121,14 @@ context "PRODUCT_MATRIX" do
 
   let(:install_path) do
     PRODUCT_MATRIX.lookup(product_name, version).install_path
+  end
+
+  let(:github_repo) do
+    PRODUCT_MATRIX.lookup(product_name, version).github_repo
+  end
+
+  let(:downloads_product_page_url) do
+    PRODUCT_MATRIX.lookup(product_name, version).downloads_product_page_url
   end
 
   CHEF_PRODUCTS = %w{
@@ -153,6 +169,30 @@ context "PRODUCT_MATRIX" do
 
   it "returns nil for unset parameters" do
     expect(PRODUCT_MATRIX.lookup("chef").ctl_command).to be_nil
+  end
+
+  it "defaults downloads_product_page_url using product_key by default" do
+    expect(PRODUCT_MATRIX.lookup("chef").downloads_product_page_url).to eq("https://downloads.chef.io/chef")
+  end
+
+  it "defaults github_repo using product_key by default" do
+    expect(PRODUCT_MATRIX.lookup("chef").github_repo).to eq("chef/chef")
+  end
+
+  context "products available on downloads site" do
+    let(:downloads_site_products) { PRODUCT_MATRIX.products_available_on_downloads_site }
+
+    it "includes automate" do
+      expect(downloads_site_products["automate"].downloads_product_page_url).to eq "https://downloads.chef.io/automate"
+    end
+
+    it "includes delivery" do
+      expect(downloads_site_products["delivery"].downloads_product_page_url).to eq "https://downloads.chef.io/automate"
+    end
+
+    it "excludes sync" do
+      expect(downloads_site_products["sync"]).to be_nil
+    end
   end
 
   context "for chef-server" do

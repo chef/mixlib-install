@@ -20,17 +20,21 @@ require "mixlib/versioning"
 module Mixlib
   class Install
     class Product
-      def initialize(&block)
+      def initialize(key, &block)
+        @product_key = key
         instance_eval(&block)
       end
 
       DSL_PROPERTIES = [
         :config_file,
         :ctl_command,
+        :product_key,
         :package_name,
         :product_name,
         :install_path,
         :omnibus_project,
+        :github_repo,
+        :downloads_product_page_url,
       ]
 
       #
@@ -53,7 +57,7 @@ module Mixlib
               value = instance_variable_get("@#{prop}".to_sym)
               return default_value_for(prop) if value.nil?
 
-              if value.is_a? String
+              if value.is_a?(String) || value.is_a?(Symbol)
                 value
               else
                 value.call(version_for(version))
@@ -77,6 +81,10 @@ module Mixlib
           "/opt/#{package_name}"
         when :omnibus_project
           package_name
+        when :downloads_product_page_url
+          "https://downloads.chef.io/#{product_key}"
+        when :github_repo
+          "chef/#{product_key}"
         else
           nil
         end
@@ -132,7 +140,7 @@ module Mixlib
       # `key` and stores it.
       #
       def product(key, &block)
-        @product_map[key] = Product.new(&block)
+        @product_map[key] = Product.new(key, &block)
       end
 
       #
@@ -162,6 +170,18 @@ module Mixlib
         product.version(version)
         product
       end
+
+      #
+      # Looks up all products that are available on downloads.chef.io
+      #
+      # @return Hash{String => Product}
+      #   :key => product_key
+      #   :value => Mixlib::Install::Product instance
+      def products_available_on_downloads_site
+        @product_map.delete_if do |product_key, product|
+          product.downloads_product_page_url == :not_available
+        end
+      end
     end
   end
 end
@@ -179,16 +199,21 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "opscode-analytics"
     ctl_command "opscode-analytics-ctl"
     config_file "/etc/opscode-analytics/opscode-analytics.rb"
+    downloads_product_page_url :not_available
   end
 
   product "angry-omnibus-toolchain" do
     product_name "Angry Omnibus Toolchain"
     package_name "angry-omnibus-toolchain"
+    github_repo "chef/omnibus-toolchain"
+    downloads_product_page_url :not_available
   end
 
   product "angrychef" do
     product_name "Angry Chef Client"
     package_name "angrychef"
+    github_repo "chef/chef"
+    downloads_product_page_url :not_available
   end
 
   product "automate" do
@@ -245,11 +270,13 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   product "chef-server-ha-provisioning" do
     product_name "Chef Server HA Provisioning for AWS"
     package_name "chef-server-ha-provisioning"
+    downloads_product_page_url :not_available
   end
 
   product "chefdk" do
     product_name "Chef Development Kit"
     package_name "chefdk"
+    github_repo "chef/chef-dk"
   end
 
   product "compliance" do
@@ -269,17 +296,23 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
       v < version_for("0.7.0") ? "delivery-ctl" : "automate-ctl"
     end
     config_file "/etc/delivery/delivery.rb"
+    github_repo "chef/automate"
+    downloads_product_page_url "https://downloads.chef.io/automate"
   end
 
   product "ha" do
     product_name "Chef Server High Availability addon"
     package_name "chef-ha"
     config_file "/etc/opscode/chef-server.rb"
+    github_repo "chef/chef-ha"
+    downloads_product_page_url :not_available
   end
 
   product "harmony" do
     product_name "Harmony - Omnibus Integration Internal Test Project"
     package_name "harmony"
+    github_repo "chef/omnibus-harmony"
+    downloads_product_page_url :not_available
   end
 
   product "inspec" do
@@ -302,6 +335,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
         "/etc/chef-manage/manage.rb"
       end
     end
+    github_repo "chef/chef-manage"
   end
 
   product "marketplace" do
@@ -309,11 +343,14 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "chef-marketplace"
     ctl_command "chef-marketplace-ctl"
     config_file "/etc/chef-marketplace/marketplace.rb"
+    github_repo "chef-partners/omnibus-marketplace"
+    downloads_product_page_url :not_available
   end
 
   product "omnibus-toolchain" do
     product_name "Omnibus Toolchain"
     package_name "omnibus-toolchain"
+    downloads_product_page_url :not_available
   end
 
   product "private-chef" do
@@ -322,6 +359,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     ctl_command "private-chef-ctl"
     config_file "/etc/opscode/private-chef.rb"
     install_path "/opt/opscode"
+    github_repo "chef/opscode-chef"
   end
 
   product "push-jobs-client" do
@@ -329,6 +367,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name do |v|
       v < version_for("1.3.0") ? "opscode-push-jobs-client" : "push-jobs-client"
     end
+    github_repo "chef/opscode-pushy-client"
   end
 
   product "push-jobs-server" do
@@ -336,6 +375,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "opscode-push-jobs-server"
     ctl_command "opscode-push-jobs-server-ctl"
     config_file "/etc/opscode-push-jobs-server/opscode-push-jobs-server.rb"
+    github_repo "chef/opscode-pushy-server"
   end
 
   product "reporting" do
@@ -343,6 +383,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "opscode-reporting"
     ctl_command "opscode-reporting-ctl"
     config_file "/etc/opscode-reporting/opscode-reporting.rb"
+    github_repo "chef/oc_reporting"
   end
 
   product "supermarket" do
@@ -357,5 +398,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "chef-sync"
     ctl_command "chef-sync-ctl"
     config_file "/etc/chef-sync/chef-sync.rb"
+    github_repo "chef/omnibus-sync"
+    downloads_product_page_url :not_available
   end
 end
