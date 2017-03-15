@@ -27,7 +27,7 @@ module Mixlib
         attr_reader :options
 
         SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
-        SUPPORTED_APPX_PLATFORM_VERSIONS = %w{2016}
+        SUPPORTED_APPX_PLATFORM_VERSIONS = %w{8 8.1 10 2016}
 
         def initialize(options)
           @options = options
