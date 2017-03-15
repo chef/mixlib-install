@@ -27,6 +27,7 @@ module Mixlib
         attr_reader :options
 
         SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
+        SUPPORTED_APPX_PLATFORM_VERSIONS = %w{2016}
 
         def initialize(options)
           @options = options
@@ -191,6 +192,16 @@ EOF
 
           # add the remaining cloned artifacts to the original set
           artifacts += new_artifacts
+
+          # remove any appx packages that are mapped to a non-supported platform
+          artifacts.each do |r|
+            next unless r.platform == "windows"
+
+            if /\.appx/ =~ r.url
+              artifacts.delete(r) unless SUPPORTED_APPX_PLATFORM_VERSIONS.include?(r.platform_version)
+            end
+          end
+          artifacts
         end
 
         #
