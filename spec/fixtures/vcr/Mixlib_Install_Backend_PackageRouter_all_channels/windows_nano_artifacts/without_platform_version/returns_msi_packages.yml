@@ -1,0 +1,2825 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/current/angry-omnibus-toolchain/1.1.57/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 25927ba62f23827e20c94dba21b71cb1cbcc7ba78ddd070c07f6a778fe220df0
+      Content-Length:
+      - '81089'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Fri, 17 Mar 2017 16:07:36 GMT
+      Age:
+      - '151'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3149-SJC, cache-lax8630-LAX
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 1, 1
+      X-Timer:
+      - S1489766856.153447,VS0,VE2
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/debian/8",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_i386.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f073d5c051cd731ec8aab892570c5c65ad980b6b5a256f8bef63698aa0f9a12d026677d7f8f63f08a9388f534caecd2757790003c27c684f225415a0d4cfae31"
+          }, {
+            "key" : "sha512",
+            "value" : "f073d5c051cd731ec8aab892570c5c65ad980b6b5a256f8bef63698aa0f9a12d026677d7f8f63f08a9388f534caecd2757790003c27c684f225415a0d4cfae31"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f9a947d9afa3585a2ad8c47fe270dff8"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "4630bf93211c4c61d990b90ae68c041c54fae64b"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "747eb33b6df9053eac29c0e94006d2c6b8b2bcd6097b2bd3bd1ba5612b7e3da0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "sha1",
+            "value" : "4630bf93211c4c61d990b90ae68c041c54fae64b"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "md5",
+            "value" : "f9a947d9afa3585a2ad8c47fe270dff8"
+          }, {
+            "key" : "sha256",
+            "value" : "747eb33b6df9053eac29c0e94006d2c6b8b2bcd6097b2bd3bd1ba5612b7e3da0"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/sles/11",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.sles11.s390x.rpm",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "sles"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "s390x"
+          }, {
+            "key" : "sha256",
+            "value" : "a6ad1b4d8907d6805f1a828e59ae729e0fb46e9da32622a109f4c9ecf608c49c"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "65162e078e13f1d88e98cb152495c79e0f31377063d781e804c85824d7271bb8d4f1442620ad16c3483037af7c59a9317d09fb2d50a2c98d2671ee3c8b474372"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1d8ece892188da5d05d3aed7d4a800ed33d76397"
+          }, {
+            "key" : "md5",
+            "value" : "50cc2472c7a7781f2a6de73ed9eac5b7"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "50cc2472c7a7781f2a6de73ed9eac5b7"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "a6ad1b4d8907d6805f1a828e59ae729e0fb46e9da32622a109f4c9ecf608c49c"
+          }, {
+            "key" : "sha1",
+            "value" : "1d8ece892188da5d05d3aed7d4a800ed33d76397"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "11"
+          }, {
+            "key" : "sha512",
+            "value" : "65162e078e13f1d88e98cb152495c79e0f31377063d781e804c85824d7271bb8d4f1442620ad16c3483037af7c59a9317d09fb2d50a2c98d2671ee3c8b474372"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/ubuntu/14.04",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha256",
+            "value" : "6763b24dc0a04f79aa7d1379a18fbb6e28e512cb1699957a490ff1a995dcfbd6"
+          }, {
+            "key" : "md5",
+            "value" : "f2910b9fd87d96d0473d0505881271ca"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f2910b9fd87d96d0473d0505881271ca"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "6763b24dc0a04f79aa7d1379a18fbb6e28e512cb1699957a490ff1a995dcfbd6"
+          }, {
+            "key" : "sha512",
+            "value" : "63b7239ab30f32305097a22edd9645639951d7193d1b6035965d7d88fc5cf54f6f7c0fa18ae7ba45f42b9443edd49ca84ab5fa76cfa95a20d8ccb498cdb6710d"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36e764edee092e1f1e17dd79b287479b612e1e55"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "63b7239ab30f32305097a22edd9645639951d7193d1b6035965d7d88fc5cf54f6f7c0fa18ae7ba45f42b9443edd49ca84ab5fa76cfa95a20d8ccb498cdb6710d"
+          }, {
+            "key" : "sha1",
+            "value" : "36e764edee092e1f1e17dd79b287479b612e1e55"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/5",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el5.i386.rpm",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "925166389d5b571583d819432028a7675dcfee64bb3bf55449e64a41bd258097"
+          }, {
+            "key" : "sha256",
+            "value" : "925166389d5b571583d819432028a7675dcfee64bb3bf55449e64a41bd258097"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c5d52ef9e8f1637f4d0891a6959be954"
+          }, {
+            "key" : "sha512",
+            "value" : "2f7d83d949e25b5a893fbb4bd044086bca02a9b19eff5a670a5d685dd4e60f7af9045b682ebf8f15fb53650f37f59c480740d665be0cd7ad85857085351cfa7a"
+          }, {
+            "key" : "md5",
+            "value" : "c5d52ef9e8f1637f4d0891a6959be954"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "baa469da82e23730f4aa9c1bc8ca5d8510105e27"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha1",
+            "value" : "baa469da82e23730f4aa9c1bc8ca5d8510105e27"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "2f7d83d949e25b5a893fbb4bd044086bca02a9b19eff5a670a5d685dd4e60f7af9045b682ebf8f15fb53650f37f59c480740d665be0cd7ad85857085351cfa7a"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/freebsd/10",
+          "name" : "angry-omnibus-toolchain-1.1.57_1.amd64.sh",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "md5",
+            "value" : "095754a71bdae97ce972ad3e6d8e6b36"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1e21eb51d98db2fb46d6329fbcbe3bb6956d05d08c97463c6152eaa81d4b0c34e13e01f0125e74e5dc692f66f0a6b13765d576415cbf079661029b5a19bed0f6"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "amd64"
+          }, {
+            "key" : "sha256",
+            "value" : "9550a0ddba276f715ea5152ad4696e5eb5eccba74b44db7ab382bdb2f7e762cd"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "095754a71bdae97ce972ad3e6d8e6b36"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "freebsd"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "c4036949ebdad86a820b29cff2738eb1f5299f5e"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha512",
+            "value" : "1e21eb51d98db2fb46d6329fbcbe3bb6956d05d08c97463c6152eaa81d4b0c34e13e01f0125e74e5dc692f66f0a6b13765d576415cbf079661029b5a19bed0f6"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9550a0ddba276f715ea5152ad4696e5eb5eccba74b44db7ab382bdb2f7e762cd"
+          }, {
+            "key" : "sha1",
+            "value" : "c4036949ebdad86a820b29cff2738eb1f5299f5e"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/debian/8",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "8"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3ee036cd6ef20acf787e0bd77e08b70ae4b293234be6f3b2b6d92e35f4acba14c22ab398c83466c02390f560a68162409f025f3ff90badf595bdbcdd5194e808"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "5afb5ed972860a1987b7e3c327209563"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "bc6a697c543f96e038e888d42ae029b862bf8250"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "faf07bc255a5184ddc77480490dbd00fe277bd858fd0acfbdc9ee0039b382698"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha1",
+            "value" : "bc6a697c543f96e038e888d42ae029b862bf8250"
+          }, {
+            "key" : "sha512",
+            "value" : "3ee036cd6ef20acf787e0bd77e08b70ae4b293234be6f3b2b6d92e35f4acba14c22ab398c83466c02390f560a68162409f025f3ff90badf595bdbcdd5194e808"
+          }, {
+            "key" : "md5",
+            "value" : "5afb5ed972860a1987b7e3c327209563"
+          }, {
+            "key" : "sha256",
+            "value" : "faf07bc255a5184ddc77480490dbd00fe277bd858fd0acfbdc9ee0039b382698"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/7",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el7.ppc64le.rpm",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "7f0db8f2a86937e70431de0112506f77"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "045c271df7bb5443722040d07ade9e02ee7180eae549715766e966ee5e6746833988fdf7f260a3c728f559c55cb27813479143f193832fb3de73836dca77e698"
+          }, {
+            "key" : "sha1",
+            "value" : "8ad104571a2278e8c57b3be29482b263a9273f1a"
+          }, {
+            "key" : "md5",
+            "value" : "7f0db8f2a86937e70431de0112506f77"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "sha256",
+            "value" : "07d5dd31f3a7542b093dafcc6b93569eab72620cce925906fd17ada504b8a08a"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "ppc64le"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha512",
+            "value" : "045c271df7bb5443722040d07ade9e02ee7180eae549715766e966ee5e6746833988fdf7f260a3c728f559c55cb27813479143f193832fb3de73836dca77e698"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "07d5dd31f3a7542b093dafcc6b93569eab72620cce925906fd17ada504b8a08a"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "8ad104571a2278e8c57b3be29482b263a9273f1a"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/ubuntu/12.04",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_i386.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3364a86bc872b0e8e157e753f662d9a7"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "47e328e588b61aae5ecb362e696e6be497479534681cc65d117bca39d3e9d405dd76fed6fd131b0690054f554ecf8a50967de6b9a66efeaa717d14c51c721fd0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "sha256",
+            "value" : "36e8c84680d47e594fff77cac0179cd2fdd25f998dc3395c9633261649d22867"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "md5",
+            "value" : "3364a86bc872b0e8e157e753f662d9a7"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "36e8c84680d47e594fff77cac0179cd2fdd25f998dc3395c9633261649d22867"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "70a79f91c1966f89786aa916369710b22ee23138"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha1",
+            "value" : "70a79f91c1966f89786aa916369710b22ee23138"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "sha512",
+            "value" : "47e328e588b61aae5ecb362e696e6be497479534681cc65d117bca39d3e9d405dd76fed6fd131b0690054f554ecf8a50967de6b9a66efeaa717d14c51c721fd0"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/5",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "2cd729e6bf4f43a59ef4385ac91ffecc263ca924"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "1e228fbb6be6ba1568f1646c61c1ae0e"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "e1b176c27a8e24b163e61f3740b46e1d867242cce9ff63c94aa859fde54408c5"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "c7ecf6a4dff51c9bfb2b5c6ae448f320522fc43eba305d0aec552750d7f030e8d7dd430b80f21efaddffd242ebd286896808607f10cbbfffaf45d5c8215a0409"
+          }, {
+            "key" : "md5",
+            "value" : "1e228fbb6be6ba1568f1646c61c1ae0e"
+          }, {
+            "key" : "sha256",
+            "value" : "e1b176c27a8e24b163e61f3740b46e1d867242cce9ff63c94aa859fde54408c5"
+          }, {
+            "key" : "sha512",
+            "value" : "c7ecf6a4dff51c9bfb2b5c6ae448f320522fc43eba305d0aec552750d7f030e8d7dd430b80f21efaddffd242ebd286896808607f10cbbfffaf45d5c8215a0409"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha1",
+            "value" : "2cd729e6bf4f43a59ef4385ac91ffecc263ca924"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/debian/6",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_amd64.deb",
+          "properties" : [ {
+            "key" : "sha256",
+            "value" : "faf07bc255a5184ddc77480490dbd00fe277bd858fd0acfbdc9ee0039b382698"
+          }, {
+            "key" : "sha512",
+            "value" : "3ee036cd6ef20acf787e0bd77e08b70ae4b293234be6f3b2b6d92e35f4acba14c22ab398c83466c02390f560a68162409f025f3ff90badf595bdbcdd5194e808"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "faf07bc255a5184ddc77480490dbd00fe277bd858fd0acfbdc9ee0039b382698"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "md5",
+            "value" : "5afb5ed972860a1987b7e3c327209563"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha1",
+            "value" : "bc6a697c543f96e038e888d42ae029b862bf8250"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "bc6a697c543f96e038e888d42ae029b862bf8250"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "5afb5ed972860a1987b7e3c327209563"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3ee036cd6ef20acf787e0bd77e08b70ae4b293234be6f3b2b6d92e35f4acba14c22ab398c83466c02390f560a68162409f025f3ff90badf595bdbcdd5194e808"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/freebsd/9",
+          "name" : "angry-omnibus-toolchain-1.1.57_1.amd64.sh",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "amd64"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha1",
+            "value" : "a277cc2ac3d21cc7e0aa40666ca676b7f8fd22cd"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "2d1de71d56897b532a41c52166e0532e"
+          }, {
+            "key" : "sha512",
+            "value" : "9e9153c32c627a9ae59aa2168aa20e456c026401f8400bff24908cf7f4fbd907e3a63bfc6d953da317093cb351b14edb385e340ca20c3462f514e85fe43f907b"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a277cc2ac3d21cc7e0aa40666ca676b7f8fd22cd"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "9e9153c32c627a9ae59aa2168aa20e456c026401f8400bff24908cf7f4fbd907e3a63bfc6d953da317093cb351b14edb385e340ca20c3462f514e85fe43f907b"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "md5",
+            "value" : "2d1de71d56897b532a41c52166e0532e"
+          }, {
+            "key" : "sha256",
+            "value" : "eca61108425698ee657c93e84d87a4dfb4f2878b3d3b6383fe7ba8398bfa896e"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "9"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "freebsd"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "eca61108425698ee657c93e84d87a4dfb4f2878b3d3b6383fe7ba8398bfa896e"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/ubuntu/14.04",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_ppc64el.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha1",
+            "value" : "42de7ff2a13ef1e96c26cc5f29f9d7d71606f679"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "sha1",
+            "value" : "42de7ff2a13ef1e96c26cc5f29f9d7d71606f679"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha512",
+            "value" : "64fc44ea77cf1e126ab03d62e5a4425c88ceb823ba8314bff93e1f2369568451b93152562ad1903c61ce47e78d7b3ce79d45edd7daee601abbd8643cb66c3a4a"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "21826efb227aa8a38b8cb778e182d648"
+          }, {
+            "key" : "sha256",
+            "value" : "e1b5976805856ea19c62bc2945a2b0e0f7f734bc6f818fe6157c55430de0856e"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "e1b5976805856ea19c62bc2945a2b0e0f7f734bc6f818fe6157c55430de0856e"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "64fc44ea77cf1e126ab03d62e5a4425c88ceb823ba8314bff93e1f2369568451b93152562ad1903c61ce47e78d7b3ce79d45edd7daee601abbd8643cb66c3a4a"
+          }, {
+            "key" : "md5",
+            "value" : "21826efb227aa8a38b8cb778e182d648"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "ppc64le"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/aix/6.1",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.powerpc.bff",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha1",
+            "value" : "14d2f8c21e0ac6dd3687ddf886472bffdf7197dd"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "c7632df3f3a36d8ff058549ea2ed17af0c63152578c217fedc9c9f97b6a1928f"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "e7f62655d961dd54e08a93ffa0f3a119504208c38433c4bed68bee6335491752fb3252173cc2dbc9a19e17b03f44402668d0443e1ceb7baaa490cf2c0da5f150"
+          }, {
+            "key" : "md5",
+            "value" : "75558911d78106be34ce035ddffe9b87"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "aix"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "14d2f8c21e0ac6dd3687ddf886472bffdf7197dd"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "75558911d78106be34ce035ddffe9b87"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6.1"
+          }, {
+            "key" : "sha512",
+            "value" : "e7f62655d961dd54e08a93ffa0f3a119504208c38433c4bed68bee6335491752fb3252173cc2dbc9a19e17b03f44402668d0443e1ceb7baaa490cf2c0da5f150"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "powerpc"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha256",
+            "value" : "c7632df3f3a36d8ff058549ea2ed17af0c63152578c217fedc9c9f97b6a1928f"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/7",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el7.ppc64.rpm",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "94cd492bcfe79d559e836041a2040eaef221ffe0"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "c643c7dc1057f241d70261f52fcde45c7f422df24c7725244bb9eb89636f2bcd"
+          }, {
+            "key" : "sha1",
+            "value" : "94cd492bcfe79d559e836041a2040eaef221ffe0"
+          }, {
+            "key" : "sha512",
+            "value" : "c8864512a5d6afb20e888a875df7941b05b9c3b6b0b84764b759ccb0eaee6b54bec0092c804c3e15d6ef8d7e356bfa23eb3be7aa3f6e8a39df34ccf305241c2a"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "4f48ab19c8763641e877bec515f9130c"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "ppc64"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "md5",
+            "value" : "4f48ab19c8763641e877bec515f9130c"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "c8864512a5d6afb20e888a875df7941b05b9c3b6b0b84764b759ccb0eaee6b54bec0092c804c3e15d6ef8d7e356bfa23eb3be7aa3f6e8a39df34ccf305241c2a"
+          }, {
+            "key" : "sha256",
+            "value" : "c643c7dc1057f241d70261f52fcde45c7f422df24c7725244bb9eb89636f2bcd"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/solaris2/5.10",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.i386.solaris",
+          "properties" : [ {
+            "key" : "sha512",
+            "value" : "a22103d0dcfdc1bc8a12512a682f3c2c4b27443714fecefda84357d9519787e12d2ff3e84b9f3ba636c77814a631a2ca4ce8d8192b0398c37374b29414e603b9"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "6482337c1ef844a4e755b2c933a353cd235406c3"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "a22103d0dcfdc1bc8a12512a682f3c2c4b27443714fecefda84357d9519787e12d2ff3e84b9f3ba636c77814a631a2ca4ce8d8192b0398c37374b29414e603b9"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "md5",
+            "value" : "ea9ac2f0ce698e64896307bfbb997edd"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "67f0211050f4ceb81c853b6d90231cf0113b83d7746ba9201cd66b31623f5a86"
+          }, {
+            "key" : "sha1",
+            "value" : "6482337c1ef844a4e755b2c933a353cd235406c3"
+          }, {
+            "key" : "sha256",
+            "value" : "67f0211050f4ceb81c853b6d90231cf0113b83d7746ba9201cd66b31623f5a86"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "solaris2"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "ea9ac2f0ce698e64896307bfbb997edd"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5.10"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/6",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el6.i386.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "057fb604c0799757c16e5b0bb9698406"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "8bda6894ff0a2ec68ce70eeda081d7d96422297a3dab2d5cd6d5a905c02a8ee0e91eef899a0e05b5f0135973859c011dbbb6d50ebc6d3831c8d91da5891bf6c5"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "caf20c19b5be1b5e7660e8d29b24784ad4591869a809564c6ba31cc100426ae6"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "sha1",
+            "value" : "bd1338b9f7a6209df96e42846887300f76e23399"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha256",
+            "value" : "caf20c19b5be1b5e7660e8d29b24784ad4591869a809564c6ba31cc100426ae6"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "bd1338b9f7a6209df96e42846887300f76e23399"
+          }, {
+            "key" : "md5",
+            "value" : "057fb604c0799757c16e5b0bb9698406"
+          }, {
+            "key" : "sha512",
+            "value" : "8bda6894ff0a2ec68ce70eeda081d7d96422297a3dab2d5cd6d5a905c02a8ee0e91eef899a0e05b5f0135973859c011dbbb6d50ebc6d3831c8d91da5891bf6c5"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/7",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha1",
+            "value" : "bd7bcd9788b3b88ae54f77586bea543e40803df7"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "670a4904d1a3b36b00e1d9b73d0e0711a6c53c1777cc7688e03e3a902f880a33"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f4f531a50bc8314756039fd528fea2dd9f397fff445334284e071c96b24fce5508807407cc24f94ef9fbe655512ea7ba5197440995ffdd84d1e3312487090243"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c769b91304477075dd5fa2d73f044002"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "md5",
+            "value" : "c769b91304477075dd5fa2d73f044002"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha256",
+            "value" : "670a4904d1a3b36b00e1d9b73d0e0711a6c53c1777cc7688e03e3a902f880a33"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "bd7bcd9788b3b88ae54f77586bea543e40803df7"
+          }, {
+            "key" : "sha512",
+            "value" : "f4f531a50bc8314756039fd528fea2dd9f397fff445334284e071c96b24fce5508807407cc24f94ef9fbe655512ea7ba5197440995ffdd84d1e3312487090243"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2008r2",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.appx",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a229f2c8925743627d63df9fb0c2ab07"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha1",
+            "value" : "17c1988fe3953291962e3d96b512ae8375574ca6"
+          }, {
+            "key" : "sha256",
+            "value" : "637d369e5ddd37e4adb14b7540211144bc5bab961bfa08a0d0218aa7b66de834"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "98d1afa0be99e5a7346e274a06a5fa0185593d67e5ce192b01ca5075fa2f565f7da7515a3bb185261463c31e5e7b4ff60925a391f8e43b0d30718713385a7faf"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "md5",
+            "value" : "a229f2c8925743627d63df9fb0c2ab07"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "637d369e5ddd37e4adb14b7540211144bc5bab961bfa08a0d0218aa7b66de834"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "17c1988fe3953291962e3d96b512ae8375574ca6"
+          }, {
+            "key" : "sha512",
+            "value" : "98d1afa0be99e5a7346e274a06a5fa0185593d67e5ce192b01ca5075fa2f565f7da7515a3bb185261463c31e5e7b4ff60925a391f8e43b0d30718713385a7faf"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/ubuntu/16.04",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "63b7239ab30f32305097a22edd9645639951d7193d1b6035965d7d88fc5cf54f6f7c0fa18ae7ba45f42b9443edd49ca84ab5fa76cfa95a20d8ccb498cdb6710d"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f2910b9fd87d96d0473d0505881271ca"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36e764edee092e1f1e17dd79b287479b612e1e55"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "6763b24dc0a04f79aa7d1379a18fbb6e28e512cb1699957a490ff1a995dcfbd6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha512",
+            "value" : "63b7239ab30f32305097a22edd9645639951d7193d1b6035965d7d88fc5cf54f6f7c0fa18ae7ba45f42b9443edd49ca84ab5fa76cfa95a20d8ccb498cdb6710d"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha256",
+            "value" : "6763b24dc0a04f79aa7d1379a18fbb6e28e512cb1699957a490ff1a995dcfbd6"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "md5",
+            "value" : "f2910b9fd87d96d0473d0505881271ca"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha1",
+            "value" : "36e764edee092e1f1e17dd79b287479b612e1e55"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/freebsd/9",
+          "name" : "angry-omnibus-toolchain-1.1.57_1.i386.sh",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha1",
+            "value" : "de8f88106cd423ab82b2dd850ae99323117422e8"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "9"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "de8f88106cd423ab82b2dd850ae99323117422e8"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha256",
+            "value" : "1a9d0031dd8d433de4ed395afef2924050db984000211c534a5549916fdad498"
+          }, {
+            "key" : "md5",
+            "value" : "acd31be824c788a5fce8c943db663b25"
+          }, {
+            "key" : "sha512",
+            "value" : "8f37753fe7340499cfe15df10f9b11cab3842737ef2942cfe1ef08d5f8cceada37bbba236c428d9921cb2169f265cb82c50f26fd2cfb4701b39684452da1fd7a"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "8f37753fe7340499cfe15df10f9b11cab3842737ef2942cfe1ef08d5f8cceada37bbba236c428d9921cb2169f265cb82c50f26fd2cfb4701b39684452da1fd7a"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1a9d0031dd8d433de4ed395afef2924050db984000211c534a5549916fdad498"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "acd31be824c788a5fce8c943db663b25"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "freebsd"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2008r2",
+          "name" : "angry-omnibus-toolchain-1.1.57-1-x64.msi",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3385849999f84b3c9b1768d20ff44f33"
+          }, {
+            "key" : "sha512",
+            "value" : "fe6bba3a2f1e02184be4f46322586b600ea89283280d1c8a9f783598d245f7498c1740d72e9261e4005bbe886d63ae2df78cbe5b1b34ea054d82a43b014a1927"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1dfe4bb7bb0ccc43ee8d79371412d68ca9bf2606"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha1",
+            "value" : "1dfe4bb7bb0ccc43ee8d79371412d68ca9bf2606"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3ad4a33bd3c844a9ce7aed2a13392de1f1a5d1ce3dbaa5b0746baa1e16965eaf"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          }, {
+            "key" : "md5",
+            "value" : "3385849999f84b3c9b1768d20ff44f33"
+          }, {
+            "key" : "sha256",
+            "value" : "3ad4a33bd3c844a9ce7aed2a13392de1f1a5d1ce3dbaa5b0746baa1e16965eaf"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fe6bba3a2f1e02184be4f46322586b600ea89283280d1c8a9f783598d245f7498c1740d72e9261e4005bbe886d63ae2df78cbe5b1b34ea054d82a43b014a1927"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/debian/7",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "747eb33b6df9053eac29c0e94006d2c6b8b2bcd6097b2bd3bd1ba5612b7e3da0"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "4630bf93211c4c61d990b90ae68c041c54fae64b"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f9a947d9afa3585a2ad8c47fe270dff8"
+          }, {
+            "key" : "sha512",
+            "value" : "f073d5c051cd731ec8aab892570c5c65ad980b6b5a256f8bef63698aa0f9a12d026677d7f8f63f08a9388f534caecd2757790003c27c684f225415a0d4cfae31"
+          }, {
+            "key" : "md5",
+            "value" : "f9a947d9afa3585a2ad8c47fe270dff8"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha256",
+            "value" : "747eb33b6df9053eac29c0e94006d2c6b8b2bcd6097b2bd3bd1ba5612b7e3da0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f073d5c051cd731ec8aab892570c5c65ad980b6b5a256f8bef63698aa0f9a12d026677d7f8f63f08a9388f534caecd2757790003c27c684f225415a0d4cfae31"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "sha1",
+            "value" : "4630bf93211c4c61d990b90ae68c041c54fae64b"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/freebsd/10",
+          "name" : "angry-omnibus-toolchain-1.1.57_1.i386.sh",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "25b072e62959e76ce883470a55c22652d2d5e829"
+          }, {
+            "key" : "md5",
+            "value" : "ecec09156e736df56b88383531c7555d"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "6c146a5a81fc2f74582a16417f3cb35d6f23320c63428b74faa2143e2cd11ef83a115ea73e054c385e7d9188933b732cf95145153c7406486aa4c169f301d87a"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "sha1",
+            "value" : "25b072e62959e76ce883470a55c22652d2d5e829"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "7eea1017746596d9e19f46e3add9acbd419d87c22b16ef71f867ffc0835dc8a2"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "ecec09156e736df56b88383531c7555d"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "freebsd"
+          }, {
+            "key" : "sha512",
+            "value" : "6c146a5a81fc2f74582a16417f3cb35d6f23320c63428b74faa2143e2cd11ef83a115ea73e054c385e7d9188933b732cf95145153c7406486aa4c169f301d87a"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha256",
+            "value" : "7eea1017746596d9e19f46e3add9acbd419d87c22b16ef71f867ffc0835dc8a2"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/mac_os_x/10.12",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.dmg",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha1",
+            "value" : "f9ba7c8ac17ff1d6c198e38f5dc312d89d7526a9"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f9ba7c8ac17ff1d6c198e38f5dc312d89d7526a9"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha512",
+            "value" : "4abc23cd31ba9ad3fe7696aa73a4517be98bd66e5afa286d1ccf5a5461daf7ab688e7fbd8fcf94e03a9b3ecd7bb352e74ce0810def4053eedf1902a58bd27942"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c4344ed73200b8f7ad5bc2804a104a3b"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1abecd6636bbda90999d228f1f603c0e0b5a3c471ce7750e50e6bbadc6b8b430"
+          }, {
+            "key" : "md5",
+            "value" : "c4344ed73200b8f7ad5bc2804a104a3b"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.12"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4abc23cd31ba9ad3fe7696aa73a4517be98bd66e5afa286d1ccf5a5461daf7ab688e7fbd8fcf94e03a9b3ecd7bb352e74ce0810def4053eedf1902a58bd27942"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha256",
+            "value" : "1abecd6636bbda90999d228f1f603c0e0b5a3c471ce7750e50e6bbadc6b8b430"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2012",
+          "name" : "angry-omnibus-toolchain-1.1.57-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "490104ca20c30cd2f46c3e8c66e4fb38ea224a37619d97440b118ccf51457ffa"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "3c2817733b54d01cceabb1e714d33bbb167a7e70"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ed872b36fe8924027e0d305788ef245455efa4ab29025916cb2514f5d3ed368ae12464b0bc25a2638c245597fe44eae83743ea4371c3b853c3859353da1fec30"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "sha512",
+            "value" : "ed872b36fe8924027e0d305788ef245455efa4ab29025916cb2514f5d3ed368ae12464b0bc25a2638c245597fe44eae83743ea4371c3b853c3859353da1fec30"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha256",
+            "value" : "490104ca20c30cd2f46c3e8c66e4fb38ea224a37619d97440b118ccf51457ffa"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha1",
+            "value" : "3c2817733b54d01cceabb1e714d33bbb167a7e70"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "6c27d2be04769479803d6da9262045c9"
+          }, {
+            "key" : "md5",
+            "value" : "6c27d2be04769479803d6da9262045c9"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/ubuntu/16.04",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "16.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "47e328e588b61aae5ecb362e696e6be497479534681cc65d117bca39d3e9d405dd76fed6fd131b0690054f554ecf8a50967de6b9a66efeaa717d14c51c721fd0"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "36e8c84680d47e594fff77cac0179cd2fdd25f998dc3395c9633261649d22867"
+          }, {
+            "key" : "sha512",
+            "value" : "47e328e588b61aae5ecb362e696e6be497479534681cc65d117bca39d3e9d405dd76fed6fd131b0690054f554ecf8a50967de6b9a66efeaa717d14c51c721fd0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "70a79f91c1966f89786aa916369710b22ee23138"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3364a86bc872b0e8e157e753f662d9a7"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha1",
+            "value" : "70a79f91c1966f89786aa916369710b22ee23138"
+          }, {
+            "key" : "sha256",
+            "value" : "36e8c84680d47e594fff77cac0179cd2fdd25f998dc3395c9633261649d22867"
+          }, {
+            "key" : "md5",
+            "value" : "3364a86bc872b0e8e157e753f662d9a7"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.change"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/mac_os_x/10.10",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "c4344ed73200b8f7ad5bc2804a104a3b"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.10"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1abecd6636bbda90999d228f1f603c0e0b5a3c471ce7750e50e6bbadc6b8b430"
+          }, {
+            "key" : "sha512",
+            "value" : "4abc23cd31ba9ad3fe7696aa73a4517be98bd66e5afa286d1ccf5a5461daf7ab688e7fbd8fcf94e03a9b3ecd7bb352e74ce0810def4053eedf1902a58bd27942"
+          }, {
+            "key" : "md5",
+            "value" : "c4344ed73200b8f7ad5bc2804a104a3b"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha1",
+            "value" : "f9ba7c8ac17ff1d6c198e38f5dc312d89d7526a9"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4abc23cd31ba9ad3fe7696aa73a4517be98bd66e5afa286d1ccf5a5461daf7ab688e7fbd8fcf94e03a9b3ecd7bb352e74ce0810def4053eedf1902a58bd27942"
+          }, {
+            "key" : "sha256",
+            "value" : "1abecd6636bbda90999d228f1f603c0e0b5a3c471ce7750e50e6bbadc6b8b430"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f9ba7c8ac17ff1d6c198e38f5dc312d89d7526a9"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/debian/7",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha256",
+            "value" : "faf07bc255a5184ddc77480490dbd00fe277bd858fd0acfbdc9ee0039b382698"
+          }, {
+            "key" : "sha512",
+            "value" : "3ee036cd6ef20acf787e0bd77e08b70ae4b293234be6f3b2b6d92e35f4acba14c22ab398c83466c02390f560a68162409f025f3ff90badf595bdbcdd5194e808"
+          }, {
+            "key" : "md5",
+            "value" : "5afb5ed972860a1987b7e3c327209563"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "3ee036cd6ef20acf787e0bd77e08b70ae4b293234be6f3b2b6d92e35f4acba14c22ab398c83466c02390f560a68162409f025f3ff90badf595bdbcdd5194e808"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "bc6a697c543f96e038e888d42ae029b862bf8250"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "sha1",
+            "value" : "bc6a697c543f96e038e888d42ae029b862bf8250"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "5afb5ed972860a1987b7e3c327209563"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "faf07bc255a5184ddc77480490dbd00fe277bd858fd0acfbdc9ee0039b382698"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2012r2",
+          "name" : "angry-omnibus-toolchain-1.1.57-1-x86.msi",
+          "properties" : [ {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha1",
+            "value" : "3c2817733b54d01cceabb1e714d33bbb167a7e70"
+          }, {
+            "key" : "sha512",
+            "value" : "ed872b36fe8924027e0d305788ef245455efa4ab29025916cb2514f5d3ed368ae12464b0bc25a2638c245597fe44eae83743ea4371c3b853c3859353da1fec30"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "490104ca20c30cd2f46c3e8c66e4fb38ea224a37619d97440b118ccf51457ffa"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "6c27d2be04769479803d6da9262045c9"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "3c2817733b54d01cceabb1e714d33bbb167a7e70"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ed872b36fe8924027e0d305788ef245455efa4ab29025916cb2514f5d3ed368ae12464b0bc25a2638c245597fe44eae83743ea4371c3b853c3859353da1fec30"
+          }, {
+            "key" : "sha256",
+            "value" : "490104ca20c30cd2f46c3e8c66e4fb38ea224a37619d97440b118ccf51457ffa"
+          }, {
+            "key" : "md5",
+            "value" : "6c27d2be04769479803d6da9262045c9"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2012",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.appx",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "sha1",
+            "value" : "17c1988fe3953291962e3d96b512ae8375574ca6"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a229f2c8925743627d63df9fb0c2ab07"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "17c1988fe3953291962e3d96b512ae8375574ca6"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "98d1afa0be99e5a7346e274a06a5fa0185593d67e5ce192b01ca5075fa2f565f7da7515a3bb185261463c31e5e7b4ff60925a391f8e43b0d30718713385a7faf"
+          }, {
+            "key" : "md5",
+            "value" : "a229f2c8925743627d63df9fb0c2ab07"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "637d369e5ddd37e4adb14b7540211144bc5bab961bfa08a0d0218aa7b66de834"
+          }, {
+            "key" : "sha256",
+            "value" : "637d369e5ddd37e4adb14b7540211144bc5bab961bfa08a0d0218aa7b66de834"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha512",
+            "value" : "98d1afa0be99e5a7346e274a06a5fa0185593d67e5ce192b01ca5075fa2f565f7da7515a3bb185261463c31e5e7b4ff60925a391f8e43b0d30718713385a7faf"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/aix/7.1",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.powerpc.bff",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "c7632df3f3a36d8ff058549ea2ed17af0c63152578c217fedc9c9f97b6a1928f"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "e7f62655d961dd54e08a93ffa0f3a119504208c38433c4bed68bee6335491752fb3252173cc2dbc9a19e17b03f44402668d0443e1ceb7baaa490cf2c0da5f150"
+          }, {
+            "key" : "md5",
+            "value" : "75558911d78106be34ce035ddffe9b87"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "powerpc"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "75558911d78106be34ce035ddffe9b87"
+          }, {
+            "key" : "sha256",
+            "value" : "c7632df3f3a36d8ff058549ea2ed17af0c63152578c217fedc9c9f97b6a1928f"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7.1"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha1",
+            "value" : "14d2f8c21e0ac6dd3687ddf886472bffdf7197dd"
+          }, {
+            "key" : "sha512",
+            "value" : "e7f62655d961dd54e08a93ffa0f3a119504208c38433c4bed68bee6335491752fb3252173cc2dbc9a19e17b03f44402668d0443e1ceb7baaa490cf2c0da5f150"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "14d2f8c21e0ac6dd3687ddf886472bffdf7197dd"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "aix"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/solaris2/5.11",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.sparc.p5p",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "d280361982baa2589b300590d3d4aae3"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "sparc"
+          }, {
+            "key" : "md5",
+            "value" : "d280361982baa2589b300590d3d4aae3"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "solaris2"
+          }, {
+            "key" : "sha1",
+            "value" : "07ef8a053fb79cc42d56bef3c93c690289ffc4fe"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha512",
+            "value" : "702479c666a3cd71027b064723155bbde9b79e410dc6f1a4d76c2d1ab11a8e21be79cf73edc3b9f9989aba9044bda038fc3ad05317ff9a88624bc9833892196f"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5.11"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "702479c666a3cd71027b064723155bbde9b79e410dc6f1a4d76c2d1ab11a8e21be79cf73edc3b9f9989aba9044bda038fc3ad05317ff9a88624bc9833892196f"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha256",
+            "value" : "19c206d5b3593e1bb3893e29af5f6346800cd777de3fd3b401f071311545212e"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "19c206d5b3593e1bb3893e29af5f6346800cd777de3fd3b401f071311545212e"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "07ef8a053fb79cc42d56bef3c93c690289ffc4fe"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/solaris2/5.10",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.sparc.solaris",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "sparc"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha256",
+            "value" : "aaf582c176d5d27b594517c36a821363eaa5570f02a2167be473fc30ebb02991"
+          }, {
+            "key" : "md5",
+            "value" : "330e880080f29153034519d2aae0094b"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "7a706de0828a448882069f3e028b2ccf734a4743"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5.10"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "aaf582c176d5d27b594517c36a821363eaa5570f02a2167be473fc30ebb02991"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "solaris2"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha512",
+            "value" : "251cbbd73bcc8a4705968f2ffd55af3f05df1cb666f42e26a808468382eb863c19651384ec4d0b6b031fdeeac091bf975a1174532d0c72df67ad756b29e6cd9e"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "251cbbd73bcc8a4705968f2ffd55af3f05df1cb666f42e26a808468382eb863c19651384ec4d0b6b031fdeeac091bf975a1174532d0c72df67ad756b29e6cd9e"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "330e880080f29153034519d2aae0094b"
+          }, {
+            "key" : "sha1",
+            "value" : "7a706de0828a448882069f3e028b2ccf734a4743"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/mac_os_x/10.11",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.dmg",
+          "properties" : [ {
+            "key" : "omnibus.md5",
+            "value" : "c4344ed73200b8f7ad5bc2804a104a3b"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha256",
+            "value" : "1abecd6636bbda90999d228f1f603c0e0b5a3c471ce7750e50e6bbadc6b8b430"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "f9ba7c8ac17ff1d6c198e38f5dc312d89d7526a9"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.11"
+          }, {
+            "key" : "sha1",
+            "value" : "f9ba7c8ac17ff1d6c198e38f5dc312d89d7526a9"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "4abc23cd31ba9ad3fe7696aa73a4517be98bd66e5afa286d1ccf5a5461daf7ab688e7fbd8fcf94e03a9b3ecd7bb352e74ce0810def4053eedf1902a58bd27942"
+          }, {
+            "key" : "md5",
+            "value" : "c4344ed73200b8f7ad5bc2804a104a3b"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "1abecd6636bbda90999d228f1f603c0e0b5a3c471ce7750e50e6bbadc6b8b430"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha512",
+            "value" : "4abc23cd31ba9ad3fe7696aa73a4517be98bd66e5afa286d1ccf5a5461daf7ab688e7fbd8fcf94e03a9b3ecd7bb352e74ce0810def4053eedf1902a58bd27942"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "mac_os_x"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2012r2",
+          "name" : "angry-omnibus-toolchain-1.1.57-1-x64.msi",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "md5",
+            "value" : "3385849999f84b3c9b1768d20ff44f33"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fe6bba3a2f1e02184be4f46322586b600ea89283280d1c8a9f783598d245f7498c1740d72e9261e4005bbe886d63ae2df78cbe5b1b34ea054d82a43b014a1927"
+          }, {
+            "key" : "sha256",
+            "value" : "3ad4a33bd3c844a9ce7aed2a13392de1f1a5d1ce3dbaa5b0746baa1e16965eaf"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha1",
+            "value" : "1dfe4bb7bb0ccc43ee8d79371412d68ca9bf2606"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3ad4a33bd3c844a9ce7aed2a13392de1f1a5d1ce3dbaa5b0746baa1e16965eaf"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1dfe4bb7bb0ccc43ee8d79371412d68ca9bf2606"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3385849999f84b3c9b1768d20ff44f33"
+          }, {
+            "key" : "sha512",
+            "value" : "fe6bba3a2f1e02184be4f46322586b600ea89283280d1c8a9f783598d245f7498c1740d72e9261e4005bbe886d63ae2df78cbe5b1b34ea054d82a43b014a1927"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/6",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el6.s390x.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha256",
+            "value" : "5233233fb1bf505233b611630b76ece505be5cb20e8845bd5c3663da62b98a82"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "a7b333cc0ac1b2726971ce59ea8e1c637d92cd28"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "5233233fb1bf505233b611630b76ece505be5cb20e8845bd5c3663da62b98a82"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "99f4bd28110261de9f3993e4e3ec10440223b471f6b9a99b14d84fd280f4ec0ad8c5ec8dcd4c0c8b6386397f55572387cc8890ed417bc6dcb506f15ae4b29639"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "sha512",
+            "value" : "99f4bd28110261de9f3993e4e3ec10440223b471f6b9a99b14d84fd280f4ec0ad8c5ec8dcd4c0c8b6386397f55572387cc8890ed417bc6dcb506f15ae4b29639"
+          }, {
+            "key" : "md5",
+            "value" : "a6c93bb7d3e8b1e1ee60cdeaab1e8e25"
+          }, {
+            "key" : "sha1",
+            "value" : "a7b333cc0ac1b2726971ce59ea8e1c637d92cd28"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "s390x"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a6c93bb7d3e8b1e1ee60cdeaab1e8e25"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/solaris2/5.11",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.i386.p5p",
+          "properties" : [ {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "fdcb0efd3896c48463338a1ec19084a001d3f8c9cf8f5dad6dff4144f3d81e5e"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "4340168538f4456093fa380f1c81c47608eb0af9"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "solaris2"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "md5",
+            "value" : "a47d89fb9b269e3cddb924dd932599f8"
+          }, {
+            "key" : "sha1",
+            "value" : "4340168538f4456093fa380f1c81c47608eb0af9"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha512",
+            "value" : "1fb104cddae9f14991dcb1c19469d5b2615e5e1b4b4c92c3ed00b0dbd643497305d5c1daa1aa20960c1b1970b28bc583fba74403549fe44a180cf618dcb51b61"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "1fb104cddae9f14991dcb1c19469d5b2615e5e1b4b4c92c3ed00b0dbd643497305d5c1daa1aa20960c1b1970b28bc583fba74403549fe44a180cf618dcb51b61"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a47d89fb9b269e3cddb924dd932599f8"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha256",
+            "value" : "fdcb0efd3896c48463338a1ec19084a001d3f8c9cf8f5dad6dff4144f3d81e5e"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5.11"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2012",
+          "name" : "angry-omnibus-toolchain-1.1.57-1-x64.msi",
+          "properties" : [ {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3385849999f84b3c9b1768d20ff44f33"
+          }, {
+            "key" : "sha512",
+            "value" : "fe6bba3a2f1e02184be4f46322586b600ea89283280d1c8a9f783598d245f7498c1740d72e9261e4005bbe886d63ae2df78cbe5b1b34ea054d82a43b014a1927"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1dfe4bb7bb0ccc43ee8d79371412d68ca9bf2606"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2012"
+          }, {
+            "key" : "sha256",
+            "value" : "3ad4a33bd3c844a9ce7aed2a13392de1f1a5d1ce3dbaa5b0746baa1e16965eaf"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "fe6bba3a2f1e02184be4f46322586b600ea89283280d1c8a9f783598d245f7498c1740d72e9261e4005bbe886d63ae2df78cbe5b1b34ea054d82a43b014a1927"
+          }, {
+            "key" : "md5",
+            "value" : "3385849999f84b3c9b1768d20ff44f33"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "3ad4a33bd3c844a9ce7aed2a13392de1f1a5d1ce3dbaa5b0746baa1e16965eaf"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha1",
+            "value" : "1dfe4bb7bb0ccc43ee8d79371412d68ca9bf2606"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/ubuntu/12.04",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_amd64.deb",
+          "properties" : [ {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "sha256",
+            "value" : "6763b24dc0a04f79aa7d1379a18fbb6e28e512cb1699957a490ff1a995dcfbd6"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f2910b9fd87d96d0473d0505881271ca"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "6763b24dc0a04f79aa7d1379a18fbb6e28e512cb1699957a490ff1a995dcfbd6"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "63b7239ab30f32305097a22edd9645639951d7193d1b6035965d7d88fc5cf54f6f7c0fa18ae7ba45f42b9443edd49ca84ab5fa76cfa95a20d8ccb498cdb6710d"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "sha1",
+            "value" : "36e764edee092e1f1e17dd79b287479b612e1e55"
+          }, {
+            "key" : "sha512",
+            "value" : "63b7239ab30f32305097a22edd9645639951d7193d1b6035965d7d88fc5cf54f6f7c0fa18ae7ba45f42b9443edd49ca84ab5fa76cfa95a20d8ccb498cdb6710d"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "36e764edee092e1f1e17dd79b287479b612e1e55"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "md5",
+            "value" : "f2910b9fd87d96d0473d0505881271ca"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/7",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el7.s390x.rpm",
+          "properties" : [ {
+            "key" : "md5",
+            "value" : "97118aceff94050738d726dd52abb213"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "sha256",
+            "value" : "28cd77475df4e88a392a34b93c68b6e31dd045232da8d613130da732f8d59cd3"
+          }, {
+            "key" : "sha1",
+            "value" : "3822faf9cd315e84cdd4cf33b3eb2ffc72a4682a"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "28cd77475df4e88a392a34b93c68b6e31dd045232da8d613130da732f8d59cd3"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "3822faf9cd315e84cdd4cf33b3eb2ffc72a4682a"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ad29eb53db7b6c1a03da633d367767c14e07e440fed2a6832cd785f199ea2665d81cae58411f1fc3753aa63087c266baf601215d7931c839e0c2974c75627072"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "97118aceff94050738d726dd52abb213"
+          }, {
+            "key" : "sha512",
+            "value" : "ad29eb53db7b6c1a03da633d367767c14e07e440fed2a6832cd785f199ea2665d81cae58411f1fc3753aa63087c266baf601215d7931c839e0c2974c75627072"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "s390x"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2012r2",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.appx",
+          "properties" : [ {
+            "key" : "omnibus.platform_version",
+            "value" : "2012r2"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "sha1",
+            "value" : "17c1988fe3953291962e3d96b512ae8375574ca6"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "98d1afa0be99e5a7346e274a06a5fa0185593d67e5ce192b01ca5075fa2f565f7da7515a3bb185261463c31e5e7b4ff60925a391f8e43b0d30718713385a7faf"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "637d369e5ddd37e4adb14b7540211144bc5bab961bfa08a0d0218aa7b66de834"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "17c1988fe3953291962e3d96b512ae8375574ca6"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "a229f2c8925743627d63df9fb0c2ab07"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha512",
+            "value" : "98d1afa0be99e5a7346e274a06a5fa0185593d67e5ce192b01ca5075fa2f565f7da7515a3bb185261463c31e5e7b4ff60925a391f8e43b0d30718713385a7faf"
+          }, {
+            "key" : "sha256",
+            "value" : "637d369e5ddd37e4adb14b7540211144bc5bab961bfa08a0d0218aa7b66de834"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "md5",
+            "value" : "a229f2c8925743627d63df9fb0c2ab07"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/windows/2008r2",
+          "name" : "angry-omnibus-toolchain-1.1.57-1-x86.msi",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha512",
+            "value" : "ed872b36fe8924027e0d305788ef245455efa4ab29025916cb2514f5d3ed368ae12464b0bc25a2638c245597fe44eae83743ea4371c3b853c3859353da1fec30"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "windows"
+          }, {
+            "key" : "sha1",
+            "value" : "3c2817733b54d01cceabb1e714d33bbb167a7e70"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "3c2817733b54d01cceabb1e714d33bbb167a7e70"
+          }, {
+            "key" : "sha256",
+            "value" : "490104ca20c30cd2f46c3e8c66e4fb38ea224a37619d97440b118ccf51457ffa"
+          }, {
+            "key" : "md5",
+            "value" : "6c27d2be04769479803d6da9262045c9"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "ed872b36fe8924027e0d305788ef245455efa4ab29025916cb2514f5d3ed368ae12464b0bc25a2638c245597fe44eae83743ea4371c3b853c3859353da1fec30"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "6c27d2be04769479803d6da9262045c9"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "490104ca20c30cd2f46c3e8c66e4fb38ea224a37619d97440b118ccf51457ffa"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i386"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "2008r2"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/debian/6",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_i386.deb",
+          "properties" : [ {
+            "key" : "omnibus.sha512",
+            "value" : "f073d5c051cd731ec8aab892570c5c65ad980b6b5a256f8bef63698aa0f9a12d026677d7f8f63f08a9388f534caecd2757790003c27c684f225415a0d4cfae31"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "md5",
+            "value" : "f9a947d9afa3585a2ad8c47fe270dff8"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha512",
+            "value" : "f073d5c051cd731ec8aab892570c5c65ad980b6b5a256f8bef63698aa0f9a12d026677d7f8f63f08a9388f534caecd2757790003c27c684f225415a0d4cfae31"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "f9a947d9afa3585a2ad8c47fe270dff8"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "debian"
+          }, {
+            "key" : "sha256",
+            "value" : "747eb33b6df9053eac29c0e94006d2c6b8b2bcd6097b2bd3bd1ba5612b7e3da0"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "747eb33b6df9053eac29c0e94006d2c6b8b2bcd6097b2bd3bd1ba5612b7e3da0"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "4630bf93211c4c61d990b90ae68c041c54fae64b"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "sha1",
+            "value" : "4630bf93211c4c61d990b90ae68c041c54fae64b"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/sles/12",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.sles12.s390x.rpm",
+          "properties" : [ {
+            "key" : "omnibus.architecture",
+            "value" : "s390x"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha512",
+            "value" : "f39bd6d94e65319b64161abe626e6c1c5195bfe1c6b1d582cee12928ccbaf0d4060002bd76a0c2b112663399a0fb57404bd777602a5fc32824c49d555022eb09"
+          }, {
+            "key" : "md5",
+            "value" : "de90c3a7eed7c9209bd4c799101944de"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "sles"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "de90c3a7eed7c9209bd4c799101944de"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "24390689ac799185f42a2935056ce792de3d807c6e9df771ecec0aa2dab37dfe"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "f39bd6d94e65319b64161abe626e6c1c5195bfe1c6b1d582cee12928ccbaf0d4060002bd76a0c2b112663399a0fb57404bd777602a5fc32824c49d555022eb09"
+          }, {
+            "key" : "sha1",
+            "value" : "62b9cb240008a42e663aa472c17c65b35f0acaab"
+          }, {
+            "key" : "sha256",
+            "value" : "24390689ac799185f42a2935056ce792de3d807c6e9df771ecec0aa2dab37dfe"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "62b9cb240008a42e663aa472c17c65b35f0acaab"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/el/6",
+          "name" : "angry-omnibus-toolchain-1.1.57-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "sha1",
+            "value" : "1c10f1d58830b9256e2563e2b0e61147ac6171da"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "81b4fcb57b7f8800596b17261067d16ab5adda4df13c8ce0d8dbdbbb512adf6aafda4ca45d41526a0b4435fe624ca8abd61ed5b7de63e60a610cb41ddeec5852"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "1c10f1d58830b9256e2563e2b0e61147ac6171da"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "0032b5548ce597415b5ceceb2a59763b"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "sha256",
+            "value" : "97d46a9d90925bdcad1c284ba8fb69e1438592f99911bf1d51e543b421199b6d"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "md5",
+            "value" : "0032b5548ce597415b5ceceb2a59763b"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "97d46a9d90925bdcad1c284ba8fb69e1438592f99911bf1d51e543b421199b6d"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "sha512",
+            "value" : "81b4fcb57b7f8800596b17261067d16ab5adda4df13c8ce0d8dbdbbb512adf6aafda4ca45d41526a0b4435fe624ca8abd61ed5b7de63e60a610cb41ddeec5852"
+          }, {
+            "key" : "delivery.sha"
+          } ]
+        },{
+          "repo" : "omnibus-current-local",
+          "path" : "com/getchef/angry-omnibus-toolchain/1.1.57/ubuntu/14.04",
+          "name" : "angry-omnibus-toolchain_1.1.57-1_i386.deb",
+          "properties" : [ {
+            "key" : "md5",
+            "value" : "3364a86bc872b0e8e157e753f662d9a7"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "36e8c84680d47e594fff77cac0179cd2fdd25f998dc3395c9633261649d22867"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "3364a86bc872b0e8e157e753f662d9a7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "70a79f91c1966f89786aa916369710b22ee23138"
+          }, {
+            "key" : "omnibus.license",
+            "value" : "Apache-2.0"
+          }, {
+            "key" : "build.number",
+            "value" : "1.1.57"
+          }, {
+            "key" : "build.name",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "47e328e588b61aae5ecb362e696e6be497479534681cc65d117bca39d3e9d405dd76fed6fd131b0690054f554ecf8a50967de6b9a66efeaa717d14c51c721fd0"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "i686"
+          }, {
+            "key" : "sha256",
+            "value" : "36e8c84680d47e594fff77cac0179cd2fdd25f998dc3395c9633261649d22867"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "angry-omnibus-toolchain"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "1.1.57"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "sha1",
+            "value" : "70a79f91c1966f89786aa916369710b22ee23138"
+          }, {
+            "key" : "sha512",
+            "value" : "47e328e588b61aae5ecb362e696e6be497479534681cc65d117bca39d3e9d405dd76fed6fd131b0690054f554ecf8a50967de6b9a66efeaa717d14c51c721fd0"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 46,
+          "total" : 46
+        }
+        }
+    http_version: 
+  recorded_at: Fri, 17 Mar 2017 16:07:34 GMT
+recorded_with: VCR 3.0.3
