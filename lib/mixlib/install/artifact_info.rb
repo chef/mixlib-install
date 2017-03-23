@@ -76,6 +76,10 @@ module Mixlib
       def clone_with(data)
         ArtifactInfo.new(self.to_hash.merge(data))
       end
+
+      def appx_artifact?
+        url.end_with?(".appx")
+      end
     end
   end
 end

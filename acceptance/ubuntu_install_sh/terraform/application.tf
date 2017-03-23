@@ -60,7 +60,7 @@ resource "aws_instance" "mixlib_install_sh" {
     X-Dept        = "EngServ"
     X-Contact     = "pwright"
     X-Production  = "false"
-    X-Environment = "development"
+    X-Environment = "acceptance"
     X-Application = "mixlib-install"
   }
 

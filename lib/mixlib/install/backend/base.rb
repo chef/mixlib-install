@@ -146,11 +146,11 @@ EOF
 
           # We only return appx packages when a nano platform version is requested.
           if options.class::SUPPORTED_WINDOWS_NANO_VERSIONS.include?(options.original_platform_version)
-            return artifacts.find_all { |a| appx_artifact?(a) }
+            return artifacts.find_all { |a| a.appx_artifact? }
 
           # Otherwise, we only return msi artifacts and remove all appx packages
           else
-            artifacts.delete_if { |a| appx_artifact?(a) }
+            artifacts.delete_if { |a| a.appx_artifact? }
           end
 
           artifacts.each do |r|
@@ -268,10 +268,6 @@ EOF
 
             base_artifact.clone_with(options)
           end
-        end
-
-        def appx_artifact?(artifact)
-          artifact.url.end_with?(".appx")
         end
       end
     end
