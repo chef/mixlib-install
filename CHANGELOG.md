@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.1.0]
+- Add support for Windows Nano 2016 (returns appx packages)
+
 ## [3.0.0]
 - [Breaking API Change] `Options` validation added to ensure that when any platform option is set they are all provided (platform, platform_version, architecture)
 - [Breaking API Change] The `platform_version_compatibility_mode` option will automatically be set to `true` when no platform options are provided
