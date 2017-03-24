@@ -494,4 +494,52 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       it_behaves_like "windows desktop download urls and expected architectures"
     end
   end
+
+  context "windows nano artifacts" do
+    let(:channel) { :current }
+    let(:product_name) { "angry-omnibus-toolchain" }
+    let(:product_version) { "1.1.57" }
+
+    context "without platform version" do
+      it "does not return appx packages" do
+        artifacts = artifact_info.find_all { |a| a.url.end_with?("appx") }
+        expect(artifacts.size).to eq 0
+      end
+
+      it "returns msi packages" do
+        artifacts = artifact_info.find_all { |a| a.url.end_with?("msi") }
+        expect(artifacts.size).to be > 0
+      end
+    end
+
+    context "with no found version" do
+      let(:platform) { "windows" }
+      let(:platform_version) { "2012r2" }
+      let(:architecture) { "x86_64" }
+      let(:product_version) { "99.99.99" }
+
+      it "raises exception with 2012r2 platform version" do
+        expect { artifact_info }.to raise_error /platform version: #{platform_version}/
+      end
+    end
+
+    context "with platform version 2016nano" do
+      let(:platform) { "windows" }
+      let(:platform_version) { "2016nano" }
+      let(:architecture) { "x86_64" }
+
+      it "returns 2012r2 appx package" do
+        expect(artifact_info.url).to include ".appx"
+        expect(artifact_info.platform_version).to eq "2012r2"
+      end
+
+      context "with no found version" do
+        let(:product_version) { "99.99.99" }
+
+        it "raises exception with 2016nano platform version" do
+          expect { artifact_info }.to raise_error /platform version: #{platform_version}/
+        end
+      end
+    end
+  end
 end

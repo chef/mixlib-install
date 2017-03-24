@@ -1,14 +1,14 @@
-data "aws_ami" "ubuntu_14_ami" {
+data "aws_ami" "windows_ami" {
   most_recent = true
 
   filter {
-    name   = "owner-id"
-    values = ["099720109477"]
+    name   = "owner-alias"
+    values = ["amazon"]
   }
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/*/ubuntu-*-14.04-*-server-*"]
+    values = ["Windows_Server-2016-English-Nano-Base-*"]
   }
 
   filter {
@@ -32,10 +32,10 @@ data "aws_ami" "ubuntu_14_ami" {
   }
 }
 
-resource "aws_instance" "mixlib_install_sh" {
+resource "aws_instance" "windows_server_nano_ami" {
   count = 1
 
-  ami           = "${data.aws_ami.ubuntu_14_ami.id}"
+  ami           = "${data.aws_ami.windows_ami.id}"
   instance_type = "${var.aws_instance_type}"
   key_name      = "es-infrastructure"
 
@@ -48,13 +48,6 @@ resource "aws_instance" "mixlib_install_sh" {
     "sg-96274af3",
   ]
 
-  connection {
-    user        = "ubuntu"
-    private_key = "${file("${var.connection_private_key}")}"
-    agent       = "${var.connection_agent}"
-    timeout  = "10m"
-  }
-
   tags {
     # ChefOps's AWS standard tags:
     X-Dept        = "EngServ"
@@ -62,17 +55,5 @@ resource "aws_instance" "mixlib_install_sh" {
     X-Production  = "false"
     X-Environment = "acceptance"
     X-Application = "mixlib-install"
-  }
-
-  provisioner "file" {
-    source      = "../../.acceptance_data/ubuntu_install_command.sh"
-    destination = "/tmp/install.sh"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /tmp/install.sh",
-      "sudo bash /tmp/install.sh",
-    ]
   }
 }

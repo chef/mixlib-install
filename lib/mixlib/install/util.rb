@@ -130,13 +130,13 @@ module Mixlib
           user_agents.flatten.compact.uniq.join(" ")
         end
 
-        def map_windows_desktop_version(version)
+        def map_windows_version(version)
           # This logic does not try to compare and determine proper versions based on conditions or ranges.
           # These are here to improve UX for desktop versions.
           case version
           when /^10/
             "2016"
-          when /^6.3/, /^8.1/
+          when /^6.3/, /^8.1/, /2016nano/
             "2012r2"
           when /^6.2/, /^8/
             "2012"

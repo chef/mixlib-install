@@ -26,8 +26,6 @@ module Mixlib
       class Base
         attr_reader :options
 
-        SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
-
         def initialize(options)
           @options = options
         end
@@ -123,14 +121,14 @@ module Mixlib
             return closest_compatible_artifact
           end
 
-           # Return an exception if we get to the end of the method
+          # Return an exception if we get to the end of the method
           raise ArtifactsNotFound, <<-EOF
 No artifacts found matching criteria.
   product name: #{options.product_name}
   channel: #{options.channel}
   version: #{options.product_version}
   platform: #{options.platform}
-  platform version: #{options.platform_version}
+  platform version: #{options.original_platform_version}
   architecture: #{options.architecture}
   compatibility mode: #{options.platform_version_compatibility_mode}
 EOF
@@ -145,6 +143,15 @@ EOF
         def windows_artifact_fixup!(artifacts)
           new_artifacts = [ ]
           native_artifacts = [ ]
+
+          # We only return appx packages when a nano platform version is requested.
+          if options.class::SUPPORTED_WINDOWS_NANO_VERSIONS.include?(options.original_platform_version)
+            return artifacts.find_all { |a| a.appx_artifact? }
+
+          # Otherwise, we only return msi artifacts and remove all appx packages
+          else
+            artifacts.delete_if { |a| a.appx_artifact? }
+          end
 
           artifacts.each do |r|
             next if r.platform != "windows"
@@ -241,7 +248,7 @@ EOF
         # See https://docs.chef.io/platforms.html
         #
         def map_custom_windows_desktop_versions(desktop_version)
-          server_version = Util.map_windows_desktop_version(desktop_version)
+          server_version = Util.map_windows_version(desktop_version)
 
           # Windows desktop 10 officially maps to server 2016.
           # However, we don't test on server 2016 at this time, so we default to 2012r2
@@ -255,7 +262,7 @@ EOF
         # options hash allows overriding any valid attribute
         #
         def clone_windows_desktop_artifacts(base_artifact, options = {})
-          SUPPORTED_WINDOWS_DESKTOP_VERSIONS.collect do |dv|
+          @options.class::SUPPORTED_WINDOWS_DESKTOP_VERSIONS.collect do |dv|
             options[:platform_version] = dv
             options[:url] = base_artifact.url.gsub("\/#{base_artifact.platform_version}\/", "\/#{map_custom_windows_desktop_versions(dv)}\/")
 

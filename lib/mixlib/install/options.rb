@@ -25,7 +25,7 @@ module Mixlib
     class Options
       class InvalidOptions < ArgumentError; end
 
-      attr_reader :options, :errors
+      attr_reader :options, :errors, :original_platform_version
 
       SUPPORTED_ARCHITECTURES = %w{
         i386
@@ -62,13 +62,20 @@ module Mixlib
         :user_agent_headers,
       ]
 
+      SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
+
+      SUPPORTED_WINDOWS_NANO_VERSIONS = %w{2016nano}
+
       def initialize(options)
         @options = options
         @errors = []
 
+        # Store original platform version in cases where we must remap it
+        @original_platform_version = options[:platform_version]
+
         resolve_platform_version_compatibility_mode!
 
-        map_windows_desktop_versions! if for_windows?
+        map_windows_versions!
 
         validate!
       end
@@ -213,8 +220,10 @@ Must provide platform, platform version and architecture when specifying any pla
         end
       end
 
-      def map_windows_desktop_versions!
-        options[:platform_version] = Util.map_windows_desktop_version(platform_version)
+      def map_windows_versions!
+        return unless for_windows?
+
+        options[:platform_version] = Util.map_windows_version(platform_version)
       end
 
       def all_or_none?(items)
