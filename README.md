@@ -16,10 +16,13 @@ Run `$ mixlib-install help` for additional commands and options.
 
 ## API Usage
 
-### Get URL for specific platform and package version
+### Load mixlib-install
 ```ruby
 require 'mixlib/install'
+```
 
+### Get URL for specific platform and package version
+```ruby
 options = {
   channel: :current,
   product_name: 'chef',
@@ -49,6 +52,39 @@ artifacts = Mixlib::Install.new(options).artifact_info
 
 artifacts.first.url
 # => => "https://packages.chef.io/files/current/chef/12.14.90/mac_os_x/10.11/chef-12.14.90-1.dmg"
+```
+
+### Get latest artifacts for a partial version
+```ruby
+options = {
+  channel: :current,
+  product_name: 'chef',
+  product_version: '12.14'
+}
+
+artifacts = Mixlib::Install.new(options).artifact_info
+# => [#<Mixlib::Install::ArtifactInfo>]
+
+artifacts.first.version
+# => "12.14.89"
+```
+
+### Get latest artifact for a partial version
+```ruby
+options = {
+  channel: :current,
+  product_name: 'chef',
+  product_version: '12',
+  platform: 'mac_os_x',
+  platform_version: '10.9',
+  architecture: 'x86_64'
+}
+
+artifact = Mixlib::Install.new(options).artifact_info
+# => #<Mixlib::Install::ArtifactInfo>
+
+artifact.version
+# => "12.19.36"
 ```
 
 ### Detect platform information

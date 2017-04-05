@@ -110,6 +110,10 @@ module Mixlib
         product_version.to_sym == :latest
       end
 
+      def partial_version?
+        !latest_version? && !Mixlib::Versioning.parse(product_version)
+      end
+
       def include_metadata?
         include_metadata.to_s == "true"
       end
