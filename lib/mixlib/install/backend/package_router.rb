@@ -21,6 +21,7 @@ require "mixlib/install/artifact_info"
 require "mixlib/install/backend/base"
 require "mixlib/install/product"
 require "mixlib/install/util"
+require "mixlib/versioning"
 require "net/http"
 
 module Mixlib
@@ -36,7 +37,7 @@ module Mixlib
         # @return [Array<ArtifactInfo>] list of artifacts for the configured
         # channel, product name, and product version.
         def available_artifacts
-          artifacts = if options.latest_version?
+          artifacts = if options.latest_version? || options.partial_version?
                         latest_version
                       else
                         artifacts_for_version(options.product_version)
@@ -89,12 +90,25 @@ EOF
 
         #
         # Get artifacts for the latest version, channel and product_name
+        # When a partial version is set the results will be filtered
+        # before return latest version.
         #
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         def latest_version
-          # Sort by created data
-          sorted_versions = versions.sort_by! { |b| b["created"] }.reverse!
-          version = extract_version_from_response(sorted_versions.first)
+          product_versions = if options.partial_version?
+                               v = options.product_version
+                               partial_version = v.end_with?(".") ? v : v + "."
+                               versions.find_all { |ver| extract_version_from_response(ver).start_with?(partial_version) }
+                             else
+                               versions
+                             end
+
+          # Use mixlib versioning to parse and sort versions
+          ordered_versions = product_versions.sort_by do |v|
+            Mixlib::Versioning.parse(extract_version_from_response(v))
+          end.reverse
+
+          version = extract_version_from_response(ordered_versions.first)
           artifacts_for_version(version)
         end
 

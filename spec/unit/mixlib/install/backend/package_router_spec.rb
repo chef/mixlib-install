@@ -542,4 +542,73 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       end
     end
   end
+
+  context "for partial product versions" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+
+    context "without platform info" do
+      %w{
+        12
+        11.18.
+      }.each do |version|
+        context "for version #{version}" do
+          let(:product_version) { version }
+          let(:expected_version) do
+            case version
+            when "12"
+              "12.19.36"
+            when "11.18."
+              "11.18.12"
+            else
+              nil
+            end
+          end
+
+          it "returns latest chef #{version} version" do
+            versions = artifact_info.map { |a| a.version }.uniq
+            expect(versions.size).to eq 1
+            expect(versions.first).to eq expected_version
+          end
+        end
+      end
+    end
+
+    context "with platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "14.04" }
+      let(:architecture) { "x86_64" }
+
+      %w{
+        12
+        12.
+        11
+        12.1
+        12.14
+        12.14.
+      }.each do |version|
+        context "for version #{version}" do
+          let(:product_version) { version }
+          let(:expected_version) do
+            case version
+            when "12", "12."
+              "12.19.36"
+            when "12.1", "12.1."
+              "12.1.2"
+            when "12.14", "12.14."
+              "12.14.89"
+            when "11", "11."
+              "11.18.12"
+            else
+              nil
+            end
+          end
+
+          it "returns latest chef #{version} version" do
+            expect(artifact_info.version).to eq expected_version
+          end
+        end
+      end
+    end
+  end
 end
