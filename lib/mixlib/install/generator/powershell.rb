@@ -25,7 +25,7 @@ module Mixlib
           install_project_module = []
           install_project_module << get_script("helpers.ps1", context)
           install_project_module << get_script("get_project_metadata.ps1", context)
-          install_project_module << get_script("install_project.ps1")
+          install_project_module << get_script("install_project.ps1", context)
 
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Omnitruck")
@@ -71,7 +71,12 @@ module Mixlib
           cmd << " -version #{options.product_version}"
           cmd << " -channel #{options.channel}"
           cmd << " -architecture #{options.architecture}" if options.architecture
+          cmd << install_command_params if options.install_command_options
           cmd << "\n"
+        end
+
+        def install_command_params
+          options.install_command_options.map { |key, value| " -#{key} '#{value}'" }.join
         end
       end
     end

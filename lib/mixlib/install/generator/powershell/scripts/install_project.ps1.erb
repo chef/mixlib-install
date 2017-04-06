@@ -45,8 +45,13 @@ function Install-Project {
     $architecture = 'auto',
     [validateset('auto', 'service', 'task')]
     [string]
-    $daemon = 'auto'
+    $daemon = 'auto',
+    [string]
+    $http_proxy<% unless http_proxy.nil? %> = '<%= http_proxy %>'<% end %>
   )
+
+  # Set http_proxy as env var
+  $env:http_proxy = $http_proxy
 
   $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
 
