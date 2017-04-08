@@ -57,7 +57,13 @@ module Mixlib
 project=#{options.product_name}
 version=#{options.product_version}
 channel=#{options.channel}
+#{install_command_vars}
 EOS
+        end
+
+        def install_command_vars
+          return if options.install_command_options.nil?
+          options.install_command_options.map { |key, value| "#{key}='#{value}'" }.join("\n")
         end
       end
     end

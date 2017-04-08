@@ -166,4 +166,45 @@ context "Mixlib::Install::Generator", :vcr do
       end
     end
   end
+
+  context "when setting install_command_options" do
+    let(:channel) { :stable }
+
+    context "for powershell install params" do
+      let(:install_command_options) do
+        { http_proxy: "http://sam:iam@greeneggsandham:1111" }
+      end
+
+      let(:add_options) do
+        {
+          install_command_options: install_command_options,
+          shell_type: :ps1,
+        }
+      end
+
+      it "#install_command adds http_proxy param" do
+        expect(install_script).to match(/install -project .* -version .* -channel .* -http_proxy '#{install_command_options[:http_proxy]}'\n/)
+      end
+
+      it "#install_ps1 adds http_proxy param" do
+        expect(Mixlib::Install.install_ps1(install_command_options)).to match(/\$http_proxy = '#{install_command_options[:http_proxy]}'/)
+      end
+    end
+
+    context "for bourne install params" do
+      let(:install_command_options) do
+        { cmdline_dl_dir: "/hereiam" }
+      end
+
+      let(:add_options) do
+        {
+          install_command_options: install_command_options,
+        }
+      end
+
+      it "adds cmdline_dl_dir var" do
+        expect(install_script).to match(/cmdline_dl_dir='#{install_command_options[:cmdline_dl_dir]}'/)
+      end
+    end
+  end
 end

@@ -49,6 +49,7 @@ module Mixlib
             # Default values to use incase they are not set in the context
             context[:base_url] ||= "https://omnitruck.chef.io"
             context[:user_agent_string] = Util.user_agent_string(context[:user_agent_headers])
+            context[:http_proxy] ||= nil
 
             context_object = OpenStruct.new(context).instance_eval { binding }
             ERB.new(File.read("#{script_path}.erb")).result(context_object)

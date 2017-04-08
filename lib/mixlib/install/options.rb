@@ -60,6 +60,7 @@ module Mixlib
         :platform_version_compatibility_mode,
         :include_metadata,
         :user_agent_headers,
+        :install_command_options,
       ]
 
       SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
