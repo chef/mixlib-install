@@ -25,7 +25,7 @@ module Mixlib
           install_project_module = []
           install_project_module << get_script("helpers.ps1", context)
           install_project_module << get_script("get_project_metadata.ps1", context)
-          install_project_module << get_script("install_project.ps1", context)
+          install_project_module << get_script("install_project.ps1")
 
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Omnitruck")
