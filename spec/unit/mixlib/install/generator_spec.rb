@@ -185,10 +185,6 @@ context "Mixlib::Install::Generator", :vcr do
       it "#install_command adds http_proxy param" do
         expect(install_script).to match(/install -project .* -version .* -channel .* -http_proxy '#{install_command_options[:http_proxy]}'\n/)
       end
-
-      it "#install_ps1 adds http_proxy param" do
-        expect(Mixlib::Install.install_ps1(install_command_options)).to match(/\$http_proxy = '#{install_command_options[:http_proxy]}'/)
-      end
     end
 
     context "for bourne install params" do

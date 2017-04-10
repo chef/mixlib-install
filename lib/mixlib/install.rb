@@ -197,8 +197,6 @@ module Mixlib
     # ------------------
     # base_url [String]
     #   url pointing to the omnitruck to be queried by the script.
-    # http_proxy [String]
-    #   http proxy url
     #
     def self.install_ps1(context = {})
       Mixlib::Install::Generator::PowerShell.install_ps1(context)

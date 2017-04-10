@@ -47,7 +47,7 @@ function Install-Project {
     [string]
     $daemon = 'auto',
     [string]
-    $http_proxy<% unless http_proxy.nil? %> = '<%= http_proxy %>'<% end %>
+    $http_proxy
   )
 
   # Set http_proxy as env var
