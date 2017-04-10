@@ -130,6 +130,16 @@ module Mixlib
           user_agents.flatten.compact.uniq.join(" ")
         end
 
+        def map_solaris_architecture(architecture)
+          # Map sun4u and sun4v to sparc
+          case architecture
+          when "sun4u", "sun4v"
+            "sparc"
+          else
+            architecture
+          end
+        end
+
         def map_windows_version(version)
           # This logic does not try to compare and determine proper versions based on conditions or ranges.
           # These are here to improve UX for desktop versions.
