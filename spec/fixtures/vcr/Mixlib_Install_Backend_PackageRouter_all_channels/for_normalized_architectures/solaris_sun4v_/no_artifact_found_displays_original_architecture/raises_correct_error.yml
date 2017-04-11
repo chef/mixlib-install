@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef/99.99.99/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.1.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 94ae94ef1f56291978e5f95c2a91dec0b07ade58462fa1e5651bced2933ff22e
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 11 Apr 2017 22:01:50 GMT
+      Age:
+      - '1064'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3127-SJC, cache-lax8629-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1491948110.013111,VS0,VE1
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 11 Apr 2017 22:01:50 GMT
+recorded_with: VCR 3.0.3

@@ -148,6 +148,25 @@ module Mixlib
             version
           end
         end
+
+        #
+        # Normalizes architecture information
+        #
+        # @param [String] architecture
+        #
+        # @return String [architecture]
+        def normalize_architecture(architecture)
+          case architecture
+          when "amd64"
+            "x86_64"
+          when "i86pc", "i686"
+            "i386"
+          when "sun4u", "sun4v"
+            "sparc"
+          else
+            architecture
+          end
+        end
       end
     end
   end

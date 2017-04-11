@@ -117,4 +117,28 @@ describe Mixlib::Install::Util do
       end
     end
   end
+
+  describe "architecture normalization" do
+    context "when amd64" do
+      it "returns x86_84" do
+        expect(Mixlib::Install::Util.normalize_architecture("amd64")).to eq "x86_64"
+      end
+    end
+
+    %w{i86pc i686}.each do |a|
+      context "when #{a}" do
+        it "returns i386" do
+          expect(Mixlib::Install::Util.normalize_architecture(a)).to eq "i386"
+        end
+      end
+    end
+
+    %w{sun4u sun4v}.each do |a|
+      context "when #{a}" do
+        it "returns sparc" do
+          expect(Mixlib::Install::Util.normalize_architecture(a)).to eq "sparc"
+        end
+      end
+    end
+  end
 end

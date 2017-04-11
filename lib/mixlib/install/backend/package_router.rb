@@ -207,7 +207,7 @@ EOF
                      end
 
           ArtifactInfo.new(
-            architecture:          normalize_architecture(artifact_map["omnibus.architecture"]),
+            architecture:          Util.normalize_architecture(artifact_map["omnibus.architecture"]),
             license:               artifact_map["omnibus.license"],
             license_content:       license_content,
             md5:                   artifact_map["omnibus.md5"],
