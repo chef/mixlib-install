@@ -1,5 +1,9 @@
 # Change Log
 
+## [3.2.0]
+- Add support for partial product versioning support ("11", 12", "12.1", etc.)
+- Refactor and expose `#normalize_architecture`
+
 ## [3.1.0]
 - Add support for Windows Nano 2016 (returns appx packages)
 
