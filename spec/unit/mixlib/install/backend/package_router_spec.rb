@@ -408,34 +408,6 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
-  context "architecture normalization" do
-    let(:channel) { :stable }
-    let(:product_name) { "chef" }
-    let(:product_version) { :latest }
-
-    context "when amd64" do
-      it "returns x86_84" do
-        expect(package_router.normalize_architecture("amd64")).to eq "x86_64"
-      end
-    end
-
-    %w{i86pc i686}.each do |a|
-      context "when #{a}" do
-        it "returns i386" do
-          expect(package_router.normalize_architecture(a)).to eq "i386"
-        end
-      end
-    end
-
-    %w{sun4u sun4v}.each do |a|
-      context "when #{a}" do
-        it "returns sparc" do
-          expect(package_router.normalize_architecture(a)).to eq "sparc"
-        end
-      end
-    end
-  end
-
   context "user agents" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
@@ -448,7 +420,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       let(:user_agent_headers) { ["foo/bar", "someheader"] }
 
       it "sets custom header" do
-        expect(package_router.create_http_request("/").get_fields("user-agent")).to include /foo\/bar someheader/
+        expect(package_router.create_http_request("/").get_fields("user-agent")).to include(/foo\/bar someheader/)
       end
     end
   end
@@ -519,7 +491,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       let(:product_version) { "99.99.99" }
 
       it "raises exception with 2012r2 platform version" do
-        expect { artifact_info }.to raise_error /platform version: #{platform_version}/
+        expect { artifact_info }.to raise_error(/platform version: #{platform_version}/)
       end
     end
 
@@ -537,7 +509,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
         let(:product_version) { "99.99.99" }
 
         it "raises exception with 2016nano platform version" do
-          expect { artifact_info }.to raise_error /platform version: #{platform_version}/
+          expect { artifact_info }.to raise_error(/platform version: #{platform_version}/)
         end
       end
     end

@@ -71,7 +71,7 @@ module Mixlib
         @options = options
         @errors = []
 
-        # Store original platform version in cases where we must remap it
+        # Store original options in cases where we must remap
         @original_platform_version = options[:platform_version]
 
         resolve_platform_version_compatibility_mode!
