@@ -1,4 +1,10 @@
-tmp_stderr="/tmp/stderr";
+basedir="$HOME/.chef"
+
+if [ ! -d $basedir ]; then
+  mkdir -p $basedir
+fi
+
+tmp_stderr="$basedir/stderr";
 
 # capture_tmp_stderr SOURCE
 capture_tmp_stderr() {
@@ -215,8 +221,8 @@ main() {
       chef_omnibus_url=`echo "$chef_omnibus_url" | sed -e "s/https/http/"`;
     fi
 
-    do_download "$chef_omnibus_url" /tmp/install.sh;
-    $sudo_sh /tmp/install.sh $install_flags;
+    do_download "$chef_omnibus_url" $basedir/install.sh;
+    $sudo_sh $basedir/install.sh $install_flags;
   else
     echo "-----> Chef Omnibus installation detected (${pretty_version})";
   fi
