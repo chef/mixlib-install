@@ -189,7 +189,11 @@ context "Mixlib::Install::Generator", :vcr do
 
     context "for bourne install params" do
       let(:install_command_options) do
-        { cmdline_dl_dir: "/hereiam" }
+        {
+          cmdline_dl_dir: "/hereiam",
+          download_url_override: "https://packages.chef.ioo/files/stable/chef/12.19.36/debian/8/chef_12.19.36-1_amd64.deb",
+          checksum: "292651ac21e093a40446da6b9a9b075ad31be6991a6f7ab63d5b6c2edabaa03c",
+        }
       end
 
       let(:add_options) do
@@ -200,6 +204,14 @@ context "Mixlib::Install::Generator", :vcr do
 
       it "adds cmdline_dl_dir var" do
         expect(install_script).to match(/cmdline_dl_dir='#{install_command_options[:cmdline_dl_dir]}'/)
+      end
+
+      it "adds download_url_override var" do
+        expect(install_script).to match(/download_url_override='#{install_command_options[:download_url_override]}'/)
+      end
+
+      it "adds checksum var" do
+        expect(install_script).to match(/checksum='#{install_command_options[:checksum]}'/)
       end
     end
   end
