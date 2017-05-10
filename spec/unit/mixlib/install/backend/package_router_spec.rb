@@ -31,6 +31,8 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:user_agent_headers) { nil }
   let(:pv_compat) { nil }
   let(:include_metadata) { nil }
+  let(:http_proxy) { nil }
+  let(:https_proxy) { nil }
 
   let(:options) do
     {}.tap do |opt|
@@ -43,6 +45,8 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       opt[:platform] = platform if platform
       opt[:platform_version] = platform_version if platform_version
       opt[:architecture] = architecture if architecture
+      opt[:http_proxy] = http_proxy if http_proxy
+      opt[:https_proxy] = https_proxy if https_proxy
     end
   end
 
@@ -408,23 +412,6 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
-  context "user agents" do
-    let(:channel) { :stable }
-    let(:product_name) { "chef" }
-
-    it "always includes default header" do
-      expect(package_router.create_http_request("/").get_fields("user-agent")).to include "mixlib-install/#{Mixlib::Install::VERSION}"
-    end
-
-    context "with custom agents" do
-      let(:user_agent_headers) { ["foo/bar", "someheader"] }
-
-      it "sets custom header" do
-        expect(package_router.create_http_request("/").get_fields("user-agent")).to include(/foo\/bar someheader/)
-      end
-    end
-  end
-
   context "windows desktop artifacts" do
     let(:channel) { :stable }
     let(:windows_artifacts) do
@@ -578,6 +565,35 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
           it "returns latest chef #{version} version" do
             expect(artifact_info.version).to eq expected_version
+          end
+        end
+      end
+    end
+
+    context "available_versions" do
+      let(:product_name) { "chef" }
+      let(:channel) { :stable }
+
+      it "returns list of versions" do
+        expect(package_router.available_versions).to include "12.19.36"
+      end
+
+      context "http_proxy" do
+        let(:http_proxy) { "http://127.0.0.1:8401" }
+
+        context "proxy available" do
+          it "returns list of versions" do
+            with_proxy_server do
+              expect(package_router.available_versions).to include "12.19.36"
+            end
+          end
+        end
+
+        context "proxy unavailable" do
+          let(:http_proxy) { "http://nowhere:8401" }
+
+          it "raises error" do
+            expect { package_router.available_versions }.to raise_error(SocketError)
           end
         end
       end

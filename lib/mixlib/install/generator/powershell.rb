@@ -71,6 +71,9 @@ module Mixlib
           cmd << " -version #{options.product_version}"
           cmd << " -channel #{options.channel}"
           cmd << " -architecture #{options.architecture}" if options.architecture
+          # Use options.proxy to determine which proxy option to use since
+          # WebProxy doesn't differentiate between http/https
+          cmd << " -http_proxy #{options.proxy}" if options.proxy
           cmd << install_command_params if options.install_command_options
           cmd << "\n"
         end

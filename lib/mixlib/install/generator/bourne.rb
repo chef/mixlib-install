@@ -53,16 +53,18 @@ module Mixlib
         end
 
         def render_variables
-          <<EOS
-project=#{options.product_name}
-version=#{options.product_version}
-channel=#{options.channel}
-#{install_command_vars}
-EOS
+          vars = []
+          vars << "project=#{options.product_name}"
+          vars << "version=#{options.product_version}"
+          vars << "channel=#{options.channel}"
+          vars << "https_proxy=#{options.https_proxy}" if options.https_proxy
+          vars << "http_proxy=#{options.http_proxy}" if options.http_proxy
+          vars << install_command_vars if options.install_command_options
+
+          vars.join("\n")
         end
 
         def install_command_vars
-          return if options.install_command_options.nil?
           options.install_command_options.map { |key, value| "#{key}='#{value}'" }.join("\n")
         end
       end

@@ -39,7 +39,9 @@ function Get-ProjectMetadata {
     $nightlies,
     [validateset('auto', 'i386', 'x86_64')]
     [string]
-    $architecture = 'auto'
+    $architecture = 'auto',
+    [string]
+    $http_proxy
   )
 
   # The following legacy switches are just aliases for the current channel

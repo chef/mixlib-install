@@ -52,7 +52,12 @@ module Mixlib
     # @return [Array<String>] list of available versions for the given
     # product_name and channel.
     def available_versions
-      self.class.available_versions(options.product_name, options.channel)
+      self.class.available_versions(
+        options.product_name,
+        options.channel,
+        https_proxy: options.https_proxy,
+        http_proxy: options.http_proxy
+      )
     end
 
     #
@@ -62,13 +67,19 @@ module Mixlib
     #
     # @param [String, Symbol] channel
     #
+    # @param [Hash] opts
+    # @option opts [String] :https_proxy
+    # @option opts [String] :http_proxy
+    #
     # @return [Array<String>] list of available versions for the given
     # product_name and channel.
-    def self.available_versions(product_name, channel)
+    def self.available_versions(product_name, channel, opts = {})
       Backend.available_versions(
         Mixlib::Install::Options.new(
           product_name: product_name,
-          channel: channel.to_sym
+          channel: channel.to_sym,
+          https_proxy: opts[:https_proxy],
+          http_proxy: opts[:http_proxy]
         )
       )
     end

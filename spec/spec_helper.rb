@@ -6,6 +6,8 @@ require "mixlib/install"
 require "simplecov"
 require "vcr"
 require "webmock/rspec"
+require "webrick"
+require "webrick/httpproxy"
 
 Aruba.configure do |config|
   config.exit_timeout                          = 120
@@ -82,4 +84,14 @@ def wrap_env(envs = {})
 ensure
   envs.each { |k, _| ENV.delete k }
   original_envs.each { |k, v| ENV[k] = v }
+end
+
+# Run code block with an available proxy server
+def with_proxy_server
+  proxy = WEBrick::HTTPProxyServer.new Port: 8401, BindAddress: "127.0.0.1"
+  Thread.new { proxy.start }
+
+  yield
+ensure
+  proxy.shutdown
 end

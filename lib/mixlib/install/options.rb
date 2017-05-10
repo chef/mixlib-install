@@ -52,15 +52,17 @@ module Mixlib
       SUPPORTED_OPTIONS = [
         :architecture,
         :channel,
+        :http_proxy,
+        :https_proxy,
+        :include_metadata,
+        :install_command_options,
         :platform,
         :platform_version,
+        :platform_version_compatibility_mode,
         :product_name,
         :product_version,
         :shell_type,
-        :platform_version_compatibility_mode,
-        :include_metadata,
         :user_agent_headers,
-        :install_command_options,
       ]
 
       SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
@@ -153,6 +155,13 @@ module Mixlib
         unless options[:platform_version_compatibility_mode]
           options[:platform_version_compatibility_mode] = true if platform_info.values.none?
         end
+      end
+
+      #
+      # Retrieve proxy value by precedence
+      #
+      def proxy
+        https_proxy || http_proxy || nil
       end
 
       private

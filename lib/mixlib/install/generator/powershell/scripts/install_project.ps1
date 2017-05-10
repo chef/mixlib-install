@@ -50,10 +50,7 @@ function Install-Project {
     $http_proxy
   )
 
-  # Set http_proxy as env var
-  $env:http_proxy = $http_proxy
-
-  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
+  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -http_proxy $http_proxy
 
   if (-not [string]::IsNullOrEmpty($filename)) {
     $download_directory = split-path $filename

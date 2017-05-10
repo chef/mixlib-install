@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license       = "Apache-2.0"
 
   spec.summary       = "A library for interacting with Chef Software Inc's software distribution systems."
-  spec.homepage      = "https://chef.io"
+  spec.homepage      = "https://github.com/chef/mixlib-install"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.executables   = ["mixlib-install"]

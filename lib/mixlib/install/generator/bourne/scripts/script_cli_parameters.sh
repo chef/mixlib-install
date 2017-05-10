@@ -15,7 +15,7 @@
 channel="stable"
 project="chef"
 
-while getopts pnv:c:f:P:d: opt
+while getopts pnv:c:f:P:d:h:s opt
 do
   case "$opt" in
 
@@ -26,9 +26,11 @@ do
     f)  cmdline_filename="$OPTARG";;
     P)  project="$OPTARG";;
     d)  cmdline_dl_dir="$OPTARG";;
+    h)  http_proxy="$OPTARG";;
+    s)  https_proxy="$OPTARG";;
     \?)   # unknown flag
       echo >&2 \
-      "usage: $0 [-P project] [-c release_channel] [-v version] [-f filename | -d download_dir]"
+      "usage: $0 [-P project] [-c release_channel] [-v version] [-f filename | -d [download_dir] | -h [http_proxy] | -s [https_proxy]"
       exit 1;;
   esac
 done

@@ -170,7 +170,7 @@ options = {
 Collecting software dependencies and license content for ArtifactInfo instances
 requires additional requests to the repository server. By default, collection is disabled.
 To return data for instance methods `software_dependencies` and `license_content`, the `include_metadata` option must be enabled.
-```
+```ruby
 options = {
   channel: :current,
   product_name: 'chef',
@@ -191,6 +191,15 @@ artifact.software_dependencies.class
 # By default, the instance methods return nil
 
 ```
+
+### HTTP and HTTPS Proxies
+The `http_proxy` and `https_proxy` options are used for Mixlib Install API requests and for setting the download proxy settings for the installation scripts.
+
+`API` - `https_proxy` takes precedence over `http_proxy` when both proxy options are set.
+
+`install.sh` - Exports `http_proxy` and `https_proxy` environment variables for each that are set. The web client tools (curl, wget, etc) handle using these environment variables automatically. 
+
+`install.ps1` - WebProxy does not differentiate between http and https proxies. This works like the API, and will use `https_proxy` over `http_proxy` when both proxy options are set.
 
 ## Development
 VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.
