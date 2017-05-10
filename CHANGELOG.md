@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.2.1]
+- Add support for direct URL downloads for Bourne install script
+
 ## [3.2.0]
 - Add support for partial product versioning support ("11", 12", "12.1", etc.)
 - Refactor and expose `#normalize_architecture`
