@@ -75,14 +75,15 @@ If no earlier version is found the earliest version available will be set.",
         if options[:url]
           say artifact.url
         else
+          url = artifact.is_a?(Array) ? artifact.map(&:url).first : artifact.url
           FileUtils.mkdir_p options[:directory]
-          file = File.join(options[:directory], File.basename(artifact.url))
+          file = File.join(options[:directory], File.basename(url))
 
           require "json"
           require "net/http"
 
-          say "Starting download #{artifact.url} to #{file}"
-          uri = URI.parse(artifact.url)
+          say "Starting download #{url} to #{file}"
+          uri = URI.parse(url)
           Net::HTTP.start(uri.host) do |http|
             resp = http.get(uri.path)
             open(file, "wb") do |io|

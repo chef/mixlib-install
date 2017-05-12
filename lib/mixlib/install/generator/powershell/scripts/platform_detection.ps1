@@ -1,3 +1,4 @@
+Set-ExecutionPolicy Bypass -Force
 $platform_version = Get-PlatformVersion
 $architecture = Get-PlatformArchitecture
 
