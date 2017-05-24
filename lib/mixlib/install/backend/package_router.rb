@@ -22,7 +22,7 @@ require "mixlib/install/backend/base"
 require "mixlib/install/product"
 require "mixlib/install/util"
 require "mixlib/versioning"
-require "net/http"
+require "http"
 
 module Mixlib
   class Install
@@ -121,15 +121,8 @@ EOF
         #
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         def artifacts_for_version(version)
-          begin
-            results = get("/api/v1/#{options.channel}/#{omnibus_project}/#{version}/artifacts")["results"]
-          rescue Net::HTTPServerException => e
-            if e.message =~ /404/
-              return []
-            else
-              raise e
-            end
-          end
+          results = get("/api/v1/#{options.channel}/#{omnibus_project}/#{version}/artifacts")["results"]
+          return [] if results.nil?
 
           # Merge artifactory properties to a flat Hash
           results.collect! do |result|
@@ -148,21 +141,16 @@ EOF
         # GET request
         #
         def get(url)
-          uri = URI.parse(endpoint)
-          http = Net::HTTP.new(uri.host, uri.port)
-          http.use_ssl = (uri.scheme == "https")
-          full_path = File.join(uri.path, url)
-          res = http.request(create_http_request(full_path))
-          res.value
-          JSON.parse(res.body)
+          response = http.get(File.join(endpoint, url))
+          JSON.parse(response.to_s)
         end
 
-        def create_http_request(full_path)
-          request = Net::HTTP::Get.new(full_path)
+        def http
+          headers = {
+            "User-Agent" => Util.user_agent_string(options.user_agent_headers),
+          }
 
-          request.add_field("User-Agent", Util.user_agent_string(options.user_agent_headers))
-
-          request
+          HTTP[headers]
         end
 
         def create_artifact(artifact_map)
@@ -182,21 +170,13 @@ EOF
             artifact_map["filename"]
           )
 
+          license_content, software_dependencies = nil
+
           if options.include_metadata?
             # retrieve the metadata using the standardized path
-            begin
-              metadata = get("#{chef_standard_path}.metadata.json")
-              license_content = metadata["license_content"]
-              software_dependencies = metadata["version_manifest"]["software"]
-            rescue Net::HTTPServerException => e
-              if e.message =~ /404/
-                license_content, software_dependencies = nil
-              else
-                raise e
-              end
-            end
-          else
-            license_content, software_dependencies = nil
+            metadata = get("#{chef_standard_path}.metadata.json")
+            license_content = metadata["license_content"]
+            software_dependencies = metadata["version_manifest"]["software"]
           end
 
           # create the download path with the correct endpoint
@@ -266,11 +246,11 @@ EOF
         end
 
         def endpoint
-          @endpoint ||= ENV.fetch("PACKAGE_ROUTER_ENDPOINT", ENDPOINT)
+          ENV.fetch("PACKAGE_ROUTER_ENDPOINT", ENDPOINT)
         end
 
         def omnibus_project
-          @omnibus_project ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).omnibus_project
+          PRODUCT_MATRIX.lookup(options.product_name, options.product_version).omnibus_project
         end
 
         def product_description

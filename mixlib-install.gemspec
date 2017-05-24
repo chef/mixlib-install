@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mixlib-shellout"
   spec.add_dependency "mixlib-versioning"
   spec.add_dependency "thor"
+  spec.add_dependency "http"
 
   spec.add_development_dependency "aruba"
   spec.add_development_dependency "bundler"
@@ -28,7 +29,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rb-readline"
   spec.add_development_dependency "rspec"
-  spec.add_development_dependency "simplecov"
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock"
 end

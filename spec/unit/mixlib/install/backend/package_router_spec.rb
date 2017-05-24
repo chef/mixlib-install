@@ -408,19 +408,21 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
-  context "user agents" do
+  describe "#http" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
 
-    it "always includes default header" do
-      expect(package_router.create_http_request("/").get_fields("user-agent")).to include "mixlib-install/#{Mixlib::Install::VERSION}"
+    context "default user agents" do
+      it "always includes default header" do
+        expect(package_router.http.default_options.headers["User-Agent"]).to match /mixlib-install\/#{Mixlib::Install::VERSION}/
+      end
     end
 
     context "with custom agents" do
       let(:user_agent_headers) { ["foo/bar", "someheader"] }
 
       it "sets custom header" do
-        expect(package_router.create_http_request("/").get_fields("user-agent")).to include(/foo\/bar someheader/)
+        expect(package_router.http.default_options.headers["User-Agent"]).to match /foo\/bar someheader/
       end
     end
   end
@@ -580,6 +582,27 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
             expect(artifact_info.version).to eq expected_version
           end
         end
+      end
+    end
+  end
+
+  describe "#artifacts_for_version" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    context "with valid version" do
+      let(:product_version) { "12.12.15" }
+
+      it "returns list of artifacts" do
+        expect(package_router.artifacts_for_version(product_version).first).to be_a Mixlib::Install::ArtifactInfo
+      end
+    end
+
+    context "version not found" do
+      let(:product_version) { "99.99.99" }
+
+      it "returns empty list" do
+        expect(package_router.artifacts_for_version(product_version)).to eq []
       end
     end
   end
