@@ -586,6 +586,95 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
+  describe "#available_artifacts" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    context "latest version" do
+      let(:product_version) { :latest }
+
+      it "returns available_artifacts" do
+        expect(package_router.available_artifacts.first.version).to eq "13.0.118"
+      end
+    end
+
+    context "partial version" do
+      let(:product_version) { "12.12" }
+
+      it "returns available_artifacts" do
+        expect(package_router.available_artifacts.first.version).to eq "12.12.15"
+      end
+    end
+
+    context "specific version" do
+      let(:product_version) { "12.12.15" }
+
+      it "returns available_artifacts" do
+        expect(package_router.available_artifacts.first.version).to eq "12.12.15"
+      end
+    end
+  end
+
+  describe "#available_versions" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    it "returns list of available versions" do
+      expect(package_router.available_versions).to include "12.12.15"
+    end
+  end
+
+  describe "#versions" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    it "returns list of available versions" do
+      expect(package_router.versions.first["properties"][0]["value"]).to eq "12.0.3"
+    end
+  end
+
+  describe "#latest_version" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    context "partial version" do
+      let(:product_version) { "12.12" }
+
+      it "returns list of latest versions for partial version" do
+        expect(package_router.latest_version.first.version).to eq "12.12.15"
+      end
+    end
+
+    context "partial version with ." do
+      let(:product_version) { "12.12." }
+
+      it "returns list of latest versions for partial version" do
+        expect(package_router.latest_version.first.version).to eq "12.12.15"
+      end
+    end
+
+    context "latest version" do
+      let(:product_version) { :latest }
+
+      it "returns list of latest versions for partial version" do
+        expect(package_router.latest_version.first.version).to eq "13.0.118"
+      end
+    end
+  end
+
+  describe "#extract_version_from_response" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "12.12.15" }
+
+    it "returns version" do
+      response = {
+        "properties" => [{ "key" => "omnibus.version", "value" => product_version }],
+      }
+      expect(package_router.extract_version_from_response(response)).to eq product_version
+    end
+  end
+
   describe "#artifacts_for_version" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
@@ -605,5 +694,17 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
         expect(package_router.artifacts_for_version(product_version)).to eq []
       end
     end
+  end
+
+  describe "#create_artifact" do
+  end
+
+  describe "#use_compat_download_url_endpoint?" do
+  end
+
+  describe "#map_properties" do
+  end
+
+  describe "#generate_chef_standard_path" do
   end
 end
