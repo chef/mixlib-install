@@ -49,6 +49,7 @@ module Mixlib
         :ps1,
         :sh,
       ]
+
       SUPPORTED_OPTIONS = [
         :architecture,
         :channel,
@@ -61,6 +62,10 @@ module Mixlib
         :include_metadata,
         :user_agent_headers,
         :install_command_options,
+        :proxy_address,
+        :proxy_port,
+        :proxy_username,
+        :proxy_password,
       ]
 
       SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
@@ -163,6 +168,7 @@ module Mixlib
           platform_version_compatibility_mode: false,
           product_version: :latest,
           include_metadata: false,
+          http_proxy_options: {},
         }
       end
 

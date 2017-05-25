@@ -31,6 +31,10 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:user_agent_headers) { nil }
   let(:pv_compat) { nil }
   let(:include_metadata) { nil }
+  let(:proxy_address) { nil }
+  let(:proxy_port) { nil }
+  let(:proxy_username) { nil }
+  let(:proxy_password) { nil }
 
   let(:options) do
     {}.tap do |opt|
@@ -43,6 +47,10 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       opt[:platform] = platform if platform
       opt[:platform_version] = platform_version if platform_version
       opt[:architecture] = architecture if architecture
+      opt[:proxy_address] = proxy_address if proxy_address
+      opt[:proxy_port] = proxy_port if proxy_port
+      opt[:proxy_username] = proxy_username if proxy_username
+      opt[:proxy_password] = proxy_password if proxy_password
     end
   end
 
@@ -133,6 +141,13 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
           expect(package_router.info).to be_a Mixlib::Install::ArtifactInfo
           expect(package_router.info.url).not_to include("metadata.json")
         end
+      end
+
+      context "via proxy" do
+        let(:proxy_address) { "127.0.0.1" }
+        let(:proxy_port) { 8401 }
+
+        with_proxy_server { it_behaves_like "artifact with core attributes" }
       end
     end
   end
@@ -613,6 +628,18 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
         expect(package_router.available_artifacts.first.version).to eq "12.12.15"
       end
     end
+
+    context "via proxy" do
+      let(:product_version) { :latest }
+      let(:proxy_server) { "127.0.0.1" }
+      let(:proxy_port) { 8401 }
+
+      it "uses proxy server" do
+        with_proxy_server do
+          expect(package_router.available_artifacts.first.version).to eq "13.0.118"
+        end
+      end
+    end
   end
 
   describe "#available_versions" do
@@ -755,6 +782,19 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     context "non-compat platform" do
       it "uses normal URL" do
         expect(package_router.use_compat_download_url_endpoint?("ubuntu", "14.04")).to be false
+      end
+    end
+  end
+
+  describe "bad proxy" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:proxy_address) { "nowhere" }
+    let(:proxy_address) { 8401 }
+
+    it "raises error" do
+      with_proxy_server do
+        expect { package_router.available_versions }.to raise_error(HTTP::RequestError, /invalid HTTP proxy/)
       end
     end
   end

@@ -142,7 +142,15 @@ EOF
         #
         def get(path)
           url = File.join(endpoint, path)
-          response = http.get(url)
+
+          response = if options.proxy_address
+                       proxy_params = [options.proxy_address, options.proxy_port]
+                       proxy_params.push(options.proxy_username, options.proxy_password) if options.proxy_username
+                       http.via(*proxy_params).get(url)
+                     else
+                       http.get(url)
+                     end
+
           JSON.parse(response.to_s)
         end
 
