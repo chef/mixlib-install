@@ -1,0 +1,845 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/supermarket/2.5.2/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 904cc4418ac23629c0f8b6f50eb68df64906d6dfe753d8bf788d61f3b2fc5cff
+      Content-Length:
+      - '8165'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 23 May 2017 15:56:04 GMT
+      Age:
+      - '1778'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3140-SJC, cache-lax8626-LAX
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 1, 2
+      X-Timer:
+      - S1495554964.066294,VS0,VE2
+    body:
+      encoding: UTF-8
+      string: |2
+
+        {
+        "results" : [ {
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/supermarket/2.5.2/ubuntu/12.04",
+          "name" : "supermarket_2.5.2-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "15c8af5577e7186afabb14e2799de034"
+          }, {
+            "key" : "sha256",
+            "value" : "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b"
+          }, {
+            "key" : "build.name",
+            "value" : "supermarket"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "12.04"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.license"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "supermarket"
+          }, {
+            "key" : "build.number",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "dfd5ac147e17db42092bba0fc134b29da63df222"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "74b5b53de9f38e3db5f4015c491db8f07c8b925afdc6fb7365495c10aabd24895a1cd0845172d1541d8e5b8f71e4dfa41164786a0582a12aa8568da24191704a"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/supermarket/2.5.2/el/5",
+          "name" : "supermarket-2.5.2-1.el5.x86_64.rpm",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "sha256",
+            "value" : "9ef0a68dcf84474691beeff0f46315b4b992c680366ab38d5a2ae94c7423af5b"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "supermarket"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "9ef0a68dcf84474691beeff0f46315b4b992c680366ab38d5a2ae94c7423af5b"
+          }, {
+            "key" : "build.name",
+            "value" : "supermarket"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "5"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "cd85b5d4e9006ddcc8f7325a90796ac7"
+          }, {
+            "key" : "build.number",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "e85e4c6ed47bb9a17a0b1be991caee5de150bc18"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "2e293764f213a499a93472c5dae15b288dcdac05140bc74dbf4367bca73c547c961d5e95b95d6fd5710c7e4e00766f8c2fa509c0d38e782fa12cfc1db499968c"
+          }, {
+            "key" : "omnibus.license"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/supermarket/2.5.2/el/6",
+          "name" : "supermarket-2.5.2-1.el6.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.version",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "supermarket"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "e63c6aeb3380e1eb4ef70f68e59b0faa"
+          }, {
+            "key" : "sha256",
+            "value" : "b3ef0037aa64b2df5e5e4cb7083a7f3f3e8ea152a88e4c726c3fcaff18d3ded2"
+          }, {
+            "key" : "omnibus.license"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "0fb146868dc61399388f68304b0c35a240730fa6"
+          }, {
+            "key" : "build.name",
+            "value" : "supermarket"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "d8b2181f2ee56549c38765a9dd187c0f8ed31b858948368e51723680ea9a57bc50c150cd58a1f9efb52e64dcddc8f174194bd303aed82f39736e8e056b911566"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "6"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "b3ef0037aa64b2df5e5e4cb7083a7f3f3e8ea152a88e4c726c3fcaff18d3ded2"
+          }, {
+            "key" : "build.number",
+            "value" : "2.5.2"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/supermarket/2.5.2/el/7",
+          "name" : "supermarket-2.5.2-1.el7.x86_64.rpm",
+          "properties" : [ {
+            "key" : "omnibus.license"
+          }, {
+            "key" : "sha256",
+            "value" : "c6abef85d8673037b6b5f19f56b49090d2ccbcb740b2115af87b69779eeca2fc"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "supermarket"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "5dc9b3fd25b68d57b68151d5d51e36ab367aafccc44dd70151f1df53459f79f51d69466db7301e3c7e0b6856e28b810d37286144f18e47597533cca4fbb98bac"
+          }, {
+            "key" : "build.name",
+            "value" : "supermarket"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "c6abef85d8673037b6b5f19f56b49090d2ccbcb740b2115af87b69779eeca2fc"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "7"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "9e8c5a3ca1a2a51c605770abccafcb86c567f906"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "build.number",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "ba03d394a9d1ca9afb290e9b743e057a"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "el"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/supermarket/2.5.2/ubuntu/10.04",
+          "name" : "supermarket_2.5.2-1_amd64.deb",
+          "properties" : [ {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.license"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "74b5b53de9f38e3db5f4015c491db8f07c8b925afdc6fb7365495c10aabd24895a1cd0845172d1541d8e5b8f71e4dfa41164786a0582a12aa8568da24191704a"
+          }, {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "build.number",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "10.04"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "15c8af5577e7186afabb14e2799de034"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "dfd5ac147e17db42092bba0fc134b29da63df222"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "supermarket"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b"
+          }, {
+            "key" : "build.name",
+            "value" : "supermarket"
+          }, {
+            "key" : "sha256",
+            "value" : "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b"
+          } ]
+        },{
+          "repo" : "omnibus-stable-local",
+          "path" : "com/getchef/supermarket/2.5.2/ubuntu/14.04",
+          "name" : "supermarket_2.5.2-1_amd64.deb",
+          "properties" : [ {
+            "key" : "omnibus.iteration",
+            "value" : "1"
+          }, {
+            "key" : "delivery.sha"
+          }, {
+            "key" : "omnibus.sha512",
+            "value" : "74b5b53de9f38e3db5f4015c491db8f07c8b925afdc6fb7365495c10aabd24895a1cd0845172d1541d8e5b8f71e4dfa41164786a0582a12aa8568da24191704a"
+          }, {
+            "key" : "omnibus.license"
+          }, {
+            "key" : "omnibus.project",
+            "value" : "supermarket"
+          }, {
+            "key" : "build.number",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.sha1",
+            "value" : "dfd5ac147e17db42092bba0fc134b29da63df222"
+          }, {
+            "key" : "omnibus.sha256",
+            "value" : "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b"
+          }, {
+            "key" : "omnibus.platform",
+            "value" : "ubuntu"
+          }, {
+            "key" : "omnibus.architecture",
+            "value" : "x86_64"
+          }, {
+            "key" : "omnibus.platform_version",
+            "value" : "14.04"
+          }, {
+            "key" : "omnibus.version",
+            "value" : "2.5.2"
+          }, {
+            "key" : "omnibus.md5",
+            "value" : "15c8af5577e7186afabb14e2799de034"
+          }, {
+            "key" : "delivery.change"
+          }, {
+            "key" : "build.name",
+            "value" : "supermarket"
+          }, {
+            "key" : "sha256",
+            "value" : "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b"
+          } ]
+        } ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 6,
+          "total" : 6
+        }
+        }
+    http_version: 
+  recorded_at: Tue, 23 May 2017 15:56:04 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/supermarket/2.5.2/ubuntu/12.04/supermarket_2.5.2-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Disposition:
+      - attachment; filename="supermarket_2.5.2-1_amd64.deb.metadata.json"; filename*=UTF-8''supermarket_2.5.2-1_amd64.deb.metadata.json
+      Content-Type:
+      - application/json
+      Etag:
+      - 5d19d9518a592b6f6309396d4b099577f97cfbf4
+      Last-Modified:
+      - Thu, 14 Apr 2016 23:09:48 GMT
+      Server:
+      - nginx
+      X-Artifactory-Filename:
+      - supermarket_2.5.2-1_amd64.deb.metadata.json
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      X-Checksum-Md5:
+      - 5efbe002df014e2ffb63e2268040e30a
+      X-Checksum-Sha1:
+      - 5d19d9518a592b6f6309396d4b099577f97cfbf4
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - c3255228c88e5a54bc2d0bc5a83fdcee83681f85801c2d88fc9070dc84abb414
+      Content-Length:
+      - '595'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 23 May 2017 15:56:04 GMT
+      Age:
+      - '319951'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3146-SJC, cache-lax8634-LAX
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 1, 1
+      X-Timer:
+      - S1495554964.141766,VS0,VE2
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "basename": "supermarket_2.5.2-1_amd64.deb",
+          "md5": "15c8af5577e7186afabb14e2799de034",
+          "sha1": "dfd5ac147e17db42092bba0fc134b29da63df222",
+          "sha256": "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b",
+          "sha512": "74b5b53de9f38e3db5f4015c491db8f07c8b925afdc6fb7365495c10aabd24895a1cd0845172d1541d8e5b8f71e4dfa41164786a0582a12aa8568da24191704a",
+          "platform": "ubuntu",
+          "platform_version": "10.04",
+          "arch": "x86_64",
+          "name": "supermarket",
+          "friendly_name": "Supermarket",
+          "homepage": "https://supermarket.getchef.com",
+          "version": "2.5.2",
+          "iteration": 1
+        }
+    http_version: 
+  recorded_at: Tue, 23 May 2017 15:56:04 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/supermarket/2.5.2/el/5/supermarket-2.5.2-1.el5.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Disposition:
+      - attachment; filename="supermarket-2.5.2-1.el5.x86_64.rpm.metadata.json"; filename*=UTF-8''supermarket-2.5.2-1.el5.x86_64.rpm.metadata.json
+      Content-Type:
+      - application/json
+      Etag:
+      - 37a98b610bcb5bf3291271d981550a240d539586
+      Last-Modified:
+      - Fri, 15 Apr 2016 00:48:28 GMT
+      Server:
+      - nginx
+      X-Artifactory-Filename:
+      - supermarket-2.5.2-1.el5.x86_64.rpm.metadata.json
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      X-Checksum-Md5:
+      - 0bfdcdba4441c9a28756a280a861d7e3
+      X-Checksum-Sha1:
+      - 37a98b610bcb5bf3291271d981550a240d539586
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 11dd13ec0510f55dcf20b738d09212cf83c9df203cc15525040da07a86c2d094
+      Content-Length:
+      - '592'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 23 May 2017 15:56:04 GMT
+      Age:
+      - '229'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3126-SJC, cache-lax8621-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1495554964.212411,VS0,VE1
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "basename": "supermarket-2.5.2-1.el5.x86_64.rpm",
+          "md5": "cd85b5d4e9006ddcc8f7325a90796ac7",
+          "sha1": "e85e4c6ed47bb9a17a0b1be991caee5de150bc18",
+          "sha256": "9ef0a68dcf84474691beeff0f46315b4b992c680366ab38d5a2ae94c7423af5b",
+          "sha512": "2e293764f213a499a93472c5dae15b288dcdac05140bc74dbf4367bca73c547c961d5e95b95d6fd5710c7e4e00766f8c2fa509c0d38e782fa12cfc1db499968c",
+          "platform": "el",
+          "platform_version": "5",
+          "arch": "x86_64",
+          "name": "supermarket",
+          "friendly_name": "Supermarket",
+          "homepage": "https://supermarket.getchef.com",
+          "version": "2.5.2",
+          "iteration": 1
+        }
+    http_version: 
+  recorded_at: Tue, 23 May 2017 15:56:04 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/supermarket/2.5.2/el/6/supermarket-2.5.2-1.el6.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Disposition:
+      - attachment; filename="supermarket-2.5.2-1.el6.x86_64.rpm.metadata.json"; filename*=UTF-8''supermarket-2.5.2-1.el6.x86_64.rpm.metadata.json
+      Content-Type:
+      - application/json
+      Etag:
+      - 30085751176ff25c324cfb845ac59798fb0aa995
+      Last-Modified:
+      - Fri, 15 Apr 2016 00:16:24 GMT
+      Server:
+      - nginx
+      X-Artifactory-Filename:
+      - supermarket-2.5.2-1.el6.x86_64.rpm.metadata.json
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      X-Checksum-Md5:
+      - 3a246f7f9bf4734ef0740474a7076b7f
+      X-Checksum-Sha1:
+      - 30085751176ff25c324cfb845ac59798fb0aa995
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 95009a9b946850b7fb93b1effa1ead481396670ce9c50d3572b0229fc6292341
+      Content-Length:
+      - '592'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 23 May 2017 15:56:04 GMT
+      Age:
+      - '229'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3123-SJC, cache-lax8647-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1495554964.283882,VS0,VE2
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "basename": "supermarket-2.5.2-1.el6.x86_64.rpm",
+          "md5": "e63c6aeb3380e1eb4ef70f68e59b0faa",
+          "sha1": "0fb146868dc61399388f68304b0c35a240730fa6",
+          "sha256": "b3ef0037aa64b2df5e5e4cb7083a7f3f3e8ea152a88e4c726c3fcaff18d3ded2",
+          "sha512": "d8b2181f2ee56549c38765a9dd187c0f8ed31b858948368e51723680ea9a57bc50c150cd58a1f9efb52e64dcddc8f174194bd303aed82f39736e8e056b911566",
+          "platform": "el",
+          "platform_version": "6",
+          "arch": "x86_64",
+          "name": "supermarket",
+          "friendly_name": "Supermarket",
+          "homepage": "https://supermarket.getchef.com",
+          "version": "2.5.2",
+          "iteration": 1
+        }
+    http_version: 
+  recorded_at: Tue, 23 May 2017 15:56:04 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/supermarket/2.5.2/el/7/supermarket-2.5.2-1.el7.x86_64.rpm.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Disposition:
+      - attachment; filename="supermarket-2.5.2-1.el7.x86_64.rpm.metadata.json"; filename*=UTF-8''supermarket-2.5.2-1.el7.x86_64.rpm.metadata.json
+      Content-Type:
+      - application/json
+      Etag:
+      - c30c2de7b89ae7a4bdd4b4e89e9d1b9e366fb8f2
+      Last-Modified:
+      - Thu, 14 Apr 2016 22:57:30 GMT
+      Server:
+      - nginx
+      X-Artifactory-Filename:
+      - supermarket-2.5.2-1.el7.x86_64.rpm.metadata.json
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      X-Checksum-Md5:
+      - 1e1fe8ddae5992fcc4db38377eb5961d
+      X-Checksum-Sha1:
+      - c30c2de7b89ae7a4bdd4b4e89e9d1b9e366fb8f2
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 2cd3cab087bed3d3d9cc34b7a8c4d93362a2a332161d4bc51129c6ee3d7a7aa8
+      Content-Length:
+      - '592'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 23 May 2017 15:56:04 GMT
+      Age:
+      - '229'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3145-SJC, cache-lax8640-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1495554964.363504,VS0,VE1
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "basename": "supermarket-2.5.2-1.el7.x86_64.rpm",
+          "md5": "ba03d394a9d1ca9afb290e9b743e057a",
+          "sha1": "9e8c5a3ca1a2a51c605770abccafcb86c567f906",
+          "sha256": "c6abef85d8673037b6b5f19f56b49090d2ccbcb740b2115af87b69779eeca2fc",
+          "sha512": "5dc9b3fd25b68d57b68151d5d51e36ab367aafccc44dd70151f1df53459f79f51d69466db7301e3c7e0b6856e28b810d37286144f18e47597533cca4fbb98bac",
+          "platform": "el",
+          "platform_version": "7",
+          "arch": "x86_64",
+          "name": "supermarket",
+          "friendly_name": "Supermarket",
+          "homepage": "https://supermarket.getchef.com",
+          "version": "2.5.2",
+          "iteration": 1
+        }
+    http_version: 
+  recorded_at: Tue, 23 May 2017 15:56:04 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/supermarket/2.5.2/ubuntu/10.04/supermarket_2.5.2-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Disposition:
+      - attachment; filename="supermarket_2.5.2-1_amd64.deb.metadata.json"; filename*=UTF-8''supermarket_2.5.2-1_amd64.deb.metadata.json
+      Content-Type:
+      - application/json
+      Etag:
+      - 5d19d9518a592b6f6309396d4b099577f97cfbf4
+      Last-Modified:
+      - Thu, 14 Apr 2016 23:09:42 GMT
+      Server:
+      - nginx
+      X-Artifactory-Filename:
+      - supermarket_2.5.2-1_amd64.deb.metadata.json
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      X-Checksum-Md5:
+      - 5efbe002df014e2ffb63e2268040e30a
+      X-Checksum-Sha1:
+      - 5d19d9518a592b6f6309396d4b099577f97cfbf4
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 9742a3743f0b89de817e51a850a20cd4d19057daf6d123a540717f74631d0b09
+      Content-Length:
+      - '595'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 23 May 2017 15:56:04 GMT
+      Age:
+      - '229'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3131-SJC, cache-lax8648-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1495554964.434333,VS0,VE2
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "basename": "supermarket_2.5.2-1_amd64.deb",
+          "md5": "15c8af5577e7186afabb14e2799de034",
+          "sha1": "dfd5ac147e17db42092bba0fc134b29da63df222",
+          "sha256": "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b",
+          "sha512": "74b5b53de9f38e3db5f4015c491db8f07c8b925afdc6fb7365495c10aabd24895a1cd0845172d1541d8e5b8f71e4dfa41164786a0582a12aa8568da24191704a",
+          "platform": "ubuntu",
+          "platform_version": "10.04",
+          "arch": "x86_64",
+          "name": "supermarket",
+          "friendly_name": "Supermarket",
+          "homepage": "https://supermarket.getchef.com",
+          "version": "2.5.2",
+          "iteration": 1
+        }
+    http_version: 
+  recorded_at: Tue, 23 May 2017 15:56:04 GMT
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/supermarket/2.5.2/ubuntu/14.04/supermarket_2.5.2-1_amd64.deb.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Disposition:
+      - attachment; filename="supermarket_2.5.2-1_amd64.deb.metadata.json"; filename*=UTF-8''supermarket_2.5.2-1_amd64.deb.metadata.json
+      Content-Type:
+      - application/json
+      Etag:
+      - 5d19d9518a592b6f6309396d4b099577f97cfbf4
+      Last-Modified:
+      - Thu, 14 Apr 2016 23:09:54 GMT
+      Server:
+      - nginx
+      X-Artifactory-Filename:
+      - supermarket_2.5.2-1_amd64.deb.metadata.json
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      X-Checksum-Md5:
+      - 5efbe002df014e2ffb63e2268040e30a
+      X-Checksum-Sha1:
+      - 5d19d9518a592b6f6309396d4b099577f97cfbf4
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 6d4b2561257e128076d7e30bb251de6588562028ba2ada0f5c384a10adb8fffd
+      Content-Length:
+      - '595'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 23 May 2017 15:56:04 GMT
+      Age:
+      - '229'
+      Connection:
+      - keep-alive
+      X-Served-By:
+      - cache-sjc3139-SJC, cache-lax8639-LAX
+      X-Cache:
+      - MISS, HIT
+      X-Cache-Hits:
+      - 0, 1
+      X-Timer:
+      - S1495554965.509285,VS0,VE2
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "basename": "supermarket_2.5.2-1_amd64.deb",
+          "md5": "15c8af5577e7186afabb14e2799de034",
+          "sha1": "dfd5ac147e17db42092bba0fc134b29da63df222",
+          "sha256": "45631cd555c8eacf9eac0970ddd1508c5e762f77bbd49248fdfbc9e16c309d5b",
+          "sha512": "74b5b53de9f38e3db5f4015c491db8f07c8b925afdc6fb7365495c10aabd24895a1cd0845172d1541d8e5b8f71e4dfa41164786a0582a12aa8568da24191704a",
+          "platform": "ubuntu",
+          "platform_version": "10.04",
+          "arch": "x86_64",
+          "name": "supermarket",
+          "friendly_name": "Supermarket",
+          "homepage": "https://supermarket.getchef.com",
+          "version": "2.5.2",
+          "iteration": 1
+        }
+    http_version: 
+  recorded_at: Tue, 23 May 2017 15:56:04 GMT
+recorded_with: VCR 3.0.3

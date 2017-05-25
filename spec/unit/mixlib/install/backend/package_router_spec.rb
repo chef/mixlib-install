@@ -583,4 +583,22 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       end
     end
   end
+
+  context "artifact missing metadata" do
+    let(:channel) { :stable }
+    let(:product_name) { "supermarket" }
+    let(:product_version) { "2.5.2" }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "14.04" }
+    let(:architecture) { "x86_64" }
+    let(:include_metadata) { true }
+
+    it "does not have license content" do
+      expect(artifact_info.license_content).to be_nil
+    end
+
+    it "does not have software dependencies" do
+      expect(artifact_info.software_dependencies).to be_nil
+    end
+  end
 end

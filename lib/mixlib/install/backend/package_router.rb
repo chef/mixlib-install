@@ -187,7 +187,8 @@ EOF
             begin
               metadata = get("#{chef_standard_path}.metadata.json")
               license_content = metadata["license_content"]
-              software_dependencies = metadata["version_manifest"]["software"]
+              software_dependencies = metadata.fetch("version_manifest", {})
+                                        .fetch("software", nil)
             rescue Net::HTTPServerException => e
               if e.message =~ /404/
                 license_content, software_dependencies = nil
