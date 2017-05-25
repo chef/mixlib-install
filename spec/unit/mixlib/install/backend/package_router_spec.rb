@@ -697,14 +697,65 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   end
 
   describe "#create_artifact" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:artifact_map) do
+      {
+        "filename" => "chef-12.17.16-1.sparc.solaris",
+        "omnibus.license" => "Apache-2.0",
+        "sha1" => "5a780a1aa1bfce7f85bdca96b0954976d821a2b4",
+        "delivery.change" => nil,
+        "omnibus.sha256" => "36f98876e63c2f09d7d56a194771efb9b3a27515daa97242fb6922e459c895b4",
+        "delivery.sha" => nil,
+        "sha256" => "36f98876e63c2f09d7d56a194771efb9b3a27515daa97242fb6922e459c895b4",
+        "md5" => "a7cbba657b951554572b31a1b63b5331",
+        "build.number" => "12.17.16",
+        "omnibus.platform_version" => "10",
+        "omnibus.md5" => "a7cbba657b951554572b31a1b63b5331",
+        "omnibus.sha512" => "e8eac47e768170d937879f9051413785beee8918bcee65ea4c109a2d7d9b46c84b5f6b3e8d81aa7f17cbd8f05dae69db6ce45d1f7b58600b93614c178a56158f",
+        "omnibus.version" => "12.17.16",
+        "omnibus.project" => "chef",
+        "omnibus.iteration" => "1",
+        "build.name" => "chef",
+        "omnibus.architecture" => "sparc",
+        "omnibus.sha1" => "5a780a1aa1bfce7f85bdca96b0954976d821a2b4",
+        "omnibus.platform" => "solaris",
+        "sha512" => "e8eac47e768170d937879f9051413785beee8918bcee65ea4c109a2d7d9b46c84b5f6b3e8d81aa7f17cbd8f05dae69db6ce45d1f7b58600b93614c178a56158f",
+      }
+    end
+
+    let(:artifact) { package_router.create_artifact(artifact_map) }
+
+    it "normalizes platform" do
+      expect(artifact.platform).to eq "solaris2"
+    end
+
+    it "normalizes platform version" do
+      expect(artifact.platform_version).to eq "5.10"
+    end
+
+    it "use compat download url" do
+      expect(artifact.url).to match /^http:/
+    end
   end
 
   describe "#use_compat_download_url_endpoint?" do
-  end
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
 
-  describe "#map_properties" do
-  end
+    context "compat platforms" do
+      ["freebsd-9", "el-5", "solaris2-5.9", "solaris2-5.10"].each do |plat|
+        it "uses compat URL" do
+          s = plat.split("-")
+          expect(package_router.use_compat_download_url_endpoint?(s.first, s.last)).to be true
+        end
+      end
+    end
 
-  describe "#generate_chef_standard_path" do
+    context "non-compat platform" do
+      it "uses normal URL" do
+        expect(package_router.use_compat_download_url_endpoint?("ubuntu", "14.04")).to be false
+      end
+    end
   end
 end

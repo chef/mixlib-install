@@ -140,8 +140,9 @@ EOF
         #
         # GET request
         #
-        def get(url)
-          response = http.get(File.join(endpoint, url))
+        def get(path)
+          url = File.join(endpoint, path)
+          response = http.get(url)
           JSON.parse(response.to_s)
         end
 
@@ -176,7 +177,8 @@ EOF
             # retrieve the metadata using the standardized path
             metadata = get("#{chef_standard_path}.metadata.json")
             license_content = metadata["license_content"]
-            software_dependencies = metadata["version_manifest"]["software"]
+            software_dependencies = metadata.fetch("version_manifest", {})
+                                      .fetch("software", nil)
           end
 
           # create the download path with the correct endpoint
