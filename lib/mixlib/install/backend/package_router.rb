@@ -22,7 +22,7 @@ require "mixlib/install/backend/base"
 require "mixlib/install/product"
 require "mixlib/install/util"
 require "mixlib/versioning"
-require "http"
+require "mixlib/install/http_client"
 
 module Mixlib
   class Install
@@ -63,7 +63,7 @@ module Mixlib
         #
         # @return [Array<Array<Hash>] Build records for available versions
         def versions
-          items = get("/api/v1/#{options.channel}/#{omnibus_project}/versions")["results"]
+          items = http_client.get_json("/api/v1/#{options.channel}/#{omnibus_project}/versions")["results"]
 
           # Circumvent early when there are no product artifacts in a specific channel
           if items.empty?
@@ -121,7 +121,7 @@ EOF
         #
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         def artifacts_for_version(version)
-          results = get("/api/v1/#{options.channel}/#{omnibus_project}/#{version}/artifacts")["results"]
+          results = http_client.get_json("/api/v1/#{options.channel}/#{omnibus_project}/#{version}/artifacts")["results"]
           return [] if results.nil?
 
           # Merge artifactory properties to a flat Hash
@@ -135,31 +135,6 @@ EOF
 
           # Convert results to build records
           results.map { |a| create_artifact(a) }
-        end
-
-        #
-        # GET request
-        #
-        def get(path)
-          url = File.join(endpoint, path)
-
-          response = if options.proxy_address
-                       proxy_params = [options.proxy_address, options.proxy_port]
-                       proxy_params.push(options.proxy_username, options.proxy_password) if options.proxy_username
-                       http.via(*proxy_params).get(url)
-                     else
-                       http.get(url)
-                     end
-
-          JSON.parse(response.to_s)
-        end
-
-        def http
-          headers = {
-            "User-Agent" => Util.user_agent_string(options.user_agent_headers),
-          }
-
-          HTTP[headers]
         end
 
         def create_artifact(artifact_map)
@@ -183,7 +158,7 @@ EOF
 
           if options.include_metadata?
             # retrieve the metadata using the standardized path
-            metadata = get("#{chef_standard_path}.metadata.json")
+            metadata = http_client.get_json("#{chef_standard_path}.metadata.json")
             license_content = metadata["license_content"]
             software_dependencies = metadata.fetch("version_manifest", {})
                                       .fetch("software", nil)
@@ -265,6 +240,10 @@ EOF
 
         def product_description
           PRODUCT_MATRIX.lookup(options.product_name, options.product_version).product_name
+        end
+
+        def http_client
+          @http_client ||= HTTPClient.new(endpoint, options)
         end
       end
     end

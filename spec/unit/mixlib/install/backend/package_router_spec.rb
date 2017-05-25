@@ -423,24 +423,25 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
-  describe "#http" do
-    let(:channel) { :stable }
-    let(:product_name) { "chef" }
+  # TODO: move to http client spec
+  # describe "#http" do
+  #   let(:channel) { :stable }
+  #   let(:product_name) { "chef" }
 
-    context "default user agents" do
-      it "always includes default header" do
-        expect(package_router.http.default_options.headers["User-Agent"]).to match /mixlib-install\/#{Mixlib::Install::VERSION}/
-      end
-    end
+  #   context "default user agents" do
+  #     it "always includes default header" do
+  #       expect(package_router.http.default_options.headers["User-Agent"]).to match /mixlib-install\/#{Mixlib::Install::VERSION}/
+  #     end
+  #   end
 
-    context "with custom agents" do
-      let(:user_agent_headers) { ["foo/bar", "someheader"] }
+  #   context "with custom agents" do
+  #     let(:user_agent_headers) { ["foo/bar", "someheader"] }
 
-      it "sets custom header" do
-        expect(package_router.http.default_options.headers["User-Agent"]).to match /foo\/bar someheader/
-      end
-    end
-  end
+  #     it "sets custom header" do
+  #       expect(package_router.http.default_options.headers["User-Agent"]).to match /foo\/bar someheader/
+  #     end
+  #   end
+  # end
 
   context "windows desktop artifacts" do
     let(:channel) { :stable }

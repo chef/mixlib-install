@@ -78,11 +78,11 @@ If no earlier version is found the earliest version available will be set.",
           FileUtils.mkdir_p options[:directory]
           file = File.join(options[:directory], File.basename(artifact.url))
 
-          require "json"
-          require "http"
+          uri = URI.parse(artifact.url)
+          http_client = HTTPClient.new("#{uri.scheme}://#{uri.host}", Options.new(mixlib_install_options))
 
           say "Starting download #{artifact.url} to #{file}"
-          response = HTTP.get(artifact.url)
+          response = http_client.get(uri.path)
           open(file, "wb") do |io|
             io.write(response.body)
           end
