@@ -160,6 +160,16 @@ module Mixlib
         end
       end
 
+      def proxy_settings
+        settings = {}
+        settings[:proxy_address] = options[:proxy_address]
+        settings[:proxy_port] = options[:proxy_port]
+        settings[:proxy_username] = options[:proxy_username]
+        settings[:proxy_password] = options[:proxy_password]
+
+        settings
+      end
+
       private
 
       def default_options
@@ -168,7 +178,6 @@ module Mixlib
           platform_version_compatibility_mode: false,
           product_version: :latest,
           include_metadata: false,
-          http_proxy_options: {},
         }
       end
 
