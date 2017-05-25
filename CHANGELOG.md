@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.2.2]
+- Fix issue [#206](https://github.com/chef/mixlib-install/issues/206) - Missing metadata now returns `nil`
+
 ## [3.2.1]
 - Add support for direct URL downloads for Bourne install script
 
