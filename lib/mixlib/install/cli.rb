@@ -79,15 +79,12 @@ If no earlier version is found the earliest version available will be set.",
           file = File.join(options[:directory], File.basename(artifact.url))
 
           require "json"
-          require "net/http"
+          require "http"
 
           say "Starting download #{artifact.url} to #{file}"
-          uri = URI.parse(artifact.url)
-          Net::HTTP.start(uri.host) do |http|
-            resp = http.get(uri.path)
-            open(file, "wb") do |io|
-              io.write(resp.body)
-            end
+          response = HTTP.get(artifact.url)
+          open(file, "wb") do |io|
+            io.write(response.body)
           end
 
           say "Download saved to #{file}"

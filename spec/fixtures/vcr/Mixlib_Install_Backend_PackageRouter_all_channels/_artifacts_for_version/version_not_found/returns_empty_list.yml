@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packages.chef.io/api/v1/stable/chef/99.99.99/artifacts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - mixlib-install/3.2.1
+      Connection:
+      - close
+      Host:
+      - packages.chef.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - ff981990553e179077c9b9eaf2ed924bad01dd9fa39edcfb831e67f86d7d8bc8
+      Content-Length:
+      - '87'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 24 May 2017 21:48:48 GMT
+      Age:
+      - '0'
+      Connection:
+      - close
+      X-Served-By:
+      - cache-sjc3123-SJC, cache-lax8626-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1495662528.305080,VS0,VE73
+    body:
+      encoding: ASCII-8BIT
+      string: |2
+
+        {
+        "results" : [  ],
+        "range" : {
+          "start_pos" : 0,
+          "end_pos" : 0,
+          "total" : 0
+        }
+        }
+    http_version: 
+  recorded_at: Wed, 24 May 2017 21:48:48 GMT
+recorded_with: VCR 3.0.3

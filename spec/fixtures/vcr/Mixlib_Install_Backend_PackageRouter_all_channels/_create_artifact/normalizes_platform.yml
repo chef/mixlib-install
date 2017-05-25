@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packages.chef.io/files/stable/chef/12.17.16/solaris2/5.10/chef-12.17.16-1.sparc.solaris.metadata.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - mixlib-install/3.2.1
+      Connection:
+      - close
+      Host:
+      - packages.chef.io
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json;charset=ISO-8859-1
+      Server:
+      - nginx
+      X-Artifactory-Id:
+      - 91ce5e713616ab7d:4a171d30:159f1ef5b3a:-7f1a
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Fastly-Debug-Digest:
+      - 00afc6c86322525f164208910a0a9ef611f527e1754b97e031db1c377b0821c0
+      Content-Length:
+      - '80'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Thu, 25 May 2017 14:57:59 GMT
+      Age:
+      - '0'
+      Connection:
+      - close
+      X-Served-By:
+      - cache-sjc3130-SJC, cache-lax8648-LAX
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1495724279.936318,VS0,VE97
+    body:
+      encoding: ISO-8859-1
+      string: |-
+        {
+          "errors" : [ {
+            "status" : 404,
+            "message" : "File not found."
+          } ]
+        }
+    http_version: 
+  recorded_at: Thu, 25 May 2017 14:57:59 GMT
+recorded_with: VCR 3.0.3

@@ -408,19 +408,21 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
-  context "user agents" do
+  describe "#http" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
 
-    it "always includes default header" do
-      expect(package_router.create_http_request("/").get_fields("user-agent")).to include "mixlib-install/#{Mixlib::Install::VERSION}"
+    context "default user agents" do
+      it "always includes default header" do
+        expect(package_router.http.default_options.headers["User-Agent"]).to match /mixlib-install\/#{Mixlib::Install::VERSION}/
+      end
     end
 
     context "with custom agents" do
       let(:user_agent_headers) { ["foo/bar", "someheader"] }
 
       it "sets custom header" do
-        expect(package_router.create_http_request("/").get_fields("user-agent")).to include(/foo\/bar someheader/)
+        expect(package_router.http.default_options.headers["User-Agent"]).to match /foo\/bar someheader/
       end
     end
   end
@@ -580,6 +582,179 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
             expect(artifact_info.version).to eq expected_version
           end
         end
+      end
+    end
+  end
+
+  describe "#available_artifacts" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    context "latest version" do
+      let(:product_version) { :latest }
+
+      it "returns available_artifacts" do
+        expect(package_router.available_artifacts.first.version).to eq "13.0.118"
+      end
+    end
+
+    context "partial version" do
+      let(:product_version) { "12.12" }
+
+      it "returns available_artifacts" do
+        expect(package_router.available_artifacts.first.version).to eq "12.12.15"
+      end
+    end
+
+    context "specific version" do
+      let(:product_version) { "12.12.15" }
+
+      it "returns available_artifacts" do
+        expect(package_router.available_artifacts.first.version).to eq "12.12.15"
+      end
+    end
+  end
+
+  describe "#available_versions" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    it "returns list of available versions" do
+      expect(package_router.available_versions).to include "12.12.15"
+    end
+  end
+
+  describe "#versions" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    it "returns list of available versions" do
+      expect(package_router.versions.first["properties"][0]["value"]).to eq "12.0.3"
+    end
+  end
+
+  describe "#latest_version" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    context "partial version" do
+      let(:product_version) { "12.12" }
+
+      it "returns list of latest versions for partial version" do
+        expect(package_router.latest_version.first.version).to eq "12.12.15"
+      end
+    end
+
+    context "partial version with ." do
+      let(:product_version) { "12.12." }
+
+      it "returns list of latest versions for partial version" do
+        expect(package_router.latest_version.first.version).to eq "12.12.15"
+      end
+    end
+
+    context "latest version" do
+      let(:product_version) { :latest }
+
+      it "returns list of latest versions for partial version" do
+        expect(package_router.latest_version.first.version).to eq "13.0.118"
+      end
+    end
+  end
+
+  describe "#extract_version_from_response" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "12.12.15" }
+
+    it "returns version" do
+      response = {
+        "properties" => [{ "key" => "omnibus.version", "value" => product_version }],
+      }
+      expect(package_router.extract_version_from_response(response)).to eq product_version
+    end
+  end
+
+  describe "#artifacts_for_version" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    context "with valid version" do
+      let(:product_version) { "12.12.15" }
+
+      it "returns list of artifacts" do
+        expect(package_router.artifacts_for_version(product_version).first).to be_a Mixlib::Install::ArtifactInfo
+      end
+    end
+
+    context "version not found" do
+      let(:product_version) { "99.99.99" }
+
+      it "returns empty list" do
+        expect(package_router.artifacts_for_version(product_version)).to eq []
+      end
+    end
+  end
+
+  describe "#create_artifact" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:artifact_map) do
+      {
+        "filename" => "chef-12.17.16-1.sparc.solaris",
+        "omnibus.license" => "Apache-2.0",
+        "sha1" => "5a780a1aa1bfce7f85bdca96b0954976d821a2b4",
+        "delivery.change" => nil,
+        "omnibus.sha256" => "36f98876e63c2f09d7d56a194771efb9b3a27515daa97242fb6922e459c895b4",
+        "delivery.sha" => nil,
+        "sha256" => "36f98876e63c2f09d7d56a194771efb9b3a27515daa97242fb6922e459c895b4",
+        "md5" => "a7cbba657b951554572b31a1b63b5331",
+        "build.number" => "12.17.16",
+        "omnibus.platform_version" => "10",
+        "omnibus.md5" => "a7cbba657b951554572b31a1b63b5331",
+        "omnibus.sha512" => "e8eac47e768170d937879f9051413785beee8918bcee65ea4c109a2d7d9b46c84b5f6b3e8d81aa7f17cbd8f05dae69db6ce45d1f7b58600b93614c178a56158f",
+        "omnibus.version" => "12.17.16",
+        "omnibus.project" => "chef",
+        "omnibus.iteration" => "1",
+        "build.name" => "chef",
+        "omnibus.architecture" => "sparc",
+        "omnibus.sha1" => "5a780a1aa1bfce7f85bdca96b0954976d821a2b4",
+        "omnibus.platform" => "solaris",
+        "sha512" => "e8eac47e768170d937879f9051413785beee8918bcee65ea4c109a2d7d9b46c84b5f6b3e8d81aa7f17cbd8f05dae69db6ce45d1f7b58600b93614c178a56158f",
+      }
+    end
+
+    let(:artifact) { package_router.create_artifact(artifact_map) }
+
+    it "normalizes platform" do
+      expect(artifact.platform).to eq "solaris2"
+    end
+
+    it "normalizes platform version" do
+      expect(artifact.platform_version).to eq "5.10"
+    end
+
+    it "use compat download url" do
+      expect(artifact.url).to match /^http:/
+    end
+  end
+
+  describe "#use_compat_download_url_endpoint?" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    context "compat platforms" do
+      ["freebsd-9", "el-5", "solaris2-5.9", "solaris2-5.10"].each do |plat|
+        it "uses compat URL" do
+          s = plat.split("-")
+          expect(package_router.use_compat_download_url_endpoint?(s.first, s.last)).to be true
+        end
+      end
+    end
+
+    context "non-compat platform" do
+      it "uses normal URL" do
+        expect(package_router.use_compat_download_url_endpoint?("ubuntu", "14.04")).to be false
       end
     end
   end
