@@ -15,29 +15,45 @@ module Mixlib
         @proxy_password = options.proxy_password
       end
 
+      #
+      # Execute GET request. Automatically configures SSL and Proxy
+      # based on URI scheme and proxy settings
+      #
+      # @param path [String] URI path
+      #
+      # @return [HTTP::Response] response
+      #
       def get(path)
         url = File.join(endpoint, path)
 
         if proxy_address
           proxy_params = [proxy_address, proxy_port]
-          proxy_params.push(proxy_username, proxy_password) if proxy_username
-          http.via(*proxy_params).get(url)
+          proxy_params << [proxy_username, proxy_password] if proxy_username
+          client.via(*proxy_params).get(url)
         else
-          http.get(url)
+          client.get(url)
         end
       end
 
+      #
+      # Execute GET request. Automatically configures SSL and Proxy
+      # based on URI scheme and proxy settings
+      #
+      # @param path [String] URI path
+      #
+      # @return [JSON] response body as json
+      #
       def get_json(path)
         JSON.parse(self.get(path).to_s)
       end
 
-      private
-
-      def http
-        headers = {
-          "User-Agent" => Util.user_agent_string(user_agent_headers),
-        }
-
+      #
+      # Create HTTP::Client with default and/or custom user agent headers
+      #
+      # @return [HTTP::Client] client
+      #
+      def client
+        headers = { "User-Agent" => Util.user_agent_string(user_agent_headers) }
         HTTP[headers]
       end
     end
