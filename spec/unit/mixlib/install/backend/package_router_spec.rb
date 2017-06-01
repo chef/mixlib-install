@@ -50,6 +50,23 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:package_router) { Mixlib::Install::Backend::PackageRouter.new(mixlib_options) }
   let(:artifact_info) { package_router.info }
 
+  context "for chef/stable" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+
+    # 12.20.3 was released chronologically after 13.0.118. We want to make sure
+    # it appears BEFORE 13.0.118 in the list of available versions to prove that
+    # versions are sorted by semver rather than by release date.
+    context "when there is a release of a previous major/minor version" do
+      let(:idx_12_20_3) { package_router.available_versions.index("12.20.3") }
+      let(:idx_13_0_118) { package_router.available_versions.index("13.0.118") }
+
+      it "returns properly sorted list of available_versions" do
+        expect(idx_12_20_3).to be < idx_13_0_118
+      end
+    end
+  end
+
   context "for chef/stable with specific version" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }

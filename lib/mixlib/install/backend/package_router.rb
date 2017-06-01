@@ -54,8 +54,8 @@ module Mixlib
           # We are only including a single property, version and that exists
           # under the properties in the following structure:
           # "properties" => [ {"key"=>"omnibus.version", "value"=>"12.13.3"} ]
-          ver_list = versions.map { |i| extract_version_from_response(i) }
-          ver_list.uniq
+          ver_list = versions.map { |i| Mixlib::Versioning.parse(extract_version_from_response(i)) }.sort
+          ver_list.uniq.map(&:to_s)
         end
 
         #

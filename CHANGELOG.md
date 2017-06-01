@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.3.0]
+- `available_versions` now returns a sorted list of versions (per mixlib-versioning)
+
 ## [3.2.2]
 - Fix issue [#206](https://github.com/chef/mixlib-install/issues/206) - Missing metadata now returns `nil`
 
