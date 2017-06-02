@@ -222,6 +222,17 @@ do_checksum() {
 
 # do_download URL FILENAME
 do_download() {
+  # All download commands look for the http[s]_proxy env var
+  if test "x$https_proxy" != "x"; then
+    echo "setting https proxy $https_proxy"
+    export https_proxy=$https_proxy
+  fi
+
+  if test "x$http_proxy" != "x"; then
+    echo "setting http proxy $http_proxy"
+    export http_proxy=$http_proxy
+  fi
+
   echo "downloading $1"
   echo "  to file $2"
 

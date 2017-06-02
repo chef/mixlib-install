@@ -13,8 +13,16 @@ module Mixlib
       end
 
       desc "list-versions PRODUCT_NAME CHANNEL", "list available version for a product/channel"
+      option :http_proxy
+      option :https_proxy
       def list_versions(product_name, channel)
-        say Mixlib::Install.available_versions(product_name, channel).join("\n")
+        versions = Mixlib::Install.available_versions(
+          product_name,
+          channel,
+          https_proxy: options[:https_proxy],
+          http_proxy: options[:http_proxy]
+        )
+        say versions.join("\n")
       end
 
       desc "download PRODUCT_NAME", "download an artifact"
@@ -48,6 +56,8 @@ If no earlier version is found the earliest version available will be set.",
       option :attributes,
         desc: "Print artifact attributes",
         type: :boolean
+      option :http_proxy
+      option :https_proxy
       def download(product_name)
         # Set mininum options
         mixlib_install_options = {
@@ -59,6 +69,8 @@ If no earlier version is found the earliest version available will be set.",
         }.tap do |opt|
           opt[:platform] = options[:platform] if options[:platform]
           opt[:platform_version] = options[:platform_version] if options[:platform_version]
+          opt[:http_proxy] = options[:http_proxy] if options[:http_proxy]
+          opt[:https_proxy] = options[:https_proxy] if options[:https_proxy]
         end
 
         # auto detect platform options if not configured

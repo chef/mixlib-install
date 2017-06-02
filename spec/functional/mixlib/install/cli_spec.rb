@@ -50,6 +50,16 @@ describe "mixlib-install executable", :type => :aruba do
       it "prints the versions" do
         expect(last_command_started).to have_output /12.0.3/
       end
+
+      context "with http proxy" do
+        let(:args) { "chef stable --http-proxy http://127.0.0.1:8401" }
+
+        it "prints the versions" do
+          with_proxy_server do
+            expect(last_command_started).to have_output /12.0.3/
+          end
+        end
+      end
     end
 
     context "with invalid args" do
@@ -138,6 +148,14 @@ describe "mixlib-install executable", :type => :aruba do
 
       it "downloads a chef artifact" do
         expect(last_command_started).to have_output /Download saved to/
+      end
+
+      context "with http proxy" do
+        it "downloads a chef artifact" do
+          with_proxy_server do
+            expect(last_command_started).to have_output /Download saved to/
+          end
+        end
       end
     end
 

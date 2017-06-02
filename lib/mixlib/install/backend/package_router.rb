@@ -148,21 +148,10 @@ EOF
         # GET request
         #
         def get(url)
-          uri = URI.parse(endpoint)
-          http = Net::HTTP.new(uri.host, uri.port)
-          http.use_ssl = (uri.scheme == "https")
-          full_path = File.join(uri.path, url)
-          res = http.request(create_http_request(full_path))
-          res.value
-          JSON.parse(res.body)
-        end
-
-        def create_http_request(full_path)
-          request = Net::HTTP::Get.new(full_path)
-
-          request.add_field("User-Agent", Util.user_agent_string(options.user_agent_headers))
-
-          request
+          request = create_http_request(File.join(uri.path, url))
+          response = http.request(request)
+          response.value
+          JSON.parse(response.body)
         end
 
         def create_artifact(artifact_map)
@@ -276,6 +265,35 @@ EOF
 
         def product_description
           PRODUCT_MATRIX.lookup(options.product_name, options.product_version).product_name
+        end
+
+        def create_http_request(full_path)
+          request = Net::HTTP::Get.new(full_path)
+          request.add_field("User-Agent", Util.user_agent_string(options.user_agent_headers))
+
+          request
+        end
+
+        def http
+          @http ||= begin
+            http_params = [uri.host, uri.port]
+
+            proxy = options.proxy
+
+            if proxy
+              proxy_uri = URI.parse(proxy)
+              http_params.push(proxy_uri.host, proxy_uri.port)
+            end
+
+            http = Net::HTTP.new(*http_params)
+            http.use_ssl = uri.scheme == "https"
+
+            http
+          end
+        end
+
+        def uri
+          @uri ||= URI.parse(endpoint)
         end
       end
     end

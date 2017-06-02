@@ -137,4 +137,43 @@ context "Mixlib::Install::Options" do
       end
     end
   end
+
+  context "http proxies" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+
+    shared_examples_for "proxies" do
+      it "returns the correct proxy" do
+        mi = Mixlib::Install.new(product_name: product_name, channel: channel, **proxy)
+        expect(mi.options.proxy).to eq expected
+      end
+    end
+
+    context "http proxy only" do
+      let(:proxy) do
+        { http_proxy: "server.local" }
+      end
+      let(:expected) { proxy[:http_proxy] }
+
+      it_behaves_like "proxies"
+    end
+
+    context "http proxy only" do
+      let(:proxy) do
+        { https_proxy: "server.slocal" }
+      end
+      let(:expected) { proxy[:https_proxy] }
+
+      it_behaves_like "proxies"
+    end
+
+    context "http proxy only" do
+      let(:proxy) do
+        { http_proxy: "server.local", https_proxy: "server.slocal" }
+      end
+      let(:expected) { "server.slocal" }
+
+      it_behaves_like "proxies"
+    end
+  end
 end

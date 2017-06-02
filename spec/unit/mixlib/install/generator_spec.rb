@@ -170,23 +170,6 @@ context "Mixlib::Install::Generator", :vcr do
   context "when setting install_command_options" do
     let(:channel) { :stable }
 
-    context "for powershell install params" do
-      let(:install_command_options) do
-        { http_proxy: "http://sam:iam@greeneggsandham:1111" }
-      end
-
-      let(:add_options) do
-        {
-          install_command_options: install_command_options,
-          shell_type: :ps1,
-        }
-      end
-
-      it "#install_command adds http_proxy param" do
-        expect(install_script).to match(/install -project .* -version .* -channel .* -http_proxy '#{install_command_options[:http_proxy]}'\n/)
-      end
-    end
-
     context "for bourne install params" do
       let(:install_command_options) do
         {
@@ -212,6 +195,36 @@ context "Mixlib::Install::Generator", :vcr do
 
       it "adds checksum var" do
         expect(install_script).to match(/checksum='#{install_command_options[:checksum]}'/)
+      end
+    end
+  end
+
+  context "when setting http proxy" do
+    let(:channel) { :stable }
+    let(:add_options) do
+      {
+        http_proxy: "http://127.0.0.1:8401",
+        https_proxy: "http://127.0.0.1:8401",
+      }
+    end
+
+    context "for bourne shell" do
+      it "sets proxy value" do
+        expect(install_script).to match(/http_proxy=#{add_options[:http_proxy]}/)
+        expect(install_script).to match(/https_proxy=#{add_options[:https_proxy]}/)
+      end
+    end
+
+    context "for powershell" do
+      let(:add_options) do
+        {
+          http_proxy: "http://127.0.0.1:8401",
+          shell_type: :ps1,
+        }
+      end
+
+      it "sets proxy value" do
+        expect(install_script).to match(/-http_proxy #{add_options[:http_proxy]}/)
       end
     end
   end

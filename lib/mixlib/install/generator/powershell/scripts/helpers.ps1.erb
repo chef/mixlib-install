@@ -64,11 +64,12 @@ function Get-WebContent {
 function Get-WebContentOnFullNet {
   param ($uri, $filepath)
 
-  $proxy = New-Object -TypeName System.Net.WebProxy
   $wc = new-object System.Net.WebClient
   $wc.Headers.Add("user-agent", "<%= user_agent_string %>")
-  $proxy.Address = $env:http_proxy
-  $wc.Proxy = $proxy
+
+  if (-not [string]::IsNullOrEmpty($http_proxy)) {
+    $wc.Proxy = Get-WebProxy
+  }
 
   if ([string]::IsNullOrEmpty($filepath)) {
     $wc.downloadstring($uri)
@@ -82,6 +83,11 @@ function Get-WebContentOnCore {
   param ($uri, $filepath)
 
   $handler = New-Object System.Net.Http.HttpClientHandler
+
+  if (-not [string]::IsNullOrEmpty($http_proxy)) {
+    $handler.Proxy = Get-WebProxy
+  }
+
   $client = New-Object System.Net.Http.HttpClient($handler)
   $client.DefaultRequestHeaders.UserAgent.ParseAdd("<%= user_agent_string %>")
   $client.Timeout = New-Object System.TimeSpan(0, 30, 0)
@@ -105,6 +111,13 @@ function Get-WebContentOnCore {
       }
     }
   }
+}
+
+function Get-WebProxy {
+  $proxy = New-Object -TypeName System.Net.WebProxy
+  $proxy.Address = $http_proxy
+
+  return $proxy
 }
 
 function Test-ProjectPackage {
