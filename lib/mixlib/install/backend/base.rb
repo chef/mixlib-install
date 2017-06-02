@@ -198,6 +198,14 @@ EOF
 
           # add the remaining cloned artifacts to the original set
           artifacts += new_artifacts
+
+          # TODO: this explicitly removes all appx results and should be
+          # modified to enable on the appropriate platforms
+          artifacts.delete_if do |x|
+            /\.appx/ =~ x.url
+          end
+
+          artifacts
         end
 
         #
