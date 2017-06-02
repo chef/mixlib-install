@@ -167,7 +167,7 @@ module Mixlib
       end
 
       def validate_architecture
-        unless architecture.nil? || SUPPORTED_ARCHITECTURES.include?(architecture)
+        unless architecture.nil? || SUPPORTED_ARCHITECTURES.include?(Util.normalize_architecture(architecture))
           errors << <<-EOS
 Unknown architecture #{architecture}.
 Must be one of: #{SUPPORTED_ARCHITECTURES.join(", ")}
