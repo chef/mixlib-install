@@ -76,6 +76,8 @@ module Mixlib
 
         resolve_platform_version_compatibility_mode!
 
+        map_solaris_architectures!
+
         map_windows_versions!
 
         validate!
@@ -223,6 +225,10 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
 Must provide platform, platform version and architecture when specifying any platform details
           EOS
         end
+      end
+
+      def map_solaris_architecture!
+        options[:architecture] = Util.map_solaris_architecture(architecture)
       end
 
       def map_windows_versions!
