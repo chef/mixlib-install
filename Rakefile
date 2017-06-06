@@ -11,10 +11,14 @@ require "rspec/core/rake_task"
   end
 end
 
-require "chefstyle"
-require "rubocop/rake_task"
-RuboCop::RakeTask.new(:chefstyle) do |task|
-  task.options << "--display-cop-names"
+begin
+  require "chefstyle"
+  require "rubocop/rake_task"
+  RuboCop::RakeTask.new(:chefstyle) do |task|
+    task.options << "--display-cop-names"
+  end
+rescue LoadError
+  puts "chefstyle gem is not installed"
 end
 
 namespace :travis do
