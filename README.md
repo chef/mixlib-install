@@ -4,7 +4,7 @@
 
 ## Supports
 
-- Ruby 1.9.3
+- Ruby 1.9.3+
 - Chef 11.6.2+ chef-client upgrades
 
 ## Command Line Usage
