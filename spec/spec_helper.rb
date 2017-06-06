@@ -3,7 +3,6 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
 require "aruba/rspec"
 require "mixlib/install"
-require "simplecov"
 require "vcr"
 require "webmock/rspec"
 
@@ -35,7 +34,12 @@ RSpec.configure do |config|
   end
 end
 
-SimpleCov.start
+begin
+  require "simplecov"
+  SimpleCov.start
+rescue LoadError
+  puts "install simplecov in Gemfile.local for coverage reports"
+end
 
 #
 # vcr configuration
