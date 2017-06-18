@@ -150,20 +150,32 @@ module Mixlib
                    File.open(File.join(d, "detect_platform.ps1"), "w+") do |f|
                      f.puts self.detect_platform_ps1
                    end
-
-                   Mixlib::ShellOut.new("powershell.exe -file #{File.join(d, "detect_platform.ps1")}").run_command
+                   ps_version = self.powershell_version
+                   if ps_version >= 2
+                     Mixlib::ShellOut.new("powershell.exe -file #{File.join(d, "detect_platform.ps1")}").run_command
+                   else
+                     Mixlib::ShellOut.new("powershell.exe -command 2008").run_command
+                   end
                  end
                else
                  Mixlib::ShellOut.new(self.detect_platform_sh).run_command
                end
-
+      output.error!
       platform_info = output.stdout.split
 
-      {
-        platform: platform_info[0],
-        platform_version: platform_info[1],
-        architecture: platform_info[2],
-      }
+      if Gem.win_platform? && platform_info.size == 1
+        {
+          platform: "windows",
+          platform_version: platform_info[0],
+          architecture: "x86_64",
+        }
+      else
+        {
+          platform: platform_info[0],
+          platform_version: platform_info[1],
+          architecture: platform_info[2],
+        }
+      end
     end
 
     #
@@ -200,6 +212,13 @@ module Mixlib
     #
     def self.install_ps1(context = {})
       Mixlib::Install::Generator::PowerShell.install_ps1(context)
+    end
+
+    #
+    # Returns the powershell version
+    #
+    def self.powershell_version
+      Mixlib::ShellOut.new("powershell -command $PSVersionTable.PSVersion.major").run_command.stdout.split.first.to_i
     end
   end
 end
