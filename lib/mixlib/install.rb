@@ -148,13 +148,13 @@ module Mixlib
                  # powershell.exe program with Mixlib::ShellOut
                  Dir.mktmpdir do |d|
                    File.open(File.join(d, "detect_platform.ps1"), "w+") do |f|
-                     f.puts self.detect_platform_ps1
+                     f.puts detect_platform_ps1
                    end
 
                    Mixlib::ShellOut.new("powershell.exe -file #{File.join(d, "detect_platform.ps1")}").run_command
                  end
                else
-                 Mixlib::ShellOut.new(self.detect_platform_sh).run_command
+                 Mixlib::ShellOut.new(detect_platform_sh).run_command
                end
 
       platform_info = output.stdout.split

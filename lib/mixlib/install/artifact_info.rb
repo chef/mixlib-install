@@ -74,7 +74,7 @@ module Mixlib
       end
 
       def clone_with(data)
-        ArtifactInfo.new(self.to_hash.merge(data))
+        ArtifactInfo.new(to_hash.merge(data))
       end
 
       def appx_artifact?
