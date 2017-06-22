@@ -172,7 +172,11 @@ context "Mixlib::Install::Generator", :vcr do
 
     context "for powershell install params" do
       let(:install_command_options) do
-        { http_proxy: "http://sam:iam@greeneggsandham:1111" }
+        {
+          http_proxy: "http://sam:iam@greeneggsandham:1111",
+          download_url_override: "https://packages.chef.io/files/stable/chef/12.19.36/windows/2012/chef-client-12.19.36-1-x64.msi",
+          checksum: "1baed41a777d298a08fc0a34dd1eaaa76143bde222fd22c31aa709c7911dec48",
+        }
       end
 
       let(:add_options) do
@@ -183,7 +187,15 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "#install_command adds http_proxy param" do
-        expect(install_script).to match(/install -project .* -version .* -channel .* -http_proxy '#{install_command_options[:http_proxy]}'\n/)
+        expect(install_script).to match(/http_proxy '#{install_command_options[:http_proxy]}'/)
+      end
+
+      it "adds download_url_override var" do
+        expect(install_script).to match(/download_url_override '#{install_command_options[:download_url_override]}'/)
+      end
+
+      it "adds checksum var" do
+        expect(install_script).to match(/checksum '#{install_command_options[:checksum]}'/)
       end
     end
 

@@ -47,13 +47,27 @@ function Install-Project {
     [string]
     $daemon = 'auto',
     [string]
-    $http_proxy
+    $http_proxy,
+    [string]
+    $download_url_override,
+    # Specify an alternate download url, must also include checksum
+    [string]
+    $checksum
+    # SHA256 checksum of the download file
+    # Must be present when using download_url_override
   )
 
   # Set http_proxy as env var
   $env:http_proxy = $http_proxy
 
-  $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
+  if (-not [string]::IsNullOrEmpty($download_url_override)) {
+    $download_url = $download_url_override
+    $sha256 = $checksum
+  } else {
+    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
+    $download_url = $package_metadata.url
+    $sha256 = $package_metadata.sha256
+  }
 
   if (-not [string]::IsNullOrEmpty($filename)) {
     $download_directory = split-path $filename
@@ -63,7 +77,7 @@ function Install-Project {
     }
   }
   else {
-    $filename = ($package_metadata.url -split '/')[-1]
+    $filename = ($download_url -split '/')[-1]
   }
   Write-Verbose "Download directory: $download_directory"
   Write-Verbose "Filename: $filename"
@@ -75,18 +89,18 @@ function Install-Project {
   $download_destination = join-path $download_directory $filename
 
   if ((test-path $download_destination) -and
-    (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $package_metadata.sha256 -ea SilentlyContinue)){
+    (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256 -ea SilentlyContinue)){
     Write-Verbose "Found existing valid installer at $download_destination."
   }
   else {
-    if ($pscmdlet.ShouldProcess("$($package_metadata.url)", "Download $project")) {
-      Write-Verbose "Downloading $project from $($package_metadata.url) to $download_destination."
-      Get-WebContent $package_metadata.url -filepath $download_destination
+    if ($pscmdlet.ShouldProcess("$($download_url)", "Download $project")) {
+      Write-Verbose "Downloading $project from $($download_url) to $download_destination."
+      Get-WebContent $download_url -filepath $download_destination
     }
   }
 
   if ($pscmdlet.ShouldProcess("$download_destination", "Installing")){
-    if (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $package_metadata.sha256) {
+    if (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256) {
       Write-Host "Installing $project from $download_destination"
       $installingProject = $True
       $installAttempts = 0
