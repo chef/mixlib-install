@@ -151,7 +151,11 @@ module Mixlib
                      f.puts detect_platform_ps1
                    end
 
-                   Mixlib::ShellOut.new("powershell.exe -file #{File.join(d, "detect_platform.ps1")}").run_command
+                   # An update to most Windows versions > 2008r2 now sets the execution policy
+                   # to disallow unsigned powershell scripts. This changes it for just this
+                   # powershell session, which allows this to run even if the execution policy
+                   # is set higher.
+                   Mixlib::ShellOut.new("powershell.exe -file #{File.join(d, "detect_platform.ps1")}", :env => { "PSExecutionPolicyPreference" => "Bypass" }).run_command
                  end
                else
                  Mixlib::ShellOut.new(detect_platform_sh).run_command
