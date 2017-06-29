@@ -1,5 +1,9 @@
 # Change Log
 
+## [3.3.1]
+- Add download_url_override and checksum options for powershell version of installer script
+- Update powershell execution due to policy changes in Windows 8, Windows Server 2012, and Windows 8.1
+
 ## [3.3.0]
 - `available_versions` now returns a sorted list of versions (per mixlib-versioning)
 
