@@ -29,12 +29,20 @@ Function Get-SHA256($src) {
 }
 
 function Get-SHA256Converter {
-  if($PSVersionTable.PSEdition -eq 'Core') {
-    [System.Security.Cryptography.SHA256]::Create()
+  if (Is-FIPS) {
+    New-Object -TypeName Security.Cryptography.SHA256Cng
+  } else {
+    if($PSVersionTable.PSEdition -eq 'Core') {
+      [System.Security.Cryptography.SHA256]::Create()
+    }
+    else {
+      New-Object -TypeName Security.Cryptography.SHA256Managed
+    }
   }
-  else {
-    New-Object -TypeName Security.Cryptography.SHA256Managed
-  }
+}
+
+function Is-FIPS {
+  (Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\FipsAlgorithmPolicy).Enabled
 }
 
 Function Download-Chef($url, $sha256, $dst) {

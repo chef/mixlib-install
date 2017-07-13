@@ -111,23 +111,10 @@ function Test-ProjectPackage {
   [cmdletbinding()]
   param ($Path, $Algorithm = 'SHA256', $Hash)
 
-  if (-not (get-command get-filehash -ErrorAction 'SilentlyContinue')) {
-    function disposable($o){($o -is [IDisposable]) -and (($o | get-member | foreach-object {$_.name}) -contains 'Dispose')}
-    function use($obj, [scriptblock]$sb){try {& $sb} catch [exception]{throw $_} finally {if (disposable $obj) {$obj.Dispose()}} }
-    function Get-FileHash ($Path, $Algorithm) {
-      $Path = (resolve-path $path).providerpath
-      $hash = @{Algorithm = $Algorithm; Path = $Path}
-      use ($c = Get-SHA256Converter) {
-        use ($in = (gi $path).OpenRead()) {
-          $hash.Hash = ([BitConverter]::ToString($c.ComputeHash($in))).Replace("-", "").ToUpper()
-        }
-      }
-      new-object PSObject -Property $hash
-    }
-  }
   Write-Verbose "Testing the $Algorithm hash for $path."
   $ActualHash = (Get-FileHash -Algorithm $Algorithm -Path $Path).Hash.ToLower()
-  Write-Verbose "`tDesired Hash - '$hash'"
+
+  Write-Verbose "`tDesired Hash - '$Hash'"
   Write-Verbose "`tActual Hash  - '$ActualHash'"
   $Valid = $ActualHash -eq $Hash
   if (-not $Valid) {
@@ -136,13 +123,34 @@ function Test-ProjectPackage {
   return $Valid
 }
 
+function Get-FileHash ($Path, $Algorithm) {
+  function disposable($o){($o -is [IDisposable]) -and (($o | get-member | foreach-object {$_.name}) -contains 'Dispose')}
+  function use($obj, [scriptblock]$sb){try {& $sb} catch [exception]{throw $_} finally {if (disposable $obj) {$obj.Dispose()}} }
+  $Path = (resolve-path $Path).providerpath
+  $hash = @{Algorithm = $Algorithm; Path = $Path}
+  use ($c = Get-SHA256Converter) {
+    use ($in = (gi $Path).OpenRead()) {
+      $hash.Hash = ([BitConverter]::ToString($c.ComputeHash($in))).Replace("-", "").ToUpper()
+    }
+  }
+  return $hash
+}
+
 function Get-SHA256Converter {
-  if($PSVersionTable.PSEdition -eq 'Core') {
-    [System.Security.Cryptography.SHA256]::Create()
+  if (Is-FIPS) {
+    New-Object -TypeName Security.Cryptography.SHA256Cng
+  } else {
+    if($PSVersionTable.PSEdition -eq 'Core') {
+      [System.Security.Cryptography.SHA256]::Create()
+    }
+    else {
+      New-Object -TypeName Security.Cryptography.SHA256Managed
+    }
   }
-  else {
-    New-Object -TypeName Security.Cryptography.SHA256Managed
-  }
+}
+
+function Is-FIPS {
+  (Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\FipsAlgorithmPolicy).Enabled
 }
 
 function Get-WMIQuery {
