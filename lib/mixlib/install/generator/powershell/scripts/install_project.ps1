@@ -58,8 +58,10 @@ function Install-Project {
   )
 
   # Set http_proxy as env var
-  $env:http_proxy = $http_proxy
-
+  if(-not [string]::IsNullOrEmpty($http_proxy)) {
+    $env:http_proxy = $http_proxy
+  }
+  
   if (-not [string]::IsNullOrEmpty($download_url_override)) {
     $download_url = $download_url_override
     $sha256 = $checksum
