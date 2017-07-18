@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.3.2]
+- Fix bug where calling `products_available_on_downloads_site` would corrupt the product map.
+
 ## [3.3.1]
 - Add download_url_override and checksum options for powershell version of installer script
 - Update powershell execution due to policy changes in Windows 8, Windows Server 2012, and Windows 8.1
