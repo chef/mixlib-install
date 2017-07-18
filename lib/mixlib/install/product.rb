@@ -178,7 +178,7 @@ module Mixlib
       #   :key => product_key
       #   :value => Mixlib::Install::Product instance
       def products_available_on_downloads_site
-        @product_map.delete_if do |product_key, product|
+        @product_map.reject do |product_key, product|
           product.downloads_product_page_url == :not_available
         end
       end
