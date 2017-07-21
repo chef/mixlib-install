@@ -37,6 +37,8 @@ matrix:
     env: SUITE=ubuntu
   - rvm: 2.3
     env: SUITE=windows-server-2012r2
+  - rvm: 2.3
+    env: SUITE=windows-server-2012r2-fips
   # - rvm: 2.3
   #   env: SUITE=windows-nano
 
