@@ -538,15 +538,18 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
     context "without platform info" do
       %w{
-        12
+        13.2.
+        12.21.
         11.18.
       }.each do |version|
         context "for version #{version}" do
           let(:product_version) { version }
           let(:expected_version) do
             case version
-            when "12"
-              "12.19.36"
+            when "13.2."
+              "13.2.20"
+            when "12.21."
+              "12.21.3"
             when "11.18."
               "11.18.12"
             else
@@ -569,24 +572,25 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       let(:architecture) { "x86_64" }
 
       %w{
-        12
-        12.
-        11
-        12.1
-        12.14
+        11.18.
+        12.1.
         12.14.
+        12.21.
+        13.2.
       }.each do |version|
         context "for version #{version}" do
           let(:product_version) { version }
           let(:expected_version) do
             case version
-            when "12", "12."
-              "12.19.36"
+            when "13", "13.2."
+              "13.2.20"
+            when "12", "12.21."
+              "12.21.3"
             when "12.1", "12.1."
               "12.1.2"
             when "12.14", "12.14."
               "12.14.89"
-            when "11", "11."
+            when "11", "11.18."
               "11.18.12"
             else
               nil
