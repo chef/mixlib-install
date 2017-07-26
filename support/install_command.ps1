@@ -42,7 +42,10 @@ function Get-SHA256Converter {
 }
 
 function Is-FIPS {
-  (Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\FipsAlgorithmPolicy).Enabled
+  if (!$env:fips){
+    $env:fips = (Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\FipsAlgorithmPolicy).Enabled
+  }
+  return $env:fips
 }
 
 Function Download-Chef($url, $sha256, $dst) {
