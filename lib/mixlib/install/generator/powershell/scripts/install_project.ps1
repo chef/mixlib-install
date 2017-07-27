@@ -139,7 +139,7 @@ Function Install-ChefMsi($msi, $addlocal) {
 
   $p.WaitForExit()
   if ($p.ExitCode -eq 1618) {
-    Write-Host "Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
+    Write-Host "$((Get-Date).ToString()) - Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
     return $false
   } elseif ($p.ExitCode -ne 0) {
     throw "msiexec was not successful. Received exit code $($p.ExitCode)"

@@ -29,7 +29,7 @@ Function Get-SHA256($src) {
 }
 
 function Get-SHA256Converter {
-  if (Is-FIPS) {
+  if ($(Is-FIPS) -ge 1) {
     New-Object -TypeName Security.Cryptography.SHA256Cng
   } else {
     if($PSVersionTable.PSEdition -eq 'Core') {
