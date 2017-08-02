@@ -112,7 +112,17 @@ module Mixlib
       end
 
       def partial_version?
-        !latest_version? && !Mixlib::Versioning.parse(product_version)
+        # If PartialSemVer is defined than the version of mixlib-versioning loaded can parse partial versions
+        # Otherwise parsing a partial version will return nil
+        is_partial = if defined?(Mixlib::Versioning::Format::PartialSemVer)
+                       # remove if there's a trailing period for mixlib-versioning compatibility
+                       options[:product_version] = product_version.chomp(".") if product_version.is_a? String
+                       Mixlib::Versioning.parse(product_version).is_a?(Mixlib::Versioning::Format::PartialSemVer)
+                     else
+                       !Mixlib::Versioning.parse(product_version)
+                     end
+
+        !latest_version? && is_partial
       end
 
       def include_metadata?
