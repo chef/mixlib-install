@@ -1,4 +1,7 @@
-# Change Log
+# Mixlib::Install Changes
+
+<!-- latest_release -->
+<!-- latest_release -->
 
 ## [3.3.2]
 - Fix bug where calling `products_available_on_downloads_site` would corrupt the product map.
