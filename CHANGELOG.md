@@ -1,7 +1,13 @@
 # Mixlib::Install Changes
 
 <!-- latest_release -->
+## [v3.3.3](https://github.com/chef/mixlib-install/tree/v3.3.3) (2017-08-02)
+
+#### Merged Pull Requests
+- mixlib-versioning backwards compatability for PartialSemVer support [#229](https://github.com/chef/mixlib-install/pull/229) ([wrightp](https://github.com/wrightp))
 <!-- latest_release -->
+
+
 
 ## [3.3.2]
 - Fix bug where calling `products_available_on_downloads_site` would corrupt the product map.
