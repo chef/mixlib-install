@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.3.4 -->
+## [v3.3.4](https://github.com/chef/mixlib-install/tree/v3.3.4) (2017-08-10)
+
+#### Merged Pull Requests
+- Fix Windows architecture detection [#231](https://github.com/chef/mixlib-install/pull/231) ([rlaveycal](https://github.com/rlaveycal))
 <!-- latest_release -->
+
 ## [v3.3.3](https://github.com/chef/mixlib-install/tree/v3.3.3) (2017-08-02)
 
 #### Merged Pull Requests
 - mixlib-versioning backwards compatability for PartialSemVer support [#229](https://github.com/chef/mixlib-install/pull/229) ([wrightp](https://github.com/wrightp))
-<!-- latest_release -->
 
 
 
