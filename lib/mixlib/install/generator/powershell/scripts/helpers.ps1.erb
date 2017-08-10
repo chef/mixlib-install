@@ -27,11 +27,11 @@ function Get-PlatformArchitecture {
 }
 
 function Get-Win32OS {
-  if(!$env:win32OS)
+  if(!$global:win32OS)
   {
-    $env:win32OS = Get-WMIQuery win32_operatingsystem
+    $global:win32OS = Get-WMIQuery win32_operatingsystem
   }
-  $env:win32OS
+  $global:win32OS
 }
 
 function New-Uri {
