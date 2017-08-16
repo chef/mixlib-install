@@ -176,6 +176,7 @@ context "Mixlib::Install::Generator", :vcr do
           http_proxy: "http://sam:iam@greeneggsandham:1111",
           download_url_override: "https://packages.chef.io/files/stable/chef/12.19.36/windows/2012/chef-client-12.19.36-1-x64.msi",
           checksum: "1baed41a777d298a08fc0a34dd1eaaa76143bde222fd22c31aa709c7911dec48",
+          install_strategy: "once",
         }
       end
 
@@ -196,6 +197,10 @@ context "Mixlib::Install::Generator", :vcr do
 
       it "adds checksum var" do
         expect(install_script).to match(/checksum '#{install_command_options[:checksum]}'/)
+      end
+
+      it "adds install_strategy var" do
+        expect(install_script).to match(/install_strategy '#{install_command_options[:install_strategy]}'/)
       end
     end
 
@@ -227,7 +232,7 @@ context "Mixlib::Install::Generator", :vcr do
         expect(install_script).to match(/checksum='#{install_command_options[:checksum]}'/)
       end
 
-      it "adds checksum var" do
+      it "adds install_strategy var" do
         expect(install_script).to match(/install_strategy='#{install_command_options[:install_strategy]}'/)
       end
     end
