@@ -150,7 +150,7 @@ context "Mixlib::Install" do
     end
 
     it "should render a script with cli parameters" do
-      expect(install_sh).to include("while getopts pnv:c:f:P:d: opt")
+      expect(install_sh).to include("while getopts pnv:c:f:P:d:s opt")
     end
 
     context "with custom base_url" do
