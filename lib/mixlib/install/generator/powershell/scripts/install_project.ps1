@@ -48,14 +48,24 @@ function Install-Project {
     $daemon = 'auto',
     [string]
     $http_proxy,
-    [string]
-    $download_url_override,
     # Specify an alternate download url, must also include checksum
     [string]
-    $checksum
+    $download_url_override,
     # SHA256 checksum of the download file
     # Must be present when using download_url_override
+    [string]
+    $checksum,
+    # Set to 'once' to skip install if project is detected
+    [string]
+    $install_strategy
   )
+
+  if ((Test-Path "$env:systemdrive\opscode\$project\embedded") -and ($install_strategy -eq 'once')) {
+    Write-Host "$project installation detected"
+    Write-Host "install_strategy set to 'once'"
+    Write-Host "Nothing to install"
+    exit
+  }
 
   # Set http_proxy as env var
   if(-not [string]::IsNullOrEmpty($http_proxy)) {
