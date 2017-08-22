@@ -1,10 +1,11 @@
 # Mixlib::Install Changes
 
-<!-- latest_release unreleased -->
-## Unreleased
+<!-- latest_release 3.4.0 -->
+## [v3.4.0](https://github.com/chef/mixlib-install/tree/v3.4.0) (2017-08-22)
 
 #### Merged Pull Requests
 - Add install_strategy option to bootstrap install scripts [#232](https://github.com/chef/mixlib-install/pull/232) ([wrightp](https://github.com/wrightp))
+- Fix Windows architecture detection [#231](https://github.com/chef/mixlib-install/pull/231) ([rlaveycal](https://github.com/rlaveycal))
 <!-- latest_release -->
 
 ## [v3.3.4](https://github.com/chef/mixlib-install/tree/v3.3.4) (2017-08-10)
