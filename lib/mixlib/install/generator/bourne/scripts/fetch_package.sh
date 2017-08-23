@@ -40,11 +40,11 @@ if test -f $download_filename; then
     if test "x$checksum" = "x"; then
       verify_checksum="false"
       echo "checksum not specified, cached file ignored."
-    else
-      sha256="$checksum"
-      do_checksum "$download_filename" "$sha256"; then
+    elif do_checksum "$download_filename" "$checksum"; then
       echo "checksum compare succeeded, using existing file!"
       cached_file_available="true"
+    else
+      checksum_mismatch
     fi
   elif do_checksum "$download_filename" "$sha256"; then
     echo "checksum compare succeeded, using existing file!"
