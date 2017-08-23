@@ -55,7 +55,7 @@ if test -f $download_filename; then
   fi
 fi
 
-# download if no local version of the file available or checksum mismatch
+# download if no local version of the file available
 if test "x$cached_file_available" != "xtrue"; then
   do_download "$download_url"  "$download_filename"
   if test "x$verify_checksum" = "xtrue"; then
