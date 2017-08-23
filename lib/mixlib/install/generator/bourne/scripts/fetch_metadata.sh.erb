@@ -43,7 +43,6 @@ if test "x$download_url_override" = "x"; then
   sha256=`awk '$1 == "sha256" { print $2 }' "$metadata_filename"`
 else
   download_url=$download_url_override
-  sha256=$checksum
 fi
 
 ############
