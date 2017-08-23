@@ -48,11 +48,10 @@ function Install-Project {
     $daemon = 'auto',
     [string]
     $http_proxy,
-    # Specify an alternate download url, must also include checksum
+    # Specify an alternate download url
     [string]
     $download_url_override,
-    # SHA256 checksum of the download file
-    # Must be present when using download_url_override
+    # SHA256 checksum to verify cached files (optional)
     [string]
     $checksum,
     # Set to 'once' to skip install if project is detected
@@ -71,10 +70,18 @@ function Install-Project {
   if(-not [string]::IsNullOrEmpty($http_proxy)) {
     $env:http_proxy = $http_proxy
   }
+
+  $download_directory = (resolve-path $download_directory).providerpath
+  $download_destination = join-path $download_directory $filename
+  $cached_installer_available = $false
+  $verify_checksum = $true
   
   if (-not [string]::IsNullOrEmpty($download_url_override)) {
     $download_url = $download_url_override
     $sha256 = $checksum
+    if ([string]::IsNullOrEmpty($sha256)) {
+      $verify_checksum = $false
+    }
   } else {
     $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
     $download_url = $package_metadata.url
@@ -97,14 +104,21 @@ function Install-Project {
   if (-not (test-path $download_directory)) {
     mkdir $download_directory
   }
-  $download_directory = (resolve-path $download_directory).providerpath
-  $download_destination = join-path $download_directory $filename
 
-  if ((test-path $download_destination) -and
-    (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256 -ea SilentlyContinue)){
-    Write-Verbose "Found existing valid installer at $download_destination."
+  if ((test-path $download_destination)
+    Write-Verbose "Found existing installer at $download_destination."
+    if (-not [string]::IsNullOrEmpty($sha256)) {
+      Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256 -ea SilentlyContinue
+      Write-Verbose "Checksum verified, using existing installer."
+      $cached_installer_available=$true
+    }
+    else {
+      Write-Verbose "Checksum not specified, existing installer ignored."
+      $verify_checksum = $false
+    }
   }
-  else {
+
+  if (-not ($cached_installer_available)) {
     if ($pscmdlet.ShouldProcess("$($download_url)", "Download $project")) {
       Write-Verbose "Downloading $project from $($download_url) to $download_destination."
       Get-WebContent $download_url -filepath $download_destination
@@ -112,25 +126,24 @@ function Install-Project {
   }
 
   if ($pscmdlet.ShouldProcess("$download_destination", "Installing")){
-    if (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256) {
-      Write-Host "Installing $project from $download_destination"
-      $installingProject = $True
-      $installAttempts = 0
-      while ($installingProject) {
-        $installAttempts++
-        $result = $false
-        if($download_destination.EndsWith(".appx")) {
-          $result = Install-ChefAppx $download_destination $project
-        }
-        else {
-          $result = Install-ChefMsi $download_destination $daemon
-        }
-        if(!$result) { continue }
-        $installingProject = $False
-      }
-    }
-    else {
+    if (($verify_checksum) -and (-not (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256))) {
       throw "Failed to validate the downloaded installer for $project."
+    }
+
+    Write-Host "Installing $project from $download_destination"
+    $installingProject = $True
+    $installAttempts = 0
+    while ($installingProject) {
+      $installAttempts++
+      $result = $false
+      if($download_destination.EndsWith(".appx")) {
+        $result = Install-ChefAppx $download_destination $project
+      }
+      else {
+        $result = Install-ChefMsi $download_destination $daemon
+      }
+      if(!$result) { continue }
+      $installingProject = $False
     }
   }
 }
