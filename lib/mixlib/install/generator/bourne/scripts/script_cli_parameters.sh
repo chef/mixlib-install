@@ -31,6 +31,7 @@ do
     d)  cmdline_dl_dir="$OPTARG";;
     s)  install_strategy="$OPTARG";;
     l)  download_url_override="$OPTARG";;
+    a)  checksum="$OPTARG";;
     \?)   # unknown flag
       echo >&2 \
       "usage: $0 [-P project] [-c release_channel] [-v version] [-f filename | -d download_dir] [-s install_strategy] [-l download_url_override] [-a checksum]"
