@@ -71,8 +71,6 @@ function Install-Project {
     $env:http_proxy = $http_proxy
   }
 
-  $download_directory = (resolve-path $download_directory).providerpath
-  $download_destination = join-path $download_directory $filename
   $cached_installer_available = $false
   $verify_checksum = $true
   
@@ -105,7 +103,10 @@ function Install-Project {
     mkdir $download_directory
   }
 
-  if ((test-path $download_destination)
+  $download_directory = (resolve-path $download_directory).providerpath
+  $download_destination = join-path $download_directory $filename
+
+  if ((test-path $download_destination)) {
     Write-Verbose "Found existing installer at $download_destination."
     if (-not [string]::IsNullOrEmpty($sha256)) {
       Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256 -ea SilentlyContinue
@@ -125,7 +126,7 @@ function Install-Project {
     }
   }
 
-  if ($pscmdlet.ShouldProcess("$download_destination", "Installing")){
+  if ($pscmdlet.ShouldProcess("$download_destination", "Installing")) {
     if (($verify_checksum) -and (-not (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256))) {
       throw "Failed to validate the downloaded installer for $project."
     }
