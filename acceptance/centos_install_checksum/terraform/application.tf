@@ -1,14 +1,14 @@
-data "aws_ami" "ubuntu_14_ami" {
+data "aws_ami" "centos_7_ami" {
   most_recent = true
 
   filter {
     name   = "owner-id"
-    values = ["099720109477"]
+    values = ["679593333241"]
   }
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/*/ubuntu-*-14.04-*-server-*"]
+    values = ["CentOS Linux 7*"]
   }
 
   filter {
@@ -35,7 +35,7 @@ data "aws_ami" "ubuntu_14_ami" {
 resource "aws_instance" "mixlib_install_sh" {
   count = 1
 
-  ami           = "${data.aws_ami.ubuntu_14_ami.id}"
+  ami           = "${data.aws_ami.centos_7_ami.id}"
   instance_type = "${var.aws_instance_type}"
   key_name      = "es-infrastructure"
 
@@ -49,7 +49,7 @@ resource "aws_instance" "mixlib_install_sh" {
   ]
 
   connection {
-    user        = "ubuntu"
+    user        = "centos"
     private_key = "${file("${var.connection_private_key}")}"
     agent       = "${var.connection_agent}"
     timeout     = "10m"
@@ -65,22 +65,22 @@ resource "aws_instance" "mixlib_install_sh" {
   }
 
   provisioner "file" {
-    source      = "../../.acceptance_data/ubuntu_install_url.sh"
+    source      = "../../.acceptance_data/centos_install_url.sh"
     destination = "/tmp/install.sh"
   }
 
   provisioner "file" {
-    source      = "../../.acceptance_data/ubuntu_install_checksum.sh"
+    source      = "../../.acceptance_data/centos_install_checksum.sh"
     destination = "/tmp/install_checksum.sh"
   }
 
   provisioner "file" {
-    source      = "../../.acceptance_data/ubuntu_install_metadata.sh"
+    source      = "../../.acceptance_data/centos_install_metadata.sh"
     destination = "/tmp/install_metadata.sh"
   }
 
   provisioner "file" {
-    source      = "../../.acceptance_data/ubuntu_install_bad.sh"
+    source      = "../../.acceptance_data/centos_install_bad.sh"
     destination = "/tmp/install_bad.sh"
   }
 

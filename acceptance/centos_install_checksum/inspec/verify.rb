@@ -1,5 +1,5 @@
 # Uncomment when re-running for local development
-describe command("sudo rm -rf /tmp/metadata /tmp/checksum /tmp/bad; sudo dpkg -r chef") do
+describe command("sudo rm -rf /tmp/metadata /tmp/checksum /tmp/bad; sudo yum remove chef -y") do
   its('exit_status') { should eq 0 }
 end
 
@@ -31,7 +31,7 @@ describe command("sudo /tmp/install_checksum.sh") do
 end
 
 # Corrupt the file we just downloaded
-describe command("sudo chown ubuntu /tmp/checksum; sudo chown ubuntu /tmp/checksum/*; for i in /tmp/checksum/*; do echo 'oops'>>$i; done;") do
+describe command("sudo chown centos /tmp/checksum; sudo chown centos /tmp/checksum/*; for i in /tmp/checksum/*; do echo 'oops'>>$i; done;") do
   its('exit_status') { should eq 0 }
 end
 
@@ -44,8 +44,8 @@ describe command("sudo /tmp/install_checksum.sh") do
 end
 
 # clean up
-describe command("sudo dpkg -r chef") do
-  its("stdout") { should match /Removing chef/ }
+describe command("sudo yum remove chef -y") do
+  its("stdout") { should match /Complete!/ }
 end
 
 
@@ -65,8 +65,8 @@ describe command("sudo /tmp/install_metadata.sh") do
 end
 
 # clean up
-describe command("sudo dpkg -r chef") do
-  its("stdout") { should match /Removing chef/ }
+describe command("sudo yum remove chef -y") do
+  its("stdout") { should match /Complete!/ }
 end
 
 

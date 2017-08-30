@@ -209,6 +209,8 @@ do_checksum() {
   if exists sha256sum; then
     echo "Comparing checksum with sha256sum..."
     checksum=`sha256sum $1 | awk '{ print $1 }'`
+    echo "$2"
+    echo "$checksum"
     return `test "x$checksum" = "x$2"`
   elif exists shasum; then
     echo "Comparing checksum with shasum..."
