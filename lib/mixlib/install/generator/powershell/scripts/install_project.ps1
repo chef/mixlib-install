@@ -77,9 +77,6 @@ function Install-Project {
   if (-not [string]::IsNullOrEmpty($download_url_override)) {
     $download_url = $download_url_override
     $sha256 = $checksum
-    if ([string]::IsNullOrEmpty($sha256)) {
-      $verify_checksum = $false
-    }
   } else {
     $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
     $download_url = $package_metadata.url
@@ -109,13 +106,23 @@ function Install-Project {
   if ((test-path $download_destination)) {
     Write-Verbose "Found existing installer at $download_destination."
     if (-not [string]::IsNullOrEmpty($sha256)) {
-      Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256 -ea SilentlyContinue
-      Write-Verbose "Checksum verified, using existing installer."
-      $cached_installer_available=$true
+      Write-Verbose "Checksum specified"
+      $valid_checksum = Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256
+      if ($valid_checksum -eq $true) {
+        Write-Verbose "Checksum verified, using existing installer."
+        $cached_installer_available=$true # local file OK
+        $verify_checksum = $false # no need to re-verify checksums
+      }
+      else {
+        Write-Verbose "Checksum mismatch, ignoring existing installer."
+        $cached_installer_available=$false # bad local file
+        $verify_checksum = $false # re-verify checksums
+      }
     }
     else {
       Write-Verbose "Checksum not specified, existing installer ignored."
-      $verify_checksum = $false
+      $cached_installer_available=$false # ignore local file
+      $verify_checksum = $false # no checksum to compare
     }
   }
 
