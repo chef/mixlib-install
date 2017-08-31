@@ -4,6 +4,7 @@
 ## Unreleased
 
 #### Merged Pull Requests
+- v3.5.0 [#239](https://github.com/chef/mixlib-install/pull/239) ([wrightp](https://github.com/wrightp))
 - download url override and checksum updates [#237](https://github.com/chef/mixlib-install/pull/237) ([wrightp](https://github.com/wrightp))
 <!-- latest_release -->
 
