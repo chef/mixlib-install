@@ -48,11 +48,10 @@ function Install-Project {
     $daemon = 'auto',
     [string]
     $http_proxy,
-    # Specify an alternate download url, must also include checksum
+    # Specify an alternate download url
     [string]
     $download_url_override,
-    # SHA256 checksum of the download file
-    # Must be present when using download_url_override
+    # SHA256 checksum to verify cached files (optional)
     [string]
     $checksum,
     # Set to 'once' to skip install if project is detected
@@ -71,6 +70,9 @@ function Install-Project {
   if(-not [string]::IsNullOrEmpty($http_proxy)) {
     $env:http_proxy = $http_proxy
   }
+
+  $cached_installer_available = $false
+  $verify_checksum = $true
   
   if (-not [string]::IsNullOrEmpty($download_url_override)) {
     $download_url = $download_url_override
@@ -97,40 +99,59 @@ function Install-Project {
   if (-not (test-path $download_directory)) {
     mkdir $download_directory
   }
+
   $download_directory = (resolve-path $download_directory).providerpath
   $download_destination = join-path $download_directory $filename
 
-  if ((test-path $download_destination) -and
-    (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256 -ea SilentlyContinue)){
-    Write-Verbose "Found existing valid installer at $download_destination."
+  if ((test-path $download_destination)) {
+    Write-Verbose "Found existing installer at $download_destination."
+    if (-not [string]::IsNullOrEmpty($sha256)) {
+      Write-Verbose "Checksum specified"
+      $valid_checksum = Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256
+      if ($valid_checksum -eq $true) {
+        Write-Verbose "Checksum verified, using existing installer."
+        $cached_installer_available=$true # local file OK
+        $verify_checksum = $false # no need to re-verify checksums
+      }
+      else {
+        Write-Verbose "Checksum mismatch, ignoring existing installer."
+        $cached_installer_available=$false # bad local file
+        $verify_checksum = $false # re-verify checksums
+      }
+    }
+    else {
+      Write-Verbose "Checksum not specified, existing installer ignored."
+      $cached_installer_available=$false # ignore local file
+      $verify_checksum = $false # no checksum to compare
+    }
   }
-  else {
+
+  if (-not ($cached_installer_available)) {
     if ($pscmdlet.ShouldProcess("$($download_url)", "Download $project")) {
       Write-Verbose "Downloading $project from $($download_url) to $download_destination."
       Get-WebContent $download_url -filepath $download_destination
     }
   }
 
-  if ($pscmdlet.ShouldProcess("$download_destination", "Installing")){
-    if (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256) {
-      Write-Host "Installing $project from $download_destination"
-      $installingProject = $True
-      $installAttempts = 0
-      while ($installingProject) {
-        $installAttempts++
-        $result = $false
-        if($download_destination.EndsWith(".appx")) {
-          $result = Install-ChefAppx $download_destination $project
-        }
-        else {
-          $result = Install-ChefMsi $download_destination $daemon
-        }
-        if(!$result) { continue }
-        $installingProject = $False
-      }
-    }
-    else {
+  if ($pscmdlet.ShouldProcess("$download_destination", "Installing")) {
+    if (($verify_checksum) -and (-not (Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256))) {
       throw "Failed to validate the downloaded installer for $project."
+    }
+
+    Write-Host "Installing $project from $download_destination"
+    $installingProject = $True
+    $installAttempts = 0
+    while ($installingProject) {
+      $installAttempts++
+      $result = $false
+      if($download_destination.EndsWith(".appx")) {
+        $result = Install-ChefAppx $download_destination $project
+      }
+      else {
+        $result = Install-ChefMsi $download_destination $daemon
+      }
+      if(!$result) { continue }
+      $installingProject = $False
     }
   }
 }
