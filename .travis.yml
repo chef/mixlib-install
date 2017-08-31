@@ -37,6 +37,8 @@ matrix:
     env: SUITE=ubuntu
   - rvm: 2.3
     env: SUITE=windows-server
+  - rvm: 2.3
+    env: SUITE=centos
 
 before_script:
   - ci/before-script.sh

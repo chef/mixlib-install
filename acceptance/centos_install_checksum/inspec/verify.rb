@@ -1,8 +1,7 @@
 # Uncomment when re-running for local development
 describe command("sudo rm -rf /tmp/metadata /tmp/checksum /tmp/bad; sudo yum remove chef -y") do
-  its('exit_status') { should eq 0 }
+  its("exit_status") { should eq 0 }
 end
-
 
 #
 # DOWNLOAD URL TESTS
@@ -32,7 +31,7 @@ end
 
 # Corrupt the file we just downloaded
 describe command("sudo chown centos /tmp/checksum; sudo chown centos /tmp/checksum/*; for i in /tmp/checksum/*; do echo 'oops'>>$i; done;") do
-  its('exit_status') { should eq 0 }
+  its("exit_status") { should eq 0 }
 end
 
 # Run with checksum and it should download and re-verify the checksum
@@ -47,7 +46,6 @@ end
 describe command("sudo yum remove chef -y") do
   its("stdout") { should match /Complete!/ }
 end
-
 
 #
 # METADATA URL TESTS
@@ -69,7 +67,6 @@ describe command("sudo yum remove chef -y") do
   its("stdout") { should match /Complete!/ }
 end
 
-
 #
 # DOWNLOAD URL BAD CHECKSUM TESTS
 #
@@ -77,5 +74,5 @@ describe command("sudo /tmp/install_bad.sh") do
   its("stdout") { should match /Download URL override specified/ }
   its("stdout") { should match /tmp\/bad\/chef.* not found/ }
   its("stdout") { should match /Package checksum mismatch/ }
-  its('exit_status') { should eq 1 }
+  its("exit_status") { should eq 1 }
 end
