@@ -1,0 +1,8 @@
+nodes/
+tmp/
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+*_override.tf
+

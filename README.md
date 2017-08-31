@@ -175,7 +175,7 @@ options = {
 Collecting software dependencies and license content for ArtifactInfo instances
 requires additional requests to the repository server. By default, collection is disabled.
 To return data for instance methods `software_dependencies` and `license_content`, the `include_metadata` option must be enabled.
-```
+```ruby
 options = {
   channel: :current,
   product_name: 'chef',
@@ -196,6 +196,32 @@ artifact.software_dependencies.class
 # By default, the instance methods return nil
 
 ```
+
+
+### Install Scripts
+mixlib-install generates the bootstrap installation scripts known as install.sh and install.ps1. The associated install script will be returned when calling `#install_command` on the Mixlib::Install instance.
+
+Mixlib::Install instantiation option `install_command_options` can accept variables (bourne) or parameters (powershell) to modify the behavior of the install scripts.
+
+Some of the more common options include:
+
+`download_url_override`: Use the provided URL instead of fetching the metadata URL from Chef Software Inc's software distribution systems.  
+`checksum`: SHA256 value associated to the directed file for the download_url_override option. This setting is optional. Not setting this will download the file even if a cached file is detected.  
+`install_strategy`: Set to "once" to have the script exit if the product being installed is detected.  
+
+```ruby
+options = {
+  product_name: 'chef',
+  install_command_options: {
+    download_url_override: "https://file/path",
+    checksum: "OPTIONAL",
+    install_strategy: "once",
+  }
+}
+
+Mixlib::Install.new(options).install_command
+```
+
 
 ## Development
 VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.
