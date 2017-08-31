@@ -54,25 +54,14 @@ if test "x$download_url_override" != "x"; then
       echo "Checksum not specified, ignoring existing file"
       cached_file_available="false" # download new file
       verify_checksum="false" # no checksum to compare after download
+    elif do_checksum "$download_filename" "$sha256"; then
+      echo "Checksum match, using existing file"
+      cached_file_available="true" # don't need to download file
+      verify_checksum="false" # don't need to checksum again
     else
-      do_checksum "$download_filename" "$sha256"
-      if test $? -eq 0; then
-        echo "Checksum match, using existing file"
-        cached_file_available="true" # don't need to download file
-        verify_checksum="false" # don't need to checksum again
-      else
-        echo "Checksum mismatch, ignoring existing file"
-        cached_file_available="false" # download new file
-        verify_checksum="true" # checksum new downloaded file
-      fi
-    # elif do_checksum "$download_filename" "$sha256"; then
-    #   echo "Checksum match, using existing file"
-    #   cached_file_available="true" # don't need to download file
-    #   verify_checksum="false" # don't need to checksum again
-    # else
-    #   echo "Checksum mismatch, ignoring existing file"
-    #   cached_file_available="false" # download new file
-    #   verify_checksum="true" # checksum new downloaded file
+      echo "Checksum mismatch, ignoring existing file"
+      cached_file_available="false" # download new file
+      verify_checksum="true" # checksum new downloaded file
     fi
   else
     echo "$download_filename not found"
