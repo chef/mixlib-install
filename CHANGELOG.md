@@ -1,9 +1,10 @@
 # Mixlib::Install Changes
 
-<!-- latest_release unreleased -->
-## Unreleased
+<!-- latest_release 3.5.1 -->
+## [v3.5.1](https://github.com/chef/mixlib-install/tree/v3.5.1) (2017-09-08)
 
 #### Merged Pull Requests
+- Return nil when looking up non-existing products [#241](https://github.com/chef/mixlib-install/pull/241) ([adamleff](https://github.com/adamleff))
 - v3.5.0 [#239](https://github.com/chef/mixlib-install/pull/239) ([wrightp](https://github.com/wrightp))
 - download url override and checksum updates [#237](https://github.com/chef/mixlib-install/pull/237) ([wrightp](https://github.com/wrightp))
 <!-- latest_release -->
