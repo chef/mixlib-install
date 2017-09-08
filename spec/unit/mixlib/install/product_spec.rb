@@ -167,6 +167,10 @@ context "PRODUCT_MATRIX" do
     end
   end
 
+  it "returns nil when looking up a non-existent product" do
+    expect(PRODUCT_MATRIX.lookup("no-such-project")).to be_nil
+  end
+
   it "returns nil for unset parameters" do
     expect(PRODUCT_MATRIX.lookup("chef").ctl_command).to be_nil
   end
