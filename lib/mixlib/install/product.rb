@@ -162,6 +162,9 @@ module Mixlib
       #
       # @return [Product]
       def lookup(key, version = :latest)
+        # return nil unless the product exists
+        return nil unless @product_map.key?(key)
+
         product = @product_map[key]
         # We set the lookup version for the product to a very high number in
         # order to mimic :latest so that one does not need to handle this
