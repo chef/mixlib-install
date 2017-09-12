@@ -27,6 +27,7 @@ module Mixlib
           install_command << get_script("script_cli_parameters.sh")
           install_command << get_script("check_product.sh")
           install_command << get_script("platform_detection.sh")
+          install_command << get_script("proxy_env.sh")
           install_command << get_script("fetch_metadata.sh", context)
           install_command << get_script("fetch_package.sh")
           install_command << get_script("install_package.sh")
@@ -47,6 +48,7 @@ module Mixlib
           install_command << render_variables
           install_command << get_script("check_product.sh")
           install_command << get_script("platform_detection.sh")
+          install_command << get_script("proxy_env.sh")
           install_command << get_script("fetch_metadata.sh")
           install_command << get_script("fetch_package.sh")
           install_command << get_script("install_package.sh")
