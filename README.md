@@ -222,6 +222,16 @@ options = {
 Mixlib::Install.new(options).install_command
 ```
 
+#### Proxies
+The API uses Ruby's OpenURI module to load proxy environment variables (`http_proxy`, `https_proxy`, `ftp_proxy`, `no_proxy`).
+
+When `install.sh` and `install.ps1` are executed as standalone scripts the will rely on environment variables to configure proxy settings. The install scripts will not configure proxy settings by default.
+
+In order to customize the proxy environment variables for generated install scripts they must be set by the `install_command_options` option. Setting these options will override session environment variables.
+
+Bourne install script (`install.sh`) supports `http_proxy`, `https_proxy`, `ftp_proxy`, and `no_proxy` passed as keys to `install_command_options`.
+
+Powershell install script (`install.ps1`) supports `http_proxy` passed as a key to `install_command_options`.
 
 ## Development
 VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.

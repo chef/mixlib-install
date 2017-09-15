@@ -44,6 +44,14 @@ describe "mixlib-install executable", :type => :aruba do
   describe "list-versions command" do
     let(:command) { "list-versions" }
 
+    around do |example|
+      with_proxy_server do
+        ClimateControl.modify http_proxy: "http://127.0.0.1:8401", https_proxy: "http://127.0.0.1:8401" do
+          example.run
+        end
+      end
+    end
+
     context "with valid args" do
       let(:args) { "chef stable" }
 
@@ -121,6 +129,14 @@ describe "mixlib-install executable", :type => :aruba do
     let(:platform) { "ubuntu" }
     let(:platform_version) { "14.04" }
     let(:architecture) { "x86_64" }
+
+    around do |example|
+      with_proxy_server do
+        ClimateControl.modify http_proxy: "http://127.0.0.1:8401", https_proxy: "http://127.0.0.1:8401" do
+          example.run
+        end
+      end
+    end
 
     context "without args" do
       let(:product) { nil }

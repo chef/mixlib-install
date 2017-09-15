@@ -10,6 +10,7 @@ group :test, :development do
   gem "addressable", "~> 2.4.0"  # ruby 1.9.3
   gem "aruba", "~> 0.14"
   gem "cucumber", "~> 1.3.20"
+  gem "climate_control"
 end
 
 if RUBY_VERSION =~ /^2/

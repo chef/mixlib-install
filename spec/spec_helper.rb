@@ -5,6 +5,9 @@ require "aruba/rspec"
 require "mixlib/install"
 require "vcr"
 require "webmock/rspec"
+require "webrick"
+require "webrick/httpproxy"
+require "climate_control"
 
 Aruba.configure do |config|
   config.exit_timeout                          = 120
@@ -75,15 +78,17 @@ VCR.configure do |config|
   config.default_cassette_options = { :record => :new_episodes }
 end
 
-# Copied directly from
-# https://github.com/ScrappyAcademy/rock_candy/blob/master/lib/rock_candy/helpers.rb
-# Thank you, @cupakromer
-def wrap_env(envs = {})
-  original_envs = ENV.select { |k, _| envs.key? k }
-  envs.each { |k, v| ENV[k] = v }
+def with_modified_env(options, &block)
+  ClimateControl.modify(options, &block)
+end
+
+# Run code block with an available proxy server
+def with_proxy_server
+  proxy = WEBrick::HTTPProxyServer.new Port: 8401, BindAddress: "127.0.0.1"
+  Thread.new { proxy.start }
 
   yield
 ensure
-  envs.each { |k, _| ENV.delete k }
-  original_envs.each { |k, v| ENV[k] = v }
+  proxy.shutdown
+  sleep 0.5
 end

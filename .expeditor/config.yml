@@ -4,6 +4,8 @@ slack:
 github:
   maintainer_group: chef/engineering-services
   version_tag_format: v{{version}}
+  minor_bump_labels:
+    - "Version: Bump Minor"
 
 merge_actions:
   - built_in:bump_version:
