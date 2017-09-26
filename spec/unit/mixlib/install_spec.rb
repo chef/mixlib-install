@@ -259,4 +259,14 @@ context "Mixlib::Install" do
       it_behaves_like "the correct available_versions"
     end
   end
+
+  describe "#download_artifact" do
+    let(:product_name) { "chefdk" }
+
+    context "when platform options are not set" do
+      it "will raise an error" do
+        expect { installer.download_artifact }.to raise_error /Must provide platform options to download a specific artifact/
+      end
+    end
+  end
 end

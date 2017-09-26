@@ -83,6 +83,34 @@ module Mixlib
     end
 
     #
+    # Download a single artifact
+    #
+    # @param [String] download directory. Default: Dir.pwd
+    #
+    # @return [String] file path of downloaded artifact
+    #
+    def download_artifact(directory = Dir.pwd)
+      if options.platform.nil? || options.platform_version.nil? || options.architecture.nil?
+        raise "Must provide platform options to download a specific artifact"
+      end
+
+      artifact = artifact_info
+
+      FileUtils.mkdir_p directory
+      file = File.join(directory, File.basename(artifact.url))
+
+      uri = URI.parse(artifact.url)
+      Net::HTTP.start(uri.host) do |http|
+        resp = http.get(uri.path)
+        open(file, "wb") do |io|
+          io.write(resp.body)
+        end
+      end
+
+      file
+    end
+
+    #
     # Returns the base installation directory for the given options
     #
     # @return [String] the installation directory for the project
