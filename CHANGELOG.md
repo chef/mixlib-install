@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.6.0 -->
+<!-- latest_release 3.7.0 -->
+## [v3.7.0](https://github.com/chef/mixlib-install/tree/v3.7.0) (2017-10-11)
+
+#### Merged Pull Requests
+- add #download_artifact method to Mixlib::Install API [#243](https://github.com/chef/mixlib-install/pull/243) ([wrightp](https://github.com/wrightp))
+<!-- latest_release -->
+
 ## [v3.6.0](https://github.com/chef/mixlib-install/tree/v3.6.0) (2017-09-15)
 
 #### Merged Pull Requests
 - add install.sh proxy support [#242](https://github.com/chef/mixlib-install/pull/242) ([wrightp](https://github.com/wrightp))
-<!-- latest_release -->
 
 ## [v3.5.1](https://github.com/chef/mixlib-install/tree/v3.5.1) (2017-09-08)
 
