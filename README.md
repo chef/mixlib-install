@@ -159,6 +159,19 @@ Mixlib::Install.available_versions("chef", "stable")
 # => ["12.13.3", "12.13.7"]
 ```
 
+### Download an artifact
+Download a specific artifact to a configurable location. All platform options (platform, platform_version, architecture) are required  in order to filter a single artifact.
+```ruby
+# detect platform and download to the operating system’s temporary file path
+Mixlib::Install.new(product_name: "chefdk", channel: :stable).detect_platform.download_artifact(Dir.tmpdir)
+# => "/tmp/chefdk-2.3.4-1.deb"
+
+# specify platform options and download to current directory
+Mixlib::Install.new(product_name: "chefdk", channel: :stable, platform: "ubuntu", platform_version: "14.04", architecture: "x86_64").download_artifact
+# => "~/chefdk-2.3.4-1.deb"
+
+```
+
 ### User-Agent Request Headers
 By default, all requests made by `mixlib-install` will include a `User-Agent` request header as `mixlib-install/<version>`.
 Additional `User-Agent` request headers can be added by setting the `user_agent_headers` option.

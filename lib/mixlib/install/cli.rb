@@ -66,8 +66,10 @@ If no earlier version is found the earliest version available will be set.",
           mixlib_install_options.merge!(Mixlib::Install.detect_platform)
         end
 
+        installer = Mixlib::Install.new(mixlib_install_options)
+
         begin
-          artifact = Mixlib::Install.new(mixlib_install_options).artifact_info
+          artifact = installer.artifact_info
         rescue Mixlib::Install::Backend::ArtifactsNotFound => e
           abort e.message
         end
@@ -75,21 +77,8 @@ If no earlier version is found the earliest version available will be set.",
         if options[:url]
           say artifact.url
         else
-          FileUtils.mkdir_p options[:directory]
-          file = File.join(options[:directory], File.basename(artifact.url))
-
-          require "json"
-          require "net/http"
-
-          say "Starting download #{artifact.url} to #{file}"
-          uri = URI.parse(artifact.url)
-          Net::HTTP.start(uri.host) do |http|
-            resp = http.get(uri.path)
-            open(file, "wb") do |io|
-              io.write(resp.body)
-            end
-          end
-
+          say "Starting download #{artifact.url}"
+          file = installer.download_artifact(options[:directory])
           say "Download saved to #{file}"
         end
 
