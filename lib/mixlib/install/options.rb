@@ -28,6 +28,7 @@ module Mixlib
       attr_reader :options, :errors, :original_platform_version
 
       SUPPORTED_ARCHITECTURES = %w{
+        aarch64
         i386
         powerpc
         ppc64
