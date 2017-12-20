@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.8.0 -->
+<!-- latest_release 3.9.0 -->
+## [v3.9.0](https://github.com/chef/mixlib-install/tree/v3.9.0) (2017-12-20)
+
+#### Merged Pull Requests
+- add amazon linux 2.0 platform detection support [#246](https://github.com/chef/mixlib-install/pull/246) ([wrightp](https://github.com/wrightp))
+<!-- latest_release -->
+
 ## [v3.8.0](https://github.com/chef/mixlib-install/tree/v3.8.0) (2017-10-31)
 
 #### Merged Pull Requests
 - Add support for aarch64 [#244](https://github.com/chef/mixlib-install/pull/244) ([jeremiahsnapp](https://github.com/jeremiahsnapp))
-<!-- latest_release -->
 
 ## [v3.7.0](https://github.com/chef/mixlib-install/tree/v3.7.0) (2017-10-11)
 
