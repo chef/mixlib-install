@@ -67,10 +67,14 @@ elif test -f "/etc/system-release"; then
   platform=`sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
   # amazon is built off of fedora, so act like RHEL
+  # Version 1. Example: Amazon Linux AMI release 2017.09
   if test "$platform" = "amazon linux ami"; then
-    # FIXME: remove client side platform_version mangling and hard coded yolo, and remapping to deprecated "el"
     platform="el"
     platform_version="6.0"
+  # Version 2. Example: Amazon Linux release 2.0 (2017.12)
+  elif test "$platform" = "amazon linux"; then
+    platform="el"
+    platform_version="7.0"
   fi
 # Apple OS X
 elif test -f "/usr/bin/sw_vers"; then
