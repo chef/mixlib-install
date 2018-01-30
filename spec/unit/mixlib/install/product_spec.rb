@@ -153,6 +153,7 @@ context "PRODUCT_MATRIX" do
     push-jobs-client
     push-jobs-server
     reporting
+    shake-shack
     supermarket
     sync
   }
