@@ -450,15 +450,12 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
     shared_examples_for "windows desktop download urls and expected architectures" do
       it "returns server download url for associated desktop versions" do
-        expect(windows_artifacts.find { |a| a.platform_version == "7" }.url).to include "2008r2"
-        expect(windows_artifacts.find { |a| a.platform_version == "8" }.url).to include "2012"
-        expect(windows_artifacts.find { |a| a.platform_version == "8.1" }.url).to include "2012r2"
         expect(windows_artifacts.find { |a| a.platform_version == "10" }.url).to include "2012r2"
       end
 
       it "maps architecture to correct filename" do
-        expect(windows_artifacts.find { |a| a.platform_version == "7" && a.architecture == "i386" }.url).to include "-x86"
-        expect(windows_artifacts.find { |a| a.platform_version == "7" && a.architecture == "x86_64" }.url).to include expected_64_bit_msi
+        expect(windows_artifacts.find { |a| a.platform_version == "10" && a.architecture == "i386" }.url).to include "-x86"
+        expect(windows_artifacts.find { |a| a.platform_version == "10" && a.architecture == "x86_64" }.url).to include expected_64_bit_msi
       end
     end
 
