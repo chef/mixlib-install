@@ -21,6 +21,7 @@
 | Chef Push Client | push-jobs-client |
 | Chef Push Server | push-jobs-server |
 | Chef Server Reporting addon | reporting |
+| Shake Shack | shake-shack |
 | Supermarket | supermarket |
 | Chef Server Replication addon | sync |
 

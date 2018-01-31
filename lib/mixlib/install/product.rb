@@ -389,6 +389,13 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     github_repo "chef/oc_reporting"
   end
 
+  product "shake-shack" do
+    product_name "Shake Shack"
+    package_name "shake-shack"
+    github_repo "chef/shak"
+    downloads_product_page_url :not_available
+  end
+
   product "supermarket" do
     product_name "Supermarket"
     package_name "supermarket"
