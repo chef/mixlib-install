@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.9.0 -->
+<!-- latest_release 3.9.1 -->
+## [v3.9.1](https://github.com/chef/mixlib-install/tree/v3.9.1) (2018-01-31)
+
+#### Merged Pull Requests
+- Remove windows 7, 8, and 8.1 as they are no longer supported [#248](https://github.com/chef/mixlib-install/pull/248) ([scotthain](https://github.com/scotthain))
+<!-- latest_release -->
+
 ## [v3.9.0](https://github.com/chef/mixlib-install/tree/v3.9.0) (2017-12-20)
 
 #### Merged Pull Requests
 - add amazon linux 2.0 platform detection support [#246](https://github.com/chef/mixlib-install/pull/246) ([wrightp](https://github.com/wrightp))
-<!-- latest_release -->
 
 ## [v3.8.0](https://github.com/chef/mixlib-install/tree/v3.8.0) (2017-10-31)
 
