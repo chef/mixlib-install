@@ -64,7 +64,7 @@ module Mixlib
         :install_command_options,
       ]
 
-      SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{7 8 8.1 10}
+      SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{10}
 
       SUPPORTED_WINDOWS_NANO_VERSIONS = %w{2016nano}
 
