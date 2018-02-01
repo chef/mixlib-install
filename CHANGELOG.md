@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.9.2 -->
+<!-- latest_release 3.9.3 -->
+## [v3.9.3](https://github.com/chef/mixlib-install/tree/v3.9.3) (2018-02-01)
+
+#### Merged Pull Requests
+- Update filespec to be more selective in its inclusivity [#250](https://github.com/chef/mixlib-install/pull/250) ([scotthain](https://github.com/scotthain))
+<!-- latest_release -->
+
 ## [v3.9.2](https://github.com/chef/mixlib-install/tree/v3.9.2) (2018-02-01)
 
 #### Merged Pull Requests
 - Update expeditor config to allow gem builds [#249](https://github.com/chef/mixlib-install/pull/249) ([scotthain](https://github.com/scotthain))
-<!-- latest_release -->
 
 ## [v3.9.1](https://github.com/chef/mixlib-install/tree/v3.9.1) (2018-01-31)
 
