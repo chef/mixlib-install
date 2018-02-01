@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "A library for interacting with Chef Software Inc's software distribution systems."
   spec.homepage      = "https://chef.io"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = %w{LICENSE PRODUCT_MATRIX.md README.md Gemfile Rakefile} + Dir.glob("*.gemspec") + Dir.glob("{bin,lib,support}/**/*")
   spec.executables   = ["mixlib-install"]
   spec.require_paths = ["lib"]
 
