@@ -1,8 +1,7 @@
 slack:
-  notify_channel: jex-notify
+  notify_channel: releng-notify
 
 github:
-  maintainer_group: chef/jex-team
   version_tag_format: v{{version}}
   minor_bump_labels:
     - "Version: Bump Minor"
