@@ -1,4 +1,5 @@
 [Console]::OutputEncoding = New-Object -typename System.Text.ASCIIEncoding
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 
 function Get-PlatformVersion {
   switch -regex ((Get-Win32OS).version) {
