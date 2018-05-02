@@ -140,6 +140,7 @@ context "PRODUCT_MATRIX" do
     chef-backend
     chef-server
     chef-server-ha-provisioning
+    chef-workstation
     chefdk
     compliance
     delivery
