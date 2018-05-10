@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.9.3 -->
+<!-- latest_release 3.9.4 -->
+## [v3.9.4](https://github.com/chef/mixlib-install/tree/v3.9.4) (2018-05-10)
+
+#### Merged Pull Requests
+- Updates for recent product changes [#255](https://github.com/chef/mixlib-install/pull/255) ([schisamo](https://github.com/schisamo))
+<!-- latest_release -->
+
 ## [v3.9.3](https://github.com/chef/mixlib-install/tree/v3.9.3) (2018-02-01)
 
 #### Merged Pull Requests
 - Update filespec to be more selective in its inclusivity [#250](https://github.com/chef/mixlib-install/pull/250) ([scotthain](https://github.com/scotthain))
-<!-- latest_release -->
 
 ## [v3.9.2](https://github.com/chef/mixlib-install/tree/v3.9.2) (2018-02-01)
 
