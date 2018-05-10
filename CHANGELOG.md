@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.9.4 -->
+<!-- latest_release 3.10.0 -->
+## [v3.10.0](https://github.com/chef/mixlib-install/tree/v3.10.0) (2018-05-10)
+
+#### Merged Pull Requests
+- Adding TLS negotiation support for older versions of .NET [#254](https://github.com/chef/mixlib-install/pull/254) ([andy-dufour](https://github.com/andy-dufour))
+<!-- latest_release -->
+
 ## [v3.9.4](https://github.com/chef/mixlib-install/tree/v3.9.4) (2018-05-10)
 
 #### Merged Pull Requests
 - Updates for recent product changes [#255](https://github.com/chef/mixlib-install/pull/255) ([schisamo](https://github.com/schisamo))
-<!-- latest_release -->
 
 ## [v3.9.3](https://github.com/chef/mixlib-install/tree/v3.9.3) (2018-02-01)
 
