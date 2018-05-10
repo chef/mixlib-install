@@ -4,5 +4,5 @@
 # under ~/.aws/credentials or with $AWS_SHARED_CREDENTIALS_FILE
 provider "aws" {
   region  = "${var.aws_region}"
-  profile = "chef-aws"
+  profile = "chef-es"
 }

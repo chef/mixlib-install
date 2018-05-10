@@ -8,6 +8,7 @@
 | Chef Backend | chef-backend |
 | Chef Server | chef-server |
 | Chef Server HA Provisioning for AWS | chef-server-ha-provisioning |
+| Chef Workstation | chef-workstation |
 | Chef Development Kit | chefdk |
 | Chef Compliance | compliance |
 | Delivery | delivery |
