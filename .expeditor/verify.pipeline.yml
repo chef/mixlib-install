@@ -1,0 +1,29 @@
+steps:
+  - label: lint-cookstyle
+    commands:
+      - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+      - chef exec cookstyle
+    plugins:
+      docker#v1.1.1:
+        image: "chef/chefdk"
+
+  - label: lint-foodcritic
+    commands:
+      - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+      - chef exec foodcritic .
+    plugins:
+      docker#v1.1.1:
+        image: "chef/chefdk"
+
+  - label: ":test_on_latestruby:"
+    commands:
+      - gem install bundler
+      - bundle --version
+      - gem update --system
+      - gem --version
+      - bundle exec rake unit
+      - bundle exec rake functional
+    plugins:
+      docker#v1.1.1:
+        always-pull: true
+        image: "chefes/buildkite"
