@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.10.0 -->
+<!-- latest_release 3.10.1 -->
+## [v3.10.1](https://github.com/chef/mixlib-install/tree/v3.10.1) (2018-07-02)
+
+#### Merged Pull Requests
+- Switch to trusty packages and test on the latest Ruby releases in Travis [#258](https://github.com/chef/mixlib-install/pull/258) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v3.10.0](https://github.com/chef/mixlib-install/tree/v3.10.0) (2018-05-10)
 
 #### Merged Pull Requests
 - Adding TLS negotiation support for older versions of .NET [#254](https://github.com/chef/mixlib-install/pull/254) ([andy-dufour](https://github.com/andy-dufour))
-<!-- latest_release -->
 
 ## [v3.9.4](https://github.com/chef/mixlib-install/tree/v3.9.4) (2018-05-10)
 
