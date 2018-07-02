@@ -47,14 +47,6 @@ elif test -f "/etc/redhat-release"; then
   platform=`sed 's/^\(.\+\) release.*/\1/' /etc/redhat-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release`
 
-  # If /etc/redhat-release exists, we act like RHEL by default
-  if test "$platform" = "fedora"; then
-    # FIXME: stop remapping fedora to el
-    # FIXME: remove client side platform_version mangling and hard coded yolo
-    # Change platform version for use below.
-    platform_version="6.0"
-  fi
-
   if test "$platform" = "xenserver"; then
     # Current XenServer 6.2 is based on CentOS 5, platform is not reset to "el" server should hanlde response
     platform="xenserver"
@@ -66,7 +58,7 @@ elif test -f "/etc/redhat-release"; then
 elif test -f "/etc/system-release"; then
   platform=`sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
-  # amazon is built off of fedora, so act like RHEL
+  # amazon is built off of centos, so act like RHEL
   # Version 1. Example: Amazon Linux AMI release 2017.09
   if test "$platform" = "amazon linux ami"; then
     platform="el"
