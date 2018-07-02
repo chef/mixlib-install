@@ -1,12 +1,11 @@
 language: ruby
 sudo: false
-dist: precise
 cache: bundler
 
 addons:
   apt:
     sources:
-      - chef-stable-precise
+      - chef-stable-trusty
     packages:
       - chefdk
       - wget
@@ -32,9 +31,9 @@ matrix:
       - bundle exec rake unit
       - bundle exec rake functional
   - rvm: 2.0
-  - rvm: 2.2
-  - rvm: 2.3
-  - rvm: 2.4
+  - rvm: 2.2.10
+  - rvm: 2.3.7
+  - rvm: 2.4.4
   - rvm: 2.5.1
   # - rvm: 2.3
   #   env: SUITE=ubuntu
