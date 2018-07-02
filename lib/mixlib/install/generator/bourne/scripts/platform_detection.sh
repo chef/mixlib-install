@@ -55,19 +55,6 @@ elif test -f "/etc/redhat-release"; then
     platform="el"
   fi
 
-elif test -f "/etc/system-release"; then
-  platform=`sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
-  platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
-  # amazon is built off of centos, so act like RHEL
-  # Version 1. Example: Amazon Linux AMI release 2017.09
-  if test "$platform" = "amazon linux ami"; then
-    platform="el"
-    platform_version="6.0"
-  # Version 2. Example: Amazon Linux release 2.0 (2017.12)
-  elif test "$platform" = "amazon linux"; then
-    platform="el"
-    platform_version="7.0"
-  fi
 # Apple OS X
 elif test -f "/usr/bin/sw_vers"; then
   platform="mac_os_x"
@@ -110,7 +97,13 @@ elif test -f "/etc/os-release"; then
     . $CISCO_RELEASE_INFO
   fi
 
-  platform=$ID
+  # return amazon on amazon linux systems
+  if test "$ID" = "amzn"; then
+    platform="amazon"
+  else
+    platform=$ID
+  fi
+
   platform_version=$VERSION
 fi
 
