@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.10.2 -->
+<!-- latest_release 3.10.3 -->
+## [v3.10.3](https://github.com/chef/mixlib-install/tree/v3.10.3) (2018-07-03)
+
+#### Merged Pull Requests
+- Move remap logic from install.sh to omnitruck [#259](https://github.com/chef/mixlib-install/pull/259) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v3.10.2](https://github.com/chef/mixlib-install/tree/v3.10.2) (2018-07-02)
 
 #### Merged Pull Requests
 - Don&#39;t remap fedora in platform_detection.sh [#257](https://github.com/chef/mixlib-install/pull/257) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v3.10.1](https://github.com/chef/mixlib-install/tree/v3.10.1) (2018-07-02)
 
