@@ -55,13 +55,17 @@ elif test -f "/etc/redhat-release"; then
     platform="el"
   fi
 
-# detect amazon linux 2013/2014 which lack /etc/os-release
 elif test -f "/etc/system-release"; then
   platform=`sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
-  if test "$platform" = "amazon linux ami"; then
+  case $platform in amazon*) # sh compat method of checking for a substring
+    # use the version value out of /etc/os-release if available since it isn't regex fragile
     platform="amazon"
-  fi
+    if test -f "/etc/os-release"; then
+      . /etc/os-release
+      platform_version=$VERSION
+    fi
+  esac
 
 # Apple OS X
 elif test -f "/usr/bin/sw_vers"; then
@@ -105,13 +109,7 @@ elif test -f "/etc/os-release"; then
     . $CISCO_RELEASE_INFO
   fi
 
-  # return amazon on amazon linux 2015+ systems which have /etc/os-release
-  if test "$ID" = "amzn"; then
-    platform="amazon"
-  else
-    platform=$ID
-  fi
-
+  platform=$ID
   platform_version=$VERSION
 fi
 
