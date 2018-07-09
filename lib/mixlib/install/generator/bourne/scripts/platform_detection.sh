@@ -63,7 +63,7 @@ elif test -f "/etc/system-release"; then
     platform="amazon"
     if test -f "/etc/os-release"; then
       . /etc/os-release
-      platform_version=$VERSION
+      platform_version=$VERSION_ID
     fi
   esac
 
