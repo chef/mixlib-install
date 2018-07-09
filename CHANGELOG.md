@@ -1,12 +1,17 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.1 -->
+<!-- latest_release 3.11.2 -->
+## [v3.11.2](https://github.com/chef/mixlib-install/tree/v3.11.2) (2018-07-09)
+
+#### Merged Pull Requests
+- Switch to VERSION_ID to detect the Amazon Linux Release [#262](https://github.com/chef/mixlib-install/pull/262) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v3.11.1](https://github.com/chef/mixlib-install/tree/v3.11.1) (2018-07-06)
 
 #### Merged Pull Requests
 - Fix Amazon 2 detection [#261](https://github.com/chef/mixlib-install/pull/261) ([tas50](https://github.com/tas50))
 - Bump version to 3.11.0 [#260](https://github.com/chef/mixlib-install/pull/260) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v3.10.3](https://github.com/chef/mixlib-install/tree/v3.10.3) (2018-07-03)
 
