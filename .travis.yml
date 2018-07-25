@@ -1,5 +1,5 @@
-language: ruby
 sudo: false
+language: ruby
 cache: bundler
 
 addons:
@@ -12,16 +12,6 @@ addons:
       - unzip
       - ssh
 
-before_install:
-  - gem install bundler
-  - bundle --version
-  - gem update --system
-  - gem --version
-
-branches:
-  only:
-  - master
-
 matrix:
   include:
     # WE SUPPORT UPGRADES OF CHEF 11.x on RUBY 1.9.3 VIA chef_client_updater COOKBOOK
@@ -30,22 +20,19 @@ matrix:
     script:
       - bundle exec rake unit
       - bundle exec rake functional
-  - rvm: 2.0
-  - rvm: 2.2.10
-  - rvm: 2.3.7
-  - rvm: 2.4.4
-  - rvm: 2.5.1
-  # - rvm: 2.3
-  #   env: SUITE=ubuntu
-  # - rvm: 2.3
-  #   env: SUITE=windows-server
-  # - rvm: 2.3
-  #   env: SUITE=centos
+    - rvm: 2.0
+    - rvm: 2.1.10
+    - rvm: 2.2.10
+    - rvm: 2.3.7
+    - rvm: 2.4.4
+    - rvm: 2.5.1
+    - rvm: ruby-head
+  allow_failures:
+    - rvm: ruby-head
 
-# before_script:
-#   - ci/before-script.sh
-#   # put terraform on PATH
-#   - export PATH="$PWD/bin:$PATH"
+branches:
+  only:
+  - master
 
 script:
   - bundle exec rake travis:ci
