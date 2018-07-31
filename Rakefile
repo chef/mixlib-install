@@ -14,8 +14,8 @@ end
 begin
   require "chefstyle"
   require "rubocop/rake_task"
-  RuboCop::RakeTask.new(:chefstyle) do |task|
-    task.options << "--display-cop-names"
+  RuboCop::RakeTask.new(:style) do |task|
+    task.options += ["--display-cop-names", "--no-color"]
   end
 rescue LoadError
   puts "chefstyle gem is not installed"
@@ -43,6 +43,13 @@ task "matrix" do
     f.puts("")
     f.puts("Do not modify this file manually. It is automatically rendered via a rake task.")
   end
+end
+
+begin
+  require "yard"
+  YARD::Rake::YardocTask.new(:docs)
+rescue LoadError
+  puts "yard is not available. bundle install first to make sure all dependencies are installed."
 end
 
 task :console do
