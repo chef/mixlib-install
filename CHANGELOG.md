@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.4 -->
+<!-- latest_release 3.11.5 -->
+## [v3.11.5](https://github.com/chef/mixlib-install/tree/v3.11.5) (2018-08-08)
+
+#### Merged Pull Requests
+- update amazon platform mapping to support Versions 1, 2, and 2 RCs [#264](https://github.com/chef/mixlib-install/pull/264) ([wrightp](https://github.com/wrightp))
+<!-- latest_release -->
+
 ## [v3.11.4](https://github.com/chef/mixlib-install/tree/v3.11.4) (2018-08-01)
 
 #### Merged Pull Requests
 - Add github issue and PR templates [#266](https://github.com/chef/mixlib-install/pull/266) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v3.11.3](https://github.com/chef/mixlib-install/tree/v3.11.3) (2018-07-25)
 
