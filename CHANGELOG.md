@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.3 -->
+<!-- latest_release 3.11.4 -->
+## [v3.11.4](https://github.com/chef/mixlib-install/tree/v3.11.4) (2018-08-01)
+
+#### Merged Pull Requests
+- Add github issue and PR templates [#266](https://github.com/chef/mixlib-install/pull/266) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v3.11.3](https://github.com/chef/mixlib-install/tree/v3.11.3) (2018-07-25)
 
 #### Merged Pull Requests
 - Test on Ruby head in Travis [#263](https://github.com/chef/mixlib-install/pull/263) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v3.11.2](https://github.com/chef/mixlib-install/tree/v3.11.2) (2018-07-09)
 
