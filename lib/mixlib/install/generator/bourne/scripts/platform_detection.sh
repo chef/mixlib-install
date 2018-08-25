@@ -97,7 +97,7 @@ elif test -f "/etc/SuSE-release"; then
       platform="sles"
       platform_version=`awk '/^VERSION/ {V = $3}; /^PATCHLEVEL/ {P = $3}; END {print V "." P}' /etc/SuSE-release`
   else
-      platform="suse"
+      platform="opensuseleap"
       platform_version=`awk '/^VERSION =/ { print $3 }' /etc/SuSE-release`
   fi
 elif test "x$os" = "xFreeBSD"; then
