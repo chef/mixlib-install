@@ -156,7 +156,7 @@ case $platform in
   "sles")
     platform_version=$major_version
     ;;
-  "suse")
+  "opensuseleap")
     platform_version=$major_version
     ;;
 esac
