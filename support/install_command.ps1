@@ -65,7 +65,7 @@ Function Verify-SHA256($path, $sha256) {
 }
 
 Function Install-Chef($msi, $chef_omnibus_root) {
-  Log "Installing Chef Omnibus package $msi"
+  Log "Installing Chef package $msi"
   $installingChef = $True
   $installAttempts = 0
   while ($installingChef) {
@@ -194,7 +194,7 @@ Function Unresolve-Path($p) {
 $chef_omnibus_root = Unresolve-Path $chef_omnibus_root
 
 if (Check-UpdateChef $chef_omnibus_root $version) {
-  Write-Host "-----> Installing Chef Omnibus ($pretty_version)"
+  Write-Host "-----> Installing Chef $pretty_version package"
   if ($chef_metadata_url -ne $null) {
     $url, $sha256 = Get-ChefMetadata "$chef_metadata_url"
   } else {
@@ -210,5 +210,5 @@ if (Check-UpdateChef $chef_omnibus_root $version) {
   }
   Install-Chef $msi $chef_omnibus_root
 } else {
-  Write-Host "-----> Chef Omnibus installation detected ($pretty_version)"
+  Write-Host "-----> Chef installation detected ($pretty_version)"
 }
