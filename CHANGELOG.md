@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.6 -->
+<!-- latest_release 3.11.7 -->
+## [v3.11.7](https://github.com/chef/mixlib-install/tree/v3.11.7) (2018-11-16)
+
+#### Merged Pull Requests
+- Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v3.11.6](https://github.com/chef/mixlib-install/tree/v3.11.6) (2018-08-29)
 
 #### Merged Pull Requests
 - Rename suse platform to opensuseleap [#268](https://github.com/chef/mixlib-install/pull/268) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v3.11.5](https://github.com/chef/mixlib-install/tree/v3.11.5) (2018-08-08)
 
