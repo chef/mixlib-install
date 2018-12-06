@@ -326,7 +326,7 @@ if test "x$TMPDIR" = "x"; then
 else
   tmp=$TMPDIR
 fi
-# secure-ish temp dir creation without having mktemp available (DDoS-able but not expliotable)
+# secure-ish temp dir creation without having mktemp available (DDoS-able but not exploitable)
 tmp_dir="$tmp/install.sh.$$"
 (umask 077 && mkdir $tmp_dir) || exit 1
 

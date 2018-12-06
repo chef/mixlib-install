@@ -12,7 +12,7 @@ if test "x$version" = "x" -a "x$CI" != "xtrue"; then
   echo
   echo "WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING"
   echo
-  echo "You are installing an omnibus package without a version pin.  If you are installing"
+  echo "You are installing a package without a version pin.  If you are installing"
   echo "on production servers via an automated process this is DANGEROUS and you will"
   echo "be upgraded without warning on new releases, even to new major releases."
   echo "Letting the version float is only appropriate in desktop, test, development or"
