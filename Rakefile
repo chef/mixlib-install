@@ -21,11 +21,6 @@ rescue LoadError
   puts "chefstyle gem is not installed"
 end
 
-namespace :travis do
-  desc "Run tests on Travis CI"
-  task ci: %w{style unit functional}
-end
-
 desc "Render product matrix documentation"
 task "matrix" do
   require "mixlib/install/product"
@@ -60,4 +55,4 @@ task :console do
   IRB.start
 end
 
-task default: %w{travis:ci}
+task default: %w{style unit functional}
