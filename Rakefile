@@ -23,7 +23,7 @@ end
 
 namespace :travis do
   desc "Run tests on Travis CI"
-  task ci: %w{chefstyle unit functional}
+  task ci: %w{style unit functional}
 end
 
 desc "Render product matrix documentation"
