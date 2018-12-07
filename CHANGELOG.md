@@ -1,11 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.7 -->
+<!-- latest_release 3.11.8 -->
+## [v3.11.8](https://github.com/chef/mixlib-install/tree/v3.11.8) (2018-12-07)
+
+#### Merged Pull Requests
+- Don&#39;t ship the readmes with the gem artifact [#275](https://github.com/chef/mixlib-install/pull/275) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v3.11.7](https://github.com/chef/mixlib-install/tree/v3.11.7) (2018-11-16)
 
 #### Merged Pull Requests
 - Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v3.11.6](https://github.com/chef/mixlib-install/tree/v3.11.6) (2018-08-29)
 
