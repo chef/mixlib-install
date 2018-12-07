@@ -11,9 +11,9 @@ Gem::Specification.new do |spec|
   spec.license       = "Apache-2.0"
 
   spec.summary       = "A library for interacting with Chef Software Inc's software distribution systems."
-  spec.homepage      = "https://chef.io"
+  spec.homepage      = "https://github.com/chef/mixlib-install"
 
-  spec.files         = %w{LICENSE PRODUCT_MATRIX.md README.md Gemfile Rakefile} + Dir.glob("*.gemspec") + Dir.glob("{bin,lib,support}/**/*")
+  spec.files         = %w{LICENSE Gemfile Rakefile} + Dir.glob("*.gemspec") + Dir.glob("{bin,lib,support}/**/*")
   spec.executables   = ["mixlib-install"]
   spec.require_paths = ["lib"]
 
