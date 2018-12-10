@@ -12,9 +12,9 @@
 #
 # Platform and Platform Version detection
 #
-# NOTE: This should now match ohai platform and platform_version matching.
-# do not invented new platform and platform_version schemas, just make this behave
-# like what ohai returns as platform and platform_version for the server.
+# NOTE: This logic should match ohai platform and platform_version matching.
+# do not invent new platform and platform_version schemas, just make this behave
+# like what ohai returns as platform and platform_version for the system.
 #
 # ALSO NOTE: Do not mangle platform or platform_version here.  It is less error
 # prone and more future-proof to do that in the server, and then all omnitruck clients
@@ -124,7 +124,7 @@ if test "x$platform" = "x"; then
 fi
 
 #
-# NOTE: platform manging in the install.sh is DEPRECATED
+# NOTE: platform mangling in the install.sh is DEPRECATED
 #
 # - install.sh should be true to ohai and should not remap
 #   platform or platform versions.

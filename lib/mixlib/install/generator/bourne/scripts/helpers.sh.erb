@@ -4,7 +4,7 @@
 # - must run on /bin/sh on solaris 9
 # - must run on /bin/sh on AIX 6.x
 #
-# Copyright:: Copyright (c) 2010-2015 Chef Software, Inc.
+# Copyright:: Copyright (c) 2010-2018 Chef Software, Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -326,7 +326,7 @@ if test "x$TMPDIR" = "x"; then
 else
   tmp=$TMPDIR
 fi
-# secure-ish temp dir creation without having mktemp available (DDoS-able but not expliotable)
+# secure-ish temp dir creation without having mktemp available (DDoS-able but not exploitable)
 tmp_dir="$tmp/install.sh.$$"
 (umask 077 && mkdir $tmp_dir) || exit 1
 

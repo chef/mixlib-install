@@ -1,6 +1,6 @@
 # fetch_package.sh
 ############
-# This section fetchs a package from $download_url and verifies its metadata.
+# This section fetches a package from $download_url and verifies its metadata.
 #
 # Inputs:
 # $download_url:
@@ -26,7 +26,7 @@ else
   download_filename="$tmp_dir/$filename"
 fi
 
-# ensure the parent directory where to download the installer always exists
+# ensure the parent directory where we download the installer always exists
 download_dir=`dirname $download_filename`
 (umask 077 && mkdir -p $download_dir) || exit 1
 
