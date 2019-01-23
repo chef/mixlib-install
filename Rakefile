@@ -14,16 +14,11 @@ end
 begin
   require "chefstyle"
   require "rubocop/rake_task"
-  RuboCop::RakeTask.new(:chefstyle) do |task|
-    task.options << "--display-cop-names"
+  RuboCop::RakeTask.new(:style) do |task|
+    task.options += ["--display-cop-names", "--no-color"]
   end
 rescue LoadError
   puts "chefstyle gem is not installed"
-end
-
-namespace :travis do
-  desc "Run tests on Travis CI"
-  task ci: %w{chefstyle unit functional}
 end
 
 desc "Render product matrix documentation"
@@ -45,6 +40,13 @@ task "matrix" do
   end
 end
 
+begin
+  require "yard"
+  YARD::Rake::YardocTask.new(:docs)
+rescue LoadError
+  puts "yard is not available. bundle install first to make sure all dependencies are installed."
+end
+
 task :console do
   require "irb"
   require "irb/completion"
@@ -53,4 +55,4 @@ task :console do
   IRB.start
 end
 
-task default: %w{travis:ci}
+task default: %w{style unit functional}

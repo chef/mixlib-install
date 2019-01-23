@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/chef/mixlib-install.svg?branch=master)](https://travis-ci.org/chef/mixlib-install)
+[![Gem Version](https://badge.fury.io/rb/mixlib-install.svg)](https://badge.fury.io/rb/mixlib-install)
 
 # Mixlib::Install
 
@@ -218,9 +219,9 @@ Mixlib::Install instantiation option `install_command_options` can accept variab
 
 Some of the more common options include:
 
-`download_url_override`: Use the provided URL instead of fetching the metadata URL from Chef Software Inc's software distribution systems.  
-`checksum`: SHA256 value associated to the directed file for the download_url_override option. This setting is optional. Not setting this will download the file even if a cached file is detected.  
-`install_strategy`: Set to "once" to have the script exit if the product being installed is detected.  
+`download_url_override`: Use the provided URL instead of fetching the metadata URL from Chef Software Inc's software distribution systems.
+`checksum`: SHA256 value associated to the directed file for the download_url_override option. This setting is optional. Not setting this will download the file even if a cached file is detected.
+`install_strategy`: Set to "once" to have the script exit if the product being installed is detected.
 
 ```ruby
 options = {

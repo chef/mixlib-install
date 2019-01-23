@@ -17,15 +17,20 @@
 #### Merged Pull Requests
 - Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50))
 
-## [v3.11.6](https://github.com/chef/mixlib-install/tree/v3.11.6) (2018-08-29)
+<!-- release_rollup since=3.11.5 -->
+### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
-- Rename suse platform to opensuseleap [#268](https://github.com/chef/mixlib-install/pull/268) ([tas50](https://github.com/tas50))
+- Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50)) <!-- 3.11.7 -->
+- Rename suse platform to opensuseleap [#268](https://github.com/chef/mixlib-install/pull/268) ([tas50](https://github.com/tas50)) <!-- 3.11.6 -->
+<!-- release_rollup -->
 
+<!-- latest_stable_release -->
 ## [v3.11.5](https://github.com/chef/mixlib-install/tree/v3.11.5) (2018-08-08)
 
 #### Merged Pull Requests
 - update amazon platform mapping to support Versions 1, 2, and 2 RCs [#264](https://github.com/chef/mixlib-install/pull/264) ([wrightp](https://github.com/wrightp))
+<!-- latest_stable_release -->
 
 ## [v3.11.4](https://github.com/chef/mixlib-install/tree/v3.11.4) (2018-08-01)
 
