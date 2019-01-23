@@ -1,10 +1,10 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.9 -->
-## [v3.11.9](https://github.com/chef/mixlib-install/tree/v3.11.9) (2018-12-10)
+<!-- latest_release 3.11.10 -->
+## [v3.11.10](https://github.com/chef/mixlib-install/tree/v3.11.10) (2019-01-23)
 
 #### Merged Pull Requests
-- Fix typos and update copyrights [#274](https://github.com/chef/mixlib-install/pull/274) ([tas50](https://github.com/tas50))
+- Cleanup testing and expeditor configs to match other Chef projects [#265](https://github.com/chef/mixlib-install/pull/265) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
 ## [v3.11.8](https://github.com/chef/mixlib-install/tree/v3.11.8) (2018-12-07)
@@ -21,6 +21,7 @@
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Cleanup testing and expeditor configs to match other Chef projects [#265](https://github.com/chef/mixlib-install/pull/265) ([tas50](https://github.com/tas50)) <!-- 3.11.10 -->
 - Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50)) <!-- 3.11.7 -->
 - Rename suse platform to opensuseleap [#268](https://github.com/chef/mixlib-install/pull/268) ([tas50](https://github.com/tas50)) <!-- 3.11.6 -->
 <!-- release_rollup -->
