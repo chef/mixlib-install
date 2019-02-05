@@ -1,10 +1,10 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.10 -->
-## [v3.11.10](https://github.com/chef/mixlib-install/tree/v3.11.10) (2019-01-23)
+<!-- latest_release 3.11.11 -->
+## [v3.11.11](https://github.com/chef/mixlib-install/tree/v3.11.11) (2019-02-05)
 
 #### Merged Pull Requests
-- Cleanup testing and expeditor configs to match other Chef projects [#265](https://github.com/chef/mixlib-install/pull/265) ([tas50](https://github.com/tas50))
+- Properly return Windows Desktop SKUs on projects with 64-bit only builds [#276](https://github.com/chef/mixlib-install/pull/276) ([schisamo](https://github.com/schisamo))
 <!-- latest_release -->
 
 ## [v3.11.8](https://github.com/chef/mixlib-install/tree/v3.11.8) (2018-12-07)
@@ -21,6 +21,7 @@
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Properly return Windows Desktop SKUs on projects with 64-bit only builds [#276](https://github.com/chef/mixlib-install/pull/276) ([schisamo](https://github.com/schisamo)) <!-- 3.11.11 -->
 - Cleanup testing and expeditor configs to match other Chef projects [#265](https://github.com/chef/mixlib-install/pull/265) ([tas50](https://github.com/tas50)) <!-- 3.11.10 -->
 - Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50)) <!-- 3.11.7 -->
 - Rename suse platform to opensuseleap [#268](https://github.com/chef/mixlib-install/pull/268) ([tas50](https://github.com/tas50)) <!-- 3.11.6 -->
