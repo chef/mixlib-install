@@ -37,9 +37,8 @@ branches:
 bundler_args: --without docs development
 
 before_install:
-  - gem install bundler
+  - gem install bundler -v 1.17.3 # we need an older Bundler to support older Rubies
   - bundle --version
-  - gem update --system
   - gem --version
 
 script: bundle exec rake
