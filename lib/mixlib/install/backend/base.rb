@@ -174,19 +174,12 @@ EOF
           artifact_64 = artifacts.find { |a| a.platform == "windows" && a.architecture == "x86_64" }
           artifact_32 = artifacts.find { |a| a.platform == "windows" && a.architecture == "i386" }
 
-          # Attempt to clone windows artifacts only when a Windows 32 bit artifact exists
-          if artifact_32
-            new_artifacts.concat(clone_windows_desktop_artifacts(artifact_32))
-
-            # Clone an existing 64 bit artifact
-            if artifact_64
-              new_artifacts.concat(clone_windows_desktop_artifacts(artifact_64))
-
-            # Clone the 32 bit artifact when 64 bit doesn't exist
-            else
-              new_artifacts.concat(clone_windows_desktop_artifacts(artifact_32, architecture: "x86_64"))
-            end
-          end
+          # Clone an existing 64-bit artifact
+          new_artifacts.concat(clone_windows_desktop_artifacts(artifact_64)) if artifact_64
+          # Clone an existing 32-bit artifact
+          new_artifacts.concat(clone_windows_desktop_artifacts(artifact_32)) if artifact_32
+          # Clone the 32 bit artifact when 64 bit doesn't exist
+          new_artifacts.concat(clone_windows_desktop_artifacts(artifact_32, architecture: "x86_64")) if artifact_32 && !artifact_64
 
           # Now discard the cloned artifacts if we find an equivalent native
           # artifact

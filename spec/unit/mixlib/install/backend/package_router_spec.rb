@@ -454,8 +454,10 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       end
 
       it "maps architecture to correct filename" do
-        expect(windows_artifacts.find { |a| a.platform_version == "10" && a.architecture == "i386" }.url).to include "-x86"
-        expect(windows_artifacts.find { |a| a.platform_version == "10" && a.architecture == "x86_64" }.url).to include expected_64_bit_msi
+        artifact_32 = windows_artifacts.find { |a| a.platform_version == "10" && a.architecture == "i386" }
+        artifact_64 = windows_artifacts.find { |a| a.platform_version == "10" && a.architecture == "x86_64" }
+        expect(artifact_32.url).to include "-x86" if artifact_32 # not all projects have 32-bit packages
+        expect(artifact_64.url).to include expected_64_bit_msi
       end
     end
 
@@ -476,6 +478,20 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     context "push-jobs-client windows artifacts" do
       let(:product_name) { "push-jobs-client" }
       let(:expected_64_bit_msi) { "-x86" }
+
+      it_behaves_like "windows desktop download urls and expected architectures"
+    end
+
+    context "inspec windows artifacts" do
+      let(:product_name) { "inspec" }
+      let(:expected_64_bit_msi) { "-x64" }
+
+      it_behaves_like "windows desktop download urls and expected architectures"
+    end
+
+    context "chef-workstation windows artifacts" do
+      let(:product_name) { "inspec" }
+      let(:expected_64_bit_msi) { "-x64" }
 
       it_behaves_like "windows desktop download urls and expected architectures"
     end
