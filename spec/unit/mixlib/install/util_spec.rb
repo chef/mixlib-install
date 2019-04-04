@@ -99,12 +99,15 @@ describe Mixlib::Install::Util do
         expect(Mixlib::Install::Util.wrap_shell("some shell code", true)).to eql("\nsome shell code")
       end
       it "on unix" do
-        expect(Mixlib::Install::Util.wrap_shell("some shell code", false)).to eql("sh -c '\n\nsome shell code\n'")
+        expect(Mixlib::Install::Util.wrap_shell("some shell code", false)).to eql("sh -c '\nsome shell code\n'")
       end
     end
 
     describe "with an http proxy" do
       let(:opts) { { http_proxy: "http://localhost:4321" } }
+      it "on windows" do
+        expect(Mixlib::Install::Util.wrap_shell("some shell code", true, opts)).to eql("\n$env:http_proxy = \"http://localhost:4321\"\n$env:HTTP_PROXY = \"http://localhost:4321\"\nsome shell code")
+      end
       it "on unix" do
         expect(Mixlib::Install::Util.wrap_shell("some shell code", false, opts)).to eql("sh -c '\nhttp_proxy=\"http://localhost:4321\"; export http_proxy\nHTTP_PROXY=\"http://localhost:4321\"; export HTTP_PROXY\nsome shell code\n'")
       end
@@ -112,6 +115,9 @@ describe Mixlib::Install::Util do
 
     describe "with an https proxy" do
       let(:opts) { { https_proxy: "https://localhost:4321" } }
+      it "on windows" do
+        expect(Mixlib::Install::Util.wrap_shell("some shell code", true, opts)).to eql("\n$env:https_proxy = \"https://localhost:4321\"\n$env:HTTPS_PROXY = \"https://localhost:4321\"\nsome shell code")
+      end
       it "on unix" do
         expect(Mixlib::Install::Util.wrap_shell("some shell code", false, opts)).to eql("sh -c '\nhttps_proxy=\"https://localhost:4321\"; export https_proxy\nHTTPS_PROXY=\"https://localhost:4321\"; export HTTPS_PROXY\nsome shell code\n'")
       end
