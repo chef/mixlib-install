@@ -1,10 +1,6 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.12 -->
-## [v3.11.12](https://github.com/chef/mixlib-install/tree/v3.11.12) (2019-04-15)
-
-#### Merged Pull Requests
-- Add support for armv7l [#279](https://github.com/chef/mixlib-install/pull/279) ([LocutusOfBorg](https://github.com/LocutusOfBorg))
+<!-- latest_release -->
 <!-- latest_release -->
 
 ## [v3.11.8](https://github.com/chef/mixlib-install/tree/v3.11.8) (2018-12-07)
@@ -17,14 +13,16 @@
 #### Merged Pull Requests
 - Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50))
 
-<!-- release_rollup since=3.11.11 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Add support for armv7l [#279](https://github.com/chef/mixlib-install/pull/279) ([LocutusOfBorg](https://github.com/LocutusOfBorg)) <!-- 3.11.12 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.11.12](https://github.com/chef/mixlib-install/tree/v3.11.12) (2019-04-15)
+
+#### Merged Pull Requests
+- Add support for armv7l [#279](https://github.com/chef/mixlib-install/pull/279) ([LocutusOfBorg](https://github.com/LocutusOfBorg))
+<!-- latest_stable_release -->
+
 ## [v3.11.11](https://github.com/chef/mixlib-install/tree/v3.11.11) (2019-02-06)
 
 #### Merged Pull Requests
@@ -32,7 +30,6 @@
 - Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50))
 - Cleanup testing and expeditor configs to match other Chef projects [#265](https://github.com/chef/mixlib-install/pull/265) ([tas50](https://github.com/tas50))
 - Properly return Windows Desktop SKUs on projects with 64-bit only builds [#276](https://github.com/chef/mixlib-install/pull/276) ([schisamo](https://github.com/schisamo))
-<!-- latest_stable_release -->
 
 ## [v3.11.5](https://github.com/chef/mixlib-install/tree/v3.11.5) (2018-08-08)
 
