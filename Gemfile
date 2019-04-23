@@ -12,8 +12,7 @@ group :test do
   gem "rake"
   gem "rspec"
   gem "vcr"
-  gem "webmock", "~> 2.3.2"      # ruby 1.9.3
-  gem "addressable", "~> 2.4.0"  # ruby 1.9.3
+  gem "webmock", "~> 3.4"
   gem "aruba", "~> 0.14"
   gem "cucumber", "~> 1.3.20"
   gem "climate_control"
