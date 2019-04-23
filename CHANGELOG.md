@@ -1,6 +1,10 @@
 # Mixlib::Install Changes
 
-<!-- latest_release -->
+<!-- latest_release 3.11.13 -->
+## [v3.11.13](https://github.com/chef/mixlib-install/tree/v3.11.13) (2019-04-23)
+
+#### Merged Pull Requests
+- Bug when concatenating http_proxy environment variables [#278](https://github.com/chef/mixlib-install/pull/278) ([tyler-ball](https://github.com/tyler-ball))
 <!-- latest_release -->
 
 ## [v3.11.8](https://github.com/chef/mixlib-install/tree/v3.11.8) (2018-12-07)
@@ -13,7 +17,11 @@
 #### Merged Pull Requests
 - Update install scripts to not mention Omnibus [#271](https://github.com/chef/mixlib-install/pull/271) ([tas50](https://github.com/tas50))
 
-<!-- release_rollup -->
+<!-- release_rollup since=3.11.12 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Bug when concatenating http_proxy environment variables [#278](https://github.com/chef/mixlib-install/pull/278) ([tyler-ball](https://github.com/tyler-ball)) <!-- 3.11.13 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
