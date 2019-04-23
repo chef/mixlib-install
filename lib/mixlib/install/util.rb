@@ -66,10 +66,13 @@ module Mixlib
             env << Util.shell_env_var("https_proxy", opts[:https_proxy], powershell)
             env << Util.shell_env_var("HTTPS_PROXY", opts[:https_proxy], powershell)
           end
+          unless env.empty?
+            code = env.join("\n").concat("\n").concat(code)
+          end
           if powershell
-            env.join("\n").concat("\n").concat(code)
+            "\n" + code
           else
-            Util.wrap_command(env.join("\n").concat("\n").concat(code))
+            Util.wrap_command(code)
           end
         end
 
