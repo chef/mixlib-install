@@ -43,6 +43,15 @@ context "Mixlib::Install::Generator", :vcr do
       expect(install_script).to start_with("#!/bin/sh")
       expect(install_script).to include('install_file $filetype "$download_filename"')
     end
+    it "sets http proxy environment variables" do
+      expect(install_script).to match(/^\s*HTTPS_PROXY=\S+/)
+    end
+    it "exports proxy environment variables" do
+      expect(install_script).to match(/^\s*export\s+HTTPS_PROXY$/)
+    end
+    it "does not export and set proxy environment variables using a single line" do
+      expect(install_script).not_to match(/^\s*export\s+\S+=\S+/)
+    end
   end
 
   context "for :unstable channel" do
