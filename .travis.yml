@@ -1,11 +1,11 @@
-sudo: false
 language: ruby
 cache: bundler
+dist: xenial
 
 addons:
   apt:
     sources:
-      - chef-stable-trusty
+      - chef-stable-xenial
     packages:
       - chefdk
       - wget
@@ -14,25 +14,20 @@ addons:
 
 matrix:
   include:
-      # WE SUPPORT UPGRADES OF CHEF 11.x on RUBY 1.9.3 VIA chef_client_updater COOKBOOK
-    - rvm: 1.9.3
-      bundler_args: --without chefstyle functional development docs --jobs=3 --retry=3 --path=${BUNDLE_PATH:-vendor/bundle}
-      script:
-        - bundle exec rake unit
-        - bundle exec rake functional
     - rvm: 2.0
     - rvm: 2.1.10
     - rvm: 2.2.10
     - rvm: 2.3.8
     - rvm: 2.4.5
-    - rvm: 2.5.3
+    - rvm: 2.5.5
+    - rvm: 2.6.2
     - rvm: ruby-head
   allow_failures:
     - rvm: ruby-head
 
 branches:
   only:
-  - master
+    - master
 
 bundler_args: --without docs development
 
