@@ -1,10 +1,10 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.14 -->
-## [v3.11.14](https://github.com/chef/mixlib-install/tree/v3.11.14) (2019-04-25)
+<!-- latest_release 3.11.15 -->
+## [v3.11.15](https://github.com/chef/mixlib-install/tree/v3.11.15) (2019-04-25)
 
 #### Merged Pull Requests
-- Update github templates and cutover to the Chef Foundation team [#280](https://github.com/chef/mixlib-install/pull/280) ([tas50](https://github.com/tas50))
+- Set the proxy environment variables using bourne shell syntax [#281](https://github.com/chef/mixlib-install/pull/281) ([MarkGibbons](https://github.com/MarkGibbons))
 <!-- latest_release -->
 
 ## [v3.11.8](https://github.com/chef/mixlib-install/tree/v3.11.8) (2018-12-07)
@@ -21,6 +21,7 @@
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Set the proxy environment variables using bourne shell syntax [#281](https://github.com/chef/mixlib-install/pull/281) ([MarkGibbons](https://github.com/MarkGibbons)) <!-- 3.11.15 -->
 - Update github templates and cutover to the Chef Foundation team [#280](https://github.com/chef/mixlib-install/pull/280) ([tas50](https://github.com/tas50)) <!-- 3.11.14 -->
 - Bug when concatenating http_proxy environment variables [#278](https://github.com/chef/mixlib-install/pull/278) ([tyler-ball](https://github.com/tyler-ball)) <!-- 3.11.13 -->
 <!-- release_rollup -->
