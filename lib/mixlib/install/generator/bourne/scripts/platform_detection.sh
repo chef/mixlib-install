@@ -25,7 +25,7 @@
 machine=`uname -m`
 os=`uname -s`
 
-if test -f "/etc/lsb-release" && grep -q DISTRIB_ID /etc/lsb-release && ! grep -q wrlinux /etc/lsb-release; then
+if test -f "/etc/lsb-release" && grep DISTRIB_ID /etc/lsb-release >/dev/null && ! grep wrlinux /etc/lsb-release >/dev/null; then
   platform=`grep DISTRIB_ID /etc/lsb-release | cut -d "=" -f 2 | tr '[A-Z]' '[a-z]'`
   platform_version=`grep DISTRIB_RELEASE /etc/lsb-release | cut -d "=" -f 2`
 
@@ -84,7 +84,7 @@ elif test -f "/usr/bin/sw_vers"; then
   fi
 elif test -f "/etc/release"; then
   machine=`/usr/bin/uname -p`
-  if grep -q SmartOS /etc/release; then
+  if grep SmartOS /etc/release >/dev/null; then
     platform="smartos"
     platform_version=`grep ^Image /etc/product | awk '{ print $3 }'`
   else
@@ -92,7 +92,7 @@ elif test -f "/etc/release"; then
     platform_version=`/usr/bin/uname -r`
   fi
 elif test -f "/etc/SuSE-release"; then
-  if grep -q 'Enterprise' /etc/SuSE-release;
+  if grep 'Enterprise' /etc/SuSE-release >/dev/null;
   then
       platform="sles"
       platform_version=`awk '/^VERSION/ {V = $3}; /^PATCHLEVEL/ {P = $3}; END {print V "." P}' /etc/SuSE-release`

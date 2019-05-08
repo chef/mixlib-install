@@ -223,6 +223,10 @@ context "Mixlib::Install" do
     it "should return platform_detection.sh" do
       expect(script).to include('echo "$platform $platform_version $machine"')
     end
+
+    it "should return platform_detection.sh using grep without -q" do
+      expect(script).not_to include("grep.*-q")
+    end
   end
 
   context "detect_platform_ps1" do
