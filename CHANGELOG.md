@@ -1,10 +1,10 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.17 -->
-## [v3.11.17](https://github.com/chef/mixlib-install/tree/v3.11.17) (2019-05-09)
+<!-- latest_release 3.11.18 -->
+## [v3.11.18](https://github.com/chef/mixlib-install/tree/v3.11.18) (2019-05-09)
 
 #### Merged Pull Requests
-- Remove the PR template and use the org level template [#284](https://github.com/chef/mixlib-install/pull/284) ([tas50](https://github.com/tas50))
+- Add project owner information to the readme [#285](https://github.com/chef/mixlib-install/pull/285) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
 ## [v3.11.8](https://github.com/chef/mixlib-install/tree/v3.11.8) (2018-12-07)
@@ -21,6 +21,7 @@
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add project owner information to the readme [#285](https://github.com/chef/mixlib-install/pull/285) ([tas50](https://github.com/tas50)) <!-- 3.11.18 -->
 - Remove the PR template and use the org level template [#284](https://github.com/chef/mixlib-install/pull/284) ([tas50](https://github.com/tas50)) <!-- 3.11.17 -->
 - Use a grep command compatible with solaris 10 and older greps [#282](https://github.com/chef/mixlib-install/pull/282) ([MarkGibbons](https://github.com/MarkGibbons)) <!-- 3.11.16 -->
 - Set the proxy environment variables using bourne shell syntax [#281](https://github.com/chef/mixlib-install/pull/281) ([MarkGibbons](https://github.com/MarkGibbons)) <!-- 3.11.15 -->
