@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.11.19 -->
+## [v3.11.19](https://github.com/chef/mixlib-install/tree/v3.11.19) (2019-05-09)
+
+#### Merged Pull Requests
+- Update product names to match new marketing names [#283](https://github.com/chef/mixlib-install/pull/283) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.11.18 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Update product names to match new marketing names [#283](https://github.com/chef/mixlib-install/pull/283) ([tas50](https://github.com/tas50)) <!-- 3.11.19 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
