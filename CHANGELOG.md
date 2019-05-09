@@ -1,30 +1,26 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.18 -->
-## [v3.11.18](https://github.com/chef/mixlib-install/tree/v3.11.18) (2019-05-09)
-
-#### Merged Pull Requests
-- Add project owner information to the readme [#285](https://github.com/chef/mixlib-install/pull/285) ([tas50](https://github.com/tas50))
-
 <!-- latest_release -->
-<!-- release_rollup since=3.11.12 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Add project owner information to the readme [#285](https://github.com/chef/mixlib-install/pull/285) ([tas50](https://github.com/tas50)) <!-- 3.11.18 -->
-- Remove the PR template and use the org level template [#284](https://github.com/chef/mixlib-install/pull/284) ([tas50](https://github.com/tas50)) <!-- 3.11.17 -->
-- Use a grep command compatible with solaris 10 and older greps [#282](https://github.com/chef/mixlib-install/pull/282) ([MarkGibbons](https://github.com/MarkGibbons)) <!-- 3.11.16 -->
-- Set the proxy environment variables using bourne shell syntax [#281](https://github.com/chef/mixlib-install/pull/281) ([MarkGibbons](https://github.com/MarkGibbons)) <!-- 3.11.15 -->
-- Update github templates and cutover to the Chef Foundation team [#280](https://github.com/chef/mixlib-install/pull/280) ([tas50](https://github.com/tas50)) <!-- 3.11.14 -->
-- Bug when concatenating http_proxy environment variables [#278](https://github.com/chef/mixlib-install/pull/278) ([tyler-ball](https://github.com/tyler-ball)) <!-- 3.11.13 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.11.18](https://github.com/chef/mixlib-install/tree/v3.11.18) (2019-05-09)
+
+#### Merged Pull Requests
+- Bug when concatenating http_proxy environment variables [#278](https://github.com/chef/mixlib-install/pull/278) ([tyler-ball](https://github.com/tyler-ball))
+- Update github templates and cutover to the Chef Foundation team [#280](https://github.com/chef/mixlib-install/pull/280) ([tas50](https://github.com/tas50))
+- Set the proxy environment variables using bourne shell syntax [#281](https://github.com/chef/mixlib-install/pull/281) ([MarkGibbons](https://github.com/MarkGibbons))
+- Use a grep command compatible with solaris 10 and older greps [#282](https://github.com/chef/mixlib-install/pull/282) ([MarkGibbons](https://github.com/MarkGibbons))
+- Remove the PR template and use the org level template [#284](https://github.com/chef/mixlib-install/pull/284) ([tas50](https://github.com/tas50))
+- Add project owner information to the readme [#285](https://github.com/chef/mixlib-install/pull/285) ([tas50](https://github.com/tas50))
+<!-- latest_stable_release -->
+
 ## [v3.11.12](https://github.com/chef/mixlib-install/tree/v3.11.12) (2019-04-15)
 
 #### Merged Pull Requests
 - Add support for armv7l [#279](https://github.com/chef/mixlib-install/pull/279) ([LocutusOfBorg](https://github.com/LocutusOfBorg))
-<!-- latest_stable_release -->
 
 ## [v3.11.11](https://github.com/chef/mixlib-install/tree/v3.11.11) (2019-02-06)
 
