@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/chef/mixlib-install.svg?branch=master)](https://travis-ci.org/chef/mixlib-install)
 [![Gem Version](https://badge.fury.io/rb/mixlib-install.svg)](https://badge.fury.io/rb/mixlib-install)
 
-**Umbrella Project**: [Chef Foundataion](https://github.com/chef/chef-oss-practices/blob/master/projects/chef-foundation.md)
+**Umbrella Project**: [Chef Foundation](https://github.com/chef/chef-oss-practices/blob/master/projects/chef-foundation.md)
 
 **Project State**: [Active](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md#active)
 
