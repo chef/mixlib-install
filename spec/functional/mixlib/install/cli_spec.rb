@@ -169,7 +169,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:additional_args) { "--url --attributes" }
 
       it "outputs the attributes" do
-        expect(last_command_started).to have_output /"license": "Apache-2.0"/
+        expect(last_command_started).to have_output /"license": "Chef EULA"/
       end
     end
 
