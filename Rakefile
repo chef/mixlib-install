@@ -23,7 +23,7 @@ end
 
 desc "Render product matrix documentation"
 task "matrix" do
-  require "mixlib/install/product"
+  require "mixlib/install/product_matrix"
 
   doc_file = File.join(File.dirname(__FILE__), "PRODUCT_MATRIX.md")
   puts "Updating doc file at: #{doc_file}"
