@@ -329,6 +329,12 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "inspec"
   end
 
+  product "mac-bootstrapper" do
+    product_name "Habitat Mac Bootstrapper"
+    package_name "mac-bootstrapper"
+    downloads_product_page_url :not_available
+  end
+
   product "manage" do
     product_name "Management Console"
     package_name do |v|

@@ -111,7 +111,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
         end
 
         it "has the right product description" do
-          expect(artifact_info.product_description).to eq "Chef Client"
+          expect(artifact_info.product_description).to eq "Chef Infra Client"
         end
 
         it "has the right url" do
