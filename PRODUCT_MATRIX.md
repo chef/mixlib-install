@@ -15,8 +15,10 @@
 | Chef Infra Server High Availability addon | ha |
 | Harmony - Omnibus Integration Internal Test Project | harmony |
 | Chef InSpec | inspec |
+| Habitat Mac Bootstrapper | mac-bootstrapper |
 | Management Console | manage |
 | Chef Cloud Marketplace addon | marketplace |
+| Omnibus GCC Package | omnibus-gcc |
 | Omnibus Toolchain | omnibus-toolchain |
 | Enterprise Chef (legacy) | private-chef |
 | Chef Push Client | push-jobs-client |

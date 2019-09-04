@@ -147,9 +147,11 @@ context "PRODUCT_MATRIX" do
     ha
     harmony
     inspec
+    mac-bootstrapper
     manage
     marketplace
     omnibus-toolchain
+    omnibus-gcc
     private-chef
     push-jobs-client
     push-jobs-server
