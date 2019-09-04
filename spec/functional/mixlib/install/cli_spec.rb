@@ -183,22 +183,6 @@ describe "mixlib-install executable", :type => :aruba do
       end
     end
 
-    context "with valid platform version and architecture" do
-      let(:platform) { "ubuntu" }
-      let(:platform_version) { "14.04" }
-      let(:architecture) { "i386" }
-      let(:additional_args) { "--attributes" }
-
-      let(:latest_version) { Mixlib::Install.available_versions("chef", "stable").last }
-      let(:filename) { "chef_#{latest_version}-1_i386.deb" }
-
-      it "has the correct artifact" do
-        require "digest"
-        sha256 = Digest::SHA256.hexdigest("./tmp/aruba/#{filename}")
-        expect(last_command_started).to have_output /sha256/
-      end
-    end
-
     context "with future platform version" do
       let(:platform) { "windows" }
       let(:platform_version) { "2016" }

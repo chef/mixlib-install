@@ -232,7 +232,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "chef" do
-    product_name "Chef Client"
+    product_name "Chef Infra Client"
     package_name "chef"
   end
 
@@ -244,7 +244,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "chef-server" do
-    product_name "Chef Server"
+    product_name "Chef Infra Server"
     package_name do |v|
       if (v < version_for("12.0.0")) && (v > version_for("11.0.0"))
         "chef-server"
@@ -271,7 +271,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "chef-server-ha-provisioning" do
-    product_name "Chef Server HA Provisioning for AWS"
+    product_name "Chef Infra Server HA Provisioning for AWS"
     package_name "chef-server-ha-provisioning"
     downloads_product_page_url :not_available
   end
@@ -310,7 +310,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "ha" do
-    product_name "Chef Server High Availability addon"
+    product_name "Chef Infra Server High Availability addon"
     package_name "chef-ha"
     config_file "/etc/opscode/chef-server.rb"
     github_repo "chef/chef-ha"
@@ -325,7 +325,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "inspec" do
-    product_name "InSpec"
+    product_name "Chef InSpec"
     package_name "inspec"
   end
 
@@ -362,6 +362,12 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     downloads_product_page_url :not_available
   end
 
+  product "omnibus-gcc" do
+    product_name "Omnibus GCC Package"
+    package_name "omnibus-gcc"
+    downloads_product_page_url :not_available
+  end
+
   product "private-chef" do
     product_name "Enterprise Chef (legacy)"
     package_name "private-chef"
@@ -388,7 +394,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "reporting" do
-    product_name "Chef Server Reporting addon"
+    product_name "Chef Infra Server Reporting addon"
     package_name "opscode-reporting"
     ctl_command "opscode-reporting-ctl"
     config_file "/etc/opscode-reporting/opscode-reporting.rb"
@@ -403,7 +409,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   end
 
   product "sync" do
-    product_name "Chef Server Replication addon"
+    product_name "Chef Infra Server Replication addon"
     package_name "chef-sync"
     ctl_command "chef-sync-ctl"
     config_file "/etc/chef-sync/chef-sync.rb"

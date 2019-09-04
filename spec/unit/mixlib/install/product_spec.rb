@@ -150,6 +150,7 @@ context "PRODUCT_MATRIX" do
     manage
     marketplace
     omnibus-toolchain
+    omnibus-gcc
     private-chef
     push-jobs-client
     push-jobs-server
