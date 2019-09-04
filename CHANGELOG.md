@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.20 -->
-## [v3.11.20](https://github.com/chef/mixlib-install/tree/v3.11.20) (2019-05-28)
+<!-- latest_release 3.11.21 -->
+## [v3.11.21](https://github.com/chef/mixlib-install/tree/v3.11.21) (2019-09-04)
 
 #### Merged Pull Requests
-- Fix typo in README [#288](https://github.com/chef/mixlib-install/pull/288) ([gaelik](https://github.com/gaelik))
+- Add omnibus-gcc and fix up tests [#291](https://github.com/chef/mixlib-install/pull/291) ([scotthain](https://github.com/scotthain))
 <!-- latest_release -->
 <!-- release_rollup since=3.11.18 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add omnibus-gcc and fix up tests [#291](https://github.com/chef/mixlib-install/pull/291) ([scotthain](https://github.com/scotthain)) <!-- 3.11.21 -->
 - Fix typo in README [#288](https://github.com/chef/mixlib-install/pull/288) ([gaelik](https://github.com/gaelik)) <!-- 3.11.20 -->
 - Update product names to match new marketing names [#283](https://github.com/chef/mixlib-install/pull/283) ([tas50](https://github.com/tas50)) <!-- 3.11.19 -->
 <!-- release_rollup -->
