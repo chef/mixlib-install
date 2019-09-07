@@ -4,6 +4,8 @@ module Mixlib
       # This class is not fully implemented, depending it is not recommended!
       # Binary repository base endpoint
       PRODUCT_ENDPOINT = "https://packages.chef.io".freeze
+      # Omnitruck endpoint
+      OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io".freeze
     end
   end
 end

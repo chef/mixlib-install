@@ -18,6 +18,7 @@
 require "erb"
 require "ostruct"
 require "mixlib/install/util"
+require "mixlib/install/dist"
 
 module Mixlib
   class Install
@@ -47,7 +48,7 @@ module Mixlib
           # and returnt the contents of the script
           if File.exist? "#{script_path}.erb"
             # Default values to use incase they are not set in the context
-            context[:base_url] ||= "https://omnitruck.chef.io"
+            context[:base_url] ||= Mixlib::Install::Dist::OMNITRUCK_ENDPOINT.freeze
             context[:user_agent_string] = Util.user_agent_string(context[:user_agent_headers])
 
             context_object = OpenStruct.new(context).instance_eval { binding }
