@@ -16,6 +16,7 @@
 #
 
 require "mixlib/versioning"
+require "mixlib/install/dist"
 
 module Mixlib
   class Install
@@ -82,7 +83,7 @@ module Mixlib
         when :omnibus_project
           package_name
         when :downloads_product_page_url
-          "https://downloads.chef.io/#{product_key}"
+          "#{Mixlib::Install::Dist::PRODUCT_URL}/#{product_key}"
         when :github_repo
           "chef/#{product_key}"
         else
