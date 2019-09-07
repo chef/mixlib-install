@@ -8,6 +8,8 @@ module Mixlib
       OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io".freeze
       # Default base product page URL
       PRODUCT_URL = "https://downloads.chef.io".freeze
+      # Default github org
+      GITHUB_ORG = "chef".freeze
     end
   end
 end

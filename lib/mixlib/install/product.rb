@@ -85,7 +85,7 @@ module Mixlib
         when :downloads_product_page_url
           "#{Mixlib::Install::Dist::PRODUCT_URL}/#{product_key}"
         when :github_repo
-          "chef/#{product_key}"
+          "#{Mixlib::Install::Dist::GITHUB_ORG}/#{product_key}"
         else
           nil
         end
