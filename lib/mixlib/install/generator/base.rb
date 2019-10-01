@@ -48,6 +48,7 @@ module Mixlib
           # and returnt the contents of the script
           if File.exist? "#{script_path}.erb"
             # Default values to use incase they are not set in the context
+            context[:project_name] ||= Mixlib::Install::Dist::PROJECT_NAME.freeze
             context[:base_url] ||= Mixlib::Install::Dist::OMNITRUCK_ENDPOINT.freeze
             context[:default_product] ||= Mixlib::Install::Dist::DEFAULT_PRODUCT.freeze
             context[:bug_url] ||= Mixlib::Install::Dist::BUG_URL.freeze
