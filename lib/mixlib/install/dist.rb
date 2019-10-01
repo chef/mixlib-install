@@ -20,6 +20,8 @@ module Mixlib
       SUPPORT_URL = "https://www.chef.io/support/tickets".freeze
       # Resources URL
       RESOURCES_URL = "https://www.chef.io/support".freeze
+      # MacOS directory name
+      MACOS_DIR = "chef_software".freeze
     end
   end
 end

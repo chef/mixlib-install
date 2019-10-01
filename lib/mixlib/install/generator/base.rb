@@ -54,6 +54,7 @@ module Mixlib
             context[:bug_url] ||= Mixlib::Install::Dist::BUG_URL.freeze
             context[:support_url] ||= Mixlib::Install::Dist::SUPPORT_URL.freeze
             context[:resources_url] ||= Mixlib::Install::Dist::RESOURCES_URL.freeze
+            context[:macos_dir] ||= Mixlib::Install::Dist::MACOS_DIR.freeze
             context[:user_agent_string] = Util.user_agent_string(context[:user_agent_headers])
 
             context_object = OpenStruct.new(context).instance_eval { binding }
