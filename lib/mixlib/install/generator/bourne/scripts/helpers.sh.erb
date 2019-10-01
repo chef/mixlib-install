@@ -42,9 +42,9 @@ exists() {
 report_bug() {
   echo "Version: $version"
   echo ""
-  echo "Please file a Bug Report at https://github.com/chef/omnitruck/issues/new"
-  echo "Alternatively, feel free to open a Support Ticket at https://www.chef.io/support/tickets"
-  echo "More Chef support resources can be found at https://www.chef.io/support"
+  echo "Please file a Bug Report at <%= bug_url %>"
+  echo "Alternatively, feel free to open a Support Ticket at <%= support_url %>"
+  echo "More Chef support resources can be found at <%= resources_url %>"
   echo ""
   echo "Please include as many details about the problem as possible i.e., how to reproduce"
   echo "the problem (if possible), type of the Operating System and its version, etc.,"

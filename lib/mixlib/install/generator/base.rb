@@ -50,6 +50,9 @@ module Mixlib
             # Default values to use incase they are not set in the context
             context[:base_url] ||= Mixlib::Install::Dist::OMNITRUCK_ENDPOINT.freeze
             context[:default_product] ||= Mixlib::Install::Dist::DEFAULT_PRODUCT.freeze
+            context[:bug_url] ||= Mixlib::Install::Dist::BUG_URL.freeze
+            context[:support_url] ||= Mixlib::Install::Dist::SUPPORT_URL.freeze
+            context[:resources_url] ||= Mixlib::Install::Dist::RESOURCES_URL.freeze
             context[:user_agent_string] = Util.user_agent_string(context[:user_agent_headers])
 
             context_object = OpenStruct.new(context).instance_eval { binding }

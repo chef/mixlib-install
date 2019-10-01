@@ -12,6 +12,12 @@ module Mixlib
       PRODUCT_URL = "https://downloads.chef.io".freeze
       # Default github org
       GITHUB_ORG = "chef".freeze
+      # Bug report URL
+      BUG_URL = "https://github.com/chef/omnitruck/issues/new".freeze
+      # Support ticket URL
+      SUPPORT_URL = "https://www.chef.io/support/tickets".freeze
+      # Resources URL
+      RESOURCES_URL = "https://www.chef.io/support".freeze
     end
   end
 end
