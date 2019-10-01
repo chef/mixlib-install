@@ -59,7 +59,7 @@ function Install-Project {
     $install_strategy
   )
 
-  if ((Test-Path "$env:systemdrive\opscode\$project\embedded") -and ($install_strategy -eq 'once')) {
+  if ((Test-Path "$env:systemdrive\<%= windows_dir %>\$project\embedded") -and ($install_strategy -eq 'once')) {
     Write-Host "$project installation detected"
     Write-Host "install_strategy set to 'once'"
     Write-Host "Nothing to install"
@@ -181,7 +181,7 @@ Function Install-ChefMsi($msi, $addlocal) {
 Function Install-ChefAppx($appx, $project) {
   Add-AppxPackage -Path $appx -ErrorAction Stop
   $package = (Get-AppxPackage -Name $project).InstallLocation
-  $installRoot = "$env:SystemDrive/opscode"
+  $installRoot = "$env:SystemDrive/<%= windows_dir %>"
   $omnibusRoot = Join-Path $installRoot $project
 
   if(!(Test-Path $installRoot)) {

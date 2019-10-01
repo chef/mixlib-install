@@ -22,6 +22,8 @@ module Mixlib
       RESOURCES_URL = "https://www.chef.io/support".freeze
       # MacOS directory name
       MACOS_DIR = "chef_software".freeze
+      # Windows directory name
+      WINDOWS_DIR = "opscode".freeze
     end
   end
 end
