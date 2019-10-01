@@ -17,7 +17,7 @@ function Install-Project {
   param (
     # Project to install
     [string]
-    $project = 'chef',
+    $project = '<%= default_product %>',
     # Release channel to install from
     [validateset('current', 'stable', 'unstable')]
     [string]
