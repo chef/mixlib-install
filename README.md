@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/chef/mixlib-install.svg?branch=master)](https://travis-ci.org/chef/mixlib-install)
+# Mixlib::Install
+
 [![Gem Version](https://badge.fury.io/rb/mixlib-install.svg)](https://badge.fury.io/rb/mixlib-install)
 
 **Umbrella Project**: [Chef Foundation](https://github.com/chef/chef-oss-practices/blob/master/projects/chef-foundation.md)
@@ -8,8 +9,6 @@
 **Issues [Response Time Maximum](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md)**: 14 days
 
 **Pull Request [Response Time Maximum](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md)**: 14 days
-
-# Mixlib::Install
 
 ## Supports
 
