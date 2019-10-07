@@ -1,5 +1,5 @@
 module Mixlib
   class Install
-    VERSION = "3.11.21"
+    VERSION = "3.11.22"
   end
 end
