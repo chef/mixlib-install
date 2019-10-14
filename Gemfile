@@ -20,7 +20,7 @@ end
 
 if RUBY_VERSION =~ /^2/
   group :chefstyle do
-    gem "chefstyle", "~> 0.4.0"
+    gem "chefstyle", "~> 0.13.3"
   end
 end
 
