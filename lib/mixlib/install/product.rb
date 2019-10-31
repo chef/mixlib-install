@@ -83,7 +83,7 @@ module Mixlib
         when :omnibus_project
           package_name
         when :downloads_product_page_url
-          "#{Mixlib::Install::Dist::PRODUCT_URL}/#{product_key}"
+          "#{Mixlib::Install::Dist::DOWNLOADS_PAGE}/#{product_key}"
         when :github_repo
           "#{Mixlib::Install::Dist::GITHUB_ORG}/#{product_key}"
         else

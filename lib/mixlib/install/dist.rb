@@ -10,8 +10,8 @@ module Mixlib
       OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io".freeze
       # Default product name
       DEFAULT_PRODUCT = "chef".freeze
-      # Default base product page URL
-      PRODUCT_URL = "https://downloads.chef.io".freeze
+      # Default download page URL
+      DOWNLOADS_PAGE = "https://downloads.chef.io".freeze
       # Default github org
       GITHUB_ORG = "chef".freeze
       # Bug report URL
@@ -20,10 +20,10 @@ module Mixlib
       SUPPORT_URL = "https://www.chef.io/support/tickets".freeze
       # Resources URL
       RESOURCES_URL = "https://www.chef.io/support".freeze
-      # MacOS directory name
-      MACOS_DIR = "chef_software".freeze
-      # Windows directory name
-      WINDOWS_DIR = "opscode".freeze
+      # MacOS volume name
+      MACOS_VOLUME = "chef_software".freeze
+      # Windows install directory name
+      WINDOWS_INSTALL_DIR = "opscode".freeze
     end
   end
 end
