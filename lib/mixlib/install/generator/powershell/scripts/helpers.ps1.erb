@@ -75,7 +75,7 @@ function Get-WebContentOnFullNet {
 
   $proxy = New-Object -TypeName System.Net.WebProxy
   $wc = new-object System.Net.WebClient
-  $wc.Headers.Add("user-agent", "mixlib-install/3.11.21")
+  $wc.Headers.Add("user-agent", "<%= user_agent_string %>")
   $proxy.Address = $env:http_proxy
   $bypassList = $env:no_proxy
   
