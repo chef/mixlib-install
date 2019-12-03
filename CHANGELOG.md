@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.22 -->
-## [v3.11.22](https://github.com/chef/mixlib-install/tree/v3.11.22) (2019-10-07)
+<!-- latest_release 3.11.23 -->
+## [v3.11.23](https://github.com/chef/mixlib-install/tree/v3.11.23) (2019-12-03)
 
 #### Merged Pull Requests
-- Add buildkite PR verification [#294](https://github.com/chef/mixlib-install/pull/294) ([tas50](https://github.com/tas50))
+- Community distribution fixes [#292](https://github.com/chef/mixlib-install/pull/292) ([ramereth](https://github.com/ramereth))
 <!-- latest_release -->
 <!-- release_rollup since=3.11.21 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Community distribution fixes [#292](https://github.com/chef/mixlib-install/pull/292) ([ramereth](https://github.com/ramereth)) <!-- 3.11.23 -->
 - Add buildkite PR verification [#294](https://github.com/chef/mixlib-install/pull/294) ([tas50](https://github.com/tas50)) <!-- 3.11.22 -->
 <!-- release_rollup -->
 
