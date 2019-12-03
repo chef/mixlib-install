@@ -17,6 +17,7 @@
 #
 
 require "mixlib/install/product"
+require "mixlib/install/product_matrix"
 require "mixlib/install/util"
 require "mixlib/versioning"
 

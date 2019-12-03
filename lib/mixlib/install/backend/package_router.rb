@@ -20,7 +20,9 @@ require "json"
 require "mixlib/install/artifact_info"
 require "mixlib/install/backend/base"
 require "mixlib/install/product"
+require "mixlib/install/product_matrix"
 require "mixlib/install/util"
+require "mixlib/install/dist"
 require "mixlib/versioning"
 require "net/http"
 
@@ -28,7 +30,7 @@ module Mixlib
   class Install
     class Backend
       class PackageRouter < Base
-        ENDPOINT = "https://packages.chef.io".freeze
+        ENDPOINT = Mixlib::Install::Dist::PRODUCT_ENDPOINT.freeze
 
         COMPAT_DOWNLOAD_URL_ENDPOINT = "http://packages.chef.io".freeze
 
