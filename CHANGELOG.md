@@ -1,28 +1,25 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.24 -->
-## [v3.11.24](https://github.com/chef/mixlib-install/tree/v3.11.24) (2019-12-12)
-
-#### Merged Pull Requests
-- Properly identify Windows 2019 in the install.ps1 [#301](https://github.com/chef/mixlib-install/pull/301) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
-<!-- release_rollup since=3.11.21 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Properly identify Windows 2019 in the install.ps1 [#301](https://github.com/chef/mixlib-install/pull/301) ([tas50](https://github.com/tas50)) <!-- 3.11.24 -->
-- Community distribution fixes [#292](https://github.com/chef/mixlib-install/pull/292) ([ramereth](https://github.com/ramereth)) <!-- 3.11.23 -->
-- Add buildkite PR verification [#294](https://github.com/chef/mixlib-install/pull/294) ([tas50](https://github.com/tas50)) <!-- 3.11.22 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.11.24](https://github.com/chef/mixlib-install/tree/v3.11.24) (2019-12-12)
+
+#### Merged Pull Requests
+- Add buildkite PR verification [#294](https://github.com/chef/mixlib-install/pull/294) ([tas50](https://github.com/tas50))
+- Community distribution fixes [#292](https://github.com/chef/mixlib-install/pull/292) ([ramereth](https://github.com/ramereth))
+- Properly identify Windows 2019 in the install.ps1 [#301](https://github.com/chef/mixlib-install/pull/301) ([tas50](https://github.com/tas50))
+<!-- latest_stable_release -->
+
 ## [v3.11.21](https://github.com/chef/mixlib-install/tree/v3.11.21) (2019-09-04)
 
 #### Merged Pull Requests
 - Update product names to match new marketing names [#283](https://github.com/chef/mixlib-install/pull/283) ([tas50](https://github.com/tas50))
 - Fix typo in README [#288](https://github.com/chef/mixlib-install/pull/288) ([gaelik](https://github.com/gaelik))
 - Add omnibus-gcc and fix up tests [#291](https://github.com/chef/mixlib-install/pull/291) ([scotthain](https://github.com/scotthain))
-<!-- latest_stable_release -->
 
 ## [v3.11.18](https://github.com/chef/mixlib-install/tree/v3.11.18) (2019-05-09)
 
