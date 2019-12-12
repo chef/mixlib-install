@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.23 -->
-## [v3.11.23](https://github.com/chef/mixlib-install/tree/v3.11.23) (2019-12-03)
+<!-- latest_release 3.11.24 -->
+## [v3.11.24](https://github.com/chef/mixlib-install/tree/v3.11.24) (2019-12-12)
 
 #### Merged Pull Requests
-- Community distribution fixes [#292](https://github.com/chef/mixlib-install/pull/292) ([ramereth](https://github.com/ramereth))
+- Properly identify Windows 2019 in the install.ps1 [#301](https://github.com/chef/mixlib-install/pull/301) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 <!-- release_rollup since=3.11.21 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Properly identify Windows 2019 in the install.ps1 [#301](https://github.com/chef/mixlib-install/pull/301) ([tas50](https://github.com/tas50)) <!-- 3.11.24 -->
 - Community distribution fixes [#292](https://github.com/chef/mixlib-install/pull/292) ([ramereth](https://github.com/ramereth)) <!-- 3.11.23 -->
 - Add buildkite PR verification [#294](https://github.com/chef/mixlib-install/pull/294) ([tas50](https://github.com/tas50)) <!-- 3.11.22 -->
 <!-- release_rollup -->
