@@ -3,11 +3,12 @@
 
 function Get-PlatformVersion {
   switch -regex ((Get-Win32OS).version) {
-    '10\.0\.\d+' {$platform_version = '2016'}
-    '6\.3\.\d+'  {$platform_version = '2012r2'}
-    '6\.2\.\d+'  {$platform_version = '2012'}
-    '6\.1\.\d+'  {$platform_version = '2008r2'}
-    '6\.0\.\d+'  {$platform_version = '2008'}
+    '10\.0\.\d+'   {$platform_version = '2016'}
+    '10\.0\.17\d+' {$platform_version = '2019'}
+    '6\.3\.\d+'    {$platform_version = '2012r2'}
+    '6\.2\.\d+'    {$platform_version = '2012'}
+    '6\.1\.\d+'    {$platform_version = '2008r2'}
+    '6\.0\.\d+'    {$platform_version = '2008'}
   }
 
   if(Test-Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels') {
