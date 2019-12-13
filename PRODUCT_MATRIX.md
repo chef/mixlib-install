@@ -15,6 +15,7 @@
 | Chef Infra Server High Availability addon | ha |
 | Harmony - Omnibus Integration Internal Test Project | harmony |
 | Chef InSpec | inspec |
+| InSpec Train| train |
 | Habitat Mac Bootstrapper | mac-bootstrapper |
 | Management Console | manage |
 | Chef Cloud Marketplace addon | marketplace |

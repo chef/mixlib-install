@@ -147,6 +147,7 @@ context "PRODUCT_MATRIX" do
     ha
     harmony
     inspec
+    train
     mac-bootstrapper
     manage
     marketplace

@@ -140,6 +140,12 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "inspec"
   end
 
+  product "train" do
+    product_name "InSpec Train"
+    package_name "train"
+    downloads_product_page_url :not_available
+  end
+
   product "mac-bootstrapper" do
     product_name "Habitat Mac Bootstrapper"
     package_name "mac-bootstrapper"
