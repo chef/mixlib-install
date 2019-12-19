@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.11.25 -->
+## [v3.11.25](https://github.com/chef/mixlib-install/tree/v3.11.25) (2019-12-19)
+
+#### Merged Pull Requests
+- Test on Ruby 2.7 + random testing improvements [#303](https://github.com/chef/mixlib-install/pull/303) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.11.24 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Test on Ruby 2.7 + random testing improvements [#303](https://github.com/chef/mixlib-install/pull/303) ([tas50](https://github.com/tas50)) <!-- 3.11.25 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
