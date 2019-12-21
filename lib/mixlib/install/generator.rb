@@ -15,8 +15,8 @@
 # limitations under the License.
 #
 
-require "mixlib/install/generator/bourne"
-require "mixlib/install/generator/powershell"
+require_relative "generator/bourne"
+require_relative "generator/powershell"
 
 module Mixlib
   class Install

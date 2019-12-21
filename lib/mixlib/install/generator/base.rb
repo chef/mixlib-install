@@ -17,8 +17,8 @@
 
 require "erb"
 require "ostruct"
-require "mixlib/install/util"
-require "mixlib/install/dist"
+require_relative "../util"
+require_relative "../dist"
 
 module Mixlib
   class Install

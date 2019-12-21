@@ -20,11 +20,11 @@
 require "mixlib/versioning"
 require "mixlib/shellout"
 
-require "mixlib/install/backend"
-require "mixlib/install/options"
-require "mixlib/install/generator"
-require "mixlib/install/generator/bourne"
-require "mixlib/install/generator/powershell"
+require_relative "install/backend"
+require_relative "install/options"
+require_relative "install/generator"
+require_relative "install/generator/bourne"
+require_relative "install/generator/powershell"
 
 module Mixlib
   class Install

@@ -12,7 +12,7 @@
 # limitations under the License.
 #
 
-require "mixlib/install"
+require_relative "../install"
 require "thor"
 
 module Mixlib
@@ -22,7 +22,7 @@ module Mixlib
 
       desc "version", "print mixlib-install version"
       def version
-        require "mixlib/install/version"
+        require_relative "version"
         say Mixlib::Install::VERSION
       end
 

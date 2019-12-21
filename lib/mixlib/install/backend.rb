@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require "mixlib/install/backend/package_router"
+require_relative "backend/package_router"
 
 module Mixlib
   class Install
