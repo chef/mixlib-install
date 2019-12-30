@@ -16,9 +16,9 @@
 # limitations under the License.
 #
 
-require "mixlib/install/product"
-require "mixlib/install/product_matrix"
-require "mixlib/install/util"
+require_relative "product"
+require_relative "product_matrix"
+require_relative "util"
 require "mixlib/versioning"
 
 module Mixlib

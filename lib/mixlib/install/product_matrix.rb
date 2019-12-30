@@ -1,4 +1,4 @@
-require "mixlib/install/product"
+require_relative "product"
 
 #
 # If you are making a change to PRODUCT_MATRIX, please make sure

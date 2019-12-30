@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-require "mixlib/install/generator/base"
+require_relative "base"
 
 module Mixlib
   class Install

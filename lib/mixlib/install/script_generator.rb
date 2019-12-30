@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-require "mixlib/install/util"
-require "mixlib/install/generator/powershell"
+require_relative "util"
+require_relative "generator/powershell"
 require "cgi"
 
 module Mixlib

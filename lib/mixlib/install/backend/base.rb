@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require "mixlib/install/util"
+require_relative "../util"
 
 module Mixlib
   class Install

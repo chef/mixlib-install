@@ -16,7 +16,7 @@
 #
 
 require "mixlib/versioning"
-require "mixlib/install/dist"
+require_relative "dist"
 
 module Mixlib
   class Install

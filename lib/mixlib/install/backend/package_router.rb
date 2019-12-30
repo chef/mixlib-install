@@ -17,12 +17,12 @@
 #
 
 require "json"
-require "mixlib/install/artifact_info"
-require "mixlib/install/backend/base"
-require "mixlib/install/product"
-require "mixlib/install/product_matrix"
-require "mixlib/install/util"
-require "mixlib/install/dist"
+require_relative "../artifact_info"
+require_relative "base"
+require_relative "../product"
+require_relative "../product_matrix"
+require_relative "../util"
+require_relative "../dist"
 require "mixlib/versioning"
 require "net/http"
 
