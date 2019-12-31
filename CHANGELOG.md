@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.11.27 -->
+## [v3.11.27](https://github.com/chef/mixlib-install/tree/v3.11.27) (2019-12-31)
+
+#### Merged Pull Requests
+- updated powershell template to support airgapped artifact environment… [#299](https://github.com/chef/mixlib-install/pull/299) ([Romascopa](https://github.com/Romascopa))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.11.26 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- updated powershell template to support airgapped artifact environment… [#299](https://github.com/chef/mixlib-install/pull/299) ([Romascopa](https://github.com/Romascopa)) <!-- 3.11.27 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
