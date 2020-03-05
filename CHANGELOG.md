@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.11.27 -->
-## [v3.11.27](https://github.com/chef/mixlib-install/tree/v3.11.27) (2019-12-31)
+<!-- latest_release 3.11.28 -->
+## [v3.11.28](https://github.com/chef/mixlib-install/tree/v3.11.28) (2020-03-05)
 
 #### Merged Pull Requests
-- updated powershell template to support airgapped artifact environment… [#299](https://github.com/chef/mixlib-install/pull/299) ([Romascopa](https://github.com/Romascopa))
+- Add support for arm64 architecture [#308](https://github.com/chef/mixlib-install/pull/308) ([jaymalasinha](https://github.com/jaymalasinha))
 <!-- latest_release -->
 <!-- release_rollup since=3.11.26 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add support for arm64 architecture [#308](https://github.com/chef/mixlib-install/pull/308) ([jaymalasinha](https://github.com/jaymalasinha)) <!-- 3.11.28 -->
 - updated powershell template to support airgapped artifact environment… [#299](https://github.com/chef/mixlib-install/pull/299) ([Romascopa](https://github.com/Romascopa)) <!-- 3.11.27 -->
 <!-- release_rollup -->
 
