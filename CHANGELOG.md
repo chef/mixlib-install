@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.11.29 -->
+## [v3.11.29](https://github.com/chef/mixlib-install/tree/v3.11.29) (2020-03-09)
+
+#### Merged Pull Requests
+- Map arm64 architecture to aarch64 [#309](https://github.com/chef/mixlib-install/pull/309) ([jaymalasinha](https://github.com/jaymalasinha))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.11.28 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Map arm64 architecture to aarch64 [#309](https://github.com/chef/mixlib-install/pull/309) ([jaymalasinha](https://github.com/jaymalasinha)) <!-- 3.11.29 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
