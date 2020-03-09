@@ -163,6 +163,9 @@ esac
 
 # normalize the architecture we detected
 case $machine in
+  "arm64"|"aarch64")
+    machine="aarch64"
+    ;;
   "x86_64"|"amd64"|"x64")
     machine="x86_64"
     ;;
