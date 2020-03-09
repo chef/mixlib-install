@@ -30,7 +30,6 @@ module Mixlib
 
       SUPPORTED_ARCHITECTURES = %w{
         aarch64
-        arm64
         armv7l
         i386
         powerpc
