@@ -96,7 +96,7 @@ elif test -f "/etc/SuSE-release"; then
   then
       platform="sles"
       platform_version=`awk '/^VERSION/ {V = $3}; /^PATCHLEVEL/ {P = $3}; END {print V "." P}' /etc/SuSE-release`
-  else
+  else # opensuse 43 only. 15 ships with /etc/os-release only
       platform="opensuseleap"
       platform_version=`awk '/^VERSION =/ { print $3 }' /etc/SuSE-release`
   fi
@@ -114,7 +114,14 @@ elif test -f "/etc/os-release"; then
   fi
 
   platform=$ID
-  platform_version=$VERSION
+
+  # VERSION_ID is always the preferred variable to use, but not
+  # every distro has it so fallback to VERSION
+  if test "x$VERSION_ID" != "x"; then
+    platform_version=$VERSION_ID
+  else
+    platform_version=$VERSION
+  fi
 fi
 
 if test "x$platform" = "x"; then
