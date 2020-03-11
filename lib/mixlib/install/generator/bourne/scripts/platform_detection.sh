@@ -71,7 +71,7 @@ elif test -f "/etc/system-release"; then
     fi
   esac
 
-# Apple OS X
+# Apple macOS
 elif test -f "/usr/bin/sw_vers"; then
   platform="mac_os_x"
   # Matching the tab-space with sed is error-prone
