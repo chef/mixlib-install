@@ -1,25 +1,22 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.1 -->
-## [v3.12.1](https://github.com/chef/mixlib-install/tree/v3.12.1) (2020-03-12)
-
-#### Merged Pull Requests
-- OS X -&gt; macOS [#311](https://github.com/chef/mixlib-install/pull/311) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
-<!-- release_rollup since=3.11.29 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- OS X -&gt; macOS [#311](https://github.com/chef/mixlib-install/pull/311) ([tas50](https://github.com/tas50)) <!-- 3.12.1 -->
-- Use the VERSION_ID variable by default in /etc/os-release [#313](https://github.com/chef/mixlib-install/pull/313) ([tas50](https://github.com/tas50)) <!-- 3.12.0 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.12.1](https://github.com/chef/mixlib-install/tree/v3.12.1) (2020-03-12)
+
+#### Merged Pull Requests
+- Use the VERSION_ID variable by default in /etc/os-release [#313](https://github.com/chef/mixlib-install/pull/313) ([tas50](https://github.com/tas50))
+- OS X -&gt; macOS [#311](https://github.com/chef/mixlib-install/pull/311) ([tas50](https://github.com/tas50))
+<!-- latest_stable_release -->
+
 ## [v3.11.29](https://github.com/chef/mixlib-install/tree/v3.11.29) (2020-03-09)
 
 #### Merged Pull Requests
 - Map arm64 architecture to aarch64 [#309](https://github.com/chef/mixlib-install/pull/309) ([jaymalasinha](https://github.com/jaymalasinha))
-<!-- latest_stable_release -->
 
 ## [v3.11.28](https://github.com/chef/mixlib-install/tree/v3.11.28) (2020-03-05)
 
