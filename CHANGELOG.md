@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.0 -->
-## [v3.12.0](https://github.com/chef/mixlib-install/tree/v3.12.0) (2020-03-12)
+<!-- latest_release 3.12.1 -->
+## [v3.12.1](https://github.com/chef/mixlib-install/tree/v3.12.1) (2020-03-12)
 
 #### Merged Pull Requests
-- Use the VERSION_ID variable by default in /etc/os-release [#313](https://github.com/chef/mixlib-install/pull/313) ([tas50](https://github.com/tas50))
+- OS X -&gt; macOS [#311](https://github.com/chef/mixlib-install/pull/311) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 <!-- release_rollup since=3.11.29 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- OS X -&gt; macOS [#311](https://github.com/chef/mixlib-install/pull/311) ([tas50](https://github.com/tas50)) <!-- 3.12.1 -->
 - Use the VERSION_ID variable by default in /etc/os-release [#313](https://github.com/chef/mixlib-install/pull/313) ([tas50](https://github.com/tas50)) <!-- 3.12.0 -->
 <!-- release_rollup -->
 
