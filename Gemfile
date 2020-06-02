@@ -14,7 +14,7 @@ group :test do
   gem "vcr"
   gem "webmock", "~> 3.4"
   gem "aruba", "~> 0.14"
-  gem "cucumber", "~> 1.3.20"
+  gem "cucumber", "~> 4.0.0"
   gem "climate_control"
 end
 
