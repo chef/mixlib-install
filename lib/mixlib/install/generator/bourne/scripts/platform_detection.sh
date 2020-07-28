@@ -48,7 +48,7 @@ elif test -f "/etc/redhat-release"; then
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release`
 
   if test "$platform" = "xenserver"; then
-    # Current XenServer 6.2 is based on CentOS 5, platform is not reset to "el" server should hanlde response
+    # Current XenServer 6.2 is based on CentOS 5, platform is not reset to "el" server should handle response
     platform="xenserver"
   else
     # FIXME: use "redhat"

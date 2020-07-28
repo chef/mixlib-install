@@ -35,7 +35,7 @@ context "Mixlib::Install::Product" do
       expect(product.package_name).to eq(nil)
     end
 
-    it "errors for unexisting properties" do
+    it "errors for non-existent properties" do
       expect { product.address }.to raise_error(StandardError)
     end
   end
@@ -62,7 +62,7 @@ context "Mixlib::Install::Product" do
       expect(product.product_name).to eq(nil)
     end
 
-    it "errors for unexisting properties" do
+    it "errors for non-existent properties" do
       expect { product.address }.to raise_error(StandardError)
     end
   end

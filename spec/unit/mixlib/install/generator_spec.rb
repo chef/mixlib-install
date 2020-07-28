@@ -115,7 +115,7 @@ context "Mixlib::Install::Generator", :vcr do
 
         it_behaves_like "the correct ps1 script"
 
-        it "adds ommits the architecture param" do
+        it "adds omits the architecture param" do
           expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
         end
       end

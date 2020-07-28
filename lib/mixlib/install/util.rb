@@ -109,7 +109,7 @@ module Mixlib
         # invoked on a remote instance or locally.
         #
         # This method uses the Bourne shell (/bin/sh) to maximize the chance of
-        # cross platform portability on Unixlike systems.
+        # cross platform portability on Unix-like systems.
         #
         # @param [String] the command
         # @return [String] a wrapped command string
@@ -129,7 +129,7 @@ module Mixlib
           require_relative "version"
           user_agents = %W{mixlib-install/#{Mixlib::Install::VERSION}}
           user_agents << headers
-          # Ensure that if the default user agent is aleady set it doesn't get duplicated
+          # Ensure that if the default user agent is already set it doesn't get duplicated
           user_agents.flatten.compact.uniq.join(" ")
         end
 
