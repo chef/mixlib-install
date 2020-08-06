@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.2 -->
+## [v3.12.2](https://github.com/chef/mixlib-install/tree/v3.12.2) (2020-08-06)
+
+#### Merged Pull Requests
+- Fix minor spelling mistakes [#322](https://github.com/chef/mixlib-install/pull/322) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.1 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Fix minor spelling mistakes [#322](https://github.com/chef/mixlib-install/pull/322) ([tas50](https://github.com/tas50)) <!-- 3.12.2 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
