@@ -45,7 +45,7 @@ module Mixlib
           script_path = File.join(script_base_path, name)
 
           # If there is an erb template we render it, otherwise we just read
-          # and returnt the contents of the script
+          # and return the contents of the script
           if File.exist? "#{script_path}.erb"
             # Default values to use incase they are not set in the context
             context[:project_name] ||= Mixlib::Install::Dist::PROJECT_NAME.freeze

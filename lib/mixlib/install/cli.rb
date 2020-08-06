@@ -67,7 +67,7 @@ If no earlier version is found the earliest version available will be set.",
         desc: "Print artifact attributes",
         type: :boolean
       def download(product_name)
-        # Set mininum options
+        # Set minimum options
         mixlib_install_options = {
           channel: options[:channel].to_sym,
           product_name: product_name,

@@ -78,7 +78,7 @@ EOF
 
           # Filter out the partial builds if we are in :unstable channel
           # In other channels we do not need to do this since all builds are
-          # always complete. Infact we should not do this since for some arcane
+          # always complete. In fact we should not do this since for some arcane
           # builds like Chef Client 10.X we do not have build record created in
           # artifactory.
           if options.channel == :unstable
@@ -245,7 +245,7 @@ EOF
         private
 
         # Converts Array<Hash> where the Hash is a key pair and
-        # value pair to a simplifed key/pair Hash
+        # value pair to a simplified key/pair Hash
         #
         def map_properties(properties)
           return {} if properties.nil?

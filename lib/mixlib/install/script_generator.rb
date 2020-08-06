@@ -226,7 +226,7 @@ module Mixlib
       # Conditionally prefixes a command with a sudo command.
       #
       # @param command [String] command to be prefixed
-      # @return [String] the command, conditionaly prefixed with sudo
+      # @return [String] the command, conditionally prefixed with sudo
       # @api private
       def sudo(script)
         use_sudo ? "#{sudo_command} #{script}" : script

@@ -90,7 +90,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
           expect(artifact_info.platform).to eq "ubuntu"
         end
 
-        it "has the right platfom version" do
+        it "has the right platform version" do
           expect(artifact_info.platform_version).to eq "14.04"
         end
 

@@ -87,7 +87,7 @@ http_404_error() {
   echo "In order to test the version parameter, adventurous users may take the Metadata URL"
   echo "below and modify the '&v=<number>' parameter until you successfully get a URL that"
   echo "does not 404 (e.g. via curl or wget).  You should be able to use '&v=11' or '&v=12'"
-  echo "succesfully."
+  echo "successfully."
   echo ""
   echo "If you cannot fix this problem by setting the bootstrap_version, it probably means"
   echo "that $platform is not supported."
@@ -215,7 +215,7 @@ do_checksum() {
     checksum=`shasum -a 256 $1 | awk '{ print $1 }'`
     return `test "x$checksum" = "x$2"`
   else
-    echo "WARNING: could not find a valid checksum program, pre-install shasum or sha256sum in your O/S image to get valdation..."
+    echo "WARNING: could not find a valid checksum program, pre-install shasum or sha256sum in your O/S image to get validation..."
     return 0
   fi
 }
