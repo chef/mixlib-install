@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require "json"
+require "json" unless defined?(JSON)
 require_relative "../artifact_info"
 require_relative "base"
 require_relative "../product"
@@ -24,7 +24,7 @@ require_relative "../product_matrix"
 require_relative "../util"
 require_relative "../dist"
 require "mixlib/versioning"
-require "net/http"
+require "net/http" unless defined?(Net::HTTP)
 
 module Mixlib
   class Install

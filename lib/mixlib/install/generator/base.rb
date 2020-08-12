@@ -15,8 +15,8 @@
 # limitations under the License.
 #
 
-require "erb"
-require "ostruct"
+require "erb" unless defined?(Erb)
+require "ostruct" unless defined?(OpenStruct)
 require_relative "../util"
 require_relative "../dist"
 
