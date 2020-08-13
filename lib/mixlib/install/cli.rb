@@ -13,7 +13,7 @@
 #
 
 require_relative "../install"
-require "thor"
+require "thor" unless defined?(Thor)
 
 module Mixlib
   class Install

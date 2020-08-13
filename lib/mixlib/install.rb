@@ -18,7 +18,7 @@
 #
 
 require "mixlib/versioning"
-require "mixlib/shellout"
+require "mixlib/shellout" unless defined?(Mixlib::ShellOut)
 
 require_relative "install/backend"
 require_relative "install/options"
