@@ -91,7 +91,7 @@ function Install-Project {
     }
   }
   else {
-    $filename = ($download_url -split '/')[-1].split('?')[0]
+    $filename = $download_url.split('/')[-1].split('?')[0]
   }
   Write-Verbose "Download directory: $download_directory"
   Write-Verbose "Filename: $filename"
