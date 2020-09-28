@@ -19,6 +19,7 @@
 
 require_relative "util"
 require_relative "generator/powershell"
+require_relative "dist"
 require "cgi"
 
 module Mixlib
@@ -83,9 +84,9 @@ module Mixlib
         @sudo_command = "sudo -E"
 
         @root = if powershell
-                  "$env:systemdrive\\opscode\\chef"
+                  "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{Mixlib::Install::Dist::DEFAULT_PRODUCT}"
                 else
-                  "/opt/chef"
+                  "#{Mixlib::Install::Dist::LINUX_INSTALL_DIR}/#{Mixlib::Install::Dist::DEFAULT_PRODUCT}"
                 end
 
         parse_opts(opts)

@@ -24,6 +24,8 @@ module Mixlib
       MACOS_VOLUME = "chef_software".freeze
       # Windows install directory name
       WINDOWS_INSTALL_DIR = "opscode".freeze
+      # Linux install directory name
+      LINUX_INSTALL_DIR = "/opt"
     end
   end
 end
