@@ -25,6 +25,7 @@ require_relative "install/options"
 require_relative "install/generator"
 require_relative "install/generator/bourne"
 require_relative "install/generator/powershell"
+require_relative "install/dist"
 
 module Mixlib
   class Install
@@ -119,7 +120,7 @@ module Mixlib
       # This only works for chef and chefdk but they are the only projects
       # we are supporting as of now.
       if options.for_ps1?
-        "$env:systemdrive\\opscode\\#{options.product_name}"
+        "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{options.product_name}"
       else
         "/opt/#{options.product_name}"
       end
@@ -136,7 +137,7 @@ module Mixlib
       # chef-server -> /opt/opscode). But this is OK for now since
       # chef & chefdk are the only supported products.
       version_manifest_file = if options.for_ps1?
-                                "$env:systemdrive\\opscode\\#{options.product_name}\\version-manifest.json"
+                                "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{options.product_name}\\version-manifest.json"
                               else
                                 "/opt/#{options.product_name}/version-manifest.json"
                               end
