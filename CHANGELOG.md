@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.4 -->
+## [v3.12.4](https://github.com/chef/mixlib-install/tree/v3.12.4) (2020-09-28)
+
+#### Merged Pull Requests
+- Add linux path, variabilize script_generator and install [#333](https://github.com/chef/mixlib-install/pull/333) ([Tensibai](https://github.com/Tensibai))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.3 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Add linux path, variabilize script_generator and install [#333](https://github.com/chef/mixlib-install/pull/333) ([Tensibai](https://github.com/Tensibai)) <!-- 3.12.4 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
