@@ -76,12 +76,6 @@ elif test -f "/usr/bin/sw_vers"; then
   platform="mac_os_x"
   # Matching the tab-space with sed is error-prone
   platform_version=`sw_vers | awk '/^ProductVersion:/ { print $2 }' | cut -d. -f1,2`
-
-  # x86_64 Apple hardware often runs 32-bit kernels (see OHAI-63)
-  x86_64=`sysctl -n hw.optional.x86_64`
-  if test $x86_64 -eq 1; then
-    machine="x86_64"
-  fi
 elif test -f "/etc/release"; then
   machine=`/usr/bin/uname -p`
   if grep SmartOS /etc/release >/dev/null; then
