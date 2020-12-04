@@ -448,9 +448,10 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       artifact_info.find_all { |a| a.platform == "windows" }
     end
 
-    shared_examples_for "windows desktop download urls and expected architectures" do
+    shared_examples_for "windows download urls and architectures" do
       it "returns server download url for associated desktop versions" do
-        expect(windows_artifacts.find { |a| a.platform_version == "10" }.url).to include "2012r2"
+        expected = product_name == "push-jobs-client" ? "2012r2" : "/windows/10/"
+        expect(windows_artifacts.find { |a| a.platform_version == "10" }.url).to include expected
       end
 
       it "maps architecture to correct filename" do
@@ -461,39 +462,39 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       end
     end
 
-    context "chef windows artifacts" do
+    context "chef artifacts" do
       let(:product_name) { "chef" }
       let(:expected_64_bit_msi) { "-x64" }
 
-      it_behaves_like "windows desktop download urls and expected architectures"
+      it_behaves_like "windows download urls and architectures"
     end
 
-    context "chefdk windows artifacts" do
+    context "chefdk artifacts" do
       let(:product_name) { "chefdk" }
-      let(:expected_64_bit_msi) { "-x86" }
+      let(:expected_64_bit_msi) { "-x64" }
 
-      it_behaves_like "windows desktop download urls and expected architectures"
+      it_behaves_like "windows download urls and architectures"
     end
 
-    context "push-jobs-client windows artifacts" do
+    context "push-jobs-client artifacts" do
       let(:product_name) { "push-jobs-client" }
-      let(:expected_64_bit_msi) { "-x86" }
+      let(:expected_64_bit_msi) { "-x64" }
 
-      it_behaves_like "windows desktop download urls and expected architectures"
+      it_behaves_like "windows download urls and architectures"
     end
 
-    context "inspec windows artifacts" do
+    context "inspec artifacts" do
       let(:product_name) { "inspec" }
       let(:expected_64_bit_msi) { "-x64" }
 
-      it_behaves_like "windows desktop download urls and expected architectures"
+      it_behaves_like "windows download urls and architectures"
     end
 
-    context "chef-workstation windows artifacts" do
+    context "chef-workstation artifacts" do
       let(:product_name) { "inspec" }
       let(:expected_64_bit_msi) { "-x64" }
 
-      it_behaves_like "windows desktop download urls and expected architectures"
+      it_behaves_like "windows download urls and architectures"
     end
   end
 

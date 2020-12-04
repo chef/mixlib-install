@@ -184,7 +184,7 @@ module Mixlib
                    # to disallow unsigned powershell scripts. This changes it for just this
                    # powershell session, which allows this to run even if the execution policy
                    # is set higher.
-                   Mixlib::ShellOut.new("powershell.exe -file #{File.join(d, "detect_platform.ps1")}", :env => { "PSExecutionPolicyPreference" => "Bypass" }).run_command
+                   Mixlib::ShellOut.new("powershell.exe -NoProfile -file #{File.join(d, "detect_platform.ps1")}", :env => { "PSExecutionPolicyPreference" => "Bypass" }).run_command
                  end
                else
                  Mixlib::ShellOut.new(detect_platform_sh).run_command
