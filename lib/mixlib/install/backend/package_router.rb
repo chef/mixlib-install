@@ -30,7 +30,6 @@ module Mixlib
   class Install
     class Backend
       class PackageRouter < Base
-        ENDPOINT = Mixlib::Install::Dist::PRODUCT_ENDPOINT.freeze
 
         COMPAT_DOWNLOAD_URL_ENDPOINT = "http://packages.chef.io".freeze
 
@@ -269,7 +268,7 @@ EOF
         end
 
         def endpoint
-          @endpoint ||= ENV.fetch("PACKAGE_ROUTER_ENDPOINT", ENDPOINT)
+          @endpoint ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).api_url
         end
 
         def omnibus_project
