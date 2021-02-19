@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.8 -->
+## [v3.12.8](https://github.com/chef/mixlib-install/tree/v3.12.8) (2021-02-19)
+
+#### Merged Pull Requests
+- Remove pry-stack-explorer test dep [#349](https://github.com/chef/mixlib-install/pull/349) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.7 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Remove pry-stack-explorer test dep [#349](https://github.com/chef/mixlib-install/pull/349) ([tas50](https://github.com/tas50)) <!-- 3.12.8 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
