@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "chef-utils", "= 16.6.14" if RUBY_VERSION < "2.6.0"
+
 group :docs do
   gem "github-markup"
   gem "redcarpet"
