@@ -79,14 +79,14 @@ function Get-WebContentOnFullNet {
   $wc.Headers.Add("user-agent", "<%= user_agent_string %>")
   $proxy.Address = $env:http_proxy
   $bypassList = $env:no_proxy
-  
+
 
   if($bypassList -ne $null){
-     
+
 	 $bypassList = $bypassList.split(",")
 	 $proxy.BypassList = $byPassList
   }
-  
+
   $wc.Proxy = $proxy
 
   if ([string]::IsNullOrEmpty($filepath)) {
@@ -180,9 +180,16 @@ function Get-WMIQuery {
   param ($class)
 
   if(Get-Command -Name Get-CimInstance -ErrorAction SilentlyContinue) {
-    Get-CimInstance $class
+    try{
+      $classObject = Get-CimInstance $class
+      # If the Get-CimInstance command exists but fails due to security settings, try Get-WmiObject.
+    }
+    catch {
+      $classObject = Get-WmiObject $class
+    }
   }
   else {
-    Get-WmiObject $class
+    $classObject = Get-WmiObject $class
   }
+  return $classObject
 }
