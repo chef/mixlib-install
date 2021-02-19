@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.6 -->
+## [v3.12.6](https://github.com/chef/mixlib-install/tree/v3.12.6) (2021-02-19)
+
+#### Merged Pull Requests
+- fix windows tests [#338](https://github.com/chef/mixlib-install/pull/338) ([mwrock](https://github.com/mwrock))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.5 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- fix windows tests [#338](https://github.com/chef/mixlib-install/pull/338) ([mwrock](https://github.com/mwrock)) <!-- 3.12.6 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
