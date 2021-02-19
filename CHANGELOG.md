@@ -1,26 +1,23 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.7 -->
-## [v3.12.7](https://github.com/chef/mixlib-install/tree/v3.12.7) (2021-02-19)
-
-#### Merged Pull Requests
-- Fall back to Get-WmiObject if Get-CimInstance fails [#348](https://github.com/chef/mixlib-install/pull/348) ([gscho](https://github.com/gscho))
 <!-- latest_release -->
-<!-- release_rollup since=3.12.5 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Fall back to Get-WmiObject if Get-CimInstance fails [#348](https://github.com/chef/mixlib-install/pull/348) ([gscho](https://github.com/gscho)) <!-- 3.12.7 -->
-- fix windows tests [#338](https://github.com/chef/mixlib-install/pull/338) ([mwrock](https://github.com/mwrock)) <!-- 3.12.6 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.12.7](https://github.com/chef/mixlib-install/tree/v3.12.7) (2021-02-19)
+
+#### Merged Pull Requests
+- fix windows tests [#338](https://github.com/chef/mixlib-install/pull/338) ([mwrock](https://github.com/mwrock))
+- Fall back to Get-WmiObject if Get-CimInstance fails [#348](https://github.com/chef/mixlib-install/pull/348) ([gscho](https://github.com/gscho))
+<!-- latest_stable_release -->
+
 ## [v3.12.5](https://github.com/chef/mixlib-install/tree/v3.12.5) (2020-11-02)
 
 #### Merged Pull Requests
 - Add linux path, variabilize script_generator and install [#333](https://github.com/chef/mixlib-install/pull/333) ([Tensibai](https://github.com/Tensibai))
 - Ensure platform detection logic supports Apple Silicon [#336](https://github.com/chef/mixlib-install/pull/336) ([schisamo](https://github.com/schisamo))
-<!-- latest_stable_release -->
 
 ## [v3.12.3](https://github.com/chef/mixlib-install/tree/v3.12.3) (2020-08-13)
 
