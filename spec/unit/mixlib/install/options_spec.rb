@@ -91,14 +91,14 @@ context "Mixlib::Install::Options" do
       let(:platform) { "ubuntu" }
 
       it "raises platform options error" do
-        expect { Mixlib::Install.new(product_name: product_name, channel: channel, platform: platform) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform, platform version and architecture/)
+        expect { Mixlib::Install.new(product_name: product_name, channel: channel, platform: platform) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform \(-p\), platform version \(-l\) and architecture \(-a\) when specifying any platform details/)
       end
 
       context "and with platform version" do
         let(:platform_version) { "14.04" }
 
         it "raises platform options error" do
-          expect { Mixlib::Install.new(product_name: product_name, channel: channel, platform: platform, platform_version: platform_version) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform, platform version and architecture/)
+          expect { Mixlib::Install.new(product_name: product_name, channel: channel, platform: platform, platform_version: platform_version) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform \(-p\), platform version \(-l\) and architecture \(-a\) when specifying any platform details/)
         end
       end
     end
@@ -107,7 +107,7 @@ context "Mixlib::Install::Options" do
       let(:architecture) { "i386" }
 
       it "raises platform options error" do
-        expect { Mixlib::Install.new(product_name: product_name, channel: channel, architecture: architecture) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform, platform version and architecture/)
+        expect { Mixlib::Install.new(product_name: product_name, channel: channel, architecture: architecture) }.to raise_error(Mixlib::Install::Options::InvalidOptions, /Must provide platform \(-p\), platform version \(-l\) and architecture \(-a\) when specifying any platform details/)
       end
     end
   end
