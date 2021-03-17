@@ -12,7 +12,11 @@ group :test do
   gem "webmock", "~> 3.4"
   gem "aruba", "~> 0.14"
   gem "cucumber", "~> 1.3.20"
-  gem "climate_control"
+  if RUBY_VERSION < "2.5.0"
+    gem "climate_control", "= 0.1.0"
+  else
+    gem "climate_control", "~> 1.0"
+  end
 end
 
 # use old chefstyle to support TargetRubyVersion of 1.9
