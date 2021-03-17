@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.10 -->
-## [v3.12.10](https://github.com/chef/mixlib-install/tree/v3.12.10) (2021-03-17)
+<!-- latest_release 3.12.11 -->
+## [v3.12.11](https://github.com/chef/mixlib-install/tree/v3.12.11) (2021-03-17)
 
 #### Merged Pull Requests
-- Lock climate_control to 0.1.0 on older rubies [#354](https://github.com/chef/mixlib-install/pull/354) ([gscho](https://github.com/gscho))
+- Strip query parameters when determining filename [#353](https://github.com/chef/mixlib-install/pull/353) ([gscho](https://github.com/gscho))
 <!-- latest_release -->
 <!-- release_rollup since=3.12.7 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Strip query parameters when determining filename [#353](https://github.com/chef/mixlib-install/pull/353) ([gscho](https://github.com/gscho)) <!-- 3.12.11 -->
 - Lock climate_control to 0.1.0 on older rubies [#354](https://github.com/chef/mixlib-install/pull/354) ([gscho](https://github.com/gscho)) <!-- 3.12.10 -->
 - Test on Ruby 3.0 &amp; use Buildkite caching [#351](https://github.com/chef/mixlib-install/pull/351) ([tas50](https://github.com/tas50)) <!-- 3.12.9 -->
 - Remove pry-stack-explorer test dep [#349](https://github.com/chef/mixlib-install/pull/349) ([tas50](https://github.com/tas50)) <!-- 3.12.8 -->
