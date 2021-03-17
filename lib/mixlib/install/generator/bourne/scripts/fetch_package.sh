@@ -14,7 +14,7 @@
 # $filetype: Type of the file downloaded.
 ############
 
-filename=`echo $download_url | sed -e 's/^.*\///'`
+filename=`echo $download_url | sed -e 's/^.*\///' | sed -e 's/?.*//'`
 filetype=`echo $filename | sed -e 's/^.*\.//'`
 
 # use either $tmp_dir, the provided directory (-d) or the provided filename (-f)
