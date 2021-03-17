@@ -73,7 +73,7 @@ function Install-Project {
 
   $cached_installer_available = $false
   $verify_checksum = $true
-  
+
   if (-not [string]::IsNullOrEmpty($download_url_override)) {
     $download_url = $download_url_override
     $sha256 = $checksum
@@ -91,7 +91,7 @@ function Install-Project {
     }
   }
   else {
-    $filename = ($download_url -split '/')[-1]
+    $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
   }
   Write-Verbose "Download directory: $download_directory"
   Write-Verbose "Filename: $filename"
