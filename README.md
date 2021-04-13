@@ -41,7 +41,7 @@ options = {
   product_name: 'chef',
   product_version: :latest,
   platform: 'mac_os_x',
-  platform_version: '10.9',
+  platform_version: '10.15',
   architecture: 'x86_64'
 }
 
@@ -49,7 +49,7 @@ artifact = Mixlib::Install.new(options).artifact_info
 # => #<Mixlib::Install::ArtifactInfo>
 
 artifact.url
-# => "https://packages.chef.io/files/current/chef/12.14.90/mac_os_x/10.9/chef-12.14.90-1.dmg"
+# => "https://packages.chef.io/files/stable/chef/16.13.16/mac_os_x/10.15/chef-16.13.16-1.x86_64.dmg"
 ```
 
 ### Get list of artifacts for all platforms given a package version
@@ -64,7 +64,7 @@ artifacts = Mixlib::Install.new(options).artifact_info
 # => [#<Mixlib::Install::ArtifactInfo>, ...]
 
 artifacts.first.url
-# => => "https://packages.chef.io/files/current/chef/12.14.90/mac_os_x/10.11/chef-12.14.90-1.dmg"
+# => => "https://packages.chef.io/files/stable/chef/16.13.16/mac_os_x/10.15/chef-16.13.16-1.x86_64.dmg"
 ```
 
 ### Get latest artifacts for a partial version
@@ -87,9 +87,9 @@ artifacts.first.version
 options = {
   channel: :current,
   product_name: 'chef',
-  product_version: '12',
+  product_version: '16',
   platform: 'mac_os_x',
-  platform_version: '10.9',
+  platform_version: '10.15',
   architecture: 'x86_64'
 }
 
@@ -202,7 +202,7 @@ options = {
   product_name: 'chef',
   product_version: :latest,
   platform: 'mac_os_x',
-  platform_version: '10.9',
+  platform_version: '10.15',
   architecture: 'x86_64',
   include_metadata: true,
 }
