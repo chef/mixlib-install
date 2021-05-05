@@ -233,7 +233,7 @@ Must be one of: #{SUPPORTED_SHELL_TYPES.join(", ")}
       def validate_platform_options
         unless all_or_none?(platform_info.values)
           errors << <<-EOS
-Must provide platform, platform version and architecture when specifying any platform details
+Must provide platform (-p), platform version (-l) and architecture (-a) when specifying any platform details
           EOS
         end
       end
