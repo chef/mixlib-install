@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.12 -->
+## [v3.12.12](https://github.com/chef/mixlib-install/tree/v3.12.12) (2021-05-05)
+
+#### Merged Pull Requests
+- Strip query parameters before parsing URI path [#358](https://github.com/chef/mixlib-install/pull/358) ([gscho](https://github.com/gscho))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.11 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Strip query parameters before parsing URI path [#358](https://github.com/chef/mixlib-install/pull/358) ([gscho](https://github.com/gscho)) <!-- 3.12.12 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
