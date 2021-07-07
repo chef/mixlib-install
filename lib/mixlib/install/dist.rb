@@ -7,7 +7,7 @@ module Mixlib
       # Binary repository base endpoint
       PRODUCT_ENDPOINT = "https://packages.chef.io".freeze
       # Omnitruck endpoint
-      OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io".freeze
+      OMNITRUCK_ENDPOINT = (ENV["CHEF_OMNITRUCK_ENDPOINT"] || "https://omnitruck.chef.io").freeze
       # Default product name
       DEFAULT_PRODUCT = "chef".freeze
       # Default download page URL
