@@ -11,7 +11,7 @@ group :test do
   gem "webrick"
   gem "webmock", "~> 3.4"
   gem "aruba", "~> 0.14"
-  gem "cucumber", "~> 1.3.20"
+  gem "cucumber", "~> 7.0.0"
   if RUBY_VERSION < "2.5.0"
     gem "climate_control", "= 0.1.0"
   else
