@@ -12,6 +12,7 @@ group :test do
   gem "webmock", "~> 3.4"
   gem "aruba", "~> 0.14"
   gem "cucumber", "~> 1.3.20"
+  gem "contracts", "~> 0.16.0" # this entry can go away when ruby < 3 support is gone
   if RUBY_VERSION < "2.5.0"
     gem "climate_control", "= 0.1.0"
   else
