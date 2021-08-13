@@ -1,22 +1,20 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.15 -->
-## [v3.12.15](https://github.com/chef/mixlib-install/tree/v3.12.15) (2021-08-13)
-
-#### Merged Pull Requests
-- Update install script warning to not mention desktop [#366](https://github.com/chef/mixlib-install/pull/366) ([rishichawda](https://github.com/rishichawda))
 <!-- latest_release -->
-<!-- release_rollup since=3.12.11 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Update install script warning to not mention desktop [#366](https://github.com/chef/mixlib-install/pull/366) ([rishichawda](https://github.com/rishichawda)) <!-- 3.12.15 -->
-- pin contracts to 0.16 [#367](https://github.com/chef/mixlib-install/pull/367) ([rishichawda](https://github.com/rishichawda)) <!-- 3.12.14 -->
-- Provide more helpful error messages when you need to provide more details [#352](https://github.com/chef/mixlib-install/pull/352) ([tas50](https://github.com/tas50)) <!-- 3.12.13 -->
-- Strip query parameters before parsing URI path [#358](https://github.com/chef/mixlib-install/pull/358) ([gscho](https://github.com/gscho)) <!-- 3.12.12 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.12.15](https://github.com/chef/mixlib-install/tree/v3.12.15) (2021-08-13)
+
+#### Merged Pull Requests
+- Strip query parameters before parsing URI path [#358](https://github.com/chef/mixlib-install/pull/358) ([gscho](https://github.com/gscho))
+- Provide more helpful error messages when you need to provide more details [#352](https://github.com/chef/mixlib-install/pull/352) ([tas50](https://github.com/tas50))
+- pin contracts to 0.16 [#367](https://github.com/chef/mixlib-install/pull/367) ([rishichawda](https://github.com/rishichawda))
+- Update install script warning to not mention desktop [#366](https://github.com/chef/mixlib-install/pull/366) ([rishichawda](https://github.com/rishichawda))
+<!-- latest_stable_release -->
+
 ## [v3.12.11](https://github.com/chef/mixlib-install/tree/v3.12.11) (2021-03-17)
 
 #### Merged Pull Requests
@@ -24,7 +22,6 @@
 - Test on Ruby 3.0 &amp; use Buildkite caching [#351](https://github.com/chef/mixlib-install/pull/351) ([tas50](https://github.com/tas50))
 - Lock climate_control to 0.1.0 on older rubies [#354](https://github.com/chef/mixlib-install/pull/354) ([gscho](https://github.com/gscho))
 - Strip query parameters when determining filename [#353](https://github.com/chef/mixlib-install/pull/353) ([gscho](https://github.com/gscho))
-<!-- latest_stable_release -->
 
 ## [v3.12.7](https://github.com/chef/mixlib-install/tree/v3.12.7) (2021-02-19)
 
