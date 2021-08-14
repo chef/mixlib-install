@@ -1,19 +1,17 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.16 -->
+<!-- latest_release -->
+<!-- latest_release -->
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v3.12.16](https://github.com/chef/mixlib-install/tree/v3.12.16) (2021-08-14)
 
 #### Merged Pull Requests
 - fetch_package.sh: fix backtick position for filename extraction [#369](https://github.com/chef/mixlib-install/pull/369) ([jeremy-clerc](https://github.com/jeremy-clerc))
-<!-- latest_release -->
-<!-- release_rollup since=3.12.15 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- fetch_package.sh: fix backtick position for filename extraction [#369](https://github.com/chef/mixlib-install/pull/369) ([jeremy-clerc](https://github.com/jeremy-clerc)) <!-- 3.12.16 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v3.12.15](https://github.com/chef/mixlib-install/tree/v3.12.15) (2021-08-13)
 
 #### Merged Pull Requests
@@ -21,7 +19,6 @@
 - Provide more helpful error messages when you need to provide more details [#352](https://github.com/chef/mixlib-install/pull/352) ([tas50](https://github.com/tas50))
 - pin contracts to 0.16 [#367](https://github.com/chef/mixlib-install/pull/367) ([rishichawda](https://github.com/rishichawda))
 - Update install script warning to not mention desktop [#366](https://github.com/chef/mixlib-install/pull/366) ([rishichawda](https://github.com/rishichawda))
-<!-- latest_stable_release -->
 
 ## [v3.12.11](https://github.com/chef/mixlib-install/tree/v3.12.11) (2021-03-17)
 
