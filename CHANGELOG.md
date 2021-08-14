@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.16 -->
+## [v3.12.16](https://github.com/chef/mixlib-install/tree/v3.12.16) (2021-08-14)
+
+#### Merged Pull Requests
+- fetch_package.sh: fix backtick position for filename extraction [#369](https://github.com/chef/mixlib-install/pull/369) ([jeremy-clerc](https://github.com/jeremy-clerc))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.15 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- fetch_package.sh: fix backtick position for filename extraction [#369](https://github.com/chef/mixlib-install/pull/369) ([jeremy-clerc](https://github.com/jeremy-clerc)) <!-- 3.12.16 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
