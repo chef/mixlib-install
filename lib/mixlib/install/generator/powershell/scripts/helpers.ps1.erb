@@ -78,23 +78,7 @@ function Get-WebContentOnFullNet {
   $wc = new-object System.Net.WebClient
   $wc.Headers.Add("user-agent", "<%= user_agent_string %>")
   $proxy.Address = $env:http_proxy
-  $bypassList = $env:no_proxy
-  
-
-  if($bypassList -ne $null){
-  	$bypassList = $bypassList.split(",")
-    ForEach ($bypassListItem in $bypassList){
-        try {
-          [regex]$bypassListItem | Out-Null
-        }
-        catch {
-          Write-Warning "Wildcard entry $bypassListItem will be ignored, please use regex"
-          Continue
-        }
-				$proxy.BypassArrayList.Add($bypassListItem)
-			}
-    }
-  
+  $bypassList = $proxy.BypassList = $env:no_proxy.replace('.', '\.').replace('..', '\..+\.').replace('*', '.+').split(',').Trim()
   $wc.Proxy = $proxy
 
   if ([string]::IsNullOrEmpty($filepath)) {
