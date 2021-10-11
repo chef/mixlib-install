@@ -78,7 +78,7 @@ function Get-WebContentOnFullNet {
   $wc = new-object System.Net.WebClient
   $wc.Headers.Add("user-agent", "<%= user_agent_string %>")
   $proxy.Address = $env:http_proxy
-  $bypassList = $proxy.BypassList = $env:no_proxy.replace('.', '\.').replace('..', '\..+\.').replace('*', '.+').split(',').Trim()
+  $proxy.BypassList = $env:no_proxy.replace('.', '\.').replace('..', '\..+\.').replace('*', '.+').split(',').Trim()
   $wc.Proxy = $proxy
 
   if ([string]::IsNullOrEmpty($filepath)) {
