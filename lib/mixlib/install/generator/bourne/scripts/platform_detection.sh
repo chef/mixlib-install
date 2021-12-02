@@ -65,6 +65,8 @@ elif test -f "/etc/system-release"; then
     platform_version=$VERSION_ID
     if test "$platform_version" = "2"; then
       platform_version="7"
+    elif test "$platform_version" = "2022"; then
+      platform_version="8"
     else
       # VERSION_ID will match YYYY.MM for Amazon Linux AMIs
       platform_version="6"
