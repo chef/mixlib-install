@@ -48,4 +48,4 @@ task :console do
   IRB.start
 end
 
-task default: %w{style unit functional}
+task default: %w{unit functional}
