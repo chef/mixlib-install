@@ -2,13 +2,17 @@
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12'
 
 function Get-PlatformVersion {
-  switch -regex ((Get-Win32OS).version) {
-    '10\.0\.\d+'   {$platform_version = '2016'}
-    '10\.0\.17\d+' {$platform_version = '2019'}
-    '6\.3\.\d+'    {$platform_version = '2012r2'}
-    '6\.2\.\d+'    {$platform_version = '2012'}
-    '6\.1\.\d+'    {$platform_version = '2008r2'}
-    '6\.0\.\d+'    {$platform_version = '2008'}
+  [version]$osVersion = (Get-Win32OS).version
+
+  $platform_version = switch ($osVersion) {
+    # Windows Server build numbers from: https://betawiki.net/wiki/Microsoft_Windows
+    { $_ -ge [version]'10.0.20145' } { '2022';   break }
+    { $_ -ge [version]'10.0.17609' } { '2019';   break }
+    { $_ -ge [version]'10.0.0'     } { '2016';   break }
+    { $_ -ge [version]'6.3.0'      } { '2012r2'; break }
+    { $_ -ge [version]'6.2.0'      } { '2012';   break }
+    { $_ -ge [version]'6.1.0'      } { '2008r2'; break }
+    { $_ -ge [version]'6.0.0'      } { '2008';   break }
   }
 
   if(Test-Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels') {
