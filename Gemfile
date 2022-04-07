@@ -15,6 +15,8 @@ group :test do
   gem "contracts", "~> 0.16.0" # this entry can go away when ruby < 3 support is gone
   if RUBY_VERSION < "2.5.0"
     gem "climate_control", "= 0.1.0"
+    gem "vcr", "= 6.0.0"
+    gem "mixlib-shellout", "= 3.2.5"
   else
     gem "climate_control", "~> 1.0"
   end
