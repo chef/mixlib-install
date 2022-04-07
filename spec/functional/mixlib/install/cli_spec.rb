@@ -18,7 +18,7 @@
 require "spec_helper"
 require "mixlib/install/cli"
 
-describe "mixlib-install executable", :type => :aruba do
+describe "mixlib-install executable" do
   let(:args) { nil }
 
   before(:all) do
@@ -30,14 +30,16 @@ describe "mixlib-install executable", :type => :aruba do
 "
   end
 
-  before(:each) { run("bin/mixlib-install #{command} #{args}") }
+  let(:cmd) { Mixlib::ShellOut.new("mixlib-install #{command} #{args} ").run_command }
+  let(:last_command_output) { cmd.stdout.chomp }
+  let(:last_command_err) { cmd.stderr.chomp }
 
   describe "version command" do
     let(:command) { "version" }
 
     it "prints the mixlib-install version" do
       require "mixlib/install/version"
-      expect(last_command_started).to have_output Mixlib::Install::VERSION
+      expect(last_command_output).to eq Mixlib::Install::VERSION
     end
   end
 
@@ -56,7 +58,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:args) { "chef stable" }
 
       it "prints the versions" do
-        expect(last_command_started).to have_output /12.0.3/
+        expect(last_command_output).to match /12.0.3/
       end
     end
 
@@ -64,8 +66,8 @@ describe "mixlib-install executable", :type => :aruba do
       let(:args) { "foo bar" }
 
       it "returns error message" do
-        expect(last_command_started).to have_output /Unknown product name foo/
-        expect(last_command_started).to have_output /Unknown channel bar/
+        expect(last_command_err).to match /Unknown product name foo/
+        expect(last_command_err).to match /Unknown channel bar/
       end
     end
   end
@@ -75,7 +77,7 @@ describe "mixlib-install executable", :type => :aruba do
 
     context "with no args" do
       it "returns shell script to stdout" do
-        expect(last_command_started).to have_output /end of install_package.sh/
+        expect(last_command_output).to match /end of install_package.sh/
       end
     end
 
@@ -83,7 +85,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:args) { "-t ps1" }
 
       it "returns powershell script to stdout" do
-        expect(last_command_started).to have_output /export-modulemember -function 'Install-Project','Get-ProjectMetadata' -alias 'install'/
+        expect(last_command_output).to match /export-modulemember -function 'Install-Project','Get-ProjectMetadata' -alias 'install'/
       end
     end
 
@@ -91,7 +93,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:args) { "-t foo" }
 
       it "errors an error" do
-        expect(last_command_started).to have_output "Expected '--type' to be one of ps1, sh; got foo"
+        expect(last_command_err).to match "Expected '--type' to be one of ps1, sh; got foo"
       end
     end
 
@@ -99,15 +101,18 @@ describe "mixlib-install executable", :type => :aruba do
       let(:args) { "--endpoint https://omnitruck-custom.chef.io" }
 
       it "contains the new endpoint" do
-        expect(last_command_started).to have_output /https:\/\/omnitruck-custom.chef.io/
+        expect(last_command_output).to match /https:\/\/omnitruck-custom.chef.io/
       end
     end
 
-    context "with output option" do
+    context "with output option", :focus do
       let(:args) { "-o script.sh" }
 
       it "writes to a file" do
-        expect("script.sh").to be_an_existing_file
+        # We're executing and not looking for stdout/err output
+        # so we'll directly invoke here instead of going through 'last_command_output'
+        Mixlib::ShellOut.new("mixlib-install #{command} #{args} ").run_command
+        expect(File.exist?("script.sh")).to eq true
       end
     end
   end
@@ -145,7 +150,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:architecture) { nil }
 
       it "exits with required args error" do
-        expect(last_command_started).to have_output /"mixlib-install #{command}" was called with no arguments/
+        expect(last_command_err).to match /"mixlib-install #{command}" was called with no arguments/
       end
     end
 
@@ -153,7 +158,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:product) { "chef" }
 
       it "downloads a chef artifact" do
-        expect(last_command_started).to have_output /Download saved to/
+        expect(last_command_output).to match /Download saved to/
       end
     end
 
@@ -161,7 +166,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:additional_args) { "--url" }
 
       it "outputs the url" do
-        expect(last_command_started).to have_output /https:\/\/packages.chef.io\/files\/stable\/chef/
+        expect(last_command_output).to match /https:\/\/packages.chef.io\/files\/stable\/chef/
       end
     end
 
@@ -169,7 +174,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:additional_args) { "--url --attributes" }
 
       it "outputs the attributes" do
-        expect(last_command_started).to have_output /"license": "Chef EULA"/
+        expect(last_command_output).to match /"license": "Chef EULA"/
       end
     end
 
@@ -179,7 +184,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:architecture) { nil }
 
       it "fails with missing args error" do
-        expect(last_command_started).to have_output "Must provide platform (-p), platform version (-l) and architecture (-a) when specifying any platform details"
+        expect(last_command_err).to match "Must provide platform (-p), platform version (-l) and architecture (-a) when specifying any platform details"
       end
     end
 
@@ -194,7 +199,7 @@ describe "mixlib-install executable", :type => :aruba do
       it "has the correct artifact" do
         require "digest"
         sha256 = Digest::SHA256.hexdigest("./tmp/aruba/#{filename}")
-        expect(last_command_started).to have_output /sha256/
+        expect(last_command_output).to match /sha256/
       end
     end
 
@@ -205,7 +210,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:additional_args) { "--no-platform-version-compat" }
 
       it "returns no results" do
-        expect(last_command_started).to have_output /No artifacts found matching criteria./
+        expect(last_command_err).to match /No artifacts found matching criteria./
       end
     end
 
@@ -213,7 +218,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:additional_args) { "-v 12.0.3" }
 
       it "returns the correct artifact" do
-        expect(last_command_started).to have_output /chef[-_]12.0.3-1/
+        expect(last_command_output).to match /chef[-_]12.0.3-1/
       end
     end
 
@@ -221,7 +226,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:additional_args) { "-c current" }
 
       it "returns the correct artifact" do
-        expect(last_command_started).to have_output /files\/current\/chef/
+        expect(last_command_output).to match /files\/current\/chef/
       end
     end
 
@@ -229,7 +234,7 @@ describe "mixlib-install executable", :type => :aruba do
       let(:additional_args) { "-d mydir" }
 
       it "downloads to dir" do
-        expect(last_command_started).to have_output /Download saved to .*mydir\/chef/
+        expect(last_command_output).to match /Download saved to .*mydir\/chef/
       end
     end
   end
