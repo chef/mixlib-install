@@ -1,19 +1,12 @@
 # load lib path
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
-require "aruba/rspec"
 require "mixlib/install"
 require "vcr"
 require "webmock/rspec"
 require "webrick"
 require "webrick/httpproxy"
 require "climate_control"
-
-Aruba.configure do |config|
-  config.exit_timeout                          = 120
-  config.io_wait_timeout                       = 2
-  config.activate_announcer_on_command_failure = [:stderr, :stdout, :command]
-end
 
 # load version manifest support path
 VERSION_MANIFEST_DIR = File.expand_path("../support/version_manifests", __FILE__)
