@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.17 -->
-## [v3.12.17](https://github.com/chef/mixlib-install/tree/v3.12.17) (2022-03-10)
+<!-- latest_release 3.12.18 -->
+## [v3.12.18](https://github.com/chef/mixlib-install/tree/v3.12.18) (2022-04-07)
 
 #### Merged Pull Requests
-- Test Ruby3.0/3.1- IPACK-66 [#375](https://github.com/chef/mixlib-install/pull/375) ([poorndm](https://github.com/poorndm))
+- Add ruby 3.0/3.1 tests on windows [#378](https://github.com/chef/mixlib-install/pull/378) ([poorndm](https://github.com/poorndm))
 <!-- latest_release -->
 <!-- release_rollup since=3.12.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add ruby 3.0/3.1 tests on windows [#378](https://github.com/chef/mixlib-install/pull/378) ([poorndm](https://github.com/poorndm)) <!-- 3.12.18 -->
 - Test Ruby3.0/3.1- IPACK-66 [#375](https://github.com/chef/mixlib-install/pull/375) ([poorndm](https://github.com/poorndm)) <!-- 3.12.17 -->
 <!-- release_rollup -->
 
