@@ -30,7 +30,7 @@ describe "mixlib-install executable", :type => :aruba do
 "
   end
 
-  before(:each) { run("bin/mixlib-install #{command} #{args}") }
+  before(:each) { run_command("bin/mixlib-install #{command} #{args}") }
 
   describe "version command" do
     let(:command) { "version" }
