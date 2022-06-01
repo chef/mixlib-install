@@ -59,13 +59,18 @@ elif test -f "/etc/system-release"; then
   platform=`sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
   case $platform in amazon*) # sh compat method of checking for a substring
-    platform="el"
-
     . /etc/os-release
     platform_version=$VERSION_ID
-    if test "$platform_version" = "2"; then
+
+    if test "$platform_version" = "2022"; then
+      platform="amazon"
+      platform_version="2022"
+    elif test "$platform_version" = "2"; then
+      platform="el"
       platform_version="7"
     else
+      platform="el"
+
       # VERSION_ID will match YYYY.MM for Amazon Linux AMIs
       platform_version="6"
     fi
