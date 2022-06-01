@@ -1,26 +1,23 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.19 -->
-## [v3.12.19](https://github.com/chef/mixlib-install/tree/v3.12.19) (2022-06-01)
-
-#### Merged Pull Requests
-- Add support for amazon linux 2022 [#373](https://github.com/chef/mixlib-install/pull/373) ([jeremiahsnapp](https://github.com/jeremiahsnapp))
 <!-- latest_release -->
-<!-- release_rollup since=3.12.16 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Add support for amazon linux 2022 [#373](https://github.com/chef/mixlib-install/pull/373) ([jeremiahsnapp](https://github.com/jeremiahsnapp)) <!-- 3.12.19 -->
-- Add ruby 3.0/3.1 tests on windows [#378](https://github.com/chef/mixlib-install/pull/378) ([poorndm](https://github.com/poorndm)) <!-- 3.12.18 -->
-- Test Ruby3.0/3.1- IPACK-66 [#375](https://github.com/chef/mixlib-install/pull/375) ([poorndm](https://github.com/poorndm)) <!-- 3.12.17 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.12.19](https://github.com/chef/mixlib-install/tree/v3.12.19) (2022-06-01)
+
+#### Merged Pull Requests
+- Test Ruby3.0/3.1- IPACK-66 [#375](https://github.com/chef/mixlib-install/pull/375) ([poorndm](https://github.com/poorndm))
+- Add ruby 3.0/3.1 tests on windows [#378](https://github.com/chef/mixlib-install/pull/378) ([poorndm](https://github.com/poorndm))
+- Add support for amazon linux 2022 [#373](https://github.com/chef/mixlib-install/pull/373) ([jeremiahsnapp](https://github.com/jeremiahsnapp))
+<!-- latest_stable_release -->
+
 ## [v3.12.16](https://github.com/chef/mixlib-install/tree/v3.12.16) (2021-08-14)
 
 #### Merged Pull Requests
 - fetch_package.sh: fix backtick position for filename extraction [#369](https://github.com/chef/mixlib-install/pull/369) ([jeremy-clerc](https://github.com/jeremy-clerc))
-<!-- latest_stable_release -->
 
 ## [v3.12.15](https://github.com/chef/mixlib-install/tree/v3.12.15) (2021-08-13)
 
