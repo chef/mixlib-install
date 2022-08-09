@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.20 -->
+## [v3.12.20](https://github.com/chef/mixlib-install/tree/v3.12.20) (2022-08-09)
+
+#### Merged Pull Requests
+- Match on 64 for architecture because of different languages [#380](https://github.com/chef/mixlib-install/pull/380) ([tpowell-progress](https://github.com/tpowell-progress))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.19 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Match on 64 for architecture because of different languages [#380](https://github.com/chef/mixlib-install/pull/380) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 3.12.20 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
