@@ -20,7 +20,7 @@ function Get-PlatformVersion {
 }
 
 function Get-PlatformArchitecture {
-  if ((Get-Win32OS).osarchitecture -like '64-bit') {
+  if ((Get-Win32OS).osarchitecture -match '64') {
     $architecture = 'x86_64'
   } else {
     $architecture = 'i386'
