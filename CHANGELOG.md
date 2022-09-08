@@ -1,26 +1,23 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.20 -->
-## [v3.12.20](https://github.com/chef/mixlib-install/tree/v3.12.20) (2022-08-09)
-
-#### Merged Pull Requests
-- Match on 64 for architecture because of different languages [#380](https://github.com/chef/mixlib-install/pull/380) ([tpowell-progress](https://github.com/tpowell-progress))
 <!-- latest_release -->
-<!-- release_rollup since=3.12.19 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Match on 64 for architecture because of different languages [#380](https://github.com/chef/mixlib-install/pull/380) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 3.12.20 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.12.20](https://github.com/chef/mixlib-install/tree/v3.12.20) (2022-09-08)
+
+#### Merged Pull Requests
+- Match on 64 for architecture because of different languages [#380](https://github.com/chef/mixlib-install/pull/380) ([tpowell-progress](https://github.com/tpowell-progress))
+<!-- latest_stable_release -->
+
 ## [v3.12.19](https://github.com/chef/mixlib-install/tree/v3.12.19) (2022-06-01)
 
 #### Merged Pull Requests
 - Test Ruby3.0/3.1- IPACK-66 [#375](https://github.com/chef/mixlib-install/pull/375) ([poorndm](https://github.com/poorndm))
 - Add ruby 3.0/3.1 tests on windows [#378](https://github.com/chef/mixlib-install/pull/378) ([poorndm](https://github.com/poorndm))
 - Add support for amazon linux 2022 [#373](https://github.com/chef/mixlib-install/pull/373) ([jeremiahsnapp](https://github.com/jeremiahsnapp))
-<!-- latest_stable_release -->
 
 ## [v3.12.16](https://github.com/chef/mixlib-install/tree/v3.12.16) (2021-08-14)
 
