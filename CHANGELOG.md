@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.21 -->
+## [v3.12.21](https://github.com/chef/mixlib-install/tree/v3.12.21) (2022-09-20)
+
+#### Merged Pull Requests
+- Allow to extend the supported products of mixlib-install [#340](https://github.com/chef/mixlib-install/pull/340) ([Tensibai](https://github.com/Tensibai))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.20 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Allow to extend the supported products of mixlib-install [#340](https://github.com/chef/mixlib-install/pull/340) ([Tensibai](https://github.com/Tensibai)) <!-- 3.12.21 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
