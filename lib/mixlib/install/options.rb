@@ -26,7 +26,7 @@ module Mixlib
     class Options
       class InvalidOptions < ArgumentError; end
 
-      attr_reader :options, :errors, :original_platform_version
+      attr_reader :options, :errors, :original_platform_version, :supported_product_names
 
       SUPPORTED_ARCHITECTURES = %w{
         aarch64
@@ -45,8 +45,6 @@ module Mixlib
         :current,
         :unstable,
       ]
-
-      SUPPORTED_PRODUCT_NAMES = PRODUCT_MATRIX.products
 
       SUPPORTED_SHELL_TYPES = [
         :ps1,
@@ -76,6 +74,15 @@ module Mixlib
 
         # Store original options in cases where we must remap
         @original_platform_version = options[:platform_version]
+
+        # Eval extra products definition
+        extra_products = ENV.fetch("EXTRA_PRODUCTS_FILE", nil)
+        unless extra_products.nil?
+          PRODUCT_MATRIX.instance_eval(::File.read(extra_products), extra_products)
+        end
+
+        # Store supported product names
+        @supported_product_names = PRODUCT_MATRIX.products
 
         resolve_platform_version_compatibility_mode!
 
@@ -189,10 +196,10 @@ Must be one of: #{SUPPORTED_ARCHITECTURES.join(", ")}
       end
 
       def validate_product_names
-        unless SUPPORTED_PRODUCT_NAMES.include? product_name
+        unless @supported_product_names.include? product_name
           errors << <<-EOS
 Unknown product name #{product_name}.
-Must be one of: #{SUPPORTED_PRODUCT_NAMES.join(", ")}
+Must be one of: #{@supported_product_names.join(", ")}
           EOS
         end
       end

@@ -254,6 +254,25 @@ Bourne install script (`install.sh`) supports `http_proxy`, `https_proxy`, `ftp_
 
 Powershell install script (`install.ps1`) supports `http_proxy` passed as a key to `install_command_options`.
 
+
+### Extending for other products
+
+Create a ruby file in your application and use the product DSL like this (see [product.rb](lib/mixlib/install/product.rb) for available properties):
+
+```
+product "cinc" do
+  product_name "Cinc Infra Client"
+  package_name "cinc-client"
+  api_url "https://packages.cinc.sh"
+end
+```
+
+Then set an environment variable to load them like this on linux:
+
+`export EXTRA_PRODUCTS_FILE=/path/to/your/file.rb`
+
+Calls to mixlib-install now allow to target your new product, assuming the api_url match pacakges api for `/<channel>/<product>/versions` and `/<channel>/<product>/<version>/artifacts` endpoints.
+
 ## Development
 VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.
 

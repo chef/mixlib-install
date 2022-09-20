@@ -57,7 +57,7 @@ context "Mixlib::Install::Backend", :vcr do
         url.include?("solaris2/5.9")
       expect(url).to include(Mixlib::Install::Backend::PackageRouter::COMPAT_DOWNLOAD_URL_ENDPOINT)
     else
-      expect(url).to include(Mixlib::Install::Backend::PackageRouter::ENDPOINT)
+      expect(url).to include(Mixlib::Install::Dist::PRODUCT_ENDPOINT)
     end
   end
 

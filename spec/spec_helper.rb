@@ -10,6 +10,7 @@ require "climate_control"
 
 # load version manifest support path
 VERSION_MANIFEST_DIR = File.expand_path("../support/version_manifests", __FILE__)
+EXTRA_FILE = File.join(File.dirname(__FILE__), "/fixtures/extra/extra_distributions.rb")
 
 RSpec.configure do |config|
   config.filter_run focus: true

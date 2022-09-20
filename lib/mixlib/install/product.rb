@@ -36,6 +36,7 @@ module Mixlib
         :omnibus_project,
         :github_repo,
         :downloads_product_page_url,
+        :api_url,
       ]
 
       #
@@ -86,6 +87,8 @@ module Mixlib
           "#{Mixlib::Install::Dist::DOWNLOADS_PAGE}/#{product_key}"
         when :github_repo
           "#{Mixlib::Install::Dist::GITHUB_ORG}/#{product_key}"
+        when :api_url
+          ENV.fetch("PACKAGE_ROUTER_ENDPOINT", Mixlib::Install::Dist::PRODUCT_ENDPOINT)
         else
           nil
         end
