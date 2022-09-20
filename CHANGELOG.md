@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.21 -->
-## [v3.12.21](https://github.com/chef/mixlib-install/tree/v3.12.21) (2022-09-20)
+<!-- latest_release 3.12.22 -->
+## [v3.12.22](https://github.com/chef/mixlib-install/tree/v3.12.22) (2022-09-20)
 
 #### Merged Pull Requests
-- Allow to extend the supported products of mixlib-install [#340](https://github.com/chef/mixlib-install/pull/340) ([Tensibai](https://github.com/Tensibai))
+- Add support for detecting Windows Server 2022 platform [#377](https://github.com/chef/mixlib-install/pull/377) ([decoyjoe](https://github.com/decoyjoe))
 <!-- latest_release -->
 <!-- release_rollup since=3.12.20 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add support for detecting Windows Server 2022 platform [#377](https://github.com/chef/mixlib-install/pull/377) ([decoyjoe](https://github.com/decoyjoe)) <!-- 3.12.22 -->
 - Allow to extend the supported products of mixlib-install [#340](https://github.com/chef/mixlib-install/pull/340) ([Tensibai](https://github.com/Tensibai)) <!-- 3.12.21 -->
 <!-- release_rollup -->
 
