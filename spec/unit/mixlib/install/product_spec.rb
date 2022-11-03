@@ -137,6 +137,7 @@ context "PRODUCT_MATRIX" do
     angrychef
     automate
     chef
+    chef-universal
     chef-backend
     chef-server
     chef-server-ha-provisioning
