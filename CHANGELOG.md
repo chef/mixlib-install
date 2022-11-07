@@ -1,26 +1,23 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.23 -->
-## [v3.12.23](https://github.com/chef/mixlib-install/tree/v3.12.23) (2022-11-07)
-
-#### Merged Pull Requests
-- IPACK-285 Add product definition for chef client universal package [#383](https://github.com/chef/mixlib-install/pull/383) ([vkarve-chef](https://github.com/vkarve-chef))
 <!-- latest_release -->
-<!-- release_rollup since=3.12.20 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- IPACK-285 Add product definition for chef client universal package [#383](https://github.com/chef/mixlib-install/pull/383) ([vkarve-chef](https://github.com/vkarve-chef)) <!-- 3.12.23 -->
-- Add support for detecting Windows Server 2022 platform [#377](https://github.com/chef/mixlib-install/pull/377) ([decoyjoe](https://github.com/decoyjoe)) <!-- 3.12.22 -->
-- Allow to extend the supported products of mixlib-install [#340](https://github.com/chef/mixlib-install/pull/340) ([Tensibai](https://github.com/Tensibai)) <!-- 3.12.21 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.12.23](https://github.com/chef/mixlib-install/tree/v3.12.23) (2022-11-07)
+
+#### Merged Pull Requests
+- Allow to extend the supported products of mixlib-install [#340](https://github.com/chef/mixlib-install/pull/340) ([Tensibai](https://github.com/Tensibai))
+- Add support for detecting Windows Server 2022 platform [#377](https://github.com/chef/mixlib-install/pull/377) ([decoyjoe](https://github.com/decoyjoe))
+- IPACK-285 Add product definition for chef client universal package [#383](https://github.com/chef/mixlib-install/pull/383) ([vkarve-chef](https://github.com/vkarve-chef))
+<!-- latest_stable_release -->
+
 ## [v3.12.20](https://github.com/chef/mixlib-install/tree/v3.12.20) (2022-09-08)
 
 #### Merged Pull Requests
 - Match on 64 for architecture because of different languages [#380](https://github.com/chef/mixlib-install/pull/380) ([tpowell-progress](https://github.com/tpowell-progress))
-<!-- latest_stable_release -->
 
 ## [v3.12.19](https://github.com/chef/mixlib-install/tree/v3.12.19) (2022-06-01)
 
