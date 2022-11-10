@@ -5,6 +5,7 @@
 | Angry Chef Client | angrychef |
 | Chef Automate | automate |
 | Chef Infra Client | chef |
+| Chef Foundation | chef-foundation |
 | Chef Backend | chef-backend |
 | Chef Infra Server | chef-server |
 | Chef Infra Server HA Provisioning for AWS | chef-server-ha-provisioning |
