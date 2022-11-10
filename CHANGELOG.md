@@ -1,26 +1,23 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.24 -->
+<!-- latest_release -->
+<!-- latest_release -->
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v3.12.24](https://github.com/chef/mixlib-install/tree/v3.12.24) (2022-11-10)
 
 #### Merged Pull Requests
 - Add the chef-foundation product [#384](https://github.com/chef/mixlib-install/pull/384) ([gscho](https://github.com/gscho))
-<!-- latest_release -->
-<!-- release_rollup since=3.12.23 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Add the chef-foundation product [#384](https://github.com/chef/mixlib-install/pull/384) ([gscho](https://github.com/gscho)) <!-- 3.12.24 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v3.12.23](https://github.com/chef/mixlib-install/tree/v3.12.23) (2022-11-07)
 
 #### Merged Pull Requests
 - Allow to extend the supported products of mixlib-install [#340](https://github.com/chef/mixlib-install/pull/340) ([Tensibai](https://github.com/Tensibai))
 - Add support for detecting Windows Server 2022 platform [#377](https://github.com/chef/mixlib-install/pull/377) ([decoyjoe](https://github.com/decoyjoe))
 - IPACK-285 Add product definition for chef client universal package [#383](https://github.com/chef/mixlib-install/pull/383) ([vkarve-chef](https://github.com/vkarve-chef))
-<!-- latest_stable_release -->
 
 ## [v3.12.20](https://github.com/chef/mixlib-install/tree/v3.12.20) (2022-09-08)
 
