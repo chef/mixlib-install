@@ -5,10 +5,11 @@
 | Angry Chef Client | angrychef |
 | Chef Automate | automate |
 | Chef Infra Client | chef |
-| Chef Foundation | chef-foundation |
 | Chef Backend | chef-backend |
+| Chef Foundation | chef-foundation |
 | Chef Infra Server | chef-server |
 | Chef Infra Server HA Provisioning for AWS | chef-server-ha-provisioning |
+| Chef Infra Client MacOS Universal | chef-universal |
 | Chef Workstation | chef-workstation |
 | Chef Development Kit | chefdk |
 | Chef Compliance | compliance |
