@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.25 -->
+## [v3.12.25](https://github.com/chef/mixlib-install/tree/v3.12.25) (2022-11-21)
+
+#### Merged Pull Requests
+- Update PRODUCT_MATRIX.md [#385](https://github.com/chef/mixlib-install/pull/385) ([gscho](https://github.com/gscho))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.24 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Update PRODUCT_MATRIX.md [#385](https://github.com/chef/mixlib-install/pull/385) ([gscho](https://github.com/gscho)) <!-- 3.12.25 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
