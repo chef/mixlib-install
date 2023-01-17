@@ -4,12 +4,10 @@ $ErrorActionPreference = "Stop"
 
 Write-Output "--- Bundle install"
 
-bundle config --local path vendor/bundle
+bundle config set --local path vendor/bundle
 If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
-gem install rake
-
-bundle install --retry=3
+bundle install --jobs=7 --retry=3
 If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
 Write-Output "--- Bundle Execute"
