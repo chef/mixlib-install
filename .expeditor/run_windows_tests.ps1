@@ -7,8 +7,7 @@ Write-Output "--- Bundle install"
 bundle config --local path vendor/bundle
 If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
-gem update -N
-gem install bundler
+gem install rake
 
 bundle install --retry=3
 If ($lastexitcode -ne 0) { Exit $lastexitcode }
