@@ -37,6 +37,7 @@ module Mixlib
         ppc64le
         s390x
         sparc
+        universal
         x86_64
       }
 
