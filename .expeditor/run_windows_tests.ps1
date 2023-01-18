@@ -4,10 +4,10 @@ $ErrorActionPreference = "Stop"
 
 Write-Output "--- Bundle install"
 
-bundle config set --local path vendor/bundle
-If ($lastexitcode -ne 0) { Exit $lastexitcode }
+# bundle config set --local path vendor/cache
+# If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
-bundle install --jobs=7 --retry=3
+bundle install --redownload --no-cache --retry=3
 If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
 Write-Output "--- Bundle Execute"
