@@ -51,6 +51,7 @@ elif test -f "/etc/redhat-release"; then
   	source /etc/os-release
  	os="${REDHAT_SUPPORT_PRODUCT}"
   	platform_version="${ROCKY_SUPPORT_PRODUCT_VERSION}"
+        platform=$ID
 
   elif test "$platform" = "xenserver"; then
     # Current XenServer 6.2 is based on CentOS 5, platform is not reset to "el" server should handle response
