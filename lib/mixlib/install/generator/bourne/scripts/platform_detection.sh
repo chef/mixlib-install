@@ -49,7 +49,7 @@ elif test -f "/etc/redhat-release"; then
   
   if test "$platform" = "rocky linux"; then
   	source /etc/os-release
- 	os="${ROCKY_SUPPORT_PRODUCT}"
+ 	os="${REDHAT_SUPPORT_PRODUCT}"
   	platform_version="${ROCKY_SUPPORT_PRODUCT_VERSION}"
 
   elif test "$platform" = "xenserver"; then
