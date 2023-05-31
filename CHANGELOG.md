@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.28 -->
+## [v3.12.28](https://github.com/chef/mixlib-install/tree/v3.12.28) (2023-05-31)
+
+#### Merged Pull Requests
+- Add Rocky Linux [#388](https://github.com/chef/mixlib-install/pull/388) ([poorndm](https://github.com/poorndm))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.27 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Add Rocky Linux [#388](https://github.com/chef/mixlib-install/pull/388) ([poorndm](https://github.com/poorndm)) <!-- 3.12.28 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
