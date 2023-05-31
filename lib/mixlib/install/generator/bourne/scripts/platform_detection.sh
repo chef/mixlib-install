@@ -46,8 +46,14 @@ elif test -f "/etc/Eos-release"; then
 elif test -f "/etc/redhat-release"; then
   platform=`sed 's/^\(.\+\) release.*/\1/' /etc/redhat-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release`
+  
+  if test "$platform" = "rocky linux"; then
+  	source /etc/os-release
+ 	os="${REDHAT_SUPPORT_PRODUCT}"
+  	platform_version="${ROCKY_SUPPORT_PRODUCT_VERSION}"
+        platform=$ID
 
-  if test "$platform" = "xenserver"; then
+  elif test "$platform" = "xenserver"; then
     # Current XenServer 6.2 is based on CentOS 5, platform is not reset to "el" server should handle response
     platform="xenserver"
   else
