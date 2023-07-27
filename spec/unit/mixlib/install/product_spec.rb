@@ -137,6 +137,7 @@ context "PRODUCT_MATRIX" do
     angrychef
     automate
     chef
+    cinc
     chef-foundation
     chef-universal
     chef-backend
