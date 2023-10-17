@@ -1,26 +1,23 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.28 -->
-## [v3.12.28](https://github.com/chef/mixlib-install/tree/v3.12.28) (2023-05-31)
-
-#### Merged Pull Requests
-- Add Rocky Linux [#388](https://github.com/chef/mixlib-install/pull/388) ([poorndm](https://github.com/poorndm))
 <!-- latest_release -->
-<!-- release_rollup since=3.12.27 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Add Rocky Linux [#388](https://github.com/chef/mixlib-install/pull/388) ([poorndm](https://github.com/poorndm)) <!-- 3.12.28 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.12.28](https://github.com/chef/mixlib-install/tree/v3.12.28) (2023-10-17)
+
+#### Merged Pull Requests
+- Add Rocky Linux [#388](https://github.com/chef/mixlib-install/pull/388) ([poorndm](https://github.com/poorndm))
+<!-- latest_stable_release -->
+
 ## [v3.12.27](https://github.com/chef/mixlib-install/tree/v3.12.27) (2023-01-30)
 
 #### Merged Pull Requests
 - Update PRODUCT_MATRIX.md [#385](https://github.com/chef/mixlib-install/pull/385) ([gscho](https://github.com/gscho))
 - Fix verification tests script failure [#387](https://github.com/chef/mixlib-install/pull/387) ([vkarve-chef](https://github.com/vkarve-chef))
 - Add universal architecture [#386](https://github.com/chef/mixlib-install/pull/386) ([vkarve-chef](https://github.com/vkarve-chef))
-<!-- latest_stable_release -->
 
 ## [v3.12.24](https://github.com/chef/mixlib-install/tree/v3.12.24) (2022-11-10)
 
