@@ -68,19 +68,24 @@ elif test -f "/etc/system-release"; then
     . /etc/os-release
     platform_version=$VERSION_ID
 
-    if test "$platform_version" = "2022"; then
-      platform="amazon"
-      platform_version="2022"
-    elif test "$platform_version" = "2"; then
-      platform="el"
-      platform_version="7"
-    else
-      platform="el"
+    case $platform_version in
+      "2022"|"2023")
+        platform="amazon"
+        platform_version=$platform_version
+      ;;
+      "2")
+        platform="el"
+        platform_version="7"
+        ;;
+      "*")
+        platform="el"
 
-      # VERSION_ID will match YYYY.MM for Amazon Linux AMIs
-      platform_version="6"
-    fi
+        # VERSION_ID will match YYYY.MM for Amazon Linux AMIs
+        platform_version="6"
+        ;;
+    esac
   esac
+
 
 # Apple macOS
 elif test -f "/usr/bin/sw_vers"; then
