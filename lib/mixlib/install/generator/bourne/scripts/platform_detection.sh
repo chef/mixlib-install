@@ -77,7 +77,7 @@ elif test -f "/etc/system-release"; then
         platform="el"
         platform_version="7"
         ;;
-      "*")
+      *)
         platform="el"
 
         # VERSION_ID will match YYYY.MM for Amazon Linux AMIs
