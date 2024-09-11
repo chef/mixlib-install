@@ -164,14 +164,14 @@ module Mixlib
     # Automatically set the platform options
     #
     def detect_platform
-      options.set_platform_info(self.class.detect_platform)
+      options.set_platform_info(self.class.detect_platform(options))
       self
     end
 
     #
     # Returns a Hash containing the platform info options
     #
-    def self.detect_platform
+    def self.detect_platform(options)
       product = options.product_name
       version = options.product_version
 
@@ -205,14 +205,14 @@ module Mixlib
       if product == "chef-server" && version >= "15.10.12" && platform == "el" && platform_version == "7"
         platform = "amazon"
         platform_version = "2"
-      else
+      end
+
       {
-        platform: platform_info[0],
-        platform_version: platform_info[1],
-        architecture: platform_info[2],
+        platform: platform,
+        platform_version: platform_version,
+        architecture: architecture
       }
     end
-  end
 
     #
     # Returns the platform_detection.sh script
