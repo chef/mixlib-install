@@ -74,8 +74,8 @@ elif test -f "/etc/system-release"; then
         platform_version=$platform_version
       ;;
       "2")
-        platform="el"
-        platform_version="7"
+        platform="amazon"
+        platform_version=$platform_version
         ;;
       *)
         platform="el"
