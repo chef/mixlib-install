@@ -172,6 +172,10 @@ module Mixlib
     # Returns a Hash containing the platform info options
     #
     def self.detect_platform
+      product = options.product_name
+      version = options.product_version
+
+
       output = if Gem.win_platform?
                  # For Windows we write the detect platform script and execute the
                  # powershell.exe program with Mixlib::ShellOut
@@ -191,13 +195,24 @@ module Mixlib
                end
 
       platform_info = output.stdout.split
+      platform = platform_info[0]
+      platform_version = platform_info[1]
+      architecture = platform_info[2]
 
+      # since we forked away from rhel 7 as a builder and used amazon 2 as a builder for chef-server, this is a fix to address the api call on omnitruck and other download services
+      # will need to fix this before the next chef-server release
+
+      if product == "chef-server" && version >= "15.10.12" && platform == "el" && platform_version == "7"
+        platform = "amazon"
+        platform_version = "2"
+      else
       {
         platform: platform_info[0],
         platform_version: platform_info[1],
         architecture: platform_info[2],
       }
     end
+  end
 
     #
     # Returns the platform_detection.sh script
