@@ -196,7 +196,14 @@ context "Mixlib::Install" do
 
   context "self.detect_platform" do
     let(:product_name) { "chef" }
-    let(:platform_info) { Mixlib::Install.detect_platform }
+    let(:options) do
+      opts = Mixlib::Install::Options.new(
+        product_name: product_name,
+        product_version: '0.0.1',
+        channel: :stable
+      )
+    end
+    let(:platform_info) { Mixlib::Install.detect_platform(options) }
 
     it "should return platform info" do
       expect(platform_info.size).to eq 3
