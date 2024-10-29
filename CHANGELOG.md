@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.31 -->
+## [v3.12.31](https://github.com/chef/mixlib-install/tree/v3.12.31) (2024-10-29)
+
+#### Merged Pull Requests
+- Download install sh from new download api [#399](https://github.com/chef/mixlib-install/pull/399) ([ashiqueps](https://github.com/ashiqueps))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.30 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Download install sh from new download api [#399](https://github.com/chef/mixlib-install/pull/399) ([ashiqueps](https://github.com/ashiqueps)) <!-- 3.12.31 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
