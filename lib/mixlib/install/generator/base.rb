@@ -19,6 +19,7 @@ require "erb" unless defined?(Erb)
 require "ostruct" unless defined?(OpenStruct)
 require_relative "../util"
 require_relative "../dist"
+require "net/http" unless defined?(Net::HTTP)
 
 module Mixlib
   class Install
@@ -67,6 +68,17 @@ module Mixlib
 
         def get_script(name, context = {})
           self.class.get_script(name, context)
+        end
+
+        def install_sh_from_upstream
+          uri = URI.parse(options.options[:new_omnibus_download_url])
+          response = Net::HTTP.get_response(uri)
+
+          if response.code == "200"
+            response.body
+          else
+            raise StandardError, "unable to fetch the install.sh"
+          end
         end
       end
     end
