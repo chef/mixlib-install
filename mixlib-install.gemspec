@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.files         = %w{LICENSE Gemfile Rakefile} + Dir.glob("*.gemspec") + Dir.glob("{bin,lib,support}/**/*")
   spec.executables   = ["mixlib-install"]
   spec.require_paths = ["lib"]
-
+  spec.required_ruby_version = ">= 2.6.0"
   spec.add_dependency "mixlib-shellout"
   spec.add_dependency "mixlib-versioning"
   spec.add_dependency "thor"

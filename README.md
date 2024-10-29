@@ -12,8 +12,9 @@
 
 ## Supports
 
-- Ruby 1.9.3+
-- Chef 11.6.2+ chef-client upgrades
+- Ruby 2.6+
+- Chef 14+ chef-client upgrades
+  - To upgrade older versions of chef-client, it will be necessary to use older versions of mixlib-install that are compatible with versions of ruby prior to 2.6.
 
 ## Command Line Usage
 ```
