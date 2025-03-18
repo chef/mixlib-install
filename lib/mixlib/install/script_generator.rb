@@ -21,6 +21,7 @@ require_relative "util"
 require_relative "generator/powershell"
 require_relative "dist"
 require "cgi"
+require "net/http" unless defined?(Net::HTTP)
 
 module Mixlib
   class Install
@@ -99,6 +100,17 @@ module Mixlib
                  install_command_vars_for_bourne
                end
         shell_code_from_file(vars)
+      end
+
+      def install_command_from_omnitruck(url)
+        uri = URI.parse(url)
+        response = Net::HTTP.get_response(uri)
+
+        if response.code == "200"
+          response.body
+        else
+          raise StandardError, "unable to fetch the install.sh"
+        end
       end
 
       private

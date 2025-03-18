@@ -1,16 +1,34 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.12.31 -->
+## [v3.12.31](https://github.com/chef/mixlib-install/tree/v3.12.31) (2024-10-29)
+
+#### Merged Pull Requests
+- Download install sh from new download api [#399](https://github.com/chef/mixlib-install/pull/399) ([ashiqueps](https://github.com/ashiqueps))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.12.30 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Download install sh from new download api [#399](https://github.com/chef/mixlib-install/pull/399) ([ashiqueps](https://github.com/ashiqueps)) <!-- 3.12.31 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.12.30](https://github.com/chef/mixlib-install/tree/v3.12.30) (2024-02-14)
+
+#### Merged Pull Requests
+- fix amazon linux1 platform and version detection [#394](https://github.com/chef/mixlib-install/pull/394) ([siddhu208](https://github.com/siddhu208))
+<!-- latest_stable_release -->
+
+## [v3.12.29](https://github.com/chef/mixlib-install/tree/v3.12.29) (2024-02-05)
+
+#### Merged Pull Requests
+- updated script to support for amazon2023 [#392](https://github.com/chef/mixlib-install/pull/392) ([muthuja](https://github.com/muthuja))
+
 ## [v3.12.28](https://github.com/chef/mixlib-install/tree/v3.12.28) (2023-10-17)
 
 #### Merged Pull Requests
 - Add Rocky Linux [#388](https://github.com/chef/mixlib-install/pull/388) ([poorndm](https://github.com/poorndm))
-<!-- latest_stable_release -->
 
 ## [v3.12.27](https://github.com/chef/mixlib-install/tree/v3.12.27) (2023-01-30)
 
