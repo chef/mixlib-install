@@ -9,6 +9,7 @@ export LANG=C.UTF-8 LANGUAGE=C.UTF-8
 
 echo "--- bundle install"
 bundle config --local path vendor/bundle
+bundle config --local without debug
 bundle install --jobs=7 --retry=3
 
 echo "+++ bundle exec task"
