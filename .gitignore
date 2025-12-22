@@ -11,3 +11,4 @@ tags
 .ruby-version
 .kitchen/
 .kitchen.local.yml
+mixlib-install-*.gem
