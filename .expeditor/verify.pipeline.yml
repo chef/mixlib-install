@@ -10,6 +10,29 @@ expeditor:
       timeout_in_minutes: 30
 
 steps:
+- label: run-specs-ruby-2.6
+  command:
+    - .expeditor/run_linux_tests.sh rake
+  expeditor:
+    executor:
+      docker:
+        image: ruby:2.6
+
+- label: run-specs-ruby-2.7
+  command:
+    - .expeditor/run_linux_tests.sh rake
+  expeditor:
+    executor:
+      docker:
+        image: ruby:2.7
+
+- label: run-specs-ruby-3.0
+  command:
+    - .expeditor/run_linux_tests.sh rake
+  expeditor:
+    executor:
+      docker:
+        image: ruby:3.0
 
 - label: run-specs-ruby-3.1
   command:
@@ -19,13 +42,21 @@ steps:
       docker:
         image: ruby:3.1
 
-- label: run-specs-ruby-3.0
+- label: run-specs-ruby-3.2
   command:
     - .expeditor/run_linux_tests.sh rake
   expeditor:
     executor:
       docker:
-        image: ruby:3.1
+        image: ruby:3.2
+
+- label: run-specs-ruby-3.3
+  command:
+    - .expeditor/run_linux_tests.sh rake
+  expeditor:
+    executor:
+      docker:
+        image: ruby:3.3
 
 - label: run-specs-ruby-3.4
   command:
@@ -34,6 +65,39 @@ steps:
     executor:
       docker:
         image: ruby:3.4
+
+- label: run-specs-ruby-2.6-windows
+  command:
+    - .expeditor/run_windows_tests.ps1
+  expeditor:
+    executor:
+      docker:
+        host_os: windows
+        shell: ["powershell", "-Command"]
+        image: rubydistros/windows-2019:2.6
+        user: 'NT AUTHORITY\SYSTEM'
+
+- label: run-specs-ruby-2.7-windows
+  command:
+    - .expeditor/run_windows_tests.ps1
+  expeditor:
+    executor:
+      docker:
+        host_os: windows
+        shell: ["powershell", "-Command"]
+        image: rubydistros/windows-2019:2.7
+        user: 'NT AUTHORITY\SYSTEM'
+
+- label: run-specs-ruby-3.0-windows
+  command:
+    - .expeditor/run_windows_tests.ps1
+  expeditor:
+    executor:
+      docker:
+        host_os: windows
+        shell: ["powershell", "-Command"]
+        image: rubydistros/windows-2019:3.0
+        user: 'NT AUTHORITY\SYSTEM'
 
 - label: run-specs-ruby-3.1-windows
   command:
@@ -44,6 +108,17 @@ steps:
         host_os: windows
         shell: ["powershell", "-Command"]
         image: rubydistros/windows-2019:3.1
+        user: 'NT AUTHORITY\SYSTEM'
+
+- label: run-specs-ruby-3.3-windows
+  command:
+    - .expeditor/run_windows_tests.ps1
+  expeditor:
+    executor:
+      docker:
+        host_os: windows
+        shell: ["powershell", "-Command"]
+        image: rubydistros/windows-2019:3.3
         user: 'NT AUTHORITY\SYSTEM'
 
 - label: run-specs-ruby-3.4-windows

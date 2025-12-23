@@ -19,6 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "mixlib-shellout"
   spec.add_dependency "mixlib-versioning"
-  spec.add_dependency "openssl", ">= 3.3.1" # ruby CRL check issues exist in ruby's bundled openssl version
+  spec.add_dependency "openssl", ">= 3.1.2" # ruby CRL check issues exist in ruby's bundled openssl version
   spec.add_dependency "thor"
 end
