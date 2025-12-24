@@ -13,6 +13,7 @@ group :test do
   if RUBY_VERSION < "2.6.0"
     gem "climate_control", "= 0.1.0"
     gem "mixlib-shellout", "= 3.2.5"
+    gem "parallel", "< 1.25.0"
     gem "public_suffix", "<= 5.1.1" # Dep of addressable which is a dep of webmock
     gem "vcr", "= 6.0.0"
   elsif RUBY_VERSION < "3.0.0"
