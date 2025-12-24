@@ -28,8 +28,7 @@ jobs:
       - uses: r7kamura/rubocop-problem-matchers-action@v1
       - name: Setup Machine
         run: |
-          bundle config set --local with 'chefstyle'
-          bundle install
+          bundle install chefstyle
       - name: Chef Style
         run: bundle exec rake style
 
