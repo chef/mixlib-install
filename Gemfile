@@ -37,7 +37,16 @@ end
 
 group :chefstyle do
   gem "chefstyle", "~> 0.4.0"
-  gem "racc" if RUBY_VERSION >= "3.3.0" # Dep of parser which is a dep of rubocop which is a dep of chefstyle
+  if RUBY_VERSION >= "4.0.0"
+    gem "base64" # Dep of Rubocop not bundled in ruby 3.4+
+    gem "ostruct" # Dep of Rubocop not bundled in ruby 4.0+
+    gem "racc" # Dep of Rubocop not bundled in ruby 3.3+
+  elsif RUBY_VERSION >= "3.4.0"
+    gem "base64" # Dep of Rubocop not bundled in ruby 3.4+
+    gem "racc"  # Dep of Rubocop not bundled in ruby 3.3+
+  elsif RUBY_VERSION >= "3.3.0"
+    gem "racc"  # Dep of Rubocop not bundled in ruby 3.3+
+  end
 end
 
 group :debug do
