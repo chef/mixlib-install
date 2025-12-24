@@ -35,7 +35,6 @@ group :test do
   end
 end
 
-# use old chefstyle to support TargetRubyVersion of 1.9
 group :chefstyle do
   gem "chefstyle", "~> 0.4.0"
 end
