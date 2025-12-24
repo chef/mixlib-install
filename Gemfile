@@ -37,6 +37,7 @@ end
 
 group :cookstyle do
   gem "cookstyle"
+  gem "json", "< 2.8.0" if RUBY_VERSION < "2.7.0" # Dep of rubocop which is a dep of cookstyle
 end
 
 group :debug do
