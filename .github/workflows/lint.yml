@@ -29,7 +29,6 @@ jobs:
           bundler-cache: true
       - name: Setup Machine
         run: |
-          bundle update bundler
           bundle install --verbose
       - name: Chef Style
         run: bundle exec chefstyle --display-cop-names
