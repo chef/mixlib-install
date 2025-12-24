@@ -26,6 +26,10 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - uses: r7kamura/rubocop-problem-matchers-action@v1
+      - name: Setup Machine
+        run: |
+          bundle config set --local with 'chefstyle'
+          bundle install
       - name: Chef Style
         run: bundle exec rake style
 
