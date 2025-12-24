@@ -11,6 +11,8 @@ concurrency:
 
 jobs:
   cookstyle:
+    env:
+      BUNDLE_WITH: ${{ inputs.bundle_with }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -20,6 +22,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - uses: r7kamura/rubocop-problem-matchers-action@v1
