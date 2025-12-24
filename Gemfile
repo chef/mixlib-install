@@ -3,6 +3,8 @@ source "https://rubygems.org"
 gemspec
 
 gem "chef-utils", "= 16.6.14" if RUBY_VERSION < "2.6.0"
+gem "public_suffix", "<= 5.1.1" if RUBY_VERSION < "3.0.0"
+gem "public_suffix", "< 7.0.0" if RUBY_VERSION < "3.2.0"
 
 group :test do
   gem "rake"
