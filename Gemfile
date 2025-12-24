@@ -5,6 +5,7 @@ gemspec
 gem "chef-utils", "= 16.6.14" if RUBY_VERSION < "2.6.0"
 if RUBY_VERSION < "3.0.0"
   gem "byebug", "< 12.0"
+  gem "mixlib-shellout", "< 3.3.9"
   gem "public_suffix", "<= 5.1.1"
 elsif RUBY_VERSION < "3.2.0"
   gem "byebug", "< 12.0"
