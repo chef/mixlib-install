@@ -74,7 +74,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   test:
-    name: Unit Test with Ruby
+    name: Unit Tests
 #     needs:
 #       - chefstyle
 #       - jsonlint

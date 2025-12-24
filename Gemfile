@@ -37,6 +37,7 @@ end
 
 group :chefstyle do
   gem "chefstyle", "~> 0.4.0"
+  gem "racc" if RUBY_VERSION >= "3.3.0" # Dep of parser which is a dep of rubocop which is a dep of chefstyle
 end
 
 group :debug do
