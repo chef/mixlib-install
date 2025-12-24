@@ -35,8 +35,8 @@ group :test do
   end
 end
 
-group :chefstyle do
-  gem "chefstyle", "~> 0.4.0"
+group :cookstyle do
+  gem "cookstyle"
 end
 
 group :debug do

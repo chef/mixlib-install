@@ -12,13 +12,13 @@ require "rspec/core/rake_task"
 end
 
 begin
-  require "chefstyle"
+  require "cookstyle/chefstyle"
   require "rubocop/rake_task"
   RuboCop::RakeTask.new(:style) do |task|
-    task.options += ["--display-cop-names", "--no-color"]
+    task.options += ["--chefstyle", "--display-cop-names", "--no-color"]
   end
 rescue LoadError
-  puts "chefstyle gem is not installed"
+  puts "cookstyle/chefstyle is not available. (sudo) gem install cookstyle to do style checking."
 end
 
 desc "Render product matrix documentation"
