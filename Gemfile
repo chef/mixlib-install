@@ -35,19 +35,8 @@ group :test do
   end
 end
 
-group :chefstyle do
-  gem "chefstyle", "~> 0.4.0"
-  if RUBY_VERSION >= "4.0.0"
-    gem "base64" # Dep of Rubocop not bundled in ruby 3.4+
-    gem "benchmark" # Dep of Rubocop not bundled in ruby 4.0+
-    gem "ostruct" # Dep of Rubocop not bundled in ruby 4.0+
-    gem "racc" # Dep of Rubocop not bundled in ruby 3.3+
-  elsif RUBY_VERSION >= "3.4.0"
-    gem "base64" # Dep of Rubocop not bundled in ruby 3.4+
-    gem "racc"  # Dep of Rubocop not bundled in ruby 3.3+
-  elsif RUBY_VERSION >= "3.3.0"
-    gem "racc"  # Dep of Rubocop not bundled in ruby 3.3+
-  end
+group :cookstyle do
+  gem "cookstyle"
 end
 
 group :debug do

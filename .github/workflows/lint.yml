@@ -10,25 +10,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  chefstyle:
-    env:
-      BUNDLE_WITH: ${{ inputs.bundle_with }}
+  cookstyle:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         ruby:
-          - 3.2
+          - 3.4
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Chef Style
-        run: bundle exec chefstyle --display-cop-names
+      - uses: r7kamura/rubocop-problem-matchers-action@v1
+      - name: Cook Style
+        run: bundle exec cookstyle --chefstyle
 
   yamllint:
     runs-on: ubuntu-latest
@@ -75,7 +71,7 @@ jobs:
   test:
     name: Unit Tests
 #     needs:
-#       - chefstyle
+#       - cookstyle
 #       - jsonlint
 #       - yamllint
     runs-on: ${{ matrix.runner }}
