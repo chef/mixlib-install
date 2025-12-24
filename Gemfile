@@ -31,12 +31,14 @@ end
 
 group :debug do
   gem "pry"
-  gem "pry-byebug"
   if RUBY_VERSION < "2.7.0"
     gem "byebug", "< 12.0"
     gem "pry-byebug", "< 3.10.0"
   elsif RUBY_VERSION < "3.1.0"
     gem "byebug", "< 12.0"
+    gem "pry-byebug"
+  else
+    gem "pry-byebug"
   end
   gem "rb-readline"
 end
