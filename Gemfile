@@ -35,6 +35,7 @@ group :test do
     gem "vcr"
   elsif RUBY_VERSION >= "4.0.0"
     gem "base64"
+    gem "benchmark"
     gem "climate_control", "~> 1.0"
     gem "ostruct"
     gem "racc"
@@ -55,7 +56,7 @@ group :test do
 end
 
 group :chefstyle do
-  gem "chefstyle", "~> 0.4.0"
+  gem "chefstyle"
 end
 
 group :debug do
