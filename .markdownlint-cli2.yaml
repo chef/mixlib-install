@@ -4,3 +4,5 @@ config:
 ignores:
   - .github/copilot-instructions.md
   - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - PRODUCT_MATRIX.md
