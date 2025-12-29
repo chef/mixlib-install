@@ -1,6 +1,6 @@
 ---
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.3
 
 # The following cops are disabled because their autocorrect features could
 # potentially introduce syntax that breaks Ruby 2.3 compatibility, even though
