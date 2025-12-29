@@ -96,6 +96,11 @@ jobs:
           - 3.3
           - 3.4
     steps:
+      - name: Enable long paths on Windows
+        if: runner.os == 'Windows'
+        run: |
+          Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1
+        shell: pwsh
       - name: Checkout code
         uses: actions/checkout@v6
       - name: Setup Ruby

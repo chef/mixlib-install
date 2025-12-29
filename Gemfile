@@ -29,6 +29,14 @@ group :test do
     gem "climate_control", "~> 1.0"
     gem "public_suffix", "< 7.0.0" # Dep of addressable which is a dep of webmock
     gem "vcr"
+  elseif RUBY_VERSION < "3.3.0"
+    gem "climate_control", "~> 1.0"
+    gem "public_suffix", "< 7.0.0" # Dep of addressable which is a dep of webmock
+    gem "vcr"
+  elsif RUBY_VERSION >= "3.3.0"
+    gem "climate_control", "~> 1.0"
+    gem "racc"
+    gem "vcr"
   else
     gem "climate_control", "~> 1.0"
     gem "vcr"
