@@ -61,14 +61,13 @@ function Install-Project {
 
   # Check for chef-client command in various locations
   $chef_locations = @(
-    "$env:systemdrive\hab\pkgs\chef\chef-infra-client\*\*\bin\chef-client.bat"
-    "$env:systemdrive\<%= windows_dir %>\$project\bin\chef-client.bat",
-
+    "$env:systemdrive\hab\pkgs\chef\chef-infra-client\*\*\bin\chef-client.bat",
+    "$env:systemdrive\<%= windows_dir %>\$project\bin\chef-client.bat"
   )
   foreach ($path in $chef_locations) {
     $resolved = Get-Item $path -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($resolved -and (Test-Path $resolved.FullName)) {
-      Write-Host "$project installation detected"
+      Write-Host "$project installation detected at $($resolved.FullName)"
       Write-Host "install_strategy set to 'once'"
       Write-Host "Nothing to install"
       exit
