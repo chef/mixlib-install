@@ -75,10 +75,10 @@ jobs:
 
   test:
     name: Unit Tests
-#     needs:
-#       - cookstyle
-#       - jsonlint
-#       - yamllint
+    needs:
+      - cookstyle
+      - jsonlint
+      - yamllint
     runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
