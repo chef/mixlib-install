@@ -110,6 +110,7 @@ jobs:
           bundler-cache: true
       - name: Setup Machine
         run: |
+          gem install bundler
           bundle install
       - name: Rake Test
         run: bundle exec rake

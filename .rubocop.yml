@@ -21,3 +21,21 @@ Security/Eval:
 # Chef-specific cop that suggests require optimizations
 Chef/Ruby/UnlessDefinedRequire:
   Enabled: false
+
+# Added for Chefstyle 0.12 compatibility, can be removed with switch to cookstyle
+Bundler/DuplicatedGem:
+  Enabled: false
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+Layout/IndentHeredoc:
+  Enabled: false
+Layout/ClosingHeredocIndentation:
+  Enabled: false
+Lint/UselessAssignment:
+  Enabled: false
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+Style/HashSyntax:
+  Enabled: false
+Layout/BlockAlignment:
+  Enabled: false
