@@ -59,11 +59,20 @@ function Install-Project {
     $install_strategy
   )
 
-  if ((Test-Path "$env:systemdrive\<%= windows_dir %>\$project\embedded") -and ($install_strategy -eq 'once')) {
-    Write-Host "$project installation detected"
-    Write-Host "install_strategy set to 'once'"
-    Write-Host "Nothing to install"
-    exit
+  # Check for chef-client command in various locations
+  $chef_locations = @(
+    "$env:systemdrive\hab\pkgs\chef\chef-infra-client\*\*\bin\chef-client.bat"
+    "$env:systemdrive\<%= windows_dir %>\$project\bin\chef-client.bat",
+
+  )
+  foreach ($path in $chef_locations) {
+    $resolved = Get-Item $path -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($resolved -and (Test-Path $resolved.FullName)) {
+      Write-Host "$project installation detected"
+      Write-Host "install_strategy set to 'once'"
+      Write-Host "Nothing to install"
+      exit
+    }
   }
 
   # Set http_proxy as env var
