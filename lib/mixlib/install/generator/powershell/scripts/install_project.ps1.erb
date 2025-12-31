@@ -101,8 +101,8 @@ function Install-Project {
   else {
     $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
   }
-  Write-Verbose "Download directory: $download_directory"
-  Write-Verbose "Filename: $filename"
+  Write-Host "Download directory: $download_directory"
+  Write-Host "Filename: $filename"
 
   if (-not (test-path $download_directory)) {
     mkdir $download_directory
@@ -112,23 +112,23 @@ function Install-Project {
   $download_destination = join-path $download_directory $filename
 
   if ((test-path $download_destination)) {
-    Write-Verbose "Found existing installer at $download_destination."
+    Write-Host "Found existing installer at $download_destination."
     if (-not [string]::IsNullOrEmpty($sha256)) {
-      Write-Verbose "Checksum specified"
+      Write-Host "Checksum specified"
       $valid_checksum = Test-ProjectPackage -Path $download_destination -Algorithm 'SHA256' -Hash $sha256
       if ($valid_checksum -eq $true) {
-        Write-Verbose "Checksum verified, using existing installer."
+        Write-Host "Checksum verified, using existing installer."
         $cached_installer_available=$true # local file OK
         $verify_checksum = $false # no need to re-verify checksums
       }
       else {
-        Write-Verbose "Checksum mismatch, ignoring existing installer."
+        Write-Host "Checksum mismatch, ignoring existing installer."
         $cached_installer_available=$false # bad local file
         $verify_checksum = $false # re-verify checksums
       }
     }
     else {
-      Write-Verbose "Checksum not specified, existing installer ignored."
+      Write-Host "Checksum not specified, existing installer ignored."
       $cached_installer_available=$false # ignore local file
       $verify_checksum = $false # no checksum to compare
     }
@@ -136,7 +136,7 @@ function Install-Project {
 
   if (-not ($cached_installer_available)) {
     if ($pscmdlet.ShouldProcess("$($download_url)", "Download $project")) {
-      Write-Verbose "Downloading $project from $($download_url) to $download_destination."
+      Write-Host "Downloading $project from $($download_url) to $download_destination."
       Get-WebContent $download_url -filepath $download_destination
     }
   }
