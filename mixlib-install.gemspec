@@ -20,19 +20,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mixlib-shellout"
   spec.add_dependency "mixlib-versioning"
   spec.add_dependency "thor"
-
-  # OpenSSL version constraints to fix CRL checking issues in OpenSSL 3.6+
-  # Ruby 2.6-2.7 bundled openssl needs update to 3.1.2+
-  # Ruby 3.0-3.2 bundled openssl needs update to 3.1.2+
-  # Ruby 3.3 bundled openssl needs update to 3.2.2+
-  # Ruby 3.4 bundled openssl needs update to 3.3.1+
-  if RUBY_VERSION < "2.7.0"
-    spec.add_dependency "openssl", ">= 3.1.2", "< 3.2.0"
-  elsif RUBY_VERSION < "3.3.0"
-    spec.add_dependency "openssl", ">= 3.1.2"
-  elsif RUBY_VERSION < "3.4.0"
-    spec.add_dependency "openssl", ">= 3.2.2"
-  elsif RUBY_VERSION < "4.0.0"
-    spec.add_dependency "openssl", ">= 3.3.1"
-  end
 end

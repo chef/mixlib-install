@@ -3,6 +3,20 @@ source "https://rubygems.org"
 gemspec
 
 gem "chef-utils", "= 16.6.14" if RUBY_VERSION < "2.6.0"
+# OpenSSL version constraints to fix CRL checking issues in OpenSSL 3.6+
+# Ruby 2.6-2.7 bundled openssl needs update to 3.1.2+
+# Ruby 3.0-3.2 bundled openssl needs update to 3.1.2+
+# Ruby 3.3 bundled openssl needs update to 3.2.2+
+# Ruby 3.4 bundled openssl needs update to 3.3.1+
+if RUBY_VERSION < "2.7.0"
+  spec.add_dependency "openssl", ">= 3.1.2", "< 3.2.0"
+elsif RUBY_VERSION < "3.3.0"
+  spec.add_dependency "openssl", ">= 3.1.2"
+elsif RUBY_VERSION < "3.4.0"
+  spec.add_dependency "openssl", ">= 3.2.2"
+elsif RUBY_VERSION < "4.0.0"
+  spec.add_dependency "openssl", ">= 3.3.1"
+end
 
 group :test do
   gem "contracts", "~> 0.16.0" # this entry can go away when ruby < 3 support is gone
