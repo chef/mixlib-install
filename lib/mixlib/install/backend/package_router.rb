@@ -153,6 +153,13 @@ EOF
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
           full_path = File.join(uri.path, url)
+          
+          # Add license_id as query parameter if using commercial API
+          if use_commercial_api?
+            separator = full_path.include?("?") ? "&" : "?"
+            full_path = "#{full_path}#{separator}license_id=#{options.license_id}"
+          end
+          
           res = http.request(create_http_request(full_path))
           res.value
           JSON.parse(res.body)
@@ -208,6 +215,12 @@ EOF
                        endpoint
                      end
 
+          # Construct the download URL with license_id for commercial API
+          download_url = "#{base_url}/#{chef_standard_path}"
+          if use_commercial_api?
+            download_url = "#{download_url}?license_id=#{options.license_id}"
+          end
+
           ArtifactInfo.new(
             architecture:          Util.normalize_architecture(artifact_map["omnibus.architecture"]),
             license:               artifact_map["omnibus.license"],
@@ -220,7 +233,7 @@ EOF
             sha1:                  artifact_map["omnibus.sha1"],
             sha256:                artifact_map["omnibus.sha256"],
             software_dependencies: software_dependencies,
-            url:                   "#{base_url}/#{chef_standard_path}",
+            url:                   download_url,
             version:               artifact_map["omnibus.version"]
           )
         end
@@ -268,7 +281,15 @@ EOF
         end
 
         def endpoint
-          @endpoint ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).api_url
+          @endpoint ||= if use_commercial_api?
+                          Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+                        else
+                          PRODUCT_MATRIX.lookup(options.product_name, options.product_version).api_url
+                        end
+        end
+
+        def use_commercial_api?
+          !options.license_id.nil? && !options.license_id.to_s.empty?
         end
 
         def omnibus_project

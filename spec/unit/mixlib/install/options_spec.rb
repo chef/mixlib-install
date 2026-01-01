@@ -137,4 +137,25 @@ context "Mixlib::Install::Options" do
       end
     end
   end
+
+  context "for license_id option" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+    let(:license_id) { "test-license-123" }
+
+    it "accepts license_id parameter" do
+      mi = Mixlib::Install.new(product_name: product_name, channel: channel, license_id: license_id)
+      expect(mi.options.license_id).to eq license_id
+    end
+
+    it "allows nil license_id" do
+      mi = Mixlib::Install.new(product_name: product_name, channel: channel)
+      expect(mi.options.license_id).to be_nil
+    end
+
+    it "allows empty license_id" do
+      mi = Mixlib::Install.new(product_name: product_name, channel: channel, license_id: "")
+      expect(mi.options.license_id).to eq ""
+    end
+  end
 end

@@ -71,6 +71,7 @@ module Mixlib
           cmd << " -version #{options.product_version}"
           cmd << " -channel #{options.channel}"
           cmd << " -architecture #{options.architecture}" if options.architecture
+          cmd << " -license_id #{options.license_id}" if options.license_id && !options.license_id.to_s.empty?
           cmd << install_command_params if options.install_command_options
           cmd << "\n"
         end

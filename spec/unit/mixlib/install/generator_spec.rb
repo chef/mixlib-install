@@ -80,6 +80,22 @@ context "Mixlib::Install::Generator", :vcr do
       it_behaves_like "the correct sh script"
     end
 
+    context "with license_id" do
+      let(:add_options) do
+        {
+          license_id: "test-license-key-123",
+        }
+      end
+
+      it "includes license_id in the script variables" do
+        expect(install_script).to include("license_id=test-license-key-123")
+      end
+
+      it "uses commercial API in metadata fetch" do
+        expect(install_script).to include("https://chefdownload-commercial.chef.io")
+      end
+    end
+
     context "for windows" do
       shared_examples_for "the correct ps1 script" do
         it "generates a ps1 script" do
@@ -117,6 +133,26 @@ context "Mixlib::Install::Generator", :vcr do
 
         it "adds omits the architecture param" do
           expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
+        end
+      end
+
+      context "with license_id for PowerShell" do
+        let(:add_options) do
+          {
+            shell_type: :ps1,
+            license_id: "test-license-key-456",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "includes license_id in install command" do
+          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id test-license-key-456\n/)
+        end
+
+        it "includes license_id parameter in Get-ProjectMetadata function" do
+          expect(install_script).to include("[string]")
+          expect(install_script).to include("$license_id")
         end
       end
     end

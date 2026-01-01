@@ -39,7 +39,10 @@ function Get-ProjectMetadata {
     $nightlies,
     [validateset('auto', 'i386', 'x86_64')]
     [string]
-    $architecture = 'auto'
+    $architecture = 'auto',
+    # License ID for commercial API access
+    [string]
+    $license_id
   )
 
   # The following legacy switches are just aliases for the current channel
@@ -60,11 +63,23 @@ function Get-ProjectMetadata {
   Write-Verbose "Architecture: $architecture"
   Write-Verbose "Project: $project"
 
+  # Use commercial API if license_id is provided, otherwise use omnitruck
+  if ($license_id) {
+    $base_server_uri = 'https://chefdownload-commercial.chef.io'
+    Write-Verbose "Using Commercial API with license ID"
+  }
+
   $metadata_base_url = "/$($channel)/$($project)/metadata"
   $metadata_array = ("?v=$($version)",
     "p=$platform",
     "pv=$platform_version",
     "m=$architecture")
+  
+  # Add license_id to query parameters if provided
+  if ($license_id) {
+    $metadata_array += "license_id=$license_id"
+  }
+  
   $metadata_base_url += [string]::join('&', $metadata_array)
   $metadata_url = new-uri $base_server_uri $metadata_base_url
 
