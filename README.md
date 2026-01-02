@@ -16,14 +16,13 @@
 - Chef 11.6.2+ chef-client upgrades
 
 ## Command Line Usage
-
-```bash
-gem install mixlib-install
+```
+$ gem install mixlib-install
 ```
 
 ```bash
 # Download latest stable chef for current platform
-mixlib-install download chef
+$ mixlib-install download chef
 ```
 
 Run `$ mixlib-install help` for additional commands and options.
@@ -31,13 +30,11 @@ Run `$ mixlib-install help` for additional commands and options.
 ## API Usage
 
 ### Load mixlib-install
-
 ```ruby
 require 'mixlib/install'
 ```
 
 ### Get URL for specific platform and package version
-
 ```ruby
 options = {
   channel: :current,
@@ -56,7 +53,6 @@ artifact.url
 ```
 
 ### Get list of artifacts for all platforms given a package version
-
 ```ruby
 options = {
   channel: :current,
@@ -72,7 +68,6 @@ artifacts.first.url
 ```
 
 ### Get latest artifacts for a partial version
-
 ```ruby
 options = {
   channel: :current,
@@ -88,7 +83,6 @@ artifacts.first.version
 ```
 
 ### Get latest artifact for a partial version
-
 ```ruby
 options = {
   channel: :current,
@@ -107,7 +101,6 @@ artifact.version
 ```
 
 ### Detect platform information
-
 ```ruby
 options = {
   channel: :current,
@@ -122,7 +115,6 @@ artifact.platform_version # => "10.10"
 ```
 
 ### Use an artifact released for an earlier version of the platform
-
 ```ruby
 options = {
   channel: :current,
@@ -157,9 +149,7 @@ artifact.platform_version # => "14.04"
 ```
 
 ### List the available versions for a product and channel
-
 #### Instance method
-
 ```ruby
 options = {
   channel: :stable,
@@ -172,7 +162,6 @@ Mixlib::Install.new(options).available_versions
 ```
 
 #### Class method
-
 ```ruby
 Mixlib::Install.available_versions("chef", "stable")
 
@@ -180,9 +169,7 @@ Mixlib::Install.available_versions("chef", "stable")
 ```
 
 ### Download an artifact
-
 Download a specific artifact to a configurable location. All platform options (platform, platform_version, architecture) are required  in order to filter a single artifact.
-
 ```ruby
 # detect platform and download to the operating system’s temporary file path
 Mixlib::Install.new(product_name: "chefdk", channel: :stable).detect_platform.download_artifact(Dir.tmpdir)
@@ -191,14 +178,13 @@ Mixlib::Install.new(product_name: "chefdk", channel: :stable).detect_platform.do
 # specify platform options and download to current directory
 Mixlib::Install.new(product_name: "chefdk", channel: :stable, platform: "ubuntu", platform_version: "14.04", architecture: "x86_64").download_artifact
 # => "~/chefdk-2.3.4-1.deb"
+
 ```
 
 ### User-Agent Request Headers
-
 By default, all requests made by `mixlib-install` will include a `User-Agent` request header as `mixlib-install/<version>`.
 Additional `User-Agent` request headers can be added by setting the `user_agent_headers` option.
 When you want to identify a product using mixlib-install as a dependency we recommend the format `product/version`.
-
 ```ruby
 options = {
   channel: :stable,
@@ -208,11 +194,9 @@ options = {
 ```
 
 ### Collecting Software Dependencies and License Content
-
 Collecting software dependencies and license content for ArtifactInfo instances
 requires additional requests to the repository server. By default, collection is disabled.
 To return data for instance methods `software_dependencies` and `license_content`, the `include_metadata` option must be enabled.
-
 ```ruby
 options = {
   channel: :current,
@@ -232,10 +216,11 @@ artifact.software_dependencies.class
 # => Hash
 
 # By default, the instance methods return nil
+
 ```
 
-### Install Scripts
 
+### Install Scripts
 mixlib-install generates the bootstrap installation scripts known as install.sh and install.ps1. The associated install script will be returned when calling `#install_command` on the Mixlib::Install instance.
 
 Mixlib::Install instantiation option `install_command_options` can accept variables (bourne) or parameters (powershell) to modify the behavior of the install scripts.
@@ -260,7 +245,6 @@ Mixlib::Install.new(options).install_command
 ```
 
 #### Proxies
-
 The API uses Ruby's OpenURI module to load proxy environment variables (`http_proxy`, `https_proxy`, `ftp_proxy`, `no_proxy`).
 
 When `install.sh` and `install.ps1` are executed as standalone scripts the will rely on environment variables to configure proxy settings. The install scripts will not configure proxy settings by default.
@@ -271,11 +255,12 @@ Bourne install script (`install.sh`) supports `http_proxy`, `https_proxy`, `ftp_
 
 Powershell install script (`install.ps1`) supports `http_proxy` passed as a key to `install_command_options`.
 
+
 ### Extending for other products
 
 Create a ruby file in your application and use the product DSL like this (see [product.rb](lib/mixlib/install/product.rb) for available properties):
 
-```ruby
+```
 product "cinc" do
   product_name "Cinc Infra Client"
   package_name "cinc-client"
@@ -290,12 +275,11 @@ Then set an environment variable to load them like this on linux:
 Calls to mixlib-install now allow to target your new product, assuming the api_url match pacakges api for `/<channel>/<product>/versions` and `/<channel>/<product>/<version>/artifacts` endpoints.
 
 ## Development
-
 VCR is a tool that helps cache and replay http responses. When these responses change or when you add more tests you might need to update cached responses. Check out [spec_helper.rb](https://github.com/chef/mixlib-install/blob/master/spec/spec_helper.rb) for instructions on how to do this.
 
 ## Contributing
 
-1. Fork it ( <https://github.com/[my-github-username]/mixlib-install/fork> )
+1. Fork it ( https://github.com/[my-github-username]/mixlib-install/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
