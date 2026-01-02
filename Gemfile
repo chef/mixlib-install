@@ -9,13 +9,13 @@ gem "chef-utils", "= 16.6.14" if RUBY_VERSION < "2.6.0"
 # Ruby 3.3 bundled openssl needs update to 3.2.2+
 # Ruby 3.4 bundled openssl needs update to 3.3.1+
 if RUBY_VERSION < "2.7.0"
-  spec.add_dependency "openssl", ">= 3.1.2", "< 3.2.0"
+  gem "openssl", ">= 3.1.2", "< 3.2.0"
 elsif RUBY_VERSION < "3.3.0"
-  spec.add_dependency "openssl", ">= 3.1.2"
+  gem "openssl", ">= 3.1.2"
 elsif RUBY_VERSION < "3.4.0"
-  spec.add_dependency "openssl", ">= 3.2.2"
+  gem "openssl", ">= 3.2.2"
 elsif RUBY_VERSION < "4.0.0"
-  spec.add_dependency "openssl", ">= 3.3.1"
+  gem "openssl", ">= 3.3.1"
 end
 
 group :test do
