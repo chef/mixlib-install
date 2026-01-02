@@ -20,7 +20,7 @@
 $ gem install mixlib-install
 ```
 
-```bash
+```
 # Download latest stable chef for current platform
 $ mixlib-install download chef
 ```
@@ -135,7 +135,6 @@ artifact.platform_version # => "14.04"
 `platform_version_compatibility_mode` will automatically be enabled if platform options are not specified.
 
 If running on Ubuntu 15.04...
-
 ```ruby
 options = {
   channel: :current,
