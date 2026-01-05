@@ -90,12 +90,26 @@ function Get-ProjectMetadata {
   $metadata_url = new-uri $base_server_uri $metadata_base_url
 
   Write-Verbose "Downloading $project details from $metadata_url"
-  $package_metadata = (Get-WebContent $metadata_url).trim() -split '\n' |
-    foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
-
-  Write-Verbose "Project details: "
-  foreach ($key in $package_metadata.keys) {
-    Write-Verbose "`t$key = $($package_metadata[$key])"
+  $response = (Get-WebContent $metadata_url).trim()
+  
+  # Commercial and trial APIs return JSON, omnitruck returns text format
+  if ($license_id) {
+    # Parse JSON response from commercial/trial API
+    try {
+      $json = $response | ConvertFrom-Json
+      $package_metadata = @{
+        url = $json.url
+        sha256 = $json.sha256
+        version = $json.version
+      }
+      if ($json.sha1) {
+        $package_metadata['sha1'] = $json.sha1
+      }
+    } catch {
+      throw "Failed to parse JSON response from API: $_"
+    }
+  } else {
+    # Parse text response from omnitruck
+    $package_metadata = $response -split '\n' |
+      foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
   }
-  $package_metadata
-}

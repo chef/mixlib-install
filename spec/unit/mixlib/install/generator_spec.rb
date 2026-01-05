@@ -78,6 +78,11 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it_behaves_like "the correct sh script"
+
+      it "uses traditional text parsing for omnitruck without license_id" do
+        expect(install_script).to include("awk '$1 == \"url\" { print $2 }'")
+        expect(install_script).to include("grep '^url' $metadata_filename")
+      end
     end
 
     context "with license_id" do
@@ -93,6 +98,15 @@ context "Mixlib::Install::Generator", :vcr do
 
       it "uses commercial API in metadata fetch" do
         expect(install_script).to include("https://chefdownload-commercial.chef.io")
+      end
+
+      it "includes JSON parsing logic for commercial API" do
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\([^\"]*\)\".*")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\([^\"]*\)\".*")
+      end
+
+      it "checks for JSON format when license_id is present" do
+        expect(install_script).to include("grep -q '^{' \"$metadata_filename\"")
       end
     end
 
@@ -110,6 +124,11 @@ context "Mixlib::Install::Generator", :vcr do
       it "uses trial API in metadata fetch" do
         expect(install_script).to include("https://chefdownload-trial.chef.io")
       end
+
+      it "includes JSON parsing logic for trial API" do
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\([^\"]*\)\".*")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\([^\"]*\)\".*")
+      end
     end
 
     context "with trial- license_id" do
@@ -125,6 +144,11 @@ context "Mixlib::Install::Generator", :vcr do
 
       it "uses trial API in metadata fetch" do
         expect(install_script).to include("https://chefdownload-trial.chef.io")
+      end
+
+      it "includes JSON parsing logic for trial API" do
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\([^\"]*\)\".*")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\([^\"]*\)\".*")
       end
     end
 
@@ -166,6 +190,11 @@ context "Mixlib::Install::Generator", :vcr do
         it "adds omits the architecture param" do
           expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
         end
+
+        it "uses traditional text parsing for omnitruck without license_id" do
+          expect(install_script).to include("-split '\\n'")
+          expect(install_script).to include("$key, $value = $_ -split '\\s+'")
+        end
       end
 
       context "with license_id for PowerShell" do
@@ -190,6 +219,16 @@ context "Mixlib::Install::Generator", :vcr do
         it "uses commercial API in metadata fetch" do
           expect(install_script).to include("https://chefdownload-commercial.chef.io")
         end
+
+        it "includes JSON parsing logic for commercial API" do
+          expect(install_script).to include("ConvertFrom-Json")
+          expect(install_script).to include("$json.url")
+          expect(install_script).to include("$json.sha256")
+        end
+
+        it "includes conditional parsing based on license_id" do
+          expect(install_script).to include("if ($license_id)")
+        end
       end
 
       context "with free- license_id for PowerShell" do
@@ -209,6 +248,12 @@ context "Mixlib::Install::Generator", :vcr do
         it "uses trial API in metadata fetch" do
           expect(install_script).to include("https://chefdownload-trial.chef.io")
         end
+
+        it "includes JSON parsing logic for trial API" do
+          expect(install_script).to include("ConvertFrom-Json")
+          expect(install_script).to include("$json.url")
+          expect(install_script).to include("$json.sha256")
+        end
       end
 
       context "with trial- license_id for PowerShell" do
@@ -227,6 +272,12 @@ context "Mixlib::Install::Generator", :vcr do
 
         it "uses trial API in metadata fetch" do
           expect(install_script).to include("https://chefdownload-trial.chef.io")
+        end
+
+        it "includes JSON parsing logic for trial API" do
+          expect(install_script).to include("ConvertFrom-Json")
+          expect(install_script).to include("$json.url")
+          expect(install_script).to include("$json.sha256")
         end
       end
     end
