@@ -19,30 +19,37 @@
 # The actual filename will come from the Content-Disposition header
 if test "x$license_id" != "x"; then
   # Use content-disposition to get the filename
-  # We'll use a temporary location and rename after we get the real filename
   use_content_disposition="true"
-  # Extract a base filename from URL for temporary use
-  filename=`echo $download_url | sed -e 's/?.*//' | sed -e 's/^.*\///'`
-  # We'll determine filetype after download from the actual filename
-  filetype=""
+  # We don't know the filename yet - it will come from Content-Disposition
+  # Just set the download directory
+  if test "x$cmdline_filename" != "x"; then
+    download_filename="$cmdline_filename"
+    download_dir=`dirname $download_filename`
+    use_content_disposition="false"  # User specified exact filename
+  elif test "x$cmdline_dl_dir" != "x"; then
+    download_dir="$cmdline_dl_dir"
+    download_filename=""  # Will be determined after download
+  else
+    download_dir="$tmp_dir"
+    download_filename=""  # Will be determined after download
+  fi
+  filetype=""  # Will be determined after we get the actual filename
 else
   # Traditional omnitruck URLs have the filename in the URL
   use_content_disposition="false"
   filename=`echo $download_url | sed -e 's/?.*//' | sed -e 's/^.*\///'`
   filetype=`echo $filename | sed -e 's/^.*\.//'`
+  
+  # use either $tmp_dir, the provided directory (-d) or the provided filename (-f)
+  if test "x$cmdline_filename" != "x"; then
+    download_filename="$cmdline_filename"
+  elif test "x$cmdline_dl_dir" != "x"; then
+    download_filename="$cmdline_dl_dir/$filename"
+  else
+    download_filename="$tmp_dir/$filename"
+  fi
+  download_dir=`dirname $download_filename`
 fi
-
-# use either $tmp_dir, the provided directory (-d) or the provided filename (-f)
-if test "x$cmdline_filename" != "x"; then
-  download_filename="$cmdline_filename"
-elif test "x$cmdline_dl_dir" != "x"; then
-  download_filename="$cmdline_dl_dir/$filename"
-else
-  download_filename="$tmp_dir/$filename"
-fi
-
-# ensure the parent directory where we download the installer always exists
-download_dir=`dirname $download_filename`
 (umask 077 && mkdir -p $download_dir) || exit 1
 
 # check if we have that file locally available and if so verify the checksum
@@ -56,12 +63,16 @@ download_dir=`dirname $download_filename`
 cached_file_available="false"
 verify_checksum="true"
 
-if test -f $download_filename; then
+# Skip caching checks when using content-disposition since we don't know the real filename yet
+if test "x$use_content_disposition" = "xtrue"; then
+  cached_file_available="false"
+  verify_checksum="true"
+elif test "x$download_filename" != "x" && test -f "$download_filename"; then
   echo "$download_filename exists"
   cached_file_available="true"
 fi
 
-if test "x$download_url_override" != "x"; then
+if test "x$download_url_override" != "x" && test "x$use_content_disposition" = "xfalse"; then
   echo "Download URL override specified"
   if test "x$cached_file_available" = "xtrue"; then
     echo "Verifying local file"
@@ -92,8 +103,7 @@ fi
 if test "x$cached_file_available" != "xtrue"; then
   if test "x$use_content_disposition" = "xtrue"; then
     # For licensed APIs, download to directory and let server provide filename via Content-Disposition
-    # Download to the target directory
-    download_dir=`dirname $download_filename`
+    # The download_dir was already set during initialization above
     
     # Change to download directory for wget --content-disposition to work
     cd "$download_dir"
