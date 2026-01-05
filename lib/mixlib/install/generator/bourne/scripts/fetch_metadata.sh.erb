@@ -24,8 +24,17 @@ if test "x$download_url_override" = "x"; then
   
   # Use commercial API if license_id is provided, otherwise use omnitruck
   if test "x$license_id" != "x"; then
-    # Commercial API endpoint
-    base_api_url="https://chefdownload-commercial.chef.io"
+    # Check if license_id starts with 'free-' or 'trial-' for trial API
+    case "$license_id" in
+      free-*|trial-*)
+        # Trial API endpoint
+        base_api_url="https://chefdownload-trial.chef.io"
+        ;;
+      *)
+        # Commercial API endpoint
+        base_api_url="https://chefdownload-commercial.chef.io"
+        ;;
+    esac
     metadata_url="$base_api_url/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine&license_id=$license_id"
   else
     # Omnitruck endpoint

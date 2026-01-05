@@ -113,6 +113,81 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
+  context "for trial API with free- license_id" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "18.0.0" }
+    let(:license_id) { "free-abc-def-123" }
+
+    it "uses trial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+    end
+
+    it "detects trial API usage" do
+      expect(package_router.use_trial_api?).to be true
+    end
+
+    it "does not detect commercial API usage" do
+      expect(package_router.use_commercial_api?).to be false
+    end
+
+    it "detects licensed API usage" do
+      expect(package_router.use_licensed_api?).to be true
+    end
+
+    context "with platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "20.04" }
+      let(:architecture) { "x86_64" }
+
+      it "includes license_id in download URL" do
+        # Mock the HTTP request to prevent actual API calls
+        allow(package_router).to receive(:get).and_return({
+          "results" => [{
+            "name" => "chef_18.0.0-1_amd64.deb",
+            "properties" => [
+              { "key" => "omnibus.version", "value" => "18.0.0" },
+              { "key" => "omnibus.platform", "value" => "ubuntu" },
+              { "key" => "omnibus.platform_version", "value" => "20.04" },
+              { "key" => "omnibus.architecture", "value" => "x86_64" },
+              { "key" => "omnibus.project", "value" => "chef" },
+              { "key" => "omnibus.license", "value" => "Apache-2.0" },
+              { "key" => "omnibus.sha256", "value" => "abc123" },
+              { "key" => "omnibus.md5", "value" => "def456" },
+              { "key" => "omnibus.sha1", "value" => "ghi789" }
+            ]
+          }]
+        })
+
+        artifact = artifact_info
+        expect(artifact.url).to include("license_id=#{license_id}")
+      end
+    end
+  end
+
+  context "for trial API with trial- license_id" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "18.0.0" }
+    let(:license_id) { "trial-xyz-789-456" }
+
+    it "uses trial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+    end
+
+    it "detects trial API usage" do
+      expect(package_router.use_trial_api?).to be true
+    end
+
+    it "does not detect commercial API usage" do
+      expect(package_router.use_commercial_api?).to be false
+    end
+
+    it "detects licensed API usage" do
+      expect(package_router.use_licensed_api?).to be true
+    end
+  end
+
   context "without license_id" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
@@ -124,6 +199,14 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
     it "detects no commercial API usage" do
       expect(package_router.use_commercial_api?).to be false
+    end
+
+    it "detects no trial API usage" do
+      expect(package_router.use_trial_api?).to be false
+    end
+
+    it "detects no licensed API usage" do
+      expect(package_router.use_licensed_api?).to be false
     end
   end
 

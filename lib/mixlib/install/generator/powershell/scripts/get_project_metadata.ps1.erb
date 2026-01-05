@@ -65,8 +65,14 @@ function Get-ProjectMetadata {
 
   # Use commercial API if license_id is provided, otherwise use omnitruck
   if ($license_id) {
-    $base_server_uri = 'https://chefdownload-commercial.chef.io'
-    Write-Verbose "Using Commercial API with license ID"
+    # Check if license_id starts with 'free-' or 'trial-' for trial API
+    if ($license_id -match '^(free-|trial-)') {
+      $base_server_uri = 'https://chefdownload-trial.chef.io'
+      Write-Verbose "Using Trial API with license ID"
+    } else {
+      $base_server_uri = 'https://chefdownload-commercial.chef.io'
+      Write-Verbose "Using Commercial API with license ID"
+    }
   }
 
   $metadata_base_url = "/$($channel)/$($project)/metadata"

@@ -96,6 +96,38 @@ context "Mixlib::Install::Generator", :vcr do
       end
     end
 
+    context "with free- license_id" do
+      let(:add_options) do
+        {
+          license_id: "free-trial-abc-123",
+        }
+      end
+
+      it "includes license_id in the script variables" do
+        expect(install_script).to include("license_id=free-trial-abc-123")
+      end
+
+      it "uses trial API in metadata fetch" do
+        expect(install_script).to include("https://chefdownload-trial.chef.io")
+      end
+    end
+
+    context "with trial- license_id" do
+      let(:add_options) do
+        {
+          license_id: "trial-xyz-456",
+        }
+      end
+
+      it "includes license_id in the script variables" do
+        expect(install_script).to include("license_id=trial-xyz-456")
+      end
+
+      it "uses trial API in metadata fetch" do
+        expect(install_script).to include("https://chefdownload-trial.chef.io")
+      end
+    end
+
     context "for windows" do
       shared_examples_for "the correct ps1 script" do
         it "generates a ps1 script" do
@@ -153,6 +185,48 @@ context "Mixlib::Install::Generator", :vcr do
         it "includes license_id parameter in Get-ProjectMetadata function" do
           expect(install_script).to include("[string]")
           expect(install_script).to include("$license_id")
+        end
+
+        it "uses commercial API in metadata fetch" do
+          expect(install_script).to include("https://chefdownload-commercial.chef.io")
+        end
+      end
+
+      context "with free- license_id for PowerShell" do
+        let(:add_options) do
+          {
+            shell_type: :ps1,
+            license_id: "free-trial-789",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "includes license_id in install command" do
+          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id free-trial-789\n/)
+        end
+
+        it "uses trial API in metadata fetch" do
+          expect(install_script).to include("https://chefdownload-trial.chef.io")
+        end
+      end
+
+      context "with trial- license_id for PowerShell" do
+        let(:add_options) do
+          {
+            shell_type: :ps1,
+            license_id: "trial-abc-xyz",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "includes license_id in install command" do
+          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id trial-abc-xyz\n/)
+        end
+
+        it "uses trial API in metadata fetch" do
+          expect(install_script).to include("https://chefdownload-trial.chef.io")
         end
       end
     end
