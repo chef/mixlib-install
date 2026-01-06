@@ -153,13 +153,13 @@ EOF
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
           full_path = File.join(uri.path, url)
-          
+
           # Add license_id as query parameter if using commercial or trial API
           if use_licensed_api?
             separator = full_path.include?("?") ? "&" : "?"
             full_path = "#{full_path}#{separator}license_id=#{options.license_id}"
           end
-          
+
           res = http.request(create_http_request(full_path))
           res.value
           JSON.parse(res.body)
@@ -266,8 +266,7 @@ EOF
         end
 
         def use_trial_api?
-          !options.license_id.nil? && !options.license_id.to_s.empty? && 
-            (options.license_id.start_with?('free-') || options.license_id.start_with?('trial-'))
+          !options.license_id.nil? && !options.license_id.to_s.empty? && options.license_id.start_with?("free-", "trial-")
         end
 
         def use_commercial_api?
