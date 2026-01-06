@@ -104,7 +104,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
               { "key" => "omnibus.md5", "value" => "def456" },
               { "key" => "omnibus.sha1", "value" => "ghi789" }
             ],
-          },]
+          },],
         })
 
         artifact = artifact_info
@@ -156,7 +156,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
               { "key" => "omnibus.md5", "value" => "def456" },
               { "key" => "omnibus.sha1", "value" => "ghi789" }
             ],
-          },]
+          },],
         })
 
         artifact = artifact_info
