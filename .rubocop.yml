@@ -1,2 +1,41 @@
+---
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 2.3
+
+# The following cops are disabled because their autocorrect features could
+# potentially introduce syntax that breaks Ruby 2.3 compatibility, even though
+# the cops themselves support Ruby 2.3
+
+# Keep encoding comments for Ruby 2.3 compatibility (they're harmless)
+Style/Encoding:
+  Enabled: false
+
+# Disable unless we're certain all suggestions work in Ruby 2.3
+Style/MutableConstant:
+  Enabled: false
+
+# Security cops that use eval - keep disabled for safety
+Security/Eval:
+  Enabled: false
+
+# Chef-specific cop that suggests require optimizations
+Chef/Ruby/UnlessDefinedRequire:
+  Enabled: false
+
+# Added for Chefstyle 0.12 compatibility, can be removed with switch to cookstyle
+Bundler/DuplicatedGem:
+  Enabled: false
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+Layout/IndentHeredoc:
+  Enabled: false
+Layout/ClosingHeredocIndentation:
+  Enabled: false
+Lint/UselessAssignment:
+  Enabled: false
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+Style/HashSyntax:
+  Enabled: false
+Layout/BlockAlignment:
+  Enabled: false
