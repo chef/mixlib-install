@@ -101,8 +101,8 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "includes JSON parsing logic for commercial API" do
-        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
-        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*/\\1/p'")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*/\\1/p'")
       end
 
       it "checks for JSON format when license_id is present" do
@@ -151,8 +151,8 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "includes JSON parsing logic for trial API" do
-        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
-        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*/\\1/p'")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*/\\1/p'")
       end
 
       it "sets use_content_disposition flag for trial API" do
@@ -181,8 +181,8 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "includes JSON parsing logic for trial API" do
-        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
-        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*/\\1/p'")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*/\\1/p'")
       end
 
       it "sets use_content_disposition flag for trial API" do
