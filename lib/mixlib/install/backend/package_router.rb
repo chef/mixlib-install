@@ -254,6 +254,30 @@ EOF
           end
         end
 
+        # Public API detection methods for testing
+        def endpoint
+          @endpoint ||= if use_trial_api?
+                          Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+                        elsif use_commercial_api?
+                          Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+                        else
+                          PRODUCT_MATRIX.lookup(options.product_name, options.product_version).api_url
+                        end
+        end
+
+        def use_trial_api?
+          !options.license_id.nil? && !options.license_id.to_s.empty? && 
+            (options.license_id.start_with?('free-') || options.license_id.start_with?('trial-'))
+        end
+
+        def use_commercial_api?
+          !options.license_id.nil? && !options.license_id.to_s.empty? && !use_trial_api?
+        end
+
+        def use_licensed_api?
+          use_trial_api? || use_commercial_api?
+        end
+
         private
 
         # Converts Array<Hash> where the Hash is a key pair and
@@ -278,29 +302,6 @@ EOF
           path << platform_version
           path << filename
           path.join("/")
-        end
-
-        def endpoint
-          @endpoint ||= if use_trial_api?
-                          Mixlib::Install::Dist::TRIAL_API_ENDPOINT
-                        elsif use_commercial_api?
-                          Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
-                        else
-                          PRODUCT_MATRIX.lookup(options.product_name, options.product_version).api_url
-                        end
-        end
-
-        def use_trial_api?
-          !options.license_id.nil? && !options.license_id.to_s.empty? && 
-            (options.license_id.start_with?('free-') || options.license_id.start_with?('trial-'))
-        end
-
-        def use_commercial_api?
-          !options.license_id.nil? && !options.license_id.to_s.empty? && !use_trial_api?
-        end
-
-        def use_licensed_api?
-          use_trial_api? || use_commercial_api?
         end
 
         def omnibus_project

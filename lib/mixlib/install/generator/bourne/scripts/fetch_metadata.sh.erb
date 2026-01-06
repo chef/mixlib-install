@@ -54,8 +54,8 @@ if test "x$download_url_override" = "x"; then
     if grep -q '^{' "$metadata_filename" 2>/dev/null; then
       # Extract url and sha256 from JSON
       # Try using sed for simple JSON parsing (more portable than jq)
-      download_url=`sed -n 's/.*"url":"\([^"]*\)".*/\1/p' "$metadata_filename"`
-      sha256=`sed -n 's/.*"sha256":"\([^"]*\)".*/\1/p' "$metadata_filename"`
+      download_url=`sed -n 's/.*"url":"\([^"]*\)".*\/\1\/p' "$metadata_filename"`
+      sha256=`sed -n 's/.*"sha256":"\([^"]*\)".*\/\1\/p' "$metadata_filename"`
       
       if test "x$download_url" != "x" && test "x$sha256" != "x"; then
         echo "downloaded metadata file looks valid..."

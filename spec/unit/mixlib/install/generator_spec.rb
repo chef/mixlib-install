@@ -101,12 +101,37 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "includes JSON parsing logic for commercial API" do
-        expect(install_script).to include("sed -n 's/.*\"url\":\"\([^\"]*\)\".*")
-        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\([^\"]*\)\".*")
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
       end
 
       it "checks for JSON format when license_id is present" do
         expect(install_script).to include("grep -q '^{' \"$metadata_filename\"")
+      end
+
+      it "sets use_content_disposition flag when license_id is present" do
+        expect(install_script).to include("use_content_disposition=\"true\"")
+      end
+
+      it "includes content-disposition handling in wget" do
+        expect(install_script).to include("--content-disposition")
+      end
+
+      it "includes content-disposition handling in curl" do
+        expect(install_script).to include("-O -J")
+      end
+
+      it "skips caching checks when using content-disposition" do
+        expect(install_script).to include('if test "x$use_content_disposition" = "xtrue"; then')
+        expect(install_script).to include('cached_file_available="false"')
+      end
+
+      it "finds downloaded file after content-disposition download" do
+        expect(install_script).to include("ls -t \"$download_dir\" | head -1")
+      end
+
+      it "extracts filetype from actual downloaded filename" do
+        expect(install_script).to include("filetype=`echo $actual_filename | sed -e 's/^.*\\.//'`")
       end
     end
 
@@ -126,8 +151,17 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "includes JSON parsing logic for trial API" do
-        expect(install_script).to include("sed -n 's/.*\"url\":\"\([^\"]*\)\".*")
-        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\([^\"]*\)\".*")
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
+      end
+
+      it "sets use_content_disposition flag for trial API" do
+        expect(install_script).to include("use_content_disposition=\"true\"")
+      end
+
+      it "skips caching checks when using content-disposition" do
+        expect(install_script).to include('if test "x$use_content_disposition" = "xtrue"; then')
+        expect(install_script).to include('cached_file_available="false"')
       end
     end
 
@@ -147,8 +181,17 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "includes JSON parsing logic for trial API" do
-        expect(install_script).to include("sed -n 's/.*\"url\":\"\([^\"]*\)\".*")
-        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\([^\"]*\)\".*")
+        expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
+        expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*\\/\\1\\/p'")
+      end
+
+      it "sets use_content_disposition flag for trial API" do
+        expect(install_script).to include("use_content_disposition=\"true\"")
+      end
+
+      it "skips caching checks when using content-disposition" do
+        expect(install_script).to include('if test "x$use_content_disposition" = "xtrue"; then')
+        expect(install_script).to include('cached_file_available="false"')
       end
     end
 
