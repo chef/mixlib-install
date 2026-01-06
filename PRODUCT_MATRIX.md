@@ -7,6 +7,7 @@
 | Chef Infra Client | chef |
 | Chef Backend | chef-backend |
 | Chef Foundation | chef-foundation |
+| Chef Infra Client Enterprise | chef-ice |
 | Chef Infra Server | chef-server |
 | Chef Infra Server HA Provisioning for AWS | chef-server-ha-provisioning |
 | Chef Infra Client MacOS Universal | chef-universal |
