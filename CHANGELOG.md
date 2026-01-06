@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.12.32 -->
-## [v3.12.32](https://github.com/chef/mixlib-install/tree/v3.12.32) (2025-05-12)
+<!-- latest_release 3.13.0 -->
+## [v3.13.0](https://github.com/chef/mixlib-install/tree/v3.13.0) (2026-01-06)
 
 #### Merged Pull Requests
-- add myself to codeowners [#401](https://github.com/chef/mixlib-install/pull/401) ([jaymzh](https://github.com/jaymzh))
+- add Hab pkg pathing detection to generated script [#407](https://github.com/chef/mixlib-install/pull/407) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
 <!-- release_rollup since=3.12.30 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- add Hab pkg pathing detection to generated script [#407](https://github.com/chef/mixlib-install/pull/407) ([Stromweld](https://github.com/Stromweld)) <!-- 3.13.0 -->
 - add myself to codeowners [#401](https://github.com/chef/mixlib-install/pull/401) ([jaymzh](https://github.com/jaymzh)) <!-- 3.12.32 -->
 - Download install sh from new download api [#399](https://github.com/chef/mixlib-install/pull/399) ([ashiqueps](https://github.com/ashiqueps)) <!-- 3.12.31 -->
 <!-- release_rollup -->
