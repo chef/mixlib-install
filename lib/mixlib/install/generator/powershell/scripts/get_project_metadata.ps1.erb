@@ -113,3 +113,10 @@ function Get-ProjectMetadata {
     $package_metadata = $response -split '\n' |
       foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
   }
+
+  Write-Verbose "Project details: "
+  foreach ($key in $package_metadata.keys) {
+    Write-Verbose "`t$key = $($package_metadata[$key])"
+  }
+  $package_metadata
+}

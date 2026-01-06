@@ -56,7 +56,10 @@ function Install-Project {
     $checksum,
     # Set to 'once' to skip install if project is detected
     [string]
-    $install_strategy
+    $install_strategy,
+    # License ID for commercial API access
+    [string]
+    $license_id
   )
 
   # Check for chef-client command in various locations
@@ -86,7 +89,7 @@ function Install-Project {
     $download_url = $download_url_override
     $sha256 = $checksum
   } else {
-    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture
+    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -license_id $license_id
     $download_url = $package_metadata.url
     $sha256 = $package_metadata.sha256
   }
