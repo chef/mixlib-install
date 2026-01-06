@@ -12,21 +12,45 @@
 
 ## Supports
 
-- Ruby 1.9.3+
+- Ruby 2.6+
 - Chef 11.6.2+ chef-client upgrades
 
+Ruby support is based on the oldest Ruby that is included in an OS
+that Chef Infra Client currently supports, not including those in
+extended release.
+
+You can see a table of supported platforms and Ruby versions in [this Google Sheet](https://docs.google.com/spreadsheets/d/1G6BCcR2d6CRBG1uTpEtikdwB17jIY00lLQazlSf1fEM/edit?usp=sharing).
+
+As of last update of this README, the data is:
+
+| Ruby version | Supported Until | OSes | Total OS versions |
+| -- | -- | -- | -- |
+| 2.6 | ? | 1 | 3 |
+| 3.0 | 2027-05-31 | 3 | 3 |
+| 3.1 | 2026-06-10 | 1 | 1 |
+| 3.2 | 2029-06-30 | 3 | 4 |
+| 3.3 | 2031-11-01 | 4 | 4 |
+| 3.4 | 2031-07-31 | 2 | 4 |
+
+NOTE: 2.6 has no EOL date because MacOS doesn't have published EOL dates and all currently released MacOS versions ship with Ruby 2.6.
+
+However, see the Google Sheet for the latest information.
+
 ## Command Line Usage
+
+Install the gem:
 
 ```bash
 gem install mixlib-install
 ```
 
+Download latest stable chef for current platform:
+
 ```bash
-# Download latest stable chef for current platform
 mixlib-install download chef
 ```
 
-Run `$ mixlib-install help` for additional commands and options.
+Run `mixlib-install help` for additional commands and options.
 
 ## API Usage
 
