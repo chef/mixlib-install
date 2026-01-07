@@ -90,21 +90,17 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
       it "includes license_id in download URL" do
         # Mock the HTTP request to prevent actual API calls
+        # Commercial/trial APIs return nested hash: platform -> platform_version -> architecture -> package_info
         allow(package_router).to receive(:get).and_return({
-          "results" => [{
-            "name" => "chef_18.0.0-1_amd64.deb",
-            "properties" => [
-              { "key" => "omnibus.version", "value" => "18.0.0" },
-              { "key" => "omnibus.platform", "value" => "ubuntu" },
-              { "key" => "omnibus.platform_version", "value" => "20.04" },
-              { "key" => "omnibus.architecture", "value" => "x86_64" },
-              { "key" => "omnibus.project", "value" => "chef" },
-              { "key" => "omnibus.license", "value" => "Apache-2.0" },
-              { "key" => "omnibus.sha256", "value" => "abc123" },
-              { "key" => "omnibus.md5", "value" => "def456" },
-              { "key" => "omnibus.sha1", "value" => "ghi789" }
-            ],
-          },],
+          "ubuntu" => {
+            "20.04" => {
+              "x86_64" => {
+                "version" => "18.0.0",
+                "sha256" => "abc123",
+                "sha1" => "ghi789",
+              },
+            },
+          },
         })
 
         artifact = artifact_info
@@ -142,21 +138,17 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
       it "includes license_id in download URL" do
         # Mock the HTTP request to prevent actual API calls
+        # Commercial/trial APIs return nested hash: platform -> platform_version -> architecture -> package_info
         allow(package_router).to receive(:get).and_return({
-          "results" => [{
-            "name" => "chef_18.0.0-1_amd64.deb",
-            "properties" => [
-              { "key" => "omnibus.version", "value" => "18.0.0" },
-              { "key" => "omnibus.platform", "value" => "ubuntu" },
-              { "key" => "omnibus.platform_version", "value" => "20.04" },
-              { "key" => "omnibus.architecture", "value" => "x86_64" },
-              { "key" => "omnibus.project", "value" => "chef" },
-              { "key" => "omnibus.license", "value" => "Apache-2.0" },
-              { "key" => "omnibus.sha256", "value" => "abc123" },
-              { "key" => "omnibus.md5", "value" => "def456" },
-              { "key" => "omnibus.sha1", "value" => "ghi789" }
-            ],
-          },],
+          "ubuntu" => {
+            "20.04" => {
+              "x86_64" => {
+                "version" => "18.0.0",
+                "sha256" => "abc123",
+                "sha1" => "ghi789",
+              },
+            },
+          },
         })
 
         artifact = artifact_info
