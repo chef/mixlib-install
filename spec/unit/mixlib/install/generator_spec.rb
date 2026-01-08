@@ -126,8 +126,10 @@ context "Mixlib::Install::Generator", :vcr do
         expect(install_script).to include('cached_file_available="false"')
       end
 
-      it "finds downloaded file after content-disposition download" do
-        expect(install_script).to include("ls -t \"$download_dir\" | head -1")
+      it "downloads to temp file and extracts filename from headers" do
+        expect(install_script).to include('temp_download="$download_dir/chef-download-temp.$$"')
+        expect(install_script).to include("grep -i 'content-disposition'")
+        expect(install_script).to include("mv \"$temp_download\" \"$download_filename\"")
       end
 
       it "extracts filetype from actual downloaded filename" do
@@ -193,13 +195,70 @@ context "Mixlib::Install::Generator", :vcr do
         expect(install_script).to include('if test "x$use_content_disposition" = "xtrue"; then')
         expect(install_script).to include('cached_file_available="false"')
       end
+
+      it "downloads to temp file and extracts filename from headers" do
+        expect(install_script).to include('temp_download="$download_dir/chef-download-temp.$$"')
+        expect(install_script).to include("grep -i 'content-disposition'")
+        expect(install_script).to include("mv \"$temp_download\" \"$download_filename\"")
+      end
+
+      it "includes multiple filename extraction methods" do
+        # Method 1: Content-Disposition header
+        expect(install_script).to include("grep -i 'content-disposition'")
+        expect(install_script).to include("sed -n 's/.*filename=\"\\([^\"]*\\)\".*/\\1/p'")
+
+        # Method 2: Location redirect header
+        expect(install_script).to include("grep -i '^location:'")
+        expect(install_script).to include("sed 's/.*\\///'")
+        expect(install_script).to include("sed 's/?.*//'")
+
+        # Method 3: URL pattern matching
+        expect(install_script).to include("grep -i '\\.rpm\\|\\.deb\\|\\.pkg\\|\\.msi\\|\\.dmg'")
+      end
+
+      it "includes fallback filename construction" do
+        expect(install_script).to include('echo "Warning: Could not extract filename from response headers, using fallback"')
+        expect(install_script).to include('actual_filename="chef-${version}-1.${platform}${platform_version}.${machine}.rpm"')
+        expect(install_script).to include('actual_filename="chef_${version}-1_${machine}.deb"')
+        expect(install_script).to include('actual_filename="chef-${version}.dmg"')
+        expect(install_script).to include('actual_filename="chef-${version}.pkg"')
+      end
+
+      it "extracts filetype from actual downloaded filename" do
+        expect(install_script).to include("filetype=`echo $actual_filename | sed -e 's/^.*\\.//'`")
+      end
+    end
+
+    context "filename extraction for content-disposition" do
+      let(:add_options) do
+        {
+          license_id: "test-license-key-123",
+        }
+      end
+
+      it "includes all three extraction methods in order" do
+        # Verify the extraction logic is ordered correctly
+        script_lines = install_script.split("\n")
+        
+        # Find the indices of each method
+        content_disposition_idx = script_lines.index { |l| l.include?("grep -i 'content-disposition'") && l.include?("sed -n") }
+        location_idx = script_lines.index { |l| l.include?("grep -i '^location:'") && l.include?("sed") }
+        fallback_idx = script_lines.index { |l| l.include?("Warning: Could not extract filename from response headers") }
+
+        # Verify they exist and are in the correct order
+        expect(content_disposition_idx).not_to be_nil
+        expect(location_idx).not_to be_nil
+        expect(fallback_idx).not_to be_nil
+        expect(content_disposition_idx).to be < location_idx
+        expect(location_idx).to be < fallback_idx
+      end
     end
 
     context "for windows" do
       shared_examples_for "the correct ps1 script" do
         it "generates a ps1 script" do
           expect(install_script).to be_a(String)
-          expect(install_script).to start_with("new-module -name Omnitruck -scriptblock")
+          expect(install_script).to start_with("new-module -name Installer-Module -scriptblock")
           expect(install_script).to include("set-alias install -value Install-Project")
         end
       end

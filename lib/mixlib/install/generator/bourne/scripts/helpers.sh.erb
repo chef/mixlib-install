@@ -150,10 +150,12 @@ do_curl() {
   # If filename is empty, use -O and -J to get filename from Content-Disposition header
   if test "x$2" = "x"; then
     curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL -D $tmp_dir/stderr -O -J "$1"
+    rc=$?
   else
     curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL -D $tmp_dir/stderr "$1" > "$2"
+    rc=$?
   fi
-  rc=$?
+  
   # check for 404
   grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null
   if test $? -eq 0; then
@@ -161,7 +163,7 @@ do_curl() {
     http_404_error
   fi
 
-  # check for bad return status (skip empty output check if using content-disposition)
+  # check for bad return status
   if test $rc -ne 0; then
     capture_tmp_stderr "curl"
     return 1

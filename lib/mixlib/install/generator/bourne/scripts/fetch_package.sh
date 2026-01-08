@@ -39,7 +39,7 @@ else
   use_content_disposition="false"
   filename=`echo $download_url | sed -e 's/?.*//' | sed -e 's/^.*\///'`
   filetype=`echo $filename | sed -e 's/^.*\.//'`
-  
+
   # use either $tmp_dir, the provided directory (-d) or the provided filename (-f)
   if test "x$cmdline_filename" != "x"; then
     download_filename="$cmdline_filename"
@@ -102,20 +102,57 @@ fi
 
 if test "x$cached_file_available" != "xtrue"; then
   if test "x$use_content_disposition" = "xtrue"; then
-    # For licensed APIs, download to directory and let server provide filename via Content-Disposition
+    # For licensed APIs, download to a temporary file and extract filename from response headers
     # The download_dir was already set during initialization above
-    
-    # Change to download directory for wget --content-disposition to work
-    cd "$download_dir"
-    do_download "$download_url" ""  # Empty filename - wget will use Content-Disposition
-    
-    # Find the downloaded file (should be the most recently created file)
-    actual_filename=`ls -t "$download_dir" | head -1`
+
+    # Create temp file for download
+    temp_download="$download_dir/chef-download-temp.$$"
+
+    # Download to temp file
+    do_download "$download_url" "$temp_download"
+
+    # Extract filename from response headers (try multiple methods for compatibility)
+    if test -f "$tmp_dir/stderr"; then
+      # Method 1: Try to extract filename from content-disposition header
+      # Format: content-disposition: attachment; filename="chef-18.8.54-1.el9.x86_64.rpm"
+      actual_filename=`grep -i 'content-disposition' $tmp_dir/stderr | sed -n 's/.*filename="\([^"]*\)".*/\1/p' | head -1`
+
+      # Method 2: If content-disposition failed, try to extract from location redirect header
+      # Format: location: https://packages.chef.io/files/stable/chef/18.8.54/el/9/chef-18.8.54-1.el9.x86_64.rpm?licenseId=...
+      if test "x$actual_filename" = "x"; then
+        actual_filename=`grep -i '^location:' $tmp_dir/stderr | head -1 | sed 's/.*\///' | sed 's/?.*//'`
+      fi
+
+      # Method 3: Try extracting from any URL-like pattern in stderr
+      if test "x$actual_filename" = "x"; then
+        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg' $tmp_dir/stderr | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\)\).*/\1/p' | head -1`
+      fi
+    fi
+
+    # If we still couldn't extract from headers, construct filename from metadata
+    if test "x$actual_filename" = "x"; then
+      echo "Warning: Could not extract filename from response headers, using fallback"
+      # Construct a reasonable filename from available metadata
+      # This is a fallback and may not match the exact package name
+      if test "x$platform" = "xel" || test "x$platform" = "xfedora" || test "x$platform" = "xamazon"; then
+        actual_filename="chef-${version}-1.${platform}${platform_version}.${machine}.rpm"
+      elif test "x$platform" = "xdebian" || test "x$platform" = "xubuntu"; then
+        actual_filename="chef_${version}-1_${machine}.deb"
+      elif test "x$platform" = "xmac_os_x"; then
+        actual_filename="chef-${version}.dmg"
+      else
+        actual_filename="chef-${version}.pkg"
+      fi
+    fi
+
     download_filename="$download_dir/$actual_filename"
-    
+
+    # Move temp file to final location
+    mv "$temp_download" "$download_filename"
+
     # Extract filetype from actual filename
     filetype=`echo $actual_filename | sed -e 's/^.*\.//'`
-    
+
     echo "Downloaded as: $download_filename (type: $filetype)"
   else
     # Traditional download with known filename

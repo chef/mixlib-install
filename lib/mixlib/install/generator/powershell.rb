@@ -28,7 +28,7 @@ module Mixlib
           install_project_module << get_script("install_project.ps1")
 
           install_command = []
-          install_command << ps1_modularize(install_project_module.join("\n"), "Omnitruck")
+          install_command << ps1_modularize(install_project_module.join("\n"), "Installer-Module")
           install_command.join("\n\n")
         end
 
@@ -49,7 +49,7 @@ module Mixlib
           install_project_module << get_script("get_project_metadata.ps1")
           install_project_module << get_script("install_project.ps1")
           install_command = []
-          install_command << ps1_modularize(install_project_module.join("\n"), "Omnitruck")
+          install_command << ps1_modularize(install_project_module.join("\n"), "Installer-Module")
           install_command << render_command
           install_command.join("\n\n")
         end
