@@ -239,7 +239,7 @@ context "Mixlib::Install::Generator", :vcr do
       it "includes all three extraction methods in order" do
         # Verify the extraction logic is ordered correctly
         script_lines = install_script.split("\n")
-        
+
         # Find the indices of each method
         content_disposition_idx = script_lines.index { |l| l.include?("grep -i 'content-disposition'") && l.include?("sed -n") }
         location_idx = script_lines.index { |l| l.include?("grep -i '^location:'") && l.include?("sed") }
