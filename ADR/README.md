@@ -14,6 +14,7 @@ An Architectural Decision Record (ADR) is a document that captures an important 
 ## When to write an ADR
 
 Write an ADR when you make a significant decision that impacts:
+
 - System architecture
 - API design and changes
 - Platform support decisions
@@ -79,7 +80,6 @@ Each ADR should follow this structure:
 ### Future Considerations
 
 [Note any future implications or potential follow-up work]
-```
 
 ## Existing ADRs
 
