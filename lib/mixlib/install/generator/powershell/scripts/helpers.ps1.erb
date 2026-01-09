@@ -58,10 +58,10 @@ function Get-WebContent {
 
   try {
     if($PSVersionTable.PSEdition -eq 'Core') {
-      Get-WebContentOnCore $uri $filepath
+      return Get-WebContentOnCore $uri $filepath
     }
     else {
-      Get-WebContentOnFullNet $uri $filepath
+      return Get-WebContentOnFullNet $uri $filepath
     }
   }
   catch {
@@ -98,6 +98,28 @@ function Get-WebContentOnFullNet {
   }
   else {
     $wc.downloadfile($uri, $filepath)
+    
+    # Try to extract filename from Content-Disposition header
+    $contentDisposition = $wc.ResponseHeaders["Content-Disposition"]
+    $extractedFilename = $null
+    
+    if ($contentDisposition) {
+      # Try to match filename="..." or filename*=UTF-8''...
+      if ($contentDisposition -match 'filename="([^"]+)"') {
+        $extractedFilename = $matches[1]
+      }
+      elseif ($contentDisposition -match "filename='([^']+)'") {
+        $extractedFilename = $matches[1]
+      }
+      elseif ($contentDisposition -match "filename=([^;]+)") {
+        $extractedFilename = $matches[1].Trim()
+      }
+    }
+    
+    return @{
+      Filename = $extractedFilename
+      Downloaded = $true
+    }
   }
 }
 
@@ -124,6 +146,19 @@ function Get-WebContentOnCore {
         $downloadedFileStream.Close()
         if ($copyStreamOp.Exception -ne $null) {
           throw $copyStreamOp.Exception
+        }
+        
+        # Try to extract filename from Content-Disposition header
+        $extractedFilename = $null
+        $contentDisposition = $response.Content.Headers.ContentDisposition
+        
+        if ($contentDisposition -and $contentDisposition.FileName) {
+          $extractedFilename = $contentDisposition.FileName.Trim('"')
+        }
+        
+        return @{
+          Filename = $extractedFilename
+          Downloaded = $true
         }
       }
     }

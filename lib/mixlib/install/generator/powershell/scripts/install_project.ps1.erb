@@ -102,7 +102,13 @@ function Install-Project {
     }
   }
   else {
-    $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
+    # For licensed downloads, we won't know the filename until after download
+    if ([string]::IsNullOrEmpty($license_id)) {
+      $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
+    } else {
+      $filename = "chef-download-temp-$PID"
+      Write-Host "Using temporary filename for licensed download: $filename"
+    }
   }
   Write-Host "Download directory: $download_directory"
   Write-Host "Filename: $filename"
@@ -140,7 +146,28 @@ function Install-Project {
   if (-not ($cached_installer_available)) {
     if ($pscmdlet.ShouldProcess("$($download_url)", "Download $project")) {
       Write-Host "Downloading $project from $($download_url) to $download_destination."
-      Get-WebContent $download_url -filepath $download_destination
+      $download_result = Get-WebContent $download_url -filepath $download_destination
+      
+      # For licensed downloads, extract actual filename from Content-Disposition
+      if (-not [string]::IsNullOrEmpty($license_id) -and $download_result -and $download_result.Filename) {
+        $actual_filename = $download_result.Filename
+        Write-Host "Extracted filename from Content-Disposition: $actual_filename"
+        
+        $final_destination = join-path $download_directory $actual_filename
+        
+        # Move temp file to final location with correct name
+        if ($download_destination -ne $final_destination) {
+          Write-Host "Moving to final location: $final_destination"
+          if (test-path $final_destination) {
+            remove-item $final_destination -force
+          }
+          move-item $download_destination $final_destination -force
+          $download_destination = $final_destination
+        }
+      } elseif (-not [string]::IsNullOrEmpty($license_id)) {
+        Write-Host "Warning: Could not extract filename from Content-Disposition header for licensed download."
+        Write-Host "Using temporary filename. Package installation may fail."
+      }
     }
   }
 
