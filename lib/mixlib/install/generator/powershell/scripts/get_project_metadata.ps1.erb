@@ -39,7 +39,10 @@ function Get-ProjectMetadata {
     $nightlies,
     [validateset('auto', 'i386', 'x86_64')]
     [string]
-    $architecture = 'auto'
+    $architecture = 'auto',
+    # License ID for commercial API access
+    [string]
+    $license_id
   )
 
   # The following legacy switches are just aliases for the current channel
@@ -60,17 +63,56 @@ function Get-ProjectMetadata {
   Write-Verbose "Architecture: $architecture"
   Write-Verbose "Project: $project"
 
+  # Use commercial API if license_id is provided, otherwise use omnitruck
+  if ($license_id) {
+    # Check if license_id starts with 'free-' or 'trial-' for trial API
+    if ($license_id -match '^(free-|trial-)') {
+      $base_server_uri = 'https://chefdownload-trial.chef.io'
+      Write-Verbose "Using Trial API with license ID"
+    } else {
+      $base_server_uri = 'https://chefdownload-commercial.chef.io'
+      Write-Verbose "Using Commercial API with license ID"
+    }
+  }
+
   $metadata_base_url = "/$($channel)/$($project)/metadata"
   $metadata_array = ("?v=$($version)",
     "p=$platform",
     "pv=$platform_version",
     "m=$architecture")
+  
+  # Add license_id to query parameters if provided
+  if ($license_id) {
+    $metadata_array += "license_id=$license_id"
+  }
+  
   $metadata_base_url += [string]::join('&', $metadata_array)
   $metadata_url = new-uri $base_server_uri $metadata_base_url
 
   Write-Verbose "Downloading $project details from $metadata_url"
-  $package_metadata = (Get-WebContent $metadata_url).trim() -split '\n' |
-    foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
+  $response = (Get-WebContent $metadata_url).trim()
+  
+  # Commercial and trial APIs return JSON, omnitruck returns text format
+  if ($license_id) {
+    # Parse JSON response from commercial/trial API
+    try {
+      $json = $response | ConvertFrom-Json
+      $package_metadata = @{
+        url = $json.url
+        sha256 = $json.sha256
+        version = $json.version
+      }
+      if ($json.sha1) {
+        $package_metadata['sha1'] = $json.sha1
+      }
+    } catch {
+      throw "Failed to parse JSON response from API: $_"
+    }
+  } else {
+    # Parse text response from omnitruck
+    $package_metadata = $response -split '\n' |
+      foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
+  }
 
   Write-Verbose "Project details: "
   foreach ($key in $package_metadata.keys) {

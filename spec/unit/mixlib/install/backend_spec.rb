@@ -178,4 +178,84 @@ context "Mixlib::Install::Backend", :vcr do
       end
     end
   end
+
+  context "with license_id for commercial API" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+    let(:product_version) { :latest }
+    let(:license_id) { "test-license-key-789" }
+
+    let(:info_with_license) do
+      Mixlib::Install.new(
+        channel: channel,
+        product_name: product_name,
+        product_version: product_version,
+        license_id: license_id
+      )
+    end
+
+    it "accepts license_id parameter" do
+      expect(info_with_license.options.license_id).to eq license_id
+    end
+
+    it "uses commercial API backend" do
+      backend = Mixlib::Install::Backend.backend(info_with_license.options)
+      expect(backend.use_commercial_api?).to be true
+      expect(backend.endpoint).to eq Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+    end
+  end
+
+  context "with free- license_id for trial API" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+    let(:product_version) { :latest }
+    let(:license_id) { "free-trial-license-123" }
+
+    let(:info_with_trial_license) do
+      Mixlib::Install.new(
+        channel: channel,
+        product_name: product_name,
+        product_version: product_version,
+        license_id: license_id
+      )
+    end
+
+    it "accepts license_id parameter" do
+      expect(info_with_trial_license.options.license_id).to eq license_id
+    end
+
+    it "uses trial API backend" do
+      backend = Mixlib::Install::Backend.backend(info_with_trial_license.options)
+      expect(backend.use_trial_api?).to be true
+      expect(backend.use_commercial_api?).to be false
+      expect(backend.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+    end
+  end
+
+  context "with trial- license_id for trial API" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+    let(:product_version) { :latest }
+    let(:license_id) { "trial-xyz-456" }
+
+    let(:info_with_trial_license) do
+      Mixlib::Install.new(
+        channel: channel,
+        product_name: product_name,
+        product_version: product_version,
+        license_id: license_id
+      )
+    end
+
+    it "accepts license_id parameter" do
+      expect(info_with_trial_license.options.license_id).to eq license_id
+    end
+
+    it "uses trial API backend" do
+      backend = Mixlib::Install::Backend.backend(info_with_trial_license.options)
+      expect(backend.use_trial_api?).to be true
+      expect(backend.use_commercial_api?).to be false
+      expect(backend.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+    end
+  end
 end

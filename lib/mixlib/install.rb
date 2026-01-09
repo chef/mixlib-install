@@ -98,14 +98,53 @@ module Mixlib
       artifact = artifact_info
 
       FileUtils.mkdir_p directory
-      file = File.join(directory, File.basename(artifact.url))
 
+      # Handle the full URL including query string and redirects
       uri = URI.parse(artifact.url)
-      Net::HTTP.start(uri.host) do |http|
-        resp = http.get(uri.path)
-        open(file, "wb") do |io|
-          io.write(resp.body)
+      filename = nil
+      final_body = nil
+
+      Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
+        # Build the request path including query string
+        request_path = uri.path
+        request_path += "?#{uri.query}" if uri.query
+
+        # Get the response, following redirects
+        response = http.request_get(request_path)
+
+        # Follow redirects
+        redirect_limit = 5
+        while response.is_a?(Net::HTTPRedirection) && redirect_limit > 0
+          redirect_uri = URI.parse(response["location"])
+          # Handle relative redirects
+          redirect_uri = uri + redirect_uri if redirect_uri.relative?
+
+          Net::HTTP.start(redirect_uri.host, redirect_uri.port, use_ssl: redirect_uri.scheme == "https") do |redirect_http|
+            redirect_path = redirect_uri.path
+            redirect_path += "?#{redirect_uri.query}" if redirect_uri.query
+            response = redirect_http.request_get(redirect_path)
+
+            # Try to get filename from Content-Disposition or final URL
+            if response["content-disposition"]
+              filename = response["content-disposition"][/filename="?([^"]+)"?/, 1]
+            else
+              filename = File.basename(redirect_uri.path)
+            end
+          end
+
+          redirect_limit -= 1
         end
+
+        final_body = response.body
+      end
+
+      # Use the extracted filename or fall back to basename of original URL
+      filename ||= File.basename(uri.path)
+      file = File.join(directory, filename)
+
+      # Write the final response body to file
+      File.open(file, "wb") do |io|
+        io.write(final_body)
       end
 
       file

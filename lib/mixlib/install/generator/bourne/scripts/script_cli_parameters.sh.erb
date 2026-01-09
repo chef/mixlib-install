@@ -12,13 +12,14 @@
 # $install_strategy: Method of package installations. default strategy is to always install upon exec. Set to "once" to skip if project is installed
 # $download_url_override: Install package downloaded from a direct URL.
 # $checksum: SHA256 for download_url_override file (optional)
+# $license_id: License ID for commercial API access (optional)
 ############
 
 # Defaults
 channel="stable"
 project="<%= default_product %>"
 
-while getopts pnv:c:f:P:d:s:l:a opt
+while getopts pnv:c:f:P:d:s:l:a:L: opt
 do
   case "$opt" in
 
@@ -32,9 +33,10 @@ do
     s)  install_strategy="$OPTARG";;
     l)  download_url_override="$OPTARG";;
     a)  checksum="$OPTARG";;
+    L)  license_id="$OPTARG";;
     \?)   # unknown flag
       echo >&2 \
-      "usage: $0 [-P project] [-c release_channel] [-v version] [-f filename | -d download_dir] [-s install_strategy] [-l download_url_override] [-a checksum]"
+      "usage: $0 [-P project] [-c release_channel] [-v version] [-f filename | -d download_dir] [-s install_strategy] [-l download_url_override] [-a checksum] [-L license_id]"
       exit 1;;
   esac
 done

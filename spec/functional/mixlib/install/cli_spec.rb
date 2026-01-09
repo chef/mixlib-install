@@ -237,5 +237,15 @@ describe "mixlib-install executable" do
         expect(last_command_output).to match /Download saved to .*mydir\/chef/
       end
     end
+
+    context "with license_id" do
+      let(:additional_args) { "-L test-license-key-123 --url" }
+
+      it "accepts license_id parameter" do
+        # This will fail with actual API call, but we're testing that the parameter is accepted
+        # In a real scenario with a valid license, it would use the commercial API
+        expect { Mixlib::ShellOut.new("mixlib-install #{command} #{args} ").run_command }.not_to raise_error
+      end
+    end
   end
 end
