@@ -169,7 +169,7 @@ EOF
               end
             end
           rescue Net::HTTPServerException => e
-            if e.message =~ /404/
+            if e.message.match?(/404/)
               return []
             else
               raise e
@@ -233,7 +233,7 @@ EOF
               software_dependencies = metadata.fetch("version_manifest", {})
                                         .fetch("software", nil)
             rescue Net::HTTPServerException => e
-              if e.message =~ /404/
+              if e.message.match?(/404/)
                 license_content, software_dependencies = nil
               else
                 raise e

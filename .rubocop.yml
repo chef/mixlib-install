@@ -18,10 +18,6 @@ Style/MutableConstant:
 Security/Eval:
   Enabled: false
 
-# Chef-specific cop that suggests require optimizations
-Chef/Ruby/UnlessDefinedRequire:
-  Enabled: false
-
 # Added for Chefstyle 0.12 compatibility, can be removed with switch to cookstyle
 Bundler/DuplicatedGem:
   Enabled: false
