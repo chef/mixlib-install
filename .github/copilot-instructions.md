@@ -43,8 +43,8 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
 ## Code Style & Conventions
 
 ### RuboCop Configuration
-- TargetRubyVersion: 2.7 (set in `.rubocop.yml`)
-- Note: While RuboCop targets 2.7, code must remain compatible with Ruby 2.6+
+- TargetRubyVersion: 2.6 (set in `.rubocop.yml`)
+- Note: RuboCop targets 2.6 to match the minimum supported Ruby version
 - Uses `chefstyle` gem version ~> 0.4.0
 - Run style checks: `bundle exec rake style`
 

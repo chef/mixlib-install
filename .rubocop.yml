@@ -1,16 +1,16 @@
 ---
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.6
 
 # The following cops are disabled because their autocorrect features could
-# potentially introduce syntax that breaks Ruby 2.3 compatibility, even though
-# the cops themselves support Ruby 2.3
+# potentially introduce syntax that breaks Ruby 2.6 compatibility, even though
+# the cops themselves support Ruby 2.6
 
-# Keep encoding comments for Ruby 2.3 compatibility (they're harmless)
+# Keep encoding comments for Ruby 2.6 compatibility (they're harmless)
 Style/Encoding:
   Enabled: false
 
-# Disable unless we're certain all suggestions work in Ruby 2.3
+# Disable unless we're certain all suggestions work in Ruby 2.6
 Style/MutableConstant:
   Enabled: false
 
