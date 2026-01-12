@@ -2,7 +2,7 @@
 
 Signal.trap("INT") { exit 1 }
 
-$:.push File.expand_path("../lib", __FILE__)
+$:.push File.expand_path("../../lib", __FILE__)
 $stdout.sync = true
 
 require "mixlib/install/cli"
