@@ -324,3 +324,6 @@ VCR is a tool that helps cache and replay http responses. When these responses c
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+# Copyright
+See [COPYRIGHT.md](./COPYRIGHT.md).
