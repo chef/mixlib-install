@@ -35,6 +35,11 @@ module Mixlib
         say Mixlib::Install.available_versions(product_name, channel).join("\n")
       end
 
+      desc "list-products", "list available products"
+      def list_products
+        say PRODUCT_MATRIX.products.join("\n")
+      end
+
       desc "download PRODUCT_NAME", "download an artifact"
       option :channel,
         default: :stable,
@@ -66,6 +71,7 @@ If no earlier version is found the earliest version available will be set.",
       option :attributes,
         desc: "Print artifact attributes",
         type: :boolean
+
       def download(product_name)
         # Set minimum options
         mixlib_install_options = {
@@ -114,6 +120,7 @@ If no earlier version is found the earliest version available will be set.",
         aliases: ["-t"],
         default: "sh",
         enum: Mixlib::Install::Options::SUPPORTED_SHELL_TYPES.map(&:to_s)
+
       def install_script
         context = {}
         context[:base_url] = options[:endpoint] if options[:endpoint]
