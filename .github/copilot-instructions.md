@@ -20,13 +20,13 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
    - NO endless methods (Ruby 3.0+)
    - Use Ruby 2.6-compatible syntax as the baseline
 
-2. **Dependency Version Constraints**
+1. **Dependency Version Constraints**
    - Always use version-conditional dependency constraints in gemspec
    - Follow the existing pattern for Ruby version-specific dependencies (see `openssl` gem constraints in gemspec)
    - Consider backward compatibility when adding new dependencies
    - Check Gemfile for Ruby version-specific gem constraints before adding dependencies
 
-3. **Standard Library Compatibility**
+1. **Standard Library Compatibility**
    - Be cautious with stdlib changes across Ruby versions
    - Test with methods available in Ruby 2.6
    - Avoid relying on gems that dropped support for Ruby 2.6+
@@ -76,22 +76,22 @@ All Ruby files should include the Apache 2.0 license header:
    - Provides `artifact_info`, `available_versions`, `install_command`, `download_artifact` methods
    - Delegates to Backend for API interactions
 
-2. **Options** (`lib/mixlib/install/options.rb`)
+1. **Options** (`lib/mixlib/install/options.rb`)
    - Validates and normalizes user input
    - Supports EXTRA_PRODUCTS_FILE environment variable for custom products
    - Key options: channel, product_name, product_version, platform, platform_version, architecture, license_id
    - **license_id**: Enables commercial/trial API access for licensed Chef products
 
-3. **Product Matrix** (`lib/mixlib/install/product_matrix.rb`)
+1. **Product Matrix** (`lib/mixlib/install/product_matrix.rb`)
    - DSL for defining product metadata
    - Extensible via EXTRA_PRODUCTS_FILE
    - Run `bundle exec rake matrix` to update PRODUCT_MATRIX.md after changes
 
-4. **Backend** (`lib/mixlib/install/backend/`)
+1. **Backend** (`lib/mixlib/install/backend/`)
    - Package Router backend for Chef's package API
    - Handles API communication with packages.chef.io
 
-5. **Generators** (`lib/mixlib/install/generator/`)
+1. **Generators** (`lib/mixlib/install/generator/`)
    - Bourne shell (install.sh) generator with Content-Disposition header support
    - PowerShell (install.ps1) generator with JSON API response parsing
    - Supports proxy configuration, download_url_override, and license_id
@@ -102,7 +102,7 @@ All Ruby files should include the Apache 2.0 license header:
      - Uses Content-Disposition headers for filename extraction
      - Implements temp file download approach with multiple filename extraction methods
 
-6. **Artifact Info** (`lib/mixlib/install/artifact_info.rb`)
+1. **Artifact Info** (`lib/mixlib/install/artifact_info.rb`)
    - Represents package metadata
    - Includes platform, version, URL, checksum, license info
 
@@ -150,12 +150,12 @@ When adding test dependencies, follow this pattern.
    - Run `bundle exec rake matrix` to update documentation
    - Add tests in `spec/unit/mixlib/install/product_spec.rb`
 
-2. **Platform Support**
+1. **Platform Support**
    - Update `lib/mixlib/install/options.rb` SUPPORTED_ARCHITECTURES if needed
    - Add platform detection logic in `lib/mixlib/install/util.rb`
    - Update install script generators if platform-specific logic needed
 
-3. **API Changes**
+1. **API Changes**
    - Maintain backward compatibility
    - Add deprecation warnings before removing features
    - Update README.md with examples
@@ -172,8 +172,8 @@ When adding test dependencies, follow this pattern.
 
 #### Adding Dependencies to Gemspec
 1. Consider minimum Ruby version compatibility
-2. Use version constraints with Ruby version conditionals if needed
-3. Example pattern (from gemspec):
+1. Use version constraints with Ruby version conditionals if needed
+1. Example pattern (from gemspec):
 ```ruby
 if RUBY_VERSION < "2.7.0"
   spec.add_dependency "openssl", ">= 3.1.2", "< 3.2.0"
@@ -224,8 +224,8 @@ The library includes sophisticated platform version compatibility logic:
   - Downloads to temp file: `chef-download-temp.$$`
   - Extracts filename from HTTP response headers (3 methods):
     1. Content-Disposition header: `attachment; filename="..."`
-    2. Location redirect header: Extract from redirect URL
-    3. URL pattern matching: Search for `.rpm|.deb|.pkg|.msi|.dmg` patterns
+    1. Location redirect header: Extract from redirect URL
+    1. URL pattern matching: Search for `.rpm|.deb|.pkg|.msi|.dmg` patterns
   - Fallback: Constructs filename from platform metadata if extraction fails
   - Renames temp file to extracted/constructed filename
   - Works with all download methods: wget, curl, fetch, perl, python
@@ -321,13 +321,13 @@ Commercial and trial APIs return endpoint URLs that use HTTP Content-Disposition
 
 **Implementation Details**:
 1. **Detection**: `use_content_disposition="true"` when `license_id` is present
-2. **Download Strategy**: Use temp file with process ID suffix: `chef-download-temp.$$`
-3. **Filename Extraction** (3 methods, attempted in order):
+1. **Download Strategy**: Use temp file with process ID suffix: `chef-download-temp.$$`
+1. **Filename Extraction** (3 methods, attempted in order):
    - Parse `Content-Disposition` header: `filename="chef-18.8.54-1.el9.x86_64.rpm"`
    - Parse `Location` redirect header: Extract filename from redirect URL
    - Pattern matching: Search stderr output for `.rpm|.deb|.pkg|.msi|.dmg` extensions
-4. **Fallback Construction**: Build filename from platform metadata if extraction fails
-5. **File Rename**: Move temp file to final location with extracted/constructed filename
+1. **Fallback Construction**: Build filename from platform metadata if extraction fails
+1. **File Rename**: Move temp file to final location with extracted/constructed filename
 
 **Cross-Platform Compatibility**: This approach works with all download methods:
 - `wget` (with `--content-disposition` flag as secondary approach)
@@ -339,32 +339,32 @@ Commercial and trial APIs return endpoint URLs that use HTTP Content-Disposition
 ### Testing Commercial/Trial API Features
 When adding or modifying commercial/trial API functionality:
 1. Test with `license_id` starting with `free-` (trial API)
-2. Test with `license_id` starting with `trial-` (trial API)
-3. Test with standard license ID format (commercial API)
-4. Verify JSON parsing in both Bourne shell (sed) and PowerShell (ConvertFrom-Json)
-5. Test filename extraction with various response header formats
-6. Verify fallback filename construction for each platform type
+1. Test with `license_id` starting with `trial-` (trial API)
+1. Test with standard license ID format (commercial API)
+1. Verify JSON parsing in both Bourne shell (sed) and PowerShell (ConvertFrom-Json)
+1. Test filename extraction with various response header formats
+1. Verify fallback filename construction for each platform type
 
 ## Common Pitfalls to Avoid
 
 1. **Don't use Ruby 2.7+ features** - Always consider Ruby 2.6 compatibility
-2. **Don't assume gem availability** - Check version constraints in Gemfile first
-3. **Don't break the Product Matrix DSL** - It's critical for product definitions
-4. **Don't skip `rake matrix`** - Must run after modifying product_matrix.rb
-5. **Don't hardcode URLs** - Use product definitions and API lookups
-6. **Don't ignore platform compatibility** - Test across platforms when possible
-7. **Don't add dependencies without version constraints** - Especially for Ruby 2.6+ support
-8. **Don't assume filename in URL** - Commercial/trial APIs use Content-Disposition headers
-9. **Don't break temp file download approach** - Required for license_id support across all download methods
+1. **Don't assume gem availability** - Check version constraints in Gemfile first
+1. **Don't break the Product Matrix DSL** - It's critical for product definitions
+1. **Don't skip `rake matrix`** - Must run after modifying product_matrix.rb
+1. **Don't hardcode URLs** - Use product definitions and API lookups
+1. **Don't ignore platform compatibility** - Test across platforms when possible
+1. **Don't add dependencies without version constraints** - Especially for Ruby 2.6+ support
+1. **Don't assume filename in URL** - Commercial/trial APIs use Content-Disposition headers
+1. **Don't break temp file download approach** - Required for license_id support across all download methods
 
 ## Documentation Requirements
 
 When making changes:
 1. Update README.md with API examples if public interface changes
-2. Update CHANGELOG.md (handled by Expeditor)
-3. Run `rake matrix` if products changed
-4. Add code comments for complex compatibility logic
-5. Document Ruby version requirements for new features
+1. Update CHANGELOG.md (handled by Expeditor)
+1. Run `rake matrix` if products changed
+1. Add code comments for complex compatibility logic
+1. Document Ruby version requirements for new features
 
 ## Performance Considerations
 
@@ -376,18 +376,18 @@ When making changes:
 ## Security Considerations
 
 1. **Checksum Verification**: Always provide/verify SHA256 checksums
-2. **HTTPS**: Use secure connections to packages.chef.io
-3. **OpenSSL**: Maintain up-to-date openssl gem constraints (see gemspec)
-4. **Proxy Support**: Respect proxy settings in secure environments
-5. **License Content**: Handle license_content securely (may contain sensitive info)
+1. **HTTPS**: Use secure connections to packages.chef.io
+1. **OpenSSL**: Maintain up-to-date openssl gem constraints (see gemspec)
+1. **Proxy Support**: Respect proxy settings in secure environments
+1. **License Content**: Handle license_content securely (may contain sensitive info)
 
 ## Release Process
 
 1. Merge PR to main branch
-2. Expeditor automatically bumps version (unless skip label)
-3. Expeditor builds gem
-4. Manual promotion triggers RubyGems publish
-5. GitHub release created with version tag (v{{version}})
+1. Expeditor automatically bumps version (unless skip label)
+1. Expeditor builds gem
+1. Manual promotion triggers RubyGems publish
+1. GitHub release created with version tag (v{{version}})
 
 ## Getting Help
 
