@@ -6,13 +6,12 @@ function Get-PlatformVersion {
 
   $platform_version = switch ($osVersion) {
     # Windows Server build numbers from: https://betawiki.net/wiki/Microsoft_Windows
+    { $_ -ge [version]'10.0.26100' } { '2025';   break }
     { $_ -ge [version]'10.0.20145' } { '2022';   break }
     { $_ -ge [version]'10.0.17609' } { '2019';   break }
     { $_ -ge [version]'10.0.0'     } { '2016';   break }
     { $_ -ge [version]'6.3.0'      } { '2012r2'; break }
     { $_ -ge [version]'6.2.0'      } { '2012';   break }
-    { $_ -ge [version]'6.1.0'      } { '2008r2'; break }
-    { $_ -ge [version]'6.0.0'      } { '2008';   break }
   }
 
   if(Test-Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels') {
@@ -98,11 +97,11 @@ function Get-WebContentOnFullNet {
   }
   else {
     $wc.downloadfile($uri, $filepath)
-    
+
     # Try to extract filename from Content-Disposition header
     $contentDisposition = $wc.ResponseHeaders["Content-Disposition"]
     $extractedFilename = $null
-    
+
     if ($contentDisposition) {
       # Try to match filename="..." or filename*=UTF-8''...
       if ($contentDisposition -match 'filename="([^"]+)"') {
@@ -115,7 +114,7 @@ function Get-WebContentOnFullNet {
         $extractedFilename = $matches[1].Trim()
       }
     }
-    
+
     return @{
       Filename = $extractedFilename
       Downloaded = $true
@@ -147,15 +146,15 @@ function Get-WebContentOnCore {
         if ($copyStreamOp.Exception -ne $null) {
           throw $copyStreamOp.Exception
         }
-        
+
         # Try to extract filename from Content-Disposition header
         $extractedFilename = $null
         $contentDisposition = $response.Content.Headers.ContentDisposition
-        
+
         if ($contentDisposition -and $contentDisposition.FileName) {
           $extractedFilename = $contentDisposition.FileName.Trim('"')
         }
-        
+
         return @{
           Filename = $extractedFilename
           Downloaded = $true
