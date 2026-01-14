@@ -1,28 +1,25 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.14.0 -->
-## [v3.14.0](https://github.com/chef/mixlib-install/tree/v3.14.0) (2026-01-14)
-
-#### Merged Pull Requests
-- add commercial api support [#408](https://github.com/chef/mixlib-install/pull/408) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
-<!-- release_rollup since=3.13.0 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- add commercial api support [#408](https://github.com/chef/mixlib-install/pull/408) ([Stromweld](https://github.com/Stromweld)) <!-- 3.14.0 -->
-- Add `list-products` subcommand [#413](https://github.com/chef/mixlib-install/pull/413) ([jaymzh](https://github.com/jaymzh)) <!-- 3.13.2 -->
-- Now that tests are in GHA, drop buildkite [#411](https://github.com/chef/mixlib-install/pull/411) ([jaymzh](https://github.com/jaymzh)) <!-- 3.13.1 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.14.0](https://github.com/chef/mixlib-install/tree/v3.14.0) (2026-01-14)
+
+#### Merged Pull Requests
+- Now that tests are in GHA, drop buildkite [#411](https://github.com/chef/mixlib-install/pull/411) ([jaymzh](https://github.com/jaymzh))
+- Add `list-products` subcommand [#413](https://github.com/chef/mixlib-install/pull/413) ([jaymzh](https://github.com/jaymzh))
+- add commercial api support [#408](https://github.com/chef/mixlib-install/pull/408) ([Stromweld](https://github.com/Stromweld))
+<!-- latest_stable_release -->
+
 ## [v3.13.0](https://github.com/chef/mixlib-install/tree/v3.13.0) (2026-01-07)
 
 #### Merged Pull Requests
 - Download install sh from new download api [#399](https://github.com/chef/mixlib-install/pull/399) ([ashiqueps](https://github.com/ashiqueps))
 - add myself to codeowners [#401](https://github.com/chef/mixlib-install/pull/401) ([jaymzh](https://github.com/jaymzh))
 - add Hab pkg pathing detection to generated script [#407](https://github.com/chef/mixlib-install/pull/407) ([Stromweld](https://github.com/Stromweld))
-<!-- latest_stable_release -->
 
 ## [v3.12.30](https://github.com/chef/mixlib-install/tree/v3.12.30) (2024-02-14)
 
