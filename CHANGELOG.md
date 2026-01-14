@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.13.2 -->
-## [v3.13.2](https://github.com/chef/mixlib-install/tree/v3.13.2) (2026-01-13)
+<!-- latest_release 3.14.0 -->
+## [v3.14.0](https://github.com/chef/mixlib-install/tree/v3.14.0) (2026-01-14)
 
 #### Merged Pull Requests
-- Add `list-products` subcommand [#413](https://github.com/chef/mixlib-install/pull/413) ([jaymzh](https://github.com/jaymzh))
+- add commercial api support [#408](https://github.com/chef/mixlib-install/pull/408) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
 <!-- release_rollup since=3.13.0 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- add commercial api support [#408](https://github.com/chef/mixlib-install/pull/408) ([Stromweld](https://github.com/Stromweld)) <!-- 3.14.0 -->
 - Add `list-products` subcommand [#413](https://github.com/chef/mixlib-install/pull/413) ([jaymzh](https://github.com/jaymzh)) <!-- 3.13.2 -->
 - Now that tests are in GHA, drop buildkite [#411](https://github.com/chef/mixlib-install/pull/411) ([jaymzh](https://github.com/jaymzh)) <!-- 3.13.1 -->
 <!-- release_rollup -->
