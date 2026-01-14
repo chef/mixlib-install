@@ -1,31 +1,22 @@
-function Get-ProjectMetadata {
+function Get-ProjectFileName {
   <#
     .SYNOPSIS
-    Get metadata for a Chef Software, Inc. project
+    Get filename for a Chef Software, Inc. project package
     .DESCRIPTION
-    Get metadata for project
+    Get the actual filename for a project package from the download API
     .EXAMPLE
-    iex (new-object net.webclient).downloadstring('<%= base_url %>/install.ps1'); Get-ProjectMetadata -project chef -channel stable
+    Get-ProjectFileName -project chef -channel stable -version latest
 
-    Gets the download url and SHA256 checksum for the latest stable release of Chef.
-    .EXAMPLE
-    iex (irm '<%= base_url %>/install.ps1'); Get-ProjectMetadata -project chefdk -channel stable -version 0.8.0
-
-    Gets the download url and SHA256 checksum for ChefDK 0.8.0.
+    Gets the filename for the latest stable release of Chef.
   #>
   [cmdletbinding()]
   param (
-    # Base url to retrieve metadata from.
-    [uri]$base_server_uri = '<%= base_url %>',
-    [string]
+    # Base url to retrieve filename from.
+    [uri]$base_server_uri = '<%= omnitruck_endpoint %>',
     # Project to install
     [string]
     $project = 'chef',
     # Version of the application to install
-    # This parameter is optional, if not supplied it will provide the latest version,
-    # and if an iteration number is not specified, it will grab the latest available iteration.
-    # Partial version numbers are also acceptable (using v=11
-    # will grab the latest 11.x client which matches the other flags).
     [string]
     $version,
     # Release channel to install from
@@ -74,22 +65,22 @@ function Get-ProjectMetadata {
 
   # Use commercial API if license_id is provided, otherwise use omnitruck
   if ($license_id) {
+    # Check if license_id starts with 'free-' or 'trial-' for trial API
     $base_server_uri = '<%= omnitruck_endpoint %>'
-    Write-Verbose "Using New Download API at $base_server_uri"
   }
 
-  $metadata_base_url = "/$($channel)/$($project)/metadata"
+  $filename_base_url = "/$($channel)/$($project)/filename"
 
   # chef-ice uses different parameters
   if ($project -eq 'chef-ice') {
-    $metadata_array = @(
+    $filename_array = @(
       "?v=$($version)",
       "p=$platform",
       "m=$architecture",
       "pm=msi"
     )
   } else {
-    $metadata_array = @(
+    $filename_array = @(
       "?v=$($version)",
       "p=$platform",
       "pv=$platform_version",
@@ -99,40 +90,32 @@ function Get-ProjectMetadata {
 
   # Add license_id to query parameters if provided
   if ($license_id) {
-    $metadata_array += "license_id=$license_id"
+    $filename_array += "license_id=$license_id"
   }
 
-  $metadata_base_url += [string]::join('&', $metadata_array)
-  $metadata_url = new-uri $base_server_uri $metadata_base_url
+  $filename_base_url += [string]::join('&', $filename_array)
+  $filename_url = new-uri $base_server_uri $filename_base_url
 
-  Write-Verbose "Downloading $project details from $metadata_url"
-  $response = (Get-WebContent $metadata_url).trim()
+  Write-Verbose "Downloading $project filename from $filename_url"
+  $response = (Get-WebContent $filename_url).trim()
 
   # Commercial and trial APIs return JSON, omnitruck returns text format
   if ($license_id) {
     # Parse JSON response from commercial/trial API
     try {
       $json = $response | ConvertFrom-Json
-      $package_metadata = @{
-        url = $json.url
-        sha256 = $json.sha256
-        version = $json.version
-      }
-      if ($json.sha1) {
-        $package_metadata['sha1'] = $json.sha1
+      $package_filename = @{
+        filename = $json.filename
       }
     } catch {
       throw "Failed to parse JSON response from API: $_"
     }
   } else {
-    # Parse text response from omnitruck
-    $package_metadata = $response -split '\n' |
-      foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
+    # Parse text response from omnitruck (if needed in future)
+    # For now, omnitruck doesn't have a filename endpoint
+    throw "Filename endpoint requires license_id parameter"
   }
 
-  Write-Verbose "Project details: "
-  foreach ($key in $package_metadata.keys) {
-    Write-Verbose "`t$key = $($package_metadata[$key])"
-  }
-  $package_metadata
+  Write-Verbose "Filename: $($package_filename.filename)"
+  $package_filename
 }

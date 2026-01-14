@@ -7,6 +7,7 @@
 # $version: Requested version to be installed.
 # $channel: Channel to install the product from
 # $project: Project to be installed
+# $package-manager: Package manager used to install the product.
 # $cmdline_filename: Name of the package downloaded on local disk.
 # $cmdline_dl_dir: Name of the directory downloaded package will be saved to on local disk.
 # $install_strategy: Method of package installations. default strategy is to always install upon exec. Set to "once" to skip if project is installed
@@ -18,8 +19,9 @@
 # Defaults
 channel="stable"
 project="<%= default_product %>"
+package_manager=""
 
-while getopts pnv:c:f:P:d:s:l:a:L: opt
+while getopts pnv:c:f:P:d:s:l:a:L:i: opt
 do
   case "$opt" in
 
@@ -34,11 +36,19 @@ do
     l)  download_url_override="$OPTARG";;
     a)  checksum="$OPTARG";;
     L)  license_id="$OPTARG";;
+    i)  package_manager="$OPTARG";;
     \?)   # unknown flag
       echo >&2 \
-      "usage: $0 [-P project] [-c release_channel] [-v version] [-f filename | -d download_dir] [-s install_strategy] [-l download_url_override] [-a checksum] [-L license_id]"
+      "usage: $0 [-P project] [-c release_channel] [-v version] [-f filename | -d download_dir] [-s install_strategy] [-l download_url_override] [-a checksum] [-L license_id] [-i package_manager]"
       exit 1;;
   esac
 done
 
 shift `expr $OPTIND - 1`
+
+if test -d "/opt/$project" && test "x$install_strategy" = "xonce"; then
+  echo "$project installation detected"
+  echo "install_strategy set to 'once'"
+  echo "Nothing to install"
+  exit
+fi
