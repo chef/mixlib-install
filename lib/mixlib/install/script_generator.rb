@@ -224,7 +224,7 @@ module Mixlib
       end
 
       def windows_metadata_url
-        base = if omnibus_url =~ %r{/install.sh$}
+        base = if omnibus_url.match?(%r{/install.sh$})
                  "#{File.dirname(omnibus_url)}/"
                end
 

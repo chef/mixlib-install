@@ -8,6 +8,10 @@ module Mixlib
       PRODUCT_ENDPOINT = "https://packages.chef.io".freeze
       # Omnitruck endpoint
       OMNITRUCK_ENDPOINT = "https://omnitruck.chef.io".freeze
+      # Commercial API endpoint
+      COMMERCIAL_API_ENDPOINT = "https://chefdownload-commercial.chef.io".freeze
+      # Trial API endpoint
+      TRIAL_API_ENDPOINT = "https://chefdownload-trial.chef.io".freeze
       # Default product name
       DEFAULT_PRODUCT = "chef".freeze
       # Default download page URL

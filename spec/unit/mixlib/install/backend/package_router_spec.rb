@@ -31,6 +31,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:user_agent_headers) { nil }
   let(:pv_compat) { nil }
   let(:include_metadata) { nil }
+  let(:license_id) { nil }
 
   let(:options) do
     {}.tap do |opt|
@@ -43,6 +44,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       opt[:platform] = platform if platform
       opt[:platform_version] = platform_version if platform_version
       opt[:architecture] = architecture if architecture
+      opt[:license_id] = license_id if license_id
     end
   end
 
@@ -64,6 +66,139 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       it "returns properly sorted list of available_versions" do
         expect(idx_12_20_3).to be < idx_13_0_118
       end
+    end
+  end
+
+  context "for commercial API with license_id" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "18.0.0" }
+    let(:license_id) { "test-license-key-123" }
+
+    it "uses commercial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+    end
+
+    it "detects commercial API usage" do
+      expect(package_router.use_commercial_api?).to be true
+    end
+
+    context "with platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "20.04" }
+      let(:architecture) { "x86_64" }
+
+      it "includes license_id in download URL" do
+        # Mock the HTTP request to prevent actual API calls
+        # Commercial/trial APIs return nested hash: platform -> platform_version -> architecture -> package_info
+        allow(package_router).to receive(:get).and_return({
+          "ubuntu" => {
+            "20.04" => {
+              "x86_64" => {
+                "version" => "18.0.0",
+                "sha256" => "abc123",
+                "sha1" => "ghi789",
+              },
+            },
+          },
+        })
+
+        artifact = artifact_info
+        expect(artifact.url).to include("license_id=#{license_id}")
+      end
+    end
+  end
+
+  context "for trial API with free- license_id" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "18.0.0" }
+    let(:license_id) { "free-abc-def-123" }
+
+    it "uses trial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+    end
+
+    it "detects trial API usage" do
+      expect(package_router.use_trial_api?).to be true
+    end
+
+    it "does not detect commercial API usage" do
+      expect(package_router.use_commercial_api?).to be false
+    end
+
+    it "detects licensed API usage" do
+      expect(package_router.use_licensed_api?).to be true
+    end
+
+    context "with platform info" do
+      let(:platform) { "ubuntu" }
+      let(:platform_version) { "20.04" }
+      let(:architecture) { "x86_64" }
+
+      it "includes license_id in download URL" do
+        # Mock the HTTP request to prevent actual API calls
+        # Commercial/trial APIs return nested hash: platform -> platform_version -> architecture -> package_info
+        allow(package_router).to receive(:get).and_return({
+          "ubuntu" => {
+            "20.04" => {
+              "x86_64" => {
+                "version" => "18.0.0",
+                "sha256" => "abc123",
+                "sha1" => "ghi789",
+              },
+            },
+          },
+        })
+
+        artifact = artifact_info
+        expect(artifact.url).to include("license_id=#{license_id}")
+      end
+    end
+  end
+
+  context "for trial API with trial- license_id" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "18.0.0" }
+    let(:license_id) { "trial-xyz-789-456" }
+
+    it "uses trial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+    end
+
+    it "detects trial API usage" do
+      expect(package_router.use_trial_api?).to be true
+    end
+
+    it "does not detect commercial API usage" do
+      expect(package_router.use_commercial_api?).to be false
+    end
+
+    it "detects licensed API usage" do
+      expect(package_router.use_licensed_api?).to be true
+    end
+  end
+
+  context "without license_id" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "18.0.0" }
+
+    it "uses standard endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::PRODUCT_ENDPOINT
+    end
+
+    it "detects no commercial API usage" do
+      expect(package_router.use_commercial_api?).to be false
+    end
+
+    it "detects no trial API usage" do
+      expect(package_router.use_trial_api?).to be false
+    end
+
+    it "detects no licensed API usage" do
+      expect(package_router.use_licensed_api?).to be false
     end
   end
 

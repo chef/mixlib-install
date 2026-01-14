@@ -64,7 +64,17 @@ module Mixlib
         #
         # @return [Array<Array<Hash>] Build records for available versions
         def versions
-          items = get("/api/v1/#{options.channel}/#{omnibus_project}/versions")["results"]
+          # Commercial and trial APIs use a different URL structure
+          if use_licensed_api?
+            # Response is a JSON array of version strings
+            version_list = get("/#{options.channel}/#{omnibus_project}/versions/all")
+            # Convert to the expected format with properties
+            items = version_list.map do |version|
+              { "properties" => [{ "key" => "omnibus.version", "value" => version }] }
+            end
+          else
+            items = get("/api/v1/#{options.channel}/#{omnibus_project}/versions")["results"]
+          end
 
           # Circumvent early when there are no product artifacts in a specific channel
           if items.empty?
@@ -80,7 +90,7 @@ EOF
           # always complete. In fact we should not do this since for some arcane
           # builds like Chef Client 10.X we do not have build record created in
           # artifactory.
-          if options.channel == :unstable
+          if options.channel == :unstable && !use_licensed_api?
             # We check if "artifacts" field contains something since it is only
             # populated with the build record if "artifact.module.build" exists.
             items.reject! { |i| i["artifacts"].nil? }
@@ -123,22 +133,47 @@ EOF
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         def artifacts_for_version(version)
           begin
-            results = get("/api/v1/#{options.channel}/#{omnibus_project}/#{version}/artifacts")["results"]
+            if use_licensed_api?
+              # Commercial/trial APIs use the packages endpoint which returns metadata for all platforms
+              query = "v=#{version}"
+              packages_hash = get("/#{options.channel}/#{omnibus_project}/packages?#{query}")
+              # Response is a nested hash: platform -> platform_version -> architecture -> package_info
+              # Flatten it to an array of package metadata objects
+              results = []
+              packages_hash.each do |platform, platform_versions|
+                platform_versions.each do |platform_version, architectures|
+                  architectures.each do |arch, pkg_info|
+                    results << {
+                      "omnibus.version" => pkg_info["version"],
+                      "omnibus.platform" => platform,
+                      "omnibus.platform_version" => platform_version,
+                      "omnibus.architecture" => arch,
+                      "omnibus.project" => omnibus_project,
+                      "omnibus.license" => "Apache-2.0",
+                      "omnibus.sha256" => pkg_info["sha256"],
+                      "omnibus.sha1" => pkg_info.fetch("sha1", ""),
+                      "omnibus.md5" => pkg_info.fetch("md5", ""),
+                    }
+                  end
+                end
+              end
+            else
+              results = get("/api/v1/#{options.channel}/#{omnibus_project}/#{version}/artifacts")["results"]
+              # Merge artifactory properties to a flat Hash
+              results.collect! do |result|
+                {
+                  "filename" => result["name"],
+                }.merge(
+                  map_properties(result["properties"])
+                )
+              end
+            end
           rescue Net::HTTPServerException => e
-            if e.message =~ /404/
+            if e.message.match?(/404/)
               return []
             else
               raise e
             end
-          end
-
-          # Merge artifactory properties to a flat Hash
-          results.collect! do |result|
-            {
-              "filename" => result["name"],
-            }.merge(
-              map_properties(result["properties"])
-            )
           end
 
           # Convert results to build records
@@ -153,6 +188,13 @@ EOF
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
           full_path = File.join(uri.path, url)
+
+          # Add license_id as query parameter if using commercial or trial API
+          if use_licensed_api?
+            separator = full_path.include?("?") ? "&" : "?"
+            full_path = "#{full_path}#{separator}license_id=#{options.license_id}"
+          end
+
           res = http.request(create_http_request(full_path))
           res.value
           JSON.parse(res.body)
@@ -191,7 +233,7 @@ EOF
               software_dependencies = metadata.fetch("version_manifest", {})
                                         .fetch("software", nil)
             rescue Net::HTTPServerException => e
-              if e.message =~ /404/
+              if e.message.match?(/404/)
                 license_content, software_dependencies = nil
               else
                 raise e
@@ -202,11 +244,22 @@ EOF
           end
 
           # create the download path with the correct endpoint
-          base_url = if use_compat_download_url_endpoint?(platform, platform_version)
-                       COMPAT_DOWNLOAD_URL_ENDPOINT
-                     else
-                       endpoint
-                     end
+          if use_licensed_api?
+            # Commercial/trial APIs use the download endpoint with query parameters
+            # Construct platform parameters
+            p_param = platform
+            pv_param = platform_version
+            m_param = Util.normalize_architecture(artifact_map["omnibus.architecture"])
+            v_param = artifact_map["omnibus.version"]
+            download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}&pv=#{pv_param}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
+          else
+            base_url = if use_compat_download_url_endpoint?(platform, platform_version)
+                         COMPAT_DOWNLOAD_URL_ENDPOINT
+                       else
+                         endpoint
+                       end
+            download_url = "#{base_url}/#{chef_standard_path}"
+          end
 
           ArtifactInfo.new(
             architecture:          Util.normalize_architecture(artifact_map["omnibus.architecture"]),
@@ -220,7 +273,7 @@ EOF
             sha1:                  artifact_map["omnibus.sha1"],
             sha256:                artifact_map["omnibus.sha256"],
             software_dependencies: software_dependencies,
-            url:                   "#{base_url}/#{chef_standard_path}",
+            url:                   download_url,
             version:               artifact_map["omnibus.version"]
           )
         end
@@ -239,6 +292,29 @@ EOF
           else
             false
           end
+        end
+
+        # Public API detection methods for testing
+        def endpoint
+          @endpoint ||= if use_trial_api?
+                          Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+                        elsif use_commercial_api?
+                          Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+                        else
+                          PRODUCT_MATRIX.lookup(options.product_name, options.product_version).api_url
+                        end
+        end
+
+        def use_trial_api?
+          !options.license_id.nil? && !options.license_id.to_s.empty? && options.license_id.start_with?("free-", "trial-")
+        end
+
+        def use_commercial_api?
+          !options.license_id.nil? && !options.license_id.to_s.empty? && !use_trial_api?
+        end
+
+        def use_licensed_api?
+          use_trial_api? || use_commercial_api?
         end
 
         private
@@ -265,10 +341,6 @@ EOF
           path << platform_version
           path << filename
           path.join("/")
-        end
-
-        def endpoint
-          @endpoint ||= PRODUCT_MATRIX.lookup(options.product_name, options.product_version).api_url
         end
 
         def omnibus_project

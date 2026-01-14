@@ -43,5 +43,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Chef Install Test
+      - name: Chef Omnibus download Test
         run: bundle exec mixlib-install download chef
+      - name: Chef Licensed download Test
+        run: bundle exec mixlib-install download chef -L free-79df705d-b685-419a-8b68-88401f74ff72-3999

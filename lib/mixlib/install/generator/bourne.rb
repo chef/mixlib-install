@@ -57,16 +57,21 @@ module Mixlib
         end
 
         def render_variables
-          <<EOS
+          vars = <<EOS
 project=#{options.product_name}
 version=#{options.product_version}
 channel=#{options.channel}
-#{install_command_vars}
 EOS
+          # Add license_id if provided
+          if options.license_id && !options.license_id.to_s.empty?
+            vars += "license_id=#{options.license_id}\n"
+          end
+          vars += install_command_vars
+          vars
         end
 
         def install_command_vars
-          return if options.install_command_options.nil?
+          return "" if options.install_command_options.nil?
           options.install_command_options.map { |key, value| "#{key}='#{value}'" }.join("\n")
         end
       end

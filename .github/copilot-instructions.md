@@ -8,9 +8,9 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
 ## Ruby Version Support Strategy
 
 ### Supported Ruby Versions
-- **Minimum**: Ruby 2.3+
-- **Target Range**: Ruby 2.3 through Ruby 3.4+
-- **Testing Focus**: Maintain backward compatibility with Ruby 2.3+ while supporting latest Ruby releases
+- **Minimum**: Ruby 2.6+
+- **Target Range**: Ruby 2.6 through Ruby 3.4+
+- **Testing Focus**: Maintain backward compatibility with Ruby 2.6+ while supporting latest Ruby releases
 
 ### Critical Compatibility Rules
 
@@ -18,30 +18,33 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
    - NO numbered parameters `_1, _2` (Ruby 2.7+)
    - NO pattern matching (Ruby 2.7+)
    - NO endless methods (Ruby 3.0+)
-   - Use Ruby 2.3-compatible syntax as the baseline
+   - Use Ruby 2.6-compatible syntax as the baseline
 
-2. **Dependency Version Constraints**
+1. **Dependency Version Constraints**
    - Always use version-conditional dependency constraints in gemspec
    - Follow the existing pattern for Ruby version-specific dependencies (see `openssl` gem constraints in gemspec)
    - Consider backward compatibility when adding new dependencies
    - Check Gemfile for Ruby version-specific gem constraints before adding dependencies
 
-3. **Standard Library Compatibility**
+1. **Standard Library Compatibility**
    - Be cautious with stdlib changes across Ruby versions
-   - Test with methods available in Ruby 2.3
-   - Avoid relying on gems that dropped support for Ruby 2.3+
-   - Ruby 2.3 features that are safe to use:
+   - Test with methods available in Ruby 2.6
+   - Avoid relying on gems that dropped support for Ruby 2.6+
+   - Ruby 2.6 features that are safe to use:
      - Safe navigation operator (`&.`)
      - Squiggly heredoc (`<<~`)
      - `dig` method on Hash and Array
      - `grep_v` on Enumerable
      - Frozen string literal comment
+     - Endless ranges: `(1..)`
+     - `Enumerable#chain`
+     - `Kernel#then`
 
 ## Code Style & Conventions
 
 ### RuboCop Configuration
-- TargetRubyVersion: 2.7 (set in `.rubocop.yml`)
-- Note: While RuboCop targets 2.7, code must remain compatible with Ruby 2.3+
+- TargetRubyVersion: 2.6 (set in `.rubocop.yml`)
+- Note: RuboCop targets 2.6 to match the minimum supported Ruby version
 - Uses `chefstyle` gem version ~> 0.4.0
 - Run style checks: `bundle exec rake style`
 
@@ -73,26 +76,33 @@ All Ruby files should include the Apache 2.0 license header:
    - Provides `artifact_info`, `available_versions`, `install_command`, `download_artifact` methods
    - Delegates to Backend for API interactions
 
-2. **Options** (`lib/mixlib/install/options.rb`)
+1. **Options** (`lib/mixlib/install/options.rb`)
    - Validates and normalizes user input
    - Supports EXTRA_PRODUCTS_FILE environment variable for custom products
-   - Key options: channel, product_name, product_version, platform, platform_version, architecture
+   - Key options: channel, product_name, product_version, platform, platform_version, architecture, license_id
+   - **license_id**: Enables commercial/trial API access for licensed Chef products
 
-3. **Product Matrix** (`lib/mixlib/install/product_matrix.rb`)
+1. **Product Matrix** (`lib/mixlib/install/product_matrix.rb`)
    - DSL for defining product metadata
    - Extensible via EXTRA_PRODUCTS_FILE
    - Run `bundle exec rake matrix` to update PRODUCT_MATRIX.md after changes
 
-4. **Backend** (`lib/mixlib/install/backend/`)
+1. **Backend** (`lib/mixlib/install/backend/`)
    - Package Router backend for Chef's package API
    - Handles API communication with packages.chef.io
 
-5. **Generators** (`lib/mixlib/install/generator/`)
-   - Bourne shell (install.sh) generator
-   - PowerShell (install.ps1) generator
-   - Supports proxy configuration and download_url_override
+1. **Generators** (`lib/mixlib/install/generator/`)
+   - Bourne shell (install.sh) generator with Content-Disposition header support
+   - PowerShell (install.ps1) generator with JSON API response parsing
+   - Supports proxy configuration, download_url_override, and license_id
+   - **Commercial/Trial API Support**: When license_id is provided, uses specialized download endpoints
+     - Trial API: `https://chefdownload-trial.chef.io` (for license IDs starting with `free-` or `trial-`)
+     - Commercial API: `https://chefdownload-commercial.chef.io` (for other license IDs)
+     - Returns JSON responses instead of text format
+     - Uses Content-Disposition headers for filename extraction
+     - Implements temp file download approach with multiple filename extraction methods
 
-6. **Artifact Info** (`lib/mixlib/install/artifact_info.rb`)
+1. **Artifact Info** (`lib/mixlib/install/artifact_info.rb`)
    - Represents package metadata
    - Includes platform, version, URL, checksum, license info
 
@@ -140,12 +150,12 @@ When adding test dependencies, follow this pattern.
    - Run `bundle exec rake matrix` to update documentation
    - Add tests in `spec/unit/mixlib/install/product_spec.rb`
 
-2. **Platform Support**
+1. **Platform Support**
    - Update `lib/mixlib/install/options.rb` SUPPORTED_ARCHITECTURES if needed
    - Add platform detection logic in `lib/mixlib/install/util.rb`
    - Update install script generators if platform-specific logic needed
 
-3. **API Changes**
+1. **API Changes**
    - Maintain backward compatibility
    - Add deprecation warnings before removing features
    - Update README.md with examples
@@ -162,8 +172,8 @@ When adding test dependencies, follow this pattern.
 
 #### Adding Dependencies to Gemspec
 1. Consider minimum Ruby version compatibility
-2. Use version constraints with Ruby version conditionals if needed
-3. Example pattern (from gemspec):
+1. Use version constraints with Ruby version conditionals if needed
+1. Example pattern (from gemspec):
 ```ruby
 if RUBY_VERSION < "2.7.0"
   spec.add_dependency "openssl", ">= 3.1.2", "< 3.2.0"
@@ -210,17 +220,31 @@ The library includes sophisticated platform version compatibility logic:
 - Supports: http_proxy, https_proxy, ftp_proxy, no_proxy
 - Platform detection for Linux/Unix systems
 - Generated via `lib/mixlib/install/generator/bourne.rb`
+- **Content-Disposition Support**: When `license_id` is provided:
+  - Downloads to temp file: `chef-download-temp.$$`
+  - Extracts filename from HTTP response headers (3 methods):
+    1. Content-Disposition header: `attachment; filename="..."`
+    1. Location redirect header: Extract from redirect URL
+    1. URL pattern matching: Search for `.rpm|.deb|.pkg|.msi|.dmg` patterns
+  - Fallback: Constructs filename from platform metadata if extraction fails
+  - Renames temp file to extracted/constructed filename
+  - Works with all download methods: wget, curl, fetch, perl, python
 
 ### PowerShell (install.ps1)
 - Supports: http_proxy
 - Windows platform support
 - TLS negotiation for older .NET versions
 - Generated via `lib/mixlib/install/generator/powershell.rb`
+- **JSON API Response**: When `license_id` is provided:
+  - Parses JSON responses with `ConvertFrom-Json`
+  - Extracts `url` and `sha256` from JSON object
+  - Automatically routes to trial or commercial API based on license_id prefix
 
 ### Script Options
 - `download_url_override`: Direct URL instead of API lookup
 - `checksum`: SHA256 for verification
 - `install_strategy`: "once" to skip if already installed
+- `license_id`: License ID for commercial/trial API access (format: `free-*`, `trial-*`, or standard license ID)
 
 ## API Usage Patterns
 
@@ -262,24 +286,85 @@ When implementing features, ensure this extensibility is maintained.
 - Linux tests: `.expeditor/run_linux_tests.sh`
 - Windows tests: `.expeditor/run_windows_tests.ps1`
 
+## Commercial and Trial API Integration
+
+### Overview
+Mixlib::Install supports Chef's commercial and trial licensing APIs, which provide authenticated access to Chef products for licensed customers.
+
+### API Endpoints
+- **Trial API**: `https://chefdownload-trial.chef.io`
+  - Used when `license_id` starts with `free-` or `trial-`
+  - Returns JSON responses with download URLs
+- **Commercial API**: `https://chefdownload-commercial.chef.io`
+  - Used for standard license IDs
+  - Returns JSON responses with download URLs
+- **Traditional Omnitruck**: `https://omnitruck.chef.io`
+  - Used when no `license_id` is provided
+  - Returns text-based metadata responses
+
+### Response Format Differences
+- **Commercial/Trial APIs**: JSON format
+  ```json
+  {
+    "url": "https://...",
+    "sha256": "abc123..."
+  }
+  ```
+- **Omnitruck API**: Text format
+  ```
+  url\thttp://...
+  sha256\tabc123...
+  ```
+
+### Content-Disposition Header Handling
+Commercial and trial APIs return endpoint URLs that use HTTP Content-Disposition headers to specify the actual filename, rather than including the filename in the URL path.
+
+**Implementation Details**:
+1. **Detection**: `use_content_disposition="true"` when `license_id` is present
+1. **Download Strategy**: Use temp file with process ID suffix: `chef-download-temp.$$`
+1. **Filename Extraction** (3 methods, attempted in order):
+   - Parse `Content-Disposition` header: `filename="chef-18.8.54-1.el9.x86_64.rpm"`
+   - Parse `Location` redirect header: Extract filename from redirect URL
+   - Pattern matching: Search stderr output for `.rpm|.deb|.pkg|.msi|.dmg` extensions
+1. **Fallback Construction**: Build filename from platform metadata if extraction fails
+1. **File Rename**: Move temp file to final location with extracted/constructed filename
+
+**Cross-Platform Compatibility**: This approach works with all download methods:
+- `wget` (with `--content-disposition` flag as secondary approach)
+- `curl` (with `-O -J` flags as secondary approach)
+- `fetch` (FreeBSD)
+- `perl` (LWP::Simple)
+- `python` (urllib2)
+
+### Testing Commercial/Trial API Features
+When adding or modifying commercial/trial API functionality:
+1. Test with `license_id` starting with `free-` (trial API)
+1. Test with `license_id` starting with `trial-` (trial API)
+1. Test with standard license ID format (commercial API)
+1. Verify JSON parsing in both Bourne shell (sed) and PowerShell (ConvertFrom-Json)
+1. Test filename extraction with various response header formats
+1. Verify fallback filename construction for each platform type
+
 ## Common Pitfalls to Avoid
 
-1. **Don't use Ruby 2.4+ features** - Always consider Ruby 2.3 compatibility
-2. **Don't assume gem availability** - Check version constraints in Gemfile first
-3. **Don't break the Product Matrix DSL** - It's critical for product definitions
-4. **Don't skip `rake matrix`** - Must run after modifying product_matrix.rb
-5. **Don't hardcode URLs** - Use product definitions and API lookups
-6. **Don't ignore platform compatibility** - Test across platforms when possible
-7. **Don't add dependencies without version constraints** - Especially for Ruby 2.3+ support
+1. **Don't use Ruby 2.7+ features** - Always consider Ruby 2.6 compatibility
+1. **Don't assume gem availability** - Check version constraints in Gemfile first
+1. **Don't break the Product Matrix DSL** - It's critical for product definitions
+1. **Don't skip `rake matrix`** - Must run after modifying product_matrix.rb
+1. **Don't hardcode URLs** - Use product definitions and API lookups
+1. **Don't ignore platform compatibility** - Test across platforms when possible
+1. **Don't add dependencies without version constraints** - Especially for Ruby 2.6+ support
+1. **Don't assume filename in URL** - Commercial/trial APIs use Content-Disposition headers
+1. **Don't break temp file download approach** - Required for license_id support across all download methods
 
 ## Documentation Requirements
 
 When making changes:
 1. Update README.md with API examples if public interface changes
-2. Update CHANGELOG.md (handled by Expeditor)
-3. Run `rake matrix` if products changed
-4. Add code comments for complex compatibility logic
-5. Document Ruby version requirements for new features
+1. Update CHANGELOG.md (handled by Expeditor)
+1. Run `rake matrix` if products changed
+1. Add code comments for complex compatibility logic
+1. Document Ruby version requirements for new features
 
 ## Performance Considerations
 
@@ -291,18 +376,18 @@ When making changes:
 ## Security Considerations
 
 1. **Checksum Verification**: Always provide/verify SHA256 checksums
-2. **HTTPS**: Use secure connections to packages.chef.io
-3. **OpenSSL**: Maintain up-to-date openssl gem constraints (see gemspec)
-4. **Proxy Support**: Respect proxy settings in secure environments
-5. **License Content**: Handle license_content securely (may contain sensitive info)
+1. **HTTPS**: Use secure connections to packages.chef.io
+1. **OpenSSL**: Maintain up-to-date openssl gem constraints (see gemspec)
+1. **Proxy Support**: Respect proxy settings in secure environments
+1. **License Content**: Handle license_content securely (may contain sensitive info)
 
 ## Release Process
 
 1. Merge PR to main branch
-2. Expeditor automatically bumps version (unless skip label)
-3. Expeditor builds gem
-4. Manual promotion triggers RubyGems publish
-5. GitHub release created with version tag (v{{version}})
+1. Expeditor automatically bumps version (unless skip label)
+1. Expeditor builds gem
+1. Manual promotion triggers RubyGems publish
+1. GitHub release created with version tag (v{{version}})
 
 ## Getting Help
 
@@ -333,11 +418,11 @@ When making changes:
 
 ---
 
-**Remember**: When in doubt about Ruby version compatibility, check the Gemfile and gemspec for version-specific patterns, and test with Ruby 2.3+ when possible. The goal is maximum compatibility (Ruby 2.3+) without sacrificing functionality.
+**Remember**: When in doubt about Ruby version compatibility, check the Gemfile and gemspec for version-specific patterns, and test with Ruby 2.6+ when possible. The goal is maximum compatibility (Ruby 2.6+) without sacrificing functionality.
 
-### Ruby 2.3+ Feature Reference
+### Ruby 2.6+ Feature Reference
 
-#### Safe to Use (Ruby 2.3+)
+#### Safe to Use (Ruby 2.6+)
 - Safe navigation operator: `object&.method`
 - Squiggly heredoc: `<<~TEXT`
 - `Hash#dig`, `Array#dig`
@@ -345,25 +430,19 @@ When making changes:
 - `Hash#fetch_values`
 - `Hash#to_proc`
 - Frozen string literal pragma: `# frozen_string_literal: true`
-
-#### Avoid (Ruby 2.4+)
+- Endless ranges: `(1..)` 
+- `Enumerable#chain`
+- `Kernel#then`
 - `Integer#digits`
 - `Comparable#clamp`
 - `String#match?`, `Regexp#match?`
 - Multiple assignment in conditionals
-
-#### Avoid (Ruby 2.5+)
 - `yield_self` / `then`
-- `Kernel#yield_self`
 - `rescue` in blocks without `begin`
-
-#### Avoid (Ruby 2.6+)
-- Endless ranges: `(1..)`
-- `Enumerable#chain`
-- `Kernel#then`
 
 #### Avoid (Ruby 2.7+)
 - Numbered parameters: `_1`, `_2`
 - Pattern matching
 - `Enumerable#filter_map`
 - `Enumerable#tally`
+- Method reference operator: `.:`

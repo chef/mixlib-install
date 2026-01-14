@@ -47,6 +47,11 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "chef"
   end
 
+  product "chef-ice" do
+    product_name "Chef Infra Client Enterprise"
+    package_name "chef-ice"
+  end
+
   product "chef-foundation" do
     product_name "Chef Foundation"
     package_name "chef-foundation"
