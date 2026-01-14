@@ -46,7 +46,7 @@ elif test -f "/etc/Eos-release"; then
 elif test -f "/etc/redhat-release"; then
   platform=`sed 's/^\(.\+\) release.*/\1/' /etc/redhat-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release`
-  
+
   if test "$platform" = "rocky linux"; then
   	source /etc/os-release
  	os="${REDHAT_SUPPORT_PRODUCT}"
@@ -206,7 +206,58 @@ if test "x$platform" = "xsolaris2"; then
   export PATH
 fi
 
-echo "$platform $platform_version $machine"
+determine_package_type() {
+  case "$platform" in
+    "debian"|"ubuntu"|"linuxmint")
+      echo "deb"
+      ;;
+    "centos"|"redhat"|"fedora"|"rocky"|"amazon"|"el")
+      echo "rpm"
+      ;;
+    "sles"|"opensuseleap")
+      echo "rpm"
+      ;;
+    "aix")
+      echo "bff"
+      ;;
+    "solaris2")
+      echo "pkg"
+      ;;
+    "mac_os_x")
+      echo "dmg"
+      ;;
+    *)
+      echo "Unknown package type"
+      report_bug
+      exit 1
+      ;;
+  esac
+}
+
+if [ "$package_manager" = "tar" ]; then
+  echo "Error: Script generation is not supported package_manager 'tar'."
+  exit 1
+fi
+
+# Ensure the package_manager field is correctly set based on the -i flag or dynamically determined.
+if [ "$project" = "chef-ice" ]; then
+  if [ -z "$package_manager" ]; then
+    package_manager=$(determine_package_type)
+    platform="linux"
+    platform_version="pv"
+  else
+    package_manager="$package_manager"
+    platform="linux"
+    platform_version="pv"
+  fi
+else
+  package_manager="pm"
+fi
+
+if [ "$project" = "migrate-ice" ]; then
+  echo "Error: Script generation is not supported for the product 'migrate-ice'."
+  exit 1
+fi
 
 ############
 # end of platform_detection.sh

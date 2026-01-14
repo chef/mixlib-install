@@ -57,10 +57,27 @@ function Install-Project {
     # Set to 'once' to skip install if project is detected
     [string]
     $install_strategy,
+    # Package manager type
+    [validateset('msi', 'pm')]
+    [string]
+    $package_manager,
     # License ID for commercial API access
     [string]
     $license_id
   )
+
+  # Set package_manager for chef-ice
+  if ($project -eq 'chef-ice') {
+    $package_manager = 'msi'
+    $platform_version = 'pv'
+  } else {
+    $package_manager = 'pm'
+  }
+
+  # Validate unsupported projects
+  if ($project -eq 'migrate-ice') {
+    throw "The project 'migrate-ice' is not supported by this script."
+  }
 
   # Check for chef-client command in various locations
   $chef_locations = @(
@@ -89,7 +106,7 @@ function Install-Project {
     $download_url = $download_url_override
     $sha256 = $checksum
   } else {
-    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -license_id $license_id
+    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -package_manager $package_manager -license_id $license_id
     $download_url = $package_metadata.url
     $sha256 = $package_metadata.sha256
   }
@@ -102,12 +119,19 @@ function Install-Project {
     }
   }
   else {
-    # For licensed downloads, we won't know the filename until after download
-    if ([string]::IsNullOrEmpty($license_id)) {
-      $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
+    # For licensed downloads, fetch the actual filename from the API
+    if (-not [string]::IsNullOrEmpty($license_id)) {
+      try {
+        $filename_resp = Get-ProjectFileName -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -package_manager $package_manager -license_id $license_id
+        $filename = $filename_resp.filename
+      } catch {
+        Write-Verbose "Could not fetch filename from API: $_"
+        # Fallback to extracting from URL if available
+        $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
+      }
     } else {
-      $filename = "chef-download-temp-$PID"
-      Write-Host "Using temporary filename for licensed download: $filename"
+      # Traditional omnitruck downloads have filename in URL
+      $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
     }
   }
   Write-Host "Download directory: $download_directory"
@@ -146,28 +170,7 @@ function Install-Project {
   if (-not ($cached_installer_available)) {
     if ($pscmdlet.ShouldProcess("$($download_url)", "Download $project")) {
       Write-Host "Downloading $project from $($download_url) to $download_destination."
-      $download_result = Get-WebContent $download_url -filepath $download_destination
-      
-      # For licensed downloads, extract actual filename from Content-Disposition
-      if (-not [string]::IsNullOrEmpty($license_id) -and $download_result -and $download_result.Filename) {
-        $actual_filename = $download_result.Filename
-        Write-Host "Extracted filename from Content-Disposition: $actual_filename"
-        
-        $final_destination = join-path $download_directory $actual_filename
-        
-        # Move temp file to final location with correct name
-        if ($download_destination -ne $final_destination) {
-          Write-Host "Moving to final location: $final_destination"
-          if (test-path $final_destination) {
-            remove-item $final_destination -force
-          }
-          move-item $download_destination $final_destination -force
-          $download_destination = $final_destination
-        }
-      } elseif (-not [string]::IsNullOrEmpty($license_id)) {
-        Write-Host "Warning: Could not extract filename from Content-Disposition header for licensed download."
-        Write-Host "Using temporary filename. Package installation may fail."
-      }
+      Get-WebContent $download_url -filepath $download_destination
     }
   }
 
@@ -196,14 +199,17 @@ function Install-Project {
 set-alias install -value Install-Project
 
 Function Install-ChefMsi($msi, $addlocal) {
+  $logPath = Join-Path $env:TEMP "chef-msi-install-$(Get-Date -Format 'yyyyMMdd-HHmmss').log"
+  Write-Host "MSI installation log will be written to: $logPath"
+
   if ($addlocal -eq "service") {
-    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefClientFeature,ChefServiceFeature`"" -Passthru -Wait -NoNewWindow
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /l*v `"$logPath`" /i `"$msi`" ADDLOCAL=`"ChefClientFeature,ChefServiceFeature`"" -Passthru -Wait -NoNewWindow
   }
   ElseIf ($addlocal -eq "task") {
-    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi ADDLOCAL=`"ChefClientFeature,ChefSchTaskFeature`"" -Passthru -Wait -NoNewWindow
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /l*v `"$logPath`" /i `"$msi`" ADDLOCAL=`"ChefClientFeature,ChefSchTaskFeature`"" -Passthru -Wait -NoNewWindow
   }
   ElseIf ($addlocal -eq "auto") {
-    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /i $msi" -Passthru -Wait -NoNewWindow
+    $p = Start-Process -FilePath "msiexec.exe" -ArgumentList "/qn /l*v `"$logPath`" /i `"$msi`"" -Passthru -Wait -NoNewWindow
   }
 
   $p.WaitForExit()
@@ -211,8 +217,15 @@ Function Install-ChefMsi($msi, $addlocal) {
     Write-Host "$((Get-Date).ToString()) - Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
     return $false
   } elseif ($p.ExitCode -ne 0) {
-    throw "msiexec was not successful. Received exit code $($p.ExitCode)"
+    Write-Host "MSI installation failed. Check log file: $logPath"
+    if (Test-Path $logPath) {
+      $logTail = Get-Content $logPath -Tail 50
+      Write-Host "Last 50 lines of MSI log:"
+      Write-Host $logTail
+    }
+    throw "msiexec was not successful. Received exit code $($p.ExitCode). Log: $logPath"
   }
+  Write-Host "MSI installation completed successfully"
   return $true
 }
 
@@ -239,4 +252,4 @@ Function Install-ChefAppx($appx, $project) {
   return $true
 }
 
-export-modulemember -function 'Install-Project','Get-ProjectMetadata' -alias 'install'
+export-modulemember -function 'Install-Project','Get-ProjectMetadata','Get-ProjectFileName' -alias 'install'

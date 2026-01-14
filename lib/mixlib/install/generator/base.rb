@@ -70,6 +70,34 @@ module Mixlib
           self.class.get_script(name, context)
         end
 
+        def license_availble?
+          options.license_id && !options.license_id.to_s.empty?
+        end
+
+        def license_type
+          return nil unless license_availble?
+
+          case options.license_id
+          when /trial/
+            "trial"
+          when /free/
+            "free"
+          else
+            "commercial"
+          end
+        end
+
+        def omnitruck_endpoint
+          case license_type
+          when "trial", "free"
+            Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+          when "commercial"
+            Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+          else
+            Mixlib::Install::Dist::OMNITRUCK_ENDPOINT
+          end
+        end
+
         def install_sh_from_upstream
           uri = URI.parse(options.options[:new_omnibus_download_url])
           response = Net::HTTP.get_response(uri)

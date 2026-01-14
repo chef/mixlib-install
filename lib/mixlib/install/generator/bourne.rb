@@ -28,8 +28,8 @@ module Mixlib
           install_command << get_script("check_product.sh")
           install_command << get_script("platform_detection.sh")
           install_command << get_script("proxy_env.sh")
-          install_command << get_script("fetch_metadata.sh", context)
-          install_command << get_script("fetch_package.sh")
+          install_command << get_script("fetch_metadata.sh", context.merge(omnitruck_endpoint: omnitruck_endpoint))
+          install_command << get_script("fetch_package.sh", context.merge(omnitruck_endpoint: omnitruck_endpoint))
           install_command << get_script("install_package.sh")
           install_command.join("\n\n")
         end
@@ -49,8 +49,8 @@ module Mixlib
           install_command << get_script("check_product.sh")
           install_command << get_script("platform_detection.sh")
           install_command << get_script("proxy_env.sh")
-          install_command << get_script("fetch_metadata.sh")
-          install_command << get_script("fetch_package.sh")
+          install_command << get_script("fetch_metadata.sh", omnitruck_endpoint: omnitruck_endpoint)
+          install_command << get_script("fetch_package.sh", omnitruck_endpoint: omnitruck_endpoint)
           install_command << get_script("install_package.sh")
 
           install_command.join("\n\n")
@@ -63,7 +63,7 @@ version=#{options.product_version}
 channel=#{options.channel}
 EOS
           # Add license_id if provided
-          if options.license_id && !options.license_id.to_s.empty?
+          if license_availble?
             vars += "license_id=#{options.license_id}\n"
           end
           vars += install_command_vars

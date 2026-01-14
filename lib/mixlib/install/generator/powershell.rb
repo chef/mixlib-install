@@ -24,7 +24,8 @@ module Mixlib
         def self.install_ps1(context)
           install_project_module = []
           install_project_module << get_script("helpers.ps1", context)
-          install_project_module << get_script("get_project_metadata.ps1", context)
+          install_project_module << get_script("get_project_metadata.ps1", context.merge(omnitruck_endpoint: omnitruck_endpoint))
+          install_project_module << get_script("get_project_filename.ps1", context.merge(omnitruck_endpoint: omnitruck_endpoint))
           install_project_module << get_script("install_project.ps1")
 
           install_command = []
@@ -46,7 +47,8 @@ module Mixlib
         def install_command
           install_project_module = []
           install_project_module << get_script("helpers.ps1", user_agent_headers: options.user_agent_headers)
-          install_project_module << get_script("get_project_metadata.ps1")
+          install_project_module << get_script("get_project_metadata.ps1", omnitruck_endpoint: omnitruck_endpoint)
+          install_project_module << get_script("get_project_filename.ps1", omnitruck_endpoint: omnitruck_endpoint)
           install_project_module << get_script("install_project.ps1")
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Installer-Module")
