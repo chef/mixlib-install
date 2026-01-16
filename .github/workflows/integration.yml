@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  integration-tests:
+  cli-tests:
     runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
@@ -35,7 +35,6 @@ jobs:
           New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
           # Enable Git long paths
           git config --global core.longpaths true
-        shell: powershell
       - name: Checkout code
         uses: actions/checkout@v6
       - name: Setup Ruby
@@ -47,3 +46,160 @@ jobs:
         run: bundle exec mixlib-install download chef
       - name: Chef Licensed download Test
         run: bundle exec mixlib-install download chef -L free-79df705d-b685-419a-8b68-88401f74ff72-3999
+  test-install-command:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: Generate and run install command (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: |
+          # Generate the install command
+          INSTALL_CMD=$(bundle exec mixlib-install install-command chef)
+          echo "Generated install command:"
+          echo "$INSTALL_CMD"
+
+          # Run the install command
+          eval "$INSTALL_CMD"
+
+          # Verify chef-client was installed
+          which chef-client
+          chef-client --version
+      - name: Generate and run install command (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          # Generate the install command
+          $INSTALL_CMD = bundle exec mixlib-install install-command chef
+          Write-Host "Generated install command:"
+          Write-Host $INSTALL_CMD
+
+          # Run the install command
+          Invoke-Expression $INSTALL_CMD
+
+          # Verify chef-client was installed
+          Get-Command chef-client
+          chef-client --version
+  test-install-sh:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: Generate install.sh script
+        run: |
+          bundle exec mixlib-install install-script chef > install.sh
+          chmod +x install.sh
+          echo "Generated install.sh:"
+          cat install.sh
+      - name: Run install.sh script
+        run: |
+          sudo ./install.sh
+
+          # Verify chef-client was installed
+          which chef-client
+          chef-client --version
+  test-install-ps1:
+    name: Test install.ps1 generation and execution
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: Generate install.ps1 script
+        run: |
+          bundle exec mixlib-install install-script chef -p powershell > install.ps1
+          Write-Host "Generated install.ps1:"
+          Get-Content install.ps1
+      - name: Run install.ps1 script
+        run: |
+          # Run the PowerShell script
+          .\install.ps1
+
+          # Verify chef-client was installed
+          Get-Command chef-client
+          chef-client --version
+  test-install-sh-with-license:
+    name: Test install.sh with license_id
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: Generate install.sh with license_id
+        run: |
+          # Generate script with license_id in context
+          bundle exec ruby -e "
+          require 'bundler/setup'
+          require 'mixlib/install'
+          script = Mixlib::Install::Generator::Bourne.install_sh({
+            license_id: 'test-license-12345'
+          })
+          File.write('install_licensed.sh', script)
+          "
+          chmod +x install_licensed.sh
+          echo "Generated install.sh with license_id:"
+          cat install_licensed.sh | head -n 50
+      - name: Verify license_id is present in script
+        run: |
+          if grep -q "license_id='test-license-12345'" install_licensed.sh; then
+            echo "✓ License ID found pre-set in script"
+          else
+            echo "✗ License ID not found in script"
+            exit 1
+          fi
+  test-install-ps1-with-license:
+    name: Test install.ps1 with license_id
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: Generate install.ps1 with license_id
+        run: |
+          # Generate script with license_id in context
+          bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; script = Mixlib::Install::Generator::PowerShell.install_ps1({license_id: 'test-license-12345'}); File.write('install_licensed.ps1', script)"
+
+          Write-Host "Generated install.ps1 with license_id:"
+          Get-Content install_licensed.ps1 | Select-Object -First 50
+      - name: Verify license_id is present in script
+        run: |
+          $content = Get-Content install_licensed.ps1 -Raw
+          if ($content -match "install -license_id 'test-license-12345'") {
+            Write-Host "✓ License ID found in install command"
+          } else {
+            Write-Host "✗ License ID not found in script"
+            exit 1
+          }
