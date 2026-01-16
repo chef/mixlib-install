@@ -64,28 +64,32 @@ jobs:
       - name: Generate and run install command (Linux/macOS)
         if: runner.os != 'Windows'
         run: |
-          # Generate the install command
-          INSTALL_CMD=$(bundle exec mixlib-install install-command chef)
-          echo "Generated install command:"
-          echo "$INSTALL_CMD"
-
-          # Run the install command
-          eval "$INSTALL_CMD"
-
+          # Generate the install command using Ruby API
+          bundle exec ruby -e "
+          require 'bundler/setup'
+          require 'mixlib/install'
+          options = Mixlib::Install::Options.new(
+            channel: :stable,
+            product_name: 'chef'
+          )
+          installer = Mixlib::Install.new(options)
+          puts installer.install_command
+          " > install_cmd.sh
+          cat install_cmd.sh
+          chmod +x install_cmd.sh
+          # Run the install command with sudo
+          sudo bash install_cmd.sh
           # Verify chef-client was installed
           which chef-client
           chef-client --version
       - name: Generate and run install command (Windows)
         if: runner.os == 'Windows'
         run: |
-          # Generate the install command
-          $INSTALL_CMD = bundle exec mixlib-install install-command chef
-          Write-Host "Generated install command:"
-          Write-Host $INSTALL_CMD
-
+          # Generate the install command using Ruby API
+          bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; options = Mixlib::Install::Options.new(channel: :stable, product_name: 'chef', powershell: true); installer = Mixlib::Install.new(options); File.write('install_cmd.ps1', installer.install_command)"
+          Get-Content install_cmd.ps1
           # Run the install command
-          Invoke-Expression $INSTALL_CMD
-
+          .\install_cmd.ps1
           # Verify chef-client was installed
           Get-Command chef-client
           chef-client --version
@@ -106,10 +110,10 @@ jobs:
           bundler-cache: true
       - name: Generate install.sh script
         run: |
-          bundle exec mixlib-install install-script chef > install.sh
+          bundle exec mixlib-install install-script -o install.sh -t sh
           chmod +x install.sh
           echo "Generated install.sh:"
-          cat install.sh
+          head -n 50 install.sh
       - name: Run install.sh script
         run: |
           sudo ./install.sh
@@ -131,9 +135,9 @@ jobs:
           bundler-cache: true
       - name: Generate install.ps1 script
         run: |
-          bundle exec mixlib-install install-script chef -p powershell > install.ps1
+          bundle exec mixlib-install install-script -o install.ps1 -t ps1
           Write-Host "Generated install.ps1:"
-          Get-Content install.ps1
+          Get-Content install.ps1 | Select-Object -First 50
       - name: Run install.ps1 script
         run: |
           # Run the PowerShell script
