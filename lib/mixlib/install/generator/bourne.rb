@@ -24,6 +24,11 @@ module Mixlib
         def self.install_sh(context)
           install_command = []
           install_command << get_script("helpers.sh", context)
+          # If license_id is provided in context, pre-set it as a variable
+          if context[:license_id] && !context[:license_id].to_s.empty?
+            install_command << "# License ID provided via context"
+            install_command << "license_id='#{context[:license_id]}'"
+          end
           install_command << get_script("script_cli_parameters.sh")
           install_command << get_script("check_product.sh")
           install_command << get_script("platform_detection.sh")
