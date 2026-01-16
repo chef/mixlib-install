@@ -141,10 +141,12 @@ context "Mixlib::Install" do
 
   context "install_sh" do
     let(:base_url) { nil }
+    let(:license_id) { nil }
 
     let(:install_sh) do
       options = {}.tap do |opt|
         opt[:base_url] = base_url if base_url
+        opt[:license_id] = license_id if license_id
       end
       Mixlib::Install.install_sh(options)
     end
@@ -164,14 +166,32 @@ context "Mixlib::Install" do
     it "should render with default base_url if one is not given" do
       expect(install_sh).to include("https://omnitruck.chef.io")
     end
+
+    context "with license_id" do
+      let(:license_id) { "test-license-123" }
+
+      it "should pre-set license_id variable" do
+        expect(install_sh).to include("# License ID provided via context")
+        expect(install_sh).to include("license_id='test-license-123'")
+      end
+    end
+
+    context "without license_id" do
+      it "should not include license_id pre-set" do
+        expect(install_sh).not_to include("# License ID provided via context")
+        expect(install_sh).not_to include("license_id=")
+      end
+    end
   end
 
   context "install_ps1" do
     let(:base_url) { nil }
+    let(:license_id) { nil }
 
     let(:install_ps1) do
       options = {}.tap do |opt|
         opt[:base_url] = base_url if base_url
+        opt[:license_id] = license_id if license_id
       end
       Mixlib::Install.install_ps1(options)
     end
@@ -191,6 +211,22 @@ context "Mixlib::Install" do
 
     it "should render with default base_url if one is not given" do
       expect(install_ps1).to include("https://omnitruck.chef.io")
+    end
+
+    context "with license_id" do
+      let(:license_id) { "trial-license-456" }
+
+      it "should include license_id in install command" do
+        expect(install_ps1).to include("# License ID provided via context - adding to install command")
+        expect(install_ps1).to include("install -license_id 'trial-license-456'")
+      end
+    end
+
+    context "without license_id" do
+      it "should not include license_id in install command" do
+        expect(install_ps1).not_to include("# License ID provided via context - adding to install command")
+        expect(install_ps1).not_to include("install -license_id")
+      end
     end
   end
 
