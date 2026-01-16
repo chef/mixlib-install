@@ -17,9 +17,11 @@
 
 require "spec_helper"
 require "mixlib/install/cli"
+require "tmpdir"
 
 describe "mixlib-install executable" do
   let(:args) { nil }
+  let(:test_temp_dir) { Dir.mktmpdir("mixlib-install-test") }
 
   before(:all) do
     puts "
@@ -28,6 +30,10 @@ describe "mixlib-install executable" do
     ****************************************
 
 "
+  end
+
+  after do
+    FileUtils.rm_rf(test_temp_dir) if test_temp_dir && Dir.exist?(test_temp_dir)
   end
 
   let(:cmd) { Mixlib::ShellOut.new("mixlib-install #{command} #{args} ").run_command }
@@ -106,13 +112,13 @@ describe "mixlib-install executable" do
     end
 
     context "with output option", :focus do
-      let(:args) { "-o script.sh" }
+      let(:args) { "-o #{File.join(test_temp_dir, 'script.sh')}" }
 
       it "writes to a file" do
         # We're executing and not looking for stdout/err output
         # so we'll directly invoke here instead of going through 'last_command_output'
         Mixlib::ShellOut.new("mixlib-install #{command} #{args} ").run_command
-        expect(File.exist?("script.sh")).to eq true
+        expect(File.exist?(File.join(test_temp_dir, "script.sh"))).to eq true
       end
     end
   end
@@ -231,7 +237,7 @@ describe "mixlib-install executable" do
     end
 
     context "with specified directory" do
-      let(:additional_args) { "-d mydir" }
+      let(:additional_args) { "-d #{File.join(test_temp_dir, 'mydir')}" }
 
       it "downloads to dir" do
         expect(last_command_output).to match /Download saved to .*mydir\/chef/

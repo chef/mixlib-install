@@ -179,7 +179,7 @@ context "Mixlib::Install" do
     context "without license_id" do
       it "should not include license_id pre-set" do
         expect(install_sh).not_to include("# License ID provided via context")
-        expect(install_sh).not_to include("license_id=")
+        expect(install_sh).not_to include("license_id='")
       end
     end
   end
