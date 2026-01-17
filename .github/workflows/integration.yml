@@ -126,7 +126,7 @@ jobs:
           bundle exec mixlib-install install-script -o install.sh -t sh
           chmod +x install.sh
           echo "Generated install.sh:"
-          head -n 50 install.sh
+          cat install.sh
       - name: Run install.sh script
         run: |
           sudo ./install.sh
@@ -156,16 +156,14 @@ jobs:
         run: |
           bundle exec mixlib-install install-script -o install.ps1 -t ps1
           Write-Host "Generated install.ps1:"
-          Get-Content install.ps1 | Select-Object -First 50
+          Get-Content install.ps1
       - name: Run install.ps1 script
         run: |
           # Import the module and call the install function
           . .\install.ps1
           install
-
           # Refresh PATH from registry to pick up newly installed chef-client
           $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-
           # Verify chef-client was installed
           Get-Command chef-client
           chef-client --version
@@ -193,7 +191,7 @@ jobs:
           "
           chmod +x install_licensed.sh
           echo "Generated install.sh with license_id:"
-          cat install_licensed.sh | head -n 50
+          cat install_licensed.sh
       - name: Verify license_id is present in script
         run: |
           if grep -q "license_id='test-license-12345'" install_licensed.sh; then
@@ -224,9 +222,8 @@ jobs:
         run: |
           # Generate script with license_id in context
           bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; script = Mixlib::Install::Generator::PowerShell.install_ps1({license_id: 'test-license-12345'}); File.write('install_licensed.ps1', script)"
-
           Write-Host "Generated install.ps1 with license_id:"
-          Get-Content install_licensed.ps1 | Select-Object -First 50
+          Get-Content install_licensed.ps1
       - name: Verify license_id is present in script
         run: |
           $content = Get-Content install_licensed.ps1 -Raw
