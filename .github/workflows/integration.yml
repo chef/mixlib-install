@@ -95,7 +95,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           # Generate the install command using Ruby API (one-liner for PowerShell)
-          bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; installer = Mixlib::Install.new(channel: :stable, product_name: 'chef', powershell: true); File.write('install_cmd.ps1', installer.install_command)"
+          bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; installer = Mixlib::Install.new(channel: :stable, product_name: 'chef', platform: 'windows'); File.write('install_cmd.ps1', installer.install_command)"
           Get-Content install_cmd.ps1
       - name: Run install command script (Windows)
         if: runner.os == 'Windows'
