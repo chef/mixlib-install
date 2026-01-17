@@ -53,6 +53,13 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
+      - name: Enable long paths on Windows
+        if: runner.os == 'Windows'
+        run: |
+          # Enable Windows long paths
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
+          # Enable Git long paths
+          git config --global core.longpaths true
       - name: Checkout code
         uses: actions/checkout@v6
 
@@ -66,14 +73,13 @@ jobs:
         run: |
           # Generate the install command using Ruby API
           bundle exec ruby -e "
-          require 'bundler/setup'
-          require 'mixlib/install'
-          options = Mixlib::Install::Options.new(
-            channel: :stable,
-            product_name: 'chef'
-          )
-          installer = Mixlib::Install.new(options)
-          puts installer.install_command
+            require 'bundler/setup'
+            require 'mixlib/install'
+            installer = Mixlib::Install.new(
+              channel: :stable,
+              product_name: 'chef'
+            )
+            puts installer.install_command
           " > install_cmd.sh
           cat install_cmd.sh
           chmod +x install_cmd.sh
@@ -86,7 +92,19 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           # Generate the install command using Ruby API
-          bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; options = Mixlib::Install::Options.new(channel: :stable, product_name: 'chef', powershell: true); installer = Mixlib::Install.new(options); File.write('install_cmd.ps1', installer.install_command)"
+          bundle exec ruby -e "
+            require 'bundler/setup';
+            require 'mixlib/install';
+            installer = Mixlib::Install.new(
+              channel: :stable,
+              product_name: 'chef',
+              powershell: true
+            );
+            File.write(
+              'install_cmd.ps1',
+              installer.install_command
+            )
+          "
           Get-Content install_cmd.ps1
           # Run the install command
           .\install_cmd.ps1
@@ -125,6 +143,13 @@ jobs:
     name: Test install.ps1 generation and execution
     runs-on: windows-latest
     steps:
+      - name: Enable long paths on Windows
+        if: runner.os == 'Windows'
+        run: |
+          # Enable Windows long paths
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
+          # Enable Git long paths
+          git config --global core.longpaths true
       - name: Checkout code
         uses: actions/checkout@v6
 
@@ -183,6 +208,13 @@ jobs:
     name: Test install.ps1 with license_id
     runs-on: windows-latest
     steps:
+      - name: Enable long paths on Windows
+        if: runner.os == 'Windows'
+        run: |
+          # Enable Windows long paths
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
+          # Enable Git long paths
+          git config --global core.longpaths true
       - name: Checkout code
         uses: actions/checkout@v6
 
