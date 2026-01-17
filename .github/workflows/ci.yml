@@ -6,7 +6,6 @@
       - main
 
 permissions:
-  checks: read
   contents: read
 
 concurrency:
@@ -21,9 +20,4 @@ jobs:
   integration:
     uses: ./.github/workflows/integration.yml
     needs: lint
-    secrets: inherit
-
-  allchecks:
-    uses: ./.github/workflows/allchecks.yml
-    needs: [lint, integration]
     secrets: inherit

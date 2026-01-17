@@ -62,7 +62,6 @@ jobs:
           git config --global core.longpaths true
       - name: Checkout code
         uses: actions/checkout@v6
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -102,10 +101,8 @@ jobs:
         run: |
           # Run the install command
           .\install_cmd.ps1
-
           # Refresh PATH from registry to pick up newly installed chef-client
           $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-
           # Verify chef-client was installed
           Get-Command chef-client
           chef-client --version
