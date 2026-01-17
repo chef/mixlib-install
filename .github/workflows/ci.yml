@@ -6,6 +6,7 @@
       - main
 
 permissions:
+  checks: read
   contents: read
 
 concurrency:
