@@ -62,6 +62,11 @@ function Install-Project {
     $license_id
   )
 
+  # Use CHEF_LICENSE_KEY environment variable if license_id not provided
+  if ([string]::IsNullOrEmpty($license_id) -and -not [string]::IsNullOrEmpty($env:CHEF_LICENSE_KEY)) {
+    $license_id = $env:CHEF_LICENSE_KEY
+  }
+
   # Check for product installation in various locations
   if ($project -eq 'chef' -or $project -eq 'chef-ice') {
     # For chef or chef-ice, look for chef-infra-client paths
