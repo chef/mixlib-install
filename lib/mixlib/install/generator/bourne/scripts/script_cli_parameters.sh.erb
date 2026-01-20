@@ -42,3 +42,8 @@ do
 done
 
 shift `expr $OPTIND - 1`
+
+# Use CHEF_LICENSE_KEY environment variable if license_id not provided via CLI
+if [ -z "$license_id" ] && [ -n "${CHEF_LICENSE_KEY:-}" ]; then
+  license_id="$CHEF_LICENSE_KEY"
+fi

@@ -185,6 +185,7 @@ module Mixlib
           platform_version_compatibility_mode: false,
           product_version: :latest,
           include_metadata: false,
+          license_id: ENV["CHEF_LICENSE_KEY"],
         }
       end
 

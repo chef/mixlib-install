@@ -62,14 +62,28 @@ function Install-Project {
     $license_id
   )
 
-  # Check for chef-client command in various locations
-  $chef_locations = @(
-    "$env:systemdrive\hab\pkgs\chef\chef-infra-client\*\*\bin\chef-client.bat",
-    "$env:systemdrive\<%= windows_dir %>\$project\bin\$project-client.bat"
-  )
-  foreach ($path in $chef_locations) {
+  # Use CHEF_LICENSE_KEY environment variable if license_id not provided
+  if ([string]::IsNullOrEmpty($license_id) -and -not [string]::IsNullOrEmpty($env:CHEF_LICENSE_KEY)) {
+    $license_id = $env:CHEF_LICENSE_KEY
+  }
+
+  # Check for product installation in various locations
+  if ($project -eq 'chef' -or $project -eq 'chef-ice') {
+    # For chef or chef-ice, look for chef-infra-client paths
+    $install_locations = @(
+      "$env:systemdrive\hab\pkgs\chef\chef-infra-client\*\*\bin",
+      "$env:systemdrive\<%= windows_dir %>\chef\bin"
+    )
+  } else {
+    # For other products, look for product-specific paths
+    $install_locations = @(
+      "$env:systemdrive\hab\pkgs\chef\$project\*\*\bin",
+      "$env:systemdrive\<%= windows_dir %>\$project\bin"
+    )
+  }
+  foreach ($path in $install_locations) {
     $resolved = Get-Item $path -ErrorAction SilentlyContinue | Select-Object -First 1
-    if ($resolved -and (Test-Path $resolved.FullName) -and ($install_strategy -eq 'once')) {
+    if ($resolved -and (Test-Path $resolved.FullName -PathType Container) -and ($install_strategy -eq 'once')) {
       Write-Host "$project installation detected at $($resolved.FullName)"
       Write-Host "install_strategy set to 'once'"
       Write-Host "Nothing to install"
@@ -147,14 +161,14 @@ function Install-Project {
     if ($pscmdlet.ShouldProcess("$($download_url)", "Download $project")) {
       Write-Host "Downloading $project from $($download_url) to $download_destination."
       $download_result = Get-WebContent $download_url -filepath $download_destination
-      
+
       # For licensed downloads, extract actual filename from Content-Disposition
       if (-not [string]::IsNullOrEmpty($license_id) -and $download_result -and $download_result.Filename) {
         $actual_filename = $download_result.Filename
         Write-Host "Extracted filename from Content-Disposition: $actual_filename"
-        
+
         $final_destination = join-path $download_directory $actual_filename
-        
+
         # Move temp file to final location with correct name
         if ($download_destination -ne $final_destination) {
           Write-Host "Moving to final location: $final_destination"

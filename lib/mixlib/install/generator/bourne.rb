@@ -24,7 +24,19 @@ module Mixlib
         def self.install_sh(context)
           install_command = []
           install_command << get_script("helpers.sh", context)
+          # If license_id is provided in context, pre-set it as a variable
+          if context[:license_id] && !context[:license_id].to_s.empty?
+            install_command << "# License ID provided via context"
+            install_command << "license_id='#{context[:license_id]}'"
+          end
           install_command << get_script("script_cli_parameters.sh")
+          # Check for CHEF_LICENSE_KEY in execution environment if not already set
+          install_command << <<~BASH.chomp
+            # Use CHEF_LICENSE_KEY from execution environment if license_id not set
+            if [ -z "${license_id:-}" ] && [ -n "${CHEF_LICENSE_KEY:-}" ]; then
+              license_id="$CHEF_LICENSE_KEY"
+            fi
+          BASH
           install_command << get_script("check_product.sh")
           install_command << get_script("platform_detection.sh")
           install_command << get_script("proxy_env.sh")
@@ -62,10 +74,18 @@ project=#{options.product_name}
 version=#{options.product_version}
 channel=#{options.channel}
 EOS
-          # Add license_id if provided
-          if options.license_id && !options.license_id.to_s.empty?
-            vars += "license_id=#{options.license_id}\n"
+          # Add license_id if provided, otherwise use CHEF_LICENSE_KEY env var
+          license_id_value = options.license_id || ENV["CHEF_LICENSE_KEY"]
+          if license_id_value && !license_id_value.to_s.empty?
+            vars += "license_id=#{license_id_value}\n"
           end
+          # Check for CHEF_LICENSE_KEY in execution environment if not already set
+          vars += <<EOS
+# Use CHEF_LICENSE_KEY from execution environment if license_id not set
+if [ -z "${license_id:-}" ] && [ -n "${CHEF_LICENSE_KEY:-}" ]; then
+  license_id="$CHEF_LICENSE_KEY"
+fi
+EOS
           vars += install_command_vars
           vars
         end
