@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.15.0 -->
+## [v3.15.0](https://github.com/chef/mixlib-install/tree/v3.15.0) (2026-01-20)
+
+#### Merged Pull Requests
+- CHEF-29672 Add license_id parameter to install script endpoint [#416](https://github.com/chef/mixlib-install/pull/416) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.14.0 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- CHEF-29672 Add license_id parameter to install script endpoint [#416](https://github.com/chef/mixlib-install/pull/416) ([Stromweld](https://github.com/Stromweld)) <!-- 3.15.0 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
