@@ -251,7 +251,15 @@ EOF
             pv_param = platform_version
             m_param = Util.normalize_architecture(artifact_map["omnibus.architecture"])
             v_param = artifact_map["omnibus.version"]
-            download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}&pv=#{pv_param}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
+            
+            # For chef-ice, use normalized platform names and add package manager parameter
+            if omnibus_project == "chef-ice"
+              p_param = Util.normalize_platform_for_commercial(platform)
+              pm_param = Util.determine_package_manager(platform)
+              download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?v=#{v_param}&license_id=#{options.license_id}&m=#{m_param}&p=#{p_param}&pm=#{pm_param}"
+            else
+              download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}&pv=#{pv_param}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
+            end
           else
             base_url = if use_compat_download_url_endpoint?(platform, platform_version)
                          COMPAT_DOWNLOAD_URL_ENDPOINT

@@ -254,6 +254,85 @@ context "Mixlib::Install::Generator", :vcr do
       end
     end
 
+    context "chef-ice with commercial API" do
+      let(:add_options) do
+        {
+          license_id: "test-license-key-123",
+        }
+      end
+
+      it "includes package manager detection function" do
+        expect(install_script).to include("determine_package_manager()")
+      end
+
+      it "includes platform normalization function" do
+        expect(install_script).to include("normalize_platform_name()")
+      end
+
+      it "includes chef-ice conditional logic" do
+        expect(install_script).to include('if test "$project" = "chef-ice"')
+      end
+
+      it "includes RPM-based platform detection" do
+        expect(install_script).to include("el|centos|rhel|fedora|amazon|rocky")
+        expect(install_script).to include('echo "rpm"')
+      end
+
+      it "includes DEB-based platform detection" do
+        expect(install_script).to include("debian|ubuntu|linuxmint|raspbian")
+        expect(install_script).to include('echo "deb"')
+      end
+
+      it "includes TAR-based platform detection" do
+        expect(install_script).to include("mac_os_x|macos|solaris*|smartos|freebsd|aix")
+        expect(install_script).to include('echo "tar"')
+      end
+
+      it "includes platform normalization for Linux" do
+        expect(install_script).to include("el|centos|rhel|fedora|rocky")
+        expect(install_script).to include('echo "linux"')
+      end
+
+      it "includes platform normalization for macOS" do
+        expect(install_script).to include("mac_os_x|macos")
+        expect(install_script).to include('echo "macos"')
+      end
+
+      it "constructs chef-ice metadata URL with m, p, pm parameters" do
+        expect(install_script).to include('metadata_url="$base_api_url/$channel/$project/metadata?v=$version&license_id=$license_id&m=$machine&p=$platform_param&pm=$package_manager"')
+      end
+
+      it "uses commercial API endpoint" do
+        expect(install_script).to include("https://chefdownload-commercial.chef.io")
+      end
+    end
+
+    context "chef-ice with trial API" do
+      let(:add_options) do
+        {
+          license_id: "free-trial-xyz-123",
+        }
+      end
+
+      it "includes chef-ice conditional logic" do
+        expect(install_script).to include('if test "$project" = "chef-ice"')
+      end
+
+      it "constructs chef-ice metadata URL with m, p, pm parameters" do
+        expect(install_script).to include('metadata_url="$base_api_url/$channel/$project/metadata?v=$version&license_id=$license_id&m=$machine&p=$platform_param&pm=$package_manager"')
+      end
+
+      it "uses trial API endpoint" do
+        expect(install_script).to include("https://chefdownload-trial.chef.io")
+      end
+
+      it "works with trial- prefix" do
+        add_options[:license_id] = "trial-abc-456"
+        expect(install_script).to include("https://chefdownload-trial.chef.io")
+        expect(install_script).to include('if test "$project" = "chef-ice"')
+      end
+    end
+
     context "for windows" do
       shared_examples_for "the correct ps1 script" do
         it "generates a ps1 script" do
@@ -380,6 +459,65 @@ context "Mixlib::Install::Generator", :vcr do
           expect(install_script).to include("ConvertFrom-Json")
           expect(install_script).to include("$json.url")
           expect(install_script).to include("$json.sha256")
+        end
+      end
+
+      context "chef-ice with commercial API for PowerShell" do
+        let(:add_options) do
+          {
+            shell_type: :ps1,
+            license_id: "test-license-key-123",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "includes chef-ice conditional logic" do
+          expect(install_script).to include('if ($project -eq \'chef-ice\' -and $license_id)')
+        end
+
+        it "includes simplified parameters for chef-ice on Windows" do
+          expect(install_script).to include('"p=windows"')
+          expect(install_script).to include('"pm=msi"')
+        end
+
+        it "constructs chef-ice metadata URL with m, p, pm parameters" do
+          expect(install_script).to include('$metadata_array = ("?v=$($version)"')
+          expect(install_script).to include('"license_id=$license_id"')
+          expect(install_script).to include('"m=$architecture"')
+        end
+
+        it "uses commercial API endpoint" do
+          expect(install_script).to include("https://chefdownload-commercial.chef.io")
+        end
+      end
+
+      context "chef-ice with trial API for PowerShell" do
+        let(:add_options) do
+          {
+            shell_type: :ps1,
+            license_id: "free-trial-xyz-123",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "includes chef-ice conditional logic" do
+          expect(install_script).to include('if ($project -eq \'chef-ice\' -and $license_id)')
+        end
+
+        it "includes simplified parameters for chef-ice on Windows" do
+          expect(install_script).to include('"p=windows"')
+          expect(install_script).to include('"pm=msi"')
+        end
+
+        it "uses trial API endpoint" do
+          expect(install_script).to include("https://chefdownload-trial.chef.io")
+        end
+
+        it "works with trial- prefix" do
+          add_options[:license_id] = "trial-abc-456"
+          expect(install_script).to include("https://chefdownload-trial.chef.io")
         end
       end
     end

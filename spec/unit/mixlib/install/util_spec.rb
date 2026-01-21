@@ -147,4 +147,88 @@ describe Mixlib::Install::Util do
       end
     end
   end
+
+  describe ".determine_package_manager" do
+    context "RPM-based platforms" do
+      %w{el centos rhel fedora amazon rocky opensuse sles scientific}.each do |platform|
+        it "returns rpm for #{platform}" do
+          expect(Mixlib::Install::Util.determine_package_manager(platform)).to eq "rpm"
+        end
+      end
+    end
+
+    context "DEB-based platforms" do
+      %w{debian ubuntu linuxmint raspbian}.each do |platform|
+        it "returns deb for #{platform}" do
+          expect(Mixlib::Install::Util.determine_package_manager(platform)).to eq "deb"
+        end
+      end
+    end
+
+    context "macOS platforms" do
+      %w{mac_os_x macos}.each do |platform|
+        it "returns dmg for #{platform}" do
+          expect(Mixlib::Install::Util.determine_package_manager(platform)).to eq "dmg"
+        end
+      end
+    end
+
+    context "Windows platform" do
+      it "returns msi for windows" do
+        expect(Mixlib::Install::Util.determine_package_manager("windows")).to eq "msi"
+      end
+    end
+
+    context "TAR-based platforms" do
+      %w{solaris smartos freebsd aix omnios}.each do |platform|
+        it "returns tar for #{platform}" do
+          expect(Mixlib::Install::Util.determine_package_manager(platform)).to eq "tar"
+        end
+      end
+    end
+
+    context "unknown platform" do
+      it "returns tar as default" do
+        expect(Mixlib::Install::Util.determine_package_manager("unknown")).to eq "tar"
+      end
+    end
+  end
+
+  describe ".normalize_platform_for_commercial" do
+    context "Linux platforms" do
+      %w{el centos rhel fedora rocky scientific debian ubuntu linuxmint raspbian opensuse sles amazon}.each do |platform|
+        it "returns linux for #{platform}" do
+          expect(Mixlib::Install::Util.normalize_platform_for_commercial(platform)).to eq "linux"
+        end
+      end
+    end
+
+    context "macOS platforms" do
+      %w{mac_os_x macos}.each do |platform|
+        it "returns macos for #{platform}" do
+          expect(Mixlib::Install::Util.normalize_platform_for_commercial(platform)).to eq "macos"
+        end
+      end
+    end
+
+    context "Windows platform" do
+      it "returns windows for windows" do
+        expect(Mixlib::Install::Util.normalize_platform_for_commercial("windows")).to eq "windows"
+      end
+    end
+
+    context "Unix platforms" do
+      %w{freebsd aix solaris smartos omnios}.each do |platform|
+        it "returns unix for #{platform}" do
+          expect(Mixlib::Install::Util.normalize_platform_for_commercial(platform)).to eq "unix"
+        end
+      end
+    end
+
+    context "unknown platform" do
+      it "returns linux as default" do
+        expect(Mixlib::Install::Util.normalize_platform_for_commercial("unknown")).to eq "linux"
+      end
+    end
+  end
 end
