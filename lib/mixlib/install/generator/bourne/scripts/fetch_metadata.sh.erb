@@ -17,6 +17,46 @@
 # $sha256:
 ############
 
+# Determine package manager based on platform for commercial API
+determine_package_manager() {
+  case "$platform" in
+    el|centos|rhel|fedora|amazon|rocky|opensuse*|sles|scientific)
+      echo "rpm"
+      ;;
+    debian|ubuntu|linuxmint|raspbian)
+      echo "deb"
+      ;;
+    mac_os_x|macos|solaris*|smartos|freebsd|aix|omnios)
+      echo "tar"
+      ;;
+    *)
+      echo "tar"
+      ;;
+  esac
+}
+
+# Normalize platform name for commercial API
+normalize_platform_name() {
+  case "$platform" in
+    el|centos|rhel|fedora|rocky|scientific)
+      echo "linux"
+      ;;
+    mac_os_x|macos)
+      echo "macos"
+      ;;
+    debian|ubuntu|linuxmint|raspbian)
+      echo "linux"
+      ;;
+    freebsd|aix|solaris*|smartos|omnios)
+      echo "unix"
+      ;;
+    *)
+      # For anything else, use linux as default
+      echo "linux"
+      ;;
+  esac
+}
+
 if test "x$download_url_override" = "x"; then
   echo "Getting information for $project $channel $version for $platform..."
 
@@ -35,7 +75,16 @@ if test "x$download_url_override" = "x"; then
         base_api_url="https://chefdownload-commercial.chef.io"
         ;;
     esac
-    metadata_url="$base_api_url/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine&license_id=$license_id"
+
+    # For chef-ice product, add platform (p), machine (m), and package_manager (pm) parameters
+    if test "$project" = "chef-ice"; then
+      package_manager=$(determine_package_manager)
+      platform_param=$(normalize_platform_name)
+      metadata_url="$base_api_url/$channel/$project/metadata?v=$version&license_id=$license_id&m=$machine&p=$platform_param&pm=$package_manager"
+    else
+      # For other products, use standard parameters
+      metadata_url="$base_api_url/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine&license_id=$license_id"
+    fi
   else
     # Omnitruck endpoint
     metadata_url="<%= base_url %>/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine"
