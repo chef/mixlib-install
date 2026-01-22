@@ -36,7 +36,7 @@ module Mixlib
       # @return [Boolean] true if license_id indicates trial API usage
       def self.trial_license?(license_id)
         !license_id.nil? && !license_id.to_s.empty? &&
-          (license_id.start_with?("free-") || license_id.start_with?("trial-"))
+          license_id.start_with?("free-", "trial-")
       end
 
       # Check if a license_id is for commercial API

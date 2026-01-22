@@ -5,6 +5,15 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
 
 **Primary Goal**: Support the widest range of Ruby versions possible to ensure compatibility across diverse Chef environments.
 
+**Recent Major Changes** (v3.13.0 - v3.15.0):
+- Added commercial and trial API support for licensed Chef products (PR #408, #416)
+- Added chef-ice product with package_manager parameter support (PR #417)
+- Added `list-products` CLI subcommand (PR #413)
+- Added license_id parameter to install script endpoints (PR #416)
+- Implemented trial API automatic defaults (stable channel, latest version only)
+- Added Habitat package path detection to generated scripts (PR #407)
+- Migrated CI from Buildkite to GitHub Actions (PR #411)
+
 ## Ruby Version Support Strategy
 
 ### Supported Ruby Versions
@@ -81,6 +90,9 @@ All Ruby files should include the Apache 2.0 license header:
    - Supports EXTRA_PRODUCTS_FILE environment variable for custom products
    - Key options: channel, product_name, product_version, platform, platform_version, architecture, license_id
    - **license_id**: Enables commercial/trial API access for licensed Chef products
+   - **Trial API Enforcement**: Automatically defaults channel to :stable and product_version to :latest when trial license detected
+   - Uses `enforce_trial_api_defaults!` method during initialization to apply restrictions
+   - Emits warnings to stderr when defaults are applied
 
 1. **Product Matrix** (`lib/mixlib/install/product_matrix.rb`)
    - DSL for defining product metadata
@@ -131,6 +143,18 @@ bundle exec rake             # All tests (default)
 - Cassettes stored in `spec/support/`
 - To update cassettes, see instructions in `spec/spec_helper.rb`
 - Functional tests disable VCR to test live interactions
+
+### Gemspec vs Gemfile Dependencies
+**Gemspec** (`mixlib-install.gemspec`):
+- Runtime dependencies only
+- Minimal dependencies: mixlib-shellout, mixlib-versioning, thor
+- No version constraints in latest version (dependencies have their own compatibility handling)
+
+**Gemfile**:
+- Development and test dependencies
+- Ruby version-specific constraints for test tools
+- Includes chefstyle for linting (~> 0.4.0)
+- VCR for HTTP mocking in tests
 
 ### Ruby Version-Specific Test Dependencies
 The Gemfile contains careful version constraints for test dependencies based on RUBY_VERSION:
@@ -204,8 +228,15 @@ The gemspec includes special handling for the openssl gem due to CRL checking is
 ### Common Commands
 ```bash
 mixlib-install download chef              # Download latest stable chef
+mixlib-install list-products              # List all available products (added in v3.14.0)
 mixlib-install help                       # Show all commands
 ```
+
+### Available Subcommands
+- `download` - Download a Chef Software product
+- `list-products` - Display all available products from the product matrix
+- `list-versions` - List available versions for a product
+- `help` - Display help information
 
 ## Platform Version Compatibility Mode
 
@@ -295,9 +326,12 @@ Mixlib::Install supports Chef's commercial and trial licensing APIs, which provi
 - **Trial API**: `https://chefdownload-trial.chef.io`
   - Used when `license_id` starts with `free-` or `trial-`
   - Returns JSON responses with download URLs
+  - **Restrictions**: Only `stable` channel and `latest` version supported
+  - Defaults are automatically enforced with warnings
 - **Commercial API**: `https://chefdownload-commercial.chef.io`
   - Used for standard license IDs
   - Returns JSON responses with download URLs
+  - No restrictions on channels or versions
 - **Traditional Omnitruck**: `https://omnitruck.chef.io`
   - Used when no `license_id` is provided
   - Returns text-based metadata responses
@@ -315,6 +349,28 @@ Mixlib::Install supports Chef's commercial and trial licensing APIs, which provi
   url\thttp://...
   sha256\tabc123...
   ```
+
+### License ID Detection Helper Methods (`lib/mixlib/install/dist.rb`)
+```ruby
+require 'mixlib/install/dist'
+
+# Check if license_id indicates trial API usage
+Mixlib::Install::Dist.trial_license?('free-trial-123')      # => true
+Mixlib::Install::Dist.trial_license?('trial-abc-456')       # => true
+Mixlib::Install::Dist.trial_license?('commercial-xyz')      # => false
+
+# Check if license_id indicates commercial API usage
+Mixlib::Install::Dist.commercial_license?('commercial-xyz') # => true
+Mixlib::Install::Dist.commercial_license?('free-trial-123') # => false
+```
+
+**Trial License Detection Logic**:
+- Returns `true` if license_id starts with `free-` or `trial-`
+- Returns `false` for nil, empty string, or other prefixes
+
+**Commercial License Detection Logic**:
+- Returns `true` if license_id is present and NOT a trial license
+- Returns `false` for nil, empty string, or trial licenses
 
 ### Content-Disposition Header Handling
 Commercial and trial APIs return endpoint URLs that use HTTP Content-Disposition headers to specify the actual filename, rather than including the filename in the URL path.
@@ -344,6 +400,70 @@ When adding or modifying commercial/trial API functionality:
 1. Verify JSON parsing in both Bourne shell (sed) and PowerShell (ConvertFrom-Json)
 1. Test filename extraction with various response header formats
 1. Verify fallback filename construction for each platform type
+1. Test chef-ice product with package_manager parameter
+1. Verify platform normalization for chef-ice on all supported platforms
+1. Test trial API automatic defaults enforcement (stable channel, latest version)
+
+## Chef-ICE Product Support
+
+The `chef-ice` product (Chef Infra Client Enterprise, Chef 19+) requires special handling:
+
+### Key Characteristics:
+- **Product Name**: `chef-ice`
+- **Package Name**: `chef-ice`
+- **Minimum Version**: Chef 19.x
+- **API Compatibility**: Works with both commercial and trial APIs
+- **URL Parameters**: Uses `m`, `p`, `pm` instead of standard `p`, `pv`, `m` format
+
+### URL Parameter Differences:
+**Standard Products (chef, chef-backend, etc.)**:
+```
+?p={platform}&pv={platform_version}&m={machine}&v={version}&license_id={id}
+```
+
+**Chef-ICE Product**:
+```
+?v={version}&license_id={id}&m={machine}&p={normalized_platform}&pm={package_manager}
+```
+
+### Platform Normalization (`Util.normalize_platform_for_commercial`):
+Chef-ICE uses generic platform categories:
+- **linux**: el, centos, rhel, fedora, rocky, scientific, debian, ubuntu, linuxmint, raspbian, opensuse, sles, amazon
+- **macos**: mac_os_x, macos
+- **windows**: windows
+- **unix**: freebsd, aix, solaris, smartos, omnios
+- **Default**: linux (for unknown platforms)
+
+### Package Manager Detection (`Util.determine_package_manager`):
+Automatically determines package format based on platform:
+- **rpm**: el, centos, rhel, fedora, amazon, rocky, opensuse, sles, scientific
+- **deb**: debian, ubuntu, linuxmint, raspbian
+- **dmg**: mac_os_x, macos
+- **msi**: windows
+- **tar**: solaris, smartos, freebsd, aix, omnios
+- **Default**: tar (for unknown platforms)
+
+### Implementation Locations:
+- **Backend Logic**: `lib/mixlib/install/backend/package_router.rb` (lines 265-270)
+- **Utility Functions**: `lib/mixlib/install/util.rb` (lines 182-224)
+- **Shell Script**: `lib/mixlib/install/generator/bourne/scripts/fetch_metadata.sh`
+- **PowerShell Script**: `lib/mixlib/install/generator/powershell/scripts/get_project_metadata.ps1`
+
+### Example Usage:
+```ruby
+options = {
+  product_name: 'chef-ice',
+  channel: :stable,
+  product_version: :latest,
+  platform: 'ubuntu',
+  platform_version: '20.04',
+  architecture: 'x86_64',
+  license_id: 'free-trial-abc-123'
+}
+
+artifact = Mixlib::Install.new(options).artifact_info
+# URL: https://chefdownload-trial.chef.io/stable/chef-ice/download?v=19.1.151&license_id=free-trial-abc-123&m=x86_64&p=linux&pm=deb
+```
 
 ## Common Pitfalls to Avoid
 
@@ -356,6 +476,8 @@ When adding or modifying commercial/trial API functionality:
 1. **Don't add dependencies without version constraints** - Especially for Ruby 2.6+ support
 1. **Don't assume filename in URL** - Commercial/trial APIs use Content-Disposition headers
 1. **Don't break temp file download approach** - Required for license_id support across all download methods
+1. **Don't forget chef-ice special handling** - Different URL parameters and platform normalization
+1. **Don't bypass trial API defaults** - Trial licenses must use stable channel and latest version
 
 ## Documentation Requirements
 
