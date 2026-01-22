@@ -473,7 +473,7 @@ context "Mixlib::Install::Generator", :vcr do
         it_behaves_like "the correct ps1 script"
 
         it "includes chef-ice conditional logic" do
-          expect(install_script).to include('if ($project -eq \'chef-ice\' -and $license_id)')
+          expect(install_script).to include("if ($project -eq 'chef-ice' -and $license_id)")
         end
 
         it "includes simplified parameters for chef-ice on Windows" do
@@ -503,7 +503,7 @@ context "Mixlib::Install::Generator", :vcr do
         it_behaves_like "the correct ps1 script"
 
         it "includes chef-ice conditional logic" do
-          expect(install_script).to include('if ($project -eq \'chef-ice\' -and $license_id)')
+          expect(install_script).to include("if ($project -eq 'chef-ice' -and $license_id)")
         end
 
         it "includes simplified parameters for chef-ice on Windows" do

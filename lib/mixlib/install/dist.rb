@@ -30,6 +30,22 @@ module Mixlib
       WINDOWS_INSTALL_DIR = "opscode".freeze
       # Linux install directory name
       LINUX_INSTALL_DIR = "/opt"
+
+      # Check if a license_id is for trial API
+      # @param license_id [String] the license ID to check
+      # @return [Boolean] true if license_id indicates trial API usage
+      def self.trial_license?(license_id)
+        !license_id.nil? && !license_id.to_s.empty? &&
+          (license_id.start_with?("free-") || license_id.start_with?("trial-"))
+      end
+
+      # Check if a license_id is for commercial API
+      # @param license_id [String] the license ID to check
+      # @return [Boolean] true if license_id indicates commercial API usage
+      def self.commercial_license?(license_id)
+        !license_id.nil? && !license_id.to_s.empty? &&
+          !trial_license?(license_id)
+      end
     end
   end
 end

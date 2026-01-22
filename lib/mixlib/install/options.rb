@@ -283,7 +283,18 @@ Must provide platform (-p), platform version (-l) and architecture (-a) when spe
 
       def use_trial_api?
         license_id = options[:license_id] || options["license_id"] || default_options[:license_id]
-        !license_id.nil? && !license_id.to_s.empty? && license_id.start_with?("free-", "trial-")
+        Mixlib::Install::Dist.trial_license?(license_id)
+      end
+
+      # Validate that licensed API usage conforms to API restrictions
+      # This is informational only - enforce_trial_api_defaults! already handles corrections
+      def validate_licensed_api_restrictions
+        return unless license_id && !license_id.to_s.empty?
+
+        if use_trial_api?
+          # These are enforced by enforce_trial_api_defaults! but we can add extra validation here if needed
+          # Currently no additional validation needed since defaults are auto-applied
+        end
       end
     end
   end
