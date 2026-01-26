@@ -116,12 +116,18 @@ function Install-Project {
     }
   }
   else {
-    # For licensed downloads, we won't know the filename until after download
-    if ([string]::IsNullOrEmpty($license_id)) {
-      $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
-    } else {
+    # Extract filename from URL path (without query params)
+    $urlPath = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
+    
+    # Check if URL path has a package file extension
+    $hasPackageExtension = $urlPath -match '\.(msi|appx|pkg|dmg|rpm|deb)$'
+    
+    # For licensed downloads or URLs without package extensions, we won't know the filename until after download
+    if (-not [string]::IsNullOrEmpty($license_id) -or -not $hasPackageExtension) {
       $filename = "chef-download-temp-$PID"
-      Write-Host "Using temporary filename for licensed download: $filename"
+      Write-Host "Using temporary filename for content-disposition download: $filename"
+    } else {
+      $filename = $urlPath
     }
   }
   Write-Host "Download directory: $download_directory"
@@ -162,8 +168,8 @@ function Install-Project {
       Write-Host "Downloading $project from $($download_url) to $download_destination."
       $download_result = Get-WebContent $download_url -filepath $download_destination
 
-      # For licensed downloads, extract actual filename from Content-Disposition
-      if (-not [string]::IsNullOrEmpty($license_id) -and $download_result -and $download_result.Filename) {
+      # Extract actual filename from Content-Disposition if it was a temp filename
+      if ($filename -like "chef-download-temp-*" -and $download_result -and $download_result.Filename) {
         $actual_filename = $download_result.Filename
         Write-Host "Extracted filename from Content-Disposition: $actual_filename"
 
@@ -178,8 +184,8 @@ function Install-Project {
           move-item $download_destination $final_destination -force
           $download_destination = $final_destination
         }
-      } elseif (-not [string]::IsNullOrEmpty($license_id)) {
-        Write-Host "Warning: Could not extract filename from Content-Disposition header for licensed download."
+      } elseif ($filename -like "chef-download-temp-*") {
+        Write-Host "Warning: Could not extract filename from Content-Disposition header."
         Write-Host "Using temporary filename. Package installation may fail."
       }
     }

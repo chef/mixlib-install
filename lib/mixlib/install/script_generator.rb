@@ -116,6 +116,7 @@ module Mixlib
         flags = %w{latest true nightlies}.include?(version) ? "" : "-v #{CGI.escape(version)}"
         flags << " " << "-n" if nightlies
         flags << " " << "-p" if prerelease
+        flags << " " << "-l #{license_id}" if license_id && !license_id.to_s.empty?
         flags << " " << install_flags if install_flags
 
         [
@@ -143,6 +144,7 @@ module Mixlib
           shell_var("msi", "#{download_directory}\\chef-#{version}.msi"),
           shell_var("download_directory", download_directory),
         ].tap do |vars|
+          vars << shell_var("chef_license_id", license_id) if license_id && !license_id.to_s.empty?
           if install_msi_url
             vars << shell_var("chef_msi_url", install_msi_url)
           else

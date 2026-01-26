@@ -78,6 +78,12 @@ describe Mixlib::Install::ScriptGenerator do
         opts = { invalid_arg: true }
         expect { described_class.new("1.2.1", false, opts) }.to raise_error(ArgumentError)
       end
+
+      it "sets the license_id" do
+        opts = { license_id: "test-license-123" }
+        install = described_class.new("1.2.1", false, opts)
+        expect(install.license_id).to eq("test-license-123")
+      end
     end
   end
 
@@ -147,7 +153,18 @@ describe Mixlib::Install::ScriptGenerator do
         it "creates the proper shell vars" do
           expect(installer.install_command).to match(%r{chef_msi_url.*http://f/chef.msi})
         end
+      end
 
+      describe "with a license_id" do
+        let(:installer) { described_class.new("1.2.1", true, omnibus_url: "http://f/install.sh", license_id: "test-license-456") }
+
+        it "stores the license_id" do
+          expect(installer.license_id).to eq("test-license-456")
+        end
+
+        it "includes license_id as a variable in powershell script" do
+          expect(installer.install_command).to match(/\$chef_license_id = "test-license-456"/)
+        end
       end
     end
 
@@ -170,6 +187,18 @@ describe Mixlib::Install::ScriptGenerator do
         expect(out).to include(%{version="12.5.0-current.0+20150721082808.git.14.c91b337-1"})
       end
 
+      describe "with a license_id" do
+        let(:installer) { described_class.new("1.2.1", false, omnibus_url: "http://f/", license_id: "test-license-789") }
+
+        it "stores the license_id" do
+          expect(installer.license_id).to eq("test-license-789")
+        end
+
+        it "includes license_id in install_flags for bourne script" do
+          out = installer.install_command
+          expect(out).to include('install_flags="-v 1.2.1 -l test-license-789"')
+        end
+      end
     end
   end
 end
