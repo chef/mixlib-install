@@ -57,12 +57,15 @@ module Mixlib
       attr_accessor :omnibus_url
       attr_accessor :install_msi_url
 
+      attr_accessor :license_id
+
       VALID_INSTALL_OPTS = %w{omnibus_url
                               endpoint
                               http_proxy
                               https_proxy
                               install_flags
                               install_msi_url
+                              license_id
                               nightlies
                               prerelease
                               project
@@ -82,6 +85,7 @@ module Mixlib
         @omnibus_url = "https://www.chef.io/chef/install.sh"
         @use_sudo = true
         @sudo_command = "sudo -E"
+        @license_id = nil
 
         @root = if powershell
                   "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{Mixlib::Install::Dist::DEFAULT_PRODUCT}"
