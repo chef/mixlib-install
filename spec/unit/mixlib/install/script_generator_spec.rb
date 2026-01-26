@@ -163,7 +163,7 @@ describe Mixlib::Install::ScriptGenerator do
         end
 
         it "includes license_id as a variable in powershell script" do
-          expect(installer.install_command).to match(/\$chef_license_id = "test-license-456"/)
+          expect(installer.install_command).to match(/\$license_id = "test-license-456"/)
         end
       end
     end
