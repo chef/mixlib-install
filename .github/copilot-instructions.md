@@ -8,6 +8,10 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
 **Recent Major Changes** (v3.13.0 - v3.15.0):
 - Added commercial and trial API support for licensed Chef products (PR #408, #416)
 - Added chef-ice product with package_manager parameter support (PR #417)
+- Refactored install directory constants to support both Omnibus and Habitat paths
+  - Renamed `WINDOWS_INSTALL_DIR` → `OMNIBUS_WINDOWS_INSTALL_DIR`, `LINUX_INSTALL_DIR` → `OMNIBUS_LINUX_INSTALL_DIR`
+  - Added `HABITAT_WINDOWS_INSTALL_DIR` and `HABITAT_LINUX_INSTALL_DIR` for chef-ice support
+  - Updated all code paths to conditionally use Habitat directories for chef-ice product
 - Added `list-products` CLI subcommand (PR #413)
 - Added license_id parameter to install script endpoints (PR #416)
 - Implemented trial API automatic defaults (stable channel, latest version only)
@@ -414,6 +418,34 @@ The `chef-ice` product (Chef Infra Client Enterprise, Chef 19+) requires special
 - **Minimum Version**: Chef 19.x
 - **API Compatibility**: Works with both commercial and trial APIs
 - **URL Parameters**: Uses `m`, `p`, `pm` instead of standard `p`, `pv`, `m` format
+- **Install Directories**: Uses Habitat package paths instead of Omnibus paths
+
+### Install Directory Constants (`lib/mixlib/install/dist.rb`):
+
+Chef products use different install directory structures depending on whether they're packaged with Omnibus or Habitat:
+
+**Omnibus Products** (chef, chefdk, etc.):
+- Windows: `$env:systemdrive\opscode\{product}`
+- Linux: `/opt/{product}`
+- Constants: `OMNIBUS_WINDOWS_INSTALL_DIR`, `OMNIBUS_LINUX_INSTALL_DIR`
+
+**Habitat Products** (chef-ice):
+- Windows: `$env:systemdrive\hab\pkgs\chef\chef-infra-client\*\*`
+- Linux: `/hab/pkgs/chef/chef-infra-client/*/*`
+- Constants: `HABITAT_WINDOWS_INSTALL_DIR`, `HABITAT_LINUX_INSTALL_DIR`
+
+**Implementation Details**:
+- `OMNIBUS_WINDOWS_INSTALL_DIR = "opscode"` - Traditional Chef install base directory for Windows
+- `OMNIBUS_LINUX_INSTALL_DIR = "/opt"` - Traditional Chef install base directory for Linux
+- `HABITAT_WINDOWS_INSTALL_DIR = "hab\\pkgs"` - Habitat package directory for Windows
+- `HABITAT_LINUX_INSTALL_DIR = "/hab/pkgs"` - Habitat package directory for Linux
+
+**Usage in Code**:
+- `lib/mixlib/install.rb`: `root` and `current_version` methods check product name and use appropriate constants
+- `lib/mixlib/install/script_generator.rb`: Sets `@root` based on product type after initialization
+- `lib/mixlib/install/generator/base.rb`: Conditionally sets `context[:windows_dir]` for chef-ice
+
+The wildcard paths (`*/*`) in Habitat directories allow matching any version/release combination of the package.
 
 ### URL Parameter Differences:
 **Standard Products (chef, chef-backend, etc.)**:
