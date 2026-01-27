@@ -90,12 +90,21 @@ module Mixlib
         @channel = "stable"
 
         @root = if powershell
-                  "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{Mixlib::Install::Dist::DEFAULT_PRODUCT}"
+                  "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{Mixlib::Install::Dist::DEFAULT_PRODUCT}"
                 else
-                  "#{Mixlib::Install::Dist::LINUX_INSTALL_DIR}/#{Mixlib::Install::Dist::DEFAULT_PRODUCT}"
+                  "#{Mixlib::Install::Dist::OMNIBUS_LINUX_INSTALL_DIR}/#{Mixlib::Install::Dist::DEFAULT_PRODUCT}"
                 end
 
         parse_opts(opts)
+
+        # Update root for chef-ice to use Habitat install directories
+        if @project.casecmp("chef-ice") == 0
+          @root = if powershell
+                    "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*"
+                  else
+                    "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*"
+                  end
+        end
       end
 
       def install_command

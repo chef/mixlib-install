@@ -52,6 +52,18 @@ describe Mixlib::Install::ScriptGenerator do
         install = described_class.new("1.2.1", false, root: "/opt/test")
         expect(install.root).to eq("/opt/test")
       end
+
+      describe "for chef-ice product" do
+        it "uses Habitat install directory on windows" do
+          install = described_class.new("1.2.1", true, project: "chef-ice")
+          expect(install.root).to eq("$env:systemdrive\\hab\\pkgs\\chef\\chef-infra-client\\*\\*")
+        end
+
+        it "uses Habitat install directory on unix" do
+          install = described_class.new("1.2.1", false, project: "chef-ice")
+          expect(install.root).to eq("/hab/pkgs/chef/chef-infra-client/*/*")
+        end
+      end
     end
 
     describe "parses the options hash" do

@@ -158,10 +158,19 @@ module Mixlib
     def root
       # This only works for chef and chefdk but they are the only projects
       # we are supporting as of now.
-      if options.for_ps1?
-        "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{options.product_name}"
+      # chef-ice uses Habitat install directories
+      if options.product_name.casecmp("chef-ice") == 0
+        if options.for_ps1?
+          "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*"
+        else
+          "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*"
+        end
       else
-        "/opt/#{options.product_name}"
+        if options.for_ps1?
+          "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{options.product_name}"
+        else
+          "#{Mixlib::Install::Dist::OMNIBUS_LINUX_INSTALL_DIR}/#{options.product_name}"
+        end
       end
     end
 
@@ -175,10 +184,19 @@ module Mixlib
       # install directory which can be different than the product name (e.g.
       # chef-server -> /opt/opscode). But this is OK for now since
       # chef & chefdk are the only supported products.
-      version_manifest_file = if options.for_ps1?
-                                "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{options.product_name}\\version-manifest.json"
+      # chef-ice uses Habitat install directories
+      version_manifest_file = if options.product_name.casecmp("chef-ice") == 0
+                                if options.for_ps1?
+                                  "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*\\version-manifest.json"
+                                else
+                                  "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*/version-manifest.json"
+                                end
                               else
-                                "/opt/#{options.product_name}/version-manifest.json"
+                                if options.for_ps1?
+                                  "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{options.product_name}\\version-manifest.json"
+                                else
+                                  "/opt/#{options.product_name}/version-manifest.json"
+                                end
                               end
 
       if File.exist? version_manifest_file

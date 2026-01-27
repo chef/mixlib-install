@@ -26,10 +26,14 @@ module Mixlib
       RESOURCES_URL = "https://www.chef.io/support".freeze
       # MacOS volume name
       MACOS_VOLUME = "chef_software".freeze
-      # Windows install directory name
-      WINDOWS_INSTALL_DIR = "opscode".freeze
-      # Linux install directory name
-      LINUX_INSTALL_DIR = "/opt"
+      # Omnibus Windows install directory name
+      OMNIBUS_WINDOWS_INSTALL_DIR = "opscode".freeze
+      # Omnibus Linux install directory name
+      OMNIBUS_LINUX_INSTALL_DIR = "/opt".freeze
+      # Habitat Windows install directory name
+      HABITAT_WINDOWS_INSTALL_DIR = "hab\\pkgs".freeze
+      # Habitat Linux install directory name
+      HABITAT_LINUX_INSTALL_DIR = "/hab/pkgs".freeze
 
       # Check if a license_id is for trial API
       # @param license_id [String] the license ID to check

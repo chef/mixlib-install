@@ -50,6 +50,16 @@ describe Mixlib::Install::Dist do
       end
     end
 
+    context "with nil or empty values" do
+      it "returns false for nil" do
+        expect(Mixlib::Install::Dist.trial_license?(nil)).to be false
+      end
+
+      it "returns false for empty string" do
+        expect(Mixlib::Install::Dist.trial_license?("")).to be false
+      end
+    end
+
     context "with nil or empty" do
       it "returns false for nil" do
         expect(Mixlib::Install::Dist.trial_license?(nil)).to be false
@@ -90,6 +100,24 @@ describe Mixlib::Install::Dist do
       it "returns false for empty string" do
         expect(Mixlib::Install::Dist.commercial_license?("")).to be false
       end
+    end
+  end
+
+  describe "install directory constants" do
+    it "defines OMNIBUS_WINDOWS_INSTALL_DIR" do
+      expect(Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR).to eq("opscode")
+    end
+
+    it "defines OMNIBUS_LINUX_INSTALL_DIR" do
+      expect(Mixlib::Install::Dist::OMNIBUS_LINUX_INSTALL_DIR).to eq("/opt")
+    end
+
+    it "defines HABITAT_WINDOWS_INSTALL_DIR" do
+      expect(Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR).to eq("hab\\pkgs")
+    end
+
+    it "defines HABITAT_LINUX_INSTALL_DIR" do
+      expect(Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR).to eq("/hab/pkgs")
     end
   end
 end
