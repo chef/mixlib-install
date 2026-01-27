@@ -82,7 +82,7 @@ module Mixlib
         @prerelease = false
         @nightlies = false
         @endpoint = "metadata"
-        @omnibus_url = "https://www.chef.io/chef/install.sh"
+        @omnibus_url = "https://omnitruck.chef.io/install.sh"
         @use_sudo = true
         @sudo_command = "sudo -E"
         @license_id = nil
@@ -233,7 +233,7 @@ module Mixlib
       # @return [String] the omnibus URL (commercial/trial or standard omnitruck)
       # @api private
       def omnibus_url_for_license
-        return omnibus_url if license_id.nil? || license_id.to_s.empty? || !omnibus_url.eq("https://www.chef.io/chef/install.sh")
+        return omnibus_url if license_id.nil? || license_id.to_s.empty? || omnibus_url != "https://omnitruck.chef.io/install.sh"
 
         # Determine if this is a trial or commercial license
         base_url = if license_id.start_with?("free-", "trial-")
