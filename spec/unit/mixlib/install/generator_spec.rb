@@ -646,5 +646,27 @@ context "Mixlib::Install::Generator", :vcr do
         expect(install_script).to match(/install_strategy='#{install_command_options[:install_strategy]}'/)
       end
     end
+
+    context "for bourne install params without checksum" do
+      let(:install_command_options) do
+        {
+          download_url_override: "https://packages.chef.io/files/stable/chef/12.19.36/debian/8/chef_12.19.36-1_amd64.deb",
+        }
+      end
+
+      let(:add_options) do
+        {
+          install_command_options: install_command_options,
+        }
+      end
+
+      it "skips checksum verification when sha256 is empty" do
+        expect(install_script).to include("Skipping checksum verification - no checksum provided")
+      end
+
+      it "includes checksum verification check" do
+        expect(install_script).to match(/if test "x\$sha256" = "x"; then/)
+      end
+    end
   end
 end
