@@ -424,7 +424,7 @@ VCR is a tool that helps cache and replay http responses. When these responses c
 ## Contributing
 
 1. Fork it ( <https://github.com/[my-github-username]/mixlib-install/fork> )
-1. Create your feature branch (`git checkout -b my-new-feature`)
-1. Commit your changes (`git commit -am 'Add some feature'`)
-1. Push to the branch (`git push origin my-new-feature`)
-1. Create a new Pull Request
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
