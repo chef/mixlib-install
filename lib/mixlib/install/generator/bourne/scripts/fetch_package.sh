@@ -22,7 +22,7 @@
 
 # Function to check if URL path contains a valid package filename
 has_package_filename() {
-  url_path=`echo "$1" | sed -e 's/?.*//' | sed -e 's/^.*\///'`
+  url_path=`echo "$1" | sed -e 's/?.*//' -e 's/^.*\///'`
   # Check if the path segment has a package extension
   case "$url_path" in
     *.rpm|*.deb|*.pkg|*.msi|*.dmg|*.bff|*.p5p|*.solaris|*.sh)
