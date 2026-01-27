@@ -584,7 +584,7 @@ When making changes:
 - `Hash#fetch_values`
 - `Hash#to_proc`
 - Frozen string literal pragma: `# frozen_string_literal: true`
-- Endless ranges: `(1..)` 
+- Endless ranges: `(1..)`
 - `Enumerable#chain`
 - `Kernel#then`
 - `Integer#digits`
