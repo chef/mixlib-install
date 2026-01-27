@@ -86,6 +86,8 @@ module Mixlib
         @use_sudo = true
         @sudo_command = "sudo -E"
         @license_id = nil
+        @project = Mixlib::Install::Dist::DEFAULT_PRODUCT.freeze
+        @channel = "stable"
 
         @root = if powershell
                   "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{Mixlib::Install::Dist::DEFAULT_PRODUCT}"
@@ -121,7 +123,7 @@ module Mixlib
 
         [
           shell_var("chef_omnibus_root", root),
-          shell_var("chef_omnibus_url", omnibus_url),
+          shell_var("chef_omnibus_url", omnibus_url_for_license),
           shell_var("install_flags", flags.strip),
           shell_var("pretty_version", Util.pretty_version(version)),
           shell_var("sudo_sh", sudo("sh")),
@@ -166,6 +168,7 @@ module Mixlib
           validate_opts!(opt)
           case opt.to_s
           when "project", "endpoint"
+            @project = setting if opt.to_s == "project"
             self.endpoint = metadata_endpoint_from_project(setting)
           else
             send("#{opt.to_sym}=", setting)
@@ -217,16 +220,59 @@ module Mixlib
         end
       end
 
-      def windows_metadata_url
-        base = if omnibus_url.match?(%r{/install.sh$})
-                 "#{File.dirname(omnibus_url)}/"
-               end
+      # Returns the appropriate omnibus URL based on whether license_id is provided
+      # @return [String] the omnibus URL (commercial/trial or standard omnitruck)
+      # @api private
+      def omnibus_url_for_license
+        return omnibus_url if license_id.nil? || license_id.to_s.empty? || !omnibus_url.include?("omnitruck.chef.io")
 
-        url = "#{base}#{endpoint}"
-        url << "?p=windows&m=$platform_architecture&pv=$platform_version"
+        # Determine if this is a trial or commercial license
+        base_url = if license_id.start_with?("free-", "trial-")
+                     "https://chefdownload-trial.chef.io"
+                   else
+                     "https://chefdownload-commercial.chef.io"
+                   end
+
+        "#{base_url}/install.sh?license_id=#{CGI.escape(license_id)}"
+      end
+
+      def windows_metadata_url
+        # Determine if we're using commercial/trial API
+        using_licensed_api = license_id && !license_id.to_s.empty?
+
+        if using_licensed_api
+          # Commercial/trial API: <base_url>/<channel>/<project>/metadata
+          base_url = if license_id.start_with?("free-", "trial-")
+                       "https://chefdownload-trial.chef.io"
+                     else
+                       "https://chefdownload-commercial.chef.io"
+                     end
+
+          product_name = @project
+          url = "#{base_url}/#{@channel}/#{product_name}/metadata"
+        else
+          # Omnitruck API: use base from omnibus_url + endpoint
+          base = if omnibus_url_for_license.match?(%r{/install.sh})
+                   # Ensure base URL ends with /
+                   base_url = File.dirname(omnibus_url_for_license)
+                   base_url += "/" unless base_url.end_with?("/")
+                   base_url
+                 end
+          url = "#{base}#{endpoint}"
+        end
+
+        # chef-ice uses different parameters than chef
+        if @project.casecmp("chef-ice") == 0
+          # For chef-ice: p (platform), m (machine), pm (package_manager)
+          url << "?p=windows&m=$platform_architecture&pm=msi"
+        else
+          # For chef and other products: p (platform), pv (platform_version), m (machine)
+          url << "?p=windows&m=$platform_architecture&pv=$platform_version"
+        end
         url << "&v=#{CGI.escape(version)}" unless %w{latest true nightlies}.include?(version)
         url << "&prerelease=true" if prerelease
         url << "&nightlies=true" if nightlies
+        url << "&license_id=#{CGI.escape(license_id)}" if license_id && !license_id.to_s.empty?
         url
       end
 
