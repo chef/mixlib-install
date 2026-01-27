@@ -80,16 +80,16 @@ context "Mixlib::Install" do
       let(:product_name) { "chef-ice" }
       let(:version_manifest_file) { "/hab/pkgs/chef/chef-infra-client/*/*/version-manifest.json" }
 
+      it "should use Habitat install directory path" do
+        expect(installer.root).to eq("/hab/pkgs/chef/chef-infra-client/*/*")
+      end
+
       context "when chef-ice is installed" do
         before do
           expect(File).to receive(:exist?).with(version_manifest_file).and_return(true)
           expect(File).to receive(:read).with(version_manifest_file).and_wrap_original do |m, path|
             m.call(File.join(VERSION_MANIFEST_DIR, "/opt/chef/version-manifest.json"))
           end
-        end
-
-        it "should use Habitat install directory path" do
-          expect(installer.root).to eq("/hab/pkgs/chef/chef-infra-client/*/*")
         end
 
         it "should report version correctly" do
@@ -407,7 +407,7 @@ context "Mixlib::Install" do
 
     context "when platform options are not set" do
       it "will raise an error" do
-        expect { installer.download_artifact }.to raise_error /Must provide platform options to download a specific artifact/
+        expect { installer.download_artifact }.to raise_error(/Must provide platform options to download a specific artifact/)
       end
     end
   end
