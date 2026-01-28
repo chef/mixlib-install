@@ -5,13 +5,13 @@ function Get-ProjectMetadata {
     .DESCRIPTION
     Get metadata for project
     .EXAMPLE
-    iex (new-object net.webclient).downloadstring('<%= base_url %>/install.ps1'); Get-ProjectMetadata -project chef -channel stable
+    iex (new-object net.webclient).downloadstring('<%= base_url %>/install.ps1<%= "?license_id=#{license_id}" if license_id && !license_id.to_s.empty? %>'); Get-ProjectMetadata -project chef -channel stable
 
     Gets the download url and SHA256 checksum for the latest stable release of Chef.
     .EXAMPLE
-    iex (irm '<%= base_url %>/install.ps1'); Get-ProjectMetadata -project chefdk -channel stable -version 0.8.0
+    iex (irm '<%= base_url %>/install.ps1<%= "?license_id=#{license_id}" if license_id && !license_id.to_s.empty? %>'); Get-ProjectMetadata -project chef-workstation -channel stable
 
-    Gets the download url and SHA256 checksum for ChefDK 0.8.0.
+    Gets the download url and SHA256 checksum for Chef Workstation.
   #>
   [cmdletbinding()]
   param (
@@ -20,7 +20,7 @@ function Get-ProjectMetadata {
     [string]
     # Project to install
     [string]
-    $project = 'chef',
+    $project = '<%= default_product %>',
     # Version of the application to install
     # This parameter is optional, if not supplied it will provide the latest version,
     # and if an iteration number is not specified, it will grab the latest available iteration.
@@ -42,7 +42,7 @@ function Get-ProjectMetadata {
     $architecture = 'auto',
     # License ID for commercial API access
     [string]
-    $license_id
+    $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>
   )
 
   # The following legacy switches are just aliases for the current channel
@@ -63,35 +63,53 @@ function Get-ProjectMetadata {
   Write-Verbose "Architecture: $architecture"
   Write-Verbose "Project: $project"
 
-  # Use commercial API if license_id is provided, otherwise use omnitruck
-  if ($license_id) {
-    # Check if license_id starts with 'free-' or 'trial-' for trial API
-    if ($license_id -match '^(free-|trial-)') {
-      $base_server_uri = 'https://chefdownload-trial.chef.io'
-      Write-Verbose "Using Trial API with license ID"
+  # Use commercial API if license_id is provided, otherwise use omnitruck if no URL is provided
+  if ([string]::IsNullOrEmpty($base_server_uri)) {
+    if ($license_id) {
+      # Check if license_id starts with 'free-' or 'trial-' for trial API
+      if ($license_id -match '^(free-|trial-)') {
+        $base_server_uri = 'https://chefdownload-trial.chef.io'
+        Write-Verbose "Using Trial API with license ID"
+      } else {
+        $base_server_uri = 'https://chefdownload-commercial.chef.io'
+        Write-Verbose "Using Commercial API with license ID"
+      }
     } else {
-      $base_server_uri = 'https://chefdownload-commercial.chef.io'
-      Write-Verbose "Using Commercial API with license ID"
+      $base_server_uri = 'https://omnitruck.chef.io'
+      Write-Verbose "Using Omnitruck API without license ID"
     }
   }
 
   $metadata_base_url = "/$($channel)/$($project)/metadata"
-  $metadata_array = ("?v=$($version)",
-    "p=$platform",
-    "pv=$platform_version",
-    "m=$architecture")
-  
-  # Add license_id to query parameters if provided
-  if ($license_id) {
-    $metadata_array += "license_id=$license_id"
+
+  # For chef-ice product with commercial API, use simplified parameters
+  if ($project -eq 'chef-ice' -and $license_id) {
+    # chef-ice uses simplified platform parameter: windows, linux, or macos
+    # Windows always uses MSI package manager
+    $metadata_array = ("?v=$($version)",
+      "license_id=$license_id",
+      "m=$architecture",
+      "p=windows",
+      "pm=msi")
+  } else {
+    # Standard parameters for other products
+    $metadata_array = ("?v=$($version)",
+      "p=$platform",
+      "pv=$platform_version",
+      "m=$architecture")
+
+    # Add license_id to query parameters if provided
+    if ($license_id) {
+      $metadata_array += "license_id=$license_id"
+    }
   }
-  
+
   $metadata_base_url += [string]::join('&', $metadata_array)
   $metadata_url = new-uri $base_server_uri $metadata_base_url
 
   Write-Verbose "Downloading $project details from $metadata_url"
   $response = (Get-WebContent $metadata_url).trim()
-  
+
   # Commercial and trial APIs return JSON, omnitruck returns text format
   if ($license_id) {
     # Parse JSON response from commercial/trial API

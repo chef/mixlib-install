@@ -198,6 +198,16 @@ EOF
           res = http.request(create_http_request(full_path))
           res.value
           JSON.parse(res.body)
+        rescue Net::HTTPClientError, Net::HTTPServerError => e
+          # Provide helpful error messages for licensed API failures
+          if use_trial_api?
+            if options.channel != :stable || (options.product_version != :latest && options.product_version.to_sym != :latest)
+              raise "Trial API only supports stable channel and latest version. " \
+                    "Current settings: channel=#{options.channel}, version=#{options.product_version}. " \
+                    "Error: #{e.message}"
+            end
+          end
+          raise e
         end
 
         def create_http_request(full_path)
@@ -251,7 +261,15 @@ EOF
             pv_param = platform_version
             m_param = Util.normalize_architecture(artifact_map["omnibus.architecture"])
             v_param = artifact_map["omnibus.version"]
-            download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}&pv=#{pv_param}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
+
+            # For chef-ice, use normalized platform names and add package manager parameter
+            if omnibus_project == "chef-ice"
+              p_param = Util.normalize_platform_for_commercial(platform)
+              pm_param = Util.determine_package_manager(platform)
+              download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?v=#{v_param}&license_id=#{options.license_id}&m=#{m_param}&p=#{p_param}&pm=#{pm_param}"
+            else
+              download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}&pv=#{pv_param}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
+            end
           else
             base_url = if use_compat_download_url_endpoint?(platform, platform_version)
                          COMPAT_DOWNLOAD_URL_ENDPOINT
