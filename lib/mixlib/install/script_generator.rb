@@ -98,7 +98,7 @@ module Mixlib
         parse_opts(opts)
 
         # Update root for chef-ice to use Habitat install directories
-        if @project.casecmp("chef-ice") == 0
+        if @project&.casecmp("chef-ice") == 0
           @root = if powershell
                     "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*"
                   else
