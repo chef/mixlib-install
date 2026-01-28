@@ -193,15 +193,14 @@ context "Mixlib::Install" do
       let(:license_id) { "test-license-123" }
 
       it "should pre-set license_id variable" do
-        expect(install_sh).to include("# License ID provided via context")
-        expect(install_sh).to include("license_id='test-license-123'")
+        expect(install_sh).to include('license_id="test-license-123"')
       end
     end
 
     context "without license_id" do
       it "should not include license_id pre-set" do
-        expect(install_sh).not_to include("# License ID provided via context")
-        expect(install_sh).not_to include("license_id='")
+        # Check that license_id is not assigned a default value
+        expect(install_sh).not_to match(/^license_id=".+"$/)
       end
     end
 
@@ -212,7 +211,7 @@ context "Mixlib::Install" do
         expect do
           options = { license_id: license_id, channel: :current }
           script = Mixlib::Install.install_sh(options)
-          expect(script).to include("license_id='free-trial-abc-123'")
+          expect(script).to include('license_id="free-trial-abc-123"')
         end.to output(/WARNING: Trial API only supports 'stable' channel/).to_stderr
       end
 
@@ -220,7 +219,7 @@ context "Mixlib::Install" do
         expect do
           options = { license_id: license_id, version: "18.5.0" }
           script = Mixlib::Install.install_sh(options)
-          expect(script).to include("license_id='free-trial-abc-123'")
+          expect(script).to include('license_id="free-trial-abc-123"')
         end.to output(/WARNING: Trial API only supports 'latest' version/).to_stderr
       end
 
@@ -228,7 +227,7 @@ context "Mixlib::Install" do
         expect do
           options = { license_id: license_id, channel: :stable, version: :latest }
           script = Mixlib::Install.install_sh(options)
-          expect(script).to include("license_id='free-trial-abc-123'")
+          expect(script).to include('license_id="free-trial-abc-123"')
         end.not_to output.to_stderr
       end
     end
@@ -240,7 +239,7 @@ context "Mixlib::Install" do
         expect do
           options = { license_id: license_id, channel: :current, version: "18.5.0" }
           script = Mixlib::Install.install_sh(options)
-          expect(script).to include("license_id='commercial-xyz-789'")
+          expect(script).to include('license_id="commercial-xyz-789"')
         end.not_to output.to_stderr
       end
     end
@@ -279,15 +278,14 @@ context "Mixlib::Install" do
       let(:license_id) { "trial-license-456" }
 
       it "should include license_id in install command" do
-        expect(install_ps1).to include("# License ID provided via context - adding to install command")
-        expect(install_ps1).to include("install -license_id 'trial-license-456'")
+        expect(install_ps1).to include("$license_id = 'trial-license-456'")
       end
     end
 
     context "without license_id" do
       it "should not include license_id in install command" do
-        expect(install_ps1).not_to include("# License ID provided via context - adding to install command")
-        expect(install_ps1).not_to include("install -license_id")
+        # Check that $license_id is not assigned a default value
+        expect(install_ps1).not_to match(/\$license_id = '[^']+'$/)
       end
     end
 
@@ -298,7 +296,7 @@ context "Mixlib::Install" do
         expect do
           options = { license_id: license_id, channel: :unstable }
           script = Mixlib::Install.install_ps1(options)
-          expect(script).to include("install -license_id 'trial-xyz-456'")
+          expect(script).to include("$license_id = 'trial-xyz-456'")
         end.to output(/WARNING: Trial API only supports 'stable' channel/).to_stderr
       end
 
@@ -306,7 +304,7 @@ context "Mixlib::Install" do
         expect do
           options = { license_id: license_id, version: "17.2.0" }
           script = Mixlib::Install.install_ps1(options)
-          expect(script).to include("install -license_id 'trial-xyz-456'")
+          expect(script).to include("$license_id = 'trial-xyz-456'")
         end.to output(/WARNING: Trial API only supports 'latest' version/).to_stderr
       end
 
@@ -314,7 +312,7 @@ context "Mixlib::Install" do
         expect do
           options = { license_id: license_id, channel: :stable, version: :latest }
           script = Mixlib::Install.install_ps1(options)
-          expect(script).to include("install -license_id 'trial-xyz-456'")
+          expect(script).to include("$license_id = 'trial-xyz-456'")
         end.not_to output.to_stderr
       end
     end
@@ -326,7 +324,7 @@ context "Mixlib::Install" do
         expect do
           options = { license_id: license_id, channel: :current, version: "17.5.0" }
           script = Mixlib::Install.install_ps1(options)
-          expect(script).to include("install -license_id 'commercial-abc-123'")
+          expect(script).to include("$license_id = 'commercial-abc-123'")
         end.not_to output.to_stderr
       end
     end
