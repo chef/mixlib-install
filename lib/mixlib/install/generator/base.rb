@@ -49,7 +49,15 @@ module Mixlib
           if File.exist? "#{script_path}.erb"
             # Default values to use incase they are not set in the context
             context[:project_name] ||= Mixlib::Install::Dist::PROJECT_NAME.freeze
-            context[:base_url] ||= Mixlib::Install::Dist::OMNITRUCK_ENDPOINT.freeze
+            context[:base_url] ||= if context[:license_id]
+              if Mixlib::Install::Dist.trial_license?(context[:license_id])
+                Mixlib::Install::Dist::TRIAL_API_ENDPOINT.freeze
+              else
+                Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT.freeze
+              end
+            else
+              Mixlib::Install::Dist::OMNITRUCK_ENDPOINT.freeze
+            end
             context[:default_product] ||= Mixlib::Install::Dist::DEFAULT_PRODUCT.freeze
             context[:bug_url] ||= Mixlib::Install::Dist::BUG_URL.freeze
             context[:support_url] ||= Mixlib::Install::Dist::SUPPORT_URL.freeze

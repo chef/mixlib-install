@@ -18,6 +18,7 @@
 # Defaults
 channel="stable"
 project="<%= default_product %>"
+<%= "license_id=\"#{license_id}\"" if license_id && !license_id.to_s.empty? %>
 
 while getopts pnv:c:f:P:d:s:l:a:L: opt
 do

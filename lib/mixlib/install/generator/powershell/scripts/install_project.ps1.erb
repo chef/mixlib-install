@@ -5,12 +5,11 @@ function Install-Project {
     .DESCRIPTION
     Install a Chef Software, Inc. product
     .EXAMPLE
-    iex (new-object net.webclient).downloadstring('https://omnitruck.chef.io/install.ps1'); Install-Project -project chef -channel stable
+    iex (new-object net.webclient).downloadstring('<%= base_url %>/install.ps1<%= "?license_id=#{license_id}" if license_id && !license_id.to_s.empty? %>'); Install-Project -project chef -channel stable
 
     Installs the latest stable version of Chef.
     .EXAMPLE
-    iex (irm 'https://omnitruck.chef.io/install.ps1'); Install-Project -project chefdk -channel current
-
+    iex (irm '<%= base_url %>/install.ps1<%= "?license_id=#{license_id}" if license_id && !license_id.to_s.empty? %>'); Install-Project -project chef-workstation -channel current
     Installs the latest integration build of the Chef Development Kit
   #>
   [cmdletbinding(SupportsShouldProcess=$true)]
@@ -59,7 +58,7 @@ function Install-Project {
     $install_strategy,
     # License ID for commercial API access
     [string]
-    $license_id
+    $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>
   )
 
   # Use CHEF_LICENSE_KEY environment variable if license_id not provided
@@ -118,10 +117,10 @@ function Install-Project {
   else {
     # Extract filename from URL path (without query params)
     $urlPath = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
-    
+
     # Check if URL path has a package file extension
     $hasPackageExtension = $urlPath -match '\.(msi|appx|pkg|dmg|rpm|deb)$'
-    
+
     # For licensed downloads or URLs without package extensions, we won't know the filename until after download
     if (-not [string]::IsNullOrEmpty($license_id) -or -not $hasPackageExtension) {
       $filename = "chef-download-temp-$PID"
