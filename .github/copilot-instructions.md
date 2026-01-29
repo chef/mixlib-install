@@ -6,17 +6,23 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
 **Primary Goal**: Support the widest range of Ruby versions possible to ensure compatibility across diverse Chef environments.
 
 **Recent Major Changes** (v3.13.0 - v3.15.0):
-- Added commercial and trial API support for licensed Chef products (PR #408, #416)
-- Added chef-ice product with package_manager parameter support (PR #417)
-- Refactored install directory constants to support both Omnibus and Habitat paths
+- **PR #417**: Added chef-ice product with package_manager parameter support
+  - Implemented platform normalization (`Util.normalize_platform_for_commercial`) for chef-ice
+  - Added package manager detection (`Util.determine_package_manager`) for automatic format selection
+  - Updated URL construction to use `m`, `p`, `pm` parameters for chef-ice (vs. `p`, `pv`, `m` for standard products)
+  - Modified shell and PowerShell scripts to handle chef-ice metadata URLs
+- **PR #408, #416**: Added commercial and trial API support for licensed Chef products
+  - Implemented license_id parameter for install scripts and API calls
+  - Added trial API automatic defaults enforcement (stable channel, latest version only with warnings)
+  - Created `Dist.trial_license?` and `Dist.commercial_license?` helper methods
+- **Install Directory Refactoring**: Support for both Omnibus and Habitat package paths
   - Renamed `WINDOWS_INSTALL_DIR` → `OMNIBUS_WINDOWS_INSTALL_DIR`, `LINUX_INSTALL_DIR` → `OMNIBUS_LINUX_INSTALL_DIR`
-  - Added `HABITAT_WINDOWS_INSTALL_DIR` and `HABITAT_LINUX_INSTALL_DIR` for chef-ice support
-  - Updated all code paths to conditionally use Habitat directories for chef-ice product
-- Added `list-products` CLI subcommand (PR #413)
-- Added license_id parameter to install script endpoints (PR #416)
-- Implemented trial API automatic defaults (stable channel, latest version only)
-- Added Habitat package path detection to generated scripts (PR #407)
-- Migrated CI from Buildkite to GitHub Actions (PR #411)
+  - Added `HABITAT_WINDOWS_INSTALL_DIR = "hab\\pkgs"` and `HABITAT_LINUX_INSTALL_DIR = "/hab/pkgs"`
+  - Updated `root` and `current_version` methods in `lib/mixlib/install.rb` to conditionally use Habitat paths for chef-ice
+  - Modified script generators to set appropriate install directories based on product type
+- **PR #413**: Added `list-products` CLI subcommand for product matrix discovery
+- **PR #407**: Added Habitat package path detection to generated install scripts
+- **PR #411**: Migrated CI from Buildkite to GitHub Actions with comprehensive test coverage
 
 ## Ruby Version Support Strategy
 
@@ -264,6 +270,10 @@ The library includes sophisticated platform version compatibility logic:
   - Fallback: Constructs filename from platform metadata if extraction fails
   - Renames temp file to extracted/constructed filename
   - Works with all download methods: wget, curl, fetch, perl, python
+- **Chef-ICE Support**: Includes platform normalization and package manager detection functions
+  - `determine_package_manager()` - Detects package format based on platform
+  - `normalize_platform_name()` - Maps specific platforms to generic categories (linux, macos, windows, unix)
+  - Conditional URL construction based on product type (chef-ice vs. standard products)
 
 ### PowerShell (install.ps1)
 - Supports: http_proxy
@@ -274,6 +284,10 @@ The library includes sophisticated platform version compatibility logic:
   - Parses JSON responses with `ConvertFrom-Json`
   - Extracts `url` and `sha256` from JSON object
   - Automatically routes to trial or commercial API based on license_id prefix
+- **Chef-ICE Support**: Simplified parameters for Windows
+  - Uses `p=windows`, `m=<arch>`, `pm=msi` parameters for chef-ice
+  - Conditional logic to select appropriate metadata URL format based on product type
+  - Handles both chef-ice and standard product URL construction
 
 ### Script Options
 - `download_url_override`: Direct URL instead of API lookup
@@ -477,9 +491,21 @@ Automatically determines package format based on platform:
 
 ### Implementation Locations:
 - **Backend Logic**: `lib/mixlib/install/backend/package_router.rb` (lines 265-270)
+  - `create_artifact` method checks for `chef-ice` and constructs appropriate download URLs
+  - Implements platform normalization and package manager parameter addition
 - **Utility Functions**: `lib/mixlib/install/util.rb` (lines 182-224)
+  - `determine_package_manager(platform)` - Returns package format (rpm, deb, dmg, msi, tar)
+  - `normalize_platform_for_commercial(platform)` - Maps platforms to generic categories
 - **Shell Script**: `lib/mixlib/install/generator/bourne/scripts/fetch_metadata.sh`
+  - Includes `determine_package_manager()` and `normalize_platform_name()` shell functions
+  - Conditional metadata URL construction for chef-ice
 - **PowerShell Script**: `lib/mixlib/install/generator/powershell/scripts/get_project_metadata.ps1`
+  - Simplified parameter handling for chef-ice on Windows
+  - Uses `p=windows`, `pm=msi` for chef-ice metadata queries
+- **Root Directory Logic**: `lib/mixlib/install.rb` and `lib/mixlib/install/script_generator.rb`
+  - Methods check product name and conditionally use Habitat paths
+  - `root` method returns appropriate install directory path
+  - `current_version` method uses correct version-manifest.json path
 
 ### Example Usage:
 ```ruby
@@ -510,6 +536,26 @@ artifact = Mixlib::Install.new(options).artifact_info
 1. **Don't break temp file download approach** - Required for license_id support across all download methods
 1. **Don't forget chef-ice special handling** - Different URL parameters and platform normalization
 1. **Don't bypass trial API defaults** - Trial licenses must use stable channel and latest version
+
+### Common Issues and Solutions
+
+**Chef-ICE Installation Issues**:
+- Ensure `package_manager` parameter is included in metadata URLs
+- Verify platform normalization returns correct category (linux, macos, windows, unix)
+- Check that Habitat install directories are used (not Omnibus paths)
+- For Windows: Must use `pm=msi` parameter
+
+**Trial API Restrictions**:
+- Trial licenses automatically default to stable channel with warning
+- Trial licenses automatically default to latest version with warning
+- Users cannot override these defaults for trial API
+- Commercial licenses have no such restrictions
+
+**Content-Disposition Filename Extraction**:
+- If filename extraction fails, fallback construction should work
+- Test with multiple download tools (wget, curl, fetch, perl, python)
+- Verify temp file approach doesn't break existing functionality
+- Check that filename has correct extension for platform (.rpm, .deb, .msi, etc.)
 
 ## Documentation Requirements
 
@@ -569,10 +615,33 @@ When making changes:
 ### Environment Variables
 - `EXTRA_PRODUCTS_FILE` - Path to custom product definitions
 - `http_proxy`, `https_proxy`, `ftp_proxy`, `no_proxy` - Proxy configuration
+- `CHEF_LICENSE_KEY` - Fallback license ID for install scripts (if not provided via parameter)
+
+### Quick Reference: Chef-ICE vs Standard Products
+
+| Aspect | Standard Products (chef, chefdk, etc.) | Chef-ICE Product |
+|--------|---------------------------------------|------------------|
+| **Package System** | Omnibus | Habitat |
+| **Install Dir (Windows)** | `C:\opscode\<product>` | `C:\hab\pkgs\chef\chef-infra-client\*\*` |
+| **Install Dir (Linux)** | `/opt/<product>` | `/hab/pkgs/chef/chef-infra-client/*/*` |
+| **URL Parameters** | `?p=<platform>&pv=<version>&m=<arch>&v=<version>&license_id=<id>` | `?v=<version>&license_id=<id>&m=<arch>&p=<normalized>&pm=<manager>` |
+| **Platform Values** | Specific (ubuntu, el, centos, etc.) | Normalized (linux, macos, windows, unix) |
+| **Requires PM Param** | No | Yes (rpm, deb, msi, dmg, tar) |
+| **Min Version** | Varies by product | Chef 19+ |
+
+### Quick Reference: License Types
+
+| License Type | ID Format | API Endpoint | Channel | Version | Auto-Defaults |
+|-------------|-----------|--------------|---------|---------|---------------|
+| **Trial** | `free-*` or `trial-*` | https://chefdownload-trial.chef.io | stable only | latest only | Yes (with warnings) |
+| **Commercial** | Any other format | https://chefdownload-commercial.chef.io | Any | Any | No |
+| **Open Source** | None | https://omnitruck.chef.io | Any | Any | No |
 
 ---
 
 **Remember**: When in doubt about Ruby version compatibility, check the Gemfile and gemspec for version-specific patterns, and test with Ruby 2.6+ when possible. The goal is maximum compatibility (Ruby 2.6+) without sacrificing functionality.
+
+For chef-ice products, always verify that platform normalization and package manager detection work correctly for the target platform before deploying changes.
 
 ### Ruby 2.6+ Feature Reference
 
