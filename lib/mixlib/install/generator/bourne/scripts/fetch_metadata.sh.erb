@@ -57,15 +57,15 @@ normalize_platform_name() {
   esac
 }
 
-if test "x$download_url_override" = "x"; then
+if [ -n "$download_url_override" ]; then
   echo "Getting information for $project $channel $version for $platform..."
 
   metadata_filename="$tmp_dir/metadata.txt"
 
   # Use commercial API if license_id is provided, otherwise use omnitruck
   base_api_url="<%= base_url %>"
-  if test "x$base_api_url" = "x"; then
-    if test "x$license_id" != "x"; then
+  if [ -n "$base_api_url" ]; then
+    if [ -n "$license_id" ]; then
       # Check if license_id starts with 'free-' or 'trial-' for trial API
       case "$license_id" in
         free-*|trial-*)
@@ -84,23 +84,28 @@ if test "x$download_url_override" = "x"; then
   fi
 
   # For chef-ice product, add platform (p), machine (m), and package_manager (pm) parameters
-  if test "$project" = "chef-ice"; then
-    package_manager=$(determine_package_manager)
-    platform_param=$(normalize_platform_name)
-    metadata_url="$base_api_url/$channel/$project/metadata?v=$version&license_id=$license_id&m=$machine&p=$platform_param&pm=$package_manager"
+  if [ -n "$license_id" ]; then
+    if [ "$project" = "chef-ice" ]; then
+      package_manager=$(determine_package_manager)
+      platform_param=$(normalize_platform_name)
+      metadata_url="$base_api_url/$channel/$project/metadata?license_id=$license_id&v=$version&m=$machine&p=$platform_param&pm=$package_manager"
+    else
+      # For other products, use standard parameters
+      metadata_url="$base_api_url/$channel/$project/metadata?license_id=$license_id&v=$version&p=$platform&pv=$platform_version&m=$machine"
+    fi
   else
-    # For other products, use standard parameters
-    metadata_url="$base_api_url/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine&license_id=$license_id"
+    # Omnitruck URL parameters
+    metadata_url="$base_api_url/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine"
   fi
 
-  do_download "$metadata_url"  "$metadata_filename"
+  do_download "$metadata_url" "$metadata_filename"
 
   cat "$metadata_filename"
 
   echo ""
 
   # Commercial and trial APIs return JSON, omnitruck returns text format
-  if test "x$license_id" != "x"; then
+  if [ -n "$license_id" ]; then
     # Parse JSON response from commercial/trial API
     # Check if response looks like JSON
     if grep -q '^{' "$metadata_filename" 2>/dev/null; then
@@ -109,7 +114,7 @@ if test "x$download_url_override" = "x"; then
       download_url=`sed -n 's/.*"url":"\([^"]*\)".*/\1/p' "$metadata_filename"`
       sha256=`sed -n 's/.*"sha256":"\([^"]*\)".*/\1/p' "$metadata_filename"`
 
-      if test "x$download_url" != "x" && test "x$sha256" != "x"; then
+      if [ -n "$download_url" ] && [ -n "$sha256" ]; then
         echo "downloaded metadata file looks valid..."
       else
         echo "downloaded metadata file is corrupted or an uncaught error was encountered in downloading the file..."

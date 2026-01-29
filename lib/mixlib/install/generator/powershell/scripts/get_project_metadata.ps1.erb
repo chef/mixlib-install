@@ -83,20 +83,24 @@ function Get-ProjectMetadata {
   $metadata_base_url = "/$($channel)/$($project)/metadata"
 
   # For chef-ice product with commercial API, use simplified parameters
-  if ($project -eq 'chef-ice' -and $license_id) {
+  if ($project -eq 'chef-ice') {
     # chef-ice uses simplified platform parameter: windows, linux, or macos
     # Windows always uses MSI package manager
-    $metadata_array = ("?v=$($version)",
+    $metadata_array = (
+      "?v=$($version)",
       "license_id=$license_id",
       "m=$architecture",
       "p=windows",
-      "pm=msi")
+      "pm=msi"
+    )
   } else {
     # Standard parameters for other products
-    $metadata_array = ("?v=$($version)",
+    $metadata_array = (
+      "?v=$($version)",
       "p=$platform",
       "pv=$platform_version",
-      "m=$architecture")
+      "m=$architecture"
+    )
 
     # Add license_id to query parameters if provided
     if ($license_id) {

@@ -66,7 +66,7 @@ EOS
           # Check for CHEF_LICENSE_KEY in execution environment if not already set
           vars += <<EOS
 # Use CHEF_LICENSE_KEY from execution environment if license_id not set
-if [ -z "${license_id:-}" ] && [ -n "${CHEF_LICENSE_KEY:-}" ]; then
+if [ -z "$license_id" ] && [ -n "$CHEF_LICENSE_KEY" ]; then
   license_id="$CHEF_LICENSE_KEY"
 fi
 EOS

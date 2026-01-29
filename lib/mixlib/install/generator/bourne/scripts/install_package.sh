@@ -8,7 +8,7 @@
 # $version: The version requested. Used only for warning user if not set.
 ############
 
-if test "x$version" = "x" -a "x$CI" != "xtrue"; then
+if [ "x$version" = "x" ] && [ "x$CI" != "xtrue" ]; then
   echo
   echo "WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING"
   echo
@@ -24,7 +24,7 @@ fi
 
 install_file $filetype "$download_filename"
 
-if test "x$tmp_dir" != "x"; then
+if [ -n "$tmp_dir" ]; then
   rm -r "$tmp_dir"
 fi
 
