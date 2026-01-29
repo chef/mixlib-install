@@ -110,16 +110,16 @@ elif [ -f "/etc/SuSE-release" ]; then
       platform="opensuseleap"
       platform_version=`awk '/^VERSION =/ { print $3 }' /etc/SuSE-release`
   fi
-elif [ "x$os" = "xFreeBSD" ]; then
+elif [ "$os" = "FreeBSD" ]; then
   platform="freebsd"
   platform_version=`uname -r | sed 's/-.*//'`
-elif [ "x$os" = "xAIX" ]; then
+elif [ "$os" = "AIX" ]; then
   platform="aix"
   platform_version="`uname -v`.`uname -r`"
   machine="powerpc"
 elif [ -f "/etc/os-release" ]; then
   . /etc/os-release
-  if [ "x$CISCO_RELEASE_INFO" != "x" ]; then
+  if [ -n "$CISCO_RELEASE_INFO" ]; then
     . $CISCO_RELEASE_INFO
   fi
 
@@ -127,14 +127,14 @@ elif [ -f "/etc/os-release" ]; then
 
   # VERSION_ID is always the preferred variable to use, but not
   # every distro has it so fallback to VERSION
-  if [ "x$VERSION_ID" != "x" ]; then
+  if [ -n "$VERSION_ID" ]; then
     platform_version=$VERSION_ID
   else
     platform_version=$VERSION
   fi
 fi
 
-if [ "x$platform" = "x" ]; then
+if [ -z "$platform" ]; then
   echo "Unable to determine platform version!"
   report_bug
   exit 1
@@ -194,7 +194,7 @@ case $machine in
     ;;
 esac
 
-if [ -n "$platform_version" ]; then
+if [ -z "$platform_version" ]; then
   echo "Unable to determine platform version!"
   report_bug
   exit 1

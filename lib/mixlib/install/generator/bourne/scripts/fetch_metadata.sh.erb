@@ -57,7 +57,7 @@ normalize_platform_name() {
   esac
 }
 
-if [ -n "$download_url_override" ]; then
+if [ -z "$download_url_override" ]; then
   echo "Getting information for $project $channel $version for $platform..."
 
   metadata_filename="$tmp_dir/metadata.txt"
@@ -94,7 +94,7 @@ if [ -n "$download_url_override" ]; then
       metadata_url="$base_api_url/$channel/$project/metadata?license_id=$license_id&v=$version&p=$platform&pv=$platform_version&m=$machine"
     fi
   else
-    # Omnitruck URL parameters
+    # Omnitruck URL parameters without license_id
     metadata_url="$base_api_url/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine"
   fi
 

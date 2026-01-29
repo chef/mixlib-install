@@ -8,7 +8,7 @@
 # $version: The version requested. Used only for warning user if not set.
 ############
 
-if [ "x$version" = "x" ] && [ "x$CI" != "xtrue" ]; then
+if [ -z "$version" ] && [ "$CI" != "true" ]; then
   echo
   echo "WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING"
   echo

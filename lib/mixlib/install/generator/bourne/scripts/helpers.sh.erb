@@ -250,8 +250,8 @@ do_download() {
   echo "  to file $2"
 
   url=`echo $1`
-  if [ "x$platform" = "xsolaris2" ]; then
-    if [ "x$platform_version" = "x5.9" ] || [ "x$platform_version" = "x5.10" ]; then
+  if [ "$platform" = "solaris2" ]; then
+    if [ "$platform_version" = "5.9" ] || [ "$platform_version" = "5.10" ]; then
       # solaris 9 lacks openssl, solaris 10 lacks recent enough credentials - your base O/S is completely insecure, please upgrade
       url=`echo $url | sed -e 's/https/http/'`
     fi
@@ -289,7 +289,7 @@ install_file() {
   echo "Installing $project $version"
   case "$1" in
     "rpm")
-      if [ "x$platform" = "xnexus" ] || [ "x$platform" = "xios_xr" ]; then
+      if [ "$platform" = "nexus" ] || [ "$platform" = "ios_xr" ]; then
         echo "installing with yum..."
         yum install -yv "$2"
       else
@@ -345,10 +345,10 @@ install_file() {
   fi
 }
 
-if [ -n "$TMPDIR" ]; then
-  tmp=$TMPDIR
-else
+if [ -z "$TMPDIR" ]; then
   tmp="/tmp"
+else
+  tmp=$TMPDIR
 fi
 # secure-ish temp dir creation without having mktemp available (DDoS-able but not exploitable)
 tmp_dir="$tmp/install.sh.$$"
