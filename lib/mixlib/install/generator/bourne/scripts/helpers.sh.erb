@@ -183,7 +183,7 @@ do_fetch() {
   echo "trying fetch..."
   fetch --user-agent="User-Agent: <%= user_agent_string %>" -o "$2" "$1" 2>$tmp_dir/stderr
   # check for bad return status
-  if [ $? -ne 0 ]; then
+  [ $? -ne 0 ] && return 1
   return 0
 }
 
