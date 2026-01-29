@@ -25,15 +25,10 @@ module Mixlib
           install_project_module = []
           install_project_module << get_script("helpers.ps1", context)
           install_project_module << get_script("get_project_metadata.ps1", context)
-          install_project_module << get_script("install_project.ps1")
+          install_project_module << get_script("install_project.ps1", context)
 
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Installer-Module")
-          # If license_id is provided in context, add it to the default install command
-          if context[:license_id] && !context[:license_id].to_s.empty?
-            install_command << "# License ID provided via context - adding to install command"
-            install_command << "install -license_id '#{context[:license_id]}'"
-          end
           install_command.join("\n\n")
         end
 

@@ -172,6 +172,53 @@ module Mixlib
             architecture
           end
         end
+
+        #
+        # Determines package manager based on platform for commercial API
+        #
+        # @param [String] platform
+        #
+        # @return String [package_manager] (rpm, deb, tar, msi, dmg)
+        def determine_package_manager(platform)
+          case platform
+          when /^el/, /^centos/, /^rhel/, /^fedora/, /^amazon/, /^rocky/, /^opensuse/, /^sles/, /^scientific/
+            "rpm"
+          when /^debian/, /^ubuntu/, /^linuxmint/, /^raspbian/
+            "deb"
+          when /^mac_os_x/, /^macos/
+            "dmg"
+          when /^windows/
+            "msi"
+          when /^solaris/, /^smartos/, /^freebsd/, /^aix/, /^omnios/
+            "tar"
+          else
+            # Default to tar for unknown platforms
+            "tar"
+          end
+        end
+
+        #
+        # Normalizes platform name for commercial API (chef-ice)
+        # Maps specific platform names to generic categories
+        #
+        # @param [String] platform
+        #
+        # @return String [normalized_platform] (linux, macos, windows)
+        def normalize_platform_for_commercial(platform)
+          case platform
+          when /^el/, /^centos/, /^rhel/, /^fedora/, /^rocky/, /^scientific/, /^debian/, /^ubuntu/, /^linuxmint/, /^raspbian/, /^opensuse/, /^sles/, /^amazon/
+            "linux"
+          when /^mac_os_x/, /^macos/
+            "macos"
+          when /^windows/
+            "windows"
+          when /^freebsd/, /^aix/, /^solaris/, /^smartos/, /^omnios/
+            "unix"
+          else
+            # Default to linux for unknown platforms
+            "linux"
+          end
+        end
       end
     end
   end

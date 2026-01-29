@@ -18,6 +18,7 @@
 # Defaults
 channel="stable"
 project="<%= default_product %>"
+<%= "license_id=\"#{license_id}\"" if license_id && !license_id.to_s.empty? %>
 
 while getopts pnv:c:f:P:d:s:l:a:L: opt
 do
@@ -44,6 +45,6 @@ done
 shift `expr $OPTIND - 1`
 
 # Use CHEF_LICENSE_KEY environment variable if license_id not provided via CLI
-if [ -z "$license_id" ] && [ -n "${CHEF_LICENSE_KEY:-}" ]; then
+if [ -z "$license_id" ] && [ -n "$CHEF_LICENSE_KEY" ]; then
   license_id="$CHEF_LICENSE_KEY"
 fi
