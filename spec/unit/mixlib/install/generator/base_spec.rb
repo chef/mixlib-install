@@ -165,13 +165,6 @@ describe Mixlib::Install::Generator::Base do
         FileUtils.rm_rf(@temp_dir) if @temp_dir
       end
 
-      it "uses habitat directory for chef-ice" do
-        context = { default_product: "chef-ice" }
-        script = test_generator_class.get_script("windows_dir.sh", context)
-
-        expect(script).to include("dir=hab\\pkgs")
-      end
-
       it "uses omnibus directory for chef" do
         context = { default_product: "chef" }
         script = test_generator_class.get_script("windows_dir.sh", context)

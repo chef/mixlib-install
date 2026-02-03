@@ -161,7 +161,11 @@ if [ "$cached_file_available" != "true" ]; then
 fi
 
 if [ "$verify_checksum" = "true" ]; then
-  do_checksum "$download_filename" "$sha256" || checksum_mismatch
+  if [ -z "$sha256" ]; then
+    echo "Skipping checksum verification - no checksum provided"
+  else
+    do_checksum "$download_filename" "$sha256" || checksum_mismatch
+  fi
 fi
 
 ############
