@@ -199,7 +199,7 @@ jobs:
           cat install_licensed.sh
       - name: Verify license_id is present in script
         run: |
-          if grep -q "license_id='test-license-12345'" install_licensed.sh; then
+          if grep -q 'license_id="test-license-12345"' install_licensed.sh; then
             echo "✓ License ID found pre-set in script"
           else
             echo "✗ License ID not found in script"
@@ -232,7 +232,7 @@ jobs:
       - name: Verify license_id is present in script
         run: |
           $content = Get-Content install_licensed.ps1 -Raw
-          if ($content -match "install -license_id 'test-license-12345'") {
+          if ($content -match "license_id = 'test-license-12345'") {
             Write-Host "✓ License ID found in install command"
           } else {
             Write-Host "✗ License ID not found in script"
