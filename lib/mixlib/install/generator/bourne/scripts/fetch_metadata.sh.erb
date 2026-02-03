@@ -17,13 +17,13 @@
 # $sha256:
 ############
 
-if test "x$download_url_override" = "x"; then
+if [ -z "$download_url_override" ]; then
   echo "Getting information for $project $channel $version for $platform..."
 
   metadata_filename="$tmp_dir/metadata.txt"
 
   # Use commercial API if license_id is provided, otherwise use omnitruck
-  if test "x$license_id" != "x"; then
+  if [ -n "$license_id" ]; then
     # Check if license_id starts with 'free-' or 'trial-' for trial API
     case "$license_id" in
       free-*|trial-*)
@@ -48,7 +48,7 @@ if test "x$download_url_override" = "x"; then
   echo ""
 
   # Commercial and trial APIs return JSON, omnitruck returns text format
-  if test "x$license_id" != "x"; then
+  if [ -n "$license_id" ]; then
     # Parse JSON response from commercial/trial API
     # Check if response looks like JSON
     if grep -q '^{' "$metadata_filename" 2>/dev/null; then
@@ -57,7 +57,7 @@ if test "x$download_url_override" = "x"; then
       download_url=`sed -n 's/.*"url":"\([^"]*\)".*/\1/p' "$metadata_filename"`
       sha256=`sed -n 's/.*"sha256":"\([^"]*\)".*/\1/p' "$metadata_filename"`
 
-      if test "x$download_url" != "x" && test "x$sha256" != "x"; then
+      if [ -n "$download_url" ] && [ -n "$sha256" ]; then
         echo "downloaded metadata file looks valid..."
       else
         echo "downloaded metadata file is corrupted or an uncaught error was encountered in downloading the file..."

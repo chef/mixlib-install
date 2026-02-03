@@ -25,35 +25,35 @@
 machine=`uname -m`
 os=`uname -s`
 
-if test -f "/etc/lsb-release" && grep DISTRIB_ID /etc/lsb-release >/dev/null && ! grep wrlinux /etc/lsb-release >/dev/null; then
+if [ -f "/etc/lsb-release" ] && grep DISTRIB_ID /etc/lsb-release >/dev/null && ! grep wrlinux /etc/lsb-release >/dev/null; then
   platform=`grep DISTRIB_ID /etc/lsb-release | cut -d "=" -f 2 | tr '[A-Z]' '[a-z]'`
   platform_version=`grep DISTRIB_RELEASE /etc/lsb-release | cut -d "=" -f 2`
 
-  if test "$platform" = "\"cumulus linux\""; then
+  if [ "$platform" = "\"cumulus linux\"" ]; then
     platform="cumulus_linux"
-  elif test "$platform" = "\"cumulus networks\""; then
+  elif [ "$platform" = "\"cumulus networks\"" ]; then
     platform="cumulus_networks"
   fi
 
-elif test -f "/etc/debian_version"; then
+elif [ -f "/etc/debian_version" ]; then
   platform="debian"
   platform_version=`cat /etc/debian_version`
-elif test -f "/etc/Eos-release"; then
+elif [ -f "/etc/Eos-release" ]; then
   # EOS may also contain /etc/redhat-release so this check must come first.
   platform=arista_eos
   platform_version=`awk '{print $4}' /etc/Eos-release`
   machine="i386"
-elif test -f "/etc/redhat-release"; then
+elif [ -f "/etc/redhat-release" ]; then
   platform=`sed 's/^\(.\+\) release.*/\1/' /etc/redhat-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release`
   
-  if test "$platform" = "rocky linux"; then
+  if [ "$platform" = "rocky linux" ]; then
   	source /etc/os-release
  	os="${REDHAT_SUPPORT_PRODUCT}"
   	platform_version="${ROCKY_SUPPORT_PRODUCT_VERSION}"
         platform=$ID
 
-  elif test "$platform" = "xenserver"; then
+  elif [ "$platform" = "xenserver" ]; then
     # Current XenServer 6.2 is based on CentOS 5, platform is not reset to "el" server should handle response
     platform="xenserver"
   else
@@ -61,7 +61,7 @@ elif test -f "/etc/redhat-release"; then
     platform="el"
   fi
 
-elif test -f "/etc/system-release"; then
+elif [ -f "/etc/system-release" ]; then
   platform=`sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
   case $platform in amazon*) # sh compat method of checking for a substring
@@ -88,11 +88,11 @@ elif test -f "/etc/system-release"; then
 
 
 # Apple macOS
-elif test -f "/usr/bin/sw_vers"; then
+elif [ -f "/usr/bin/sw_vers" ]; then
   platform="mac_os_x"
   # Matching the tab-space with sed is error-prone
   platform_version=`sw_vers | awk '/^ProductVersion:/ { print $2 }' | cut -d. -f1,2`
-elif test -f "/etc/release"; then
+elif [ -f "/etc/release" ]; then
   machine=`/usr/bin/uname -p`
   if grep SmartOS /etc/release >/dev/null; then
     platform="smartos"
@@ -101,7 +101,7 @@ elif test -f "/etc/release"; then
     platform="solaris2"
     platform_version=`/usr/bin/uname -r`
   fi
-elif test -f "/etc/SuSE-release"; then
+elif [ -f "/etc/SuSE-release" ]; then
   if grep 'Enterprise' /etc/SuSE-release >/dev/null;
   then
       platform="sles"
@@ -110,16 +110,16 @@ elif test -f "/etc/SuSE-release"; then
       platform="opensuseleap"
       platform_version=`awk '/^VERSION =/ { print $3 }' /etc/SuSE-release`
   fi
-elif test "x$os" = "xFreeBSD"; then
+elif [ "$os" = "FreeBSD" ]; then
   platform="freebsd"
   platform_version=`uname -r | sed 's/-.*//'`
-elif test "x$os" = "xAIX"; then
+elif [ "$os" = "AIX" ]; then
   platform="aix"
   platform_version="`uname -v`.`uname -r`"
   machine="powerpc"
-elif test -f "/etc/os-release"; then
+elif [ -f "/etc/os-release" ]; then
   . /etc/os-release
-  if test "x$CISCO_RELEASE_INFO" != "x"; then
+  if [ -n "$CISCO_RELEASE_INFO" ]; then
     . $CISCO_RELEASE_INFO
   fi
 
@@ -127,14 +127,14 @@ elif test -f "/etc/os-release"; then
 
   # VERSION_ID is always the preferred variable to use, but not
   # every distro has it so fallback to VERSION
-  if test "x$VERSION_ID" != "x"; then
+  if [ -n "$VERSION_ID" ]; then
     platform_version=$VERSION_ID
   else
     platform_version=$VERSION
   fi
 fi
 
-if test "x$platform" = "x"; then
+if [ -z "$platform" ]; then
   echo "Unable to determine platform version!"
   report_bug
   exit 1
@@ -158,7 +158,7 @@ case $platform in
     platform_version=$major_version
     ;;
   "debian")
-    if test "x$major_version" = "x5"; then
+    if [ "$major_version" = "5" ]; then
       # This is here for potential back-compat.
       # We do not have 5 in versions we publish for anymore but we
       # might have it for earlier versions.
@@ -194,13 +194,13 @@ case $machine in
     ;;
 esac
 
-if test "x$platform_version" = "x"; then
+if [ -z "$platform_version" ]; then
   echo "Unable to determine platform version!"
   report_bug
   exit 1
 fi
 
-if test "x$platform" = "xsolaris2"; then
+if [ "$platform" = "solaris2" ]; then
   # hack up the path on Solaris to find wget, pkgadd
   PATH=/usr/sfw/bin:/usr/sbin:$PATH
   export PATH

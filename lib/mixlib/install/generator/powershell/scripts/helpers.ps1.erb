@@ -1,4 +1,8 @@
-[Console]::OutputEncoding = New-Object -typename System.Text.ASCIIEncoding
+################ helpers.ps1
+# Set strict error handling to ensure errors cause script failures
+$ErrorActionPreference = 'Stop'
+
+try { [Console]::OutputEncoding = New-Object -typename System.Text.ASCIIEncoding } catch { }
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12'
 
 function Get-PlatformVersion {
@@ -168,11 +172,11 @@ function Test-ProjectPackage {
   [cmdletbinding()]
   param ($Path, $Algorithm = 'SHA256', $Hash)
   if (!$env:Valid_ProjectPackage){
-    Write-Verbose "Testing the $Algorithm hash for $path."
+    Write-Host "Testing the $Algorithm hash for $path."
     $ActualHash = (Custom-GetFileHash -Algorithm $Algorithm -Path $Path).Hash.ToLower()
 
-    Write-Verbose "`tDesired Hash - '$Hash'"
-    Write-Verbose "`tActual Hash  - '$ActualHash'"
+    Write-Host "`tDesired Hash - '$Hash'"
+    Write-Host "`tActual Hash  - '$ActualHash'"
     $env:Valid_ProjectPackage = $ActualHash -eq $Hash
     if (-not $env:Valid_ProjectPackage) {
       Write-Error "Failed to validate the downloaded installer.  The expected $Algorithm hash was '$Hash' and the actual hash was '$ActualHash' for $path"

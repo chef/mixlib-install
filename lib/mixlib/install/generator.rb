@@ -22,10 +22,11 @@ module Mixlib
   class Install
     class Generator
       def self.install_command(options)
-        klass = options.for_ps1? ? PowerShell : Bourne
-        meth = options.options[:new_omnibus_download_url] ? :install_sh_from_upstream : :install_command
-
-        klass.new(options).send(meth)
+        if options.for_ps1?
+          PowerShell.new(options).install_command
+        else
+          Bourne.new(options).install_command
+        end
       end
     end
   end

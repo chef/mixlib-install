@@ -1,3 +1,5 @@
+# Set strict error handling to ensure errors cause script failures
+$ErrorActionPreference = 'Stop'
 Function Check-UpdateChef($root, $version) {
   if (-Not (Test-Path "$root\embedded")) { return $true }
   elseif ("$version" -eq "true") { return $false }

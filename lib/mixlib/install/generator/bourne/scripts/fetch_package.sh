@@ -17,16 +17,16 @@
 
 # For licensed APIs (commercial/trial), the URL is an endpoint, not a direct file URL
 # The actual filename will come from the Content-Disposition header
-if test "x$license_id" != "x"; then
+if [ -n "$license_id" ]; then
   # Use content-disposition to get the filename
   use_content_disposition="true"
   # We don't know the filename yet - it will come from Content-Disposition
   # Just set the download directory
-  if test "x$cmdline_filename" != "x"; then
+  if [ -n "$cmdline_filename" ]; then
     download_filename="$cmdline_filename"
     download_dir=`dirname $download_filename`
     use_content_disposition="false"  # User specified exact filename
-  elif test "x$cmdline_dl_dir" != "x"; then
+  elif [ -n "$cmdline_dl_dir" ]; then
     download_dir="$cmdline_dl_dir"
     download_filename=""  # Will be determined after download
   else
@@ -41,9 +41,9 @@ else
   filetype=`echo $filename | sed -e 's/^.*\.//'`
 
   # use either $tmp_dir, the provided directory (-d) or the provided filename (-f)
-  if test "x$cmdline_filename" != "x"; then
+  if [ -n "$cmdline_filename" ]; then
     download_filename="$cmdline_filename"
-  elif test "x$cmdline_dl_dir" != "x"; then
+  elif [ -n "$cmdline_dl_dir" ]; then
     download_filename="$cmdline_dl_dir/$filename"
   else
     download_filename="$tmp_dir/$filename"
@@ -64,19 +64,19 @@ cached_file_available="false"
 verify_checksum="true"
 
 # Skip caching checks when using content-disposition since we don't know the real filename yet
-if test "x$use_content_disposition" = "xtrue"; then
+if [ "$use_content_disposition" = "true" ]; then
   cached_file_available="false"
   verify_checksum="true"
-elif test "x$download_filename" != "x" && test -f "$download_filename"; then
+elif [ -n "$download_filename" ] && [ -f "$download_filename" ]; then
   echo "$download_filename exists"
   cached_file_available="true"
 fi
 
-if test "x$download_url_override" != "x" && test "x$use_content_disposition" = "xfalse"; then
+if [ -n "$download_url_override" ] && [ "$use_content_disposition" = "false" ]; then
   echo "Download URL override specified"
-  if test "x$cached_file_available" = "xtrue"; then
+  if [ "$cached_file_available" = "true" ]; then
     echo "Verifying local file"
-    if test "x$sha256" = "x"; then
+    if [ -z "$sha256" ]; then
       echo "Checksum not specified, ignoring existing file"
       cached_file_available="false" # download new file
       verify_checksum="false" # no checksum to compare after download
@@ -92,7 +92,7 @@ if test "x$download_url_override" != "x" && test "x$use_content_disposition" = "
   else
     echo "$download_filename not found"
     cached_file_available="false" # download new file
-    if test "x$sha256" = "x"; then
+    if [ -z "$sha256" ]; then
       verify_checksum="false" # no checksum to compare after download
     else
       verify_checksum="true" # checksum new downloaded file
@@ -100,8 +100,8 @@ if test "x$download_url_override" != "x" && test "x$use_content_disposition" = "
   fi
 fi
 
-if test "x$cached_file_available" != "xtrue"; then
-  if test "x$use_content_disposition" = "xtrue"; then
+if [ "$cached_file_available" != "true" ]; then
+  if [ "$use_content_disposition" = "true" ]; then
     # For licensed APIs, download to a temporary file and extract filename from response headers
     # The download_dir was already set during initialization above
 
@@ -112,33 +112,33 @@ if test "x$cached_file_available" != "xtrue"; then
     do_download "$download_url" "$temp_download"
 
     # Extract filename from response headers (try multiple methods for compatibility)
-    if test -f "$tmp_dir/stderr"; then
+    if [ -f "$tmp_dir/stderr" ]; then
       # Method 1: Try to extract filename from content-disposition header
       # Format: content-disposition: attachment; filename="chef-18.8.54-1.el9.x86_64.rpm"
       actual_filename=`grep -i 'content-disposition' $tmp_dir/stderr | sed -n 's/.*filename="\([^"]*\)".*/\1/p' | head -1`
 
       # Method 2: If content-disposition failed, try to extract from location redirect header
       # Format: location: https://packages.chef.io/files/stable/chef/18.8.54/el/9/chef-18.8.54-1.el9.x86_64.rpm?licenseId=...
-      if test "x$actual_filename" = "x"; then
+      if [ -z "$actual_filename" ]; then
         actual_filename=`grep -i '^location:' $tmp_dir/stderr | head -1 | sed 's/.*\///' | sed 's/?.*//'`
       fi
 
       # Method 3: Try extracting from any URL-like pattern in stderr
-      if test "x$actual_filename" = "x"; then
+      if [ -z "$actual_filename" ]; then
         actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg' $tmp_dir/stderr | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\)\).*/\1/p' | head -1`
       fi
     fi
 
     # If we still couldn't extract from headers, construct filename from metadata
-    if test "x$actual_filename" = "x"; then
+    if [ -z "$actual_filename" ]; then
       echo "Warning: Could not extract filename from response headers, using fallback"
       # Construct a reasonable filename from available metadata
       # This is a fallback and may not match the exact package name
-      if test "x$platform" = "xel" || test "x$platform" = "xfedora" || test "x$platform" = "xamazon"; then
+      if [ "$platform" = "el" ] || [ "$platform" = "fedora" ] || [ "$platform" = "amazon" ]; then
         actual_filename="chef-${version}-1.${platform}${platform_version}.${machine}.rpm"
-      elif test "x$platform" = "xdebian" || test "x$platform" = "xubuntu"; then
+      elif [ "$platform" = "debian" ] || [ "$platform" = "ubuntu" ]; then
         actual_filename="chef_${version}-1_${machine}.deb"
-      elif test "x$platform" = "xmac_os_x"; then
+      elif [ "$platform" = "mac_os_x" ]; then
         actual_filename="chef-${version}.dmg"
       else
         actual_filename="chef-${version}.pkg"
@@ -160,7 +160,7 @@ if test "x$cached_file_available" != "xtrue"; then
   fi
 fi
 
-if test "x$verify_checksum" = "xtrue"; then
+if [ "$verify_checksum" = "true" ]; then
   do_checksum "$download_filename" "$sha256" || checksum_mismatch
 fi
 
