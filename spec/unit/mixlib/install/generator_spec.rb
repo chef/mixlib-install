@@ -122,7 +122,7 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "skips caching checks when using content-disposition" do
-        expect(install_script).to include('if test "x$use_content_disposition" = "xtrue"; then')
+        expect(install_script).to include('if [ "$use_content_disposition" = "true" ]; then')
         expect(install_script).to include('cached_file_available="false"')
       end
 
@@ -162,7 +162,7 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "skips caching checks when using content-disposition" do
-        expect(install_script).to include('if test "x$use_content_disposition" = "xtrue"; then')
+        expect(install_script).to include('if [ "$use_content_disposition" = "true" ]; then')
         expect(install_script).to include('cached_file_available="false"')
       end
     end
@@ -192,7 +192,7 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "skips caching checks when using content-disposition" do
-        expect(install_script).to include('if test "x$use_content_disposition" = "xtrue"; then')
+        expect(install_script).to include('if [ "$use_content_disposition" = "true" ]; then')
         expect(install_script).to include('cached_file_available="false"')
       end
 
@@ -275,7 +275,7 @@ context "Mixlib::Install::Generator", :vcr do
         it_behaves_like "the correct ps1 script"
 
         it "adds an architecture param" do
-          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]} -architecture #{options[:architecture]}\n/)
+          expect(install_script).to match(/Install-Project -project #{options[:product_name]} -version .* -channel #{options[:channel]} -architecture #{options[:architecture]}\n/)
         end
 
       end
@@ -290,7 +290,7 @@ context "Mixlib::Install::Generator", :vcr do
         it_behaves_like "the correct ps1 script"
 
         it "adds omits the architecture param" do
-          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
+          expect(install_script).to match(/Install-Project -project #{options[:product_name]} -version .* -channel #{options[:channel]}\n/)
         end
 
         it "uses traditional text parsing for omnitruck without license_id" do
@@ -310,7 +310,7 @@ context "Mixlib::Install::Generator", :vcr do
         it_behaves_like "the correct ps1 script"
 
         it "includes license_id in install command" do
-          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id test-license-key-456\n/)
+          expect(install_script).to match(/Install-Project -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id test-license-key-456\n/)
         end
 
         it "includes license_id parameter in Get-ProjectMetadata function" do
@@ -344,7 +344,7 @@ context "Mixlib::Install::Generator", :vcr do
         it_behaves_like "the correct ps1 script"
 
         it "includes license_id in install command" do
-          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id free-trial-789\n/)
+          expect(install_script).to match(/Install-Project -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id free-trial-789\n/)
         end
 
         it "uses trial API in metadata fetch" do
@@ -369,7 +369,7 @@ context "Mixlib::Install::Generator", :vcr do
         it_behaves_like "the correct ps1 script"
 
         it "includes license_id in install command" do
-          expect(install_script).to match(/install -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id trial-abc-xyz\n/)
+          expect(install_script).to match(/Install-Project -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id trial-abc-xyz\n/)
         end
 
         it "uses trial API in metadata fetch" do
@@ -506,6 +506,28 @@ context "Mixlib::Install::Generator", :vcr do
 
       it "adds install_strategy var" do
         expect(install_script).to match(/install_strategy='#{install_command_options[:install_strategy]}'/)
+      end
+    end
+
+    context "for bourne install params without checksum" do
+      let(:install_command_options) do
+        {
+          download_url_override: "https://packages.chef.io/files/stable/chef/12.19.36/debian/8/chef_12.19.36-1_amd64.deb",
+        }
+      end
+
+      let(:add_options) do
+        {
+          install_command_options: install_command_options,
+        }
+      end
+
+      it "skips checksum verification when sha256 is empty" do
+        expect(install_script).to include("Skipping checksum verification - no checksum provided")
+      end
+
+      it "includes checksum verification check" do
+        expect(install_script).to match(/if \[ -z "\$sha256" \]; then/)
       end
     end
   end

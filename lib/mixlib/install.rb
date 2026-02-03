@@ -159,9 +159,9 @@ module Mixlib
       # This only works for chef and chefdk but they are the only projects
       # we are supporting as of now.
       if options.for_ps1?
-        "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{options.product_name}"
+        "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{options.product_name}"
       else
-        "/opt/#{options.product_name}"
+        "#{Mixlib::Install::Dist::OMNIBUS_LINUX_INSTALL_DIR}/#{options.product_name}"
       end
     end
 
@@ -176,9 +176,9 @@ module Mixlib
       # chef-server -> /opt/opscode). But this is OK for now since
       # chef & chefdk are the only supported products.
       version_manifest_file = if options.for_ps1?
-                                "$env:systemdrive\\#{Mixlib::Install::Dist::WINDOWS_INSTALL_DIR}\\#{options.product_name}\\version-manifest.json"
+                                "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{options.product_name}\\version-manifest.json"
                               else
-                                "/opt/#{options.product_name}/version-manifest.json"
+                                "#{Mixlib::Install::Dist::OMNIBUS_LINUX_INSTALL_DIR}/#{options.product_name}/version-manifest.json"
                               end
 
       if File.exist? version_manifest_file
@@ -258,8 +258,25 @@ module Mixlib
     # ------------------
     # base_url [String]
     #   url pointing to the omnitruck to be queried by the script.
+    # license_id [String]
+    #   license ID for commercial or trial API access.
+    #   If license_id starts with 'free-' or 'trial-', trial API defaults are enforced.
     #
     def self.install_sh(context = {})
+      # Apply trial API defaults if license_id indicates trial
+      if context[:license_id] && Mixlib::Install::Dist.trial_license?(context[:license_id])
+        # Warn and override if non-compliant values provided
+        if context[:channel] && context[:channel].to_s != "stable"
+          warn "WARNING: Trial API only supports 'stable' channel. Changing from '#{context[:channel]}' to 'stable'."
+          context[:channel] = "stable"
+        end
+
+        if context[:version] && !["latest", nil].include?(context[:version].to_s)
+          warn "WARNING: Trial API only supports 'latest' version. Changing from '#{context[:version]}' to 'latest'."
+          context[:version] = "latest"
+        end
+      end
+
       Mixlib::Install::Generator::Bourne.install_sh(context)
     end
 
@@ -269,8 +286,25 @@ module Mixlib
     # ------------------
     # base_url [String]
     #   url pointing to the omnitruck to be queried by the script.
+    # license_id [String]
+    #   license ID for commercial or trial API access.
+    #   If license_id starts with 'free-' or 'trial-', trial API defaults are enforced.
     #
     def self.install_ps1(context = {})
+      # Apply trial API defaults if license_id indicates trial
+      if context[:license_id] && Mixlib::Install::Dist.trial_license?(context[:license_id])
+        # Warn and override if non-compliant values provided
+        if context[:channel] && context[:channel].to_s != "stable"
+          warn "WARNING: Trial API only supports 'stable' channel. Changing from '#{context[:channel]}' to 'stable'."
+          context[:channel] = "stable"
+        end
+
+        if context[:version] && !["latest", nil].include?(context[:version].to_s)
+          warn "WARNING: Trial API only supports 'latest' version. Changing from '#{context[:version]}' to 'latest'."
+          context[:version] = "latest"
+        end
+      end
+
       Mixlib::Install::Generator::PowerShell.install_ps1(context)
     end
   end

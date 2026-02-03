@@ -158,4 +158,102 @@ context "Mixlib::Install::Options" do
       expect(mi.options.license_id).to eq ""
     end
   end
+
+  context "for trial API defaults" do
+    let(:product_name) { "chef" }
+
+    context "with free- license_id" do
+      let(:license_id) { "free-trial-abc-123" }
+
+      it "defaults to stable channel when current channel is specified" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :current, license_id: license_id)
+          expect(mi.options.channel).to eq :stable
+        end.to output(/WARNING: Trial API only supports 'stable' channel. Changing from 'current' to 'stable'/).to_stderr
+      end
+
+      it "defaults to latest version when specific version is specified" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :stable, product_version: "15.0.0", license_id: license_id)
+          expect(mi.options.product_version).to eq :latest
+        end.to output(/WARNING: Trial API only supports 'latest' version. Changing from '15.0.0' to 'latest'/).to_stderr
+      end
+
+      it "defaults both channel and version with two warnings" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :unstable, product_version: "14.5.1", license_id: license_id)
+          expect(mi.options.channel).to eq :stable
+          expect(mi.options.product_version).to eq :latest
+        end.to output(/WARNING: Trial API only supports 'stable' channel.*WARNING: Trial API only supports 'latest' version/m).to_stderr
+      end
+
+      it "does not warn when stable channel and latest version are already set" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :stable, product_version: :latest, license_id: license_id)
+          expect(mi.options.channel).to eq :stable
+          expect(mi.options.product_version).to eq :latest
+        end.not_to output.to_stderr
+      end
+
+      it "does not warn when stable channel and latest version string are already set" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :stable, product_version: "latest", license_id: license_id)
+          expect(mi.options.channel).to eq :stable
+          expect(mi.options.product_version).to eq "latest"
+        end.not_to output.to_stderr
+      end
+    end
+
+    context "with trial- license_id" do
+      let(:license_id) { "trial-xyz-456" }
+
+      it "defaults to stable channel when unstable channel is specified" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :unstable, license_id: license_id)
+          expect(mi.options.channel).to eq :stable
+        end.to output(/WARNING: Trial API only supports 'stable' channel. Changing from 'unstable' to 'stable'/).to_stderr
+      end
+
+      it "defaults to latest version when specific version is specified" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :stable, product_version: "16.2.50", license_id: license_id)
+          expect(mi.options.product_version).to eq :latest
+        end.to output(/WARNING: Trial API only supports 'latest' version. Changing from '16.2.50' to 'latest'/).to_stderr
+      end
+    end
+
+    context "with commercial license_id" do
+      let(:license_id) { "commercial-license-789" }
+
+      it "does not default channel" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :current, license_id: license_id)
+          expect(mi.options.channel).to eq :current
+        end.not_to output.to_stderr
+      end
+
+      it "does not default version" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :stable, product_version: "17.0.0", license_id: license_id)
+          expect(mi.options.product_version).to eq "17.0.0"
+        end.not_to output.to_stderr
+      end
+    end
+
+    context "without license_id" do
+      it "does not default channel" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :current)
+          expect(mi.options.channel).to eq :current
+        end.not_to output.to_stderr
+      end
+
+      it "does not default version" do
+        expect do
+          mi = Mixlib::Install.new(product_name: product_name, channel: :stable, product_version: "18.1.0")
+          expect(mi.options.product_version).to eq "18.1.0"
+        end.not_to output.to_stderr
+      end
+    end
+  end
 end

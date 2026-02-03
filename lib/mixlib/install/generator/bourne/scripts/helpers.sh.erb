@@ -62,10 +62,10 @@ unable_to_retrieve_package() {
   echo "Unable to retrieve a valid package!"
   report_bug
   echo "Metadata URL: $metadata_url"
-  if test "x$download_url" != "x"; then
+  if [ -n "$download_url" ]; then
     echo "Download URL: $download_url"
   fi
-  if test "x$stderr_results" != "x"; then
+  if [ -n "$stderr_results" ]; then
     echo "\nDEBUG OUTPUT FOLLOWS:\n$stderr_results"
   fi
   exit 1
@@ -94,10 +94,10 @@ http_404_error() {
   echo ""
   # deliberately do not call report_bug to suppress bug report noise.
   echo "Metadata URL: $metadata_url"
-  if test "x$download_url" != "x"; then
+  if [ -n "$download_url" ]; then
     echo "Download URL: $download_url"
   fi
-  if test "x$stderr_results" != "x"; then
+  if [ -n "$stderr_results" ]; then
     echo "\nDEBUG OUTPUT FOLLOWS:\n$stderr_results"
   fi
   exit 1
@@ -105,7 +105,7 @@ http_404_error() {
 
 capture_tmp_stderr() {
   # spool up /tmp/stderr from all the commands we called
-  if test -f "$tmp_dir/stderr"; then
+  if [ -f "$tmp_dir/stderr" ]; then
     output=`cat $tmp_dir/stderr`
     stderr_results="${stderr_results}\nSTDERR from $1:\n\n$output\n"
     rm $tmp_dir/stderr
@@ -116,7 +116,7 @@ capture_tmp_stderr() {
 do_wget() {
   echo "trying wget..."
   # If filename is empty, use --content-disposition to get filename from server
-  if test "x$2" = "x"; then
+  if [ -z "$2" ]; then
     wget --user-agent="User-Agent: <%= user_agent_string %>" --content-disposition "$1" 2>$tmp_dir/stderr
   else
     wget --user-agent="User-Agent: <%= user_agent_string %>" -O "$2" "$1" 2>$tmp_dir/stderr
@@ -124,19 +124,19 @@ do_wget() {
   rc=$?
   # check for 404
   grep "ERROR 404" $tmp_dir/stderr 2>&1 >/dev/null
-  if test $? -eq 0; then
+  if [ $? -eq 0 ]; then
     echo "ERROR 404"
     http_404_error
   fi
 
   # check for bad return status (skip empty output check if using content-disposition)
-  if test $rc -ne 0; then
+  if [ $rc -ne 0 ]; then
     capture_tmp_stderr "wget"
     return 1
   fi
   
   # Only check for empty output if we specified a filename
-  if test "x$2" != "x" && test ! -s "$2"; then
+  if [ -n "$2" ] && [ ! -s "$2" ]; then
     capture_tmp_stderr "wget"
     return 1
   fi
@@ -148,7 +148,7 @@ do_wget() {
 do_curl() {
   echo "trying curl..."
   # If filename is empty, use -O and -J to get filename from Content-Disposition header
-  if test "x$2" = "x"; then
+  if [ -z "$2" ]; then
     curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL -D $tmp_dir/stderr -O -J "$1"
     rc=$?
   else
@@ -158,19 +158,19 @@ do_curl() {
   
   # check for 404
   grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null
-  if test $? -eq 0; then
+  if [ $? -eq 0 ]; then
     echo "ERROR 404"
     http_404_error
   fi
 
   # check for bad return status
-  if test $rc -ne 0; then
+  if [ $rc -ne 0 ]; then
     capture_tmp_stderr "curl"
     return 1
   fi
   
   # Only check for empty output if we specified a filename
-  if test "x$2" != "x" && test ! -s "$2"; then
+  if [ -n "$2" ] && [ ! -s "$2" ]; then
     capture_tmp_stderr "curl"
     return 1
   fi
@@ -183,7 +183,7 @@ do_fetch() {
   echo "trying fetch..."
   fetch --user-agent="User-Agent: <%= user_agent_string %>" -o "$2" "$1" 2>$tmp_dir/stderr
   # check for bad return status
-  test $? -ne 0 && return 1
+  [ $? -ne 0 ] && return 1
   return 0
 }
 
@@ -194,13 +194,13 @@ do_perl() {
   rc=$?
   # check for 404
   grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null
-  if test $? -eq 0; then
+  if [ $? -eq 0 ]; then
     echo "ERROR 404"
     http_404_error
   fi
 
   # check for bad return status or empty output
-  if test $rc -ne 0 || test ! -s "$2"; then
+  if [ $rc -ne 0 ] || [ ! -s "$2" ]; then
     capture_tmp_stderr "perl"
     return 1
   fi
@@ -215,13 +215,13 @@ do_python() {
   rc=$?
   # check for 404
   grep "HTTP Error 404" $tmp_dir/stderr 2>&1 >/dev/null
-  if test $? -eq 0; then
+  if [ $? -eq 0 ]; then
     echo "ERROR 404"
     http_404_error
   fi
 
   # check for bad return status or empty output
-  if test $rc -ne 0 || test ! -s "$2"; then
+  if [ $rc -ne 0 ] || [ ! -s "$2" ]; then
     capture_tmp_stderr "python"
     return 1
   fi
@@ -233,11 +233,13 @@ do_checksum() {
   if exists sha256sum; then
     echo "Comparing checksum with sha256sum..."
     checksum=`sha256sum $1 | awk '{ print $1 }'`
-    return `test "x$checksum" = "x$2"`
+    [ "$checksum" = "$2" ]
+    return $?
   elif exists shasum; then
     echo "Comparing checksum with shasum..."
     checksum=`shasum -a 256 $1 | awk '{ print $1 }'`
-    return `test "x$checksum" = "x$2"`
+    [ "$checksum" = "$2" ]
+    return $?
   else
     echo "WARNING: could not find a valid checksum program, pre-install shasum or sha256sum in your O/S image to get validation..."
     return 0
@@ -250,8 +252,8 @@ do_download() {
   echo "  to file $2"
 
   url=`echo $1`
-  if test "x$platform" = "xsolaris2"; then
-    if test "x$platform_version" = "x5.9" -o "x$platform_version" = "x5.10"; then
+  if [ "$platform" = "solaris2" ]; then
+    if [ "$platform_version" = "5.9" ] || [ "$platform_version" = "5.10" ]; then
       # solaris 9 lacks openssl, solaris 10 lacks recent enough credentials - your base O/S is completely insecure, please upgrade
       url=`echo $url | sed -e 's/https/http/'`
     fi
@@ -289,7 +291,7 @@ install_file() {
   echo "Installing $project $version"
   case "$1" in
     "rpm")
-      if test "x$platform" = "xnexus" || test "x$platform" = "xios_xr"; then
+      if [ "$platform" = "nexus" ] || [ "$platform" = "ios_xr" ]; then
         echo "installing with yum..."
         yum install -yv "$2"
       else
@@ -338,14 +340,14 @@ install_file() {
       exit 1
       ;;
   esac
-  if test $? -ne 0; then
+  if [ $? -ne 0 ]; then
     echo "Installation failed"
     report_bug
     exit 1
   fi
 }
 
-if test "x$TMPDIR" = "x"; then
+if [ -z "$TMPDIR" ]; then
   tmp="/tmp"
 else
   tmp=$TMPDIR
