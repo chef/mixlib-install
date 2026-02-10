@@ -54,6 +54,7 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
 - **Charset**: UTF-8
 - **Trailing Whitespace**: Remove (trim_trailing_whitespace: true)
 - **Final Newline**: Always include
+- **Emojis**: Never use emojis in any code, comments, output messages, test assertions, or documentation
 
 ### File Headers
 All Ruby files should include the Apache 2.0 license header:
@@ -356,6 +357,7 @@ When adding or modifying commercial/trial API functionality:
 1. **Don't add dependencies without version constraints** - Especially for Ruby 2.6+ support
 1. **Don't assume filename in URL** - Commercial/trial APIs use Content-Disposition headers
 1. **Don't break temp file download approach** - Required for license_id support across all download methods
+1. **Don't use emojis** - Never use emojis in code, comments, output messages, or documentation
 
 ## Documentation Requirements
 

@@ -200,9 +200,9 @@ jobs:
       - name: Verify license_id is present in script
         run: |
           if grep -q 'license_id="test-license-12345"' install_licensed.sh; then
-            echo "✓ License ID found pre-set in script"
+            echo "License ID found pre-set in script"
           else
-            echo "✗ License ID not found in script"
+            echo "License ID not found in script"
             exit 1
           fi
   test-install-ps1-with-license:
@@ -233,9 +233,9 @@ jobs:
         run: |
           $content = Get-Content install_licensed.ps1 -Raw
           if ($content -match "license_id = 'test-license-12345'") {
-            Write-Host "✓ License ID found in install command"
+            Write-Host "License ID found in install command"
           } else {
-            Write-Host "✗ License ID not found in script"
+            Write-Host "License ID not found in script"
             exit 1
           }
   test-script-generator-unix:
@@ -268,7 +268,7 @@ jobs:
           # Verify expected content
           raise 'Missing chef_omnibus_url' unless script.include?('chef_omnibus_url')
           raise 'Missing version' unless script.include?('version=')
-          puts '✓ Script generated successfully without license_id'
+          puts 'Script generated successfully without license_id'
           "
       - name: Test ScriptGenerator with license_id
         run: |
@@ -289,7 +289,7 @@ jobs:
 
           # Verify license_id is in install_flags
           raise 'Missing license_id in install_flags' unless script.include?('-l test-license-unix-123')
-          puts '✓ License ID correctly added to install_flags'
+          puts 'License ID correctly added to install_flags'
           "
   test-script-generator-windows:
     name: Test ScriptGenerator on Windows
@@ -325,7 +325,7 @@ jobs:
             raise 'Missing required variables'
           end
 
-          puts '✓ Script generated successfully without license_id'
+          puts 'Script generated successfully without license_id'
           "@ | Out-File -FilePath test_no_license.rb -Encoding utf8
       - name: Test ScriptGenerator without license_id
         run: bundle exec ruby test_no_license.rb
@@ -349,7 +349,7 @@ jobs:
             raise 'Missing license_id variable'
           end
 
-          puts '✓ License ID correctly added as PowerShell variable'
+          puts 'License ID correctly added as PowerShell variable'
           "@ | Out-File -FilePath test_with_license.rb -Encoding utf8
       - name: Test ScriptGenerator with license_id
         run: bundle exec ruby test_with_license.rb
