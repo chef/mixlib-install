@@ -123,8 +123,7 @@ do_wget() {
   fi
   rc=$?
   # check for 404
-  grep "ERROR 404" $tmp_dir/stderr 2>&1 >/dev/null
-  if [ $? -eq 0 ]; then
+  if grep "ERROR 404" $tmp_dir/stderr 2>&1 >/dev/null; then
     echo "ERROR 404"
     http_404_error
   fi
@@ -134,7 +133,7 @@ do_wget() {
     capture_tmp_stderr "wget"
     return 1
   fi
-  
+
   # Only check for empty output if we specified a filename
   if [ -n "$2" ] && [ ! -s "$2" ]; then
     capture_tmp_stderr "wget"
@@ -155,10 +154,9 @@ do_curl() {
     curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL -D $tmp_dir/stderr "$1" > "$2"
     rc=$?
   fi
-  
+
   # check for 404
-  grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null
-  if [ $? -eq 0 ]; then
+  if grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null; then
     echo "ERROR 404"
     http_404_error
   fi
@@ -168,7 +166,7 @@ do_curl() {
     capture_tmp_stderr "curl"
     return 1
   fi
-  
+
   # Only check for empty output if we specified a filename
   if [ -n "$2" ] && [ ! -s "$2" ]; then
     capture_tmp_stderr "curl"

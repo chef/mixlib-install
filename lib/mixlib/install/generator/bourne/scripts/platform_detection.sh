@@ -29,9 +29,9 @@ if [ -f "/etc/lsb-release" ] && grep DISTRIB_ID /etc/lsb-release >/dev/null && !
   platform=`grep DISTRIB_ID /etc/lsb-release | cut -d "=" -f 2 | tr '[A-Z]' '[a-z]'`
   platform_version=`grep DISTRIB_RELEASE /etc/lsb-release | cut -d "=" -f 2`
 
-  if [ "$platform" = "\"cumulus linux\"" ]; then
+  if [ "$platform" = '"cumulus linux"' ]; then
     platform="cumulus_linux"
-  elif [ "$platform" = "\"cumulus networks\"" ]; then
+  elif [ "$platform" = '"cumulus networks"' ]; then
     platform="cumulus_networks"
   fi
 
@@ -46,7 +46,7 @@ elif [ -f "/etc/Eos-release" ]; then
 elif [ -f "/etc/redhat-release" ]; then
   platform=`sed 's/^\(.\+\) release.*/\1/' /etc/redhat-release | tr '[A-Z]' '[a-z]'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release`
-  
+
   if [ "$platform" = "rocky linux" ]; then
   	source /etc/os-release
  	os="${REDHAT_SUPPORT_PRODUCT}"

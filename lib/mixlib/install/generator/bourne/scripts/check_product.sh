@@ -8,7 +8,7 @@ else
 fi
 
 for path in $install_paths; do
-  if [ -d "$path" ] 2>/dev/null && [ "$install_strategy" = "once" ]; then
+  if [ -d "$path" ] && [ "$install_strategy" = "once" ]; then
     echo "$project installation detected at $path"
     echo "install_strategy set to 'once'"
     echo "Nothing to install"
