@@ -85,8 +85,8 @@ if [ -z "$download_url_override" ]; then
   fi
 else
   download_url=$download_url_override
-  # Set sha256 to checksum value if provided, empty otherwise
-  sha256="${checksum:-}"
+  # Set sha256 to empty string if checksum not set
+  sha256=${checksum=""}
 fi
 
 ############
