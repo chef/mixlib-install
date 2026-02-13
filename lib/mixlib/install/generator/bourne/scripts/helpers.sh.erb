@@ -191,8 +191,7 @@ do_perl() {
   perl -e 'use LWP::Simple; getprint($ARGV[0]);' "$1" > "$2" 2>$tmp_dir/stderr
   rc=$?
   # check for 404
-  grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null
-  if [ $? -eq 0 ]; then
+  if grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null; then
     echo "ERROR 404"
     http_404_error
   fi
@@ -212,8 +211,7 @@ do_python() {
   python -c "import sys,urllib2; sys.stdout.write(urllib2.urlopen(urllib2.Request(sys.argv[1], headers={ 'User-Agent': '<%= user_agent_string %>' })).read())" "$1" > "$2" 2>$tmp_dir/stderr
   rc=$?
   # check for 404
-  grep "HTTP Error 404" $tmp_dir/stderr 2>&1 >/dev/null
-  if [ $? -eq 0 ]; then
+  if grep "HTTP Error 404" $tmp_dir/stderr 2>&1 >/dev/null; then
     echo "ERROR 404"
     http_404_error
   fi
