@@ -25,15 +25,10 @@ module Mixlib
           install_project_module = []
           install_project_module << get_script("helpers.ps1", context)
           install_project_module << get_script("get_project_metadata.ps1", context)
-          install_project_module << get_script("install_project.ps1")
+          install_project_module << get_script("install_project.ps1", context)
 
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Installer-Module")
-          # If license_id is provided in context, add it to the default install command
-          if context[:license_id] && !context[:license_id].to_s.empty?
-            install_command << "# License ID provided via context - adding to install command"
-            install_command << "install -license_id '#{context[:license_id]}'"
-          end
           install_command.join("\n\n")
         end
 
@@ -51,8 +46,8 @@ module Mixlib
         def install_command
           install_project_module = []
           install_project_module << get_script("helpers.ps1", user_agent_headers: options.user_agent_headers)
-          install_project_module << get_script("get_project_metadata.ps1")
-          install_project_module << get_script("install_project.ps1")
+          install_project_module << get_script("get_project_metadata.ps1", license_id: options.license_id)
+          install_project_module << get_script("install_project.ps1", license_id: options.license_id)
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Installer-Module")
           install_command << render_command
@@ -72,7 +67,7 @@ module Mixlib
         end
 
         def render_command
-          cmd = "install -project #{options.product_name}"
+          cmd = "Install-Project -project #{options.product_name}"
           cmd << " -version #{options.product_version}"
           cmd << " -channel #{options.channel}"
           cmd << " -architecture #{options.architecture}" if options.architecture

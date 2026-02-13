@@ -78,6 +78,12 @@ describe Mixlib::Install::ScriptGenerator do
         opts = { invalid_arg: true }
         expect { described_class.new("1.2.1", false, opts) }.to raise_error(ArgumentError)
       end
+
+      it "sets the license_id" do
+        opts = { license_id: "test-license-123" }
+        install = described_class.new("1.2.1", false, opts)
+        expect(install.license_id).to eq("test-license-123")
+      end
     end
   end
 
@@ -147,7 +153,33 @@ describe Mixlib::Install::ScriptGenerator do
         it "creates the proper shell vars" do
           expect(installer.install_command).to match(%r{chef_msi_url.*http://f/chef.msi})
         end
+      end
 
+      describe "with a license_id" do
+        let(:installer) { described_class.new("1.2.1", true, omnibus_url: "http://f/install.sh", license_id: "test-license-456") }
+
+        it "stores the license_id" do
+          expect(installer.license_id).to eq("test-license-456")
+        end
+
+        it "includes license_id as a variable in powershell script" do
+          expect(installer.install_command).to match(/\$license_id = "test-license-456"/)
+        end
+      end
+
+      describe "with chef product" do
+        let(:installer) { described_class.new("latest", true, omnibus_url: "http://f/install.sh", project: "chef", license_id: "test-chef-123") }
+
+        it "uses stable/chef/metadata endpoint" do
+          metadata_url = installer.send(:windows_metadata_url)
+          expect(metadata_url).to include("stable/chef/metadata")
+        end
+
+        it "includes pv parameter for chef" do
+          metadata_url = installer.send(:windows_metadata_url)
+          expect(metadata_url).to include("pv=$platform_version")
+          expect(metadata_url).not_to include("pm=")
+        end
       end
     end
 
@@ -170,6 +202,147 @@ describe Mixlib::Install::ScriptGenerator do
         expect(out).to include(%{version="12.5.0-current.0+20150721082808.git.14.c91b337-1"})
       end
 
+      describe "with a license_id" do
+        let(:installer) { described_class.new("1.2.1", false, omnibus_url: "https://omnitruck.chef.io/install.sh", license_id: "test-license-789") }
+
+        it "stores the license_id" do
+          expect(installer.license_id).to eq("test-license-789")
+        end
+
+        it "includes license_id in install_flags for bourne script" do
+          out = installer.install_command
+          expect(out).to include('install_flags="-v 1.2.1 -l test-license-789"')
+        end
+
+        it "uses commercial URL for non-trial licenses" do
+          out = installer.install_command
+          expect(out).to include('chef_omnibus_url="https://chefdownload-commercial.chef.io/install.sh?license_id=test-license-789"')
+        end
+      end
+
+      describe "with a trial license" do
+        let(:installer) { described_class.new("latest", false, omnibus_url: "https://omnitruck.chef.io/install.sh", license_id: "trial-abc123") }
+
+        it "uses trial URL for trial licenses" do
+          out = installer.install_command
+          expect(out).to include('chef_omnibus_url="https://chefdownload-trial.chef.io/install.sh?license_id=trial-abc123"')
+        end
+
+        it "uses trial URL for free licenses" do
+          installer.license_id = "free-xyz789"
+          out = installer.install_command
+          expect(out).to include('chef_omnibus_url="https://chefdownload-trial.chef.io/install.sh?license_id=free-xyz789"')
+        end
+      end
+
+      describe "with custom omnibus_url and license" do
+        let(:installer) { described_class.new("latest", false, omnibus_url: "https://custom.example.com/install.sh", license_id: "test-123") }
+
+        it "preserves custom URLs" do
+          out = installer.install_command
+          expect(out).to include('chef_omnibus_url="https://custom.example.com/install.sh"')
+        end
+      end
+
+      describe "sudo command handling" do
+        it "uses sudo by default" do
+          installer = described_class.new("1.2.1", false)
+          out = installer.install_command
+          expect(out).to include('sudo_sh="sudo -E sh"')
+        end
+
+        it "disables sudo when sudo_command is nil" do
+          installer = described_class.new("1.2.1", false, sudo_command: nil)
+          expect(installer.use_sudo).to be false
+          out = installer.install_command
+          expect(out).to include('sudo_sh="sh"')
+        end
+
+        it "uses custom sudo command" do
+          installer = described_class.new("1.2.1", false, sudo_command: "doas")
+          out = installer.install_command
+          expect(out).to include('sudo_sh="doas sh"')
+        end
+      end
+    end
+  end
+
+  describe "private methods" do
+    describe "#omnibus_url_for_license" do
+      let(:installer) { described_class.new("latest", false, omnibus_url: "https://omnitruck.chef.io/install.sh") }
+
+      context "without license_id" do
+        it "returns original omnibus_url" do
+          expect(installer.send(:omnibus_url_for_license)).to eq("https://omnitruck.chef.io/install.sh")
+        end
+      end
+
+      context "with commercial license_id" do
+        before { installer.license_id = "commercial-abc123" }
+
+        it "returns commercial URL with license_id" do
+          url = installer.send(:omnibus_url_for_license)
+          expect(url).to eq("https://chefdownload-commercial.chef.io/install.sh?license_id=commercial-abc123")
+        end
+      end
+
+      context "with trial license_id" do
+        before { installer.license_id = "trial-xyz789" }
+
+        it "returns trial URL with license_id" do
+          url = installer.send(:omnibus_url_for_license)
+          expect(url).to eq("https://chefdownload-trial.chef.io/install.sh?license_id=trial-xyz789")
+        end
+      end
+
+      context "with free license_id" do
+        before { installer.license_id = "free-test123" }
+
+        it "returns trial URL with license_id" do
+          url = installer.send(:omnibus_url_for_license)
+          expect(url).to eq("https://chefdownload-trial.chef.io/install.sh?license_id=free-test123")
+        end
+      end
+
+      context "with non-install.sh URL" do
+        before do
+          installer.omnibus_url = "https://example.com/custom_path"
+          installer.license_id = "test-123"
+        end
+
+        it "returns original URL unchanged" do
+          expect(installer.send(:omnibus_url_for_license)).to eq("https://example.com/custom_path")
+        end
+      end
+    end
+
+    describe "#windows_metadata_url" do
+      context "without license (omnitruck path)" do
+        let(:installer) { described_class.new("16.0.0", true, omnibus_url: "https://omnitruck.chef.io/install.sh") }
+
+        it "constructs omnitruck metadata URL" do
+          url = installer.send(:windows_metadata_url)
+          expect(url).to eq("https://omnitruck.chef.io/metadata?p=windows&m=$platform_architecture&pv=$platform_version&v=16.0.0")
+        end
+
+        it "includes nightlies parameter when set" do
+          installer.nightlies = true
+          url = installer.send(:windows_metadata_url)
+          expect(url).to include("&nightlies=true")
+        end
+
+        it "includes prerelease parameter when set" do
+          installer.prerelease = true
+          url = installer.send(:windows_metadata_url)
+          expect(url).to include("&prerelease=true")
+        end
+
+        it "omits version for latest" do
+          installer.version = "latest"
+          url = installer.send(:windows_metadata_url)
+          expect(url).not_to include("&v=")
+        end
+      end
     end
   end
 end

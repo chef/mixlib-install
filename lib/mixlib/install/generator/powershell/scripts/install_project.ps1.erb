@@ -1,3 +1,4 @@
+################ install_project.ps1
 function Install-Project {
   <#
     .SYNOPSIS
@@ -59,7 +60,7 @@ function Install-Project {
     $install_strategy,
     # License ID for commercial API access
     [string]
-    $license_id
+    $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>
   )
 
   # Use CHEF_LICENSE_KEY environment variable if license_id not provided

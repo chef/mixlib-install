@@ -42,6 +42,11 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+      - name: Update openssl on macOS
+        if: runner.os == 'macOS'
+        run: |
+          brew update
+          brew upgrade openssl@3 || true
       - name: Chef Omnibus download Test
         run: bundle exec mixlib-install download chef
       - name: Chef Licensed download Test
@@ -194,10 +199,10 @@ jobs:
           cat install_licensed.sh
       - name: Verify license_id is present in script
         run: |
-          if grep -q "license_id='test-license-12345'" install_licensed.sh; then
-            echo "✓ License ID found pre-set in script"
+          if grep -q 'license_id="test-license-12345"' install_licensed.sh; then
+            echo "License ID found pre-set in script"
           else
-            echo "✗ License ID not found in script"
+            echo "License ID not found in script"
             exit 1
           fi
   test-install-ps1-with-license:
@@ -227,9 +232,124 @@ jobs:
       - name: Verify license_id is present in script
         run: |
           $content = Get-Content install_licensed.ps1 -Raw
-          if ($content -match "install -license_id 'test-license-12345'") {
-            Write-Host "✓ License ID found in install command"
+          if ($content -match "license_id = 'test-license-12345'") {
+            Write-Host "License ID found in install command"
           } else {
-            Write-Host "✗ License ID not found in script"
+            Write-Host "License ID not found in script"
             exit 1
           }
+  test-script-generator-unix:
+    name: Test ScriptGenerator on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: Test ScriptGenerator without license_id
+        run: |
+          bundle exec ruby -e "
+          require 'bundler/setup'
+          require 'mixlib/install/script_generator'
+
+          # Generate script without license_id
+          generator = Mixlib::Install::ScriptGenerator.new('latest', false, {
+            omnibus_url: 'https://omnitruck.chef.io/install.sh'
+          })
+          script = generator.install_command
+
+          puts '=== Generated Script (no license) ==='
+          puts script
+          puts '==================================='
+
+          # Verify expected content
+          raise 'Missing chef_omnibus_url' unless script.include?('chef_omnibus_url')
+          raise 'Missing version' unless script.include?('version=')
+          puts 'Script generated successfully without license_id'
+          "
+      - name: Test ScriptGenerator with license_id
+        run: |
+          bundle exec ruby -e "
+          require 'bundler/setup'
+          require 'mixlib/install/script_generator'
+
+          # Generate script with license_id
+          generator = Mixlib::Install::ScriptGenerator.new('latest', false, {
+            omnibus_url: 'https://omnitruck.chef.io/install.sh',
+            license_id: 'test-license-unix-123'
+          })
+          script = generator.install_command
+
+          puts '=== Generated Script (with license) ==='
+          puts script
+          puts '========================================'
+
+          # Verify license_id is in install_flags
+          raise 'Missing license_id in install_flags' unless script.include?('-l test-license-unix-123')
+          puts 'License ID correctly added to install_flags'
+          "
+  test-script-generator-windows:
+    name: Test ScriptGenerator on Windows
+    runs-on: windows-latest
+    steps:
+      - name: Enable long paths on Windows
+        run: |
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
+          git config --global core.longpaths true
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: Create test script without license_id
+        run: |
+          @"
+          require 'bundler/setup'
+          require 'mixlib/install/script_generator'
+
+          generator = Mixlib::Install::ScriptGenerator.new('latest', true, {
+            omnibus_url: 'https://omnitruck.chef.io/install.sh'
+          })
+
+          script = generator.install_command
+          puts '=== Generated Script (no license) ==='
+          puts script
+          puts '==================================='
+
+          unless script.include?('chef_metadata_url') && script.include?('version')
+            raise 'Missing required variables'
+          end
+
+          puts 'Script generated successfully without license_id'
+          "@ | Out-File -FilePath test_no_license.rb -Encoding utf8
+      - name: Test ScriptGenerator without license_id
+        run: bundle exec ruby test_no_license.rb
+      - name: Create test script with license_id
+        run: |
+          @"
+          require 'bundler/setup'
+          require 'mixlib/install/script_generator'
+
+          generator = Mixlib::Install::ScriptGenerator.new('latest', true, {
+            omnibus_url: 'https://omnitruck.chef.io/install.sh',
+            license_id: 'test-license-win-456'
+          })
+
+          script = generator.install_command
+          puts '=== Generated Script (with license) ==='
+          puts script
+          puts '========================================'
+
+          unless script.include?('$license_id = "test-license-win-456"')
+            raise 'Missing license_id variable'
+          end
+
+          puts 'License ID correctly added as PowerShell variable'
+          "@ | Out-File -FilePath test_with_license.rb -Encoding utf8
+      - name: Test ScriptGenerator with license_id
+        run: bundle exec ruby test_with_license.rb
