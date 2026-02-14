@@ -3,7 +3,15 @@
 # This section calls omnitruck to get the information about the build to be
 #   installed.
 #
+#  EXAMPLE
+#    curl -L '<%= base_url || "https://chefdownload-commercial.chef.io" %>/install.sh<%= base_url && base_url.include?("chefdownload") ? "?license_id=$CHEF_LICENSE_KEY" : "" %>' | sudo bash -s --  -P chef -c stable
+#
+# Gets the download url and SHA256 checksum for the latest stable release of Chef Workstation.
+#   EXAMPLE
+#     curl -L '<%= base_url || "https://chefdownload-commercial.chef.io" %>/install.sh<%= base_url && base_url.include?("chefdownload") ? "?license_id=$CHEF_LICENSE_KEY" : "" %>' | sudo bash -s --  -P chef-workstation -c stable
+#
 # Inputs:
+# $base_api_url:
 # $channel:
 # $project:
 # $version:
@@ -17,31 +25,93 @@
 # $sha256:
 ############
 
+# Determine package manager based on platform for commercial API
+determine_package_manager() {
+  case "$platform" in
+    el|centos|rhel|fedora|amazon|rocky|opensuse*|sles|scientific)
+      echo "rpm"
+      ;;
+    debian|ubuntu|linuxmint|raspbian)
+      echo "deb"
+      ;;
+    mac_os_x|macos|solaris*|smartos|freebsd|aix|omnios)
+      echo "tar"
+      ;;
+    *)
+      echo "tar"
+      ;;
+  esac
+}
+
+# Normalize platform name for commercial API
+normalize_platform_name() {
+  case "$platform" in
+    el|centos|rhel|fedora|rocky|scientific)
+      echo "linux"
+      ;;
+    mac_os_x|macos)
+      echo "macos"
+      ;;
+    debian|ubuntu|linuxmint|raspbian)
+      echo "linux"
+      ;;
+    freebsd|aix|solaris*|smartos|omnios)
+      echo "unix"
+      ;;
+    *)
+      # For anything else, use linux as default
+      echo "linux"
+      ;;
+  esac
+}
+
 if [ -z "$download_url_override" ]; then
   echo "Getting information for $project $channel $version for $platform..."
 
   metadata_filename="$tmp_dir/metadata.txt"
+<% if base_url && !base_url.to_s.empty? %>
+  # Set base_api_url from option if not already set via CLI parameter
+  if [ -z "$base_api_url" ]; then
+    base_api_url="<%= base_url %>"
+  fi
+<% end %>
 
   # Use commercial API if license_id is provided, otherwise use omnitruck
-  if [ -n "$license_id" ]; then
-    # Check if license_id starts with 'free-' or 'trial-' for trial API
-    case "$license_id" in
-      free-*|trial-*)
-        # Trial API endpoint
-        base_api_url="https://chefdownload-trial.chef.io"
-        ;;
-      *)
-        # Commercial API endpoint
-        base_api_url="https://chefdownload-commercial.chef.io"
-        ;;
-    esac
-    metadata_url="$base_api_url/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine&license_id=$license_id"
-  else
-    # Omnitruck endpoint
-    metadata_url="<%= base_url %>/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine"
+  if [ -z "$base_api_url" ]; then
+    if [ -n "$license_id" ]; then
+      # Check if license_id starts with 'free-' or 'trial-' for trial API
+      case "$license_id" in
+        free-*|trial-*)
+          # Trial API endpoint
+          base_api_url="<%= Mixlib::Install::Dist::TRIAL_API_ENDPOINT %>"
+          ;;
+        *)
+          # Commercial API endpoint
+          base_api_url="<%= Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT %>"
+          ;;
+      esac
+    else
+      # Omnitruck endpoint
+      base_api_url="<%= Mixlib::Install::Dist::OMNITRUCK_ENDPOINT %>"
+    fi
   fi
 
-  do_download "$metadata_url"  "$metadata_filename"
+  # For chef-ice product, add platform (p), machine (m), and package_manager (pm) parameters
+  if [ -n "$license_id" ]; then
+    if [ "$project" = "chef-ice" ]; then
+      package_manager=$(determine_package_manager)
+      platform_param=$(normalize_platform_name)
+      metadata_url="$base_api_url/$channel/$project/metadata?license_id=$license_id&v=$version&m=$machine&p=$platform_param&pm=$package_manager"
+    else
+      # For other products, use standard parameters
+      metadata_url="$base_api_url/$channel/$project/metadata?license_id=$license_id&v=$version&p=$platform&pv=$platform_version&m=$machine"
+    fi
+  else
+    # Omnitruck URL parameters without license_id
+    metadata_url="$base_api_url/$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$machine"
+  fi
+
+  do_download "$metadata_url" "$metadata_filename"
 
   cat "$metadata_filename"
 
@@ -85,8 +155,8 @@ if [ -z "$download_url_override" ]; then
   fi
 else
   download_url=$download_url_override
-  # Set sha256 to empty string if checksum not set
-  sha256=${checksum=""}
+  # Set sha256 to checksum value if provided, empty otherwise
+  sha256="${checksum:-}"
 fi
 
 ############

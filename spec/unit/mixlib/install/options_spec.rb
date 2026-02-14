@@ -159,6 +159,22 @@ context "Mixlib::Install::Options" do
     end
   end
 
+  context "for base_url option" do
+    let(:product_name) { "chef" }
+    let(:channel) { :stable }
+    let(:base_url) { "https://custom.chef.io" }
+
+    it "accepts base_url parameter" do
+      mi = Mixlib::Install.new(product_name: product_name, channel: channel, base_url: base_url)
+      expect(mi.options.base_url).to eq base_url
+    end
+
+    it "allows nil base_url" do
+      mi = Mixlib::Install.new(product_name: product_name, channel: channel)
+      expect(mi.options.base_url).to be_nil
+    end
+  end
+
   context "for trial API defaults" do
     let(:product_name) { "chef" }
 

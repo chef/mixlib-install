@@ -17,8 +17,28 @@
 
 # For licensed APIs (commercial/trial), the URL is an endpoint, not a direct file URL
 # The actual filename will come from the Content-Disposition header
-if [ -n "$license_id" ]; then
-  # Use content-disposition to get the filename
+# Also check if download_url_override is used with a URL that doesn't have a filename
+# (e.g., ends with /download or /download?params instead of /package-1.2.3.rpm)
+
+# Function to check if URL path contains a valid package filename
+has_package_filename() {
+  url_path=`echo "$1" | sed -e 's/?.*//' -e 's/^.*\///'`
+  # Check if the path segment has a package extension
+  case "$url_path" in
+    *.rpm|*.deb|*.pkg|*.msi|*.dmg|*.bff|*.p5p|*.solaris|*.sh)
+      return 0  # has valid filename
+      ;;
+    *)
+      return 1  # no valid filename
+      ;;
+  esac
+}
+
+# Determine if we need to use content-disposition based on license_id or URL structure
+if [ -n "$license_id" ] || ! has_package_filename "$download_url"; then
+  # Use content-disposition to get the filename if:
+  # 1. license_id is set (commercial/trial API)
+  # 2. URL doesn't contain a package filename (e.g., ends with /download or /download?params)
   use_content_disposition="true"
   # We don't know the filename yet - it will come from Content-Disposition
   # Just set the download directory
