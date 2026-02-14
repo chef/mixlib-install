@@ -137,23 +137,47 @@ EOF
               # Commercial/trial APIs use the packages endpoint which returns metadata for all platforms
               query = "v=#{version}"
               packages_hash = get("/#{options.channel}/#{omnibus_project}/packages?#{query}")
-              # Response is a nested hash: platform -> platform_version -> architecture -> package_info
-              # Flatten it to an array of package metadata objects
+              # Response structure differs between products:
+              # - For chef-ice: platform -> architecture -> package_manager -> package_info
+              # - For other products: platform -> platform_version -> architecture -> package_info
               results = []
-              packages_hash.each do |platform, platform_versions|
-                platform_versions.each do |platform_version, architectures|
-                  architectures.each do |arch, pkg_info|
-                    results << {
-                      "omnibus.version" => pkg_info["version"],
-                      "omnibus.platform" => platform,
-                      "omnibus.platform_version" => platform_version,
-                      "omnibus.architecture" => arch,
-                      "omnibus.project" => omnibus_project,
-                      "omnibus.license" => "Apache-2.0",
-                      "omnibus.sha256" => pkg_info["sha256"],
-                      "omnibus.sha1" => pkg_info.fetch("sha1", ""),
-                      "omnibus.md5" => pkg_info.fetch("md5", ""),
-                    }
+              if omnibus_project == "chef-ice"
+                # chef-ice structure: platform -> architecture -> package_manager -> package_info
+                packages_hash.each do |platform, architectures|
+                  architectures.each do |arch, package_managers|
+                    package_managers.each do |pm, pkg_info|
+                      results << {
+                        "omnibus.version" => pkg_info["version"],
+                        "omnibus.platform" => platform,
+                        "omnibus.platform_version" => "",
+                        "omnibus.architecture" => arch,
+                        "omnibus.project" => omnibus_project,
+                        "omnibus.license" => "Apache-2.0",
+                        "omnibus.sha256" => pkg_info["sha256"],
+                        "omnibus.sha1" => pkg_info.fetch("sha1", ""),
+                        "omnibus.md5" => pkg_info.fetch("md5", ""),
+                        "omnibus.package_manager" => pm,
+                      }
+                    end
+                  end
+                end
+              else
+                # Standard structure: platform -> platform_version -> architecture -> package_info
+                packages_hash.each do |platform, platform_versions|
+                  platform_versions.each do |platform_version, architectures|
+                    architectures.each do |arch, pkg_info|
+                      results << {
+                        "omnibus.version" => pkg_info["version"],
+                        "omnibus.platform" => platform,
+                        "omnibus.platform_version" => platform_version,
+                        "omnibus.architecture" => arch,
+                        "omnibus.project" => omnibus_project,
+                        "omnibus.license" => "Apache-2.0",
+                        "omnibus.sha256" => pkg_info["sha256"],
+                        "omnibus.sha1" => pkg_info.fetch("sha1", ""),
+                        "omnibus.md5" => pkg_info.fetch("md5", ""),
+                      }
+                    end
                   end
                 end
               end
@@ -198,6 +222,16 @@ EOF
           res = http.request(create_http_request(full_path))
           res.value
           JSON.parse(res.body)
+        rescue Net::HTTPClientError, Net::HTTPServerError => e
+          # Provide helpful error messages for licensed API failures
+          if use_trial_api?
+            if options.channel != :stable || (options.product_version != :latest && options.product_version.to_sym != :latest)
+              raise "Trial API only supports stable channel and latest version. " \
+                    "Current settings: channel=#{options.channel}, version=#{options.product_version}. " \
+                    "Error: #{e.message}"
+            end
+          end
+          raise e
         end
 
         def create_http_request(full_path)
@@ -251,7 +285,16 @@ EOF
             pv_param = platform_version
             m_param = Util.normalize_architecture(artifact_map["omnibus.architecture"])
             v_param = artifact_map["omnibus.version"]
-            download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}&pv=#{pv_param}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
+
+            # For chef-ice, use normalized platform names and add package manager parameter
+            if omnibus_project == "chef-ice"
+              p_param = Util.normalize_platform_for_commercial(platform)
+              # Use package_manager from artifact_map if available, otherwise determine it
+              pm_param = artifact_map.fetch("omnibus.package_manager", Util.determine_package_manager(options.platform))
+              download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?v=#{v_param}&license_id=#{options.license_id}&m=#{m_param}&p=#{p_param}&pm=#{pm_param}"
+            else
+              download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}&pv=#{pv_param}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
+            end
           else
             base_url = if use_compat_download_url_endpoint?(platform, platform_version)
                          COMPAT_DOWNLOAD_URL_ENDPOINT

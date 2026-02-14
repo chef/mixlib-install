@@ -86,28 +86,32 @@ describe Mixlib::Install::Generator::Base do
         script = test_generator_class.get_script("test_script.sh", {})
 
         expect(script).to include("project=Chef")
-        expect(script).to include("url=https://omnitruck.chef.io")
+        # base_url should be empty when not provided - scripts determine URL at runtime
+        expect(script).to include("url=\n")
       end
 
-      it "sets base_url to commercial API when license_id is provided" do
+      it "does not set base_url from license_id alone" do
         context = { license_id: "test-commercial-key" }
         script = test_generator_class.get_script("test_script.sh", context)
 
-        expect(script).to include("url=https://chefdownload-commercial.chef.io")
+        # base_url should be empty - license_id doesn't auto-set it in context
+        expect(script).to include("url=\n")
       end
 
-      it "sets base_url to trial API when free- license_id is provided" do
+      it "does not set base_url from free- license_id alone" do
         context = { license_id: "free-trial-123" }
         script = test_generator_class.get_script("test_script.sh", context)
 
-        expect(script).to include("url=https://chefdownload-trial.chef.io")
+        # base_url should be empty - license_id doesn't auto-set it in context
+        expect(script).to include("url=\n")
       end
 
-      it "sets base_url to trial API when trial- license_id is provided" do
+      it "does not set base_url from trial- license_id alone" do
         context = { license_id: "trial-xyz-456" }
         script = test_generator_class.get_script("test_script.sh", context)
 
-        expect(script).to include("url=https://chefdownload-trial.chef.io")
+        # base_url should be empty - license_id doesn't auto-set it in context
+        expect(script).to include("url=\n")
       end
     end
 
@@ -163,6 +167,13 @@ describe Mixlib::Install::Generator::Base do
 
       after do
         FileUtils.rm_rf(@temp_dir) if @temp_dir
+      end
+
+      it "uses habitat directory for chef-ice" do
+        context = { default_product: "chef-ice" }
+        script = test_generator_class.get_script("windows_dir.sh", context)
+
+        expect(script).to include("dir=hab\\pkgs")
       end
 
       it "uses omnibus directory for chef" do
@@ -239,7 +250,8 @@ describe Mixlib::Install::Generator::Base do
       script = test_generator_class.get_script("defaults.sh", {})
 
       expect(script).to include("project=Chef")
-      expect(script).to include("url=https://omnitruck.chef.io")
+      # base_url should be empty when not provided - scripts determine URL at runtime
+      expect(script).to include("url=\n")
       expect(script).to include("product=chef")
       expect(script).to include("bug=https://github.com/chef/omnitruck/issues/new")
       expect(script).to include("support=https://www.chef.io/support/tickets")
