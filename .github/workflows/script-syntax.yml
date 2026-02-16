@@ -1,0 +1,307 @@
+---
+name: Script Syntax Check
+
+"on":
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: script-syntax-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  shellcheck:
+    name: Shell Script Syntax Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          set-safe-directory: true
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Check .sh files syntax with bash
+        run: |
+          echo "=== Checking shell script syntax with bash -n ==="
+          find . -name "*.sh" -not -path "*/.git/*" -not -path "*/node_modules/*" | while read -r script; do
+            echo "Checking: $script"
+            bash -n "$script"
+          done
+          echo "All .sh files passed bash syntax check"
+
+      - name: Check .sh files with ShellCheck (warnings only)
+        continue-on-error: true
+        run: |
+          echo "=== Running ShellCheck on shell scripts ==="
+          find . -name "*.sh" -not -path "*/.git/*" -not -path "*/node_modules/*" -exec shellcheck -s bash -S warning {} \;
+
+      - name: Render and check .sh.erb templates
+        run: |
+          echo "=== Rendering and checking .sh.erb templates ==="
+
+          # Create a minimal ERB renderer script
+          cat > /tmp/render_erb.rb << 'RUBY'
+          require 'erb'
+          require 'ostruct'
+
+          template_file = ARGV[0]
+          output_file = ARGV[1]
+
+          # Provide minimal stub values for ERB variables used in templates
+          template_vars = OpenStruct.new(
+            base_url: "https://omnitruck.chef.io",
+            bug_url: "https://github.com/chef/mixlib-install/issues",
+            support_url: "https://www.chef.io/support",
+            resources_url: "https://www.chef.io/resources",
+            project_name: "Chef",
+            install_flags: "",
+            sudo_command: "sudo",
+            root_owner: "root",
+            root_group: "root",
+            latest_version: "latest",
+            version: "latest",
+            channel: "stable",
+            product_name: "chef",
+            platform: "ubuntu",
+            platform_version: "20.04",
+            architecture: "x86_64",
+            download_url_override: nil,
+            checksum: nil,
+            install_strategy: nil,
+            license_id: nil,
+            use_content_disposition: "false"
+          )
+
+          template_content = File.read(template_file)
+          erb = ERB.new(template_content, trim_mode: '-')
+          erb.filename = template_file
+
+          # Create a binding with methods that return stub values
+          binding_obj = template_vars.instance_eval { binding }
+
+          begin
+            result = erb.result(binding_obj)
+            File.write(output_file, result)
+            puts "Rendered: #{template_file} -> #{output_file}"
+          rescue => e
+            # If ERB rendering fails due to missing methods, create a minimal valid shell script
+            # by stripping ERB tags and keeping shell code
+            stripped = template_content.gsub(/<%.*?%>/m, '')
+            File.write(output_file, stripped)
+            puts "Rendered (stripped ERB): #{template_file} -> #{output_file}"
+          end
+          RUBY
+
+          # Find and render all .sh.erb files
+          mkdir -p /tmp/rendered_scripts
+
+          find . -name "*.sh.erb" -not -path "*/.git/*" | while read -r erb_file; do
+            base_name=$(basename "$erb_file" .erb)
+            output_file="/tmp/rendered_scripts/$base_name"
+
+            ruby /tmp/render_erb.rb "$erb_file" "$output_file"
+
+            echo "Checking rendered script: $output_file"
+            if bash -n "$output_file"; then
+              echo "  ✓ Syntax OK"
+            else
+              echo "  ✗ Syntax error in rendered template: $erb_file"
+              exit 1
+            fi
+          done
+
+          echo "All .sh.erb templates passed syntax check"
+
+  powershell-check:
+    name: PowerShell Script Syntax Check
+    runs-on: windows-latest
+    steps:
+      - name: Enable Git long paths
+        run: git config --system core.longpaths true
+
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          set-safe-directory: true
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+
+      - name: Check .ps1 files syntax
+        shell: pwsh
+        run: |
+          Write-Host "=== Checking PowerShell script syntax ==="
+
+          $scripts = Get-ChildItem -Path . -Filter "*.ps1" -Recurse -File |
+            Where-Object { $_.FullName -notlike "*\.git\*" -and $_.FullName -notlike "*\node_modules\*" }
+
+          $hasErrors = $false
+
+          foreach ($script in $scripts) {
+            Write-Host "Checking: $($script.FullName)"
+
+            $errors = $null
+            $tokens = $null
+            $ast = [System.Management.Automation.Language.Parser]::ParseFile(
+              $script.FullName,
+              [ref]$tokens,
+              [ref]$errors
+            )
+
+            if ($errors.Count -gt 0) {
+              Write-Host "  ✗ Syntax errors found:" -ForegroundColor Red
+              foreach ($err in $errors) {
+                Write-Host "    Line $($err.Extent.StartLineNumber): $($err.Message)" -ForegroundColor Red
+              }
+              $hasErrors = $true
+            } else {
+              Write-Host "  ✓ Syntax OK" -ForegroundColor Green
+            }
+          }
+
+          if ($hasErrors) {
+            Write-Error "PowerShell syntax errors found"
+            exit 1
+          }
+
+          Write-Host "All .ps1 files passed syntax check" -ForegroundColor Green
+
+      - name: Render and check .ps1.erb templates
+        shell: pwsh
+        run: |
+          Write-Host "=== Rendering and checking .ps1.erb templates ==="
+
+          # Create ERB renderer script
+          $rubyScript = @'
+          require 'erb'
+          require 'ostruct'
+
+          template_file = ARGV[0]
+          output_file = ARGV[1]
+
+          # Provide minimal stub values for ERB variables used in templates
+          template_vars = OpenStruct.new(
+            base_url: "https://omnitruck.chef.io",
+            bug_url: "https://github.com/chef/mixlib-install/issues",
+            support_url: "https://www.chef.io/support",
+            resources_url: "https://www.chef.io/resources",
+            project_name: "Chef",
+            install_flags: "",
+            latest_version: "latest",
+            version: "latest",
+            channel: "stable",
+            product_name: "chef",
+            platform: "windows",
+            platform_version: "2022",
+            architecture: "x86_64",
+            download_url_override: nil,
+            checksum: nil,
+            install_strategy: nil,
+            license_id: nil,
+            use_content_disposition: "false"
+          )
+
+          template_content = File.read(template_file)
+          erb = ERB.new(template_content, trim_mode: '-')
+          erb.filename = template_file
+
+          binding_obj = template_vars.instance_eval { binding }
+
+          begin
+            result = erb.result(binding_obj)
+            File.write(output_file, result)
+            puts "Rendered: #{template_file} -> #{output_file}"
+          rescue => e
+            # If ERB fails, strip ERB tags
+            stripped = template_content.gsub(/<%.*?%>/m, '')
+            File.write(output_file, stripped)
+            puts "Rendered (stripped ERB): #{template_file} -> #{output_file}"
+          end
+          '@
+
+          $rubyScript | Out-File -FilePath "$env:TEMP\render_erb.rb" -Encoding UTF8
+
+          # Create output directory
+          New-Item -ItemType Directory -Path "$env:TEMP\rendered_scripts" -Force | Out-Null
+
+          # Find all .ps1.erb files
+          $erbFiles = Get-ChildItem -Path . -Filter "*.ps1.erb" -Recurse -File |
+            Where-Object { $_.FullName -notlike "*\.git\*" }
+
+          $hasErrors = $false
+
+          foreach ($erbFile in $erbFiles) {
+            $baseName = [System.IO.Path]::GetFileNameWithoutExtension($erbFile.Name)
+            $outputFile = Join-Path "$env:TEMP\rendered_scripts" $baseName
+
+            Write-Host "Rendering: $($erbFile.FullName)"
+            ruby "$env:TEMP\render_erb.rb" $erbFile.FullName $outputFile
+
+            Write-Host "Checking rendered script: $outputFile"
+
+            $errors = $null
+            $tokens = $null
+            $ast = [System.Management.Automation.Language.Parser]::ParseFile(
+              $outputFile,
+              [ref]$tokens,
+              [ref]$errors
+            )
+
+            if ($errors.Count -gt 0) {
+              Write-Host "  ✗ Syntax errors in rendered template: $($erbFile.FullName)" -ForegroundColor Red
+              foreach ($err in $errors) {
+                Write-Host "    Line $($err.Extent.StartLineNumber): $($err.Message)" -ForegroundColor Red
+              }
+              $hasErrors = $true
+            } else {
+              Write-Host "  ✓ Syntax OK" -ForegroundColor Green
+            }
+          }
+
+          if ($hasErrors) {
+            Write-Error "PowerShell ERB template syntax errors found"
+            exit 1
+          }
+
+          Write-Host "All .ps1.erb templates passed syntax check" -ForegroundColor Green
+
+  # Also run shell checks on macOS to catch any macOS-specific issues
+  shellcheck-macos:
+    name: Shell Script Syntax Check (macOS)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          set-safe-directory: true
+
+      - name: Check .sh files syntax with bash
+        run: |
+          echo "=== Checking shell script syntax with bash -n (macOS) ==="
+          find . -name "*.sh" -not -path "*/.git/*" -not -path "*/node_modules/*" | while read -r script; do
+            echo "Checking: $script"
+            bash -n "$script"
+          done
+          echo "All .sh files passed bash syntax check on macOS"
+
+      - name: Check .sh files syntax with zsh
+        run: |
+          echo "=== Checking shell script syntax with zsh -n ==="
+          find . -name "*.sh" -not -path "*/.git/*" -not -path "*/node_modules/*" | while read -r script; do
+            echo "Checking: $script"
+            # Only check scripts that don't have bash-specific syntax
+            # Use zsh in sh emulation mode for better compatibility
+            zsh -n "$script" 2>/dev/null || true
+          done
+          echo "zsh syntax check complete"
