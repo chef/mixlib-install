@@ -412,7 +412,8 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           # Run script in a separate PowerShell process to capture all output even when it errors
-          $installOutput = powershell -File .\install_cmd.ps1 2>&1 | Out-String
+          # Tee-Object displays output in real-time AND captures it
+          $installOutput = powershell -File .\install_cmd.ps1 2>&1 | Tee-Object -Variable capturedOutput | Out-String
           $installExitCode = $LASTEXITCODE
 
           if ($installExitCode -eq 0) {
@@ -501,7 +502,8 @@ jobs:
       - name: Run install.ps1 script
         run: |
           # Run install function in a separate PowerShell process to capture all output
-          $installOutput = powershell -Command "& { . .\install.ps1; install }" 2>&1 | Out-String
+          # Tee-Object displays output in real-time AND captures it
+          $installOutput = powershell -Command "& { . .\install.ps1; install }" 2>&1 | Tee-Object -Variable capturedOutput | Out-String
           $installExitCode = $LASTEXITCODE
 
           if ($installExitCode -eq 0) {
