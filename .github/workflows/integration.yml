@@ -413,8 +413,12 @@ jobs:
         run: |
           # Run script in a separate PowerShell process to capture all output even when it errors
           # Tee-Object displays output in real-time AND captures it
-          $installOutput = powershell -File .\install_cmd.ps1 2>&1 | Tee-Object -Variable capturedOutput | Out-String
+          $installOutput = powershell -File .\install_cmd.ps1 2>&1 | Out-String
           $installExitCode = $LASTEXITCODE
+
+          Write-Host "Install command run output:"
+          Write-Host $installOutput
+          Write-Host "Install script exit code: $installExitCode"
 
           if ($installExitCode -eq 0) {
             Write-Host "Installation completed successfully"
@@ -503,8 +507,12 @@ jobs:
         run: |
           # Run install function in a separate PowerShell process to capture all output
           # Tee-Object displays output in real-time AND captures it
-          $installOutput = powershell -Command "& { . .\install.ps1; install }" 2>&1 | Tee-Object -Variable capturedOutput | Out-String
+          $installOutput = powershell -Command "& { . .\install.ps1; install }" 2>&1 | Out-String
           $installExitCode = $LASTEXITCODE
+
+          Write-Host "Install script run output:"
+          Write-Host $installOutput
+          Write-Host "Install script exit code: $installExitCode"
 
           if ($installExitCode -eq 0) {
             Write-Host "Installation completed successfully"
