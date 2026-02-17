@@ -206,14 +206,14 @@ function Install-Project {
     while ($installingProject) {
       $installAttempts++
       $result = $false
-      if($download_destination.EndsWith(".appx")) {
+      if ($download_destination.EndsWith(".appx")) {
         $result = Install-ChefAppx $download_destination $project
       }
       else {
         $result = Install-ChefMsi $download_destination $daemon
       }
-      if(!$result) {
-        if($installAttempts -ge $maxAttempts) {
+      if (!$result) {
+        if ($installAttempts -ge $maxAttempts) {
           Write-Host "Failed to install $project after $installAttempts attempts."
           throw "Installation failed after $installAttempts attempts."
         }
