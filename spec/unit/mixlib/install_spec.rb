@@ -75,6 +75,28 @@ context "Mixlib::Install" do
         expect(installer.current_version).to eq(nil)
       end
     end
+
+    context "with chef-ice product" do
+      let(:product_name) { "chef-ice" }
+      let(:version_manifest_file) { "/hab/pkgs/chef/chef-infra-client/*/*/version-manifest.json" }
+
+      it "should use Habitat install directory path" do
+        expect(installer.root).to eq("/hab/pkgs/chef/chef-infra-client/*/*")
+      end
+
+      context "when chef-ice is installed" do
+        before do
+          expect(File).to receive(:exist?).with(version_manifest_file).and_return(true)
+          expect(File).to receive(:read).with(version_manifest_file).and_wrap_original do |m, path|
+            m.call(File.join(VERSION_MANIFEST_DIR, "/opt/chef/version-manifest.json"))
+          end
+        end
+
+        it "should report version correctly" do
+          expect(installer.current_version).to eq("12.4.3")
+        end
+      end
+    end
   end
 
   context "checking for upgrades", :vcr do
@@ -152,7 +174,7 @@ context "Mixlib::Install" do
     end
 
     it "should render a script with cli parameters" do
-      expect(install_sh).to include("while getopts pnv:c:f:P:d:s:l:a:L: opt")
+      expect(install_sh).to include("while getopts pnv:b:c:f:P:d:s:l:a:L: opt")
     end
 
     context "with custom base_url" do

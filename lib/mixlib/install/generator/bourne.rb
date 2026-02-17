@@ -49,7 +49,7 @@ module Mixlib
           install_command << get_script("check_product.sh")
           install_command << get_script("platform_detection.sh")
           install_command << get_script("proxy_env.sh")
-          install_command << get_script("fetch_metadata.sh", license_id: options.license_id)
+          install_command << get_script("fetch_metadata.sh", license_id: options.license_id, base_url: options.base_url)
           install_command << get_script("fetch_package.sh")
           install_command << get_script("install_package.sh")
 
@@ -62,6 +62,7 @@ project=#{options.product_name}
 version=#{options.product_version}
 channel=#{options.channel}
 #{"license_id=#{options.license_id}" if options.license_id && !options.license_id.to_s.empty?}
+#{"base_api_url=#{options.base_url}" if options.base_url && !options.base_url.to_s.empty?}
 EOS
           # Check for CHEF_LICENSE_KEY in execution environment if not already set
           vars += <<EOS

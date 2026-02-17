@@ -132,7 +132,7 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     end
     config_file "/etc/delivery/delivery.rb"
     github_repo "chef/automate"
-    downloads_product_page_url "https://downloads.chef.io/automate"
+    downloads_product_page_url "#{Mixlib::Install::Dist::DOWNLOADS_PAGE}/automate"
   end
 
   product "ha" do

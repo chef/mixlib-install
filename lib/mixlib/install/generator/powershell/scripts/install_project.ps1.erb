@@ -6,12 +6,11 @@ function Install-Project {
     .DESCRIPTION
     Install a Chef Software, Inc. product
     .EXAMPLE
-    iex (new-object net.webclient).downloadstring('https://omnitruck.chef.io/install.ps1'); Install-Project -project chef -channel stable
+    iex (new-object net.webclient).downloadstring('<%= base_url || "https://chefdownload-commercial.chef.io" %>/install.ps1<%= base_url && base_url.include?("chefdownload") ? "?license_id=$env:CHEF_LICENSE_KEY" : "" %>'); Install-Project -project chef -channel stable
 
     Installs the latest stable version of Chef.
     .EXAMPLE
-    iex (irm 'https://omnitruck.chef.io/install.ps1'); Install-Project -project chefdk -channel current
-
+    iex (irm '<<%= base_url || "https://chefdownload-commercial.chef.io" %>/install.ps1<%= base_url && base_url.include?("chefdownload") ? "?license_id=$env:CHEF_LICENSE_KEY" : "" %>'); Install-Project -project chef -channel current
     Installs the latest integration build of the Chef Development Kit
   #>
   [cmdletbinding(SupportsShouldProcess=$true)]
@@ -58,6 +57,9 @@ function Install-Project {
     # Set to 'once' to skip install if project is detected
     [string]
     $install_strategy,
+    # Base server URI for metadata endpoint
+    [uri]
+    $base_server_uri,
     # License ID for commercial API access
     [string]
     $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>
@@ -104,7 +106,7 @@ function Install-Project {
     $download_url = $download_url_override
     $sha256 = $checksum
   } else {
-    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -license_id $license_id
+    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -base_server_uri $base_server_uri -license_id $license_id
     $download_url = $package_metadata.url
     $sha256 = $package_metadata.sha256
   }
@@ -117,12 +119,18 @@ function Install-Project {
     }
   }
   else {
-    # For licensed downloads, we won't know the filename until after download
-    if ([string]::IsNullOrEmpty($license_id)) {
-      $filename = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
-    } else {
+    # Extract filename from URL path (without query params)
+    $urlPath = (([System.Uri]$download_url).AbsolutePath -split '/')[-1]
+
+    # Check if URL path has a package file extension
+    $hasPackageExtension = $urlPath -match '\.(msi|appx|pkg|dmg|rpm|deb)$'
+
+    # For licensed downloads or URLs without package extensions, we won't know the filename until after download
+    if (-not [string]::IsNullOrEmpty($license_id) -or -not $hasPackageExtension) {
       $filename = "chef-download-temp-$PID"
-      Write-Host "Using temporary filename for licensed download: $filename"
+      Write-Host "Using temporary filename for content-disposition download: $filename"
+    } else {
+      $filename = $urlPath
     }
   }
   Write-Host "Download directory: $download_directory"
@@ -163,8 +171,8 @@ function Install-Project {
       Write-Host "Downloading $project from $($download_url) to $download_destination."
       $download_result = Get-WebContent $download_url -filepath $download_destination
 
-      # For licensed downloads, extract actual filename from Content-Disposition
-      if (-not [string]::IsNullOrEmpty($license_id) -and $download_result -and $download_result.Filename) {
+      # Extract actual filename from Content-Disposition if it was a temp filename
+      if ($filename -like "chef-download-temp-*" -and $download_result -and $download_result.Filename) {
         $actual_filename = $download_result.Filename
         Write-Host "Extracted filename from Content-Disposition: $actual_filename"
 
@@ -179,8 +187,8 @@ function Install-Project {
           move-item $download_destination $final_destination -force
           $download_destination = $final_destination
         }
-      } elseif (-not [string]::IsNullOrEmpty($license_id)) {
-        Write-Host "Warning: Could not extract filename from Content-Disposition header for licensed download."
+      } elseif ($filename -like "chef-download-temp-*") {
+        Write-Host "Warning: Could not extract filename from Content-Disposition header."
         Write-Host "Using temporary filename. Package installation may fail."
       }
     }
@@ -194,17 +202,25 @@ function Install-Project {
     Write-Host "Installing $project from $download_destination"
     $installingProject = $True
     $installAttempts = 0
+    $maxAttempts = 5
     while ($installingProject) {
       $installAttempts++
       $result = $false
-      if($download_destination.EndsWith(".appx")) {
+      if ($download_destination.EndsWith(".appx")) {
         $result = Install-ChefAppx $download_destination $project
       }
       else {
         $result = Install-ChefMsi $download_destination $daemon
       }
-      if(!$result) { continue }
+      if (!$result) {
+        if ($installAttempts -ge $maxAttempts) {
+          Write-Host "Failed to install $project after $installAttempts attempts."
+          throw "Installation failed after $installAttempts attempts."
+        }
+        continue
+      }
       $installingProject = $False
+      Write-Host "$project installation completed successfully."
     }
   }
 }

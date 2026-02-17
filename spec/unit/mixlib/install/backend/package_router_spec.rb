@@ -202,6 +202,186 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
+  context "for chef-ice with commercial API" do
+    let(:channel) { :current }
+    let(:product_name) { "chef-ice" }
+    let(:product_version) { "19.1.151" }
+    let(:license_id) { "test-license-key-123" }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "20.04" }
+    let(:architecture) { "x86_64" }
+
+    before do
+      # Mock the HTTP request to prevent actual API calls
+      # chef-ice API structure: platform -> architecture -> package_manager -> package_info
+      allow(package_router).to receive(:get).and_return({
+        "linux" => {
+          "x86_64" => {
+            "deb" => {
+              "version" => "19.1.151",
+              "sha256" => "abc123def456",
+              "sha1" => "ghi789",
+            },
+          },
+        },
+      })
+    end
+
+    it "uses commercial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+    end
+
+    it "constructs download URL with normalized platform parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("p=linux")
+    end
+
+    it "constructs download URL with package manager parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("pm=deb")
+    end
+
+    it "constructs download URL with machine architecture parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("m=x86_64")
+    end
+
+    it "constructs download URL with license_id parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("license_id=#{license_id}")
+    end
+
+    it "constructs complete chef-ice download URL" do
+      artifact = artifact_info
+      expect(artifact.url).to match(%r{/current/chef-ice/download\?v=19\.1\.151&license_id=#{license_id}&m=x86_64&p=linux&pm=deb})
+    end
+
+    context "on RPM-based platform" do
+      let(:platform) { "el" }
+      let(:platform_version) { "8" }
+
+      before do
+        # chef-ice API structure: platform -> architecture -> package_manager -> package_info
+        allow(package_router).to receive(:get).and_return({
+          "linux" => {
+            "x86_64" => {
+              "rpm" => {
+                "version" => "19.1.151",
+                "sha256" => "abc123def456",
+                "sha1" => "ghi789",
+              },
+            },
+          },
+        })
+      end
+
+      it "uses rpm package manager" do
+        artifact = artifact_info
+        expect(artifact.url).to include("pm=rpm")
+      end
+    end
+
+    context "on macOS platform" do
+      let(:platform) { "mac_os_x" }
+      let(:platform_version) { "12" }
+
+      before do
+        # chef-ice API structure: platform -> architecture -> package_manager -> package_info
+        allow(package_router).to receive(:get).and_return({
+          "macos" => {
+            "x86_64" => {
+              "dmg" => {
+                "version" => "19.1.151",
+                "sha256" => "abc123def456",
+                "sha1" => "ghi789",
+              },
+            },
+          },
+        })
+      end
+
+      it "uses macos platform parameter" do
+        artifact = artifact_info
+        expect(artifact.url).to include("p=macos")
+      end
+
+      it "uses dmg package manager" do
+        artifact = artifact_info
+        expect(artifact.url).to include("pm=dmg")
+      end
+    end
+  end
+
+  context "for chef-ice with trial API" do
+    let(:channel) { :current }
+    let(:product_name) { "chef-ice" }
+    let(:product_version) { "19.1.151" }
+    let(:license_id) { "free-trial-xyz-123" }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "20.04" }
+    let(:architecture) { "x86_64" }
+
+    before do
+      # Mock the HTTP request to prevent actual API calls
+      # chef-ice API structure: platform -> architecture -> package_manager -> package_info
+      allow(package_router).to receive(:get).and_return({
+        "linux" => {
+          "x86_64" => {
+            "deb" => {
+              "version" => "19.1.151",
+              "sha256" => "abc123def456",
+              "sha1" => "ghi789",
+            },
+          },
+        },
+      })
+    end
+
+    it "uses trial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+    end
+
+    it "constructs download URL with normalized platform parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("p=linux")
+    end
+
+    it "constructs download URL with package manager parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("pm=deb")
+    end
+
+    it "constructs download URL with machine architecture parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("m=x86_64")
+    end
+
+    it "constructs download URL with license_id parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("license_id=#{license_id}")
+    end
+
+    it "constructs complete chef-ice download URL with trial endpoint" do
+      artifact = artifact_info
+      # Trial API automatically defaults to stable channel and latest version
+      expect(artifact.url).to match(%r{https://chefdownload-trial\.chef\.io/stable/chef-ice/download\?v=19\.1\.151&license_id=#{license_id}&m=x86_64&p=linux&pm=deb})
+    end
+
+    context "with trial- prefix" do
+      let(:license_id) { "trial-abc-456" }
+
+      it "uses trial API endpoint" do
+        expect(package_router.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+      end
+
+      it "constructs complete chef-ice download URL with trial endpoint" do
+        artifact = artifact_info
+        # Trial API automatically defaults to stable channel and latest version
+        expect(artifact.url).to match(%r{https://chefdownload-trial\.chef\.io/stable/chef-ice/download\?v=19\.1\.151&license_id=#{license_id}&m=x86_64&p=linux&pm=deb})
+      end
+    end
+  end
+
   context "for chef/stable with specific version" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }

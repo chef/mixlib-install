@@ -103,6 +103,7 @@ module Mixlib
       uri = URI.parse(artifact.url)
       filename = nil
       final_body = nil
+      final_uri = uri
 
       Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
         # Build the request path including query string
@@ -112,23 +113,27 @@ module Mixlib
         # Get the response, following redirects
         response = http.request_get(request_path)
 
+        # Try to extract filename from Content-Disposition in initial response
+        if response["content-disposition"]
+          filename = response["content-disposition"][/filename="?([^"]+)"?/, 1]
+        end
+
         # Follow redirects
         redirect_limit = 5
         while response.is_a?(Net::HTTPRedirection) && redirect_limit > 0
           redirect_uri = URI.parse(response["location"])
           # Handle relative redirects
           redirect_uri = uri + redirect_uri if redirect_uri.relative?
+          final_uri = redirect_uri
 
           Net::HTTP.start(redirect_uri.host, redirect_uri.port, use_ssl: redirect_uri.scheme == "https") do |redirect_http|
             redirect_path = redirect_uri.path
             redirect_path += "?#{redirect_uri.query}" if redirect_uri.query
             response = redirect_http.request_get(redirect_path)
 
-            # Try to get filename from Content-Disposition or final URL
-            if response["content-disposition"]
+            # Try to get filename from Content-Disposition in redirect response
+            if response["content-disposition"] && filename.nil?
               filename = response["content-disposition"][/filename="?([^"]+)"?/, 1]
-            else
-              filename = File.basename(redirect_uri.path)
             end
           end
 
@@ -136,9 +141,23 @@ module Mixlib
         end
 
         final_body = response.body
+
+        # Try Content-Disposition from final successful response
+        if response["content-disposition"] && filename.nil?
+          filename = response["content-disposition"][/filename="?([^"]+)"?/, 1]
+        end
       end
 
-      # Use the extracted filename or fall back to basename of original URL
+      # Fallback: extract filename from final URL path (works for direct package URLs)
+      if filename.nil?
+        path_filename = File.basename(final_uri.path.split("?").first)
+        # Only use path filename if it looks like a package file
+        if /\.(rpm|deb|pkg|msi|dmg|bff|p5p|sh|tar|gz|appx)$/.match?(path_filename)
+          filename = path_filename
+        end
+      end
+
+      # Final fallback: use basename of original URL
       filename ||= File.basename(uri.path)
       file = File.join(directory, filename)
 
@@ -158,10 +177,19 @@ module Mixlib
     def root
       # This only works for chef and chefdk but they are the only projects
       # we are supporting as of now.
-      if options.for_ps1?
-        "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{options.product_name}"
+      # chef-ice uses Habitat install directories
+      if options.product_name.casecmp("chef-ice") == 0
+        if options.for_ps1?
+          "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*"
+        else
+          "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*"
+        end
       else
-        "#{Mixlib::Install::Dist::OMNIBUS_LINUX_INSTALL_DIR}/#{options.product_name}"
+        if options.for_ps1?
+          "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{options.product_name}"
+        else
+          "#{Mixlib::Install::Dist::OMNIBUS_LINUX_INSTALL_DIR}/#{options.product_name}"
+        end
       end
     end
 
@@ -175,10 +203,19 @@ module Mixlib
       # install directory which can be different than the product name (e.g.
       # chef-server -> /opt/opscode). But this is OK for now since
       # chef & chefdk are the only supported products.
-      version_manifest_file = if options.for_ps1?
-                                "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{options.product_name}\\version-manifest.json"
+      # chef-ice uses Habitat install directories
+      version_manifest_file = if options.product_name.casecmp("chef-ice") == 0
+                                if options.for_ps1?
+                                  "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*\\version-manifest.json"
+                                else
+                                  "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*/version-manifest.json"
+                                end
                               else
-                                "#{Mixlib::Install::Dist::OMNIBUS_LINUX_INSTALL_DIR}/#{options.product_name}/version-manifest.json"
+                                if options.for_ps1?
+                                  "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\#{options.product_name}\\version-manifest.json"
+                                else
+                                  "/opt/#{options.product_name}/version-manifest.json"
+                                end
                               end
 
       if File.exist? version_manifest_file
