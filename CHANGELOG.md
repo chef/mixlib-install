@@ -1,24 +1,21 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.16.0 -->
+<!-- latest_release -->
+<!-- latest_release -->
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v3.16.0](https://github.com/chef/mixlib-install/tree/v3.16.0) (2026-02-24)
 
 #### Merged Pull Requests
 - CHEF-29762 add chef-ice package_manger support to generated scripts [#417](https://github.com/chef/mixlib-install/pull/417) ([Stromweld](https://github.com/Stromweld))
-<!-- latest_release -->
-<!-- release_rollup since=3.15.0 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- CHEF-29762 add chef-ice package_manger support to generated scripts [#417](https://github.com/chef/mixlib-install/pull/417) ([Stromweld](https://github.com/Stromweld)) <!-- 3.16.0 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v3.15.0](https://github.com/chef/mixlib-install/tree/v3.15.0) (2026-01-21)
 
 #### Merged Pull Requests
 - CHEF-29672 Add license_id parameter to install script endpoint [#416](https://github.com/chef/mixlib-install/pull/416) ([Stromweld](https://github.com/Stromweld))
-<!-- latest_stable_release -->
 
 ## [v3.14.0](https://github.com/chef/mixlib-install/tree/v3.14.0) (2026-01-14)
 
