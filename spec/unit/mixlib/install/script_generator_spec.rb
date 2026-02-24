@@ -52,6 +52,18 @@ describe Mixlib::Install::ScriptGenerator do
         install = described_class.new("1.2.1", false, root: "/opt/test")
         expect(install.root).to eq("/opt/test")
       end
+
+      describe "for chef-ice product" do
+        it "uses Habitat install directory on windows" do
+          install = described_class.new("1.2.1", true, project: "chef-ice")
+          expect(install.root).to eq("$env:systemdrive\\hab\\pkgs\\chef\\chef-infra-client\\*\\*")
+        end
+
+        it "uses Habitat install directory on unix" do
+          install = described_class.new("1.2.1", false, project: "chef-ice")
+          expect(install.root).to eq("/hab/pkgs/chef/chef-infra-client/*/*")
+        end
+      end
     end
 
     describe "parses the options hash" do
@@ -83,6 +95,12 @@ describe Mixlib::Install::ScriptGenerator do
         opts = { license_id: "test-license-123" }
         install = described_class.new("1.2.1", false, opts)
         expect(install.license_id).to eq("test-license-123")
+      end
+
+      it "sets the base_url" do
+        opts = { base_url: "https://custom.chef.io" }
+        install = described_class.new("1.2.1", false, opts)
+        expect(install.base_url).to eq("https://custom.chef.io")
       end
     end
   end
@@ -167,6 +185,27 @@ describe Mixlib::Install::ScriptGenerator do
         end
       end
 
+      describe "with chef-ice product" do
+        let(:installer) { described_class.new("latest", true, omnibus_url: "http://f/install.sh", project: "chef-ice", license_id: "test-ice-123") }
+
+        it "uses stable/chef-ice/metadata endpoint" do
+          metadata_url = installer.send(:windows_metadata_url)
+          expect(metadata_url).to include("stable/chef-ice/metadata")
+        end
+
+        it "includes pm parameter instead of pv for chef-ice" do
+          metadata_url = installer.send(:windows_metadata_url)
+          expect(metadata_url).to include("pm=msi")
+          expect(metadata_url).not_to include("pv=")
+        end
+
+        it "includes p and m parameters" do
+          metadata_url = installer.send(:windows_metadata_url)
+          expect(metadata_url).to include("p=windows")
+          expect(metadata_url).to include("m=$platform_architecture")
+        end
+      end
+
       describe "with chef product" do
         let(:installer) { described_class.new("latest", true, omnibus_url: "http://f/install.sh", project: "chef", license_id: "test-chef-123") }
 
@@ -232,6 +271,15 @@ describe Mixlib::Install::ScriptGenerator do
           installer.license_id = "free-xyz789"
           out = installer.install_command
           expect(out).to include('chef_omnibus_url="https://chefdownload-trial.chef.io/install.sh?license_id=free-xyz789"')
+        end
+      end
+
+      describe "with chef-ice product" do
+        let(:installer) { described_class.new("latest", false, omnibus_url: "https://omnitruck.chef.io/install.sh", project: "chef-ice", license_id: "test-ice-456") }
+
+        it "uses commercial URL for chef-ice" do
+          out = installer.install_command
+          expect(out).to include('chef_omnibus_url="https://chefdownload-commercial.chef.io/install.sh?license_id=test-ice-456"')
         end
       end
 
@@ -314,6 +362,30 @@ describe Mixlib::Install::ScriptGenerator do
           expect(installer.send(:omnibus_url_for_license)).to eq("https://example.com/custom_path")
         end
       end
+
+      context "with base_url and commercial license_id" do
+        before do
+          installer.license_id = "commercial-abc123"
+          installer.base_url = "https://custom.chef.io"
+        end
+
+        it "returns custom base_url with license_id" do
+          url = installer.send(:omnibus_url_for_license)
+          expect(url).to eq("https://custom.chef.io/install.sh?license_id=commercial-abc123")
+        end
+      end
+
+      context "with base_url and trial license_id" do
+        before do
+          installer.license_id = "trial-xyz789"
+          installer.base_url = "https://custom.chef.io"
+        end
+
+        it "returns custom base_url with license_id" do
+          url = installer.send(:omnibus_url_for_license)
+          expect(url).to eq("https://custom.chef.io/install.sh?license_id=trial-xyz789")
+        end
+      end
     end
 
     describe "#windows_metadata_url" do
@@ -341,6 +413,26 @@ describe Mixlib::Install::ScriptGenerator do
           installer.version = "latest"
           url = installer.send(:windows_metadata_url)
           expect(url).not_to include("&v=")
+        end
+      end
+
+      context "with base_url and commercial license" do
+        let(:installer) { described_class.new("16.0.0", true, omnibus_url: "https://omnitruck.chef.io/install.sh", license_id: "commercial-123", base_url: "https://custom.chef.io") }
+
+        it "uses custom base_url in metadata URL" do
+          url = installer.send(:windows_metadata_url)
+          expect(url).to include("https://custom.chef.io/stable/chef/metadata")
+          expect(url).to include("license_id=commercial-123")
+        end
+      end
+
+      context "with base_url and trial license" do
+        let(:installer) { described_class.new("16.0.0", true, omnibus_url: "https://omnitruck.chef.io/install.sh", license_id: "trial-456", base_url: "https://custom.chef.io") }
+
+        it "uses custom base_url in metadata URL" do
+          url = installer.send(:windows_metadata_url)
+          expect(url).to include("https://custom.chef.io/stable/chef/metadata")
+          expect(url).to include("license_id=trial-456")
         end
       end
     end

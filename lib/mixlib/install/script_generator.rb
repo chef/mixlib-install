@@ -58,6 +58,7 @@ module Mixlib
       attr_accessor :install_msi_url
 
       attr_accessor :license_id
+      attr_accessor :base_url
 
       VALID_INSTALL_OPTS = %w{omnibus_url
                               endpoint
@@ -71,7 +72,8 @@ module Mixlib
                               project
                               root
                               use_sudo
-                              sudo_command}
+                              sudo_command
+                              base_url}
 
       def initialize(version, powershell = false, opts = {})
         @version = (version || "latest").to_s.downcase
@@ -82,7 +84,7 @@ module Mixlib
         @prerelease = false
         @nightlies = false
         @endpoint = "metadata"
-        @omnibus_url = "https://omnitruck.chef.io/install.sh"
+        @omnibus_url = "#{Mixlib::Install::Dist::OMNITRUCK_ENDPOINT}/install.sh"
         @use_sudo = true
         @sudo_command = "sudo -E"
         @license_id = nil
@@ -96,6 +98,15 @@ module Mixlib
                 end
 
         parse_opts(opts)
+
+        # Update root for chef-ice to use Habitat install directories
+        if @project&.casecmp("chef-ice") == 0
+          @root = if powershell
+                    "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*"
+                  else
+                    "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*"
+                  end
+        end
       end
 
       def install_command
@@ -213,7 +224,7 @@ module Mixlib
 
       # @return the correct Chef Omnitruck API metadata endpoint, based on project
       def metadata_endpoint_from_project(project = nil)
-        if project.nil? || project.casecmp("chef") == 0
+        if project.nil? || project.casecmp(Mixlib::Install::Dist::DEFAULT_PRODUCT) == 0
           "metadata"
         else
           "metadata-#{project.downcase}"
@@ -224,16 +235,19 @@ module Mixlib
       # @return [String] the omnibus URL (commercial/trial or standard omnitruck)
       # @api private
       def omnibus_url_for_license
-        return omnibus_url if license_id.nil? || license_id.to_s.empty? || omnibus_url != "https://omnitruck.chef.io/install.sh"
+        return omnibus_url if license_id.nil? || license_id.to_s.empty? || omnibus_url != "#{Mixlib::Install::Dist::OMNITRUCK_ENDPOINT}/install.sh"
 
-        # Determine if this is a trial or commercial license
-        base_url = if license_id.start_with?("free-", "trial-")
-                     "https://chefdownload-trial.chef.io"
-                   else
-                     "https://chefdownload-commercial.chef.io"
-                   end
+        # Use custom base_url if provided, otherwise determine from license type
+        endpoint_base = if @base_url
+                          @base_url
+                        elsif license_id.start_with?("free-", "trial-")
+                          Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+                        else
+                          Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+                        end
 
-        "#{base_url}/install.sh?license_id=#{CGI.escape(license_id)}"
+        # Add license_id as query param when using licensed endpoints
+        "#{endpoint_base}/install.sh?license_id=#{CGI.escape(license_id)}"
       end
 
       def windows_metadata_url
@@ -242,14 +256,17 @@ module Mixlib
 
         if using_licensed_api
           # Commercial/trial API: <base_url>/<channel>/<project>/metadata
-          base_url = if license_id.start_with?("free-", "trial-")
-                       "https://chefdownload-trial.chef.io"
-                     else
-                       "https://chefdownload-commercial.chef.io"
-                     end
+          # Use custom base_url if provided, otherwise determine from license type
+          endpoint_base = if @base_url
+                            @base_url
+                          elsif license_id.start_with?("free-", "trial-")
+                            Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+                          else
+                            Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+                          end
 
           product_name = @project
-          url = "#{base_url}/#{@channel}/#{product_name}/metadata"
+          url = "#{endpoint_base}/#{@channel}/#{product_name}/metadata"
         else
           # Omnitruck API: use base from omnibus_url + endpoint
           base = if omnibus_url_for_license.match?(%r{/install.sh})
@@ -261,7 +278,14 @@ module Mixlib
           url = "#{base}#{endpoint}"
         end
 
-        url << "?p=windows&m=$platform_architecture&pv=$platform_version"
+        # chef-ice uses different parameters than chef
+        if @project.casecmp("chef-ice") == 0
+          # For chef-ice: p (platform), m (machine), pm (package_manager)
+          url << "?p=windows&m=$platform_architecture&pm=msi"
+        else
+          # For chef and other products: p (platform), pv (platform_version), m (machine)
+          url << "?p=windows&m=$platform_architecture&pv=$platform_version"
+        end
         url << "&v=#{CGI.escape(version)}" unless %w{latest true nightlies}.include?(version)
         url << "&prerelease=true" if prerelease
         url << "&nightlies=true" if nightlies

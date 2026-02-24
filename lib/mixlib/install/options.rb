@@ -64,6 +64,7 @@ module Mixlib
         :user_agent_headers,
         :install_command_options,
         :license_id,
+        :base_url,
       ]
 
       SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{10}

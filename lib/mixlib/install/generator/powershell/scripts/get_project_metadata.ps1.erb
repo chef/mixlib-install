@@ -6,22 +6,21 @@ function Get-ProjectMetadata {
     .DESCRIPTION
     Get metadata for project
     .EXAMPLE
-    iex (new-object net.webclient).downloadstring('<%= base_url %>/install.ps1'); Get-ProjectMetadata -project chef -channel stable
+    iex (new-object net.webclient).downloadstring('<%= base_url || "https://chefdownload-commercial.chef.io" %>/install.ps1<%= base_url && base_url.include?("chefdownload") ? "?license_id=$env:CHEF_LICENSE_KEY" : "" %>'); Get-ProjectMetadata -project chef -channel stable
 
     Gets the download url and SHA256 checksum for the latest stable release of Chef.
     .EXAMPLE
-    iex (irm '<%= base_url %>/install.ps1'); Get-ProjectMetadata -project chefdk -channel stable -version 0.8.0
-
-    Gets the download url and SHA256 checksum for ChefDK 0.8.0.
+    iex (irm '<%= base_url || "https://chefdownload-commercial.chef.io" %>/install.ps1<%= base_url && base_url.include?("chefdownload") ? "?license_id=$env:CHEF_LICENSE_KEY" : "" %>'); Get-ProjectMetadata -project chef-workstation -channel stable
   #>
   [cmdletbinding()]
   param (
     # Base url to retrieve metadata from.
-    [uri]$base_server_uri = '<%= base_url %>',
+    [uri]
+    $base_server_uri,
     [string]
     # Project to install
     [string]
-    $project = 'chef',
+    $project = '<%= default_product %>',
     # Version of the application to install
     # This parameter is optional, if not supplied it will provide the latest version,
     # and if an iteration number is not specified, it will grab the latest available iteration.
@@ -43,7 +42,7 @@ function Get-ProjectMetadata {
     $architecture = 'auto',
     # License ID for commercial API access
     [string]
-    $license_id
+    $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>
   )
 
   # The following legacy switches are just aliases for the current channel
@@ -64,31 +63,47 @@ function Get-ProjectMetadata {
   Write-Host "Architecture: $architecture"
   Write-Host "Project: $project"
 
-  # Use commercial API if license_id is provided, otherwise use omnitruck
-  if ($license_id) {
-    # Check if license_id starts with 'free-' or 'trial-' for trial API
-    if ($license_id -match '^(free-|trial-)') {
-      $base_server_uri = 'https://chefdownload-trial.chef.io'
-      Write-Host "Using Trial API with license ID"
-    } else {
-      $base_server_uri = 'https://chefdownload-commercial.chef.io'
-      Write-Host "Using Commercial API with license ID"
+<% if base_url && !base_url.to_s.empty? %>
+  # Set base_server_uri from option if not already set via parameter
+  if ([string]::IsNullOrEmpty($base_server_uri)) {
+    $base_server_uri = "<%= base_url %>"
+  }
+<% end %>
+
+  if ([string]::IsNullOrEmpty($base_server_uri)) {
+    if (-not [string]::IsNullOrEmpty($license_id)) {
+      # Check if license_id starts with 'free-' or 'trial-' for trial API
+      if ($license_id -match '^(free-|trial-)') {
+        # Trial API endpoint
+        $base_server_uri = "<%= Mixlib::Install::Dist::TRIAL_API_ENDPOINT %>"
+      }
+      else {
+        # Commercial API endpoint
+        $base_server_uri = "<%= Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT %>"
+      }
+    }
+    else {
+      # Omnitruck endpoint
+      $base_server_uri = "<%= Mixlib::Install::Dist::OMNITRUCK_ENDPOINT %>"
     }
   }
 
-  $metadata_base_url = "/$($channel)/$($project)/metadata"
-  $metadata_array = ("?v=$($version)",
-    "p=$platform",
-    "pv=$platform_version",
-    "m=$architecture")
-
-  # Add license_id to query parameters if provided
-  if ($license_id) {
-    $metadata_array += "license_id=$license_id"
+  # For chef-ice product, add platform (p), machine (m), and package_manager (pm) parameters
+  if (-not [string]::IsNullOrEmpty($license_id)) {
+    if ($project -eq "chef-ice") {
+      $package_manager = "msi"
+      $platform_param = "windows"
+      $metadata_url = "$base_server_uri$channel/$project/metadata?license_id=$license_id&v=$version&m=$architecture&p=$platform_param&pm=$package_manager"
+    }
+    else {
+      # For other products, use standard parameters
+      $metadata_url = "$base_server_uri$channel/$project/metadata?license_id=$license_id&v=$version&p=$platform&pv=$platform_version&m=$architecture"
+    }
   }
-
-  $metadata_base_url += [string]::join('&', $metadata_array)
-  $metadata_url = new-uri $base_server_uri $metadata_base_url
+  else {
+    # Omnitruck URL parameters without license_id
+    $metadata_url = "$base_server_uri$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$architecture"
+  }
 
   Write-Host "Downloading $project details from $metadata_url"
   $response = (Get-WebContent $metadata_url).trim()
