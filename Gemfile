@@ -5,7 +5,7 @@ gemspec
 gem "chef-utils", "= 16.6.14" if RUBY_VERSION < "2.6.0"
 
 group :test do
-  gem "contracts", "~> 0.16.0" # this entry can go away when ruby < 3 support is gone
+  gem "contracts", "~> 0.17.3" # this entry can go away when ruby < 3 support is gone
   gem "rake"
   gem "rspec"
   gem "webrick"
