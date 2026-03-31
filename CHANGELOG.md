@@ -1,8 +1,16 @@
 # Mixlib::Install Changes
 
+<!-- latest_release 3.16.1 -->
+## [v3.16.1](https://github.com/chef/mixlib-install/tree/v3.16.1) (2026-03-31)
+
+#### Merged Pull Requests
+- Remove docs team from blockers for MD files [#421](https://github.com/chef/mixlib-install/pull/421) ([jaymzh](https://github.com/jaymzh))
 <!-- latest_release -->
-<!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.16.0 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Remove docs team from blockers for MD files [#421](https://github.com/chef/mixlib-install/pull/421) ([jaymzh](https://github.com/jaymzh)) <!-- 3.16.1 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
