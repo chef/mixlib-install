@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mixlib-shellout"
   spec.add_dependency "mixlib-versioning"
   spec.add_dependency "thor"
+  spec.required_ruby_version = ">= 2.6"
 end
