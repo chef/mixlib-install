@@ -42,7 +42,10 @@ function Get-ProjectMetadata {
     $architecture = 'auto',
     # License ID for commercial API access
     [string]
-    $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>
+    $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>,
+    # Package manager override (e.g. msi, zip). If omitted, the server derives it from platform.
+    [string]
+    $package_manager
   )
 
   # The following legacy switches are just aliases for the current channel
@@ -88,22 +91,27 @@ function Get-ProjectMetadata {
     }
   }
 
-  # For chef-ice product, add platform (p), machine (m), and package_manager (pm) parameters
-  if (-not [string]::IsNullOrEmpty($license_id)) {
-    if ($project -eq "chef-ice") {
-      $package_manager = "msi"
-      $platform_param = "windows"
-      $metadata_url = "$base_server_uri$channel/$project/metadata?license_id=$license_id&v=$version&m=$architecture&p=$platform_param&pm=$package_manager"
-    }
-    else {
-      # For other products, use standard parameters
-      $metadata_url = "$base_server_uri$channel/$project/metadata?license_id=$license_id&v=$version&p=$platform&pv=$platform_version&m=$architecture"
-    }
+  # Only include pm param when the caller explicitly passed -package_manager;
+  # the server derives it from the platform (p) parameter otherwise.
+
+  if (-not [string]::IsNullOrEmpty($package_manager)) {
+    $pm_param = "&pm=$package_manager"
   }
   else {
-    # Omnitruck URL parameters without license_id
-    $metadata_url = "$base_server_uri$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$architecture"
+    $pm_param = ""
   }
+
+  # License param (appended only when a license_id is present)
+  $license_param = ""
+  if (-not [string]::IsNullOrEmpty($license_id)) {
+    $license_param = "&license_id=$license_id"
+  }
+  else {
+    $license_param = ""
+  }
+
+  # Build the metadata URL.
+  $metadata_url = "$base_server_uri$channel/$project/metadata?v=$version&p=$platform&pv=$platform_version&m=$architecture$license_param$pm_param"
 
   Write-Host "Downloading $project details from $metadata_url"
   $response = (Get-WebContent $metadata_url).trim()

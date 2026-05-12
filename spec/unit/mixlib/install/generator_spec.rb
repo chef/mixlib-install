@@ -309,45 +309,27 @@ context "Mixlib::Install::Generator", :vcr do
         }
       end
 
-      it "includes package manager detection function" do
-        expect(install_script).to include("determine_package_manager()")
+      it "does not include client-side package manager detection function" do
+        expect(install_script).not_to include("determine_package_manager()")
       end
 
-      it "includes platform normalization function" do
-        expect(install_script).to include("normalize_platform_name()")
+      it "does not include client-side platform normalization function" do
+        expect(install_script).not_to include("normalize_platform_name()")
       end
 
-      it "includes chef-ice conditional logic" do
-        expect(install_script).to include('if [ "$project" = "chef-ice" ]; then')
+      it "sends platform as-is (no client-side normalization)" do
+        # Platform variable used directly, no rewriting
+        expect(install_script).to include("p=$platform")
+        expect(install_script).not_to include("platform_param=")
       end
 
-      it "includes RPM-based platform detection" do
-        expect(install_script).to include("el|centos|rhel|fedora|amazon|rocky")
-        expect(install_script).to include('echo "rpm"')
+      it "uses unified URL including pv for all products" do
+        expect(install_script).to include("pv=$platform_version")
       end
 
-      it "includes DEB-based platform detection" do
-        expect(install_script).to include("debian|ubuntu|linuxmint|raspbian")
-        expect(install_script).to include('echo "deb"')
-      end
-
-      it "includes TAR-based platform detection" do
-        expect(install_script).to include("mac_os_x|macos|solaris*|smartos|freebsd|aix")
-        expect(install_script).to include('echo "tar"')
-      end
-
-      it "includes platform normalization for Linux" do
-        expect(install_script).to include("el|centos|rhel|fedora|rocky")
-        expect(install_script).to include('echo "linux"')
-      end
-
-      it "includes platform normalization for macOS" do
-        expect(install_script).to include("mac_os_x|macos")
-        expect(install_script).to include('echo "macos"')
-      end
-
-      it "constructs chef-ice metadata URL with m, p, pm parameters" do
-        expect(install_script).to include('metadata_url="$base_api_url/$channel/$project/metadata?license_id=$license_id&v=$version&m=$machine&p=$platform_param&pm=$package_manager"')
+      it "builds pm_param only when user specifies -i flag" do
+        expect(install_script).to include('if [ -n "$package_manager" ]; then')
+        expect(install_script).to include('pm_param="&pm=$package_manager"')
       end
 
       it "uses commercial API endpoint" do
@@ -362,12 +344,13 @@ context "Mixlib::Install::Generator", :vcr do
         }
       end
 
-      it "includes chef-ice conditional logic" do
-        expect(install_script).to include('if [ "$project" = "chef-ice" ]; then')
+      it "sends platform as-is in URL" do
+        expect(install_script).to include("p=$platform")
+        expect(install_script).not_to include("platform_param=")
       end
 
-      it "constructs chef-ice metadata URL with m, p, pm parameters" do
-        expect(install_script).to include('metadata_url="$base_api_url/$channel/$project/metadata?license_id=$license_id&v=$version&m=$machine&p=$platform_param&pm=$package_manager"')
+      it "uses unified URL including pv for all products" do
+        expect(install_script).to include("pv=$platform_version")
       end
 
       it "uses trial API endpoint" do
@@ -377,7 +360,54 @@ context "Mixlib::Install::Generator", :vcr do
       it "works with trial- prefix" do
         add_options[:license_id] = "trial-abc-456"
         expect(install_script).to include("https://chefdownload-trial.chef.io")
-        expect(install_script).to include('if [ "$project" = "chef-ice" ]; then')
+      end
+    end
+
+    context "inspec-enterprise server-side pm derivation" do
+      let(:add_options) do
+        {
+          license_id: "test-license-key-123",
+        }
+      end
+
+      it "uses a single unified URL for all products (no product-specific conditionals)" do
+        # The server derives pm from platform; no product-specific if-blocks in the script
+        expect(install_script).not_to include('[ "$project" = "inspec-enterprise" ]')
+        expect(install_script).to include("pv=$platform_version")
+        expect(install_script).to include("p=$platform")
+      end
+
+      it "appends pm_param only when package_manager is explicitly set" do
+        expect(install_script).to include('if [ -n "$package_manager" ]; then')
+        expect(install_script).to include('pm_param="&pm=$package_manager"')
+      end
+    end
+
+    context "optional package_manager -i flag (bash)" do
+      # script_cli_parameters.sh.erb is only rendered by the class method install_sh,
+      # not by the instance install_command (which uses render_variables instead).
+      let(:install_script) { Mixlib::Install.install_sh({}) }
+
+      it "accepts -i flag in getopts" do
+        expect(install_script).to include("getopts pnv:b:c:f:P:d:s:l:a:L:i:")
+      end
+
+      it "sets package_manager from -i flag" do
+        expect(install_script).to include("i)  package_manager=\"$OPTARG\";;")
+      end
+
+      it "initialises package_manager to empty string" do
+        expect(install_script).to include('package_manager=""')
+      end
+
+      it "only adds pm param when package_manager is non-empty" do
+        expect(install_script).to include('pm_param=""')
+        expect(install_script).to include('if [ -n "$package_manager" ]; then')
+        expect(install_script).to include('pm_param="&pm=$package_manager"')
+      end
+
+      it "includes -i in the usage message" do
+        expect(install_script).to include("[-i package_manager]")
       end
     end
 
@@ -574,17 +604,21 @@ context "Mixlib::Install::Generator", :vcr do
 
         it_behaves_like "the correct ps1 script"
 
-        it "includes chef-ice conditional logic" do
-          expect(install_script).to include('if ($project -eq "chef-ice")')
+        it "does not hardcode package_manager or platform_param" do
+          expect(install_script).not_to include('$package_manager = "msi"')
+          expect(install_script).not_to include('$platform_param = "windows"')
         end
 
-        it "includes simplified parameters for chef-ice on Windows" do
-          expect(install_script).to include('$platform_param = "windows"')
-          expect(install_script).to include('$package_manager = "msi"')
+        it "sends platform as-is (p=$platform) with pv for all products" do
+          expect(install_script).to include("p=$platform")
+          expect(install_script).not_to include("p=$platform_param")
+          expect(install_script).to include("pv=$platform_version")
         end
 
-        it "constructs chef-ice metadata URL with m, p, pm parameters" do
-          expect(install_script).to include('$metadata_url = "$base_server_uri$channel/$project/metadata?license_id=$license_id&v=$version&m=$architecture&p=$platform_param&pm=$package_manager"')
+        it "builds pm_param only when package_manager is supplied" do
+          expect(install_script).to include('$pm_param = ""')
+          expect(install_script).to include('-not [string]::IsNullOrEmpty($package_manager)')
+          expect(install_script).to include('$pm_param = "&pm=$package_manager"')
         end
 
         it "uses commercial API endpoint" do
@@ -603,13 +637,14 @@ context "Mixlib::Install::Generator", :vcr do
 
         it_behaves_like "the correct ps1 script"
 
-        it "includes chef-ice conditional logic" do
-          expect(install_script).to include('if ($project -eq "chef-ice")')
+        it "does not hardcode package_manager or platform_param" do
+          expect(install_script).not_to include('$package_manager = "msi"')
+          expect(install_script).not_to include('$platform_param = "windows"')
         end
 
-        it "includes simplified parameters for chef-ice on Windows" do
-          expect(install_script).to include('$platform_param = "windows"')
-          expect(install_script).to include('$package_manager = "msi"')
+        it "uses unified URL including pv for all products" do
+          expect(install_script).to include("pv=$platform_version")
+          expect(install_script).to include("p=$platform")
         end
 
         it "uses trial API endpoint" do
@@ -619,6 +654,56 @@ context "Mixlib::Install::Generator", :vcr do
         it "works with trial- prefix" do
           add_options[:license_id] = "trial-abc-456"
           expect(install_script).to include("https://chefdownload-trial.chef.io")
+        end
+      end
+
+      context "inspec-enterprise server-side pm derivation for PowerShell" do
+        let(:add_options) do
+          {
+            product_name: "inspec-enterprise",
+            shell_type: :ps1,
+            license_id: "test-license-key-123",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "uses a single unified URL for all products (no product-specific conditionals)" do
+          # The server derives pm from platform; no product-specific if-blocks in the script
+          expect(install_script).not_to include('$project -eq "inspec-enterprise"')
+          expect(install_script).to include("pv=$platform_version")
+          expect(install_script).to include("p=$platform")
+        end
+
+        it "appends pm_param only when package_manager is explicitly set" do
+          expect(install_script).to include('-not [string]::IsNullOrEmpty($package_manager)')
+          expect(install_script).to include('$pm_param = "&pm=$package_manager"')
+        end
+      end
+
+      context "optional package_manager parameter for PowerShell" do
+        let(:add_options) do
+          {
+            shell_type: :ps1,
+            license_id: "test-license-key-123",
+          }
+        end
+
+        it "includes $package_manager as an optional parameter in Get-ProjectMetadata" do
+          expect(install_script).to include("$package_manager")
+        end
+
+        it "includes $package_manager as an optional parameter in Install-Project" do
+          expect(install_script).to include("$package_manager")
+        end
+
+        it "initialises pm_param to empty string" do
+          expect(install_script).to include('$pm_param = ""')
+        end
+
+        it "only adds pm param when package_manager is non-empty" do
+          expect(install_script).to include('-not [string]::IsNullOrEmpty($package_manager)')
+          expect(install_script).to include('$pm_param = "&pm=$package_manager"')
         end
       end
     end

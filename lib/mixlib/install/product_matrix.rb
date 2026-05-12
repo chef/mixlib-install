@@ -155,6 +155,11 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     package_name "inspec"
   end
 
+  product "inspec-enterprise" do
+    product_name "Chef InSpec Enterprise"
+    package_name "inspec-enterprise"
+  end
+
   product "mac-bootstrapper" do
     product_name "Habitat Mac Bootstrapper"
     package_name "mac-bootstrapper"
