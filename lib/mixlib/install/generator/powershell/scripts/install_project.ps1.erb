@@ -62,7 +62,10 @@ function Install-Project {
     $base_server_uri,
     # License ID for commercial API access
     [string]
-    $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>
+    $license_id <%= "= '#{license_id}'" if license_id && !license_id.to_s.empty? %>,
+    # Package manager override (e.g. msi, zip). If omitted, the server derives it from platform.
+    [string]
+    $package_manager
   )
 
   # Use CHEF_LICENSE_KEY environment variable if license_id not provided
@@ -106,7 +109,7 @@ function Install-Project {
     $download_url = $download_url_override
     $sha256 = $checksum
   } else {
-    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -base_server_uri $base_server_uri -license_id $license_id
+    $package_metadata = Get-ProjectMetadata -project $project -channel $channel -version $version -prerelease:$prerelease -nightlies:$nightlies -architecture $architecture -base_server_uri $base_server_uri -license_id $license_id -package_manager $package_manager
     $download_url = $package_metadata.url
     $sha256 = $package_metadata.sha256
   }
