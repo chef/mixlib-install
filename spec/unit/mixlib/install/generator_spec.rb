@@ -617,7 +617,7 @@ context "Mixlib::Install::Generator", :vcr do
 
         it "builds pm_param only when package_manager is supplied" do
           expect(install_script).to include('$pm_param = ""')
-          expect(install_script).to include('-not [string]::IsNullOrEmpty($package_manager)')
+          expect(install_script).to include("-not [string]::IsNullOrEmpty($package_manager)")
           expect(install_script).to include('$pm_param = "&pm=$package_manager"')
         end
 
@@ -676,7 +676,7 @@ context "Mixlib::Install::Generator", :vcr do
         end
 
         it "appends pm_param only when package_manager is explicitly set" do
-          expect(install_script).to include('-not [string]::IsNullOrEmpty($package_manager)')
+          expect(install_script).to include("-not [string]::IsNullOrEmpty($package_manager)")
           expect(install_script).to include('$pm_param = "&pm=$package_manager"')
         end
       end
@@ -702,7 +702,7 @@ context "Mixlib::Install::Generator", :vcr do
         end
 
         it "only adds pm param when package_manager is non-empty" do
-          expect(install_script).to include('-not [string]::IsNullOrEmpty($package_manager)')
+          expect(install_script).to include("-not [string]::IsNullOrEmpty($package_manager)")
           expect(install_script).to include('$pm_param = "&pm=$package_manager"')
         end
       end

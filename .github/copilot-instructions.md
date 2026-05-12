@@ -6,11 +6,12 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
 **Primary Goal**: Support the widest range of Ruby versions possible to ensure compatibility across diverse Chef environments.
 
 **Recent Major Changes** (v3.13.0 - v3.15.0):
-- **PR #417**: Added chef-ice product with package_manager parameter support
-  - Implemented platform normalization (`Util.normalize_platform_for_commercial`) for chef-ice
-  - Added package manager detection (`Util.determine_package_manager`) for automatic format selection
-  - Updated URL construction to use `m`, `p`, `pm` parameters for chef-ice (vs. `p`, `pv`, `m` for standard products)
-  - Modified shell and PowerShell scripts to handle chef-ice metadata URLs
+- **PR #417**: Added chef-ice and inspec-enterprise product support with server-side pm derivation
+  - Server (omnitruck-service) derives package manager (`pm`) from platform automatically; no client-side detection
+  - Client sends platform as-is (`p=$platform`); no client-side normalization
+  - Single unified metadata URL for all products: `v`, `p`, `pv`, `m`, optional `pm`, optional `license_id`
+  - `-i <package_manager>` shell flag and `$package_manager` PowerShell parameter allow explicit pm override when needed
+  - Added `inspec-enterprise` product to product matrix
 - **PR #408, #416**: Added commercial and trial API support for licensed Chef products
   - Implemented license_id parameter for install scripts and API calls
   - Added trial API automatic defaults enforcement (stable channel, latest version only with warnings)
@@ -284,10 +285,11 @@ The library includes sophisticated platform version compatibility logic:
   - Fallback: Constructs filename from platform metadata if extraction fails
   - Renames temp file to extracted/constructed filename
   - Works with all download methods: wget, curl, fetch, perl, python
-- **Chef-ICE Support**: Includes platform normalization and package manager detection functions
-  - `determine_package_manager()` - Detects package format based on platform
-  - `normalize_platform_name()` - Maps specific platforms to generic categories (linux, macos, windows, unix)
-  - Conditional URL construction based on product type (chef-ice vs. standard products)
+- **Package Manager Override (`-i` flag)**: Optional flag for explicit pm control
+  - Default: omitted — server derives `pm` from platform automatically
+  - When `-i <pm>` is passed, appends `&pm=<value>` to the metadata URL
+  - No client-side `determine_package_manager()` or `normalize_platform_name()` functions
+  - Single unified metadata URL for all products, including chef-ice and inspec-enterprise
 
 ### PowerShell (install.ps1)
 - Supports: http_proxy
@@ -304,10 +306,10 @@ The library includes sophisticated platform version compatibility logic:
   - Parses JSON responses with `ConvertFrom-Json`
   - Extracts `url` and `sha256` from JSON object
   - Automatically routes to trial or commercial API based on license_id prefix
-- **Chef-ICE Support**: Simplified parameters for Windows
-  - Uses `p=windows`, `m=<arch>`, `pm=msi` parameters for chef-ice
-  - Conditional logic to select appropriate metadata URL format based on product type
-  - Handles both chef-ice and standard product URL construction
+- **Package Manager Override (`$package_manager`)**: Optional parameter for explicit pm control
+  - Default: empty — server derives `pm` from platform automatically
+  - When non-empty, appends `&pm=<value>` to the metadata URL
+  - No product-specific conditional URL branches; single unified URL for all products
 
 ### Script Options
 - `download_url_override`: Direct URL instead of API lookup
@@ -316,6 +318,7 @@ The library includes sophisticated platform version compatibility logic:
 - `license_id`: License ID for commercial/trial API access (format: `free-*`, `trial-*`, or standard license ID)
 - `base_api_url` (shell): Override API endpoint (optional, auto-detected from license_id if not provided)
 - `base_server_uri` (PowerShell): Override API endpoint (optional, auto-detected from license_id if not provided)
+- `-i <pm>` / `$package_manager`: Explicit package manager override (e.g. `msi`, `zip`). Omit to let the server derive it from platform. Appends `&pm=<value>` to the metadata URL when set.
 
 ## API Usage Patterns
 
