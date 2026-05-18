@@ -158,15 +158,15 @@ EOF
                   architectures.each do |arch, package_managers|
                     pkg_info = package_managers.values.first
                     results << {
-                      "omnibus.version"          => pkg_info["version"],
-                      "omnibus.platform"         => platform,
+                      "omnibus.version" => pkg_info["version"],
+                      "omnibus.platform" => platform,
                       "omnibus.platform_version" => "",
-                      "omnibus.architecture"     => arch,
-                      "omnibus.project"          => omnibus_project,
-                      "omnibus.license"          => "Apache-2.0",
-                      "omnibus.sha256"           => pkg_info["sha256"],
-                      "omnibus.sha1"             => pkg_info.fetch("sha1", ""),
-                      "omnibus.md5"              => pkg_info.fetch("md5", ""),
+                      "omnibus.architecture" => arch,
+                      "omnibus.project" => omnibus_project,
+                      "omnibus.license" => "Apache-2.0",
+                      "omnibus.sha256" => pkg_info["sha256"],
+                      "omnibus.sha1" => pkg_info.fetch("sha1", ""),
+                      "omnibus.md5" => pkg_info.fetch("md5", ""),
                     }
                   end
                 end
@@ -282,15 +282,15 @@ EOF
           return [] if metadata.nil? || metadata.empty?
 
           artifact_map = {
-            "omnibus.version"          => metadata["version"],
-            "omnibus.platform"         => options.platform,
+            "omnibus.version" => metadata["version"],
+            "omnibus.platform" => options.platform,
             "omnibus.platform_version" => options.platform_version.to_s,
-            "omnibus.architecture"     => options.architecture,
-            "omnibus.project"          => omnibus_project,
-            "omnibus.license"          => "Apache-2.0",
-            "omnibus.sha256"           => metadata["sha256"],
-            "omnibus.sha1"             => metadata.fetch("sha1", ""),
-            "omnibus.md5"              => metadata.fetch("md5", ""),
+            "omnibus.architecture" => options.architecture,
+            "omnibus.project" => omnibus_project,
+            "omnibus.license" => "Apache-2.0",
+            "omnibus.sha256" => metadata["sha256"],
+            "omnibus.sha1" => metadata.fetch("sha1", ""),
+            "omnibus.md5" => metadata.fetch("md5", ""),
           }
           [create_artifact(artifact_map)]
         end
