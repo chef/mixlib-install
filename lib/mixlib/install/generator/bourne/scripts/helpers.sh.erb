@@ -148,15 +148,15 @@ do_curl() {
   echo "trying curl..."
   # If filename is empty, use -O and -J to get filename from Content-Disposition header
   if [ -z "$2" ]; then
-    curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL -D $tmp_dir/stderr -O -J "$1"
+    curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL --fail -D $tmp_dir/stderr -O -J "$1"
     rc=$?
   else
-    curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL -D $tmp_dir/stderr "$1" > "$2"
+    curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL --fail -D $tmp_dir/stderr "$1" > "$2"
     rc=$?
   fi
 
-  # check for 404
-  if grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null; then
+  # check for 404 (matches both HTTP/1.1 "404 Not Found" and HTTP/2 "404")
+  if grep "404" $tmp_dir/stderr 2>&1 >/dev/null; then
     echo "ERROR 404"
     http_404_error
   fi
@@ -190,10 +190,14 @@ do_perl() {
   echo "trying perl..."
   perl -e 'use LWP::Simple; getprint($ARGV[0]);' "$1" > "$2" 2>$tmp_dir/stderr
   rc=$?
-  # check for 404
-  if grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null; then
-    echo "ERROR 404"
-    http_404_error
+  # check for HTTP error status codes (4xx/5xx)
+  if grep "^[45][0-9][0-9] " $tmp_dir/stderr 2>&1 >/dev/null; then
+    if grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null; then
+      echo "ERROR 404"
+      http_404_error
+    fi
+    capture_tmp_stderr "perl"
+    return 1
   fi
 
   # check for bad return status or empty output
