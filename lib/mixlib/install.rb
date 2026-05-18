@@ -63,14 +63,18 @@ module Mixlib
     #
     # @param [String, Symbol] channel
     #
+    # @param [String] license_id (optional)
+    #
     # @return [Array<String>] list of available versions for the given
     # product_name and channel.
-    def self.available_versions(product_name, channel)
+    def self.available_versions(product_name, channel, license_id: nil)
+      opts = {
+        product_name: product_name,
+        channel: channel.to_sym,
+      }
+      opts[:license_id] = license_id if license_id
       Backend.available_versions(
-        Mixlib::Install::Options.new(
-          product_name: product_name,
-          channel: channel.to_sym
-        )
+        Mixlib::Install::Options.new(opts)
       )
     end
 

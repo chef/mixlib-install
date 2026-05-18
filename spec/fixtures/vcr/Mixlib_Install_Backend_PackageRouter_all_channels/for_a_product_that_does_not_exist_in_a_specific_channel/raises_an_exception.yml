@@ -60,6 +60,48 @@ http_interactions:
           "total" : 0
         }
         }
-    http_version: 
   recorded_at: Wed, 08 Mar 2017 21:34:35 GMT
-recorded_with: VCR 3.0.3
+- request:
+    method: get
+    uri: https://chefdownload-commercial.chef.io/unstable/chef-ha/versions/all
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      - mixlib-install/3.16.3
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '32'
+      Content-Type:
+      - application/json
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Mon, 18 May 2026 16:19:38 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-msp11863-MSP
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1779121179.521044,VS0,VE394
+    body:
+      encoding: UTF-8
+      string: '"Missing license_id query param"'
+  recorded_at: Mon, 18 May 2026 16:19:38 GMT
+recorded_with: VCR 6.4.0

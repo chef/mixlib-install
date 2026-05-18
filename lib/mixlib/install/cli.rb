@@ -31,8 +31,12 @@ module Mixlib
       end
 
       desc "list-versions PRODUCT_NAME CHANNEL", "list available version for a product/channel"
+      option :license_id,
+        desc: "License ID for commercial/trial API",
+        aliases: ["-L"]
       def list_versions(product_name, channel)
-        say Mixlib::Install.available_versions(product_name, channel).join("\n")
+        lid = options[:license_id] || ENV["CHEF_LICENSE_KEY"]
+        say Mixlib::Install.available_versions(product_name, channel, license_id: lid).join("\n")
       end
 
       desc "list-products", "list available products"

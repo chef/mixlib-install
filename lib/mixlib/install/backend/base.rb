@@ -84,23 +84,9 @@ module Mixlib
         def filter_artifacts(artifacts)
           return artifacts unless platform_filters_available?
 
-          # For chef-ice, normalize the platform for comparison since chef-ice uses
-          # normalized platform names (linux, macos, windows) in the API response
-          comparison_platform = if options.product_name == "chef-ice"
-                                  Util.normalize_platform_for_commercial(options.platform)
-                                else
-                                  options.platform
-                                end
-
-          # First filter the artifacts based on the platform and architecture
+          # Filter by the exact platform and architecture the user requested.
           artifacts.select! do |a|
-            a.platform == comparison_platform && a.architecture == options.architecture
-          end
-
-          # For chef-ice, platform_version is not used (it's empty in responses)
-          # so we should return the first match if available
-          if options.product_name == "chef-ice"
-            return artifacts.first if artifacts.any?
+            a.platform == options.platform && a.architecture == options.architecture
           end
 
           # Now we are going to filter based on platform_version.

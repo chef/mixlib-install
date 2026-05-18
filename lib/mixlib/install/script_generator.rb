@@ -278,14 +278,7 @@ module Mixlib
           url = "#{base}#{endpoint}"
         end
 
-        # chef-ice uses different parameters than chef
-        if @project.casecmp("chef-ice") == 0
-          # For chef-ice: p (platform), m (machine), pm (package_manager)
-          url << "?p=windows&m=$platform_architecture&pm=msi"
-        else
-          # For chef and other products: p (platform), pv (platform_version), m (machine)
-          url << "?p=windows&m=$platform_architecture&pv=$platform_version"
-        end
+        url << "?p=windows&m=$platform_architecture&pv=$platform_version"
         url << "&v=#{CGI.escape(version)}" unless %w{latest true nightlies}.include?(version)
         url << "&prerelease=true" if prerelease
         url << "&nightlies=true" if nightlies

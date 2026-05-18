@@ -193,10 +193,10 @@ describe Mixlib::Install::ScriptGenerator do
           expect(metadata_url).to include("stable/chef-ice/metadata")
         end
 
-        it "includes pm parameter instead of pv for chef-ice" do
+        it "omits pm from URL (server derives from p=windows)" do
           metadata_url = installer.send(:windows_metadata_url)
-          expect(metadata_url).to include("pm=msi")
-          expect(metadata_url).not_to include("pv=")
+          expect(metadata_url).not_to include("pm=")
+          expect(metadata_url).to include("pv=$platform_version")
         end
 
         it "includes p and m parameters" do
