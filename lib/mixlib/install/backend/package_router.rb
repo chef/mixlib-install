@@ -33,12 +33,19 @@ module Mixlib
 
         COMPAT_DOWNLOAD_URL_ENDPOINT = "http://packages.chef.io".freeze
 
+        # Architecture strings that appear as level-2 keys in PM-structure packages
+        # responses (platform -> arch -> pm -> ...) vs version strings in standard
+        # responses (platform -> version -> arch -> ...).
+        KNOWN_ARCHITECTURES = %w{x86_64 aarch64 i386 arm64 ppc64 ppc64le s390x universal x86}.freeze
+
         # Create filtered list of artifacts
         #
         # @return [Array<ArtifactInfo>] list of artifacts for the configured
         # channel, product name, and product version.
         def available_artifacts
-          artifacts = if options.latest_version? || options.partial_version?
+          artifacts = if use_licensed_api? && platform_filters_available?
+                        artifact_from_licensed_metadata
+                      elsif options.latest_version? || options.partial_version?
                         latest_version
                       else
                         artifacts_for_version(options.product_version)
@@ -78,10 +85,12 @@ module Mixlib
 
           # Circumvent early when there are no product artifacts in a specific channel
           if items.empty?
+            hint = options.license_id ? "" : "For habitat based products please provide a license ID with -L or set CHEF_LICENSE_KEY."
             raise ArtifactsNotFound, <<-EOF
 No artifacts found matching criteria.
   product name: #{options.product_name}
   channel: #{options.channel}
+  #{hint}
 EOF
           end
 
@@ -106,6 +115,9 @@ EOF
         #
         # @return [Array<ArtifactInfo>] Array of info about found artifacts
         def latest_version
+          # Trial API only supports "latest" as the version — skip version resolution
+          return artifacts_for_version("latest") if use_trial_api?
+
           product_versions = if options.partial_version?
                                v = options.product_version
                                partial_version = v.end_with?(".") ? v : v + "."
@@ -138,27 +150,24 @@ EOF
               query = "v=#{version}"
               packages_hash = get("/#{options.channel}/#{omnibus_project}/packages?#{query}")
               # Response structure differs between products:
-              # - For chef-ice: platform -> architecture -> package_manager -> package_info
-              # - For other products: platform -> platform_version -> architecture -> package_info
+              # - PM-structure products (e.g. chef-ice, inspec-enterprise): platform -> architecture -> package_manager -> package_info
+              # - Standard products: platform -> platform_version -> architecture -> package_info
               results = []
-              if omnibus_project == "chef-ice"
-                # chef-ice structure: platform -> architecture -> package_manager -> package_info
+              if pm_structure_response?(packages_hash)
                 packages_hash.each do |platform, architectures|
                   architectures.each do |arch, package_managers|
-                    package_managers.each do |pm, pkg_info|
-                      results << {
-                        "omnibus.version" => pkg_info["version"],
-                        "omnibus.platform" => platform,
-                        "omnibus.platform_version" => "",
-                        "omnibus.architecture" => arch,
-                        "omnibus.project" => omnibus_project,
-                        "omnibus.license" => "Apache-2.0",
-                        "omnibus.sha256" => pkg_info["sha256"],
-                        "omnibus.sha1" => pkg_info.fetch("sha1", ""),
-                        "omnibus.md5" => pkg_info.fetch("md5", ""),
-                        "omnibus.package_manager" => pm,
-                      }
-                    end
+                    pkg_info = package_managers.values.first
+                    results << {
+                      "omnibus.version"          => pkg_info["version"],
+                      "omnibus.platform"         => platform,
+                      "omnibus.platform_version" => "",
+                      "omnibus.architecture"     => arch,
+                      "omnibus.project"          => omnibus_project,
+                      "omnibus.license"          => "Apache-2.0",
+                      "omnibus.sha256"           => pkg_info["sha256"],
+                      "omnibus.sha1"             => pkg_info.fetch("sha1", ""),
+                      "omnibus.md5"              => pkg_info.fetch("md5", ""),
+                    }
                   end
                 end
               else
@@ -242,6 +251,50 @@ EOF
           request
         end
 
+        # Detects whether a packages API response uses PM-structure format.
+        # Standard:     platform -> platform_version -> architecture -> pkg_info
+        #
+        # Detection: PM-structure has architecture strings (x86_64, aarch64, …) as
+        # the second-level keys; standard has version strings (20.04, 18.04, …).
+        def pm_structure_response?(packages_hash)
+          first_platform = packages_hash.values.first
+          return false unless first_platform.is_a?(Hash)
+
+          first_platform.keys.any? { |k| KNOWN_ARCHITECTURES.include?(k) }
+        end
+
+        # Fetches a single artifact from the licensed API metadata endpoint.
+        # Used when a platform is specified, giving the server full context to
+        # derive the package manager and return the correct sha256 — no pm needed.
+        def artifact_from_licensed_metadata
+          version = (options.latest_version? || options.partial_version?) ? "latest" : options.product_version
+          query = "v=#{version}&p=#{options.platform}&m=#{Util.normalize_architecture(options.architecture)}"
+          query += "&pv=#{options.platform_version}" unless options.platform_version.to_s.empty?
+
+          begin
+            metadata = get("/#{options.channel}/#{omnibus_project}/metadata?#{query}")
+          rescue Net::HTTPServerException => e
+            return [] if e.message.match?(/400|404/)
+
+            raise e
+          end
+
+          return [] if metadata.nil? || metadata.empty?
+
+          artifact_map = {
+            "omnibus.version"          => metadata["version"],
+            "omnibus.platform"         => options.platform,
+            "omnibus.platform_version" => options.platform_version.to_s,
+            "omnibus.architecture"     => options.architecture,
+            "omnibus.project"          => omnibus_project,
+            "omnibus.license"          => "Apache-2.0",
+            "omnibus.sha256"           => metadata["sha256"],
+            "omnibus.sha1"             => metadata.fetch("sha1", ""),
+            "omnibus.md5"              => metadata.fetch("md5", ""),
+          }
+          [create_artifact(artifact_map)]
+        end
+
         def create_artifact(artifact_map)
           # set normalized platform and platform version
           platform, platform_version = normalize_platform(
@@ -279,22 +332,15 @@ EOF
 
           # create the download path with the correct endpoint
           if use_licensed_api?
-            # Commercial/trial APIs use the download endpoint with query parameters
-            # Construct platform parameters
-            p_param = platform
-            pv_param = platform_version
+            # Commercial/trial APIs use the download endpoint with query parameters.
+
             m_param = Util.normalize_architecture(artifact_map["omnibus.architecture"])
             v_param = artifact_map["omnibus.version"]
-
-            # For chef-ice, use normalized platform names and add package manager parameter
-            if omnibus_project == "chef-ice"
-              p_param = Util.normalize_platform_for_commercial(platform)
-              # Use package_manager from artifact_map if available, otherwise determine it
-              pm_param = artifact_map.fetch("omnibus.package_manager", Util.determine_package_manager(options.platform))
-              download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?v=#{v_param}&license_id=#{options.license_id}&m=#{m_param}&p=#{p_param}&pm=#{pm_param}"
-            else
-              download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}&pv=#{pv_param}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
-            end
+            # Use the user's actual platform (e.g. "ubuntu", "el") so the server can derive pm.
+            p_param = options.platform || platform
+            pv_param = options.platform_version || platform_version
+            pv_part = pv_param.to_s.empty? ? "" : "&pv=#{pv_param}"
+            download_url = "#{endpoint}/#{options.channel}/#{omnibus_project}/download?p=#{p_param}#{pv_part}&m=#{m_param}&v=#{v_param}&license_id=#{options.license_id}"
           else
             base_url = if use_compat_download_url_endpoint?(platform, platform_version)
                          COMPAT_DOWNLOAD_URL_ENDPOINT

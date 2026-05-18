@@ -398,6 +398,25 @@ context "Mixlib::Install" do
 
       it_behaves_like "the correct available_versions"
     end
+
+    context "when called static with license_id for commercial API" do
+      let(:product_name) { "chef-ice" }
+      let(:license_id) { "test-license-key-123" }
+
+      it "passes license_id to options" do
+        allow(Mixlib::Install::Backend).to receive(:available_versions) do |opts|
+          expect(opts.license_id).to eq license_id
+          ["19.1.151"]
+        end
+        Mixlib::Install.available_versions(product_name, channel.to_s, license_id: license_id)
+      end
+
+      it "returns versions when license_id provided" do
+        allow(Mixlib::Install::Backend).to receive(:available_versions).and_return(["19.1.151", "19.2.12"])
+        versions = Mixlib::Install.available_versions(product_name, channel.to_s, license_id: license_id)
+        expect(versions).to include("19.1.151")
+      end
+    end
   end
 
   describe "#download_artifact" do

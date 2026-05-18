@@ -42,6 +42,14 @@ Download latest stable chef for current platform:
 mixlib-install download chef
 ```
 
+Download a licensed product (commercial or trial API):
+
+```bash
+mixlib-install download chef-ice -L your-license-key
+mixlib-install list-versions chef-ice stable -L your-license-key
+# CHEF_LICENSE_KEY environment variable can be used instead of -L
+```
+
 Run `mixlib-install help` for additional commands and options.
 
 ## API Usage
@@ -191,8 +199,11 @@ Mixlib::Install.new(options).available_versions
 
 ```ruby
 Mixlib::Install.available_versions("chef", "stable")
-
 # => ["12.13.3", "12.13.7"]
+
+# For licensed products (commercial or trial API):
+Mixlib::Install.available_versions("chef-ice", "stable", license_id: "your-license-key")
+# => ["19.1.151", "19.2.12"]
 ```
 
 ### Download an artifact
@@ -357,26 +368,6 @@ mi = Mixlib::Install.new(options)
 # No warnings or defaults applied
 mi.options.channel         # => :current
 mi.options.product_version # => '18.5.0'
-```
-
-### Chef-ICE Product
-
-The `chef-ice` product requires additional parameters (`m`, `p`, `pm`) and works with both commercial and trial APIs:
-
-```ruby
-options = {
-  product_name: 'chef-ice',
-  channel: :stable,
-  product_version: :latest,
-  platform: 'ubuntu',
-  platform_version: '20.04',
-  architecture: 'x86_64',
-  license_id: 'free-trial-abc-123'  # Trial API
-}
-
-artifact = Mixlib::Install.new(options).artifact_info
-artifact.url
-# => "https://chefdownload-trial.chef.io/stable/chef-ice/download?v=19.1.151&license_id=free-trial-abc-123&m=x86_64&p=linux&pm=deb"
 ```
 
 ### Static Script Methods

@@ -212,18 +212,12 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     let(:architecture) { "x86_64" }
 
     before do
-      # Mock the HTTP request to prevent actual API calls
-      # chef-ice API structure: platform -> architecture -> package_manager -> package_info
+      # Mock the metadata endpoint response (flat hash returned by the licensed API
+      # metadata endpoint when platform is specified).
       allow(package_router).to receive(:get).and_return({
-        "linux" => {
-          "x86_64" => {
-            "deb" => {
-              "version" => "19.1.151",
-              "sha256" => "abc123def456",
-              "sha1" => "ghi789",
-            },
-          },
-        },
+        "version" => "19.1.151",
+        "sha256" => "abc123def456",
+        "sha1" => "ghi789",
       })
     end
 
@@ -231,14 +225,15 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       expect(package_router.endpoint).to eq Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
     end
 
-    it "constructs download URL with normalized platform parameter" do
+    it "constructs download URL with exact user platform (no normalization)" do
       artifact = artifact_info
-      expect(artifact.url).to include("p=linux")
+      expect(artifact.url).to include("p=ubuntu")
+      expect(artifact.url).not_to include("p=linux")
     end
 
-    it "constructs download URL with package manager parameter" do
+    it "omits pm from download URL (server derives it from platform)" do
       artifact = artifact_info
-      expect(artifact.url).to include("pm=deb")
+      expect(artifact.url).not_to include("pm=")
     end
 
     it "constructs download URL with machine architecture parameter" do
@@ -253,7 +248,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
     it "constructs complete chef-ice download URL" do
       artifact = artifact_info
-      expect(artifact.url).to match(%r{/current/chef-ice/download\?v=19\.1\.151&license_id=#{license_id}&m=x86_64&p=linux&pm=deb})
+      expect(artifact.url).to match(%r{/current/chef-ice/download\?p=ubuntu&pv=20\.04&m=x86_64&v=19\.1\.151&license_id=#{license_id}})
     end
 
     context "on RPM-based platform" do
@@ -261,23 +256,17 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       let(:platform_version) { "8" }
 
       before do
-        # chef-ice API structure: platform -> architecture -> package_manager -> package_info
         allow(package_router).to receive(:get).and_return({
-          "linux" => {
-            "x86_64" => {
-              "rpm" => {
-                "version" => "19.1.151",
-                "sha256" => "abc123def456",
-                "sha1" => "ghi789",
-              },
-            },
-          },
+          "version" => "19.1.151",
+          "sha256" => "abc123def456",
+          "sha1" => "ghi789",
         })
       end
 
-      it "uses rpm package manager" do
+      it "uses exact user platform in URL (no pm)" do
         artifact = artifact_info
-        expect(artifact.url).to include("pm=rpm")
+        expect(artifact.url).to include("p=el")
+        expect(artifact.url).not_to include("pm=")
       end
     end
 
@@ -286,28 +275,17 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       let(:platform_version) { "12" }
 
       before do
-        # chef-ice API structure: platform -> architecture -> package_manager -> package_info
         allow(package_router).to receive(:get).and_return({
-          "macos" => {
-            "x86_64" => {
-              "dmg" => {
-                "version" => "19.1.151",
-                "sha256" => "abc123def456",
-                "sha1" => "ghi789",
-              },
-            },
-          },
+          "version" => "19.1.151",
+          "sha256" => "abc123def456",
+          "sha1" => "ghi789",
         })
       end
 
-      it "uses macos platform parameter" do
+      it "uses exact user platform in URL (mac_os_x, no pm)" do
         artifact = artifact_info
-        expect(artifact.url).to include("p=macos")
-      end
-
-      it "uses dmg package manager" do
-        artifact = artifact_info
-        expect(artifact.url).to include("pm=dmg")
+        expect(artifact.url).to include("p=mac_os_x")
+        expect(artifact.url).not_to include("pm=")
       end
     end
   end
@@ -322,18 +300,10 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     let(:architecture) { "x86_64" }
 
     before do
-      # Mock the HTTP request to prevent actual API calls
-      # chef-ice API structure: platform -> architecture -> package_manager -> package_info
       allow(package_router).to receive(:get).and_return({
-        "linux" => {
-          "x86_64" => {
-            "deb" => {
-              "version" => "19.1.151",
-              "sha256" => "abc123def456",
-              "sha1" => "ghi789",
-            },
-          },
-        },
+        "version" => "19.1.151",
+        "sha256" => "abc123def456",
+        "sha1" => "ghi789",
       })
     end
 
@@ -341,14 +311,15 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       expect(package_router.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
     end
 
-    it "constructs download URL with normalized platform parameter" do
+    it "constructs download URL with exact user platform (no normalization)" do
       artifact = artifact_info
-      expect(artifact.url).to include("p=linux")
+      expect(artifact.url).to include("p=ubuntu")
+      expect(artifact.url).not_to include("p=linux")
     end
 
-    it "constructs download URL with package manager parameter" do
+    it "omits pm from download URL (server derives it from platform)" do
       artifact = artifact_info
-      expect(artifact.url).to include("pm=deb")
+      expect(artifact.url).not_to include("pm=")
     end
 
     it "constructs download URL with machine architecture parameter" do
@@ -363,8 +334,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
     it "constructs complete chef-ice download URL with trial endpoint" do
       artifact = artifact_info
-      # Trial API automatically defaults to stable channel and latest version
-      expect(artifact.url).to match(%r{https://chefdownload-trial\.chef\.io/stable/chef-ice/download\?v=19\.1\.151&license_id=#{license_id}&m=x86_64&p=linux&pm=deb})
+      expect(artifact.url).to match(%r{https://chefdownload-trial\.chef\.io/stable/chef-ice/download\?p=ubuntu&pv=20\.04&m=x86_64&v=19\.1\.151&license_id=#{license_id}})
     end
 
     context "with trial- prefix" do
@@ -376,8 +346,69 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
       it "constructs complete chef-ice download URL with trial endpoint" do
         artifact = artifact_info
-        # Trial API automatically defaults to stable channel and latest version
-        expect(artifact.url).to match(%r{https://chefdownload-trial\.chef\.io/stable/chef-ice/download\?v=19\.1\.151&license_id=#{license_id}&m=x86_64&p=linux&pm=deb})
+        expect(artifact.url).to match(%r{https://chefdownload-trial\.chef\.io/stable/chef-ice/download\?p=ubuntu&pv=20\.04&m=x86_64&v=19\.1\.151&license_id=#{license_id}})
+      end
+    end
+  end
+
+  context "for inspec-enterprise with commercial API" do
+    let(:channel) { :stable }
+    let(:product_name) { "inspec-enterprise" }
+    let(:product_version) { "7.1.7" }
+    let(:license_id) { "test-license-key-123" }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "22.04" }
+    let(:architecture) { "x86_64" }
+
+    before do
+      allow(package_router).to receive(:get).and_return({
+        "version" => "7.1.7",
+        "sha256" => "abc123def456",
+        "sha1" => "ghi789",
+      })
+    end
+
+    it "uses commercial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
+    end
+
+    it "constructs download URL with exact user platform (no normalization)" do
+      artifact = artifact_info
+      expect(artifact.url).to include("p=ubuntu")
+      expect(artifact.url).not_to include("p=linux")
+    end
+
+    it "omits pm from download URL (server derives it from platform)" do
+      artifact = artifact_info
+      expect(artifact.url).not_to include("pm=")
+    end
+
+    it "constructs download URL with license_id parameter" do
+      artifact = artifact_info
+      expect(artifact.url).to include("license_id=#{license_id}")
+    end
+
+    it "constructs complete inspec-enterprise download URL" do
+      artifact = artifact_info
+      expect(artifact.url).to match(%r{/stable/inspec-enterprise/download\?p=ubuntu&pv=22\.04&m=x86_64&v=7\.1\.7&license_id=#{license_id}})
+    end
+
+    context "on RPM-based platform" do
+      let(:platform) { "el" }
+      let(:platform_version) { "9" }
+
+      before do
+        allow(package_router).to receive(:get).and_return({
+          "version" => "7.1.7",
+          "sha256" => "abc123def456",
+          "sha1" => "ghi789",
+        })
+      end
+
+      it "uses exact user platform in URL (no pm)" do
+        artifact = artifact_info
+        expect(artifact.url).to include("p=el")
+        expect(artifact.url).not_to include("pm=")
       end
     end
   end

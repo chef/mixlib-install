@@ -5,7 +5,17 @@ Mixlib::Install is a library for interacting with Chef Software Inc's software d
 
 **Primary Goal**: Support the widest range of Ruby versions possible to ensure compatibility across diverse Chef environments.
 
-**Recent Major Changes** (v3.13.0 - v3.15.0):
+**Recent Major Changes** (v3.13.0 - v3.16.x):
+- **PR #424**: Made package manager (pm) fully optional; removed all client-side pm detection
+  - Removed `package_manager` from `ArtifactInfo` attributes
+  - Removed `Util.pm_structure_product?`, `Util.determine_package_manager`, and `Util.normalize_platform_for_commercial`
+  - Backend routes licensed API + platform requests to `artifact_from_licensed_metadata` (metadata endpoint; accurate sha256, no pm)
+  - Added `KNOWN_ARCHITECTURES` constant and `pm_structure_response?` for runtime response-structure detection (replaces hardcoded product list)
+  - Download URLs use exact user platform (`p=ubuntu`, `p=el`) with no `pm=` parameter; server derives package manager
+  - `list-versions` CLI gained `--license-id`/`-L` option and `CHEF_LICENSE_KEY` env var support
+  - `download` CLI checks `CHEF_LICENSE_KEY` env var for license_id when not passed explicitly
+  - Trial API: `latest_version` short-circuits to `artifacts_for_version("latest")` (trial API does not support `versions/all`)
+  - 400/404 responses from metadata endpoint treated as not-found; raises `ArtifactsNotFound` with license key hint
 - **PR #417**: Added chef-ice and inspec-enterprise product support with server-side pm derivation
   - Server (omnitruck-service) derives package manager (`pm`) from platform automatically; no client-side detection
   - Client sends platform as-is (`p=$platform`); no client-side normalization
@@ -239,15 +249,20 @@ The gemspec includes special handling for the openssl gem due to CRL checking is
 
 ### Common Commands
 ```bash
-mixlib-install download chef              # Download latest stable chef
-mixlib-install list-products              # List all available products (added in v3.14.0)
-mixlib-install help                       # Show all commands
+mixlib-install download chef                                       # Download latest stable chef
+mixlib-install download chef-ice -L <license_id>                   # Download licensed product
+mixlib-install list-products                                       # List all available products (added in v3.14.0)
+mixlib-install list-versions chef stable                           # List versions for omnitruck product
+mixlib-install list-versions chef-ice stable -L <license_id>       # List versions for licensed product
+mixlib-install help                                                # Show all commands
 ```
 
+`CHEF_LICENSE_KEY` environment variable can be used instead of `-L` for all commands.
+
 ### Available Subcommands
-- `download` - Download a Chef Software product
+- `download` - Download a Chef Software product (accepts `-L <license_id>` or `CHEF_LICENSE_KEY`)
 - `list-products` - Display all available products from the product matrix
-- `list-versions` - List available versions for a product
+- `list-versions` - List available versions for a product (accepts `-L <license_id>` or `CHEF_LICENSE_KEY` for licensed products)
 - `help` - Display help information
 
 ### Generated Script Parameters
@@ -451,8 +466,8 @@ When adding or modifying commercial/trial API functionality:
 1. Verify JSON parsing in both Bourne shell (sed) and PowerShell (ConvertFrom-Json)
 1. Test filename extraction with various response header formats
 1. Verify fallback filename construction for each platform type
-1. Test chef-ice product with package_manager parameter
-1. Verify platform normalization for chef-ice on all supported platforms
+1. Test chef-ice product downloads with exact platform parameter (`p=ubuntu`, `p=el`, `p=windows`)
+1. Verify no `pm=` parameter appears in download URLs (server derives from platform)
 1. Test trial API automatic defaults enforcement (stable channel, latest version)
 
 ### Test Patterns for Chef-ICE and Trial API
@@ -468,16 +483,14 @@ context "chef-ice with commercial API" do
     }
   end
 
-  it "includes package manager detection function" do
-    expect(install_script).to include("determine_package_manager()")
+  it "constructs unified metadata URL without client-side pm" do
+    expect(install_script).to include("metadata?")
+    expect(install_script).not_to include("p=linux")
+    expect(install_script).not_to include("determine_package_manager")
   end
 
-  it "includes platform normalization function" do
-    expect(install_script).to include("normalize_platform_name()")
-  end
-
-  it "constructs chef-ice metadata URL with m, p, pm parameters" do
-    expect(install_script).to include('metadata_url="$base_api_url/$channel/$project/metadata?license_id=$license_id&v=$version&m=$machine&p=$platform_param&pm=$package_manager"')
+  it "supports optional package_manager override via -i flag" do
+    expect(install_script).to include("package_manager")
   end
 end
 ```
@@ -530,7 +543,7 @@ The `chef-ice` product (Chef Infra Client Enterprise, Chef 19+) requires special
 - **Package Name**: `chef-ice`
 - **Minimum Version**: Chef 19.x
 - **API Compatibility**: Works with both commercial and trial APIs
-- **URL Parameters**: Uses `m`, `p`, `pm` instead of standard `p`, `pv`, `m` format
+- **URL Parameters**: Uses the same `p`, `pv`, `m`, `v`, `license_id` format as all other licensed products; server derives pm
 - **Install Directories**: Uses Habitat package paths instead of Omnibus paths
 
 ### Install Directory Constants (`lib/mixlib/install/dist.rb`):
@@ -561,46 +574,31 @@ Chef products use different install directory structures depending on whether th
 The wildcard paths (`*/*`) in Habitat directories allow matching any version/release combination of the package.
 
 ### URL Parameter Differences:
-**Standard Products (chef, chef-backend, etc.)**:
-```
-?p={platform}&pv={platform_version}&m={machine}&v={version}&license_id={id}
-```
+All licensed API products use the same URL parameter format. The server derives pm from the exact platform name automatically.
 
-**Chef-ICE Product**:
+**All Licensed API Products (chef, chef-ice, inspec-enterprise, etc.)**:
 ```
-?v={version}&license_id={id}&m={machine}&p={normalized_platform}&pm={package_manager}
+Download: ?p={platform}&pv={platform_version}&m={machine}&v={version}&license_id={id}
+Metadata: ?v={version}&p={platform}&pv={platform_version}&m={machine}&license_id={id}
 ```
+Send the exact platform name as-is (e.g. `ubuntu`, `el`, `mac_os_x`); do not normalize or add `pm=`.
 
 ### Platform Normalization (`Util.normalize_platform_for_commercial`):
-Chef-ICE uses generic platform categories:
-- **linux**: el, centos, rhel, fedora, rocky, scientific, debian, ubuntu, linuxmint, raspbian, opensuse, sles, amazon
-- **macos**: mac_os_x, macos
-- **windows**: windows
-- **unix**: freebsd, aix, solaris, smartos, omnios
-- **Default**: linux (for unknown platforms)
+Removed in PR #424. The server now derives the package manager from the exact platform name; no client-side normalization is needed.
 
 ### Package Manager Detection (`Util.determine_package_manager`):
-Automatically determines package format based on platform:
-- **rpm**: el, centos, rhel, fedora, amazon, rocky, opensuse, sles, scientific
-- **deb**: debian, ubuntu, linuxmint, raspbian
-- **dmg**: mac_os_x, macos
-- **msi**: windows
-- **tar**: solaris, smartos, freebsd, aix, omnios
-- **Default**: tar (for unknown platforms)
+Removed in PR #424. The server now derives the package manager from the exact platform name; no client-side pm detection is needed.
 
 ### Implementation Locations:
-- **Backend Logic**: `lib/mixlib/install/backend/package_router.rb` (lines 265-270)
-  - `create_artifact` method checks for `chef-ice` and constructs appropriate download URLs
-  - Implements platform normalization and package manager parameter addition
-- **Utility Functions**: `lib/mixlib/install/util.rb` (lines 182-224)
-  - `determine_package_manager(platform)` - Returns package format (rpm, deb, dmg, msi, tar)
-  - `normalize_platform_for_commercial(platform)` - Maps platforms to generic categories
+- **Backend Logic**: `lib/mixlib/install/backend/package_router.rb`
+  - `available_artifacts`: routes to `artifact_from_licensed_metadata` when licensed API + platform available
+  - `artifact_from_licensed_metadata`: calls metadata endpoint with `v`, `p`, `pv`, `m`; no pm; handles 400/404 cleanly
+  - `pm_structure_response?`: detects PM-structure API responses at runtime via `KNOWN_ARCHITECTURES` constant
+  - `create_artifact`: builds download URL with exact user platform; no pm parameter
 - **Shell Script**: `lib/mixlib/install/generator/bourne/scripts/fetch_metadata.sh`
-  - Includes `determine_package_manager()` and `normalize_platform_name()` shell functions
-  - Conditional metadata URL construction for chef-ice
+  - Unified metadata URL for all products; optional `-i <pm>` flag for explicit override only
 - **PowerShell Script**: `lib/mixlib/install/generator/powershell/scripts/get_project_metadata.ps1`
-  - Simplified parameter handling for chef-ice on Windows
-  - Uses `p=windows`, `pm=msi` for chef-ice metadata queries
+  - Unified metadata URL for all products; optional `$package_manager` parameter for explicit override only
 - **Root Directory Logic**: `lib/mixlib/install.rb` and `lib/mixlib/install/script_generator.rb`
   - Methods check product name and conditionally use Habitat paths
   - `root` method returns appropriate install directory path
@@ -619,7 +617,7 @@ options = {
 }
 
 artifact = Mixlib::Install.new(options).artifact_info
-# URL: https://chefdownload-trial.chef.io/stable/chef-ice/download?v=19.1.151&license_id=free-trial-abc-123&m=x86_64&p=linux&pm=deb
+# URL: https://chefdownload-trial.chef.io/stable/chef-ice/download?p=ubuntu&pv=20.04&m=x86_64&v=19.1.151&license_id=free-trial-abc-123
 ```
 
 ## Common Pitfalls to Avoid
@@ -633,17 +631,17 @@ artifact = Mixlib::Install.new(options).artifact_info
 1. **Don't add dependencies without version constraints** - Especially for Ruby 2.6+ support
 1. **Don't assume filename in URL** - Commercial/trial APIs use Content-Disposition headers
 1. **Don't break temp file download approach** - Required for license_id support across all download methods
-1. **Don't forget chef-ice special handling** - Different URL parameters and platform normalization
+1. **Don't add pm= to download URLs** - The server derives package manager from the platform name; omit pm entirely
 1. **Don't bypass trial API defaults** - Trial licenses must use stable channel and latest version
 1. **Don't use emojis** - Never use emojis in code, comments, output messages, or documentation
 
 ### Common Issues and Solutions
 
 **Chef-ICE Installation Issues**:
-- Ensure `package_manager` parameter is included in metadata URLs
-- Verify platform normalization returns correct category (linux, macos, windows, unix)
+- Use exact platform name (`ubuntu`, `el`, `windows`) in `p=` parameter; no normalization needed
 - Check that Habitat install directories are used (not Omnibus paths)
-- For Windows: Must use `pm=msi` parameter
+- Do not add `pm=` to download or metadata URLs; the server derives it from the platform
+- For `list-versions` on commercial-only products, provide `-L <license_id>` or set `CHEF_LICENSE_KEY`
 
 **Trial API Restrictions**:
 - Trial licenses automatically default to stable channel with warning
