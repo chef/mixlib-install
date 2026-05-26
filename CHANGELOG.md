@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.16.3 -->
-## [v3.16.3](https://github.com/chef/mixlib-install/tree/v3.16.3) (2026-04-29)
+<!-- latest_release 3.17.0 -->
+## [v3.17.0](https://github.com/chef/mixlib-install/tree/v3.17.0) (2026-05-26)
 
 #### Merged Pull Requests
-- Tell dependabot to ignore newer contracts versions [#422](https://github.com/chef/mixlib-install/pull/422) ([jaymzh](https://github.com/jaymzh))
+- CHEF-32484: remove os normalization and make pm optional [#424](https://github.com/chef/mixlib-install/pull/424) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
 <!-- release_rollup since=3.16.0 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-32484: remove os normalization and make pm optional [#424](https://github.com/chef/mixlib-install/pull/424) ([Stromweld](https://github.com/Stromweld)) <!-- 3.17.0 -->
 - Tell dependabot to ignore newer contracts versions [#422](https://github.com/chef/mixlib-install/pull/422) ([jaymzh](https://github.com/jaymzh)) <!-- 3.16.3 -->
 - Fix markdown lint errors [#423](https://github.com/chef/mixlib-install/pull/423) ([jaymzh](https://github.com/jaymzh)) <!-- 3.16.2 -->
 - Remove docs team from blockers for MD files [#421](https://github.com/chef/mixlib-install/pull/421) ([jaymzh](https://github.com/jaymzh)) <!-- 3.16.1 -->
