@@ -350,6 +350,13 @@ EOF
             download_url = "#{base_url}/#{chef_standard_path}"
           end
 
+          # Validate download URL availability if configured (controlled by environment or option)
+          # This addresses race conditions during CDN promotion where packages
+          # may not yet be available at the advertised URL.
+          if should_validate_download_url?
+            validate_download_url_with_retry(download_url, artifact_map["omnibus.version"])
+          end
+
           ArtifactInfo.new(
             architecture:          Util.normalize_architecture(artifact_map["omnibus.architecture"]),
             license:               artifact_map["omnibus.license"],
@@ -383,6 +390,57 @@ EOF
           end
         end
 
+        # Validates that a download URL is accessible with retry logic.
+        # This addresses race conditions during CDN promotion where packages
+        # may not yet be available at the advertised URL.
+        #
+        # @param url [String] The download URL to validate
+        # @param version [String] The package version (for logging)
+        # @param max_retries [Integer] Maximum number of retry attempts
+        # @param initial_wait [Float] Initial wait time in seconds before first retry
+        #
+        # @raise [StandardError] If URL validation fails after all retries
+        def validate_download_url_with_retry(url, version, max_retries = 3, initial_wait = 1.0)
+          retries = 0
+          wait_time = initial_wait
+
+          loop do
+            begin
+              # Perform HEAD request to validate URL without downloading the file
+              uri = URI.parse(url)
+              http = Net::HTTP.new(uri.host, uri.port)
+              http.use_ssl = (uri.scheme == "https")
+              http.open_timeout = 5
+              http.read_timeout = 5
+
+              request = Net::HTTP::Head.new(uri.request_uri)
+              request.add_field("User-Agent", Util.user_agent_string(options.user_agent_headers))
+
+              response = http.request(request)
+
+              # Check if URL is available (2xx status codes)
+              if response.code.to_i >= 200 && response.code.to_i < 300
+                return
+              else
+                raise StandardError.new("#{response.code} #{response.message}")
+              end
+            rescue StandardError, Net::OpenTimeout, Net::ReadTimeout, Errno::ECONNREFUSED => e
+              retries += 1
+
+              if retries > max_retries
+                raise StandardError.new(
+                  "Package version #{version} not available at #{url} after #{max_retries} retries. " \
+                  "This may indicate a CDN propagation delay. Error: #{e.message}"
+                )
+              end
+
+              # Wait with exponential backoff before retrying
+              sleep(wait_time)
+              wait_time = wait_time * 2
+            end
+          end
+        end
+
         # Public API detection methods for testing
         def endpoint
           @endpoint ||= if use_trial_api?
@@ -392,6 +450,12 @@ EOF
                         else
                           PRODUCT_MATRIX.lookup(options.product_name, options.product_version).api_url
                         end
+        end
+
+        def should_validate_download_url?
+          # Enable validation via MIXLIB_INSTALL_VALIDATE_URLS environment variable
+          # Disabled by default to maintain compatibility with existing code
+          ENV["MIXLIB_INSTALL_VALIDATE_URLS"] == "true"
         end
 
         def use_trial_api?
