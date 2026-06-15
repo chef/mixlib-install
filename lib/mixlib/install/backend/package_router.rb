@@ -405,39 +405,36 @@ EOF
           wait_time = initial_wait
 
           loop do
-            begin
-              # Perform HEAD request to validate URL without downloading the file
-              uri = URI.parse(url)
-              http = Net::HTTP.new(uri.host, uri.port)
-              http.use_ssl = (uri.scheme == "https")
-              http.open_timeout = 5
-              http.read_timeout = 5
+            # Perform HEAD request to validate URL without downloading the file
+            uri = URI.parse(url)
+            http = Net::HTTP.new(uri.host, uri.port)
+            http.use_ssl = (uri.scheme == "https")
+            http.open_timeout = 5
+            http.read_timeout = 5
 
-              request = Net::HTTP::Head.new(uri.request_uri)
-              request.add_field("User-Agent", Util.user_agent_string(options.user_agent_headers))
+            request = Net::HTTP::Head.new(uri.request_uri)
+            request.add_field("User-Agent", Util.user_agent_string(options.user_agent_headers))
 
-              response = http.request(request)
+            response = http.request(request)
 
-              # Check if URL is available (2xx status codes)
-              if response.code.to_i >= 200 && response.code.to_i < 300
-                return
-              else
-                raise StandardError.new("#{response.code} #{response.message}")
-              end
-            rescue StandardError, Net::OpenTimeout, Net::ReadTimeout, Errno::ECONNREFUSED => e
-              retries += 1
-
-              if retries > max_retries
-                raise StandardError.new(
-                  "Package version #{version} not available at #{url} after #{max_retries} retries. " \
-                  "This may indicate a CDN propagation delay. Error: #{e.message}"
-                )
-              end
-
-              # Wait with exponential backoff before retrying
-              sleep(wait_time)
-              wait_time = wait_time * 2
+            # Check if URL is available (2xx status codes)
+            if response.code.to_i >= 200 && response.code.to_i < 300
+              return
+            else
+              raise StandardError, "#{response.code} #{response.message}"
             end
+          rescue StandardError => e
+            retries += 1
+
+            if retries > max_retries
+              raise StandardError,
+                "Package version #{version} not available at #{url} after #{max_retries} retries. " \
+                "This may indicate a CDN propagation delay. Error: #{e.message}"
+            end
+
+            # Wait with exponential backoff before retrying
+            sleep(wait_time)
+            wait_time *= 2
           end
         end
 
