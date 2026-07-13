@@ -39,9 +39,9 @@ if [ -z "$download_url_override" ]; then
   # Use commercial API if license_id is provided, otherwise use omnitruck
   if [ -z "$base_api_url" ]; then
     if [ -n "$license_id" ]; then
-      # Check if license_id starts with 'free-' or 'trial-' for trial API
+      # Check if license_id starts with 'trial-' for trial API
       case "$license_id" in
-        free-*|trial-*)
+        trial-*)
           # Trial API endpoint
           base_api_url="<%= Mixlib::Install::Dist::TRIAL_API_ENDPOINT %>"
           ;;

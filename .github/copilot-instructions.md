@@ -130,7 +130,7 @@ All Ruby files should include the Apache 2.0 license header:
    - PowerShell (install.ps1) generator with JSON API response parsing
    - Supports proxy configuration, download_url_override, and license_id
    - **Commercial/Trial API Support**: When license_id is provided, uses specialized download endpoints
-     - Trial API: `https://chefdownload-trial.chef.io` (for license IDs starting with `free-` or `trial-`)
+     - Trial API: `https://chefdownload-trial.chef.io` (for license IDs starting with `trial-`)
      - Commercial API: `https://chefdownload-commercial.chef.io` (for other license IDs)
      - Returns JSON responses instead of text format
      - Uses Content-Disposition headers for filename extraction
@@ -287,7 +287,7 @@ The library includes sophisticated platform version compatibility logic:
 - Generated via `lib/mixlib/install/generator/bourne.rb`
 - **API Endpoint Selection**: Uses `base_api_url` parameter to determine endpoint:
   - If `base_api_url` is empty and `license_id` is provided:
-    - Trial API: `https://chefdownload-trial.chef.io` (for `free-*` or `trial-*` prefixes)
+    - Trial API: `https://chefdownload-trial.chef.io` (for `trial-*` prefixes)
     - Commercial API: `https://chefdownload-commercial.chef.io` (for other license IDs)
   - If `base_api_url` is empty and no `license_id`: Omnitruck API `https://omnitruck.chef.io`
   - If `base_api_url` is set: Uses the provided URL (allows override)
@@ -313,8 +313,8 @@ The library includes sophisticated platform version compatibility logic:
 - Generated via `lib/mixlib/install/generator/powershell.rb`
 - **API Endpoint Selection**: Uses `base_server_uri` parameter to determine endpoint:
   - If `base_server_uri` is empty and `license_id` is provided:
-    - Trial API: `https://chefdownload-trial.chef.io` (for `free-*` or `trial-*` prefixes)
-    - Commercial API: `https://chefdownload-commercial.chef.io` (for other license IDs)
+    - Trial API: `https://chefdownload-trial.chef.io` (for `trial-*` prefixes)
+    - Commercial API: `https://chefdownload-commercial.chef.io` (for other license IDs, including `free-*`)
   - If `base_server_uri` is empty and no `license_id`: Omnitruck API `https://omnitruck.chef.io`
   - If `base_server_uri` is set: Uses the provided URL (allows override)
 - **JSON API Response**: When `license_id` is provided:
@@ -330,7 +330,7 @@ The library includes sophisticated platform version compatibility logic:
 - `download_url_override`: Direct URL instead of API lookup
 - `checksum`: SHA256 for verification
 - `install_strategy`: "once" to skip if already installed
-- `license_id`: License ID for commercial/trial API access (format: `free-*`, `trial-*`, or standard license ID)
+- `license_id`: License ID for commercial/trial API access (format: `trial-*` for trial API, or any other value including `free-*` for commercial API)
 - `base_api_url` (shell): Override API endpoint (optional, auto-detected from license_id if not provided)
 - `base_server_uri` (PowerShell): Override API endpoint (optional, auto-detected from license_id if not provided)
 - `-i <pm>` / `$package_manager`: Explicit package manager override (e.g. `msi`, `zip`). Omit to let the server derive it from platform. Appends `&pm=<value>` to the metadata URL when set.
@@ -382,12 +382,12 @@ Mixlib::Install supports Chef's commercial and trial licensing APIs, which provi
 
 ### API Endpoints
 - **Trial API**: `https://chefdownload-trial.chef.io`
-  - Used when `license_id` starts with `free-` or `trial-`
+  - Used when `license_id` starts with `trial-`
   - Returns JSON responses with download URLs
   - **Restrictions**: Only `stable` channel and `latest` version supported
   - Defaults are automatically enforced with warnings
 - **Commercial API**: `https://chefdownload-commercial.chef.io`
-  - Used for standard license IDs
+  - Used for all other license IDs (including `free-` prefix)
   - Returns JSON responses with download URLs
   - No restrictions on channels or versions
 - **Traditional Omnitruck**: `https://omnitruck.chef.io`
@@ -421,18 +421,18 @@ The backend (`lib/mixlib/install/backend/package_router.rb`) includes enhanced e
 require 'mixlib/install/dist'
 
 # Check if license_id indicates trial API usage
-Mixlib::Install::Dist.trial_license?('free-trial-123')      # => true
+Mixlib::Install::Dist.trial_license?('free-trial-123')      # => false
 Mixlib::Install::Dist.trial_license?('trial-abc-456')       # => true
 Mixlib::Install::Dist.trial_license?('commercial-xyz')      # => false
 
 # Check if license_id indicates commercial API usage
 Mixlib::Install::Dist.commercial_license?('commercial-xyz') # => true
-Mixlib::Install::Dist.commercial_license?('free-trial-123') # => false
+Mixlib::Install::Dist.commercial_license?('free-trial-123') # => true
 ```
 
 **Trial License Detection Logic**:
-- Returns `true` if license_id starts with `free-` or `trial-`
-- Returns `false` for nil, empty string, or other prefixes
+- Returns `true` if license_id starts with `trial-`
+- Returns `false` for nil, empty string, or other prefixes (including `free-`)
 
 **Commercial License Detection Logic**:
 - Returns `true` if license_id is present and NOT a trial license
@@ -460,8 +460,8 @@ Commercial and trial APIs return endpoint URLs that use HTTP Content-Disposition
 
 ### Testing Commercial/Trial API Features
 When adding or modifying commercial/trial API functionality:
-1. Test with `license_id` starting with `free-` (trial API)
 1. Test with `license_id` starting with `trial-` (trial API)
+1. Test with `license_id` starting with `free-` (commercial API)
 1. Test with standard license ID format (commercial API)
 1. Verify JSON parsing in both Bourne shell (sed) and PowerShell (ConvertFrom-Json)
 1. Test filename extraction with various response header formats
@@ -521,14 +521,14 @@ end
 ```ruby
 it "defaults to stable channel when current channel is specified" do
   expect do
-    mi = Mixlib::Install.new(product_name: "chef", channel: :current, license_id: "free-trial-abc-123")
+    mi = Mixlib::Install.new(product_name: "chef", channel: :current, license_id: "trial-abc-123")
     expect(mi.options.channel).to eq :stable
   end.to output(/WARNING: Trial API only supports 'stable' channel/).to_stderr
 end
 
 it "defaults to latest version when specific version is specified" do
   expect do
-    mi = Mixlib::Install.new(product_name: "chef", product_version: "15.0.0", license_id: "free-trial-abc-123")
+    mi = Mixlib::Install.new(product_name: "chef", product_version: "15.0.0", license_id: "trial-abc-123")
     expect(mi.options.product_version).to eq :latest
   end.to output(/WARNING: Trial API only supports 'latest' version/).to_stderr
 end
@@ -613,11 +613,11 @@ options = {
   platform: 'ubuntu',
   platform_version: '20.04',
   architecture: 'x86_64',
-  license_id: 'free-trial-abc-123'
+  license_id: 'trial-abc-123'
 }
 
 artifact = Mixlib::Install.new(options).artifact_info
-# URL: https://chefdownload-trial.chef.io/stable/chef-ice/download?p=ubuntu&pv=20.04&m=x86_64&v=19.1.151&license_id=free-trial-abc-123
+# URL: https://chefdownload-trial.chef.io/stable/chef-ice/download?p=ubuntu&pv=20.04&m=x86_64&v=19.1.151&license_id=trial-abc-123
 ```
 
 ## Common Pitfalls to Avoid
@@ -740,8 +740,8 @@ When making changes:
 
 | License Type | ID Format | API Endpoint | Channel | Version | Auto-Defaults |
 |-------------|-----------|--------------|---------|---------|---------------|
-| **Trial** | `free-*` or `trial-*` | https://chefdownload-trial.chef.io | stable only | latest only | Yes (with warnings) |
-| **Commercial** | Any other format | https://chefdownload-commercial.chef.io | Any | Any | No |
+| **Trial** | `trial-*` | https://chefdownload-trial.chef.io | stable only | latest only | Yes (with warnings) |
+| **Commercial** | Any other format (including `free-*`) | https://chefdownload-commercial.chef.io | Any | Any | No |
 | **Open Source** | None | https://omnitruck.chef.io | Any | Any | No |
 
 ---

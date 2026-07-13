@@ -204,26 +204,26 @@ context "Mixlib::Install" do
       end
     end
 
-    context "with trial license_id" do
+    context "with free- license_id (commercial API, no restrictions)" do
       let(:license_id) { "free-trial-abc-123" }
 
-      it "defaults channel to stable with warning" do
+      it "does not default channel (free- uses commercial API)" do
         expect do
           options = { license_id: license_id, channel: :current }
           script = Mixlib::Install.install_sh(options)
           expect(script).to include('license_id="free-trial-abc-123"')
-        end.to output(/WARNING: Trial API only supports 'stable' channel/).to_stderr
+        end.not_to output.to_stderr
       end
 
-      it "defaults version to latest with warning" do
+      it "does not default version (free- uses commercial API)" do
         expect do
           options = { license_id: license_id, version: "18.5.0" }
           script = Mixlib::Install.install_sh(options)
           expect(script).to include('license_id="free-trial-abc-123"')
-        end.to output(/WARNING: Trial API only supports 'latest' version/).to_stderr
+        end.not_to output.to_stderr
       end
 
-      it "does not warn when stable and latest already set" do
+      it "allows any channel and version without warnings" do
         expect do
           options = { license_id: license_id, channel: :stable, version: :latest }
           script = Mixlib::Install.install_sh(options)
