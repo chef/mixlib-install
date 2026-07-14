@@ -84,7 +84,7 @@ module Mixlib
       def default_value_for(prop)
         case prop
         when :install_path
-          if distribution_type == 'habitat'
+          if distribution_type == "habitat"
             "/hab/pkgs/#{hab_origin}/#{hab_package_name}"
           else
             "/opt/#{package_name}"
@@ -98,22 +98,22 @@ module Mixlib
         when :api_url
           ENV.fetch("PACKAGE_ROUTER_ENDPOINT", Mixlib::Install::Dist::PRODUCT_ENDPOINT)
         when :distribution_type
-          'omnibus'
+          "omnibus"
         when :hab_origin
-          'chef'
+          "chef"
         when :hab_builder_url
-          'https://bldr.habitat.sh'
+          "https://bldr.habitat.sh"
         when :hab_package_name
           package_name
         end
       end
 
       def habitat?
-        distribution_type == 'habitat'
+        distribution_type == "habitat"
       end
 
       def omnibus?
-        distribution_type == 'omnibus'
+        distribution_type == "omnibus"
       end
 
       def hab_package_url
