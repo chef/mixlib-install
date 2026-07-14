@@ -55,11 +55,16 @@ module Mixlib
             context[:support_url] ||= Mixlib::Install::Dist::SUPPORT_URL.freeze
             context[:resources_url] ||= Mixlib::Install::Dist::RESOURCES_URL.freeze
             context[:macos_dir] ||= Mixlib::Install::Dist::MACOS_VOLUME.freeze
-            hab_product = PRODUCT_MATRIX.lookup(context[:default_product]) if context[:default_product]
-            context[:windows_dir] ||= hab_product&.habitat? ? Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR.freeze : Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR.freeze
-            context[:is_habitat] = hab_product&.habitat? || false
-            context[:hab_origin] = hab_product&.hab_origin || ''
-            context[:hab_package_name] = hab_product&.hab_package_name || ''
+            context[:habitat_products] ||= begin
+              PRODUCT_MATRIX.products.each_with_object({}) do |pname, h|
+                p = PRODUCT_MATRIX.lookup(pname)
+                h[pname] = { origin: p.hab_origin, package_name: p.hab_package_name } if p.habitat?
+              end
+            end
+            context[:habitat_windows_dir] ||=
+              Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR.freeze
+            context[:omnibus_windows_dir] ||=
+              Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR.freeze
             context[:user_agent_string] = Util.user_agent_string(context[:user_agent_headers])
 
             context_object = OpenStruct.new(context).instance_eval { binding }

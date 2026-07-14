@@ -47,7 +47,7 @@ module Mixlib
           install_project_module = []
           install_project_module << get_script("helpers.ps1", user_agent_headers: options.user_agent_headers)
           install_project_module << get_script("get_project_metadata.ps1", license_id: options.license_id, base_url: options.base_url)
-          install_project_module << get_script("install_project.ps1", license_id: options.license_id)
+          install_project_module << get_script("install_project.ps1", license_id: options.license_id, default_product: options.product_name)
           install_command = []
           install_command << ps1_modularize(install_project_module.join("\n"), "Installer-Module")
           install_command << render_command
