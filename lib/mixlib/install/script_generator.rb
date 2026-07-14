@@ -20,6 +20,7 @@
 require_relative "util"
 require_relative "generator/powershell"
 require_relative "dist"
+require_relative "product_matrix"
 require "cgi"
 
 module Mixlib
@@ -99,14 +100,15 @@ module Mixlib
 
         parse_opts(opts)
 
-        # Update root for chef-ice to use Habitat install directories
-        if @project&.casecmp("chef-ice") == 0
-          @root = if powershell
-                    "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*"
-                  else
-                    "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*"
-                  end
-        end
+        # Update root based on product distribution type (habitat vs omnibus)
+        product = PRODUCT_MATRIX.lookup(@project) if @project
+        return unless product&.habitat?
+
+        @root = if powershell
+                  "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\#{product.hab_origin}\\#{product.hab_package_name}\\*\\*"
+                else
+                  "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/#{product.hab_origin}/#{product.hab_package_name}/*/*"
+                end
       end
 
       def install_command

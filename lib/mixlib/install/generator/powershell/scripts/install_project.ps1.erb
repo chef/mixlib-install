@@ -73,18 +73,23 @@ function Install-Project {
     $license_id = $env:CHEF_LICENSE_KEY
   }
 
+  # Habitat products mapped to their Habitat Builder origin/package names
+  $habitat_products = @{
+<% habitat_products.each do |pname, meta| %>
+    '<%= pname %>' = @{ origin = '<%= meta[:origin] %>'; package_name = '<%= meta[:package_name] %>' }
+<% end %>
+  }
+
   # Check for product installation in various locations
-  if ($project -eq 'chef' -or $project -eq 'chef-ice') {
-    # For chef or chef-ice, look for chef-infra-client paths
+  if ($habitat_products.ContainsKey($project)) {
+    $hab_meta = $habitat_products[$project]
     $install_locations = @(
-      "$env:systemdrive\hab\pkgs\chef\chef-infra-client\*\*\bin",
-      "$env:systemdrive\<%= windows_dir %>\chef\bin"
+      "$env:systemdrive\hab\pkgs\$($hab_meta.origin)\$($hab_meta.package_name)\*\*\bin",
+      "$env:systemdrive\<%= habitat_windows_dir %>\$($hab_meta.origin)\bin"
     )
   } else {
-    # For other products, look for product-specific paths
     $install_locations = @(
-      "$env:systemdrive\hab\pkgs\chef\$project\*\*\bin",
-      "$env:systemdrive\<%= windows_dir %>\$project\bin"
+      "$env:systemdrive\<%= omnibus_windows_dir %>\$project\bin"
     )
   }
   foreach ($path in $install_locations) {
@@ -253,7 +258,8 @@ Function Install-ChefMsi($msi, $addlocal) {
 Function Install-ChefAppx($appx, $project) {
   Add-AppxPackage -Path $appx -ErrorAction Stop
   $package = (Get-AppxPackage -Name $project).InstallLocation
-  $installRoot = "$env:SystemDrive/<%= windows_dir %>"
+  # AppX packages are always omnibus-style installs, never habitat
+  $installRoot = "$env:SystemDrive/<%= omnibus_windows_dir %>"
   $omnibusRoot = Join-Path $installRoot $project
 
   if(!(Test-Path $installRoot)) {

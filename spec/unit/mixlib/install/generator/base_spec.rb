@@ -160,7 +160,7 @@ describe Mixlib::Install::Generator::Base do
       before do
         @temp_dir = Dir.mktmpdir
         @script_path = File.join(@temp_dir, "windows_dir.sh.erb")
-        File.write(@script_path, "dir=<%= windows_dir %>")
+        File.write(@script_path, "hab=<%= habitat_windows_dir %>\nomnibus=<%= omnibus_windows_dir %>")
 
         allow(test_generator_class).to receive(:script_base_path).and_return(@temp_dir)
       end
@@ -169,18 +169,22 @@ describe Mixlib::Install::Generator::Base do
         FileUtils.rm_rf(@temp_dir) if @temp_dir
       end
 
-      it "uses habitat directory for chef-ice" do
+      it "sets habitat_products, habitat_windows_dir, omnibus_windows_dir" do
+        context = { default_product: "chef-ice" }
+        test_generator_class.get_script("windows_dir.sh", context)
+
+        expect(context[:habitat_products]).to be_a(Hash)
+        expect(context[:habitat_products]["chef-ice"]).to eq({ origin: "chef", package_name: "chef-infra-client" })
+        expect(context[:habitat_windows_dir]).to be_a(String)
+        expect(context[:omnibus_windows_dir]).to be_a(String)
+      end
+
+      it "renders habitat_windows_dir and omnibus_windows_dir in scripts" do
         context = { default_product: "chef-ice" }
         script = test_generator_class.get_script("windows_dir.sh", context)
 
-        expect(script).to include("dir=hab\\pkgs")
-      end
-
-      it "uses omnibus directory for chef" do
-        context = { default_product: "chef" }
-        script = test_generator_class.get_script("windows_dir.sh", context)
-
-        expect(script).to include("dir=opscode")
+        expect(script).to include("hab=hab\\pkgs")
+        expect(script).to include("omnibus=opscode")
       end
     end
   end
@@ -236,7 +240,6 @@ describe Mixlib::Install::Generator::Base do
         support=<%= support_url %>
         resources=<%= resources_url %>
         macos=<%= macos_dir %>
-        windows=<%= windows_dir %>
       SCRIPT
 
       allow(test_generator_class).to receive(:script_base_path).and_return(@temp_dir)
@@ -257,7 +260,6 @@ describe Mixlib::Install::Generator::Base do
       expect(script).to include("support=https://www.chef.io/support/tickets")
       expect(script).to include("resources=https://www.chef.io/support")
       expect(script).to include("macos=chef_software")
-      expect(script).to include("windows=opscode")
     end
   end
 end

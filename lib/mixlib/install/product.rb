@@ -37,6 +37,10 @@ module Mixlib
         :github_repo,
         :downloads_product_page_url,
         :api_url,
+        :distribution_type,
+        :hab_origin,
+        :hab_builder_url,
+        :hab_package_name
       ]
 
       #
@@ -80,18 +84,40 @@ module Mixlib
       def default_value_for(prop)
         case prop
         when :install_path
-          "/opt/#{package_name}"
+          if distribution_type == "habitat"
+            "/hab/pkgs/#{hab_origin}/#{hab_package_name}"
+          else
+            "/opt/#{package_name}"
+          end
         when :omnibus_project
           package_name
         when :downloads_product_page_url
-          "#{Mixlib::Install::Dist::DOWNLOADS_PAGE}/#{product_key}"
+          "#{Mixlib::Install::Dist::DOWNLOADS_PAGE}"
         when :github_repo
           "#{Mixlib::Install::Dist::GITHUB_ORG}/#{product_key}"
         when :api_url
           ENV.fetch("PACKAGE_ROUTER_ENDPOINT", Mixlib::Install::Dist::PRODUCT_ENDPOINT)
-        else
-          nil
+        when :distribution_type
+          "omnibus"
+        when :hab_origin
+          "chef"
+        when :hab_builder_url
+          "https://bldr.habitat.sh"
+        when :hab_package_name
+          package_name
         end
+      end
+
+      def habitat?
+        distribution_type == "habitat"
+      end
+
+      def omnibus?
+        distribution_type == "omnibus"
+      end
+
+      def hab_package_url
+        "#{hab_builder_url}/#/pkgs/#{hab_origin}/#{hab_package_name}/latest"
       end
 
       #

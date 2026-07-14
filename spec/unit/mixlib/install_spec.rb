@@ -97,6 +97,28 @@ context "Mixlib::Install" do
         end
       end
     end
+
+    context "with chef-workstation-enterprise product" do
+      let(:product_name) { "chef-workstation-enterprise" }
+      let(:version_manifest_file) { "/hab/pkgs/chef/chef-workstation/*/*/version-manifest.json" }
+
+      it "should use Habitat install directory path" do
+        expect(installer.root).to eq("/hab/pkgs/chef/chef-workstation/*/*")
+      end
+
+      context "when chef-workstation-enterprise is installed" do
+        before do
+          expect(File).to receive(:exist?).with(version_manifest_file).and_return(true)
+          expect(File).to receive(:read).with(version_manifest_file).and_wrap_original do |m, path|
+            m.call(File.join(VERSION_MANIFEST_DIR, "/opt/chef/version-manifest.json"))
+          end
+        end
+
+        it "should report version correctly" do
+          expect(installer.current_version).to eq("12.4.3")
+        end
+      end
+    end
   end
 
   context "checking for upgrades", :vcr do

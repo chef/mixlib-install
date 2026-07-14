@@ -50,6 +50,8 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   product "chef-ice" do
     product_name "Chef Infra Client Enterprise"
     package_name "chef-ice"
+    distribution_type "habitat"
+    hab_package_name "chef-infra-client"
   end
 
   product "chef-foundation" do
@@ -111,7 +113,8 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   product "chef-workstation-enterprise" do
     product_name "Chef Workstation Enterprise"
     package_name "chef-workstation-enterprise"
-    github_repo "chef/chef-workstation-enterprise"
+    distribution_type "habitat"
+    hab_package_name "chef-workstation"
   end
 
   product "chefdk" do
@@ -164,6 +167,8 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
   product "inspec-enterprise" do
     product_name "Chef InSpec Enterprise"
     package_name "inspec-enterprise"
+    distribution_type "habitat"
+    hab_package_name "inspec"
   end
 
   product "mac-bootstrapper" do

@@ -681,6 +681,77 @@ context "Mixlib::Install::Generator", :vcr do
         end
       end
 
+      context "habitat install-location hashtable for chef-ice" do
+        let(:add_options) do
+          {
+            product_name: "chef-ice",
+            shell_type: :ps1,
+            license_id: "test-license-key-123",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "contains the habitat_products hashtable with chef-ice entry" do
+          expect(install_script).to include("'chef-ice' = @{ origin = 'chef'; package_name = 'chef-infra-client' }")
+        end
+
+        it "uses runtime ContainsKey check not compile-time ERB branching" do
+          expect(install_script).to include("$habitat_products.ContainsKey($project)")
+          expect(install_script).not_to include("is_habitat")
+        end
+
+        it "includes hab\\pkgs path in the habitat install location logic" do
+          expect(install_script).to include("hab\\pkgs\\$($hab_meta.origin)\\$($hab_meta.package_name)")
+        end
+      end
+
+      context "habitat install-location hashtable for chef-workstation-enterprise" do
+        let(:add_options) do
+          {
+            product_name: "chef-workstation-enterprise",
+            shell_type: :ps1,
+            license_id: "test-license-key-123",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "contains the habitat_products hashtable with chef-workstation-enterprise entry" do
+          expect(install_script).to include("'chef-workstation-enterprise' = @{ origin = 'chef'; package_name = 'chef-workstation' }")
+        end
+
+        it "uses runtime ContainsKey check" do
+          expect(install_script).to include("$habitat_products.ContainsKey($project)")
+        end
+      end
+
+      context "omnibus product (chef) does not use habitat paths" do
+        let(:add_options) do
+          {
+            product_name: "chef",
+            shell_type: :ps1,
+            license_id: "test-license-key-123",
+          }
+        end
+
+        it_behaves_like "the correct ps1 script"
+
+        it "still includes the habitat_products hashtable (runtime check)" do
+          expect(install_script).to include("$habitat_products = @{")
+          expect(install_script).to include("$habitat_products.ContainsKey($project)")
+        end
+
+        it "does not hardcode habitat paths" do
+          expect(install_script).not_to include("\\hab\\pkgs\\chef\\chef-infra-client")
+        end
+
+        it "includes omnibus install path via elseif branch" do
+          expect(install_script).to include("elseif ($project -eq 'chef')")
+          expect(install_script).to include("opscode\\chef\\bin")
+        end
+      end
+
       context "optional package_manager parameter for PowerShell" do
         let(:add_options) do
           {

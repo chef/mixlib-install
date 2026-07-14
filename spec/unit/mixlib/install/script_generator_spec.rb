@@ -64,6 +64,23 @@ describe Mixlib::Install::ScriptGenerator do
           expect(install.root).to eq("/hab/pkgs/chef/chef-infra-client/*/*")
         end
       end
+
+      describe "habitat product root uses metadata-driven paths" do
+        it "chef-ice unix root uses hab_origin and hab_package_name from product metadata" do
+          install = described_class.new("1.2.1", false, project: "chef-ice")
+          expect(install.root).to include("/hab/pkgs/chef/chef-infra-client")
+        end
+
+        it "chef-ice windows root uses hab_origin and hab_package_name from product metadata" do
+          install = described_class.new("1.2.1", true, project: "chef-ice")
+          expect(install.root).to match(/\A\$env:systemdrive.*hab.pkgs.chef.chef-infra-client/i)
+        end
+
+        it "non-habitat product uses omnibus path" do
+          install = described_class.new("1.2.1", false, project: "chef")
+          expect(install.root).to eq("/opt/chef")
+        end
+      end
     end
 
     describe "parses the options hash" do
