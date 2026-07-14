@@ -205,7 +205,7 @@ context "Mixlib::Install::Backend", :vcr do
     end
   end
 
-  context "with free- license_id for trial API" do
+  context "with free- license_id for commercial API" do
     let(:product_name) { "chef" }
     let(:channel) { :stable }
     let(:product_version) { :latest }
@@ -224,11 +224,11 @@ context "Mixlib::Install::Backend", :vcr do
       expect(info_with_trial_license.options.license_id).to eq license_id
     end
 
-    it "uses trial API backend" do
+    it "uses commercial API backend (free- is not trial)" do
       backend = Mixlib::Install::Backend.backend(info_with_trial_license.options)
-      expect(backend.use_trial_api?).to be true
-      expect(backend.use_commercial_api?).to be false
-      expect(backend.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+      expect(backend.use_trial_api?).to be false
+      expect(backend.use_commercial_api?).to be true
+      expect(backend.endpoint).to eq Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
     end
   end
 

@@ -109,22 +109,22 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     end
   end
 
-  context "for trial API with free- license_id" do
+  context "for commercial API with free- license_id" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
     let(:product_version) { "18.0.0" }
     let(:license_id) { "free-abc-def-123" }
 
-    it "uses trial API endpoint" do
-      expect(package_router.endpoint).to eq Mixlib::Install::Dist::TRIAL_API_ENDPOINT
+    it "uses commercial API endpoint" do
+      expect(package_router.endpoint).to eq Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
     end
 
-    it "detects trial API usage" do
-      expect(package_router.use_trial_api?).to be true
+    it "does not detect trial API usage" do
+      expect(package_router.use_trial_api?).to be false
     end
 
-    it "does not detect commercial API usage" do
-      expect(package_router.use_commercial_api?).to be false
+    it "detects commercial API usage" do
+      expect(package_router.use_commercial_api?).to be true
     end
 
     it "detects licensed API usage" do
@@ -294,7 +294,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
     let(:channel) { :current }
     let(:product_name) { "chef-ice" }
     let(:product_version) { "19.1.151" }
-    let(:license_id) { "free-trial-xyz-123" }
+    let(:license_id) { "trial-xyz-123" }
     let(:platform) { "ubuntu" }
     let(:platform_version) { "20.04" }
     let(:architecture) { "x86_64" }

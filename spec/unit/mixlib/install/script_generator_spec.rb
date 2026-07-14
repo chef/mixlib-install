@@ -284,10 +284,10 @@ describe Mixlib::Install::ScriptGenerator do
           expect(out).to include('chef_omnibus_url="https://chefdownload-trial.chef.io/install.sh?license_id=trial-abc123"')
         end
 
-        it "uses trial URL for free licenses" do
+        it "uses commercial URL for free licenses (free- uses commercial API)" do
           installer.license_id = "free-xyz789"
           out = installer.install_command
-          expect(out).to include('chef_omnibus_url="https://chefdownload-trial.chef.io/install.sh?license_id=free-xyz789"')
+          expect(out).to include('chef_omnibus_url="https://chefdownload-commercial.chef.io/install.sh?license_id=free-xyz789"')
         end
       end
 
@@ -363,9 +363,9 @@ describe Mixlib::Install::ScriptGenerator do
       context "with free license_id" do
         before { installer.license_id = "free-test123" }
 
-        it "returns trial URL with license_id" do
+        it "returns commercial URL with license_id (free- uses commercial API)" do
           url = installer.send(:omnibus_url_for_license)
-          expect(url).to eq("https://chefdownload-trial.chef.io/install.sh?license_id=free-test123")
+          expect(url).to eq("https://chefdownload-commercial.chef.io/install.sh?license_id=free-test123")
         end
       end
 

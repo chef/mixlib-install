@@ -242,7 +242,7 @@ module Mixlib
         # Use custom base_url if provided, otherwise determine from license type
         endpoint_base = if @base_url
                           @base_url
-                        elsif license_id.start_with?("free-", "trial-")
+                        elsif license_id.start_with?("trial-")
                           Mixlib::Install::Dist::TRIAL_API_ENDPOINT
                         else
                           Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
@@ -261,7 +261,7 @@ module Mixlib
           # Use custom base_url if provided, otherwise determine from license type
           endpoint_base = if @base_url
                             @base_url
-                          elsif license_id.start_with?("free-", "trial-")
+                          elsif license_id.start_with?("trial-")
                             Mixlib::Install::Dist::TRIAL_API_ENDPOINT
                           else
                             Mixlib::Install::Dist::COMMERCIAL_API_ENDPOINT
