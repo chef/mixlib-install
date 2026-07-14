@@ -12,6 +12,7 @@
 | Chef Infra Server HA Provisioning for AWS | chef-server-ha-provisioning |
 | Chef Infra Client MacOS Universal | chef-universal |
 | Chef Workstation | chef-workstation |
+| Chef Workstation Enterprise | chef-workstation-enterprise |
 | Chef Development Kit | chefdk |
 | Chef Compliance | compliance |
 | Delivery | delivery |
