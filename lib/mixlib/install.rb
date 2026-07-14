@@ -301,7 +301,7 @@ module Mixlib
     #   url pointing to the omnitruck to be queried by the script.
     # license_id [String]
     #   license ID for commercial or trial API access.
-    #   If license_id starts with 'free-' or 'trial-', trial API defaults are enforced.
+    #   If license_id starts with 'trial-', trial API defaults are enforced.
     #
     def self.install_sh(context = {})
       # Apply trial API defaults if license_id indicates trial
@@ -329,7 +329,7 @@ module Mixlib
     #   url pointing to the omnitruck to be queried by the script.
     # license_id [String]
     #   license ID for commercial or trial API access.
-    #   If license_id starts with 'free-' or 'trial-', trial API defaults are enforced.
+    #   If license_id starts with 'trial-', trial API defaults are enforced.
     #
     def self.install_ps1(context = {})
       # Apply trial API defaults if license_id indicates trial

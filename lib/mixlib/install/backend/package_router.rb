@@ -395,7 +395,7 @@ EOF
         end
 
         def use_trial_api?
-          !options.license_id.nil? && !options.license_id.to_s.empty? && options.license_id.start_with?("free-", "trial-")
+          !options.license_id.nil? && !options.license_id.to_s.empty? && options.license_id.start_with?("trial-")
         end
 
         def use_commercial_api?

@@ -325,7 +325,7 @@ Mixlib::Install supports both commercial and trial API endpoints for licensed Ch
 The trial API is designed for evaluation purposes and has the following restrictions:
 
 - **Endpoint**: `https://chefdownload-trial.chef.io`
-- **License ID Format**: Must start with `free-` or `trial-`
+- **License ID Format**: Must start with `trial-`
 - **Channel Restriction**: Only `stable` channel is supported
 - **Version Restriction**: Only `latest` version is supported
 
@@ -336,7 +336,7 @@ options = {
   product_name: 'chef',
   channel: :current,          # Will be changed to :stable with warning
   product_version: '18.5.0',  # Will be changed to :latest with warning
-  license_id: 'free-trial-abc-123'
+  license_id: 'trial-abc-123'
 }
 
 mi = Mixlib::Install.new(options)
@@ -352,7 +352,7 @@ mi.options.product_version # => :latest
 The commercial API provides full access to all channels and versions:
 
 - **Endpoint**: `https://chefdownload-commercial.chef.io`
-- **License ID Format**: Any valid commercial license ID (not starting with `free-` or `trial-`)
+- **License ID Format**: Any valid commercial license ID (not starting with `trial-`)
 - **Channel Restriction**: None - all channels supported (`stable`, `current`, `unstable`)
 - **Version Restriction**: None - all versions supported
 
@@ -377,7 +377,7 @@ The static methods `Mixlib::Install.install_sh()` and `Mixlib::Install.install_p
 ```ruby
 # Trial API defaults applied to generated script
 script = Mixlib::Install.install_sh(
-  license_id: 'free-trial-xyz',
+  license_id: 'trial-xyz',
   channel: :current,     # Will be changed to :stable with warning
   version: '18.0.0'      # Will be changed to :latest with warning
 )
@@ -392,12 +392,13 @@ You can check if a license ID is for trial or commercial API:
 ```ruby
 require 'mixlib/install/dist'
 
-Mixlib::Install::Dist.trial_license?('free-trial-123')      # => true
+Mixlib::Install::Dist.trial_license?('free-abc-123')        # => false
 Mixlib::Install::Dist.trial_license?('trial-abc-456')       # => true
 Mixlib::Install::Dist.trial_license?('commercial-xyz')      # => false
 
 Mixlib::Install::Dist.commercial_license?('commercial-xyz') # => true
-Mixlib::Install::Dist.commercial_license?('free-trial-123') # => false
+Mixlib::Install::Dist.commercial_license?('free-abc-123') # => true
+Mixlib::Install::Dist.commercial_license?('trial-abc-456') # => false
 ```
 
 ## Development

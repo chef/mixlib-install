@@ -21,12 +21,12 @@ require "mixlib/install/dist"
 describe Mixlib::Install::Dist do
   describe ".trial_license?" do
     context "with free- prefix" do
-      it "returns true for free-trial-123" do
-        expect(Mixlib::Install::Dist.trial_license?("free-trial-123")).to be true
+      it "returns false for free-trial-123 (free- uses commercial API)" do
+        expect(Mixlib::Install::Dist.trial_license?("free-trial-123")).to be false
       end
 
-      it "returns true for free-abc-xyz" do
-        expect(Mixlib::Install::Dist.trial_license?("free-abc-xyz")).to be true
+      it "returns false for free-abc-xyz (free- uses commercial API)" do
+        expect(Mixlib::Install::Dist.trial_license?("free-abc-xyz")).to be false
       end
     end
 
@@ -83,8 +83,8 @@ describe Mixlib::Install::Dist do
     end
 
     context "with trial license" do
-      it "returns false for free-trial-123" do
-        expect(Mixlib::Install::Dist.commercial_license?("free-trial-123")).to be false
+      it "returns true for free-trial-123 (free- uses commercial API)" do
+        expect(Mixlib::Install::Dist.commercial_license?("free-trial-123")).to be true
       end
 
       it "returns false for trial-xyz-456" do
