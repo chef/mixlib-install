@@ -155,6 +155,22 @@ describe Mixlib::Install::ProductMatrix do
       end
     end
 
+    context "for chef-workstation-enterprise product" do
+      let(:chef_workstation_enterprise_product) { PRODUCT_MATRIX.lookup("chef-workstation-enterprise") }
+
+      it "exists in the product matrix" do
+        expect(chef_workstation_enterprise_product).not_to be_nil
+      end
+
+      it "has correct product_name" do
+        expect(chef_workstation_enterprise_product.product_name).to eq("Chef Workstation Enterprise")
+      end
+
+      it "has correct package_name" do
+        expect(chef_workstation_enterprise_product.package_name).to eq("chef-workstation-enterprise")
+      end
+    end
+
     context "for chef-server product" do
       let(:chef_server_product) { PRODUCT_MATRIX.lookup("chef-server") }
 
