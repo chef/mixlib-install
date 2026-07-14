@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.17.2 -->
-## [v3.17.2](https://github.com/chef/mixlib-install/tree/v3.17.2) (2026-06-17)
+<!-- latest_release 3.17.3 -->
+## [v3.17.3](https://github.com/chef/mixlib-install/tree/v3.17.3) (2026-07-14)
 
 #### Merged Pull Requests
-- Normalize GH workflows [#425](https://github.com/chef/mixlib-install/pull/425) ([jaymzh](https://github.com/jaymzh))
+- remove free- prefix from trial api endpoint url resolution. [#428](https://github.com/chef/mixlib-install/pull/428) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
 <!-- release_rollup since=3.17.0 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- remove free- prefix from trial api endpoint url resolution. [#428](https://github.com/chef/mixlib-install/pull/428) ([Stromweld](https://github.com/Stromweld)) <!-- 3.17.3 -->
 - Normalize GH workflows [#425](https://github.com/chef/mixlib-install/pull/425) ([jaymzh](https://github.com/jaymzh)) <!-- 3.17.2 -->
 - CHEF-27201 - Replace CONTRIBUTING.md file with standard template for Chef [#403](https://github.com/chef/mixlib-install/pull/403) ([Saburesh07](https://github.com/Saburesh07)) <!-- 3.17.1 -->
 <!-- release_rollup -->
