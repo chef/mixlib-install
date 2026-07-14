@@ -108,6 +108,12 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     github_repo "chef/chef-workstation"
   end
 
+  product "chef-workstation-enterprise" do
+    product_name "Chef Workstation Enterprise"
+    package_name "chef-workstation-enterprise"
+    github_repo "chef/chef-workstation"
+  end
+
   product "chefdk" do
     product_name "Chef Development Kit"
     package_name "chefdk"
