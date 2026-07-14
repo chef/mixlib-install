@@ -176,6 +176,22 @@ describe Mixlib::Install::Generator::Base do
         expect(script).to include("dir=hab\\pkgs")
       end
 
+      it "uses habitat directory for chef-workstation-enterprise" do
+        context = { default_product: "chef-workstation-enterprise" }
+        script = test_generator_class.get_script("windows_dir.sh", context)
+
+        expect(script).to include("dir=hab\\pkgs")
+      end
+
+      it "sets is_habitat, hab_origin, hab_package_name for habitat product" do
+        context = { default_product: "chef-ice" }
+        test_generator_class.get_script("windows_dir.sh", context)
+
+        expect(context[:is_habitat]).to eq(true)
+        expect(context[:hab_origin]).to eq("chef")
+        expect(context[:hab_package_name]).to eq("chef-infra-client")
+      end
+
       it "uses omnibus directory for chef" do
         context = { default_product: "chef" }
         script = test_generator_class.get_script("windows_dir.sh", context)

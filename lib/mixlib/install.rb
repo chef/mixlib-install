@@ -26,6 +26,7 @@ require_relative "install/generator"
 require_relative "install/generator/bourne"
 require_relative "install/generator/powershell"
 require_relative "install/dist"
+require_relative "install/product_matrix"
 
 module Mixlib
   class Install
@@ -177,16 +178,15 @@ module Mixlib
     # Returns the base installation directory for the given options
     #
     # @return [String] the installation directory for the project
+    # habitat products use Habitat install directories
     #
     def root
-      # This only works for chef and chefdk but they are the only projects
-      # we are supporting as of now.
-      # chef-ice uses Habitat install directories
-      if options.product_name.casecmp("chef-ice") == 0
+      product = PRODUCT_MATRIX.lookup(options.product_name) if options.product_name
+      if product&.habitat?
         if options.for_ps1?
-          "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*"
+          "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\#{product.hab_origin}\\#{product.hab_package_name}\\*\\*"
         else
-          "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*"
+          "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/#{product.hab_origin}/#{product.hab_package_name}/*/*"
         end
       else
         if options.for_ps1?
@@ -200,19 +200,15 @@ module Mixlib
     #
     # Returns the current version of the installed product.
     # Returns nil if the product is not installed.
+    # habitat products use Habitat install directories
     #
     def current_version
-      # Note that this logic does not work for products other than
-      # chef & chefdk since version-manifest is created under the
-      # install directory which can be different than the product name (e.g.
-      # chef-server -> /opt/opscode). But this is OK for now since
-      # chef & chefdk are the only supported products.
-      # chef-ice uses Habitat install directories
-      version_manifest_file = if options.product_name.casecmp("chef-ice") == 0
+      product = PRODUCT_MATRIX.lookup(options.product_name) if options.product_name
+      version_manifest_file = if product&.habitat?
                                 if options.for_ps1?
-                                  "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*\\version-manifest.json"
+                                  "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\#{product.hab_origin}\\#{product.hab_package_name}\\*\\*\\version-manifest.json"
                                 else
-                                  "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/chef/chef-infra-client/*/*/version-manifest.json"
+                                  "#{Mixlib::Install::Dist::HABITAT_LINUX_INSTALL_DIR}/#{product.hab_origin}/#{product.hab_package_name}/*/*/version-manifest.json"
                                 end
                               else
                                 if options.for_ps1?
