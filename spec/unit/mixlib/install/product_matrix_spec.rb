@@ -155,22 +155,6 @@ describe Mixlib::Install::ProductMatrix do
       end
     end
 
-    context "for chef-workstation-enterprise product" do
-      let(:chef_workstation_enterprise_product) { PRODUCT_MATRIX.lookup("chef-workstation-enterprise") }
-
-      it "exists in the product matrix" do
-        expect(chef_workstation_enterprise_product).not_to be_nil
-      end
-
-      it "has correct product_name" do
-        expect(chef_workstation_enterprise_product.product_name).to eq("Chef Workstation Enterprise")
-      end
-
-      it "has correct package_name" do
-        expect(chef_workstation_enterprise_product.package_name).to eq("chef-workstation-enterprise")
-      end
-    end
-
     context "for chef-server product" do
       let(:chef_server_product) { PRODUCT_MATRIX.lookup("chef-server") }
 
@@ -254,6 +238,40 @@ describe Mixlib::Install::ProductMatrix do
       it "returns nil" do
         expect(PRODUCT_MATRIX.lookup("")).to be_nil
       end
+    end
+  end
+
+  describe "habitat product distribution type" do
+    it "chef-ice has distribution_type habitat" do
+      expect(PRODUCT_MATRIX.lookup("chef-ice").distribution_type).to eq("habitat")
+    end
+
+    it "chef-ice has hab_package_name chef-infra-client" do
+      expect(PRODUCT_MATRIX.lookup("chef-ice").hab_package_name).to eq("chef-infra-client")
+    end
+
+    it "chef-workstation-enterprise has distribution_type habitat" do
+      expect(PRODUCT_MATRIX.lookup("chef-workstation-enterprise").distribution_type).to eq("habitat")
+    end
+
+    it "chef-workstation-enterprise has hab_package_name chef-workstation" do
+      expect(PRODUCT_MATRIX.lookup("chef-workstation-enterprise").hab_package_name).to eq("chef-workstation")
+    end
+
+    it "inspec-enterprise has distribution_type habitat" do
+      expect(PRODUCT_MATRIX.lookup("inspec-enterprise").distribution_type).to eq("habitat")
+    end
+
+    it "inspec-enterprise has hab_package_name inspec" do
+      expect(PRODUCT_MATRIX.lookup("inspec-enterprise").hab_package_name).to eq("inspec")
+    end
+
+    it "chef product has distribution_type omnibus" do
+      expect(PRODUCT_MATRIX.lookup("chef").distribution_type).to eq("omnibus")
+    end
+
+    it "chef product omnibus? returns true" do
+      expect(PRODUCT_MATRIX.lookup("chef").omnibus?).to be true
     end
   end
 end

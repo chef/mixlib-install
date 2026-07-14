@@ -111,7 +111,7 @@ describe "mixlib-install executable" do
       end
     end
 
-    context "with output option", :focus do
+    context "with output option" do
       let(:args) { "-o #{File.join(test_temp_dir, 'script.sh')}" }
 
       it "writes to a file" do

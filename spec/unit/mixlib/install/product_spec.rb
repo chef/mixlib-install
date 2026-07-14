@@ -447,4 +447,71 @@ context "PRODUCT_MATRIX" do
 
     it_behaves_like "automate and delivery products"
   end
+
+  context "habitat product support" do
+    let(:omnibus_product) do
+      Mixlib::Install::Product.new("chef") do
+        product_name "Chef Infra Client"
+        package_name "chef"
+      end
+    end
+
+    let(:habitat_product) do
+      Mixlib::Install::Product.new("chef-ice") do
+        product_name "Chef Infra Client Enterprise"
+        package_name "chef-ice"
+        distribution_type "habitat"
+        hab_package_name "chef-infra-client"
+      end
+    end
+
+    it "distribution_type defaults to omnibus" do
+      expect(omnibus_product.distribution_type).to eq("omnibus")
+    end
+
+    it "hab_origin defaults to chef" do
+      expect(omnibus_product.hab_origin).to eq("chef")
+    end
+
+    it "hab_builder_url defaults to https://bldr.habitat.sh" do
+      expect(omnibus_product.hab_builder_url).to eq("https://bldr.habitat.sh")
+    end
+
+    it "hab_package_name defaults to package_name" do
+      expect(omnibus_product.hab_package_name).to eq("chef")
+    end
+
+    it "habitat? returns false for omnibus product" do
+      expect(omnibus_product.habitat?).to be false
+    end
+
+    it "habitat? returns true for habitat product" do
+      expect(habitat_product.habitat?).to be true
+    end
+
+    it "omnibus? returns true for omnibus product" do
+      expect(omnibus_product.omnibus?).to be true
+    end
+
+    it "omnibus? returns false for habitat product" do
+      expect(habitat_product.omnibus?).to be false
+    end
+
+    it "install_path for omnibus product is /opt/<package_name>" do
+      expect(omnibus_product.install_path).to eq("/opt/chef")
+    end
+
+    it "install_path for habitat product is /hab/pkgs/chef/<hab_package_name>" do
+      expect(habitat_product.install_path).to eq("/hab/pkgs/chef/chef-infra-client")
+    end
+
+    it "hab_package_url returns correct URL" do
+      expect(habitat_product.hab_package_url).to eq("https://bldr.habitat.sh/#/pkgs/chef/chef-infra-client/latest")
+    end
+
+    it "hab_package_name explicit override works when product key differs from package name" do
+      expect(habitat_product.hab_package_name).to eq("chef-infra-client")
+      expect(habitat_product.package_name).to eq("chef-ice")
+    end
+  end
 end
