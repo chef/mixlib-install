@@ -148,16 +148,16 @@ context "Mixlib::Install::Generator", :vcr do
         expect(install_script).to include("license_id=free-trial-abc-123")
       end
 
-      it "uses trial API in metadata fetch" do
-        expect(install_script).to include("https://chefdownload-trial.chef.io")
+      it "uses commercial API in metadata fetch (free- is not trial)" do
+        expect(install_script).to include("https://chefdownload-commercial.chef.io")
       end
 
-      it "includes JSON parsing logic for trial API" do
+      it "includes JSON parsing logic for licensed API" do
         expect(install_script).to include("sed -n 's/.*\"url\":\"\\([^\"]*\\)\".*/\\1/p'")
         expect(install_script).to include("sed -n 's/.*\"sha256\":\"\\([^\"]*\\)\".*/\\1/p'")
       end
 
-      it "sets use_content_disposition flag for trial API" do
+      it "sets use_content_disposition flag for licensed API" do
         expect(install_script).to include("use_content_disposition=\"true\"")
       end
 
@@ -340,7 +340,7 @@ context "Mixlib::Install::Generator", :vcr do
     context "chef-ice with trial API" do
       let(:add_options) do
         {
-          license_id: "free-trial-xyz-123",
+          license_id: "trial-xyz-123",
         }
       end
 
@@ -504,11 +504,11 @@ context "Mixlib::Install::Generator", :vcr do
           expect(install_script).to match(/Install-Project -project #{options[:product_name]} -version .* -channel #{options[:channel]} -license_id free-trial-789\n/)
         end
 
-        it "uses trial API in metadata fetch" do
-          expect(install_script).to include("https://chefdownload-trial.chef.io")
+        it "uses commercial API in metadata fetch (free- is not trial)" do
+          expect(install_script).to include("https://chefdownload-commercial.chef.io")
         end
 
-        it "includes JSON parsing logic for trial API" do
+        it "includes JSON parsing logic for licensed API" do
           expect(install_script).to include("ConvertFrom-Json")
           expect(install_script).to include("$json.url")
           expect(install_script).to include("$json.sha256")
@@ -631,7 +631,7 @@ context "Mixlib::Install::Generator", :vcr do
           {
             product_name: "chef-ice",
             shell_type: :ps1,
-            license_id: "free-trial-xyz-123",
+            license_id: "trial-xyz-123",
           }
         end
 

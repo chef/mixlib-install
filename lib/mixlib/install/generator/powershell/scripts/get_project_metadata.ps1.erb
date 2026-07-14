@@ -75,8 +75,8 @@ function Get-ProjectMetadata {
 
   if ([string]::IsNullOrEmpty($base_server_uri)) {
     if (-not [string]::IsNullOrEmpty($license_id)) {
-      # Check if license_id starts with 'free-' or 'trial-' for trial API
-      if ($license_id -match '^(free-|trial-)') {
+      # Check if license_id starts with 'trial-' for trial API
+      if ($license_id -match '^(trial-)') {
         # Trial API endpoint
         $base_server_uri = "<%= Mixlib::Install::Dist::TRIAL_API_ENDPOINT %>"
       }

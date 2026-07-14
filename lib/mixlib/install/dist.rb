@@ -37,15 +37,15 @@ module Mixlib
 
       # Check if a license_id is for trial API
       # @param license_id [String] the license ID to check
-      # @return [Boolean] true if license_id indicates trial API usage
+      # @return [Boolean] true if license_id starts with 'trial-' (trial API usage)
       def self.trial_license?(license_id)
         !license_id.nil? && !license_id.to_s.empty? &&
-          license_id.start_with?("free-", "trial-")
+          license_id.start_with?("trial-")
       end
 
       # Check if a license_id is for commercial API
       # @param license_id [String] the license ID to check
-      # @return [Boolean] true if license_id indicates commercial API usage
+      # @return [Boolean] true if license_id is non-empty and does not start with 'trial-'
       def self.commercial_license?(license_id)
         !license_id.nil? && !license_id.to_s.empty? &&
           !trial_license?(license_id)
