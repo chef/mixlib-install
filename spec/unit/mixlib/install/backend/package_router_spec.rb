@@ -52,6 +52,12 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:package_router) { Mixlib::Install::Backend::PackageRouter.new(mixlib_options) }
   let(:artifact_info) { package_router.info }
 
+  # Prevent download URL HEAD requests in unit tests. Individual contexts that
+  # test validation behaviour override this stub explicitly.
+  before do
+    allow(package_router).to receive(:download_url_accessible?).and_return(true)
+  end
+
   context "for chef/stable" do
     let(:channel) { :stable }
     let(:product_name) { "chef" }
@@ -983,6 +989,145 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
 
     it "does not have software dependencies" do
       expect(artifact_info.software_dependencies).to be_nil
+    end
+  end
+
+  context "download URL validation" do
+    let(:channel) { :stable }
+    let(:product_name) { "chef" }
+    let(:product_version) { "18.0.0" }
+    let(:platform) { "ubuntu" }
+    let(:platform_version) { "20.04" }
+    let(:architecture) { "x86_64" }
+    let(:license_id) { "test-license-key-123" }
+
+    let(:mock_metadata) do
+      {
+        "version" => "18.0.0",
+        "sha256" => "abc123def456",
+        "sha1" => "ghi789",
+      }
+    end
+
+    before do
+      allow(package_router).to receive(:get).and_return(mock_metadata)
+    end
+
+    context "when download URL is accessible on the first attempt" do
+      before do
+        allow(package_router).to receive(:download_url_accessible?).and_return(true)
+      end
+
+      it "returns the artifact without error" do
+        expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+      end
+
+      it "checks the download URL exactly once" do
+        expect(package_router).to receive(:download_url_accessible?).once.and_return(true)
+        artifact_info
+      end
+    end
+
+    context "when download URL is never accessible" do
+      before do
+        allow(package_router).to receive(:download_url_accessible?).and_return(false)
+        allow(package_router).to receive(:sleep)
+      end
+
+      it "raises ArtifactsNotFound after exhausting retries" do
+        expect { artifact_info }.to raise_error(
+          Mixlib::Install::Backend::ArtifactsNotFound,
+          /CDN propagation/
+        )
+      end
+
+      it "retries MAX_DOWNLOAD_VALIDATE_RETRIES times" do
+        expect(package_router).to receive(:download_url_accessible?).exactly(
+          Mixlib::Install::Backend::PackageRouter::MAX_DOWNLOAD_VALIDATE_RETRIES
+        ).times.and_return(false)
+        expect { artifact_info }.to raise_error(Mixlib::Install::Backend::ArtifactsNotFound)
+      end
+
+      it "sleeps with exponential backoff between retries" do
+        expect(package_router).to receive(:sleep).with(2).ordered
+        expect(package_router).to receive(:sleep).with(4).ordered
+        expect { artifact_info }.to raise_error(Mixlib::Install::Backend::ArtifactsNotFound)
+      end
+
+      it "includes product information in the error message" do
+        expect { artifact_info }.to raise_error(Mixlib::Install::Backend::ArtifactsNotFound) do |error|
+          expect(error.message).to include("chef")
+          expect(error.message).to include("stable")
+          expect(error.message).to include("18.0.0")
+        end
+      end
+    end
+
+    context "when download URL becomes accessible on a retry" do
+      before do
+        allow(package_router).to receive(:download_url_accessible?).and_return(false, true)
+        allow(package_router).to receive(:sleep)
+      end
+
+      it "returns the artifact after the retry" do
+        expect(artifact_info).to be_a Mixlib::Install::ArtifactInfo
+      end
+
+      it "performs exactly two URL checks" do
+        expect(package_router).to receive(:download_url_accessible?).twice.and_return(false, true)
+        artifact_info
+      end
+
+      it "sleeps once before the successful retry" do
+        expect(package_router).to receive(:sleep).once.with(2)
+        artifact_info
+      end
+    end
+
+    context "when platform filters are not available" do
+      let(:platform) { nil }
+      let(:platform_version) { nil }
+      let(:architecture) { nil }
+
+      it "skips download URL validation entirely" do
+        expect(package_router).not_to receive(:validate_artifact_url)
+        expect(package_router.platform_filters_available?).to be false
+      end
+    end
+
+    context "when the resolved artifact has a nil URL" do
+      let(:nil_url_artifact) { instance_double(Mixlib::Install::ArtifactInfo, url: nil, version: "18.0.0") }
+
+      it "raises ArtifactsNotFound immediately without making any HTTP requests" do
+        expect(package_router).not_to receive(:download_url_accessible?)
+        expect { package_router.validate_artifact_url(nil_url_artifact) }.to raise_error(
+          Mixlib::Install::Backend::ArtifactsNotFound,
+          /download URL is nil or empty/i
+        )
+      end
+    end
+
+    context "when the resolved artifact has an empty URL" do
+      let(:empty_url_artifact) { instance_double(Mixlib::Install::ArtifactInfo, url: "", version: "18.0.0") }
+
+      it "raises ArtifactsNotFound immediately without making any HTTP requests" do
+        expect(package_router).not_to receive(:download_url_accessible?)
+        expect { package_router.validate_artifact_url(empty_url_artifact) }.to raise_error(
+          Mixlib::Install::Backend::ArtifactsNotFound,
+          /download URL is nil or empty/i
+        )
+      end
+    end
+
+    context "when a non-HTTP error occurs during URL validation" do
+      before do
+        allow(package_router).to receive(:download_url_accessible?).and_raise(SocketError, "getaddrinfo: Name or service not known")
+        allow(package_router).to receive(:sleep)
+      end
+
+      it "propagates the error rather than masking it as a CDN issue" do
+        expect { artifact_info }.to raise_error(SocketError, /getaddrinfo/)
+      end
     end
   end
 end

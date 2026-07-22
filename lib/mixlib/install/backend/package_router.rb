@@ -33,10 +33,96 @@ module Mixlib
 
         COMPAT_DOWNLOAD_URL_ENDPOINT = "http://packages.chef.io".freeze
 
+        # Maximum number of attempts to validate a download URL before raising an error.
+        MAX_DOWNLOAD_VALIDATE_RETRIES = 3
+
+        # Base delay in seconds for exponential backoff between download URL validation retries.
+        DOWNLOAD_VALIDATE_RETRY_BASE_DELAY = 2
+
         # Architecture strings that appear as level-2 keys in PM-structure packages
         # responses (platform -> arch -> pm -> ...) vs version strings in standard
         # responses (platform -> version -> arch -> ...).
         KNOWN_ARCHITECTURES = %w{x86_64 aarch64 i386 arm64 ppc64 ppc64le s390x universal x86}.freeze
+
+        # Overrides Base#info to validate the resolved download URL is accessible
+        # before returning. When a platform is specified, only one artifact is
+        # returned and we can confirm the CDN has propagated the package before
+        # handing the URL back to the caller. Retries with exponential backoff to
+        # tolerate short CDN propagation windows during version promotions.
+        def info
+          result = super
+          return result unless platform_filters_available?
+
+          validate_artifact_url(result)
+          result
+        end
+
+        # Validates that the download URL on +artifact+ is reachable, retrying
+        # up to MAX_DOWNLOAD_VALIDATE_RETRIES times with exponential backoff.
+        # Raises ArtifactsNotFound if the URL remains inaccessible after all
+        # attempts.
+        def validate_artifact_url(artifact)
+          url = artifact.url
+
+          raise ArtifactsNotFound, <<-MSG if url.nil? || url.empty?
+Artifact resolved but download URL is nil or empty.
+  product: #{options.product_name}
+  channel: #{options.channel}
+  version: #{artifact.version}
+MSG
+
+          accessible = MAX_DOWNLOAD_VALIDATE_RETRIES.times.any? do |attempt|
+            break true if download_url_accessible?(url)
+
+            if attempt < MAX_DOWNLOAD_VALIDATE_RETRIES - 1
+              delay = DOWNLOAD_VALIDATE_RETRY_BASE_DELAY**(attempt + 1)
+              $stderr.puts "WARNING: Download URL not yet accessible (attempt #{attempt + 1} of #{MAX_DOWNLOAD_VALIDATE_RETRIES}). Retrying in #{delay}s..."
+              sleep(delay)
+            end
+          end
+
+          raise ArtifactsNotFound, <<-MSG unless accessible
+Download URL is not yet accessible after #{MAX_DOWNLOAD_VALIDATE_RETRIES} attempts. CDN propagation may still be in progress.
+  product: #{options.product_name}
+  channel: #{options.channel}
+  version: #{artifact.version}
+  url: #{url}
+MSG
+        end
+
+        # Issues a HEAD request to +url+, following up to +redirect_limit+
+        # redirects. Returns +true+ when the server responds with 2xx, +false+
+        # for 4xx/5xx responses. Raises for non-HTTP errors (DNS failure, SSL,
+        # connection refused, etc.) so callers can distinguish a temporarily
+        # unavailable resource from a configuration or network problem.
+        def download_url_accessible?(url, redirect_limit = 3)
+          return false if redirect_limit == 0
+
+          uri = URI.parse(url)
+          raise URI::InvalidURIError, "Redirect resolved to a relative URL: #{url}" unless uri.absolute?
+
+          http = Net::HTTP.new(uri.host, uri.port)
+          http.use_ssl = (uri.scheme == "https")
+          http.open_timeout = 10
+          http.read_timeout = 10
+
+          request = Net::HTTP::Head.new(uri.request_uri)
+          request.add_field("User-Agent", Util.user_agent_string(options.user_agent_headers))
+
+          response = http.request(request)
+
+          case response
+          when Net::HTTPSuccess
+            true
+          when Net::HTTPRedirection
+            location = response["location"]
+            return false if location.nil? || location.empty?
+
+            download_url_accessible?(location, redirect_limit - 1)
+          else
+            false
+          end
+        end
 
         # Create filtered list of artifacts
         #
