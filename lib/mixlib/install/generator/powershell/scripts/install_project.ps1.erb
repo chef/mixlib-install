@@ -279,6 +279,11 @@ Function Install-ChefMsi($msi, $addlocal) {
   if ($p.ExitCode -eq 1618) {
     Write-Host "$((Get-Date).ToString()) - Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
     return $false
+  } elseif ($p.ExitCode -eq 3010 -or $p.ExitCode -eq 1641) {
+    # 3010 = success, reboot required; 1641 = success, reboot initiated.
+    # Both are success codes. Treat them as success so the restore path is not triggered.
+    Write-Host "msiexec completed successfully with exit code $($p.ExitCode). A system reboot may be required."
+    return $true
   } elseif ($p.ExitCode -ne 0) {
     throw "msiexec was not successful. Received exit code $($p.ExitCode)"
   }
@@ -308,6 +313,27 @@ Function Install-ChefAppx($appx, $project) {
   return $true
 }
 
+
+# CAUTION: chef_client_updater cookbook compatibility
+#
+# The chef_client_updater cookbook calls Install-Project indirectly on Windows.
+# Its upgrade flow:
+#   1. Calls mixlib_install.install_command to get the install script.
+#   2. Calls prepare_windows, which copies C:\opscode\chef -> C:\opscode\chef.upgrade
+#      and creates a scheduled task named chef_upgrade (or <product>_upgrade).
+#   3. The scheduled task script runs Remove-Item "C:\opscode\chef" -Recurse -Force,
+#      then invokes the install script from step 1, which calls Install-Project.
+#   4. On Install-Project failure the scheduled task catch block runs:
+#      Move-Item "C:\opscode\chef.upgrade" "C:\opscode\chef" to restore from backup.
+#
+# Because the install directory is removed before Install-Project is called,
+# Backup-ChefInstallation finds no directory at that path and returns $null.
+# Restore-ChefInstallation and Remove-ChefBackup both guard on $null and return
+# early. All three functions are no-ops in the chef_client_updater flow.
+#
+# There is no directory naming conflict: chef_client_updater uses the suffix
+# .upgrade (e.g. C:\opscode\chef.upgrade) while Install-Project uses
+# .upgrade-backup (e.g. C:\opscode\chef.upgrade-backup).
 
 # Copies the existing product installation directory to a timestamped backup path
 # before a destructive upgrade begins. Returns the backup path, or $null if there
