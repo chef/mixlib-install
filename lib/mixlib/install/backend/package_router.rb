@@ -71,17 +71,17 @@ Artifact resolved but download URL is nil or empty.
   version: #{artifact.version}
 MSG
 
-          MAX_DOWNLOAD_VALIDATE_RETRIES.times do |attempt|
-            return if download_url_accessible?(url)
+          accessible = MAX_DOWNLOAD_VALIDATE_RETRIES.times.any? do |attempt|
+            break true if download_url_accessible?(url)
 
             if attempt < MAX_DOWNLOAD_VALIDATE_RETRIES - 1
-              delay = DOWNLOAD_VALIDATE_RETRY_BASE_DELAY ** (attempt + 1)
+              delay = DOWNLOAD_VALIDATE_RETRY_BASE_DELAY**(attempt + 1)
               $stderr.puts "WARNING: Download URL not yet accessible (attempt #{attempt + 1} of #{MAX_DOWNLOAD_VALIDATE_RETRIES}). Retrying in #{delay}s..."
               sleep(delay)
             end
           end
 
-          raise ArtifactsNotFound, <<-MSG
+          raise ArtifactsNotFound, <<-MSG unless accessible
 Download URL is not yet accessible after #{MAX_DOWNLOAD_VALIDATE_RETRIES} attempts. CDN propagation may still be in progress.
   product: #{options.product_name}
   channel: #{options.channel}
@@ -96,7 +96,7 @@ MSG
         # connection refused, etc.) so callers can distinguish a temporarily
         # unavailable resource from a configuration or network problem.
         def download_url_accessible?(url, redirect_limit = 3)
-          return false if redirect_limit.zero?
+          return false if redirect_limit == 0
 
           uri = URI.parse(url)
           raise URI::InvalidURIError, "Redirect resolved to a relative URL: #{url}" unless uri.absolute?
