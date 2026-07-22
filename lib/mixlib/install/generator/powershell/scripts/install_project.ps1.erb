@@ -203,27 +203,62 @@ function Install-Project {
     }
 
     Write-Host "Installing $project from $download_destination"
-    $installingProject = $True
-    $installAttempts = 0
-    $maxAttempts = 5
-    while ($installingProject) {
-      $installAttempts++
-      $result = $false
-      if ($download_destination.EndsWith(".appx")) {
-        $result = Install-ChefAppx $download_destination $project
-      }
-      else {
-        $result = Install-ChefMsi $download_destination $daemon
-      }
-      if (!$result) {
-        if ($installAttempts -ge $maxAttempts) {
-          Write-Host "Failed to install $project after $installAttempts attempts."
-          throw "Installation failed after $installAttempts attempts."
+
+    $backup_dir = $null
+    try {
+      $backup_dir = Backup-ChefInstallation -project $project
+    }
+    catch {
+      throw "Could not create a pre-upgrade backup of $project. Aborting to avoid leaving the system in an unrecoverable state. Error: $_"
+    }
+
+    try {
+      $installingProject = $True
+      $installAttempts = 0
+      $maxAttempts = 5
+      while ($installingProject) {
+        $installAttempts++
+        $result = $false
+        if ($download_destination.EndsWith(".appx")) {
+          $result = Install-ChefAppx $download_destination $project
         }
-        continue
+        else {
+          $result = Install-ChefMsi $download_destination $daemon
+        }
+        if (!$result) {
+          if ($installAttempts -ge $maxAttempts) {
+            Write-Host "Failed to install $project after $installAttempts attempts."
+            throw "Installation failed after $installAttempts attempts."
+          }
+          continue
+        }
+        $installingProject = $False
+        Write-Host "$project installation completed successfully."
       }
-      $installingProject = $False
-      Write-Host "$project installation completed successfully."
+    }
+    catch {
+      $install_error = $_
+      Write-Host "Installation failed. Attempting to restore the previous $project installation."
+      try {
+        Restore-ChefInstallation -project $project -backup_dir $backup_dir
+      }
+      catch {
+        Write-Host "WARNING: Restore also failed. The pre-upgrade backup is still at: $backup_dir"
+        Write-Host "WARNING: To recover manually, run these two commands in order:"
+        Write-Host "WARNING:   1. Remove-Item '$env:SystemDrive\<%= windows_dir %>\$project' -Recurse -Force"
+        Write-Host "WARNING:   2. Move-Item '$backup_dir' '$env:SystemDrive\<%= windows_dir %>\$project' -Force"
+        Write-Host "WARNING: Restore error: $_"
+      }
+      throw $install_error
+    }
+
+    # Remove the backup only after confirming installation succeeded.
+    # Wrapped separately so a cleanup failure never rolls back a working install.
+    try {
+      Remove-ChefBackup -backup_dir $backup_dir
+    }
+    catch {
+      Write-Host "Warning: Failed to remove installation backup at $backup_dir. You may remove it manually. Error: $_"
     }
   }
 }
@@ -271,6 +306,56 @@ Function Install-ChefAppx($appx, $project) {
   Copy-Item $package $omnibusRoot -Recurse
 
   return $true
+}
+
+
+# Copies the existing product installation directory to a timestamped backup path
+# before a destructive upgrade begins. Returns the backup path, or $null if there
+# was no existing installation to back up.
+function Backup-ChefInstallation {
+  param ($project)
+  $install_dir = "$env:SystemDrive\<%= windows_dir %>\$project"
+  if (-not (Test-Path $install_dir)) {
+    return $null
+  }
+  $backup_dir = "${install_dir}.upgrade-backup"
+  Write-Host "Backing up existing $project installation from $install_dir to $backup_dir"
+  if (Test-Path $backup_dir) {
+    Remove-Item $backup_dir -Recurse -Force
+  }
+  Copy-Item $install_dir $backup_dir -Recurse -Force
+  Write-Host "Backup created at $backup_dir"
+  return $backup_dir
+}
+
+# Restores a backup created by Backup-ChefInstallation, replacing whatever is
+# currently at the install path. Called when an upgrade fails so that the node
+# is left with a working Chef installation rather than no installation.
+function Restore-ChefInstallation {
+  param ($project, $backup_dir)
+  if ([string]::IsNullOrEmpty($backup_dir) -or -not (Test-Path $backup_dir)) {
+    return
+  }
+  $install_dir = "$env:SystemDrive\<%= windows_dir %>\$project"
+  Write-Host "Restoring $project installation from backup at $backup_dir"
+  if (Test-Path $install_dir) {
+    Remove-Item $install_dir -Recurse -Force
+    if (Test-Path $install_dir) {
+      throw "Could not fully remove $install_dir before restore. Some files may be locked. Restore aborted."
+    }
+  }
+  Move-Item $backup_dir $install_dir -Force
+  Write-Host "$project installation restored successfully."
+}
+
+# Removes a backup directory that is no longer needed after a successful upgrade.
+function Remove-ChefBackup {
+  param ($backup_dir)
+  if ([string]::IsNullOrEmpty($backup_dir) -or -not (Test-Path $backup_dir)) {
+    return
+  }
+  Write-Host "Removing installation backup at $backup_dir"
+  Remove-Item $backup_dir -Recurse -Force
 }
 
 export-modulemember -function 'Install-Project','Get-ProjectMetadata' -alias 'install'
