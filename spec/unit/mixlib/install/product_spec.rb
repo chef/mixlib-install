@@ -155,6 +155,7 @@ context "PRODUCT_MATRIX" do
     mac-bootstrapper
     manage
     marketplace
+    migrate-ice
     omnibus-toolchain
     omnibus-gcc
     private-chef
