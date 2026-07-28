@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.18.0 -->
-## [v3.18.0](https://github.com/chef/mixlib-install/tree/v3.18.0) (2026-07-14)
+<!-- latest_release 3.19.0 -->
+## [v3.19.0](https://github.com/chef/mixlib-install/tree/v3.19.0) (2026-07-28)
 
 #### Merged Pull Requests
-- feat: add chef-workstation-enterprise product [#429](https://github.com/chef/mixlib-install/pull/429) ([Stromweld](https://github.com/Stromweld))
+- add migrate-ice product [#432](https://github.com/chef/mixlib-install/pull/432) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
 <!-- release_rollup since=3.17.0 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- add migrate-ice product [#432](https://github.com/chef/mixlib-install/pull/432) ([Stromweld](https://github.com/Stromweld)) <!-- 3.19.0 -->
 - feat: add chef-workstation-enterprise product [#429](https://github.com/chef/mixlib-install/pull/429) ([Stromweld](https://github.com/Stromweld)) <!-- 3.18.0 -->
 - remove free- prefix from trial api endpoint url resolution. [#428](https://github.com/chef/mixlib-install/pull/428) ([Stromweld](https://github.com/Stromweld)) <!-- 3.17.3 -->
 - Normalize GH workflows [#425](https://github.com/chef/mixlib-install/pull/425) ([jaymzh](https://github.com/jaymzh)) <!-- 3.17.2 -->
