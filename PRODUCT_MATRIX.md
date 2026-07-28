@@ -23,6 +23,7 @@
 | Habitat Mac Bootstrapper | mac-bootstrapper |
 | Management Console | manage |
 | Chef Cloud Marketplace addon | marketplace |
+| Chef Infra-Client migration tool | migrate-ice |
 | Omnibus GCC Package | omnibus-gcc |
 | Omnibus Toolchain | omnibus-toolchain |
 | Enterprise Chef (legacy) | private-chef |

@@ -199,6 +199,11 @@ PRODUCT_MATRIX = Mixlib::Install::ProductMatrix.new do
     downloads_product_page_url :not_available
   end
 
+  product "migrate-ice" do
+    product_name "Chef Infra-Client migration tool"
+    package_name "migrate-ice"
+  end
+
   product "omnibus-toolchain" do
     product_name "Omnibus Toolchain"
     package_name "omnibus-toolchain"
