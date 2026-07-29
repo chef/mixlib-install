@@ -26,7 +26,7 @@ machine=`uname -m`
 os=`uname -s`
 
 if [ -f "/etc/lsb-release" ] && grep DISTRIB_ID /etc/lsb-release >/dev/null && ! grep wrlinux /etc/lsb-release >/dev/null; then
-  platform=`grep DISTRIB_ID /etc/lsb-release | cut -d "=" -f 2 | tr '[A-Z]' '[a-z]'`
+  platform=`grep DISTRIB_ID /etc/lsb-release | cut -d "=" -f 2 | tr 'A-Z' 'a-z'`
   platform_version=`grep DISTRIB_RELEASE /etc/lsb-release | cut -d "=" -f 2`
 
   if [ "$platform" = '"cumulus linux"' ]; then
@@ -44,11 +44,11 @@ elif [ -f "/etc/Eos-release" ]; then
   platform_version=`awk '{print $4}' /etc/Eos-release`
   machine="i386"
 elif [ -f "/etc/redhat-release" ]; then
-  platform=`sed 's/^\(.\+\) release.*/\1/' /etc/redhat-release | tr '[A-Z]' '[a-z]'`
+  platform=`sed 's/^\(.\+\) release.*/\1/' /etc/redhat-release | tr 'A-Z' 'a-z'`
   platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release`
 
   if [ "$platform" = "rocky linux" ]; then
-  	source /etc/os-release
+  	. /etc/os-release
  	os="${REDHAT_SUPPORT_PRODUCT}"
   	platform_version="${ROCKY_SUPPORT_PRODUCT_VERSION}"
         platform=$ID
@@ -62,8 +62,8 @@ elif [ -f "/etc/redhat-release" ]; then
   fi
 
 elif [ -f "/etc/system-release" ]; then
-  platform=`sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
-  platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/system-release | tr '[A-Z]' '[a-z]'`
+  platform=`sed 's/^\(.\+\) release.\+/\1/' /etc/system-release | tr 'A-Z' 'a-z'`
+  platform_version=`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/system-release | tr 'A-Z' 'a-z'`
   case $platform in amazon*) # sh compat method of checking for a substring
     . /etc/os-release
     platform_version=$VERSION_ID
@@ -71,7 +71,6 @@ elif [ -f "/etc/system-release" ]; then
     case $platform_version in
       "2022"|"2023")
         platform="amazon"
-        platform_version=$platform_version
       ;;
       "2")
         platform="el"
@@ -120,7 +119,7 @@ elif [ "$os" = "AIX" ]; then
 elif [ -f "/etc/os-release" ]; then
   . /etc/os-release
   if [ -n "$CISCO_RELEASE_INFO" ]; then
-    . $CISCO_RELEASE_INFO
+    . "$CISCO_RELEASE_INFO"
   fi
 
   platform=$ID
@@ -150,7 +149,7 @@ fi
 #   now the complete responsibility of the server-side endpoints
 #
 
-major_version=`echo $platform_version | cut -d. -f1`
+major_version=`echo "$platform_version" | cut -d. -f1`
 case $platform in
   # FIXME: should remove this case statement completely
   "el")

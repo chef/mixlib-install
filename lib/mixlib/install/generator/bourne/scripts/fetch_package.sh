@@ -57,8 +57,8 @@ if [ -n "$license_id" ] || ! has_package_filename "$download_url"; then
 else
   # Traditional omnitruck URLs have the filename in the URL
   use_content_disposition="false"
-  filename=`echo $download_url | sed -e 's/?.*//' | sed -e 's/^.*\///'`
-  filetype=`echo $filename | sed -e 's/^.*\.//'`
+  filename=`echo "$download_url" | sed -e 's/?.*//' | sed -e 's/^.*\///'`
+  filetype=`echo "$filename" | sed -e 's/^.*\.//'`
 
   # use either $tmp_dir, the provided directory (-d) or the provided filename (-f)
   if [ -n "$cmdline_filename" ]; then
@@ -68,9 +68,9 @@ else
   else
     download_filename="$tmp_dir/$filename"
   fi
-  download_dir=`dirname $download_filename`
+  download_dir=`dirname "$download_filename"`
 fi
-(umask 077 && mkdir -p $download_dir) || exit 1
+(umask 077 && mkdir -p "$download_dir") || exit 1
 
 # check if we have that file locally available and if so verify the checksum
 # Use cases
@@ -135,17 +135,17 @@ if [ "$cached_file_available" != "true" ]; then
     if [ -f "$tmp_dir/stderr" ]; then
       # Method 1: Try to extract filename from content-disposition header
       # Format: content-disposition: attachment; filename="chef-18.8.54-1.el9.x86_64.rpm"
-      actual_filename=`grep -i 'content-disposition' $tmp_dir/stderr | sed -n 's/.*filename="\([^"]*\)".*/\1/p' | head -1`
+      actual_filename=`grep -i 'content-disposition' "$tmp_dir"/stderr | sed -n 's/.*filename="\([^"]*\)".*/\1/p' | head -1`
 
       # Method 2: If content-disposition failed, try to extract from location redirect header
       # Format: location: https://packages.chef.io/files/stable/chef/18.8.54/el/9/chef-18.8.54-1.el9.x86_64.rpm?licenseId=...
       if [ -z "$actual_filename" ]; then
-        actual_filename=`grep -i '^location:' $tmp_dir/stderr | head -1 | sed 's/.*\///' | sed 's/?.*//'`
+        actual_filename=`grep -i '^location:' "$tmp_dir"/stderr | head -1 | sed 's/.*\///' | sed 's/?.*//'`
       fi
 
       # Method 3: Try extracting from any URL-like pattern in stderr
       if [ -z "$actual_filename" ]; then
-        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg' $tmp_dir/stderr | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\)\).*/\1/p' | head -1`
+        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg' "$tmp_dir"/stderr | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\)\).*/\1/p' | head -1`
       fi
     fi
 
@@ -171,7 +171,7 @@ if [ "$cached_file_available" != "true" ]; then
     mv "$temp_download" "$download_filename"
 
     # Extract filetype from actual filename
-    filetype=`echo $actual_filename | sed -e 's/^.*\.//'`
+    filetype=`echo "$actual_filename" | sed -e 's/^.*\.//'`
 
     echo "Downloaded as: $download_filename (type: $filetype)"
   else

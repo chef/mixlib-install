@@ -2,7 +2,10 @@
 # Set strict error handling to ensure errors cause script failures
 $ErrorActionPreference = 'Stop'
 
-try { [Console]::OutputEncoding = New-Object -typename System.Text.ASCIIEncoding } catch { }
+try { [Console]::OutputEncoding = New-Object -typename System.Text.ASCIIEncoding } catch {
+  # non-interactive/redirected hosts may not allow setting this; safe to ignore
+  Write-Verbose "Unable to set console output encoding: $($_.Exception.Message)"
+}
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12'
 
 function Get-PlatformVersion {
@@ -36,11 +39,11 @@ function Get-PlatformArchitecture {
 }
 
 function Get-Win32OS {
-  if(!$global:win32OS)
+  if(!$script:win32OS)
   {
-    $global:win32OS = Get-WMIQuery win32_operatingsystem
+    $script:win32OS = Get-WMIQuery win32_operatingsystem
   }
-  $global:win32OS
+  $script:win32OS
 }
 
 function New-Uri {
@@ -88,7 +91,7 @@ function Get-WebContentOnFullNet {
   $bypassList = $env:no_proxy
 
 
-  if($bypassList -ne $null){
+  if($null -ne $bypassList){
 
 	 $bypassList = $bypassList.split(",")
 	 $proxy.BypassList = $byPassList
@@ -147,7 +150,7 @@ function Get-WebContentOnCore {
         $copyStreamOp = $response.Content.CopyToAsync($downloadedFileStream)
         $copyStreamOp.Wait()
         $downloadedFileStream.Close()
-        if ($copyStreamOp.Exception -ne $null) {
+        if ($null -ne $copyStreamOp.Exception) {
           throw $copyStreamOp.Exception
         }
 
@@ -173,7 +176,7 @@ function Test-ProjectPackage {
   param ($Path, $Algorithm = 'SHA256', $Hash)
   if (!$env:Valid_ProjectPackage){
     Write-Host "Testing the $Algorithm hash for $path."
-    $ActualHash = (Custom-GetFileHash -Algorithm $Algorithm -Path $Path).Hash.ToLower()
+    $ActualHash = (Get-CustomFileHash -Algorithm $Algorithm -Path $Path).Hash.ToLower()
 
     Write-Host "`tDesired Hash - '$Hash'"
     Write-Host "`tActual Hash  - '$ActualHash'"
@@ -185,13 +188,13 @@ function Test-ProjectPackage {
   return $env:Valid_ProjectPackage
 }
 
-function Custom-GetFileHash ($Path, $Algorithm) {
+function Get-CustomFileHash ($Path, $Algorithm) {
   function disposable($o){($o -is [IDisposable]) -and (($o | get-member | foreach-object {$_.name}) -contains 'Dispose')}
   function use($obj, [scriptblock]$sb){try {& $sb} catch [exception]{throw $_} finally {if (disposable $obj) {$obj.Dispose()}} }
   $Path = (resolve-path $Path).providerpath
   $hash = @{Algorithm = $Algorithm; Path = $Path}
   use ($c = Get-SHA256Converter) {
-    use ($in = (gi $Path).OpenRead()) {
+    use ($in = (Get-Item $Path).OpenRead()) {
       $hash.Hash = ([BitConverter]::ToString($c.ComputeHash($in))).Replace("-", "").ToUpper()
     }
   }
@@ -199,7 +202,7 @@ function Custom-GetFileHash ($Path, $Algorithm) {
 }
 
 function Get-SHA256Converter {
-  if ($(Is-FIPS) -ge 1) {
+  if ($(Test-Fips) -ge 1) {
     New-Object -TypeName Security.Cryptography.SHA256Cng
   } else {
     if($PSVersionTable.PSEdition -eq 'Core') {
@@ -211,7 +214,7 @@ function Get-SHA256Converter {
   }
 }
 
-function Is-FIPS {
+function Test-Fips {
   if (!$env:fips){
     $env:fips = (Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\FipsAlgorithmPolicy).Enabled
   }
