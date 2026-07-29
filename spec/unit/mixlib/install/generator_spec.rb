@@ -41,7 +41,7 @@ context "Mixlib::Install::Generator", :vcr do
     it "generates an sh script" do
       expect(install_script).to be_a(String)
       expect(install_script).to start_with("#!/bin/sh")
-      expect(install_script).to include('install_file $filetype "$download_filename"')
+      expect(install_script).to include('install_file "$filetype" "$download_filename"')
     end
     it "sets http proxy environment variables" do
       expect(install_script).to match(/^\s*HTTPS_PROXY=\S+/)
@@ -81,7 +81,7 @@ context "Mixlib::Install::Generator", :vcr do
 
       it "uses traditional text parsing for omnitruck without license_id" do
         expect(install_script).to include("awk '$1 == \"url\" { print $2 }'")
-        expect(install_script).to include("grep '^url' $metadata_filename")
+        expect(install_script).to include("grep '^url' \"$metadata_filename\"")
       end
     end
 
@@ -133,7 +133,7 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "extracts filetype from actual downloaded filename" do
-        expect(install_script).to include("filetype=`echo $actual_filename | sed -e 's/^.*\\.//'`")
+        expect(install_script).to include("filetype=`echo \"$actual_filename\" | sed -e 's/^.*\\.//'`")
       end
     end
 
@@ -225,7 +225,7 @@ context "Mixlib::Install::Generator", :vcr do
       end
 
       it "extracts filetype from actual downloaded filename" do
-        expect(install_script).to include("filetype=`echo $actual_filename | sed -e 's/^.*\\.//'`")
+        expect(install_script).to include("filetype=`echo \"$actual_filename\" | sed -e 's/^.*\\.//'`")
       end
     end
 
@@ -246,7 +246,7 @@ context "Mixlib::Install::Generator", :vcr do
 
       it "uses traditional text parsing without license_id" do
         expect(install_script).to include("awk '$1 == \"url\" { print $2 }'")
-        expect(install_script).to include("grep '^url' $metadata_filename")
+        expect(install_script).to include("grep '^url' \"$metadata_filename\"")
       end
     end
 

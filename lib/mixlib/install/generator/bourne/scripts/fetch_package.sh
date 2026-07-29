@@ -44,7 +44,7 @@ if [ -n "$license_id" ] || ! has_package_filename "$download_url"; then
   # Just set the download directory
   if [ -n "$cmdline_filename" ]; then
     download_filename="$cmdline_filename"
-    download_dir=`dirname $download_filename`
+    download_dir=`dirname "$download_filename"`
     use_content_disposition="false"  # User specified exact filename
   elif [ -n "$cmdline_dl_dir" ]; then
     download_dir="$cmdline_dl_dir"

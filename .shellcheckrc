@@ -1,0 +1,37 @@
+# ShellCheck config for the generated install.sh
+#
+# The bourne generator (lib/mixlib/install/generator/bourne) intentionally
+# targets a lowest-common-denominator /bin/sh so the script can run on true
+# Bourne shells (Solaris 9, AIX 6.x) that predate $(...) command substitution,
+# [[ ]], arrays, and POSIX character classes. The rules below are disabled
+# because "fixing" them would either break that compatibility goal or flag
+# patterns that are false positives for this script's structure.
+
+# Use $(...) instead of legacy backticks. Backticks are kept on purpose for
+# true Bourne shell compatibility (see generator commit history).
+disable=SC2006
+
+# Use '[:upper:]'/'[:lower:]' with tr. Bracket expressions aren't reliably
+# supported by tr on the ancient Unix platforms this script targets.
+disable=SC2018
+disable=SC2019
+
+# ShellCheck can't/won't follow sourced files like /etc/os-release or a
+# runtime-provided $CISCO_RELEASE_INFO path. These are expected at runtime
+# and not something the script can (or should) resolve statically.
+disable=SC1090
+disable=SC1091
+
+# Possible misspelling: variables like VERSION come from sourcing
+# /etc/os-release, not from a typo of the script's own $version variable.
+disable=SC2153
+
+# Referenced but not assigned: several script_cli_parameters.sh variables
+# (e.g. install_strategy) are only assigned when their matching getopts flag
+# is passed on the command line, so ShellCheck can't see a default assignment.
+disable=SC2154
+
+# Check exit code directly with 'if ! mycmd'. Several checks need $? after a
+# redirected command or a case/esac block, where rewriting to 'if ! ...' isn't
+# possible in POSIX sh.
+disable=SC2181

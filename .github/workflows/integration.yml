@@ -27,6 +27,7 @@ jobs:
           - 3.2
           - 3.3
           - 3.4
+          - "4.0"
     steps:
       - name: Enable long paths on Windows
         if: runner.os == 'Windows'

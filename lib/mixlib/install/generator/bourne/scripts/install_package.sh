@@ -22,7 +22,7 @@ if [ -z "$version" ] && [ "$CI" != "true" ]; then
   echo
 fi
 
-install_file $filetype "$download_filename"
+install_file "$filetype" "$download_filename"
 
 if [ -n "$tmp_dir" ]; then
   rm -r "$tmp_dir"
