@@ -115,7 +115,6 @@ capture_tmp_stderr() {
 # do_wget URL FILENAME
 do_wget() {
   echo "trying wget..."
-  # -S prints response headers to stderr so fetch_package.sh can read Content-Disposition/Location
   # If filename is empty, use --content-disposition to get filename from server
   if [ -z "$2" ]; then
     wget -S --user-agent="User-Agent: <%= user_agent_string %>" --content-disposition "$1" 2>$tmp_dir/stderr
