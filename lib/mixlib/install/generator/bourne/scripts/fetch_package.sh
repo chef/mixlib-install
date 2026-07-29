@@ -155,7 +155,11 @@ if [ "$cached_file_available" != "true" ]; then
     if [ -f "$tmp_dir/stderr" ]; then
       # Method 1: Try to extract filename from content-disposition header
       # Format: content-disposition: attachment; filename="chef-18.8.54-1.el9.x86_64.rpm"
+      # Some servers omit the quotes: content-disposition: attachment; filename=chef-18.8.54-1.el9.x86_64.rpm
       actual_filename=`grep -i 'content-disposition' $tmp_dir/stderr | sed -n 's/.*filename="\([^"]*\)".*/\1/p' | head -1`
+      if [ -z "$actual_filename" ]; then
+        actual_filename=`grep -i 'content-disposition' $tmp_dir/stderr | sed -n 's/.*filename=\([^;[:space:]]*\).*/\1/p' | head -1`
+      fi
 
       # Method 2: If content-disposition failed, try to extract from location redirect header
       # Format: location: https://packages.chef.io/files/stable/chef/18.8.54/el/9/chef-18.8.54-1.el9.x86_64.rpm?licenseId=...
@@ -164,8 +168,11 @@ if [ "$cached_file_available" != "true" ]; then
       fi
 
       # Method 3: Try extracting from any URL-like pattern in stderr
+      # Exclude any line mentioning our own local temp_download path - wget logs it
+      # (e.g. "Saving to: ..." / "... saved") and it lives under tmp_dir, which is
+      # named install.sh.<pid> and can spuriously match the ".sh" extension below.
       if [ -z "$actual_filename" ]; then
-        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg\|\.bff\|\.p5p\|\.solaris\|\.sh' $tmp_dir/stderr | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\|bff\|p5p\|solaris\|sh\)\).*/\1/p' | head -1`
+        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg\|\.bff\|\.p5p\|\.solaris\|\.sh' $tmp_dir/stderr | grep -vF "$temp_download" | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\|bff\|p5p\|solaris\|sh\)\).*/\1/p' | head -1`
       fi
     fi
 
