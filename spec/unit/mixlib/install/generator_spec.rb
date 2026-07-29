@@ -41,7 +41,7 @@ context "Mixlib::Install::Generator", :vcr do
     it "generates an sh script" do
       expect(install_script).to be_a(String)
       expect(install_script).to start_with("#!/bin/sh")
-      expect(install_script).to include('install_file $filetype "$download_filename"')
+      expect(install_script).to include('install_file "$filetype" "$download_filename"')
     end
     it "sets http proxy environment variables" do
       expect(install_script).to match(/^\s*HTTPS_PROXY=\S+/)

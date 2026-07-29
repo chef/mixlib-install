@@ -165,7 +165,7 @@ if [ "$cached_file_available" != "true" ]; then
 
       # Method 3: Try extracting from any URL-like pattern in stderr
       if [ -z "$actual_filename" ]; then
-        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg' $tmp_dir/stderr | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\)\).*/\1/p' | head -1`
+        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg\|\.bff\|\.p5p\|\.solaris\|\.sh' $tmp_dir/stderr | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\|bff\|p5p\|solaris\|sh\)\).*/\1/p' | head -1`
       fi
     fi
 
@@ -180,6 +180,10 @@ if [ "$cached_file_available" != "true" ]; then
         actual_filename="chef_${version}-1_${machine}.deb"
       elif [ "$platform" = "mac_os_x" ]; then
         actual_filename="chef-${version}.dmg"
+      elif [ "$platform" = "aix" ]; then
+        actual_filename="chef-${version}.bff"
+      elif [ "$platform" = "solaris2" ]; then
+        actual_filename="chef-${version}.solaris"
       else
         actual_filename="chef-${version}.pkg"
       fi
