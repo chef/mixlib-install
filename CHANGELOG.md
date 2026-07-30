@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.19.0 -->
-## [v3.19.0](https://github.com/chef/mixlib-install/tree/v3.19.0) (2026-07-28)
+<!-- latest_release 3.19.1 -->
+## [v3.19.1](https://github.com/chef/mixlib-install/tree/v3.19.1) (2026-07-30)
 
 #### Merged Pull Requests
-- add migrate-ice product [#432](https://github.com/chef/mixlib-install/pull/432) ([Stromweld](https://github.com/Stromweld))
+- CHEF-35767: Fix filetype extraction when using -f flag with license_id [#427](https://github.com/chef/mixlib-install/pull/427) ([muthuja](https://github.com/muthuja))
 <!-- latest_release -->
 <!-- release_rollup since=3.17.0 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-35767: Fix filetype extraction when using -f flag with license_id [#427](https://github.com/chef/mixlib-install/pull/427) ([muthuja](https://github.com/muthuja)) <!-- 3.19.1 -->
 - add migrate-ice product [#432](https://github.com/chef/mixlib-install/pull/432) ([Stromweld](https://github.com/Stromweld)) <!-- 3.19.0 -->
 - feat: add chef-workstation-enterprise product [#429](https://github.com/chef/mixlib-install/pull/429) ([Stromweld](https://github.com/Stromweld)) <!-- 3.18.0 -->
 - remove free- prefix from trial api endpoint url resolution. [#428](https://github.com/chef/mixlib-install/pull/428) ([Stromweld](https://github.com/Stromweld)) <!-- 3.17.3 -->
