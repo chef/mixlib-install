@@ -41,7 +41,7 @@ context "Mixlib::Install::Generator", :vcr do
     it "generates an sh script" do
       expect(install_script).to be_a(String)
       expect(install_script).to start_with("#!/bin/sh")
-      expect(install_script).to include('install_file $filetype "$download_filename"')
+      expect(install_script).to include('install_file "$filetype" "$download_filename"')
     end
     it "sets http proxy environment variables" do
       expect(install_script).to match(/^\s*HTTPS_PROXY=\S+/)
@@ -213,7 +213,7 @@ context "Mixlib::Install::Generator", :vcr do
         expect(install_script).to include("sed 's/?.*//'")
 
         # Method 3: URL pattern matching
-        expect(install_script).to include("grep -i '\\.rpm\\|\\.deb\\|\\.pkg\\|\\.msi\\|\\.dmg'")
+        expect(install_script).to include("grep -i '\\.rpm\\|\\.deb\\|\\.pkg\\|\\.msi\\|\\.dmg\\|\\.bff\\|\\.p5p\\|\\.solaris\\|\\.sh'")
       end
 
       it "includes fallback filename construction" do

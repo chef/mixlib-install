@@ -44,16 +44,36 @@ if [ -n "$license_id" ] || ! has_package_filename "$download_url"; then
   # Just set the download directory
   if [ -n "$cmdline_filename" ]; then
     download_filename="$cmdline_filename"
-    download_dir=`dirname $download_filename`
+    download_dir=`dirname "$download_filename"`
     use_content_disposition="false"  # User specified exact filename
+    
+    # Extract filetype from filename (not path) to avoid issues with dots in directory names
+    cmdline_basename=`basename "$cmdline_filename"`
+    case "$cmdline_basename" in
+      *.*) filetype="${cmdline_basename##*.}" ;;
+      *)
+        echo "Error: -f must include the full package filename (including extension, e.g. .rpm/.deb/.msi)"
+        exit 1
+        ;;
+    esac
+    
+    # Validate against known package types
+    case "$filetype" in
+      rpm|deb|pkg|msi|dmg|bff|p5p|solaris|sh) : ;;
+      *)
+        echo "Error: Unknown package filetype '$filetype' derived from -f '$cmdline_filename'"
+        exit 1
+        ;;
+    esac
   elif [ -n "$cmdline_dl_dir" ]; then
     download_dir="$cmdline_dl_dir"
     download_filename=""  # Will be determined after download
+    filetype=""  # Will be determined after we get the actual filename
   else
     download_dir="$tmp_dir"
     download_filename=""  # Will be determined after download
+    filetype=""  # Will be determined after we get the actual filename
   fi
-  filetype=""  # Will be determined after we get the actual filename
 else
   # Traditional omnitruck URLs have the filename in the URL
   use_content_disposition="false"
@@ -135,7 +155,11 @@ if [ "$cached_file_available" != "true" ]; then
     if [ -f "$tmp_dir/stderr" ]; then
       # Method 1: Try to extract filename from content-disposition header
       # Format: content-disposition: attachment; filename="chef-18.8.54-1.el9.x86_64.rpm"
+      # Some servers omit the quotes: content-disposition: attachment; filename=chef-18.8.54-1.el9.x86_64.rpm
       actual_filename=`grep -i 'content-disposition' $tmp_dir/stderr | sed -n 's/.*filename="\([^"]*\)".*/\1/p' | head -1`
+      if [ -z "$actual_filename" ]; then
+        actual_filename=`grep -i 'content-disposition' $tmp_dir/stderr | sed -n 's/.*filename=\([^;[:space:]]*\).*/\1/p' | head -1`
+      fi
 
       # Method 2: If content-disposition failed, try to extract from location redirect header
       # Format: location: https://packages.chef.io/files/stable/chef/18.8.54/el/9/chef-18.8.54-1.el9.x86_64.rpm?licenseId=...
@@ -144,8 +168,11 @@ if [ "$cached_file_available" != "true" ]; then
       fi
 
       # Method 3: Try extracting from any URL-like pattern in stderr
+      # Exclude any line mentioning our own local temp_download path - wget logs it
+      # (e.g. "Saving to: ..." / "... saved") and it lives under tmp_dir, which is
+      # named install.sh.<pid> and can spuriously match the ".sh" extension below.
       if [ -z "$actual_filename" ]; then
-        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg' $tmp_dir/stderr | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\)\).*/\1/p' | head -1`
+        actual_filename=`grep -i '\.rpm\|\.deb\|\.pkg\|\.msi\|\.dmg\|\.bff\|\.p5p\|\.solaris\|\.sh' $tmp_dir/stderr | grep -vF "$temp_download" | sed -n 's/.*\/\([^/?]*\.\(rpm\|deb\|pkg\|msi\|dmg\|bff\|p5p\|solaris\|sh\)\).*/\1/p' | head -1`
       fi
     fi
 
@@ -160,6 +187,10 @@ if [ "$cached_file_available" != "true" ]; then
         actual_filename="chef_${version}-1_${machine}.deb"
       elif [ "$platform" = "mac_os_x" ]; then
         actual_filename="chef-${version}.dmg"
+      elif [ "$platform" = "aix" ]; then
+        actual_filename="chef-${version}.bff"
+      elif [ "$platform" = "solaris2" ]; then
+        actual_filename="chef-${version}.solaris"
       else
         actual_filename="chef-${version}.pkg"
       fi
