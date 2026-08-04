@@ -30,7 +30,7 @@
 
 # Check whether a command exists - returns 0 if it does, 1 if it does not
 exists() {
-  if command -v $1 >/dev/null 2>&1
+  if command -v "$1" >/dev/null 2>&1
   then
     return 0
   else
@@ -66,7 +66,7 @@ unable_to_retrieve_package() {
     echo "Download URL: $download_url"
   fi
   if [ -n "$stderr_results" ]; then
-    echo "\nDEBUG OUTPUT FOLLOWS:\n$stderr_results"
+    printf '\nDEBUG OUTPUT FOLLOWS:\n%s\n' "$stderr_results"
   fi
   exit 1
 }
@@ -98,7 +98,7 @@ http_404_error() {
     echo "Download URL: $download_url"
   fi
   if [ -n "$stderr_results" ]; then
-    echo "\nDEBUG OUTPUT FOLLOWS:\n$stderr_results"
+    printf '\nDEBUG OUTPUT FOLLOWS:\n%s\n' "$stderr_results"
   fi
   exit 1
 }
@@ -106,9 +106,9 @@ http_404_error() {
 capture_tmp_stderr() {
   # spool up /tmp/stderr from all the commands we called
   if [ -f "$tmp_dir/stderr" ]; then
-    output=`cat $tmp_dir/stderr`
+    output=`cat "$tmp_dir"/stderr`
     stderr_results="${stderr_results}\nSTDERR from $1:\n\n$output\n"
-    rm $tmp_dir/stderr
+    rm "$tmp_dir"/stderr
   fi
 }
 
@@ -117,13 +117,13 @@ do_wget() {
   echo "trying wget..."
   # If filename is empty, use --content-disposition to get filename from server
   if [ -z "$2" ]; then
-    wget -S --user-agent="User-Agent: <%= user_agent_string %>" --content-disposition "$1" 2>$tmp_dir/stderr
+    wget -S --user-agent="User-Agent: <%= user_agent_string %>" --content-disposition "$1" 2>"$tmp_dir"/stderr
   else
-    wget -S --user-agent="User-Agent: <%= user_agent_string %>" -O "$2" "$1" 2>$tmp_dir/stderr
+    wget -S --user-agent="User-Agent: <%= user_agent_string %>" -O "$2" "$1" 2>"$tmp_dir"/stderr
   fi
   rc=$?
   # check for 404
-  if grep "ERROR 404" $tmp_dir/stderr 2>&1 >/dev/null; then
+  if grep "ERROR 404" "$tmp_dir"/stderr >/dev/null 2>&1; then
     echo "ERROR 404"
     http_404_error
   fi
@@ -148,15 +148,15 @@ do_curl() {
   echo "trying curl..."
   # If filename is empty, use -O and -J to get filename from Content-Disposition header
   if [ -z "$2" ]; then
-    curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL --fail -D $tmp_dir/stderr -O -J "$1"
+    curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL --fail -D "$tmp_dir"/stderr -O -J "$1"
     rc=$?
   else
-    curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL --fail -D $tmp_dir/stderr "$1" > "$2"
+    curl -A "User-Agent: <%= user_agent_string %>" --retry 5 -sL --fail -D "$tmp_dir"/stderr "$1" > "$2"
     rc=$?
   fi
 
   # check for 404 (matches both HTTP/1.1 "404 Not Found" and HTTP/2 "404")
-  if grep "404" $tmp_dir/stderr 2>&1 >/dev/null; then
+  if grep "404" "$tmp_dir"/stderr >/dev/null 2>&1; then
     echo "ERROR 404"
     http_404_error
   fi
@@ -179,7 +179,7 @@ do_curl() {
 # do_fetch URL FILENAME
 do_fetch() {
   echo "trying fetch..."
-  fetch --user-agent="User-Agent: <%= user_agent_string %>" -o "$2" "$1" 2>$tmp_dir/stderr
+  fetch --user-agent="User-Agent: <%= user_agent_string %>" -o "$2" "$1" 2>"$tmp_dir"/stderr
   # check for bad return status
   [ $? -ne 0 ] && return 1
   return 0
@@ -188,11 +188,11 @@ do_fetch() {
 # do_perl URL FILENAME
 do_perl() {
   echo "trying perl..."
-  perl -e 'use LWP::Simple; getprint($ARGV[0]);' "$1" > "$2" 2>$tmp_dir/stderr
+  perl -e 'use LWP::Simple; getprint($ARGV[0]);' "$1" > "$2" 2>"$tmp_dir"/stderr
   rc=$?
   # check for HTTP error status codes (4xx/5xx)
-  if grep "^[45][0-9][0-9] " $tmp_dir/stderr 2>&1 >/dev/null; then
-    if grep "404 Not Found" $tmp_dir/stderr 2>&1 >/dev/null; then
+  if grep "^[45][0-9][0-9] " "$tmp_dir"/stderr >/dev/null 2>&1; then
+    if grep "404 Not Found" "$tmp_dir"/stderr >/dev/null 2>&1; then
       echo "ERROR 404"
       http_404_error
     fi
@@ -212,10 +212,10 @@ do_perl() {
 # do_python URL FILENAME
 do_python() {
   echo "trying python..."
-  python -c "import sys,urllib2; sys.stdout.write(urllib2.urlopen(urllib2.Request(sys.argv[1], headers={ 'User-Agent': '<%= user_agent_string %>' })).read())" "$1" > "$2" 2>$tmp_dir/stderr
+  python -c "import sys,urllib2; sys.stdout.write(urllib2.urlopen(urllib2.Request(sys.argv[1], headers={ 'User-Agent': '<%= user_agent_string %>' })).read())" "$1" > "$2" 2>"$tmp_dir"/stderr
   rc=$?
   # check for 404
-  if grep "HTTP Error 404" $tmp_dir/stderr 2>&1 >/dev/null; then
+  if grep "HTTP Error 404" "$tmp_dir"/stderr >/dev/null 2>&1; then
     echo "ERROR 404"
     http_404_error
   fi
@@ -232,12 +232,12 @@ do_python() {
 do_checksum() {
   if exists sha256sum; then
     echo "Comparing checksum with sha256sum..."
-    checksum=`sha256sum $1 | awk '{ print $1 }'`
+    checksum=`sha256sum "$1" | awk '{ print $1 }'`
     [ "$checksum" = "$2" ]
     return $?
   elif exists shasum; then
     echo "Comparing checksum with shasum..."
-    checksum=`shasum -a 256 $1 | awk '{ print $1 }'`
+    checksum=`shasum -a 256 "$1" | awk '{ print $1 }'`
     [ "$checksum" = "$2" ]
     return $?
   else
@@ -251,11 +251,11 @@ do_download() {
   echo "downloading $1"
   echo "  to file $2"
 
-  url=`echo $1`
+  url="$1"
   if [ "$platform" = "solaris2" ]; then
     if [ "$platform_version" = "5.9" ] || [ "$platform_version" = "5.10" ]; then
       # solaris 9 lacks openssl, solaris 10 lacks recent enough credentials - your base O/S is completely insecure, please upgrade
-      url=`echo $url | sed -e 's/https/http/'`
+      url=`echo "$url" | sed -e 's/https/http/'`
     fi
   fi
 
@@ -263,23 +263,23 @@ do_download() {
   # perl, in particular may be present but LWP::Simple may not be installed
 
   if exists wget; then
-    do_wget $url $2 && return 0
+    do_wget "$url" "$2" && return 0
   fi
 
   if exists curl; then
-    do_curl $url $2 && return 0
+    do_curl "$url" "$2" && return 0
   fi
 
   if exists fetch; then
-    do_fetch $url $2 && return 0
+    do_fetch "$url" "$2" && return 0
   fi
 
   if exists perl; then
-    do_perl $url $2 && return 0
+    do_perl "$url" "$2" && return 0
   fi
 
   if exists python; then
-    do_python $url $2 && return 0
+    do_python "$url" "$2" && return 0
   fi
 
   unable_to_retrieve_package
@@ -311,11 +311,11 @@ install_file() {
       ;;
     "solaris")
       echo "installing with pkgadd..."
-      echo "conflict=nocheck" > $tmp_dir/nocheck
-      echo "action=nocheck" >> $tmp_dir/nocheck
-      echo "mail=" >> $tmp_dir/nocheck
-      pkgrm -a $tmp_dir/nocheck -n $project >/dev/null 2>&1 || true
-      pkgadd -G -n -d "$2" -a $tmp_dir/nocheck $project
+      echo "conflict=nocheck" > "$tmp_dir"/nocheck
+      echo "action=nocheck" >> "$tmp_dir"/nocheck
+      echo "mail=" >> "$tmp_dir"/nocheck
+      pkgrm -a "$tmp_dir"/nocheck -n "$project" >/dev/null 2>&1 || true
+      pkgadd -G -n -d "$2" -a "$tmp_dir"/nocheck "$project"
       ;;
     "pkg")
       echo "installing with installer..."
@@ -325,7 +325,7 @@ install_file() {
       echo "installing dmg file..."
       hdiutil detach "/Volumes/<%= macos_dir %>" >/dev/null 2>&1 || true
       hdiutil attach "$2" -mountpoint "/Volumes/<%= macos_dir %>"
-      cd / && /usr/sbin/installer -pkg `find "/Volumes/<%= macos_dir %>" -name \*.pkg` -target /
+      cd / && /usr/sbin/installer -pkg "`find "/Volumes/<%= macos_dir %>" -name \*.pkg`" -target /
       hdiutil detach "/Volumes/<%= macos_dir %>"
       ;;
     "sh" )
@@ -334,7 +334,7 @@ install_file() {
       ;;
     "p5p" )
       echo "installing p5p package..."
-      pkg install -g "$2" $project
+      pkg install -g "$2" "$project"
       ;;
     *)
       echo "Unknown filetype: $1"
@@ -356,7 +356,7 @@ else
 fi
 # secure-ish temp dir creation without having mktemp available (DDoS-able but not exploitable)
 tmp_dir="$tmp/install.sh.$$"
-(umask 077 && mkdir $tmp_dir) || exit 1
+(umask 077 && mkdir "$tmp_dir") || exit 1
 
 ############
 # end of helpers.sh

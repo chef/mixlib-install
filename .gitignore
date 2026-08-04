@@ -12,3 +12,5 @@ tags
 .kitchen/
 .kitchen.local.yml
 *.gem
+install.sh
+install.ps1

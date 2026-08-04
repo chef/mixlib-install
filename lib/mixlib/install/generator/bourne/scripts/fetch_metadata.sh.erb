@@ -101,7 +101,7 @@ if [ -z "$download_url_override" ]; then
     fi
   else
     # Parse text response from omnitruck
-    if grep '^url' $metadata_filename > /dev/null && grep '^sha256' $metadata_filename > /dev/null; then
+    if grep '^url' "$metadata_filename" > /dev/null && grep '^sha256' "$metadata_filename" > /dev/null; then
       echo "downloaded metadata file looks valid..."
       download_url=`awk '$1 == "url" { print $2 }' "$metadata_filename"`
       sha256=`awk '$1 == "sha256" { print $2 }' "$metadata_filename"`

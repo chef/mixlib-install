@@ -17,7 +17,6 @@ function Get-ProjectMetadata {
     # Base url to retrieve metadata from.
     [uri]
     $base_server_uri,
-    [string]
     # Project to install
     [string]
     $project = '<%= default_product %>',
@@ -135,7 +134,7 @@ function Get-ProjectMetadata {
   } else {
     # Parse text response from omnitruck
     $package_metadata = $response -split '\n' |
-      foreach { $hash = @{} } {$key, $value = $_ -split '\s+'; $hash.Add($key, $value)} {$hash}
+      ForEach-Object -Begin { $hash = @{} } -Process { $key, $value = $_ -split '\s+'; $hash.Add($key, $value) } -End { $hash }
   }
 
   Write-Host "Project details: "
