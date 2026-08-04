@@ -213,7 +213,7 @@ context "Mixlib::Install::Generator", :vcr do
         expect(install_script).to include("sed 's/?.*//'")
 
         # Method 3: URL pattern matching
-        expect(install_script).to include("grep -i '\\.rpm\\|\\.deb\\|\\.pkg\\|\\.msi\\|\\.dmg'")
+        expect(install_script).to include("grep -i '\\.rpm\\|\\.deb\\|\\.pkg\\|\\.msi\\|\\.dmg\\|\\.bff\\|\\.p5p\\|\\.solaris\\|\\.sh'")
       end
 
       it "includes fallback filename construction" do
