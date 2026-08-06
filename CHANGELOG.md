@@ -1,25 +1,23 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.19.2 -->
-## [v3.19.2](https://github.com/chef/mixlib-install/tree/v3.19.2) (2026-08-04)
-
-#### Merged Pull Requests
-- Harden generated install.sh/install.ps1 per shellcheck and PSScriptAnalyzer [#433](https://github.com/chef/mixlib-install/pull/433) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
-<!-- release_rollup since=3.17.0 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Harden generated install.sh/install.ps1 per shellcheck and PSScriptAnalyzer [#433](https://github.com/chef/mixlib-install/pull/433) ([Stromweld](https://github.com/Stromweld)) <!-- 3.19.2 -->
-- CHEF-35767: Fix filetype extraction when using -f flag with license_id [#427](https://github.com/chef/mixlib-install/pull/427) ([muthuja](https://github.com/muthuja)) <!-- 3.19.1 -->
-- add migrate-ice product [#432](https://github.com/chef/mixlib-install/pull/432) ([Stromweld](https://github.com/Stromweld)) <!-- 3.19.0 -->
-- feat: add chef-workstation-enterprise product [#429](https://github.com/chef/mixlib-install/pull/429) ([Stromweld](https://github.com/Stromweld)) <!-- 3.18.0 -->
-- remove free- prefix from trial api endpoint url resolution. [#428](https://github.com/chef/mixlib-install/pull/428) ([Stromweld](https://github.com/Stromweld)) <!-- 3.17.3 -->
-- Normalize GH workflows [#425](https://github.com/chef/mixlib-install/pull/425) ([jaymzh](https://github.com/jaymzh)) <!-- 3.17.2 -->
-- CHEF-27201 - Replace CONTRIBUTING.md file with standard template for Chef [#403](https://github.com/chef/mixlib-install/pull/403) ([Saburesh07](https://github.com/Saburesh07)) <!-- 3.17.1 -->
+<!-- latest_release -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.19.2](https://github.com/chef/mixlib-install/tree/v3.19.2) (2026-08-06)
+
+#### Merged Pull Requests
+- CHEF-27201 - Replace CONTRIBUTING.md file with standard template for Chef [#403](https://github.com/chef/mixlib-install/pull/403) ([Saburesh07](https://github.com/Saburesh07))
+- Normalize GH workflows [#425](https://github.com/chef/mixlib-install/pull/425) ([jaymzh](https://github.com/jaymzh))
+- remove free- prefix from trial api endpoint url resolution. [#428](https://github.com/chef/mixlib-install/pull/428) ([Stromweld](https://github.com/Stromweld))
+- feat: add chef-workstation-enterprise product [#429](https://github.com/chef/mixlib-install/pull/429) ([Stromweld](https://github.com/Stromweld))
+- add migrate-ice product [#432](https://github.com/chef/mixlib-install/pull/432) ([Stromweld](https://github.com/Stromweld))
+- CHEF-35767: Fix filetype extraction when using -f flag with license_id [#427](https://github.com/chef/mixlib-install/pull/427) ([muthuja](https://github.com/muthuja))
+- Harden generated install.sh/install.ps1 per shellcheck and PSScriptAnalyzer [#433](https://github.com/chef/mixlib-install/pull/433) ([Stromweld](https://github.com/Stromweld))
+<!-- latest_stable_release -->
+
 ## [v3.17.0](https://github.com/chef/mixlib-install/tree/v3.17.0) (2026-06-02)
 
 #### Merged Pull Requests
@@ -27,7 +25,6 @@
 - Fix markdown lint errors [#423](https://github.com/chef/mixlib-install/pull/423) ([jaymzh](https://github.com/jaymzh))
 - Tell dependabot to ignore newer contracts versions [#422](https://github.com/chef/mixlib-install/pull/422) ([jaymzh](https://github.com/jaymzh))
 - CHEF-32484: remove os normalization and make pm optional [#424](https://github.com/chef/mixlib-install/pull/424) ([Stromweld](https://github.com/Stromweld))
-<!-- latest_stable_release -->
 
 ## [v3.16.0](https://github.com/chef/mixlib-install/tree/v3.16.0) (2026-02-24)
 
