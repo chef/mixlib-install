@@ -2,10 +2,14 @@
 
 <!-- latest_release -->
 <!-- latest_release -->
-<!-- release_rollup -->
+<!-- release_rollup since=3.19.2 -->
+### Changes not yet released to rubygems.org
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v3.19.2](https://github.com/chef/mixlib-install/tree/v3.19.2) (2026-08-06)
+<!-- latest_stable_release -->
+
 ## [v3.19.2](https://github.com/chef/mixlib-install/tree/v3.19.2) (2026-08-06)
 
 #### Merged Pull Requests
@@ -16,7 +20,6 @@
 - add migrate-ice product [#432](https://github.com/chef/mixlib-install/pull/432) ([Stromweld](https://github.com/Stromweld))
 - CHEF-35767: Fix filetype extraction when using -f flag with license_id [#427](https://github.com/chef/mixlib-install/pull/427) ([muthuja](https://github.com/muthuja))
 - Harden generated install.sh/install.ps1 per shellcheck and PSScriptAnalyzer [#433](https://github.com/chef/mixlib-install/pull/433) ([Stromweld](https://github.com/Stromweld))
-<!-- latest_stable_release -->
 
 ## [v3.17.0](https://github.com/chef/mixlib-install/tree/v3.17.0) (2026-06-02)
 
