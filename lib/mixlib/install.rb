@@ -95,6 +95,10 @@ module Mixlib
     # @return [String] file path of downloaded artifact
     #
     def download_artifact(directory = Dir.pwd)
+      require "fileutils" unless defined?(FileUtils)
+      require "net/http" unless defined?(Net::HTTP)
+      require "uri" unless defined?(URI)
+
       if options.platform.nil? || options.platform_version.nil? || options.architecture.nil?
         raise "Must provide platform options to download a specific artifact"
       end
@@ -223,6 +227,7 @@ module Mixlib
                               end
 
       if File.exist? version_manifest_file
+        require "json" unless defined?(JSON)
         JSON.parse(File.read(version_manifest_file))["build_version"]
       end
     end

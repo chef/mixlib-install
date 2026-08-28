@@ -16,7 +16,6 @@
 # limitations under the License.
 #
 
-require "json" unless defined?(JSON)
 require_relative "../artifact_info"
 require_relative "base"
 require_relative "../product"
@@ -24,7 +23,6 @@ require_relative "../product_matrix"
 require_relative "../util"
 require_relative "../dist"
 require "mixlib/versioning"
-require "net/http" unless defined?(Net::HTTP)
 
 module Mixlib
   class Install
@@ -217,6 +215,12 @@ EOF
         # GET request
         #
         def get(url)
+          # `net/http` (and the `uri`, `socket` and `resolv` trees it pulls in)
+          # and `json` are only needed once we actually talk to the API, so they
+          # are loaded here rather than at require time.
+          require "json" unless defined?(JSON)
+          require "net/http" unless defined?(Net::HTTP)
+
           uri = URI.parse(endpoint)
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = (uri.scheme == "https")
