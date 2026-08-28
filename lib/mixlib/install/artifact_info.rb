@@ -47,10 +47,12 @@ module Mixlib
       end
 
       def self.from_json(json, platform_info)
+        require "json" unless defined?(JSON)
         ArtifactInfo.new(JSON.parse(json, symbolize_names: true).merge(platform_info))
       end
 
       def self.from_metadata_map(json)
+        require "json" unless defined?(JSON)
         artifacts = []
 
         JSON.parse(json, symbolize_names: true).each do |p, p_data|

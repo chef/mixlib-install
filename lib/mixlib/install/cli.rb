@@ -13,6 +13,7 @@
 #
 
 require_relative "../install"
+require "json" unless defined?(JSON)
 require "thor" unless defined?(Thor)
 
 module Mixlib
