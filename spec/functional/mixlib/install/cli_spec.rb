@@ -17,6 +17,7 @@
 
 require "spec_helper"
 require "mixlib/install/cli"
+require "mixlib/shellout"
 require "tmpdir"
 
 describe "mixlib-install executable" do
