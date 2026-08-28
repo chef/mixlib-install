@@ -36,13 +36,18 @@ module Mixlib
         version
       }.freeze
 
+      # Attribute name paired with its instance variable name, computed once at
+      # load time so that #initialize and #to_hash allocate no intermediate
+      # Strings or Symbols per call.
+      ATTRIBUTE_IVARS = ATTRIBUTES.map { |a| [a.to_sym, :"@#{a}"] }.freeze
+
       # Dynamically create readers
       ATTRIBUTES.each { |attribute| attr_reader attribute.to_sym }
 
       def initialize(data)
         # Create an instance variable for each attribute
-        ATTRIBUTES.each do |attribute|
-          instance_variable_set("@#{attribute}", data[attribute.to_sym])
+        ATTRIBUTE_IVARS.each do |name, ivar|
+          instance_variable_set(ivar, data[name])
         end
       end
 
@@ -70,7 +75,9 @@ module Mixlib
 
       def to_hash
         # Create a Hash of the instance data
-        Hash[ATTRIBUTES.map { |attribute| [attribute.to_sym, eval(attribute)] }]
+        ATTRIBUTE_IVARS.each_with_object({}) do |(name, ivar), hash|
+          hash[name] = instance_variable_get(ivar)
+        end
       end
 
       def clone_with(data)
