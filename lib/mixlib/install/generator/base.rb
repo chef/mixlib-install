@@ -15,8 +15,6 @@
 # limitations under the License.
 #
 
-require "erb" unless defined?(Erb)
-require "ostruct" unless defined?(OpenStruct)
 require_relative "../util"
 require_relative "../dist"
 
@@ -47,6 +45,11 @@ module Mixlib
           # If there is an erb template we render it, otherwise we just read
           # and return the contents of the script
           if File.exist? "#{script_path}.erb"
+            # `erb` and `ostruct` are only needed to render a template, so they
+            # are loaded here rather than at require time.
+            require "erb" unless defined?(ERB)
+            require "ostruct" unless defined?(OpenStruct)
+
             # Default values to use incase they are not set in the context
             context[:project_name] ||= Mixlib::Install::Dist::PROJECT_NAME.freeze
             context[:default_product] ||= Mixlib::Install::Dist::DEFAULT_PRODUCT.freeze
