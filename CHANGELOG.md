@@ -1,9 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release -->
+<!-- latest_release 3.19.3 -->
+## [v3.19.3](https://github.com/chef/mixlib-install/tree/v3.19.3) (2026-08-28)
+
+#### Merged Pull Requests
+- Lazily load net/http and json [#434](https://github.com/chef/mixlib-install/pull/434) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 <!-- release_rollup since=3.19.2 -->
 ### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Lazily load net/http and json [#434](https://github.com/chef/mixlib-install/pull/434) ([tas50](https://github.com/tas50)) <!-- 3.19.3 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
