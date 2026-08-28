@@ -53,10 +53,14 @@ module Mixlib
       # @return [String] value of the property
       #
       DSL_PROPERTIES.each do |prop|
+        # Build the instance variable name once here instead of interpolating a
+        # String and interning a Symbol on every property read and write.
+        ivar = :"@#{prop}"
+
         define_method prop do |prop_string = nil, &block|
           if block.nil?
             if prop_string.nil?
-              value = instance_variable_get("@#{prop}".to_sym)
+              value = instance_variable_get(ivar)
               return default_value_for(prop) if value.nil?
 
               if value.is_a?(String) || value.is_a?(Symbol)
@@ -65,11 +69,11 @@ module Mixlib
                 value.call(version_for(version))
               end
             else
-              instance_variable_set("@#{prop}".to_sym, prop_string)
+              instance_variable_set(ivar, prop_string)
             end
           else
             raise "Can not use String and Proc at the same time for #{prop}." if !prop_string.nil?
-            instance_variable_set("@#{prop}".to_sym, block)
+            instance_variable_set(ivar, block)
           end
         end
       end
