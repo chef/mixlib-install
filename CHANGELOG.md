@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.19.8 -->
-## [v3.19.8](https://github.com/chef/mixlib-install/tree/v3.19.8) (2026-08-31)
+<!-- latest_release 3.19.9 -->
+## [v3.19.9](https://github.com/chef/mixlib-install/tree/v3.19.9) (2026-08-31)
 
 #### Merged Pull Requests
-- Build Product DSL ivar names once instead of per access [#439](https://github.com/chef/mixlib-install/pull/439) ([tas50](https://github.com/tas50))
+- Pin GitHub Actions to commit SHAs [#441](https://github.com/chef/mixlib-install/pull/441) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 <!-- release_rollup since=3.19.2 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Pin GitHub Actions to commit SHAs [#441](https://github.com/chef/mixlib-install/pull/441) ([tas50](https://github.com/tas50)) <!-- 3.19.9 -->
 - Build Product DSL ivar names once instead of per access [#439](https://github.com/chef/mixlib-install/pull/439) ([tas50](https://github.com/tas50)) <!-- 3.19.8 -->
 - Stop rebuilding the defaults Hash on every option read [#438](https://github.com/chef/mixlib-install/pull/438) ([tas50](https://github.com/tas50)) <!-- 3.19.7 -->
 - Remove eval from ArtifactInfo#to_hash [#437](https://github.com/chef/mixlib-install/pull/437) ([tas50](https://github.com/tas50)) <!-- 3.19.6 -->
