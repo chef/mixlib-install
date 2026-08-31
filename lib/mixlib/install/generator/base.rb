@@ -40,31 +40,49 @@ module Mixlib
         # Gets the contents of the given script.
         #
         def self.get_script(name, context = {})
-          script_path = File.join(script_base_path, name)
+          script = cached_script(File.join(script_base_path, name))
 
-          # If there is an erb template we render it, otherwise we just read
-          # and return the contents of the script
-          if File.exist? "#{script_path}.erb"
-            # `erb` and `ostruct` are only needed to render a template, so they
-            # are loaded here rather than at require time.
-            require "erb" unless defined?(ERB)
-            require "ostruct" unless defined?(OpenStruct)
+          # A plain script fragment is cached as a String and returned as-is.
+          # Anything else is a compiled template and needs rendering. Testing
+          # for String rather than ERB avoids referencing the ERB constant
+          # before `erb` has been loaded.
+          return script.dup if script.is_a?(String)
 
-            # Default values to use incase they are not set in the context
-            context[:project_name] ||= Mixlib::Install::Dist::PROJECT_NAME.freeze
-            context[:default_product] ||= Mixlib::Install::Dist::DEFAULT_PRODUCT.freeze
-            context[:bug_url] ||= Mixlib::Install::Dist::BUG_URL.freeze
-            context[:support_url] ||= Mixlib::Install::Dist::SUPPORT_URL.freeze
-            context[:resources_url] ||= Mixlib::Install::Dist::RESOURCES_URL.freeze
-            context[:macos_dir] ||= Mixlib::Install::Dist::MACOS_VOLUME.freeze
-            context[:windows_dir] ||= context[:default_product].casecmp("chef-ice") == 0 ? Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR.freeze : Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR.freeze
-            context[:user_agent_string] = Util.user_agent_string(context[:user_agent_headers])
+          # `ostruct` is only needed to render a template, so it is loaded here
+          # rather than at require time.
+          require "ostruct" unless defined?(OpenStruct)
 
-            context_object = OpenStruct.new(context).instance_eval { binding }
-            ERB.new(File.read("#{script_path}.erb")).result(context_object)
-          else
-            File.read(script_path)
-          end
+          # Default values to use incase they are not set in the context
+          context[:project_name] ||= Mixlib::Install::Dist::PROJECT_NAME.freeze
+          context[:default_product] ||= Mixlib::Install::Dist::DEFAULT_PRODUCT.freeze
+          context[:bug_url] ||= Mixlib::Install::Dist::BUG_URL.freeze
+          context[:support_url] ||= Mixlib::Install::Dist::SUPPORT_URL.freeze
+          context[:resources_url] ||= Mixlib::Install::Dist::RESOURCES_URL.freeze
+          context[:macos_dir] ||= Mixlib::Install::Dist::MACOS_VOLUME.freeze
+          context[:windows_dir] ||= context[:default_product].casecmp("chef-ice") == 0 ? Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR.freeze : Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR.freeze
+          context[:user_agent_string] = Util.user_agent_string(context[:user_agent_headers])
+
+          context_object = OpenStruct.new(context).instance_eval { binding }
+          script.result(context_object)
+        end
+
+        #
+        # Reads a script fragment from disk, compiling it first if it is an erb
+        # template. The fragments ship inside the gem and do not change while
+        # the process is running, so each one is read -- and compiled -- only
+        # once. Returns an ERB for templates and a String for plain scripts.
+        #
+        def self.cached_script(script_path)
+          @script_cache ||= {}
+          @script_cache[script_path] ||=
+            if File.exist? "#{script_path}.erb"
+              # `erb` is only needed to compile a template, so it is loaded
+              # here rather than at require time.
+              require "erb" unless defined?(ERB)
+              ERB.new(File.read("#{script_path}.erb"))
+            else
+              File.read(script_path)
+            end
         end
 
         def get_script(name, context = {})
