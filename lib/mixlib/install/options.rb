@@ -97,8 +97,12 @@ module Mixlib
       end
 
       SUPPORTED_OPTIONS.each do |option|
+        # Freeze the String key once here rather than calling `option.to_s` on
+        # every read, and look up a single default instead of rebuilding the
+        # whole defaults Hash.
+        option_string = option.to_s.freeze
         define_method option do
-          options[option] || options[option.to_s] || default_options[option]
+          options[option] || options[option_string] || default_option(option)
         end
       end
 
@@ -182,14 +186,23 @@ module Mixlib
 
       private
 
+      # Defaults that never change. `license_id` is deliberately not in here
+      # because it is read from the environment on every access.
+      STATIC_DEFAULT_OPTIONS = {
+        shell_type: :sh,
+        platform_version_compatibility_mode: false,
+        product_version: :latest,
+        include_metadata: false,
+      }.freeze
+
+      def default_option(option)
+        return ENV["CHEF_LICENSE_KEY"] if option == :license_id
+
+        STATIC_DEFAULT_OPTIONS[option]
+      end
+
       def default_options
-        {
-          shell_type: :sh,
-          platform_version_compatibility_mode: false,
-          product_version: :latest,
-          include_metadata: false,
-          license_id: ENV["CHEF_LICENSE_KEY"],
-        }
+        STATIC_DEFAULT_OPTIONS.merge(license_id: ENV["CHEF_LICENSE_KEY"])
       end
 
       def validate_architecture
