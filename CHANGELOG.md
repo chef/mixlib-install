@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.19.6 -->
-## [v3.19.6](https://github.com/chef/mixlib-install/tree/v3.19.6) (2026-08-31)
+<!-- latest_release 3.19.7 -->
+## [v3.19.7](https://github.com/chef/mixlib-install/tree/v3.19.7) (2026-08-31)
 
 #### Merged Pull Requests
-- Remove eval from ArtifactInfo#to_hash [#437](https://github.com/chef/mixlib-install/pull/437) ([tas50](https://github.com/tas50))
+- Stop rebuilding the defaults Hash on every option read [#438](https://github.com/chef/mixlib-install/pull/438) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 <!-- release_rollup since=3.19.2 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Stop rebuilding the defaults Hash on every option read [#438](https://github.com/chef/mixlib-install/pull/438) ([tas50](https://github.com/tas50)) <!-- 3.19.7 -->
 - Remove eval from ArtifactInfo#to_hash [#437](https://github.com/chef/mixlib-install/pull/437) ([tas50](https://github.com/tas50)) <!-- 3.19.6 -->
 - Lazily load mixlib-shellout [#436](https://github.com/chef/mixlib-install/pull/436) ([tas50](https://github.com/tas50)) <!-- 3.19.5 -->
 - Lazily load erb and ostruct [#435](https://github.com/chef/mixlib-install/pull/435) ([tas50](https://github.com/tas50)) <!-- 3.19.4 -->
