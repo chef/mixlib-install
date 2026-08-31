@@ -1,15 +1,16 @@
 # Mixlib::Install Changes
 
-<!-- latest_release 3.19.4 -->
-## [v3.19.4](https://github.com/chef/mixlib-install/tree/v3.19.4) (2026-08-28)
+<!-- latest_release 3.19.5 -->
+## [v3.19.5](https://github.com/chef/mixlib-install/tree/v3.19.5) (2026-08-31)
 
 #### Merged Pull Requests
-- Lazily load erb and ostruct [#435](https://github.com/chef/mixlib-install/pull/435) ([tas50](https://github.com/tas50))
+- Lazily load mixlib-shellout [#436](https://github.com/chef/mixlib-install/pull/436) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 <!-- release_rollup since=3.19.2 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Lazily load mixlib-shellout [#436](https://github.com/chef/mixlib-install/pull/436) ([tas50](https://github.com/tas50)) <!-- 3.19.5 -->
 - Lazily load erb and ostruct [#435](https://github.com/chef/mixlib-install/pull/435) ([tas50](https://github.com/tas50)) <!-- 3.19.4 -->
 - Lazily load net/http and json [#434](https://github.com/chef/mixlib-install/pull/434) ([tas50](https://github.com/tas50)) <!-- 3.19.3 -->
 <!-- release_rollup -->
