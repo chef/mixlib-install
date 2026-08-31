@@ -18,7 +18,6 @@
 #
 
 require "mixlib/versioning"
-require "mixlib/shellout" unless defined?(Mixlib::ShellOut)
 
 require_relative "install/backend"
 require_relative "install/options"
@@ -257,6 +256,12 @@ module Mixlib
     # Returns a Hash containing the platform info options
     #
     def self.detect_platform
+      # mixlib-shellout (and the etc, fileutils, tmpdir and fcntl trees it
+      # pulls in) is only needed to shell out for platform detection, so it is
+      # loaded here rather than at require time.
+      require "mixlib/shellout" unless defined?(Mixlib::ShellOut)
+      require "tmpdir"
+
       output = if Gem.win_platform?
                  # For Windows we write the detect platform script and execute the
                  # powershell.exe program with Mixlib::ShellOut
