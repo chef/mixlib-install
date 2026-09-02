@@ -418,6 +418,40 @@ context "Mixlib::Install::Generator", :vcr do
           expect(install_script).to start_with("new-module -name Installer-Module -scriptblock")
           expect(install_script).to include("set-alias install -value Install-Project")
         end
+
+        it "includes the backup helper function" do
+          expect(install_script).to include("function Backup-ChefInstallation")
+        end
+
+        it "includes the restore helper function" do
+          expect(install_script).to include("function Restore-ChefInstallation")
+        end
+
+        it "includes the backup cleanup helper function" do
+          expect(install_script).to include("function Remove-ChefBackup")
+        end
+
+        it "wraps the install block in a try/catch that restores on failure" do
+          expect(install_script).to include("Backup-ChefInstallation -project $project")
+          expect(install_script).to include("Restore-ChefInstallation -project $project -backup_dir $backup_dir")
+          expect(install_script).to include("Remove-ChefBackup -backup_dir $backup_dir")
+        end
+
+        it "re-throws the original install error after a restore attempt" do
+          expect(install_script).to include("$install_error = $_")
+          expect(install_script).to include("throw $install_error")
+        end
+
+        it "includes a manual recovery warning when restore fails" do
+          expect(install_script).to include("WARNING: Restore also failed")
+          expect(install_script).to include("WARNING: To recover manually, run these two commands in order:")
+        end
+
+        it "wraps backup cleanup in its own try/catch so a cleanup failure never rolls back a working install" do
+          # Verify Remove-ChefBackup is followed by its own catch block and not inside the install catch
+          expect(install_script).to include("Remove-ChefBackup -backup_dir $backup_dir")
+          expect(install_script).to include("You may remove it manually")
+        end
       end
 
       context "when platform is set" do

@@ -203,27 +203,62 @@ function Install-Project {
     }
 
     Write-Host "Installing $project from $download_destination"
-    $installingProject = $True
-    $installAttempts = 0
-    $maxAttempts = 5
-    while ($installingProject) {
-      $installAttempts++
-      $result = $false
-      if ($download_destination.EndsWith(".appx")) {
-        $result = Install-ChefAppx $download_destination $project
-      }
-      else {
-        $result = Install-ChefMsi $download_destination $daemon
-      }
-      if (!$result) {
-        if ($installAttempts -ge $maxAttempts) {
-          Write-Host "Failed to install $project after $installAttempts attempts."
-          throw "Installation failed after $installAttempts attempts."
+
+    $backup_dir = $null
+    try {
+      $backup_dir = Backup-ChefInstallation -project $project
+    }
+    catch {
+      throw "Could not create a pre-upgrade backup of $project. Aborting to avoid leaving the system in an unrecoverable state. Error: $_"
+    }
+
+    try {
+      $installingProject = $True
+      $installAttempts = 0
+      $maxAttempts = 5
+      while ($installingProject) {
+        $installAttempts++
+        $result = $false
+        if ($download_destination.EndsWith(".appx")) {
+          $result = Install-ChefAppx $download_destination $project
         }
-        continue
+        else {
+          $result = Install-ChefMsi $download_destination $daemon
+        }
+        if (!$result) {
+          if ($installAttempts -ge $maxAttempts) {
+            Write-Host "Failed to install $project after $installAttempts attempts."
+            throw "Installation failed after $installAttempts attempts."
+          }
+          continue
+        }
+        $installingProject = $False
+        Write-Host "$project installation completed successfully."
       }
-      $installingProject = $False
-      Write-Host "$project installation completed successfully."
+    }
+    catch {
+      $install_error = $_
+      Write-Host "Installation failed. Attempting to restore the previous $project installation."
+      try {
+        Restore-ChefInstallation -project $project -backup_dir $backup_dir
+      }
+      catch {
+        Write-Host "WARNING: Restore also failed. The pre-upgrade backup is still at: $backup_dir"
+        Write-Host "WARNING: To recover manually, run these two commands in order:"
+        Write-Host "WARNING:   1. Remove-Item '$env:SystemDrive\<%= windows_dir %>\$project' -Recurse -Force"
+        Write-Host "WARNING:   2. Move-Item '$backup_dir' '$env:SystemDrive\<%= windows_dir %>\$project' -Force"
+        Write-Host "WARNING: Restore error: $_"
+      }
+      throw $install_error
+    }
+
+    # Remove the backup only after confirming installation succeeded.
+    # Wrapped separately so a cleanup failure never rolls back a working install.
+    try {
+      Remove-ChefBackup -backup_dir $backup_dir
+    }
+    catch {
+      Write-Host "Warning: Failed to remove installation backup at $backup_dir. You may remove it manually. Error: $_"
     }
   }
 }
@@ -244,6 +279,11 @@ Function Install-ChefMsi($msi, $addlocal) {
   if ($p.ExitCode -eq 1618) {
     Write-Host "$((Get-Date).ToString()) - Another msi install is in progress (exit code 1618), retrying ($($installAttempts))..."
     return $false
+  } elseif ($p.ExitCode -eq 3010 -or $p.ExitCode -eq 1641) {
+    # 3010 = success, reboot required; 1641 = success, reboot initiated.
+    # Both are success codes. Treat them as success so the restore path is not triggered.
+    Write-Host "msiexec completed successfully with exit code $($p.ExitCode). A system reboot may be required."
+    return $true
   } elseif ($p.ExitCode -ne 0) {
     throw "msiexec was not successful. Received exit code $($p.ExitCode)"
   }
@@ -271,6 +311,77 @@ Function Install-ChefAppx($appx, $project) {
   Copy-Item $package $omnibusRoot -Recurse
 
   return $true
+}
+
+
+# CAUTION: chef_client_updater cookbook compatibility
+#
+# The chef_client_updater cookbook calls Install-Project indirectly on Windows.
+# Its upgrade flow:
+#   1. Calls mixlib_install.install_command to get the install script.
+#   2. Calls prepare_windows, which copies C:\opscode\chef -> C:\opscode\chef.upgrade
+#      and creates a scheduled task named chef_upgrade (or <product>_upgrade).
+#   3. The scheduled task script runs Remove-Item "C:\opscode\chef" -Recurse -Force,
+#      then invokes the install script from step 1, which calls Install-Project.
+#   4. On Install-Project failure the scheduled task catch block runs:
+#      Move-Item "C:\opscode\chef.upgrade" "C:\opscode\chef" to restore from backup.
+#
+# Because the install directory is removed before Install-Project is called,
+# Backup-ChefInstallation finds no directory at that path and returns $null.
+# Restore-ChefInstallation and Remove-ChefBackup both guard on $null and return
+# early. All three functions are no-ops in the chef_client_updater flow.
+#
+# There is no directory naming conflict: chef_client_updater uses the suffix
+# .upgrade (e.g. C:\opscode\chef.upgrade) while Install-Project uses
+# .upgrade-backup (e.g. C:\opscode\chef.upgrade-backup).
+
+# Copies the existing product installation directory to a timestamped backup path
+# before a destructive upgrade begins. Returns the backup path, or $null if there
+# was no existing installation to back up.
+function Backup-ChefInstallation {
+  param ($project)
+  $install_dir = "$env:SystemDrive\<%= windows_dir %>\$project"
+  if (-not (Test-Path $install_dir)) {
+    return $null
+  }
+  $backup_dir = "${install_dir}.upgrade-backup"
+  Write-Host "Backing up existing $project installation from $install_dir to $backup_dir"
+  if (Test-Path $backup_dir) {
+    Remove-Item $backup_dir -Recurse -Force
+  }
+  Copy-Item $install_dir $backup_dir -Recurse -Force
+  Write-Host "Backup created at $backup_dir"
+  return $backup_dir
+}
+
+# Restores a backup created by Backup-ChefInstallation, replacing whatever is
+# currently at the install path. Called when an upgrade fails so that the node
+# is left with a working Chef installation rather than no installation.
+function Restore-ChefInstallation {
+  param ($project, $backup_dir)
+  if ([string]::IsNullOrEmpty($backup_dir) -or -not (Test-Path $backup_dir)) {
+    return
+  }
+  $install_dir = "$env:SystemDrive\<%= windows_dir %>\$project"
+  Write-Host "Restoring $project installation from backup at $backup_dir"
+  if (Test-Path $install_dir) {
+    Remove-Item $install_dir -Recurse -Force
+    if (Test-Path $install_dir) {
+      throw "Could not fully remove $install_dir before restore. Some files may be locked. Restore aborted."
+    }
+  }
+  Move-Item $backup_dir $install_dir -Force
+  Write-Host "$project installation restored successfully."
+}
+
+# Removes a backup directory that is no longer needed after a successful upgrade.
+function Remove-ChefBackup {
+  param ($backup_dir)
+  if ([string]::IsNullOrEmpty($backup_dir) -or -not (Test-Path $backup_dir)) {
+    return
+  }
+  Write-Host "Removing installation backup at $backup_dir"
+  Remove-Item $backup_dir -Recurse -Force
 }
 
 export-modulemember -function 'Install-Project','Get-ProjectMetadata' -alias 'install'
