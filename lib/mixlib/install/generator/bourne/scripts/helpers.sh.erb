@@ -155,8 +155,10 @@ do_curl() {
     rc=$?
   fi
 
-  # check for 404 (matches both HTTP/1.1 "404 Not Found" and HTTP/2 "404")
-  if grep "404" "$tmp_dir"/stderr >/dev/null 2>&1; then
+  # check for 404 on the response status line only, so response headers
+  # (ETag, Set-Cookie, Content-Length, ...) containing "404" cannot trigger
+  # a false positive. Covers HTTP/1.1 "404 Not Found" and HTTP/2 "404".
+  if grep -E "^HTTP/[0-9.]+ +404" "$tmp_dir"/stderr >/dev/null 2>&1; then
     echo "ERROR 404"
     http_404_error
   fi
