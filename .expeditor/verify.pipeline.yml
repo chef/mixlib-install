@@ -10,6 +10,14 @@ expeditor:
       timeout_in_minutes: 30
 
 steps:
+- label: run-specs-ruby-2.6
+  command:
+    - .expeditor/run_linux_tests.sh rake
+  expeditor:
+    executor:
+      docker:
+        image: ruby:2.6
+
 - label: run-specs-ruby-2.7
   command:
     - .expeditor/run_linux_tests.sh rake
@@ -57,6 +65,14 @@ steps:
     executor:
       docker:
         image: ruby:3.4
+
+- label: run-specs-ruby-4.0
+  command:
+    - .expeditor/run_linux_tests.sh rake
+  expeditor:
+    executor:
+      docker:
+        image: ruby:4.0
 
 - label: run-specs-ruby-3.1-windows
   command:
