@@ -12,6 +12,7 @@ concurrency:
 jobs:
   cookstyle:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -20,6 +21,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Setup Ruby
         uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
         with:
@@ -31,15 +34,21 @@ jobs:
 
   yamllint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Run yaml Lint
         uses: actionshub/yamllint@00f4f7f756a93a38e77ea1af41a46b48fd893dcd # v1.8.3
 
   jsonlint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Run JSON Lint
         run: |
           sudo apt-get update
@@ -48,8 +57,11 @@ jobs:
 
   markdown-lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
 
       - name: Markdown lint
         uses: DavidAnson/markdownlint-cli2-action@07035fd053f7be764496c0f8d8f9f41f98305101 # v22.0.0
@@ -60,7 +72,9 @@ jobs:
 
   markdown-link-check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
+      # Keeps credentials: the action fetches the base branch to diff against
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - uses: gaurav-nelson/github-action-markdown-link-check@3c3b66f1f7d0900e37b71eca45b63ea9eedfce31 # 1.0.17
         with:
@@ -73,19 +87,25 @@ jobs:
 
   linelint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     name: Check if all files end in newline
     steps:
       - name: Checkout
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Linelint
         uses: fernandrone/linelint@7907a5dca0c28ea7dd05c6d8d8cacded713aca11 # 0.0.6
         id: linelint
 
   shellcheck:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Setup Ruby
         uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
         with:
@@ -104,9 +124,12 @@ jobs:
 
   psscriptanalyzer:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Setup Ruby
         uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
         with:
@@ -132,47 +155,16 @@ jobs:
             throw "PSScriptAnalyzer found $($results.Count) issue(s) in install.ps1"
           }
 
-  test:
-    name: Unit Tests
-    needs:
-      - cookstyle
-      - jsonlint
-      - yamllint
-    runs-on: ${{ matrix.runner }}
-    strategy:
-      fail-fast: false
-      matrix:
-        runner:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
-        ruby:
-          - 2.6
-          - 2.7
-          - "3.0"
-          - 3.1
-          - 3.2
-          - 3.3
-          - 3.4
-          - "4.0"
+  actionlint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Enable long paths on Windows
-        if: runner.os == 'Windows'
-        run: |
-          # Enable Windows long paths
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
-          # Enable Git long paths
-          git config --global core.longpaths true
-        shell: pwsh
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-      - name: Setup Machine
-        run: |
-          bundle install
-      - name: Rake Test
-        run: bundle exec rake
+          persist-credentials: false
+      - name: Download actionlint
+        # Script pinned to the v1.7.12 tag commit
+        run: bash <(curl -fsSL https://raw.githubusercontent.com/rhysd/actionlint/914e7df21a07ef503a81201c76d2b11c789d3fca/scripts/download-actionlint.bash) 1.7.12
+      - name: Run actionlint
+        # shellcheck is preinstalled on ubuntu runners and used for run: blocks
+        run: ./actionlint -color

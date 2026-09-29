@@ -12,6 +12,7 @@ concurrency:
 jobs:
   cli-tests:
     runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -29,15 +30,18 @@ jobs:
           - 3.4
           - "4.0"
     steps:
-      - name: Enable long paths on Windows
+      - &longpaths
+        name: Enable long paths on Windows
         if: runner.os == 'Windows'
+        shell: pwsh
         run: |
-          # Enable Windows long paths
           New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
-          # Enable Git long paths
           git config --global core.longpaths true
-      - name: Checkout code
+      - &checkout
+        name: Checkout code
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - name: Setup Ruby
         uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
         with:
@@ -52,21 +56,16 @@ jobs:
         run: bundle exec mixlib-install download chef-ice -L free-79df705d-b685-419a-8b68-88401f74ff72-3999
   test-install-command:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
-      - name: Enable long paths on Windows
-        if: runner.os == 'Windows'
-        run: |
-          # Enable Windows long paths
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
-          # Enable Git long paths
-          git config --global core.longpaths true
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - name: Setup Ruby
+      - *longpaths
+      - *checkout
+      - &setup_ruby
+        name: Setup Ruby
         uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
         with:
           ruby-version: 3.4
@@ -96,12 +95,14 @@ jobs:
           chef-client --version
       - name: Generate install command script (Windows)
         if: runner.os == 'Windows'
+        shell: pwsh
         run: |
           # Generate the install command using Ruby API (one-liner for PowerShell)
           bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; installer = Mixlib::Install.new(channel: :stable, product_name: 'chef', shell_type: :ps1); File.write('install_cmd.ps1', installer.install_command)"
           Get-Content install_cmd.ps1
       - name: Run install command script (Windows)
         if: runner.os == 'Windows'
+        shell: pwsh
         run: |
           # Run the install command
           .\install_cmd.ps1
@@ -112,19 +113,14 @@ jobs:
           chef-client --version
   test-install-sh:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *checkout
+      - *setup_ruby
       - name: Generate install.sh script
         run: |
           bundle exec mixlib-install install-script -o install.sh -t sh
@@ -141,21 +137,11 @@ jobs:
   test-install-ps1:
     name: Test install.ps1 generation and execution
     runs-on: windows-latest
+    timeout-minutes: 30
     steps:
-      - name: Enable long paths on Windows
-        run: |
-          # Enable Windows long paths
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
-          # Enable Git long paths
-          git config --global core.longpaths true
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *longpaths
+      - *checkout
+      - *setup_ruby
       - name: Generate install.ps1 script
         run: |
           bundle exec mixlib-install install-script -o install.ps1 -t ps1
@@ -174,14 +160,10 @@ jobs:
   test-install-sh-with-license:
     name: Test install.sh with license_id
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *checkout
+      - *setup_ruby
       - name: Generate install.sh with license_id
         run: |
           # Generate script with license_id in context
@@ -207,21 +189,11 @@ jobs:
   test-install-ps1-with-license:
     name: Test install.ps1 with license_id
     runs-on: windows-latest
+    timeout-minutes: 30
     steps:
-      - name: Enable long paths on Windows
-        run: |
-          # Enable Windows long paths
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
-          # Enable Git long paths
-          git config --global core.longpaths true
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *longpaths
+      - *checkout
+      - *setup_ruby
       - name: Generate install.ps1 with license_id
         run: |
           # Generate script with license_id in context
@@ -240,14 +212,10 @@ jobs:
   test-script-generator-unix:
     name: Test ScriptGenerator on Linux
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *checkout
+      - *setup_ruby
       - name: Test ScriptGenerator without license_id
         run: |
           bundle exec ruby -e "
@@ -293,18 +261,11 @@ jobs:
   test-script-generator-windows:
     name: Test ScriptGenerator on Windows
     runs-on: windows-latest
+    timeout-minutes: 30
     steps:
-      - name: Enable long paths on Windows
-        run: |
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
-          git config --global core.longpaths true
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *longpaths
+      - *checkout
+      - *setup_ruby
       - name: Create test script without license_id
         run: |
           @"
@@ -355,25 +316,15 @@ jobs:
   test-install-command-chef-ice:
     name: Test chef-ice install command generation and execution
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
     steps:
-      - name: Enable long paths on Windows
-        if: runner.os == 'Windows'
-        run: |
-          # Enable Windows long paths
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
-          # Enable Git long paths
-          git config --global core.longpaths true
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *longpaths
+      - *checkout
+      - *setup_ruby
       - name: Generate install command script (Linux/macOS)
         if: runner.os != 'Windows'
         run: |
@@ -400,12 +351,14 @@ jobs:
           chef-client --version
       - name: Generate install command script (Windows)
         if: runner.os == 'Windows'
+        shell: pwsh
         run: |
           # Generate the install command using Ruby API (one-liner for PowerShell)
           bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; installer = Mixlib::Install.new(channel: :stable, product_name: 'chef-ice', license_id: 'free-79df705d-b685-419a-8b68-88401f74ff72-3999', shell_type: :ps1); File.write('install_cmd.ps1', installer.install_command)"
           Get-Content install_cmd.ps1
       - name: Run install command script (Windows)
         if: runner.os == 'Windows'
+        shell: pwsh
         run: |
           # Run script in a separate PowerShell process to capture all output even when it errors
           # Tee-Object displays output in real-time AND captures it
@@ -441,19 +394,14 @@ jobs:
   test-install-sh-chef-ice:
     name: Test chef-ice install.sh generation and execution
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *checkout
+      - *setup_ruby
       - name: Generate install.sh script for chef-ice
         run: |
           bundle exec ruby -e "
@@ -479,21 +427,11 @@ jobs:
   test-install-ps1-chef-ice:
     name: Test chef-ice install.ps1 generation and execution
     runs-on: windows-latest
+    timeout-minutes: 30
     steps:
-      - name: Enable long paths on Windows
-        run: |
-          # Enable Windows long paths
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
-          # Enable Git long paths
-          git config --global core.longpaths true
-      - name: Checkout code
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
-        with:
-          ruby-version: 3.4
-          bundler-cache: true
+      - *longpaths
+      - *checkout
+      - *setup_ruby
       - name: Generate install.ps1 script for chef-ice
         run: |
           bundle exec ruby -e "require 'bundler/setup'; require 'mixlib/install'; installer = Mixlib::Install.new(channel: :stable, product_name: 'chef-ice', license_id: 'free-79df705d-b685-419a-8b68-88401f74ff72-3999', shell_type: :ps1); File.write('install.ps1', installer.install_command)"
@@ -531,3 +469,65 @@ jobs:
             Write-Host "Download and Installation failed with an unexpected error"
             exit 1
           }
+
+  # Run the generated install.sh inside distro containers to cover platform
+  # detection and the package formats (deb/rpm) beyond the Ubuntu host. Only
+  # targets that omnitruck's free stable channel publishes are listed; e.g.
+  # amazon 2023 and most aarch64 Linux currently 404 on the metadata endpoint.
+  test-install-sh-distros:
+    name: install.sh on ${{ matrix.image }} (${{ matrix.arch }}, ${{ matrix.downloader }})
+    runs-on: ${{ matrix.arch == 'aarch64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: debian:12
+            arch: x86_64
+            downloader: curl
+            prep: apt-get update && apt-get install -y curl
+          # No curl in the image: exercises the wget code path
+          - image: debian:12
+            arch: x86_64
+            downloader: wget
+            prep: apt-get update && apt-get install -y wget
+          - image: ubuntu:22.04
+            arch: x86_64
+            downloader: curl
+            prep: apt-get update && apt-get install -y curl
+          - image: ubuntu:24.04
+            arch: x86_64
+            downloader: curl
+            prep: apt-get update && apt-get install -y curl
+          - image: almalinux:8
+            arch: x86_64
+            downloader: curl
+            prep: "true"
+          - image: rockylinux:9
+            arch: x86_64
+            downloader: curl
+            prep: "true"
+          - image: almalinux:8
+            arch: aarch64
+            downloader: curl
+            prep: "true"
+          - image: opensuse/leap:15
+            arch: aarch64
+            downloader: curl
+            prep: "true"
+    steps:
+      - *checkout
+      - *setup_ruby
+      - name: Generate install.sh
+        run: bundle exec mixlib-install install-script -o install.sh -t sh
+      - name: Run install.sh in ${{ matrix.image }}
+        env:
+          IMAGE: ${{ matrix.image }}
+          PREP: ${{ matrix.prep }}
+        run: |
+          docker run --rm -v "$PWD/install.sh:/install.sh:ro" -e PREP "$IMAGE" sh -c '
+            set -e
+            sh -c "$PREP" >/dev/null
+            sh /install.sh
+            /opt/chef/bin/chef-client --version
+          '
