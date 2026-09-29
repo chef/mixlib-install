@@ -14,6 +14,7 @@ jobs:
         with:
           # This seems to be working lately even for external
           # contributors, so maybe we don't need to exclude it?
-          checks_exclude: "SonarCloud Code Analysis"
+          # "Ruby head canary" is advisory (continue-on-error in unit.yml).
+          checks_exclude: "SonarCloud Code Analysis,.*Ruby head canary.*"
           # Retry every minute for 30 minutes...
           retries: 30

@@ -19,7 +19,7 @@ require "spec_helper"
 require "mixlib/install/generator/base"
 require "mixlib/install/options"
 
-describe Mixlib::Install::Generator::Base do
+RSpec.describe Mixlib::Install::Generator::Base do
   let(:options) do
     Mixlib::Install::Options.new(
       product_name: "chef",

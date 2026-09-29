@@ -20,7 +20,7 @@
 require "spec_helper"
 require "mixlib/install/script_generator"
 
-describe Mixlib::Install::ScriptGenerator do
+RSpec.describe Mixlib::Install::ScriptGenerator do
   describe "#initialize" do
     it "sets a version" do
       install = described_class.new("1.2.1")

@@ -18,7 +18,7 @@
 require "spec_helper"
 require "mixlib/install/product_matrix"
 
-describe Mixlib::Install::ProductMatrix do
+RSpec.describe Mixlib::Install::ProductMatrix do
   describe "#initialize" do
     it "creates a new ProductMatrix instance" do
       matrix = described_class.new {}

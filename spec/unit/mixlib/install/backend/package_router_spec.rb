@@ -21,7 +21,7 @@ require "mixlib/install/options"
 require "mixlib/install/backend/package_router"
 require "mixlib/install/version"
 
-context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
+RSpec.describe "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
   let(:channel) { nil }
   let(:product_name) { nil }
   let(:product_version) { nil }

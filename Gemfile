@@ -2,57 +2,19 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "chef-utils", "= 16.6.14" if RUBY_VERSION < "2.6.0"
-
 group :test do
-  gem "contracts", "~> 0.16.0" # this entry can go away when ruby < 3 support is gone
-  gem "rake"
-  gem "rspec"
+  gem "climate_control", "~> 1.2"
+  gem "rake", ">= 13.0"
+  gem "rspec", "~> 3.13"
+  gem "vcr", ">= 6.1"
+  gem "webmock", "~> 3.26"
   gem "webrick"
-  gem "webmock", "~> 3.4"
-  if RUBY_VERSION < "2.6.0"
-    gem "climate_control", "= 0.1.0"
-    gem "mixlib-shellout", "= 3.2.5"
-    gem "public_suffix", "<= 5.1.1" # Dep of addressable which is a dep of webmock
-    gem "vcr", "= 6.0.0"
-  elsif RUBY_VERSION < "2.7.0"
-    gem "climate_control", "~> 1.0"
-    gem "mixlib-shellout", "< 3.3.9"
-    gem "public_suffix", "<= 5.1.1" # Dep of addressable which is a dep of webmock
-    gem "vcr", ">= 6.0.0", "< 6.2.0"
-  elsif RUBY_VERSION < "3.0.0"
-    gem "climate_control", "~> 1.0"
-    gem "mixlib-shellout", "< 3.3.9"
-    gem "public_suffix", "<= 5.1.1" # Dep of addressable which is a dep of webmock
-    gem "vcr"
-  elsif RUBY_VERSION < "3.2.0"
-    gem "climate_control", "~> 1.0"
-    gem "public_suffix", "< 7.0.0" # Dep of addressable which is a dep of webmock
-    gem "vcr"
-  elsif RUBY_VERSION < "3.3.0"
-    gem "climate_control", "~> 1.0"
-    gem "public_suffix", "< 7.0.0" # Dep of addressable which is a dep of webmock
-    gem "vcr"
-  elsif RUBY_VERSION >= "4.0.0"
-    gem "base64"
-    gem "benchmark"
-    gem "climate_control", "~> 1.0"
-    gem "ostruct"
-    gem "racc"
-    gem "vcr"
-  elsif RUBY_VERSION >= "3.4.0"
-    gem "base64"
-    gem "climate_control", "~> 1.0"
-    gem "racc"
-    gem "vcr"
-  elsif RUBY_VERSION >= "3.3.0"
-    gem "climate_control", "~> 1.0"
-    gem "racc"
-    gem "vcr"
-  else
-    gem "climate_control", "~> 1.0"
-    gem "vcr"
-  end
+  gem "simplecov", require: false
+
+  # Former default gems that became bundled gems and are required without
+  # being declared as dependencies by the gems that use them
+  gem "base64" if RUBY_VERSION >= "3.4.0"
+  gem "benchmark" if RUBY_VERSION >= "4.0.0"
 end
 
 group :chefstyle do

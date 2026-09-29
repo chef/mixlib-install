@@ -19,7 +19,7 @@
 require "spec_helper"
 require "mixlib/install/artifact_info"
 
-describe Mixlib::Install::ArtifactInfo do
+RSpec.describe Mixlib::Install::ArtifactInfo do
   let(:artifact_data) do
     {
       architecture: "x86_64",

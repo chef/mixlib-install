@@ -19,7 +19,7 @@
 require "spec_helper"
 require "mixlib/install"
 
-context "Mixlib::Install::Options" do
+RSpec.describe "Mixlib::Install::Options" do
   let(:channel) { nil }
   let(:product_name) { nil }
   let(:product_version) { nil }

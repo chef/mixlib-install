@@ -14,3 +14,4 @@ tags
 *.gem
 install.sh
 install.ps1
+spec/examples.txt

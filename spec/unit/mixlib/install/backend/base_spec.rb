@@ -21,7 +21,7 @@ require "mixlib/install/backend/base"
 require "mixlib/install/options"
 require "mixlib/install/artifact_info"
 
-describe Mixlib::Install::Backend::Base do
+RSpec.describe Mixlib::Install::Backend::Base do
   let(:channel) { :stable }
   let(:product_name) { "chef" }
   let(:product_version) { "17.0.0" }

@@ -18,7 +18,7 @@
 require "spec_helper"
 require "mixlib/install/product"
 
-context "Mixlib::Install::Product" do
+RSpec.describe "Mixlib::Install::Product" do
   context "for product_name when using strings" do
     let(:product) do
       Mixlib::Install::Product.new("product") do
@@ -98,7 +98,7 @@ context "Mixlib::Install::Product" do
   end
 end
 
-context "PRODUCT_MATRIX" do
+RSpec.describe "PRODUCT_MATRIX" do
   let(:product_key) do
     PRODUCT_MATRIX.lookup(product_name, version).product_key
   end
