@@ -18,7 +18,7 @@
 
 require "spec_helper"
 
-describe Mixlib::Install::Util do
+RSpec.describe Mixlib::Install::Util do
   describe ".pretty_version" do
     it "describes the effect of 'true'" do
       expect(Mixlib::Install::Util.pretty_version("true")).to eql("install only if missing")
@@ -144,6 +144,33 @@ describe Mixlib::Install::Util do
         it "returns sparc" do
           expect(Mixlib::Install::Util.normalize_architecture(a)).to eq "sparc"
         end
+      end
+    end
+  end
+
+  describe ".normalize_architecture" do
+    { "arm64" => "aarch64", "aarch64" => "aarch64", "x86_64" => "x86_64", "ppc64le" => "ppc64le" }.each do |input, expected|
+      it "maps #{input} to #{expected}" do
+        expect(described_class.normalize_architecture(input)).to eq(expected)
+      end
+    end
+  end
+
+  describe ".map_windows_version" do
+    {
+      "10.0.17763" => "2016",
+      "6.3.9600" => "2012r2",
+      "8.1" => "2012r2",
+      "2016nano" => "2012r2",
+      "6.2.9200" => "2012",
+      "8" => "2012",
+      "6.1.7601" => "2008r2",
+      "7" => "2008r2",
+      "6.0.6002" => "2008",
+      "2019" => "2019",
+    }.each do |input, expected|
+      it "maps #{input} to #{expected}" do
+        expect(described_class.map_windows_version(input)).to eq(expected)
       end
     end
   end

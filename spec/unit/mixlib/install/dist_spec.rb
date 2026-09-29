@@ -18,7 +18,7 @@
 require "spec_helper"
 require "mixlib/install/dist"
 
-describe Mixlib::Install::Dist do
+RSpec.describe Mixlib::Install::Dist do
   describe ".trial_license?" do
     context "with free- prefix" do
       it "returns false for free-trial-123 (free- uses commercial API)" do

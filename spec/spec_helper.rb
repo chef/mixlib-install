@@ -1,5 +1,26 @@
-# load lib path
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+# Coverage has to start before any library code is loaded, or the files
+# required below are never instrumented.
+unless ENV["COVERAGE"] == "false"
+  begin
+    require "simplecov"
+    # `rake unit` and `rake functional` run separately; give each its own
+    # result so SimpleCov merges them instead of the last one winning.
+    suite = ARGV.join(" ")[%r{spec/(unit|functional)}, 1]
+    SimpleCov.start do
+      command_name "RSpec #{suite || "all"}"
+      add_filter "/spec/"
+      add_group "Backend", "lib/mixlib/install/backend"
+      add_group "Generator", "lib/mixlib/install/generator"
+      enable_coverage :branch
+      # Guard against coverage regressions in the hermetic unit suite
+      minimum_coverage line: 95 if suite == "unit"
+    end
+  rescue LoadError
+    warn "simplecov is not installed; skipping coverage"
+  end
+end
+
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
 require "mixlib/install"
 require "vcr"
@@ -8,68 +29,74 @@ require "webrick"
 require "webrick/httpproxy"
 require "climate_control"
 
-# load version manifest support path
-VERSION_MANIFEST_DIR = File.expand_path("../support/version_manifests", __FILE__)
-EXTRA_FILE = File.join(File.dirname(__FILE__), "/fixtures/extra/extra_distributions.rb")
+VERSION_MANIFEST_DIR = File.expand_path("support/version_manifests", __dir__)
+EXTRA_FILE = File.expand_path("fixtures/extra/extra_distributions.rb", __dir__)
+
+Dir[File.expand_path("support/**/*.rb", __dir__)].sort.each { |f| require f }
 
 RSpec.configure do |config|
-  config.filter_run focus: true
-  config.run_all_when_everything_filtered = true
-
   config.expect_with :rspec do |c|
     c.syntax = :expect
+    c.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
-  # Ensure VCR/WebMock are disabled for functional tests
+  config.mock_with :rspec do |mocks|
+    # Stubbing a method that does not exist on the real object is an error
+    mocks.verify_partial_doubles = true
+  end
+
+  config.shared_context_metadata_behavior = :apply_to_host_groups
+  if ENV["CI"]
+    # A stray :focus silently skips the rest of the suite; never allow it in CI
+    config.before(:example, :focus) do |ex|
+      raise "Focused example left in the suite: #{ex.location}"
+    end
+  else
+    config.filter_run_when_matching :focus
+  end
+  config.example_status_persistence_file_path = "spec/examples.txt"
+  config.disable_monkey_patching!
+  config.warnings = false
+  config.default_formatter = "doc" if config.files_to_run.one?
+  config.order = :random
+  Kernel.srand config.seed
+
+  # Examples tagged :vcr replay recorded HTTP interactions. Functional specs
+  # exercise the real CLI against the real services. Everything else must not
+  # touch the network: WebMock raises on any unstubbed request.
   config.around(:each) do |ex|
-    if ex.metadata.key?(:vcr)
+    if ex.metadata[:type] == :functional
+      WebMock.allow_net_connect!
+      VCR.turned_off { ex.run }
+    elsif ex.metadata.key?(:vcr)
       ex.run
     else
-      WebMock.allow_net_connect!
+      WebMock.disable_net_connect!(allow_localhost: true)
       VCR.turned_off { ex.run }
     end
   end
-end
 
-begin
-  require "simplecov"
-  SimpleCov.start
-rescue LoadError
-  puts "install simplecov in Gemfile.local for coverage reports"
+  config.define_derived_metadata(file_path: %r{/spec/functional/}) do |metadata|
+    metadata[:type] = :functional
+  end
 end
 
 #
-# vcr configuration
+# VCR configuration
 #
-# There are a couple cases where you will need to play with these settings:
-# 1-) Updating cached responses:
-#   Set 'default_cassette_options' to '{ :record => :all }' and run tests.
-# 2-) If you add new tests or change the code to talk to different APIs,
-#   you will see spec failures because we lock down the http connections by
-#   disabling 'allow_http_connections_when_no_cassette'. In this case what
-#   you need to do is:
-#     Set 'default_cassette_options' to '{ :record => :new_episodes }' and
-#       run tests.
+# Cassettes live under spec/fixtures/vcr and are named after the example.
+#
+# By default a missing interaction is an error (record: :none), so the suite
+# never talks to the network by accident. To record or refresh cassettes:
+#
+#   VCR_RECORD=new_episodes bundle exec rspec spec/unit/...   # add new calls
+#   VCR_RECORD=all bundle exec rspec spec/unit/...            # re-record
 #
 VCR.configure do |config|
-  # We use different set of casettes depending on the unified_backend feature
-  config.cassette_library_dir = File.join(File.dirname(__FILE__), "fixtures/vcr")
-
+  config.cassette_library_dir = File.expand_path("fixtures/vcr", __dir__)
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  # Options to be used during development:
-  #
-  # Enables vcr logger for debugging
-  # config.debug_logger = File.open("vcr.log", 'w')
-  #
-  # Fails the specs if we get an http connection that we do not expect
-  # config.allow_http_connections_when_no_cassette = true
-  #
-  # Re-records all http calls on top of existing fixtures
-  # config.default_cassette_options = { :record => :all }
-  #
-  # Records new http calls without changing existing fixtures
-  config.default_cassette_options = { :record => :new_episodes }
+  config.default_cassette_options = { record: (ENV["VCR_RECORD"] || "none").to_sym }
 end
 
 def with_modified_env(options, &block)

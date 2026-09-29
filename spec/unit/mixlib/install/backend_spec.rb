@@ -19,7 +19,7 @@
 require "spec_helper"
 require "mixlib/install"
 
-context "Mixlib::Install::Backend", :vcr do
+RSpec.describe "Mixlib::Install::Backend", :vcr do
   let(:channel) { nil }
   let(:product_name) { nil }
   let(:product_version) { nil }

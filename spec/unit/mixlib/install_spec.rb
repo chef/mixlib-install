@@ -18,7 +18,7 @@
 require "spec_helper"
 require "mixlib/install"
 
-context "Mixlib::Install" do
+RSpec.describe "Mixlib::Install" do
   let(:installer) do
     Mixlib::Install.new(
       product_name: product_name,
@@ -161,6 +161,40 @@ context "Mixlib::Install" do
     end
   end
 
+  context "install locations for PowerShell" do
+    let(:ps1_installer) { Mixlib::Install.new(product_name: product_name, channel: :stable, shell_type: :ps1) }
+
+    context "for an omnibus product" do
+      let(:product_name) { "chef" }
+      let(:dir) { "$env:systemdrive\\#{Mixlib::Install::Dist::OMNIBUS_WINDOWS_INSTALL_DIR}\\chef" }
+
+      it "uses the omnibus Windows install directory" do
+        expect(ps1_installer.root).to eq(dir)
+      end
+
+      it "reads the version manifest from the Windows install directory" do
+        expect(File).to receive(:exist?).with("#{dir}\\version-manifest.json").and_return(false)
+
+        expect(ps1_installer.current_version).to be_nil
+      end
+    end
+
+    context "for chef-ice" do
+      let(:product_name) { "chef-ice" }
+      let(:dir) { "$env:systemdrive\\#{Mixlib::Install::Dist::HABITAT_WINDOWS_INSTALL_DIR}\\chef\\chef-infra-client\\*\\*" }
+
+      it "uses the Habitat Windows install directory" do
+        expect(ps1_installer.root).to eq(dir)
+      end
+
+      it "reads the version manifest from the Habitat package directory" do
+        expect(File).to receive(:exist?).with("#{dir}\\version-manifest.json").and_return(false)
+
+        expect(ps1_installer.current_version).to be_nil
+      end
+    end
+  end
+
   context "install_sh" do
     let(:base_url) { nil }
     let(:license_id) { nil }
@@ -228,6 +262,30 @@ context "Mixlib::Install" do
           options = { license_id: license_id, channel: :stable, version: :latest }
           script = Mixlib::Install.install_sh(options)
           expect(script).to include('license_id="free-trial-abc-123"')
+        end.not_to output.to_stderr
+      end
+    end
+
+    context "with trial license_id" do
+      let(:license_id) { "trial-xyz-456" }
+
+      it "defaults channel to stable with warning" do
+        expect do
+          script = Mixlib::Install.install_sh(license_id: license_id, channel: :unstable)
+          expect(script).to include('license_id="trial-xyz-456"')
+        end.to output(/WARNING: Trial API only supports 'stable' channel/).to_stderr
+      end
+
+      it "defaults version to latest with warning" do
+        expect do
+          script = Mixlib::Install.install_sh(license_id: license_id, version: "17.2.0")
+          expect(script).to include('license_id="trial-xyz-456"')
+        end.to output(/WARNING: Trial API only supports 'latest' version/).to_stderr
+      end
+
+      it "does not warn when stable and latest already set" do
+        expect do
+          Mixlib::Install.install_sh(license_id: license_id, channel: :stable, version: :latest)
         end.not_to output.to_stderr
       end
     end

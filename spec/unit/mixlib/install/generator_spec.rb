@@ -19,7 +19,7 @@ require "spec_helper"
 require "mixlib/install"
 require "mixlib/install/version"
 
-context "Mixlib::Install::Generator", :vcr do
+RSpec.describe "Mixlib::Install::Generator", :vcr do
   let(:channel) { nil }
   let(:product_version) { "latest" }
   let(:add_options) { {} }

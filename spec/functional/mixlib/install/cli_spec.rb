@@ -20,7 +20,7 @@ require "mixlib/install/cli"
 require "mixlib/shellout"
 require "tmpdir"
 
-describe "mixlib-install executable" do
+RSpec.describe "mixlib-install executable" do
   let(:args) { nil }
   let(:test_temp_dir) { Dir.mktmpdir("mixlib-install-test") }
 
@@ -37,7 +37,8 @@ describe "mixlib-install executable" do
     FileUtils.rm_rf(test_temp_dir) if test_temp_dir && Dir.exist?(test_temp_dir)
   end
 
-  let(:cmd) { Mixlib::ShellOut.new("mixlib-install #{command} #{args} ").run_command }
+  # Run from a temp dir so anything downloaded without -d stays out of the checkout
+  let(:cmd) { Mixlib::ShellOut.new("mixlib-install #{command} #{args} ", cwd: test_temp_dir).run_command }
   let(:last_command_output) { cmd.stdout.chomp }
   let(:last_command_err) { cmd.stderr.chomp }
 
@@ -112,7 +113,7 @@ describe "mixlib-install executable" do
       end
     end
 
-    context "with output option", :focus do
+    context "with output option" do
       let(:args) { "-o #{File.join(test_temp_dir, 'script.sh')}" }
 
       it "writes to a file" do
@@ -198,15 +199,11 @@ describe "mixlib-install executable" do
     context "with future platform version" do
       let(:platform) { "windows" }
       let(:platform_version) { "2016" }
-      let(:additional_args) { "--attributes" }
-
-      let(:latest_version) { Mixlib::Install.available_versions("chefdk", "stable").last }
-      let(:filename) { "chefdk-#{latest_version}-x86.msi" }
+      let(:additional_args) { "--url --attributes" }
 
       it "has the correct artifact" do
-        require "digest"
-        sha256 = Digest::SHA256.hexdigest("./tmp/aruba/#{filename}")
-        expect(last_command_output).to match /sha256/
+        expect(last_command_output).to match(/windows/)
+        expect(last_command_output).to match(/"sha256": "\h{64}"/)
       end
     end
 
@@ -222,7 +219,7 @@ describe "mixlib-install executable" do
     end
 
     context "with specified version" do
-      let(:additional_args) { "-v 12.0.3" }
+      let(:additional_args) { "-v 12.0.3 --url" }
 
       it "returns the correct artifact" do
         expect(last_command_output).to match /chef[-_]12.0.3-1/
@@ -230,7 +227,7 @@ describe "mixlib-install executable" do
     end
 
     context "with specified channel" do
-      let(:additional_args) { "-c current" }
+      let(:additional_args) { "-c current --url" }
 
       it "returns the correct artifact" do
         expect(last_command_output).to match /files\/current\/chef/
@@ -248,10 +245,9 @@ describe "mixlib-install executable" do
     context "with license_id" do
       let(:additional_args) { "-L test-license-key-123 --url" }
 
-      it "accepts license_id parameter" do
-        # This will fail with actual API call, but we're testing that the parameter is accepted
-        # In a real scenario with a valid license, it would use the commercial API
-        expect { Mixlib::ShellOut.new("mixlib-install #{command} #{args} ").run_command }.not_to raise_error
+      it "queries the commercial API, which rejects an invalid license" do
+        expect(cmd.exitstatus).not_to eq(0)
+        expect(last_command_err).to match(/403/)
       end
     end
   end
