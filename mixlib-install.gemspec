@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mixlib-versioning"
   spec.add_dependency "ostruct"
   spec.add_dependency "thor"
-  spec.required_ruby_version = ">= 3.1"
+  spec.required_ruby_version = ">= 2.7"
 end
