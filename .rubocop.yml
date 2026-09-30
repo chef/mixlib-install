@@ -1,6 +1,6 @@
 ---
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.1
 
 # The following cops are disabled because their autocorrect features could
 # potentially introduce syntax that breaks Ruby 2.6 compatibility, even though
@@ -23,7 +23,7 @@ Bundler/DuplicatedGem:
   Enabled: false
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
   Enabled: false
 Layout/ClosingHeredocIndentation:
   Enabled: false

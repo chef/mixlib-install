@@ -128,11 +128,11 @@ describe Mixlib::Install::ScriptGenerator do
       end
 
       it "creates the proper shell vars" do
-        expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
+        expect(installer.install_command).to match(/\$chef_metadata_url = "#{Regexp.escape(target_url)}"/)
       end
 
       it "sets the default download_directory" do
-        expect(installer.install_command).to match(%r{\$download_directory = "\$env:TEMP"})
+        expect(installer.install_command).to match(/\$download_directory = "\$env:TEMP"/)
       end
 
       it "includes powershell helpers for platform version and arch detection" do
@@ -147,7 +147,7 @@ describe Mixlib::Install::ScriptGenerator do
         before { installer.install_flags = install_flags }
 
         it "sets the custom download_directory variable" do
-          expect(installer.install_command).to match(%r{\$download_directory = "#{Regexp.escape(download_directory)}"})
+          expect(installer.install_command).to match(/\$download_directory = "#{Regexp.escape(download_directory)}"/)
         end
       end
 
@@ -156,7 +156,7 @@ describe Mixlib::Install::ScriptGenerator do
         let(:target_url) { "http://f/metadata?p=windows&m=$platform_architecture&pv=$platform_version&v=1.2.1&nightlies=true" }
 
         it "creates the proper shell vars" do
-          expect(installer.install_command).to match(%r{\$chef_metadata_url = "#{Regexp.escape(target_url)}"})
+          expect(installer.install_command).to match(/\$chef_metadata_url = "#{Regexp.escape(target_url)}"/)
         end
       end
 

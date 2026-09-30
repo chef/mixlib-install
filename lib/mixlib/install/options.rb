@@ -41,31 +41,31 @@ module Mixlib
         x86_64
       }
 
-      SUPPORTED_CHANNELS = [
-        :stable,
-        :current,
-        :unstable,
-      ]
+      SUPPORTED_CHANNELS = %i{
+        stable
+        current
+        unstable
+      }
 
-      SUPPORTED_SHELL_TYPES = [
-        :ps1,
-        :sh,
-      ]
-      SUPPORTED_OPTIONS = [
-        :architecture,
-        :channel,
-        :platform,
-        :platform_version,
-        :product_name,
-        :product_version,
-        :shell_type,
-        :platform_version_compatibility_mode,
-        :include_metadata,
-        :user_agent_headers,
-        :install_command_options,
-        :license_id,
-        :base_url,
-      ]
+      SUPPORTED_SHELL_TYPES = %i{
+        ps1
+        sh
+      }
+      SUPPORTED_OPTIONS = %i{
+        architecture
+        channel
+        platform
+        platform_version
+        product_name
+        product_version
+        shell_type
+        platform_version_compatibility_mode
+        include_metadata
+        user_agent_headers
+        install_command_options
+        license_id
+        base_url
+      }
 
       SUPPORTED_WINDOWS_DESKTOP_VERSIONS = %w{10}
 

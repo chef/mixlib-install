@@ -77,6 +77,7 @@ EOS
 
         def install_command_vars
           return "" if options.install_command_options.nil?
+
           options.install_command_options.map { |key, value| "#{key}='#{value}'" }.join("\n")
         end
       end

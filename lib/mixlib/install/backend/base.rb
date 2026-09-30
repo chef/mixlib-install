@@ -146,11 +146,11 @@ EOF
 
           # We only return appx packages when a nano platform version is requested.
           if options.class::SUPPORTED_WINDOWS_NANO_VERSIONS.include?(options.original_platform_version)
-            return artifacts.find_all { |a| a.appx_artifact? }
+            return artifacts.find_all(&:appx_artifact?)
 
           # Otherwise, we only return msi artifacts and remove all appx packages
           else
-            artifacts.delete_if { |a| a.appx_artifact? }
+            artifacts.delete_if(&:appx_artifact?)
           end
 
           artifacts.each do |r|
@@ -238,7 +238,7 @@ EOF
         def clone_windows_desktop_artifacts(base_artifact, options = {})
           @options.class::SUPPORTED_WINDOWS_DESKTOP_VERSIONS.collect do |dv|
             options[:platform_version] = dv
-            options[:url] = base_artifact.url.gsub("\/#{base_artifact.platform_version}\/", "\/#{map_custom_windows_desktop_versions(dv)}\/")
+            options[:url] = base_artifact.url.gsub("/#{base_artifact.platform_version}/", "/#{map_custom_windows_desktop_versions(dv)}/")
 
             base_artifact.clone_with(options)
           end

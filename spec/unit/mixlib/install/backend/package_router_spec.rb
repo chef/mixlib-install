@@ -783,7 +783,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
       let(:user_agent_headers) { ["foo/bar", "someheader"] }
 
       it "sets custom header" do
-        expect(package_router.create_http_request("/").get_fields("user-agent")).to include(/foo\/bar someheader/)
+        expect(package_router.create_http_request("/").get_fields("user-agent")).to include(%r{foo/bar someheader})
       end
     end
   end
@@ -921,7 +921,7 @@ context "Mixlib::Install::Backend::PackageRouter all channels", :vcr do
           end
 
           it "returns latest chef #{version} version" do
-            versions = artifact_info.map { |a| a.version }.uniq
+            versions = artifact_info.map(&:version).uniq
             expect(versions.size).to eq 1
             expect(versions.first).to eq expected_version
           end

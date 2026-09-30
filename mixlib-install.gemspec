@@ -1,5 +1,5 @@
 # coding: utf-8
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "mixlib/install/version"
 
@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mixlib-versioning"
   spec.add_dependency "ostruct"
   spec.add_dependency "thor"
-  spec.required_ruby_version = ">= 2.6"
+  spec.required_ruby_version = ">= 3.1"
 end

@@ -266,7 +266,7 @@ context "Mixlib::Install::Generator", :vcr do
       it "uses custom base_url even with license_id" do
         expect(install_script).to include("https://custom.chef.io")
         # The script should set base_api_url to the custom URL in the conditional block
-        expect(install_script).to match(/if \[ -z "\$base_api_url" \]; then\s+base_api_url="https:\/\/custom\.chef\.io"/m)
+        expect(install_script).to match(%r{if \[ -z "\$base_api_url" \]; then\s+base_api_url="https://custom\.chef\.io"}m)
         # Verify the script includes the base_api_url variable assignment with custom URL
         expect(install_script).to include('base_api_url="https://custom.chef.io"')
       end
@@ -717,7 +717,7 @@ context "Mixlib::Install::Generator", :vcr do
 
       context "without user_agent_headers" do
         it "sets the default agent header" do
-          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION}"/)
+          expect(install_script).to match(%r{"User-Agent: mixlib-install/#{Mixlib::Install::VERSION}"})
         end
       end
 
@@ -727,7 +727,7 @@ context "Mixlib::Install::Generator", :vcr do
         end
 
         it "sets adds the default headers" do
-          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION} testheader\/1.2.3"/)
+          expect(install_script).to match(%r{"User-Agent: mixlib-install/#{Mixlib::Install::VERSION} testheader/1.2.3"})
         end
       end
 
@@ -737,7 +737,7 @@ context "Mixlib::Install::Generator", :vcr do
         end
 
         it "doesn't duplicate the default header" do
-          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION} testheader\/4.5.6"/)
+          expect(install_script).to match(%r{"User-Agent: mixlib-install/#{Mixlib::Install::VERSION} testheader/4.5.6"})
         end
       end
     end
@@ -747,7 +747,7 @@ context "Mixlib::Install::Generator", :vcr do
 
       context "without user_agent_headers set" do
         it "sets the default agent header" do
-          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION}"/)
+          expect(install_script).to match(%r{"User-Agent: mixlib-install/#{Mixlib::Install::VERSION}"})
         end
       end
 
@@ -757,7 +757,7 @@ context "Mixlib::Install::Generator", :vcr do
         end
 
         it "sets adds the additional headers" do
-          expect(install_script).to match(/"User-Agent: mixlib-install\/#{Mixlib::Install::VERSION} testheader\/11.22.33"/)
+          expect(install_script).to match(%r{"User-Agent: mixlib-install/#{Mixlib::Install::VERSION} testheader/11.22.33"})
         end
       end
     end

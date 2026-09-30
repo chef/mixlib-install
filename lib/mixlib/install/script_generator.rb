@@ -20,7 +20,7 @@
 require_relative "util"
 require_relative "generator/powershell"
 require_relative "dist"
-require "cgi"
+require "cgi" unless defined?(CGI)
 
 module Mixlib
   class Install

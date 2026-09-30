@@ -147,7 +147,7 @@ context "Mixlib::Install::Backend", :vcr do
     end
   end
 
-  [:stable, :current, :unstable].each do |channel|
+  %i{stable current unstable}.each do |channel|
     context "for #{channel} channel with :latest" do
       let(:product_name) { "chef" }
       let(:channel) { channel }

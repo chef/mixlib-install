@@ -26,18 +26,18 @@ module Mixlib
         instance_eval(&block)
       end
 
-      DSL_PROPERTIES = [
-        :config_file,
-        :ctl_command,
-        :product_key,
-        :package_name,
-        :product_name,
-        :install_path,
-        :omnibus_project,
-        :github_repo,
-        :downloads_product_page_url,
-        :api_url,
-      ]
+      DSL_PROPERTIES = %i{
+        config_file
+        ctl_command
+        product_key
+        package_name
+        product_name
+        install_path
+        omnibus_project
+        github_repo
+        downloads_product_page_url
+        api_url
+      }
 
       #
       # DSL methods can receive either a String or a Proc to calculate the
@@ -72,7 +72,8 @@ module Mixlib
               instance_variable_set(ivar, prop_string)
             end
           else
-            raise "Can not use String and Proc at the same time for #{prop}." if !prop_string.nil?
+            raise "Can not use String and Proc at the same time for #{prop}." unless prop_string.nil?
+
             instance_variable_set(ivar, block)
           end
         end

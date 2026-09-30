@@ -44,7 +44,7 @@ module Mixlib
           src_file = file + (powershell ? ".ps1" : ".sh")
 
           Util.wrap_shell([vars, "", IO.read(src_file)].join("\n"),
-                          powershell, opts)
+            powershell, opts)
         end
 
         # Wraps a body of shell code with common context appropriate for the type

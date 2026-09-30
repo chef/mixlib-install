@@ -321,8 +321,7 @@ EOF
             begin
               metadata = get("#{chef_standard_path}.metadata.json")
               license_content = metadata["license_content"]
-              software_dependencies = metadata.fetch("version_manifest", {})
-                                        .fetch("software", nil)
+              software_dependencies = metadata.dig("version_manifest", "software")
             rescue Net::HTTPServerException => e
               if e.message.match?(/404/)
                 license_content, software_dependencies = nil
@@ -417,8 +416,9 @@ EOF
         #
         def map_properties(properties)
           return {} if properties.nil?
-          properties.each_with_object({}) do |prop, h|
-            h[prop["key"]] = prop["value"]
+
+          properties.to_h do |prop|
+            [prop["key"], prop["value"]]
           end
         end
 
