@@ -23,7 +23,7 @@ Bundler/DuplicatedGem:
   Enabled: false
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
   Enabled: false
 Layout/ClosingHeredocIndentation:
   Enabled: false

@@ -108,12 +108,12 @@ describe "mixlib-install executable" do
       let(:args) { "--endpoint https://omnitruck-custom.chef.io" }
 
       it "contains the new endpoint" do
-        expect(last_command_output).to match /https:\/\/omnitruck-custom.chef.io/
+        expect(last_command_output).to match %r{https://omnitruck-custom\.chef\.io}
       end
     end
 
     context "with output option", :focus do
-      let(:args) { "-o #{File.join(test_temp_dir, 'script.sh')}" }
+      let(:args) { "-o #{File.join(test_temp_dir, "script.sh")}" }
 
       it "writes to a file" do
         # We're executing and not looking for stdout/err output
@@ -173,7 +173,7 @@ describe "mixlib-install executable" do
       let(:additional_args) { "--url" }
 
       it "outputs the url" do
-        expect(last_command_output).to match /https:\/\/packages.chef.io\/files\/stable\/chef/
+        expect(last_command_output).to match %r{https://packages\.chef\.io/files/stable/chef}
       end
     end
 
@@ -233,15 +233,15 @@ describe "mixlib-install executable" do
       let(:additional_args) { "-c current" }
 
       it "returns the correct artifact" do
-        expect(last_command_output).to match /files\/current\/chef/
+        expect(last_command_output).to match %r{files/current/chef}
       end
     end
 
     context "with specified directory" do
-      let(:additional_args) { "-d #{File.join(test_temp_dir, 'mydir')}" }
+      let(:additional_args) { "-d #{File.join(test_temp_dir, "mydir")}" }
 
       it "downloads to dir" do
-        expect(last_command_output).to match /Download saved to .*mydir\/chef/
+        expect(last_command_output).to match %r{Download saved to .*mydir/chef}
       end
     end
 

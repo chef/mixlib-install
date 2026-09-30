@@ -256,7 +256,7 @@ context "PRODUCT_MATRIX" do
     let(:product_name) { "manage" }
 
     it "should return both known omnibus project name" do
-      expect(PRODUCT_MATRIX.lookup("manage").known_omnibus_projects).to eq ["opscode-manage", "chef-manage"]
+      expect(PRODUCT_MATRIX.lookup("manage").known_omnibus_projects).to eq %w{opscode-manage chef-manage}
     end
 
     context "for version > 2.0.0" do
@@ -356,7 +356,7 @@ context "PRODUCT_MATRIX" do
     let(:product_name) { "push-jobs-client" }
 
     it "should return both known omnibus project name" do
-      expect(PRODUCT_MATRIX.lookup("push-jobs-client").known_omnibus_projects).to eq ["opscode-push-jobs-client", "push-jobs-client"]
+      expect(PRODUCT_MATRIX.lookup("push-jobs-client").known_omnibus_projects).to eq %w{opscode-push-jobs-client push-jobs-client}
     end
 
     context "for version > 1.3.0" do

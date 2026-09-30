@@ -1,7 +1,7 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 
-[:unit, :functional].each do |type|
+%i{unit functional}.each do |type|
   RSpec::Core::RakeTask.new(type) do |t|
     t.pattern = "spec/#{type}/**/*_spec.rb"
     t.rspec_opts = [].tap do |a|
@@ -11,14 +11,20 @@ require "rspec/core/rake_task"
   end
 end
 
-begin
-  require "chefstyle"
+desc "Check Linting and code style."
+task :style do
   require "rubocop/rake_task"
-  RuboCop::RakeTask.new(:style) do |task|
-    task.options += ["--display-cop-names", "--no-color"]
+  require "cookstyle/chefstyle"
+
+  if RbConfig::CONFIG["host_os"] =~ /mswin|mingw|cygwin/
+    # Windows-specific command, rubocop erroneously reports the CRLF in each file which is removed when your PR is uploaded to GitHub.
+    # This is a workaround to ignore the CRLF from the files before running cookstyle.
+    sh "cookstyle --chefstyle -c .rubocop.yml --except Layout/EndOfLine"
+  else
+    sh "cookstyle --chefstyle -c .rubocop.yml"
   end
 rescue LoadError
-  puts "chefstyle gem is not installed"
+  puts "Rubocop or Cookstyle gems are not installed. bundle install first to make sure all dependencies are installed."
 end
 
 desc "Render product matrix documentation"

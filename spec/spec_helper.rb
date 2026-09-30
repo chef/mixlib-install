@@ -1,5 +1,5 @@
 # load lib path
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
 require "mixlib/install"
 require "vcr"
@@ -9,7 +9,7 @@ require "webrick/httpproxy"
 require "climate_control"
 
 # load version manifest support path
-VERSION_MANIFEST_DIR = File.expand_path("../support/version_manifests", __FILE__)
+VERSION_MANIFEST_DIR = File.expand_path("support/version_manifests", __dir__)
 EXTRA_FILE = File.join(File.dirname(__FILE__), "/fixtures/extra/extra_distributions.rb")
 
 RSpec.configure do |config|

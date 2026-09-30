@@ -260,7 +260,7 @@ module Mixlib
       # pulls in) is only needed to shell out for platform detection, so it is
       # loaded here rather than at require time.
       require "mixlib/shellout" unless defined?(Mixlib::ShellOut)
-      require "tmpdir"
+      require "tmpdir" unless defined?(Dir.mktmpdir)
 
       output = if Gem.win_platform?
                  # For Windows we write the detect platform script and execute the

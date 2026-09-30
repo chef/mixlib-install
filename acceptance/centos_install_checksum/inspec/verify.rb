@@ -9,7 +9,7 @@ end
 # No checksum provided
 describe command("sudo /tmp/install.sh") do
   its("stdout") { should match /Download URL override specified/ }
-  its("stdout") { should match /tmp\/checksum\/chef.* not found/ }
+  its("stdout") { should match %r{tmp/checksum/chef.* not found} }
   its("stdout") { should match /Thank you/ }
 end
 
@@ -52,13 +52,13 @@ end
 #
 # Default behavior when specifying a download location (otherwise caching is unavailable)
 describe command("sudo /tmp/install_metadata.sh") do
-  its("stdout") { should_not match /tmp\/metadata\/chef.* exists/ }
+  its("stdout") { should_not match %r{tmp/metadata/chef.* exists} }
   its("stdout") { should match /Thank you/ }
 end
 
 # Running same script again
 describe command("sudo /tmp/install_metadata.sh") do
-  its("stdout") { should match /tmp\/metadata\/chef.* exists/ }
+  its("stdout") { should match %r{tmp/metadata/chef.* exists} }
   its("stdout") { should match /Thank you/ }
 end
 
@@ -72,7 +72,7 @@ end
 #
 describe command("sudo /tmp/install_bad.sh") do
   its("stdout") { should match /Download URL override specified/ }
-  its("stdout") { should match /tmp\/bad\/chef.* not found/ }
+  its("stdout") { should match %r{tmp/bad/chef.* not found} }
   its("stdout") { should match /Package checksum mismatch/ }
   its("exit_status") { should eq 1 }
 end

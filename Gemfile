@@ -55,8 +55,8 @@ group :test do
   end
 end
 
-group :chefstyle do
-  gem "chefstyle", "~> 0.12.0" # Minimum version that will run without errors on Ruby 3.4
+group :cookstyle do
+  gem "cookstyle", "~> 8.1" if RUBY_VERSION >= "2.7.0"
 end
 
 group :debug do
