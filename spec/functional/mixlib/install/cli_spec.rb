@@ -108,7 +108,7 @@ describe "mixlib-install executable" do
       let(:args) { "--endpoint https://omnitruck-custom.chef.io" }
 
       it "contains the new endpoint" do
-        expect(last_command_output).to match %r{https://omnitruck-custom.chef.io}
+        expect(last_command_output).to match %r{https://omnitruck-custom\.chef\.io}
       end
     end
 
@@ -173,7 +173,7 @@ describe "mixlib-install executable" do
       let(:additional_args) { "--url" }
 
       it "outputs the url" do
-        expect(last_command_output).to match %r{https://packages.chef.io/files/stable/chef}
+        expect(last_command_output).to match %r{https://packages\.chef\.io/files/stable/chef}
       end
     end
 
